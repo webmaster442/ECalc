@@ -1,0 +1,334 @@
+﻿<UserControl x:Class="ECalc.Controls.KeyPad"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="391" d:DesignWidth="654">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid x:Name="Prefixes" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Yotta"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Click="Button_Click"/>
+
+            <Button Content="Zeta"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Click="Button_Click"/>
+
+            <Button Content="Exa"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+
+            <Button Content="Peta"
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+            <Button Content="Terra"
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    Click="Button_Click"/>
+
+            <Button Content="Giga"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Click="Button_Click"/>
+
+            <Button Content="Mega"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Click="Button_Click"/>
+
+            <Button Content="kilo"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+
+            <Button Content="hecto"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+            <Button Content="deca"
+                    Grid.Row="1"
+                    Grid.Column="4"
+                    Click="Button_Click"/>
+
+            <Button Content="deci"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Click="Button_Click"/>
+
+            <Button Content="centi"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Click="Button_Click"/>
+
+            <Button Content="milli"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+
+            <Button Content="micro"
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+            <Button Content="nano"
+                    Grid.Row="2"
+                    Grid.Column="4"
+                    Click="Button_Click"/>
+
+            <Button Content="pico"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Click="Button_Click"/>
+
+            <Button Content="femto"
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Click="Button_Click"/>
+
+            <Button Content="atto"
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+
+            <Button Content="zepto"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+            <Button Content="yocto"
+                    Grid.Row="3"
+                    Grid.Column="4"
+                    Click="Button_Click"/>
+            
+            <Button Content="E"
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    Grid.RowSpan="2"
+                    Click="Button_Click"/>
+
+            <Button Content="Cancel"
+                    x:Name="Cancel"
+                    Click="Cancel_Click"
+                    Grid.Row="2"
+                    Grid.Column="5"
+                    Grid.RowSpan="2"/>
+        </Grid>
+        <Grid x:Name="Keys" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="0"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Click="Button_Click"/>
+            <Button Content="1"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Click="Button_Click"/>
+            <Button Content="2"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Click="Button_Click"/>
+            <Button Content="3"
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+            
+            <Button Content="4"
+                    Grid.Row="1"
+                    Grid.Column="0"/>
+            <Button Content="5"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Click="Button_Click"/>
+            <Button Content="6"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+
+            <Button Content="7"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Click="Button_Click"/>
+            <Button Content="8"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Click="Button_Click"/>
+            <Button Content="9"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+
+            <Button Content="10n"
+                    Grid.Row="3"
+                    x:Name="Exponent"
+                    Click="Exponent_Click"
+                    Grid.Column="1"/>
+
+            <Button Content=","
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Click="Button_Click"/>
+
+            <Button Content=";"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+            <Button Content="("
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+            <Button Content=")"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+            <Button Content="mod"
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Click="Button_Click"/>
+
+
+            <Button Content="MEM"
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    x:Name="BtnMem"
+                    Click="BtnMem_Click"/>
+            <Button Content="CNST"
+                    Grid.Row="0"
+                    Grid.Column="5"
+                    Click="Button_Click"/>
+            <Button Content="÷"
+                    Grid.Row="1"
+                    Grid.Column="4"
+                    Click="Button_Click"/>
+            <Button Content="X"
+                    Grid.Row="1"
+                    Grid.Column="5"
+                    Click="Button_Click"/>
+
+            <Button Content="+"
+                    Grid.Row="2"
+                    Grid.Column="4"
+                    Click="Button_Click"/>
+            <Button Content="-"
+                    Grid.Row="3"
+                    Grid.Column="4"
+                    Click="Button_Click"/>
+
+            <Button Content="="
+                    Grid.Row="2"
+                    x:Name="Execute"
+                    Click="Execute_Click"
+                    Grid.RowSpan="2"
+                    Grid.Column="5"/>
+        </Grid>
+        <Grid x:Name="Memory" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListBox Grid.Column="0"
+                     Grid.RowSpan="5"
+                     Grid.ColumnSpan="5"
+                     x:Name="MemList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0"
+                                       Text="{Binding Name}"
+                                       FontWeight="Bold"/>
+                            <TextBlock Grid.Row="1"
+                                       Text="{Binding Value}"
+                                       FontStyle="Italic"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Grid.Row="0"
+                    Grid.Column="5"
+                    Content="Insert"
+                    ToolTip="Insert selected to expression"
+                    x:Name="BtnMemInsert"
+                    Click="BtnMemInsert_Click"/>
+            <Button Grid.Row="1"
+                    Grid.Column="5"
+                    Content="Add"
+                    x:Name="BtnMemAdd"
+                    ToolTip="Add a new variable"
+                    Click="BtnMemAdd_Click"/>
+            <Button Grid.Row="2"
+                    Grid.Column="5"
+                    Content="Replace"
+                    ToolTip="Replace selected variable with a value"
+                    x:Name="BtnMemReplace"
+                    Click="BtnMemReplace_Click"/>
+            <Button Grid.Row="3"
+                    Grid.Column="5"
+                    Content="Delete"
+                    x:Name="BtnMemDelete"
+                    ToolTip="Delete Selected variable"
+                    Click="BtnMemDelete_Click"/>
+            <Button Grid.Row="4"
+                    Grid.Column="5"
+                    x:Name="BtnMemCancel"
+                    Content="Cancel"
+                    Click="BtnMemCancel_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,13 @@
+﻿<mah:MetroWindow x:Class="ECalc.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:pages="clr-namespace:ECalc.Pages"
+                 Title="ECalc"
+                 Width="960"
+                 Height="540"
+                 ResizeMode="CanMinimize">
+    <mah:TransitioningContentControl Transition="Left">
+        <pages:Calculator/>
+    </mah:TransitioningContentControl>
+</mah:MetroWindow>

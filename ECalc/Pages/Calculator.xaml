@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ECalc.Pages.Calculator"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d"
+      xmlns:controls="clr-namespace:ECalc.Controls"
+      d:DesignHeight="540" d:DesignWidth="960"
+      Loaded="MetroWindow_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <controls:Display Grid.Row="0"
+                          Grid.Column="0"
+                          Grid.ColumnSpan="2"
+                          x:Name="Display"
+                          ModeChanged="Display_ModeChanged"/>
+        <controls:KeyPad Grid.Row="1"
+                         Grid.Column="1"
+                         x:Name="Keypad"
+                         ExecuteClicked="KeyPad_ExecuteClicked"
+                         ButtonClicked="KeyPad_ButtonClicked"/>
+        <controls:FunctionList Grid.Row="1"
+                               x:Name="FncList"
+                               Grid.RowSpan="2"
+                               FunctionButtonCliked="FunctionList_FunctionButtonCliked"/>
+    </Grid>
+</UserControl>
