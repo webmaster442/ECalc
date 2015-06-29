@@ -263,7 +263,7 @@
                     Grid.RowSpan="2"
                     Grid.Column="5"/>
         </Grid>
-        <Grid x:Name="Memory" Visibility="Visible">
+        <Grid x:Name="Memory" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -329,6 +329,28 @@
                     x:Name="BtnMemCancel"
                     Content="Cancel"
                     Click="BtnMemCancel_Click"/>
+        </Grid>
+        <Grid x:Name="Constants">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ListBox Grid.ColumnSpan="5"
+                     Grid.RowSpan="2"/>
+            <Button Content="Insert"
+                    Grid.Row="0"
+                    Grid.Column="6"/>
+            <Button Content="Cancel"
+                    Grid.Row="1"
+                    Grid.Column="6"/>
         </Grid>
     </Grid>
 </UserControl>

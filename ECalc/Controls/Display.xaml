@@ -55,7 +55,8 @@
                    Text="{Binding ResultText, ElementName=userControl}"
                    TextAlignment="Right"
                    FontFamily="Consolas"
-                   FontSize="32"/>
+                   TextWrapping="Wrap"
+                   FontSize="28"/>
         <StackPanel Grid.Row="3"
                     Grid.ColumnSpan="4"
                     Orientation="Horizontal" HorizontalAlignment="Right">

@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using System;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -32,13 +33,17 @@ namespace ECalc.Controls
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
-            if (designTime) return;
-            XmlSerializer xs = new XmlSerializer(typeof(UsageInfo));
-            using (StringReader sr = new StringReader(ECalc.Properties.Settings.Default.UsageInfo))
+            try
             {
-                _usage = (UsageInfo[])xs.Deserialize(sr);
+                bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+                if (designTime) return;
+                XmlSerializer xs = new XmlSerializer(typeof(UsageInfo));
+                using (StringReader sr = new StringReader(ECalc.Properties.Settings.Default.UsageInfo))
+                {
+                    _usage = (UsageInfo[])xs.Deserialize(sr);
+                }
             }
+            catch (Exception) { } 
         }
 
         public void Render()
