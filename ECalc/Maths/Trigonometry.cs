@@ -1,13 +1,11 @@
 ﻿using ECalc.Classes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECalc.Maths
 {
-    public class Rad2Deg: IFunction
+
+    #region Conversion functions
+    public class Rad2Deg : IFunction
     {
         public string Name
         {
@@ -83,7 +81,7 @@ namespace ECalc.Maths
         }
     }
 
-    public class Rad2Grad: IFunction
+    public class Rad2Grad : IFunction
     {
         public string Name
         {
@@ -121,7 +119,10 @@ namespace ECalc.Maths
         }
     }
 
-    public class Sin: IFunction
+    #endregion
+
+    #region Trigonometrical functions
+    public class Sin : IFunction
     {
         public string Name
         {
@@ -158,7 +159,6 @@ namespace ECalc.Maths
             get { return 1; }
         }
     }
-
 
     public class Tan : IFunction
     {
@@ -216,4 +216,141 @@ namespace ECalc.Maths
             get { return 1; }
         }
     }
+
+    public class Cosec : IFunction
+    {
+        public string Name
+        {
+            get { return "Cosec"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.Cosec(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+    #endregion
+
+    #region Inverse Trigonometrical Functions
+    public class ArcSin : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcSin"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcSin(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcCos : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcCos"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcCos(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcTan : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcTan"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcTan(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcCtg : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcCtg"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcCtg(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcSec : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcSec"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcSec(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcCosec : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcCosec"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcCosec(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    #endregion
 }

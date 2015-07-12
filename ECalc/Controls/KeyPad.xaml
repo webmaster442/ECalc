@@ -140,7 +140,7 @@
                     Grid.Column="5"
                     Grid.RowSpan="2"/>
         </Grid>
-        <Grid x:Name="Keys" Visibility="Collapsed">
+        <Grid x:Name="Keys" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>

@@ -147,7 +147,7 @@ namespace ECalc.Classes
             _prefixes.Add("Z", Math.Pow(10, 21));
             _prefixes.Add("Y", Math.Pow(10, 24));
 
-            Ans = 0;
+            Ans = 0.0d; //double
 
         }
 
