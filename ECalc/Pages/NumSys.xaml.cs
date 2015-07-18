@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ECalc.Pages
 {
     /// <summary>
-    /// Interaction logic for NumSysConverter.xaml
+    /// Interaction logic for NumSys.xaml
     /// </summary>
-    public partial class NumSysConverter : UserControl
+    public partial class NumSys : UserControl
     {
-        public NumSysConverter()
+        public NumSys()
         {
             InitializeComponent();
         }

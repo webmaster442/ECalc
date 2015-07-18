@@ -3,11 +3,36 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                  xmlns:pages="clr-namespace:ECalc.Pages"
+                 xmlns:controls="clr-namespace:ECalc.Controls"
                  Title="ECalc"
                  Width="960"
                  Height="540"
                  ResizeMode="CanMinimize">
-    <mah:TransitioningContentControl Transition="Left">
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="WindowCommandKeyboard"
+                        Content="Screen Keyboard"
+                        Click="WindowCommandKeyboard_Click"/>
+                <Button x:Name="WindowCommandMenu"
+                        Content="Menu"
+                        Click="WindowCommandMenu_Click"/>
+            </StackPanel>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+    <mah:MetroWindow.Flyouts>
+        <mah:FlyoutsControl>
+            <mah:Flyout x:Name="MenuFlyOut"
+                        Theme="Adapt"
+                        Position="Right"
+                        Header="Menu" 
+                        Width="230">
+                <controls:Menu/>
+            </mah:Flyout>
+        </mah:FlyoutsControl>
+    </mah:MetroWindow.Flyouts>
+    <mah:TransitioningContentControl x:Name="TransitionControl"
+                                     Transition="Left">
         <pages:Calculator/>
     </mah:TransitioningContentControl>
 </mah:MetroWindow>

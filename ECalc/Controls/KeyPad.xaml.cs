@@ -12,12 +12,15 @@ namespace ECalc.Controls
     public partial class KeyPad : UserControl, IMemManager
     {
         private static ObservableCollection<MemoryItem> _memory;
+        private static ConstantList _constants;
 
         public KeyPad()
         {
             InitializeComponent();
             _memory = new ObservableCollection<MemoryItem>();
+            _constants = new ConstantList();
             MemList.ItemsSource = _memory;
+            ConstList.ItemsSource = _constants;
         }
 
         public event RoutedEventHandler ExecuteClicked;
@@ -42,9 +45,21 @@ namespace ECalc.Controls
             Keys.Visibility = System.Windows.Visibility.Visible;
         }
 
+        private void BtnConstCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Constants.Visibility = System.Windows.Visibility.Collapsed;
+            Keys.Visibility = System.Windows.Visibility.Visible;
+        }
+
         private void BtnMem_Click(object sender, RoutedEventArgs e)
         {
             Memory.Visibility = System.Windows.Visibility.Visible;
+            Keys.Visibility = System.Windows.Visibility.Collapsed;
+        }
+
+        private void BtnCnst_Click(object sender, RoutedEventArgs e)
+        {
+            Constants.Visibility = System.Windows.Visibility.Visible;
             Keys.Visibility = System.Windows.Visibility.Collapsed;
         }
 
@@ -98,6 +113,24 @@ namespace ECalc.Controls
              }
         }
 
+        private void BtnInsertConst_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonClicked != null)
+            {
+
+                if (ConstList.SelectedIndex > -1)
+                {
+                    var content = _constants[ConstList.SelectedIndex].Name;
+                    if (Constants.Visibility == System.Windows.Visibility.Visible)
+                    {
+                        Constants.Visibility = System.Windows.Visibility.Collapsed;
+                        Keys.Visibility = System.Windows.Visibility.Visible;
+                    }
+                    ButtonClicked(sender, new StringEventArgs(content));
+                }
+            }
+        }
+
         private void BtnMemAdd_Click(object sender, RoutedEventArgs e)
         {
             _memory.Add(new MemoryItem(Engine.Ans));
@@ -132,10 +165,20 @@ namespace ECalc.Controls
 
         public object GetItem(string name)
         {
-            var query = from i in _memory where string.Compare(name, i.Name) == 0 select i;
-            var result = query.FirstOrDefault();
-            if (result == null) return result;
-            else return result.Value;
+            if (name.StartsWith("$"))
+            {
+                var query = from i in _memory where string.Compare(name, i.Name) == 0 select i;
+                var result = query.FirstOrDefault();
+                if (result == null) return null;
+                else return result.Value;
+            }
+            else
+            {
+                var q = from i in _constants where string.Compare(name, i.Name) == 0 select i;
+                var c = q.FirstOrDefault();
+                if (c == null) return null;
+                else return c.Value;
+            }
         }
     }
 }

@@ -96,7 +96,20 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    
+
+    <DataTemplate x:Key="MemConstTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="{Binding Name}"
+                       FontWeight="Bold"/>
+            <TextBlock Grid.Row="1"
+                       Text="{Binding Value}"
+                       FontStyle="Italic"/>
+        </Grid>
+    </DataTemplate>
 
 </ResourceDictionary>

@@ -235,9 +235,10 @@
                     x:Name="BtnMem"
                     Click="BtnMem_Click"/>
             <Button Content="CNST"
+                    x:Name="BtnCnst"
                     Grid.Row="0"
                     Grid.Column="5"
-                    Click="Button_Click"/>
+                    Click="BtnCnst_Click"/>
             <Button Content="÷"
                     Grid.Row="1"
                     Grid.Column="4"
@@ -282,23 +283,8 @@
             <ListBox Grid.Column="0"
                      Grid.RowSpan="5"
                      Grid.ColumnSpan="5"
-                     x:Name="MemList">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0"
-                                       Text="{Binding Name}"
-                                       FontWeight="Bold"/>
-                            <TextBlock Grid.Row="1"
-                                       Text="{Binding Value}"
-                                       FontStyle="Italic"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
+                     x:Name="MemList"
+                     ItemTemplate="{StaticResource MemConstTemplate}">
             </ListBox>
             <Button Grid.Row="0"
                     Grid.Column="5"
@@ -330,7 +316,7 @@
                     Content="Cancel"
                     Click="BtnMemCancel_Click"/>
         </Grid>
-        <Grid x:Name="Constants">
+        <Grid x:Name="Constants" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -344,13 +330,19 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <ListBox Grid.ColumnSpan="5"
-                     Grid.RowSpan="2"/>
+                     Grid.RowSpan="2"
+                     x:Name="ConstList"
+                     ItemTemplate="{StaticResource MemConstTemplate}"/>
             <Button Content="Insert"
                     Grid.Row="0"
-                    Grid.Column="6"/>
+                    x:Name="BtnInsertConst"
+                    Grid.Column="6"
+                    Click="BtnInsertConst_Click"/>
             <Button Content="Cancel"
                     Grid.Row="1"
-                    Grid.Column="6"/>
+                    Grid.Column="6"
+                    x:Name="BtnConstCancel"
+                    Click="BtnConstCancel_Click"/>
         </Grid>
     </Grid>
 </UserControl>

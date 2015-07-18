@@ -112,4 +112,20 @@ namespace ECalc.Classes
             Name = name;
         }
     }
+
+    /// <summary>
+    /// Number System Enumeration
+    /// </summary>
+    public enum NumberSystem
+    {
+        Bin, Oct, Dec, Hex
+    }
+
+    /// <summary>
+    /// Trigonometry modes
+    /// </summary>
+    public enum TrigMode
+    {
+        DEG, RAD, GRAD
+    }
 }

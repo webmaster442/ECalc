@@ -81,7 +81,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\NumSysKeyPad.xaml">
+    <Page Include="Controls\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NumSysInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -93,7 +97,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine.cs" />
+    <Compile Include="Classes\EnumBooleanConverter.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Controls\Display.xaml.cs">
@@ -105,8 +111,11 @@
     <Compile Include="Controls\KeyPad.xaml.cs">
       <DependentUpon>KeyPad.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\NumSysKeyPad.xaml.cs">
-      <DependentUpon>NumSysKeyPad.xaml</DependentUpon>
+    <Compile Include="Controls\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumSysInput.xaml.cs">
+      <DependentUpon>NumSysInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -116,7 +125,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NumSysConverter.xaml">
+    <Page Include="Pages\NumSys.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,8 +142,8 @@
     <Compile Include="Pages\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NumSysConverter.xaml.cs">
-      <DependentUpon>NumSysConverter.xaml</DependentUpon>
+    <Compile Include="Pages\NumSys.xaml.cs">
+      <DependentUpon>NumSys.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -153,7 +162,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

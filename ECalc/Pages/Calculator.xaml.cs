@@ -29,7 +29,7 @@ namespace ECalc.Pages
             catch (Exception ex)
             {
                 Display.ResultText = "Error";
-                Helpers.ErrorDialog(ex);
+                MainWindow.ErrorDialog(ex.Message);
             }
             Display.EquationText = "";
         }

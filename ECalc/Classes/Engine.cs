@@ -9,14 +9,6 @@ using System.Reflection;
 
 namespace ECalc.Classes
 {
-    /// <summary>
-    /// Trigonometry modes
-    /// </summary>
-    public enum TrigMode
-    {
-        DEG, RAD, GRAD
-    }
-
     public interface IMemManager
     {
         object GetItem(string name);
@@ -27,7 +19,7 @@ namespace ECalc.Classes
     /// </summary>
     internal enum TokenType
     {
-        Number, Operator, Function, LeftB, RightB, Seperator, UnaryMinus, VarConst
+        Number, Operator, Function, LeftB, RightB, Seperator, UnaryMinus, Variable, Constant
     }
 
     /// <summary>
@@ -245,9 +237,14 @@ namespace ECalc.Classes
                         }
                         else
                         {
-                            if (c.StartsWith("$") || c.StartsWith("&"))
+                            if (c.StartsWith("$"))
                             {
-                                temp = new Token(TokenType.VarConst, c);
+                                temp = new Token(TokenType.Variable, c);
+                                Output.Enqueue(temp);
+                            }
+                            else if (c.StartsWith("&"))
+                            {
+                                temp = new Token(TokenType.Constant, c);
                                 Output.Enqueue(temp);
                             }
                             else
@@ -335,7 +332,8 @@ namespace ECalc.Classes
                             result.Push(-(double)min);
                         }
                         break;
-                    case TokenType.VarConst:
+                    case TokenType.Variable:
+                    case TokenType.Constant:
                         var content = MemoryManager.GetItem(token.Content);
                         result.Push(content);
                         break;
@@ -402,8 +400,8 @@ namespace ECalc.Classes
                         var fnc = (from i in _functions where i.Name == token.Content select i).FirstOrDefault();
                         List<object> args = new List<object>();
                         if (result.Count < fnc.ParamCount) throw new ArgumentException("Too few parameters for function");
-                        else if (result.Count > (fnc.ParamCount+1)) throw new ArgumentException("Too many parameters for function");
-                        for (int j=0; j<fnc.ParamCount; j++) args.Add(result.Pop());
+                        else if (result.Count > (fnc.ParamCount + 1)) throw new ArgumentException("Too many parameters for function");
+                        for (int j = 0; j < fnc.ParamCount; j++) args.Add(result.Pop());
                         args.Reverse();
                         object o = fnc.Run(args.ToArray());
                         result.Push(o);

@@ -2,6 +2,8 @@
 using MahApps.Metro.Controls;
 using System;
 using System.Windows;
+using System.Windows.Controls;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace ECalc
 {
@@ -10,14 +12,46 @@ namespace ECalc
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-       
-
         public MainWindow()
         {
             InitializeComponent();
             
         }
 
-        /**/
+        /// <summary>
+        /// Switches to another user control
+        /// </summary>
+        /// <param name="control">A user control to show</param>
+        public static void SwithToControl(UserControl control)
+        {
+            MainWindow main = (MainWindow)App.Current.MainWindow;
+            main.TransitionControl.Content = null;
+            foreach (Flyout flyout in main.Flyouts.Items) flyout.IsOpen = false;
+            GC.Collect();
+            main.TransitionControl.Content = control;
+        }
+
+        /// <summary>
+        /// Display an error dialog
+        /// </summary>
+        /// <param name="error">error text</param>
+        public static async void ErrorDialog(string error)
+        {
+            MainWindow main = (MainWindow)App.Current.MainWindow;
+            await main.ShowMessageAsync("Error", error, MessageDialogStyle.Affirmative);
+        }
+
+        private void WindowCommandMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyOut.IsOpen = !MenuFlyOut.IsOpen;
+        }
+
+        private void WindowCommandKeyboard_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            p.StartInfo.FileName = "osk.exe";
+            p.StartInfo.UseShellExecute = true;
+            p.Start();
+        }
     }
 }

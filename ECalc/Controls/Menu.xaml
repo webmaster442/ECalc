@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ECalc.Controls.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="230">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel>
+        <Button x:Name="PageCalculator"
+                Content="Calculator"
+                Click="PageCalculator_Click"/>
+        <Button x:Name="PageNumSys"
+                Content="Number System Converter"
+                Click="PageNumSys_Click"/>
+        <Button x:Name="PageExit"
+                Content="Exit"
+                Click="PageExit_Click"/>
+    </StackPanel>
+</UserControl>
