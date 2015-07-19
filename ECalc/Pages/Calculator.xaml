@@ -21,11 +21,18 @@
                           Grid.ColumnSpan="2"
                           x:Name="Display"
                           ModeChanged="Display_ModeChanged"/>
-        <controls:KeyPad Grid.Row="1"
-                         Grid.Column="1"
-                         x:Name="Keypad"
-                         ExecuteClicked="KeyPad_ExecuteClicked"
-                         ButtonClicked="KeyPad_ButtonClicked"/>
+        <TabControl Grid.Row="1"
+                    Grid.Column="1">
+            <TabItem Header="KeyPad">
+                <controls:KeyPad x:Name="Keypad"
+                                 ExecuteClicked="KeyPad_ExecuteClicked"
+                                 ButtonClicked="KeyPad_ButtonClicked"/>
+            </TabItem>
+            <TabItem Header="Extended">
+                <controls:ExtendedKeyPad x:Name="Extended"/>
+            </TabItem>
+        </TabControl>
+
         <controls:FunctionList Grid.Row="1"
                                x:Name="FncList"
                                Grid.RowSpan="2"

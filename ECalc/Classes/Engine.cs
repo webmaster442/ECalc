@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Numerics;
 using System.Text.RegularExpressions;
 using System.Reflection;
+using ECalc.Maths;
 
 namespace ECalc.Classes
 {
@@ -282,17 +283,24 @@ namespace ECalc.Classes
         /// <returns>a double number</returns>
         private double ParseNumber(string c)
         {
-            foreach (var item in _prefixes)
+            if (c.StartsWith("H#")) return Convert.ToInt64(c.Replace("H#", ""), 16);
+            else if (c.StartsWith("O#")) return Convert.ToInt64(c.Replace("O#", ""), 8);
+            else if (c.StartsWith("B#")) return Convert.ToInt64(c.Replace("B#", ""), 2);
+            else if (c.StartsWith("R#")) return NumberSystemConversions.RomanToInt(c.Replace("R#", ""));
+            else
             {
-                if (c.EndsWith(item.Key))
+                foreach (var item in _prefixes)
                 {
-                    string num = c.Replace(item.Key, "");
-                    double n = Convert.ToDouble(num);
-                    n *= item.Value;
-                    return n;
+                    if (c.EndsWith(item.Key))
+                    {
+                        string num = c.Replace(item.Key, "");
+                        double n = Convert.ToDouble(num);
+                        n *= item.Value;
+                        return n;
+                    }
                 }
+                return Convert.ToDouble(c);
             }
-            return Convert.ToDouble(c);
         }
 
         /// <summary>

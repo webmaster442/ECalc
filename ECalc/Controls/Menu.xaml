@@ -15,9 +15,6 @@
         <Button x:Name="PageCalculator"
                 Content="Calculator"
                 Click="PageCalculator_Click"/>
-        <Button x:Name="PageNumSys"
-                Content="Number System Converter"
-                Click="PageNumSys_Click"/>
         <Button x:Name="PageExit"
                 Content="Exit"
                 Click="PageExit_Click"/>

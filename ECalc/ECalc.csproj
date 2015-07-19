@@ -73,6 +73,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\ExtendedKeyPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\FunctionList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,10 +86,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Menu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\NumSysInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +105,9 @@
     <Compile Include="Controls\Display.xaml.cs">
       <DependentUpon>Display.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ExtendedKeyPad.xaml.cs">
+      <DependentUpon>ExtendedKeyPad.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FunctionList.xaml.cs">
       <DependentUpon>FunctionList.xaml</DependentUpon>
     </Compile>
@@ -114,18 +117,11 @@
     <Compile Include="Controls\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\NumSysInput.xaml.cs">
-      <DependentUpon>NumSysInput.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Calculator.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\NumSys.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,13 +133,11 @@
   <ItemGroup>
     <Compile Include="Maths\Complex.cs" />
     <Compile Include="Maths\General.cs" />
+    <Compile Include="Maths\NumberSystemConversions.cs" />
     <Compile Include="Maths\TrigFunctions.cs" />
     <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Pages\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\NumSys.xaml.cs">
-      <DependentUpon>NumSys.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ECalc.Pages
+namespace ECalc.Controls
 {
     /// <summary>
-    /// Interaction logic for NumSys.xaml
+    /// Interaction logic for ExtendedKeyPad.xaml
     /// </summary>
-    public partial class NumSys : UserControl
+    public partial class ExtendedKeyPad : UserControl
     {
-        public NumSys()
+        public ExtendedKeyPad()
         {
             InitializeComponent();
         }

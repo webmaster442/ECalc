@@ -31,12 +31,6 @@ namespace ECalc.Controls
             MainWindow.SwithToControl(calculator);
         }
 
-        private void PageNumSys_Click(object sender, RoutedEventArgs e)
-        {
-            var page = new Pages.NumSys();
-            MainWindow.SwithToControl(page);
-        }
-
         private void PageExit_Click(object sender, RoutedEventArgs e)
         {
             App.Current.Shutdown();
