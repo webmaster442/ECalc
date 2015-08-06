@@ -15,7 +15,10 @@
         <Button x:Name="PageCalculator"
                 Content="Calculator"
                 Click="PageCalculator_Click"/>
-        <Button x:Name="PageExit"
+        <Button x:Name="PageLogic"
+                Content="Logic Function Minimizer"
+                Click="PageLogic_Click"/>
+            <Button x:Name="PageExit"
                 Content="Exit"
                 Click="PageExit_Click"/>
     </StackPanel>

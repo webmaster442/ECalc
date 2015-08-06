@@ -39,13 +39,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Windows.Controls.Input.Toolkit">
-      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Windows.Controls.Layout.Toolkit">
-      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -60,9 +56,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFToolkit">
-      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -72,6 +65,10 @@
     <Page Include="Controls\Display.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditableSlider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\ExtendedKeyPad.xaml">
       <SubType>Designer</SubType>
@@ -93,6 +90,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Special\MintermTable2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Special\MintermTable3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Special\MintermTable4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Special\MintermTable5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -107,6 +120,9 @@
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Controls\Display.xaml.cs">
       <DependentUpon>Display.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditableSlider.xaml.cs">
+      <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ExtendedKeyPad.xaml.cs">
       <DependentUpon>ExtendedKeyPad.xaml</DependentUpon>
@@ -123,11 +139,30 @@
     <Compile Include="Controls\NumberSystemDisplayDialog.xaml.cs">
       <DependentUpon>NumberSystemDisplayDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Special\MintermTable2.xaml.cs">
+      <DependentUpon>MintermTable2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Special\MintermTable3.xaml.cs">
+      <DependentUpon>MintermTable3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Special\MintermTable4.xaml.cs">
+      <DependentUpon>MintermTable4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Special\MintermTable5.xaml.cs">
+      <DependentUpon>MintermTable5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Engineering\Functions.cs" />
+    <Compile Include="Engineering\LogicItem.cs" />
+    <Compile Include="Engineering\QuineMcclusky.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LogicFunctionMinimizer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,6 +179,9 @@
     <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Pages\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LogicFunctionMinimizer.xaml.cs">
+      <DependentUpon>LogicFunctionMinimizer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -181,6 +219,12 @@
   <ItemGroup>
     <Resource Include="Images\50px\Down.png" />
     <Resource Include="Images\50px\Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\erease.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

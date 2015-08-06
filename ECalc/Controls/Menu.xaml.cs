@@ -35,5 +35,11 @@ namespace ECalc.Controls
         {
             App.Current.Shutdown();
         }
+
+        private void PageLogic_Click(object sender, RoutedEventArgs e)
+        {
+            var logic = new Pages.LogicFunctionMinimizer();
+            MainWindow.SwithToControl(logic);
+        }
     }
 }
