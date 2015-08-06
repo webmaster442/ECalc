@@ -114,14 +114,6 @@ namespace ECalc.Classes
     }
 
     /// <summary>
-    /// Number System Enumeration
-    /// </summary>
-    public enum NumberSystem
-    {
-        Bin, Oct, Dec, Hex
-    }
-
-    /// <summary>
     /// Trigonometry modes
     /// </summary>
     public enum TrigMode

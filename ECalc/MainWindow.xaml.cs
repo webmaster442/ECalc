@@ -41,6 +41,16 @@ namespace ECalc
             await main.ShowMessageAsync("Error", error, MessageDialogStyle.Affirmative);
         }
 
+        /// <summary>
+        /// Show a custom dialog
+        /// </summary>
+        /// <param name="dialog">dialog to display</param>
+        public static async void ShowDialog(CustomDialog dialog)
+        {
+            MainWindow main = (MainWindow)App.Current.MainWindow;
+            await main.ShowMetroDialogAsync(dialog);
+        }
+
         private void WindowCommandMenu_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyOut.IsOpen = !MenuFlyOut.IsOpen;

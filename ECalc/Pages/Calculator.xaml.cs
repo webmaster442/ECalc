@@ -66,5 +66,10 @@ namespace ECalc.Pages
                 Engine.Mode = output;
             }
         }
+
+        private void Extended_BackClicked(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.Invoke(() => { InputSelector.SelectedIndex = 0; });
+        }
     }
 }

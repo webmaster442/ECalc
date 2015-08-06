@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\NumberSystemDisplayDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,7 +103,6 @@
     </Compile>
     <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine.cs" />
-    <Compile Include="Classes\EnumBooleanConverter.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Controls\Display.xaml.cs">
@@ -116,6 +119,9 @@
     </Compile>
     <Compile Include="Controls\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumberSystemDisplayDialog.xaml.cs">
+      <DependentUpon>NumberSystemDisplayDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

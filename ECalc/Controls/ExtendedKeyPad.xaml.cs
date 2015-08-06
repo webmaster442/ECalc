@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ECalc.Classes;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ECalc.Controls
 {
@@ -23,6 +12,54 @@ namespace ECalc.Controls
         public ExtendedKeyPad()
         {
             InitializeComponent();
+        }
+
+        public event RoutedEventHandler ExecuteClicked;
+
+        public event RoutedEventHandler BackClicked;
+
+        public event StringEventHandler ButtonClicked;
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (BackClicked != null)
+            {
+                BackClicked(sender, e);
+            }
+        }
+
+        private void BtnExecute_Click(object sender, RoutedEventArgs e)
+        {
+            if (ExecuteClicked != null)
+            {
+                ExecuteClicked(sender, e);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (ButtonClicked != null)
+            {
+                var content = ((Button)sender).Content.ToString();
+                switch (content)
+                {
+                    case "Roman":
+                        ButtonClicked(sender, new StringEventArgs("R#"));
+                        break;
+                    case "BIN":
+                        ButtonClicked(sender, new StringEventArgs("B#"));
+                        break;
+                    case "OCT":
+                        ButtonClicked(sender, new StringEventArgs("O#"));
+                        break;
+                    case "HEX":
+                        ButtonClicked(sender, new StringEventArgs("H#"));
+                        break;
+                    default:
+                        ButtonClicked(sender, new StringEventArgs(content));
+                        break;
+                }
+            }
         }
     }
 }

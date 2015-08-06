@@ -150,5 +150,12 @@ namespace ECalc.Controls
                 ModeChanged(sender, new StringEventArgs(text));
             }
         }
+
+        private void BtnNumSys_Click(object sender, RoutedEventArgs e)
+        {
+            NumberSystemDisplayDialog nd = new NumberSystemDisplayDialog();
+            nd.DisplayValue = Engine.Ans;
+            MainWindow.ShowDialog(nd);
+        }
     }
 }

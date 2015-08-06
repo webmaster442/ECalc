@@ -1,0 +1,44 @@
+﻿<mahdialogs:CustomDialog x:Class="ECalc.Controls.NumberSystemDisplayDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
+    <mahdialogs:CustomDialog.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <TextBlock Margin="0 5 0 0"
+                           FontSize="{DynamicResource DialogMessageFontSize}"
+                           Text="Number System Display"/>
+                <TextBlock Text="Binary Form:"/>
+                <TextBox x:Name="Binary"
+                         TextAlignment="Right"/>
+                <TextBlock Text="Octal Form:"/>
+                <TextBox x:Name="Octal"
+                         TextAlignment="Right"/>
+                <TextBlock Text="Hexadecimal Form:"/>
+                <TextBox x:Name="Hexa"
+                         TextAlignment="Right"/>
+                <TextBlock Text="Roman Form:"
+                           TextAlignment="Right"/>
+                <TextBox x:Name="Roman"
+                         TextAlignment="Right"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Height="85">
+                <Button x:Name="PART_NegativeButton"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="OK"
+                        Click="PART_NegativeButton_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
+            </StackPanel>
+        </Grid>
+    </mahdialogs:CustomDialog.Content>
+</mahdialogs:CustomDialog>

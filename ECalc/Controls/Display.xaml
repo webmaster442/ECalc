@@ -23,6 +23,7 @@
             <ColumnDefinition Width="65"/>
             <ColumnDefinition Width="65"/>
             <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="140"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <RadioButton Content="DEG"
@@ -44,22 +45,27 @@
                   Content="Group by thousands"
                   IsChecked="False"/>
         <TextBox Grid.Row="1"
-                 Grid.ColumnSpan="4"
+                 Grid.ColumnSpan="5"
                  Text="{Binding EquationText, ElementName=userControl}"
                  TextAlignment="Right"
                  FontFamily="Courier New"
                  FontSize="15"
                  Style="{StaticResource BorderlessTextBox}"/>
         <TextBlock Grid.Row="2"
-                   Grid.ColumnSpan="4"
+                   Grid.ColumnSpan="5"
                    Text="{Binding ResultText, ElementName=userControl}"
                    TextAlignment="Right"
                    FontFamily="Consolas"
                    TextWrapping="Wrap"
                    FontSize="28"/>
         <StackPanel Grid.Row="3"
-                    Grid.ColumnSpan="4"
+                    Grid.ColumnSpan="5"
                     Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource FlatButton}"
+                    x:Name="BtnNumSys"
+                    Content="Number System..."
+                    Click="BtnNumSys_Click"/>
+                
             <Button Style="{StaticResource FlatButton}"
                     x:Name="BtnHistoryPrev"
                     Click="BtnHistoryPrev_Click"

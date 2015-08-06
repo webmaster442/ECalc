@@ -22,14 +22,18 @@
                           x:Name="Display"
                           ModeChanged="Display_ModeChanged"/>
         <TabControl Grid.Row="1"
-                    Grid.Column="1">
+                    Grid.Column="1"
+                    x:Name="InputSelector">
             <TabItem Header="KeyPad">
                 <controls:KeyPad x:Name="Keypad"
                                  ExecuteClicked="KeyPad_ExecuteClicked"
                                  ButtonClicked="KeyPad_ButtonClicked"/>
             </TabItem>
             <TabItem Header="Extended">
-                <controls:ExtendedKeyPad x:Name="Extended"/>
+                <controls:ExtendedKeyPad x:Name="Extended"
+                                         ExecuteClicked="KeyPad_ExecuteClicked"
+                                         ButtonClicked="KeyPad_ButtonClicked"
+                                         BackClicked="Extended_BackClicked"/>
             </TabItem>
         </TabControl>
 

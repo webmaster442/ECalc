@@ -28,81 +28,101 @@
         </Grid.ColumnDefinitions>
         <Button Grid.Row="0"
                 Grid.Column="0"
-                Content="&lt;-"/>
+                Content="&lt;-"
+                x:Name="BtnBack"
+                Click="BtnBack_Click"/>
         <Button Grid.Row="0"
                 Grid.Column="1"
-                Content="A"/>
+                Content="A"
+                Click="Button_Click"/>
         <Button Grid.Row="0"
                 Grid.Column="2"
-                Content="B"/>
+                Content="B"
+                Click="Button_Click"/>
         <Button Grid.Row="0"
                 Grid.Column="3"
-                Content="C"/>
+                Content="C"
+                Click="Button_Click"/>
         <Button Grid.Row="1"
                 Grid.Column="0"
-                Content="D"/>
+                Content="D" 
+                Click="Button_Click"/>
         <Button Grid.Row="1"
                 Grid.Column="1"
-                Content="E"/>
+                Content="E" 
+                Click="Button_Click"/>
         <Button Grid.Row="1"
                 Grid.Column="2"
-                Content="F"/>
+                Content="F" 
+                Click="Button_Click"/>
 
         <Button Grid.Row="1"
                 Grid.Column="3"
-                Content="I"/>
+                Content="I" 
+                Click="Button_Click"/>
         <Button Grid.Row="2"
                 Grid.Column="0"
-                Content="L"/>
+                Content="L" 
+                Click="Button_Click"/>
         <Button Grid.Row="2"
                 Grid.Column="1"
-                Content="M"/>
+                Content="M" 
+                Click="Button_Click"/>
         <Button Grid.Row="2"
                 Grid.Column="2"
-                Content="V"/>
+                Content="V" 
+                Click="Button_Click"/>
         <Button Grid.Row="2"
                 Grid.Column="3"
-                Content="X"/>
+                Content="X" 
+                Click="Button_Click"/>
         <Button Grid.Row="3"
                 Grid.Column="0"
-                Content="Roman"/>
+                Content="Roman" 
+                Click="Button_Click"/>
         <Button Grid.Row="3"
                 Grid.Column="1"
-                Content="BIN"/>
+                Content="BIN" 
+                Click="Button_Click"/>
         <Button Grid.Row="3"
                 Grid.Column="2"
-                Content="OCT"/>
+                Content="OCT" 
+                Click="Button_Click"/>
         <Button Grid.Row="3"
                 Grid.Column="3"
-                Content="DEC"/>
-        <Button Grid.Row="3"
-                Grid.Column="4"
-                Content="HEX"/>
+                Content="HEX" 
+                Click="Button_Click"/>
         
-        <Button Grid.Row="2"
+        <Button x:Name="BtnExecute" Grid.Row="2"
                 Grid.Column="5"
                 Grid.RowSpan="2"
-                Content="="/>
+                Content="=" 
+                Click="BtnExecute_Click"/>
         
         <Button Grid.Row="0"
                 Grid.Column="4"
-                Content="NOT"/>
+                Content="NOT" 
+                Click="Button_Click"/>
 
         <Button Grid.Row="0"
                 Grid.Column="5"
-                Content="AND"/>
+                Content="AND"
+                Click="Button_Click"/>
 
         <Button Grid.Row="1"
                 Grid.Column="4"
-                Content="OR"/>
+                Content="OR" 
+                Click="Button_Click"/>
 
         <Button Grid.Row="1"
                 Grid.Column="5"
-                Content="XOR"/>
+                Content="XOR" 
+                Click="Button_Click"/>
 
         <Button Grid.Row="2"
                 Grid.Column="4"
-                Content="EQ"/>
+                Content="EQ" 
+                Click="Button_Click"/>
 
     </Grid>
 </UserControl>
