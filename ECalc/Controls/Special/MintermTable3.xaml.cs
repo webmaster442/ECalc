@@ -22,7 +22,7 @@ namespace ECalc.Controls.Special
                 List<LogicItem> ret = new List<LogicItem>();
                 foreach (var item in Functions.GetMintermTableValues(Minterm3x))
                 {
-                    ret.Add(new LogicItem() { Index = item.Key, Checked = item.Value, BinaryValue = LogicItem.GetBinaryValue(item.Key, 3) });
+                    ret.Add(LogicItem.CreateFromMintermIndex(item.Key, 3, item.Value));
                 }
                 return ret;
             }
@@ -33,6 +33,17 @@ namespace ECalc.Controls.Special
         public void ClearInput()
         {
             Functions.ClearMintermtable(Minterm3x);
+        }
+
+        public void SetAll(bool? value)
+        {
+            List<LogicItem> items = new List<LogicItem>();
+            for (int i = 0; i < 8; i++)
+            {
+                LogicItem lo = LogicItem.CreateFromMintermIndex(i, 3, value);
+                items.Add(lo);
+            }
+            Selected = items;
         }
 
         public void SwapVarnames()

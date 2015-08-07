@@ -2,6 +2,7 @@
 using ECalc.Engineering;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using System;
 
 namespace ECalc.Controls.Special
 {
@@ -22,17 +23,27 @@ namespace ECalc.Controls.Special
                 List<LogicItem> ret = new List<LogicItem>();
                 foreach (var item in Functions.GetMintermTableValues(Minterm2x))
                 {
-                    ret.Add(new LogicItem() { Index = item.Key, Checked = item.Value, BinaryValue = LogicItem.GetBinaryValue(item.Key, 2) });
+                    ret.Add(LogicItem.CreateFromMintermIndex(item.Key, 2, item.Value));
                 }
                 return ret;
             }
             set{ Functions.SetMintermTableValues(Minterm2x, value); }
         }
 
-
         public void ClearInput()
         {
             Functions.ClearMintermtable(Minterm2x);
+        }
+
+        public void SetAll(bool? value)
+        {
+            List<LogicItem> items = new List<LogicItem>();
+            for (int i=0; i<3; i++)
+            {
+                LogicItem lo = LogicItem.CreateFromMintermIndex(i, 2, value);
+                items.Add(lo);
+            }
+            Selected = items;
         }
 
         public void SwapVarnames()
@@ -57,5 +68,6 @@ namespace ECalc.Controls.Special
         List<LogicItem> Selected { get; set; }
         void ClearInput();
         void SwapVarnames();
+        void SetAll(bool? value);
     }
 }

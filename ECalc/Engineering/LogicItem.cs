@@ -61,5 +61,14 @@ namespace ECalc.Engineering
             sb.Append(bin);
             return sb.ToString();
         }
+
+        public static LogicItem CreateFromMintermIndex(int index, int chars, bool? value)
+        {
+            LogicItem ret = new LogicItem();
+            ret.Index = index;
+            ret.BinaryValue = GetBinaryValue(index, chars);
+            ret.Checked = value;
+            return ret;
+        }
     }
 }
