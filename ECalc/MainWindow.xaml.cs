@@ -27,6 +27,7 @@ namespace ECalc
             MainWindow main = (MainWindow)App.Current.MainWindow;
             main.TransitionControl.Content = null;
             foreach (Flyout flyout in main.Flyouts.Items) flyout.IsOpen = false;
+            GC.WaitForPendingFinalizers();
             GC.Collect();
             main.TransitionControl.Content = control;
         }

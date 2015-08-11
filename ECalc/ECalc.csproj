@@ -90,6 +90,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Special\IpInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Special\MintermTable2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -139,6 +143,9 @@
     <Compile Include="Controls\NumberSystemDisplayDialog.xaml.cs">
       <DependentUpon>NumberSystemDisplayDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Special\IpInput.xaml.cs">
+      <DependentUpon>IpInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Special\MintermTable2.xaml.cs">
       <DependentUpon>MintermTable2.xaml</DependentUpon>
     </Compile>
@@ -152,6 +159,7 @@
       <DependentUpon>MintermTable5.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\Functions.cs" />
+    <Compile Include="Engineering\IPExtensions.cs" />
     <Compile Include="Engineering\LogicItem.cs" />
     <Compile Include="Engineering\QuineMcclusky.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -169,6 +177,10 @@
     <Page Include="Pages\Stat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SubnetCalculator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Styles\ControlTemplates.xaml">
       <SubType>Designer</SubType>
@@ -189,6 +201,9 @@
     </Compile>
     <Compile Include="Pages\Stat.xaml.cs">
       <DependentUpon>Stat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubnetCalculator.xaml.cs">
+      <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

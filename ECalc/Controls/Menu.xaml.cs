@@ -41,5 +41,11 @@ namespace ECalc.Controls
             var logic = new Pages.LogicFunctionMinimizer();
             MainWindow.SwithToControl(logic);
         }
+
+        private void PageIP_Click(object sender, RoutedEventArgs e)
+        {
+            var subnet = new Pages.SubnetCalculator();
+            MainWindow.SwithToControl(subnet);
+        }
     }
 }
