@@ -21,6 +21,7 @@ namespace ECalc.Controls
             _constants = new ConstantList();
             MemList.ItemsSource = _memory;
             ConstList.ItemsSource = _constants;
+            DecimalSeperator.Content = Engine.DecimalSeperator;
         }
 
         public event RoutedEventHandler ExecuteClicked;

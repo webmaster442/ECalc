@@ -205,6 +205,7 @@
                     Grid.Column="1"/>
 
             <Button Content=","
+                    x:Name="DecimalSeperator"
                     Grid.Row="3"
                     Grid.Column="2"
                     Click="Button_Click"/>

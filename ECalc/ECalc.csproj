@@ -110,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\BasicKeyPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,6 +162,9 @@
     </Compile>
     <Compile Include="Controls\Special\MintermTable5.xaml.cs">
       <DependentUpon>MintermTable5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BasicKeyPad.xaml.cs">
+      <DependentUpon>BasicKeyPad.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\Crc32.cs" />
     <Compile Include="Engineering\Crc64.cs" />

@@ -56,13 +56,13 @@ namespace ECalc.Controls
                 if (j>2)
                 {
                     j = 0;
-                    sb.Append(' ');
+                    sb.Append(Engine.NumberGroupSeparator);
                 }
             }
             Reverse(sb);
             if (parts.Length > 1)
             {
-                sb.Append(",");
+                sb.Append(Engine.DecimalSeperator);
                 sb.Append(parts[1]);
             }
             return sb.ToString().Trim();

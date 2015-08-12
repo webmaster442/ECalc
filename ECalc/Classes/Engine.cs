@@ -1,6 +1,7 @@
 ﻿using ECalc.Maths;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
@@ -65,11 +66,6 @@ namespace ECalc.Classes
         private List<IFunction> _functions;
         private Dictionary<string, double> _prefixes;
 
-        public static bool IsOperator(string s)
-        {
-            return Regex.IsMatch(s, operators);
-        }
-
         /// <summary>
         /// Trigonometry Mode
         /// </summary>
@@ -88,12 +84,45 @@ namespace ECalc.Classes
             private set;
         }
 
+        /// <summary>
+        /// Memory & constant manager object
+        /// </summary>
         public IMemManager MemoryManager
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Decimal sepperator char on the current culture
+        /// </summary>
+        public static string DecimalSeperator
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Number group sepperator
+        /// </summary>
+        public static string NumberGroupSeparator
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
+        /// Static ctor
+        /// </summary>
+        static Engine()
+        {
+            DecimalSeperator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            NumberGroupSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator;
+        }
+
+        /// <summary>
+        /// Creates a new instance of engine
+        /// </summary>
         public Engine()
         {
             _functions = new List<IFunction>();
@@ -141,6 +170,11 @@ namespace ECalc.Classes
 
             Ans = 0.0d; //double
 
+        }
+
+        public static bool IsOperator(string s)
+        {
+            return Regex.IsMatch(s, operators);
         }
 
         private bool IsFunction(string s)
