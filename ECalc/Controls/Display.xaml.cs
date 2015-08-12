@@ -10,7 +10,7 @@ namespace ECalc.Controls
     /// <summary>
     /// Interaction logic for Display.xaml
     /// </summary>
-    public partial class Display : UserControl
+    internal partial class Display : UserControl
     {
         private List<string> _history;
         private int _historyIndex;

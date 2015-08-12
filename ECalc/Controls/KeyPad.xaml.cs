@@ -9,7 +9,7 @@ namespace ECalc.Controls
     /// <summary>
     /// Interaction logic for KeyPad.xaml
     /// </summary>
-    public partial class KeyPad : UserControl, IMemManager
+    internal partial class KeyPad : UserControl, IMemManager
     {
         private static ObservableCollection<MemoryItem> _memory;
         private static ConstantList _constants;

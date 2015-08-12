@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECalc.Classes
 {
-    public class ConstantList : ObservableCollection<MemoryItem> 
+    internal class ConstantList : ObservableCollection<MemoryItem> 
     {
         public ConstantList(): base()
         {

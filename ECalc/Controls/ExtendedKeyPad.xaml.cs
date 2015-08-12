@@ -7,7 +7,7 @@ namespace ECalc.Controls
     /// <summary>
     /// Interaction logic for ExtendedKeyPad.xaml
     /// </summary>
-    public partial class ExtendedKeyPad : UserControl
+    internal partial class ExtendedKeyPad : UserControl
     {
         public ExtendedKeyPad()
         {

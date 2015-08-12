@@ -12,12 +12,12 @@ namespace ECalc.Classes
     /// </summary>
     /// <param name="sender">Sender object</param>
     /// <param name="e">parameters</param>
-    public delegate void StringEventHandler(object sender, StringEventArgs e);
+    internal delegate void StringEventHandler(object sender, StringEventArgs e);
 
     /// <summary>
     /// String Event Args
     /// </summary>
-    public class StringEventArgs: RoutedEventArgs
+    internal class StringEventArgs: RoutedEventArgs
     {
         public StringEventArgs() : base() { }
         
@@ -35,7 +35,7 @@ namespace ECalc.Classes
     /// <summary>
     /// Function Interface
     /// </summary>
-    public interface IFunction
+    internal interface IFunction
     {
         /// <summary>
         /// Function name
@@ -65,7 +65,7 @@ namespace ECalc.Classes
     /// <summary>
     /// Used in memory management
     /// </summary>
-    public class MemoryItem
+    internal class MemoryItem
     {
         /// <summary>
         /// Register counter
@@ -116,8 +116,66 @@ namespace ECalc.Classes
     /// <summary>
     /// Trigonometry modes
     /// </summary>
-    public enum TrigMode
+    internal enum TrigMode
     {
         DEG, RAD, GRAD
+    }
+
+    /// <summary>
+    /// Unit Converter actions
+    /// </summary>
+    internal enum Actions
+    {
+        None,
+        Add,
+        Multiply,
+        Divide,
+        Subtract
+    }
+
+    /// <summary>
+    /// Unit conversion base type
+    /// </summary>
+    internal class Unit
+    {
+        /// <summary>
+        /// Unit name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Conversion ratio compared to the base unit
+        /// </summary>
+        public double Ratio { get; set; }
+
+        /// <summary>
+        /// Action to do
+        /// </summary>
+        public Actions Action { get; set; }
+
+        /// <summary>
+        /// Offset value to add or subtract
+        /// </summary>
+        public double offset { get; set; }
+
+        /// <summary>
+        /// Creates a new instance of unit
+        /// </summary>
+        public Unit() { }
+
+        /// <summary>
+        /// Creates a new instance of unit
+        /// </summary>
+        /// <param name="Name">Unit name</param>
+        /// <param name="Ratio">Conversion ratio compared to the base unit</param>
+        /// <param name="Action">Action to do</param>
+        /// <param name="offset">Offset value to add or subtract</param>
+        public Unit(string Name, double Ratio = 1, Actions Action = Actions.None, double offset = 0)
+        {
+            this.Name = Name;
+            this.Ratio = Ratio;
+            this.Action = Action;
+            this.offset = offset;
+        }
     }
 }

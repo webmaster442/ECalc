@@ -57,7 +57,7 @@ namespace ECalc.Classes
     /// <summary>
     /// Evaluator Engine
     /// </summary>
-    public class Engine
+    internal class Engine
     {
 
         const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)";

@@ -47,5 +47,17 @@ namespace ECalc.Controls
             var subnet = new Pages.SubnetCalculator();
             MainWindow.SwithToControl(subnet);
         }
+
+        private void PageHash_Click(object sender, RoutedEventArgs e)
+        {
+            var hash = new Pages.HashCalculators();
+            MainWindow.SwithToControl(hash);
+        }
+
+        private void PageUnitConv_Click(object sender, RoutedEventArgs e)
+        {
+            var uconv = new Pages.UnitConverterPage();
+            MainWindow.SwithToControl(uconv);
+        }
     }
 }

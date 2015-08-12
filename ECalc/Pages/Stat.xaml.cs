@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,12 @@ namespace ECalc.Pages
     /// </summary>
     public partial class Stat : UserControl
     {
+        private ObservableCollection<double> _numbers;
+
         public Stat()
         {
             InitializeComponent();
+            _numbers = new ObservableCollection<double>();
         }
     }
 }

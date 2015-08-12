@@ -11,18 +11,37 @@
             <Setter Property="Margin" Value="5"/>
         </Style>
     </UserControl.Resources>
-    <StackPanel>
-        <Button x:Name="PageCalculator"
-                Content="Calculator"
-                Click="PageCalculator_Click"/>
-        <Button x:Name="PageLogic"
-                Content="Logic Function Minimizer"
-                Click="PageLogic_Click"/>
-        <Button x:Name="PageIP"
-                Content="IP Subnet Calculator"
-                Click="PageIP_Click"/>
-        <Button x:Name="PageExit"
-                Content="Exit"
-                Click="PageExit_Click"/>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Image Source="../Images/100px/sigma.png"
+                   Stretch="None"
+                   StretchDirection="DownOnly"/>
+            <TextBlock Text="Egineer Calculator" TextAlignment="Center"/>
+            <TextBlock Text="Version 1.0" TextAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Button x:Name="PageCalculator"
+                    Content="Calculator"
+                    Click="PageCalculator_Click"/>
+            <Button x:Name="PageUnitConv"
+                    Content="Unit Converter"
+                    Click="PageUnitConv_Click"/>
+            <Button x:Name="PageLogic"
+                    Content="Logic Function Minimizer"
+                    Click="PageLogic_Click"/>
+            <Button x:Name="PageIP"
+                    Content="IP Subnet Calculator"
+                    Click="PageIP_Click"/>
+            <Button x:Name="PageHash"
+                    Content="Hash Caclulator"
+                    Click="PageHash_Click"/>
+                <Button x:Name="PageExit"
+                    Content="Exit"
+                    Click="PageExit_Click"/>
+        </StackPanel>
+    </Grid>
 </UserControl>

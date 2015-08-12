@@ -12,7 +12,7 @@ namespace ECalc.Controls
     /// <summary>
     /// Interaction logic for FunctionList.xaml
     /// </summary>
-    public partial class FunctionList : UserControl
+    internal partial class FunctionList : UserControl
     {
         private UsageInfo[] _usage;
 

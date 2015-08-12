@@ -122,6 +122,7 @@
     <Compile Include="Classes\Engine.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />
+    <Compile Include="Classes\UnitConversion.cs" />
     <Compile Include="Controls\Display.xaml.cs">
       <DependentUpon>Display.xaml</DependentUpon>
     </Compile>
@@ -158,7 +159,10 @@
     <Compile Include="Controls\Special\MintermTable5.xaml.cs">
       <DependentUpon>MintermTable5.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Engineering\Crc32.cs" />
+    <Compile Include="Engineering\Crc64.cs" />
     <Compile Include="Engineering\Functions.cs" />
+    <Compile Include="Engineering\HashFunctions.cs" />
     <Compile Include="Engineering\IPExtensions.cs" />
     <Compile Include="Engineering\LogicItem.cs" />
     <Compile Include="Engineering\QuineMcclusky.cs" />
@@ -167,6 +171,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HashCalculators.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -179,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SubnetCalculator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\UnitConverter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -196,6 +208,9 @@
     <Compile Include="Pages\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HashCalculators.xaml.cs">
+      <DependentUpon>HashCalculators.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LogicFunctionMinimizer.xaml.cs">
       <DependentUpon>LogicFunctionMinimizer.xaml</DependentUpon>
     </Compile>
@@ -204,6 +219,9 @@
     </Compile>
     <Compile Include="Pages\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UnitConverter.xaml.cs">
+      <DependentUpon>UnitConverter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -247,6 +265,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\50px\erease.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\sigma.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

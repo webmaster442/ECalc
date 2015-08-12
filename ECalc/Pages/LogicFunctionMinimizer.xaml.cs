@@ -79,10 +79,12 @@ namespace ECalc.Pages
                         items = new List<LogicItem>();
                         foreach (var line in TbListSet.Text.Split('\n'))
                         {
+                            if (string.IsNullOrEmpty(line)) continue;
                             items.Add(LogicItem.CreateFromMintermIndex(Convert.ToInt32(line.Replace("\r", "")), variables, true));
                         }
                         foreach (var line in TbListDontCare.Text.Split('\n'))
                         {
+                            if (string.IsNullOrEmpty(line)) continue;
                             items.Add(LogicItem.CreateFromMintermIndex(Convert.ToInt32(line.Replace("\r", "")), variables, null));
                         }
                         break;
