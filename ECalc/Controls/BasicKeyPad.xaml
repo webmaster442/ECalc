@@ -28,7 +28,10 @@
         <Button Content="0"
                 Grid.Row="3"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
+                Click="Button_Click"/>
+        <Button Content="-"
+                Grid.Row="3"
+                Grid.Column="1"
                 Click="Button_Click"/>
         <Button Content=","
                 Grid.Row="3"

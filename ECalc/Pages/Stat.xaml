@@ -21,11 +21,13 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="280"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ListBox x:Name="LbItems"
                  Grid.Column="0"
-                 Grid.Row="1"/>
+                 Grid.Row="1"
+                 Grid.RowSpan="2"/>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="0"
                     Grid.Column="0">
@@ -46,18 +48,14 @@
                     x:Name="BtnDelete"
                     Click="BtnDelete_Click"/>
         </StackPanel>
-        <TabControl Grid.Row="0"
-                    Grid.Column="1"
-                    Grid.RowSpan="2">
-            <TabItem Header="Keypad">
-                <controls:StatInput x:Name="Input"
-                                    AddClick="Input_AddClick"/>
-            </TabItem>
-            <TabItem Header="Functions">
-                <ScrollViewer>
-                    <WrapPanel x:Name="FunctionList"></WrapPanel>
-                </ScrollViewer>
-            </TabItem>
-        </TabControl>
+        <controls:StatInput x:Name="Input"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Grid.RowSpan="2"
+                            AddClick="Input_AddClick"/>
+        <ScrollViewer Grid.Row="2"
+                      Grid.Column="1">
+            <WrapPanel x:Name="FunctionList"></WrapPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

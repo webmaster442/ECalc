@@ -218,6 +218,7 @@
     <Compile Include="Maths\Complex.cs" />
     <Compile Include="Maths\General.cs" />
     <Compile Include="Maths\NumberSystemConversions.cs" />
+    <Compile Include="Maths\NumberText.cs" />
     <Compile Include="Maths\TrigFunctions.cs" />
     <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Pages\Calculator.xaml.cs">

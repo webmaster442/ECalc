@@ -20,7 +20,9 @@
         <TextBox Grid.Row="0"
                  Grid.Column="0"
                  Grid.ColumnSpan="2"
-                 x:Name="TbDisplay"/>
+                 x:Name="TbDisplay"
+                 TextAlignment="Right"
+                 FontSize="22"/>
 
         <StackPanel Orientation="Horizontal"
                     Grid.ColumnSpan="2"
