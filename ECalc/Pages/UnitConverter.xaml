@@ -27,7 +27,7 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <TextBox x:Name="TbInput" Grid.Column="0" FontSize="18" TextChanged="TbInput_TextChanged"/>
+                <TextBox x:Name="TbInput" Grid.Column="0" FontSize="18" Text="0" TextChanged="TbInput_TextChanged"/>
                 <ComboBox SelectionChanged="CbPrefix_SelectionChanged" x:Name="CbPrefix" Grid.Column="1" SelectedIndex="10" FontSize="18" Margin="10,0,0,0">
                     <ComboBoxItem Content="yotta"/>
                     <ComboBoxItem Content="zetta"/>

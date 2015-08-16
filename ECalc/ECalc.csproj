@@ -114,6 +114,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\StatInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,6 +128,7 @@
     </Compile>
     <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine.cs" />
+    <Compile Include="Maths\EnumerableStat.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />
     <Compile Include="Classes\UnitConversion.cs" />
@@ -165,6 +170,9 @@
     </Compile>
     <Compile Include="Controls\BasicKeyPad.xaml.cs">
       <DependentUpon>BasicKeyPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StatInput.xaml.cs">
+      <DependentUpon>StatInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\Crc32.cs" />
     <Compile Include="Engineering\Crc64.cs" />

@@ -197,8 +197,9 @@ namespace ECalc.Classes
         /// </summary>
         /// <param name="Array">Unit array to list</param>
         /// <param name="Header">Top node header text</param>
+        /// <param name="isexpanded">Auto expand node or not</param>
         /// <returns>a treeviewItem with sub items</returns>
-        private TreeViewItem ListCategory(Unit[] Array, string Header)
+        public TreeViewItem ListCategory(Unit[] Array, string Header, bool isexpanded = false)
         {
             TreeViewItem itm = new TreeViewItem();
             itm.Header = Header;
@@ -209,9 +210,8 @@ namespace ECalc.Classes
                 i.Header = unit.Name;
                 itm.Items.Add(i);
             }
-            //itm.IsExpanded = true;
+            itm.IsExpanded = isexpanded;
             return itm;
-
         }
 
         /// <summary>

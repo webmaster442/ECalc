@@ -13,6 +13,7 @@ namespace ECalc.Pages
         private UnitConverter _conv;
         private Unit[] _source, _dest;
         private bool _loaded;
+        private string _currentheader = null;
 
         public UnitConverterPage()
         {
@@ -24,7 +25,7 @@ namespace ECalc.Pages
             if (_loaded) return;
             _conv = new UnitConverter();
             _conv.FillTreeview(TreeSource);
-            _conv.FillTreeview(TreeDestination);
+            _currentheader = "";
             _loaded = true;
         }
 
@@ -33,12 +34,31 @@ namespace ECalc.Pages
             if (TreeSource.SelectedItem == null) TblInput.Text = "Input:";
             else TblInput.Text = string.Format("Input {0}:", (TreeSource.SelectedItem as TreeViewItem).Header.ToString());
             _source = _conv.TreeviewItemToCategory((TreeViewItem)TreeSource.SelectedItem);
+
+
+            object parent = ((TreeViewItem)TreeSource.SelectedItem).Parent;
+
+            if (parent != null && (parent is TreeViewItem))
+            {
+                string header = ((TreeViewItem)parent).Header.ToString();
+                if (_currentheader != header)
+                {
+                    TreeDestination.Items.Clear();
+                    TreeDestination.Items.Add(_conv.ListCategory(_source, header, true));
+                    _currentheader = header;
+                }
+            }
+
             Calculate();
         }
 
         private void TreeDestination_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if (TreeDestination.SelectedItem == null) TblOutput.Text = "Output:";
+            if (TreeDestination.SelectedItem == null)
+            {
+                TblOutput.Text = "Output:";
+                return;
+            }
             else TblOutput.Text = string.Format("Output {0}:", (TreeDestination.SelectedItem as TreeViewItem).Header.ToString());
             _dest = _conv.TreeviewItemToCategory((TreeViewItem)TreeDestination.SelectedItem);
             Calculate();

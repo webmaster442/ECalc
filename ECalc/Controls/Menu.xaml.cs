@@ -59,5 +59,11 @@ namespace ECalc.Controls
             var uconv = new Pages.UnitConverterPage();
             MainWindow.SwithToControl(uconv);
         }
+
+        private void PageStat_Click(object sender, RoutedEventArgs e)
+        {
+            var stat = new Pages.Stat();
+            MainWindow.SwithToControl(stat);
+        }
     }
 }

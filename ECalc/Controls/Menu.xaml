@@ -27,6 +27,9 @@
             <Button x:Name="PageCalculator"
                     Content="Calculator"
                     Click="PageCalculator_Click"/>
+            <Button x:Name="PageStat"
+                    Content="Statistics"
+                    Click="PageStat_Click"/>
             <Button x:Name="PageUnitConv"
                     Content="Unit Converter"
                     Click="PageUnitConv_Click"/>
