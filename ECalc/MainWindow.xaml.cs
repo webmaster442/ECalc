@@ -43,6 +43,16 @@ namespace ECalc
         }
 
         /// <summary>
+        /// Display a generic dialog
+        /// </summary>
+        /// <param name="error">error text</param>
+        public static async void ShowDialog(string title, string text, MessageDialogStyle style)
+        {
+            MainWindow main = (MainWindow)App.Current.MainWindow;
+            await main.ShowMessageAsync(title, text, style);
+        }
+
+        /// <summary>
         /// Show a custom dialog
         /// </summary>
         /// <param name="dialog">dialog to display</param>

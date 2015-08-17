@@ -3,7 +3,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:ECalc.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="140" d:DesignWidth="600">
     <UserControl.Resources>
@@ -12,6 +13,11 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Margin" Value="1"/>
         </Style>
+
+        <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type controls:ImageButton}}">
+            <Setter Property="Margin" Value="2,0"/>
+        </Style>
+        
     </UserControl.Resources>
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -62,35 +68,47 @@
         <StackPanel Grid.Row="3"
                     Grid.ColumnSpan="5"
                     Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Style="{StaticResource FlatButton}"
-                    x:Name="BtnNumSys"
-                    Content="Number System..."
-                    Click="BtnNumSys_Click"/>
-                
-            <Button Style="{StaticResource FlatButton}"
-                    x:Name="BtnHistoryPrev"
-                    Click="BtnHistoryPrev_Click"
-                    ToolTip="Previous expression in histroy">
-                <Image Source="../Images/50px/Up.png" Width="25" Height="25"/>
-            </Button>
-            <Button Style="{StaticResource FlatButton}"
-                    x:Name="BtnHistoryNext"
-                    Click="BtnHistoryNext_Click"
-                    ToolTip="Next expression in history">
-                <Image Source="../Images/50px/Down.png" Width="25" Height="25"/>
-            </Button>
-            <Button Style="{StaticResource FlatButton}"
-                    x:Name="BtnUndo"
-                    Click="BtnUndo_Click"
-                    ToolTip="Undo">
-                <Image Source="../Images/50px/Undo.png" Width="25" Height="25"/>
-            </Button>
-            <Button Style="{StaticResource FlatButton}"
-                    x:Name="BtnReset"
-                    Click="BtnReset_Click"
-                    ToolTip="Reset">
-                <Image Source="../Images/50px/Delete.png" Width="25" Height="25"/>
-            </Button>
+
+            <controls:ImageButton Image="../Images/50px/T.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  x:Name="BtnNumToText"
+                                  ToolTip="Number to text"
+                                  Click="BtnNumToText_Click"/>
+
+            <controls:ImageButton Image="../Images/50px/N.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  x:Name="BtnNumSys"
+                                  ToolTip="Number System"
+                                  Click="BtnNumSys_Click"/>
+            
+            <controls:ImageButton Image="../Images/50px/Up.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  ToolTip="Previous expression in histroy"
+                                  x:Name="BtnHistoryPrev"
+                                  Click="BtnHistoryPrev_Click"/>
+
+            <controls:ImageButton Image="../Images/50px/Down.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  x:Name="BtnHistoryNext"
+                                  ToolTip="Next expression in history"/>
+
+            <controls:ImageButton Image="../Images/50px/Undo.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  x:Name="BtnUndo"
+                                  Click="BtnUndo_Click"
+                                  ToolTip="Undo"/>
+
+            <controls:ImageButton Image="../Images/50px/Delete.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  x:Name="BtnReset"
+                                  Click="BtnReset_Click"
+                                  ToolTip="Reset"/>
         </StackPanel>
     </Grid>
 </UserControl>

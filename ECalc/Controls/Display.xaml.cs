@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using ECalc.Classes;
 using System.Text;
 using System;
+using ECalc.Maths;
 
 namespace ECalc.Controls
 {
@@ -156,6 +157,12 @@ namespace ECalc.Controls
             NumberSystemDisplayDialog nd = new NumberSystemDisplayDialog();
             nd.DisplayValue = Engine.Ans;
             MainWindow.ShowDialog(nd);
+        }
+
+        private void BtnNumToText_Click(object sender, RoutedEventArgs e)
+        {
+            NumberText nt = new NumberText();
+            MainWindow.ShowDialog("Number to text", "", MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
     }
 }

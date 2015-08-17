@@ -229,4 +229,42 @@ namespace ECalc.Maths
             get { return 2; }
         }
     }
+
+    public class AngularFreq : IFunction
+    {
+        public string Name
+        {
+            get { return "AngularFreq"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double f = Convert.ToDouble(arguments[0]);
+            return 2 * Math.PI * f;
+        }
+    }
+
+    public class Wavelength : IFunction
+    {
+        public string Name
+        {
+            get { return "Wavelength"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double f = Convert.ToDouble(arguments[0]);
+            return 299792.458 / f;
+        }
+    }
 }

@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine.cs" />
+    <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Maths\EnumerableStat.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />
@@ -284,6 +285,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\sigma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\N.png" />
+    <Resource Include="Images\50px\T.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
