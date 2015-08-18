@@ -145,5 +145,16 @@ namespace ECalc.Classes
             }
             else return o.ToString();
         }
+
+        public static bool IsInteger(object o)
+        {
+            if (o is double)
+            {
+                double d = Convert.ToDouble(o);
+                double calc = d - Math.Truncate(d);
+                return calc == 0.0d;
+            }
+            else return false;
+        }
     }
 }

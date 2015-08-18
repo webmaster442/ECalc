@@ -12,7 +12,7 @@ namespace ECalc.Maths
     internal class NumberText
     {
 
-        private Dictionary<int, string> textStrings = new Dictionary<int, string>();
+        private Dictionary<long, string> textStrings = new Dictionary<long, string>();
         private Dictionary<int, string> scales = new Dictionary<int, string>();
         private StringBuilder builder;
 
@@ -26,7 +26,7 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="num">number to convert</param>
         /// <returns>returns a string representaion of the number</returns>
-        public string ToText(int num)
+        public string ToText(long num)
         {
             builder = new StringBuilder();
 
@@ -42,11 +42,11 @@ namespace ECalc.Maths
             return builder.ToString().Trim();
         }
 
-        private int Append(int num, int scale)
+        private long Append(long num, int scale)
         {
             if (num > scale - 1)
             {
-                var baseScale = ((int)(num / scale));
+                var baseScale = ((long)(num / scale));
                 AppendLessThanOneThousand(baseScale);
                 builder.AppendFormat("{0} ", scales[scale]);
                 num = num - (baseScale * scale);
@@ -54,7 +54,7 @@ namespace ECalc.Maths
             return num;
         }
 
-        private int AppendLessThanOneThousand(int num)
+        private long AppendLessThanOneThousand(long num)
         {
             num = AppendHundreds(num);
             num = AppendTens(num);
@@ -62,7 +62,7 @@ namespace ECalc.Maths
             return num;
         }
 
-        private void AppendUnits(int num)
+        private void AppendUnits(long num)
         {
             if (num > 0)
             {
@@ -70,7 +70,7 @@ namespace ECalc.Maths
             }
         }
 
-        private int AppendTens(int num)
+        private long AppendTens(long num)
         {
             if (num > 20)
             {
@@ -81,7 +81,7 @@ namespace ECalc.Maths
             return num;
         }
 
-        private int AppendHundreds(int num)
+        private long AppendHundreds(long num)
         {
             if (num > 99)
             {

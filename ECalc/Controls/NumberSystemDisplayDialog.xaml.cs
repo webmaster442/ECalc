@@ -27,6 +27,16 @@ namespace ECalc.Controls
             }
         }
 
+        private string doubleToByteArray(double num)
+        {
+            float f = (float)num;
+
+            var numbytes = BitConverter.GetBytes(num);
+            var floatbytes = BitConverter.GetBytes(f);
+
+            return string.Format("64bit float: {0}; 32bit float: {1}", BitConverter.ToString(numbytes), BitConverter.ToString(floatbytes));
+        }
+
         private void RefreshDisplays()
         {
             if (Helpers.IsComplex(_display))
@@ -57,7 +67,7 @@ namespace ECalc.Controls
                     Roman.Text = "Floating point numbers not suppoerted";
                     Binary.Text = "Floating point numbers not suppoerted";
                     Octal.Text = "Floating point numbers not suppoerted";
-
+                    Hexa.Text = doubleToByteArray(d);
                 }
             }
         }

@@ -175,7 +175,8 @@
             
             <Button Content="4"
                     Grid.Row="1"
-                    Grid.Column="0"/>
+                    Grid.Column="0"
+                    Click="Button_Click"/>
             <Button Content="5"
                     Grid.Row="1"
                     Grid.Column="1"

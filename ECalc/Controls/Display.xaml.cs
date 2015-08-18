@@ -162,7 +162,54 @@ namespace ECalc.Controls
         private void BtnNumToText_Click(object sender, RoutedEventArgs e)
         {
             NumberText nt = new NumberText();
-            MainWindow.ShowDialog("Number to text", "", MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+
+            string text = "";
+
+            if (Helpers.IsComplex(Engine.Ans)) text = "Complex values not supported";
+            else if (!Helpers.IsInteger(Engine.Ans)) text = "Only integral part of the number is converted, which is:\r\n" + nt.ToText(Convert.ToInt64(Engine.Ans));
+            else text = nt.ToText(Convert.ToInt64(Engine.Ans));
+            MainWindow.ShowDialog("Number to text", text, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+        }
+
+        private void BtnFractions_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "Complex values not supported";
+            if (!Helpers.IsComplex(Engine.Ans))
+            {
+                double x = Convert.ToDouble(Engine.Ans);
+                int num = 1;
+                int denom = 1;
+                string s = Convert.ToString(x);
+                int digitsDec = s.Length - 1 - s.IndexOf(Engine.DecimalSeperator);
+                for (int i = 0; i < digitsDec; i++)
+                {
+                    x *= 10;
+                    denom *= 10;
+                }
+                
+                num = (int)Math.Round(x);
+
+                int gcd = (int)Maths.Gcd.FGcd(num, denom);
+
+                message = string.Format("{0}/{1}", num / gcd, denom / gcd);
+            }
+            MainWindow.ShowDialog("Result as Fraction", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+        }
+
+        private void BtnDivisiors_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "Complex values not supported";
+            if (!Helpers.IsComplex(Engine.Ans))
+            {
+                StringBuilder result = new StringBuilder();
+                double x = Convert.ToDouble(Engine.Ans);
+                for (int i = 2; i < 21; i++)
+                {
+                    if (x % i == 0) result.AppendFormat("{0}, ", i);
+                }
+                message = result.ToString();
+            }
+            MainWindow.ShowDialog("Divisiors", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
     }
 }

@@ -267,4 +267,26 @@ namespace ECalc.Maths
             return 299792.458 / f;
         }
     }
+
+    public class Percent : IFunction
+    {
+        public string Name
+        {
+            get { return "Percent"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 2; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double x = Convert.ToDouble(arguments[0]);
+            double y = Convert.ToDouble(arguments[1]);
+
+            double onepct = x / 100;
+            return onepct * y;
+        }
+    }
 }

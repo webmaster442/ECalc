@@ -67,7 +67,23 @@
                    FontSize="28"/>
         <StackPanel Grid.Row="3"
                     Grid.ColumnSpan="5"
-                    Orientation="Horizontal" HorizontalAlignment="Right">
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+
+            <controls:ImageButton Image="../Images/50px/fractions.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  x:Name="BtnFractions"
+                                  ToolTip="Convert current result to fractions"
+                                  Click="BtnFractions_Click"/>
+            
+            <controls:ImageButton Image="../Images/50px/divide.png"
+                                  ImageWidth="25"
+                                  ImageHeight="25"
+                                  x:Name="BtnDivisiors"
+                                  ToolTip="Divisor test from 2 to 20"
+                                  Click="BtnDivisiors_Click"/>
+
 
             <controls:ImageButton Image="../Images/50px/T.png"
                                   ImageWidth="25"
