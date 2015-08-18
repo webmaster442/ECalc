@@ -8,14 +8,31 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
-        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Width" Value="90"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Margin" Value="2"/>
         </Style>
+        <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter Property="Margin" Value="5,0"/>
+        </Style>
     </UserControl.Resources>
-    <ScrollViewer>
-        <WrapPanel x:Name="Container">
-        </WrapPanel>
-    </ScrollViewer>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <RadioButton Content="Alphabetical"
+                         x:Name="RbAlphabet"
+                         Checked="RbChecked"
+                         IsChecked="true"/>
+            <RadioButton Content="Based on Usage"
+                         x:Name="RbUsage"
+                         Checked="RbChecked"/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1">
+            <WrapPanel x:Name="Container"/>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

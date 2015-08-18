@@ -55,13 +55,6 @@ namespace ECalc.Classes
         int ParamCount { get; }
     }
 
-    [Serializable]
-    public class UsageInfo
-    {
-        public string Name { get; set; }
-        public uint Count { get; set; }
-    }
-
     /// <summary>
     /// Used in memory management
     /// </summary>

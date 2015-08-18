@@ -7,7 +7,8 @@
                  Title="Engineer's Calculator"
                  Width="960"
                  Height="540"
-                 ResizeMode="CanMinimize">
+                 ResizeMode="CanMinimize"
+                 Closing="MetroWindow_Closing">
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
             <StackPanel Orientation="Horizontal">

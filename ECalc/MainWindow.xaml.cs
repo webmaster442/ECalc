@@ -74,5 +74,11 @@ namespace ECalc
             p.StartInfo.UseShellExecute = true;
             p.Start();
         }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ConfigFileHelpers.SerializeUsageStats();
+            Properties.Settings.Default.Save();
+        }
     }
 }
