@@ -42,6 +42,9 @@
             <Button x:Name="PageHash"
                     Content="Hash Caclulator"
                     Click="PageHash_Click"/>
+            <Button x:Name="PageEquations"
+                    Content="Equation System solver"
+                    Click="PageEquations_Click"/>
                 <Button x:Name="PageExit"
                     Content="Exit"
                     Click="PageExit_Click"/>

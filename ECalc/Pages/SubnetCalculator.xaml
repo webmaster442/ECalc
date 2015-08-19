@@ -48,7 +48,8 @@
                     HorizontalAlignment="Center"
                     Grid.Row="1"
                     Grid.Column="3"/>
-        <TextBox FontSize="18"
+        <TextBox FontSize="16"
+                 Style="{StaticResource BorderlessTextBox}"
                  Grid.Row="2"
                  Grid.ColumnSpan="4"
                  x:Name="Output"

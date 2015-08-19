@@ -130,6 +130,9 @@
     <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine.cs" />
     <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Engineering\EquationSolver.cs" />
+    <Compile Include="Maths\AMatrix.cs" />
+    <Compile Include="Maths\DoubleMatrix.cs" />
     <Compile Include="Maths\EnumerableStat.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />
@@ -191,6 +194,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EquationSystemSolver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HashCalculators.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -225,6 +232,9 @@
     <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Pages\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EquationSystemSolver.xaml.cs">
+      <DependentUpon>EquationSystemSolver.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\HashCalculators.xaml.cs">
       <DependentUpon>HashCalculators.xaml</DependentUpon>

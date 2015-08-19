@@ -65,5 +65,11 @@ namespace ECalc.Controls
             var stat = new Pages.Stat();
             MainWindow.SwithToControl(stat);
         }
+
+        private void PageEquations_Click(object sender, RoutedEventArgs e)
+        {
+            var eq = new Pages.EquationSystemSolver();
+            MainWindow.SwithToControl(eq);
+        }
     }
 }
