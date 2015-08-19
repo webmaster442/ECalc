@@ -1,9 +1,32 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:ECalc.Controls">
+    
     <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
     <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
     <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+    
+    <SolidColorBrush x:Key="W8Lime" Color="#A4C400"/>
+    <SolidColorBrush x:Key="W8Green" Color="#60A917"/>
+    <SolidColorBrush x:Key="W8Emerald" Color="#008A00"/>
+    <SolidColorBrush x:Key="W8Teal" Color="#00ABA9"/>
+    <SolidColorBrush x:Key="W8Cyan" Color="#1BA1E2"/>
+    <SolidColorBrush x:Key="W8Cobalt" Color="#0050EF"/>
+    <SolidColorBrush x:Key="W8Indigo" Color="#6A00FF"/>
+    <SolidColorBrush x:Key="W8Violet" Color="#AA00FF"/>
+    <SolidColorBrush x:Key="W8Pink" Color="#F472D0"/>
+    <SolidColorBrush x:Key="W8Magenta" Color="#D80073"/>
+    <SolidColorBrush x:Key="W8Crimson" Color="#A20025"/>
+    <SolidColorBrush x:Key="W8Red" Color="#E51400"/>
+    <SolidColorBrush x:Key="W8Orange" Color="#FA6800"/>
+    <SolidColorBrush x:Key="W8GAmber" Color="#F0A30A"/>
+    <SolidColorBrush x:Key="W8Yellow" Color="#E3C800"/>
+    <SolidColorBrush x:Key="W8Brown" Color="#825A2C"/>
+    <SolidColorBrush x:Key="W8Olive" Color="#6D8764"/>
+    <SolidColorBrush x:Key="W8Steel" Color="#647687"/>
+    <SolidColorBrush x:Key="W8Mauve" Color="#76608A"/>
+    <SolidColorBrush x:Key="W8Taupe" Color="#87794E"/>
+
     <Style x:Key="BorderlessTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
         <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
         <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>

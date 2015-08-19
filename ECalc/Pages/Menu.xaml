@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="ECalc.Pages.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Pages"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="960">
+    <UserControl.Resources>
+        <Style x:Key="LargeTileStyle" TargetType="mah:Tile">
+            <Setter Property="Width" Value="240" />
+            <Setter Property="Height" Value="140" />
+            <Setter Property="TitleFontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="mah:Tile">
+            <Setter Property="TitleFontSize" Value="13"/>
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="StretchDirection" Value="DownOnly"/>
+            <Setter Property="MaxWidth" Value="75"/>
+            <Setter Property="MaxHeight" Value="75"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Margin" Value="2,0"/>
+            <Setter Property="Foreground" Value="{StaticResource W8Teal}"/>
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock Text="Generic calculations"/>
+            <StackPanel Orientation="Horizontal"
+                        Margin="10,5">
+                <mah:Tile Title="Calculator"
+                          Background="{StaticResource W8Indigo}"
+                          Style="{StaticResource LargeTileStyle}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/calculator.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Statistics"
+                          Background="{StaticResource W8Orange}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/statistics.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Unit Converter"
+                          Background="{StaticResource W8Red}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/unitconverter.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Equation System Solver"
+                          Background="{StaticResource W8Yellow}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/hash.png"/>
+                </mah:Tile>
+            </StackPanel>
+            <TextBlock Text="Engineering"/>
+            <WrapPanel Margin="10,5">
+                <mah:Tile Title="Logic Minimizer"
+                          Background="{StaticResource W8Lime}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/electronics.png"/>
+                </mah:Tile>
+                <mah:Tile Title="IP Subnet Calc."
+                          Background="{StaticResource W8Magenta}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/ipaddress.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Hash Calculator"
+                          Background="{StaticResource W8Olive}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/hash.png"/>
+                </mah:Tile>
+            </WrapPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

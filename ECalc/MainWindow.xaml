@@ -24,11 +24,11 @@
     <mah:MetroWindow.Flyouts>
         <mah:FlyoutsControl>
             <mah:Flyout x:Name="MenuFlyOut"
-                        Theme="Adapt"
+                        Theme="Dark"
                         Position="Right"
                         Header="Menu" 
-                        Width="230">
-                <controls:Menu/>
+                        Width="960">
+                <pages:Menu/>
             </mah:Flyout>
         </mah:FlyoutsControl>
     </mah:MetroWindow.Flyouts>
