@@ -62,6 +62,12 @@ namespace ECalc
             await main.ShowMetroDialogAsync(dialog);
         }
 
+        public static void SetTitle(string titletext)
+        {
+            MainWindow main = (MainWindow)App.Current.MainWindow;
+            main.Title = titletext;
+        }
+
         private void WindowCommandMenu_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyOut.IsOpen = !MenuFlyOut.IsOpen;

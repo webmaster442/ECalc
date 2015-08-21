@@ -42,9 +42,13 @@ namespace ECalc.Pages
                 case "Hash Calculator":
                     control = new HashCalculators();
                     break;
+                case "About":
+                    control = new About();
+                    break;
             }
 
             MainWindow.SwithToControl(control);
+            MainWindow.SetTitle(title);
         }
     }
 }

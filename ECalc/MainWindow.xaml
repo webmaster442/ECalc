@@ -8,7 +8,8 @@
                  Width="960"
                  Height="540"
                  ResizeMode="CanMinimize"
-                 Closing="MetroWindow_Closing">
+                 Closing="MetroWindow_Closing"
+                 Icon="Images/100px/math.png">
     <mah:MetroWindow.RightWindowCommands>
         <mah:WindowCommands>
             <StackPanel Orientation="Horizontal">

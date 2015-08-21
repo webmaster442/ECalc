@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="ECalc.Pages.About"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="960">
+    <Grid>
+        <FlowDocumentScrollViewer>
+            <FlowDocument>
+                <Paragraph>
+                    <Image Source="/Images/100px/math-black.png" Width="100" Height="100"/>
+                    <Run FontSize="60">Engineer Calculator 1.0</Run>
+                </Paragraph>
+                <Paragraph>
+                    Created by: webmaster442 aka. Ruzsinszki Gábor. This is a free software.
+                </Paragraph>
+                <Paragraph>
+                    Uses the following components written by others:
+                </Paragraph>
+                <List>
+                    <ListItem>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="http://www.codeproject.com/Tips/773386/WPF-ImageButton">WPF ImageButton</Hyperlink>
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="http://www.codeproject.com/Articles/9078/Fraction-class-in-C">C# Fraction class</Hyperlink>
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="https://github.com/damieng/DamienGKit/tree/master/CSharp/DamienG.Library/Security/Cryptography">CRC-32 &amp; CRC-64 classes by Damien Guard</Hyperlink>
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="http://blogs.msdn.com/b/knom/archive/2008/12/31/ip-address-calculations-with-c-subnetmasks-networks.aspx">IP Address Calculations</Hyperlink>
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            <Hyperlink NavigateUri="https://github.com/robertgreiner/NumberText/blob/master/NumberText/NumberText.cs">NumberText conversion engine based on  Robert Greiner's NumberText</Hyperlink>
+                        </Paragraph>
+                    </ListItem>
+                </List>
+                <Paragraph>
+                    This project uses icons created by the Icons8 team -
+                    <Hyperlink NavigateUri="https://icons8.com/license/">https://icons8.com/license/</Hyperlink>
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</UserControl>
