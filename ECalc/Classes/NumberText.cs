@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECalc.Maths
+namespace ECalc.Classes
 {
     /// <summary>
     /// Based on: https://github.com/robertgreiner/NumberText/blob/master/NumberText/NumberText.cs
@@ -40,6 +40,34 @@ namespace ECalc.Maths
             AppendLessThanOneThousand(num);
 
             return builder.ToString().Trim();
+        }
+
+        /// <summary>
+        /// Convert a number to text
+        /// </summary>
+        /// <param name="num">number to convert</param>
+        /// <returns>returns a string representaion of the number</returns>
+        public string ToText(double num)
+        {
+            builder = new StringBuilder();
+
+            if (num == 0)
+            {
+                builder.Append(textStrings[(long)num]);
+                return builder.ToString();
+            }
+            else if (double.IsNaN(num)) return "Not a Number";
+            else if (double.IsInfinity(num)) return "Infinity";
+            else if (num - Math.Truncate(num) == 0) return ToText((long)num);
+            else
+            {
+                string text = num.ToString();
+                var parts = text.Split(Engine.DecimalSeperator[0]);
+                long integer = Convert.ToInt64(parts[0]);
+                long floating = Convert.ToInt64(parts[1]);
+
+                return ToText(integer) + " point " + ToText(floating);
+            }
         }
 
         private long Append(long num, int scale)
@@ -92,7 +120,7 @@ namespace ECalc.Maths
             return num;
         }
 
-        private void Initialize()
+        protected virtual void Initialize()
         {
             textStrings.Add(0, "zero");
             textStrings.Add(1, "one");
@@ -123,7 +151,6 @@ namespace ECalc.Maths
             textStrings.Add(80, "eighty");
             textStrings.Add(90, "ninety");
             textStrings.Add(100, "hundred");
-
             scales.Add(1000000000, "billion");
             scales.Add(1000000, "million");
             scales.Add(1000, "thousand");

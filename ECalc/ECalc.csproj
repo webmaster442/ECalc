@@ -125,6 +125,7 @@
     <Compile Include="Classes\ConfigFileHelpers.cs" />
     <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine.cs" />
+    <Compile Include="Classes\FractionClass.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Engineering\EquationSolver.cs" />
     <Compile Include="Maths\AMatrix.cs" />
@@ -221,10 +222,10 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maths\Complex.cs" />
+    <Compile Include="Maths\Types.cs" />
     <Compile Include="Maths\General.cs" />
     <Compile Include="Maths\NumberSystemConversions.cs" />
-    <Compile Include="Maths\NumberText.cs" />
+    <Compile Include="Classes\NumberText.cs" />
     <Compile Include="Maths\TrigFunctions.cs" />
     <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Pages\Calculator.xaml.cs">
@@ -316,6 +317,10 @@
   <ItemGroup>
     <Resource Include="Images\100px\statistics.png" />
     <Resource Include="Images\100px\unitconverter.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Docs\about.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

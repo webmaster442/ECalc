@@ -2,6 +2,7 @@
 using ECalc.Maths;
 using MahApps.Metro.Controls.Dialogs;
 using System;
+using System.Numerics;
 
 namespace ECalc.Controls
 {
@@ -39,7 +40,7 @@ namespace ECalc.Controls
 
         private void RefreshDisplays()
         {
-            if (Helpers.IsComplex(_display))
+            if (_display is Complex)
             {
                 Binary.Text = "Complex results not supported";
                 Octal.Text = "Complex results not supported";
@@ -48,7 +49,7 @@ namespace ECalc.Controls
             }
             else
             {
-                double d = (double)_display;
+                double d = Helpers.GetDouble(_display);
                 bool isint = (d - Math.Truncate(d)) == 0;
                 if (isint)
                 {

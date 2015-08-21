@@ -5,6 +5,7 @@ using ECalc.Classes;
 using System.Text;
 using System;
 using ECalc.Maths;
+using System.Numerics;
 
 namespace ECalc.Controls
 {
@@ -162,13 +163,20 @@ namespace ECalc.Controls
         private void BtnNumToText_Click(object sender, RoutedEventArgs e)
         {
             NumberText nt = new NumberText();
+            string message = "";
 
-            string text = "";
-
-            if (Helpers.IsComplex(Engine.Ans)) text = "Complex values not supported";
-            else if (!Helpers.IsInteger(Engine.Ans)) text = "Only integral part of the number is converted, which is:\r\n" + nt.ToText(Convert.ToInt64(Engine.Ans));
-            else text = nt.ToText(Convert.ToInt64(Engine.Ans));
-            MainWindow.ShowDialog("Number to text", text, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+            if (Engine.Ans is double) message = nt.ToText((double)Engine.Ans);
+            else if (Engine.Ans is Fraction)
+            {
+                Fraction f = (Fraction)Engine.Ans;
+                message = nt.ToText(f.Numerator) + " over " + nt.ToText(f.Denominator);
+            }
+            else
+            {
+                Complex c = (Complex)Engine.Ans;
+                message = "Real: " + nt.ToText(c.Real) + ", Imaginary: " + nt.ToText(c.Imaginary);
+            }
+            MainWindow.ShowDialog("Number to text", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
 
         private void BtnFractions_Click(object sender, RoutedEventArgs e)
@@ -176,22 +184,12 @@ namespace ECalc.Controls
             string message = "Complex values not supported";
             if (!Helpers.IsComplex(Engine.Ans))
             {
-                double x = Convert.ToDouble(Engine.Ans);
-                int num = 1;
-                int denom = 1;
-                string s = Convert.ToString(x);
-                int digitsDec = s.Length - 1 - s.IndexOf(Engine.DecimalSeperator);
-                for (int i = 0; i < digitsDec; i++)
+                if (Engine.Ans is Fraction) message = Engine.Ans.ToString();
+                else
                 {
-                    x *= 10;
-                    denom *= 10;
+                    Fraction f = new Fraction((double)Engine.Ans);
+                    message = f.ToString();
                 }
-                
-                num = (int)Math.Round(x);
-
-                int gcd = (int)Maths.Gcd.FGcd(num, denom);
-
-                message = string.Format("{0}/{1}", num / gcd, denom / gcd);
             }
             MainWindow.ShowDialog("Result as Fraction", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
@@ -202,7 +200,7 @@ namespace ECalc.Controls
             if (!Helpers.IsComplex(Engine.Ans))
             {
                 StringBuilder result = new StringBuilder();
-                double x = Convert.ToDouble(Engine.Ans);
+                double x = Helpers.GetDouble(Engine.Ans);
                 for (int i = 2; i < 21; i++)
                 {
                     if (x % i == 0) result.AppendFormat("{0}, ", i);

@@ -348,6 +348,127 @@ namespace ECalc.Classes
             }
         }
 
+        /*  return type matrix:
+            Type       CPLX      Fraction        Double
+            CPX        CPLX      CPLX            CPLX
+            Fraction   CPLX      Fraction        Fraction
+            Double     CPLX      Fraction        Double  */
+        /// <summary>
+        /// Type matching operator handler function
+        /// </summary>
+        /// <param name="op1">operand1</param>
+        /// <param name="op2">operand2</param>
+        /// <param name="op">operation</param>
+        /// <returns>result type</returns>
+        public object HandleOperators(object op1, object op2, string op)
+        {
+            var t1 = op1.GetType().FullName;
+            var t2 = op2.GetType().FullName;
+
+            if (t1 == "System.Numerics.Complex" || t2 == "System.Numerics.Complex")
+            {
+                Complex a = new Complex();
+                Complex b = new Complex();
+                switch (t1)
+                {
+                    case "System.Numerics.Complex":
+                        a = (Complex)op1;
+                        break;
+                    case "System.Double":
+                        a = new Complex((double)op1, 0);
+                        break;
+                    case "ECalc.Classes.Fraction":
+                       double d = ((Fraction)op1).ToDouble();
+                        a = new Complex(d, 0);
+                        break;
+                }
+                switch (t2)
+                {
+                    case "System.Numerics.Complex":
+                        b = (Complex)op2;
+                        break;
+                    case "System.Double":
+                        b = new Complex((double)op2, 0);
+                        break;
+                    case "ECalc.Classes.Fraction":
+                        double d = ((Fraction)op2).ToDouble();
+                        b = new Complex(d, 0);
+                        break;
+                }
+
+                switch (op)
+                {
+                    case "+":
+                        return a + b;
+                    case "-":
+                        return a - b;
+                    case "÷":
+                        return a / b;
+                    case "X":
+                        return a * b;
+                    case "mod":
+                        return new Complex(a.Real % b.Real, a.Imaginary % b.Imaginary);
+                }
+            }
+            if (t1 == "ECalc.Classes.Fraction" || t2 == "ECalc.Classes.Fraction")
+            {
+                Fraction f1 = new Fraction();
+                Fraction f2 = new Fraction();
+                switch (t1)
+                {
+                    case "System.Double":
+                        f1 = new Fraction((double)op1);
+                        break;
+                    case "ECalc.Classes.Fraction":
+                        f1 = (Fraction)op1;
+                        break;
+                }
+                switch (t2)
+                {
+                    case "System.Double":
+                        f2 = new Fraction((double)op2);
+                        break;
+                    case "ECalc.Classes.Fraction":
+                        f2 = (Fraction)op2;
+                        break;
+                }
+                switch (op)
+                {
+                    case "+":
+                        return f1 + f2;
+                    case "-":
+                        return f1 - f2;
+                    case "÷":
+                        return f1 / f2;
+                    case "X":
+                        return f1 * f2;
+                    case "mod":
+                        return new Fraction(f1.ToDouble() % f2.ToDouble());
+                }
+            }
+            else
+            {
+                double n1 = (double)op1;
+                double n2 = (double)op2;
+                switch (op)
+                {
+                    case "+":
+                        return n1 + n2;
+                    case "-":
+                        return n1 - n2;
+                    case "÷":
+                        return n1 / n2;
+                    case "X":
+                        return n1 * n2;
+                    case "mod":
+                        return n1 % n2;
+                }
+            }
+            //default return
+            return null;
+        }
+
+
         /// <summary>
         /// Evaluates an expression
         /// </summary>
@@ -383,56 +504,7 @@ namespace ECalc.Classes
                         {
                             object op2 = result.Pop();
                             object op1 = result.Pop();
-                            double n1, n2;
-                            Complex a, b;
-                            object r = null;
-
-                            if (Helpers.IsComplex(op1) || Helpers.IsComplex(op2))
-                            {
-                                a = Helpers.GetComplex(op1);
-                                b = Helpers.GetComplex(op2);
-                                switch (token.Content)
-                                {
-                                    case "+":
-                                        r = a + b;
-                                        break;
-                                    case "-":
-                                        r = a - b;
-                                        break;
-                                    case "÷":
-                                        r = a / b;
-                                        break;
-                                    case "X":
-                                        r = a * b;
-                                        break;
-                                    case "mod":
-                                        r = new Complex(a.Real % b.Real, a.Imaginary % b.Imaginary);
-                                        break;
-                                }
-                            }
-                            else
-                            {
-                                n1 = (double)op1;
-                                n2 = (double)op2;
-                                switch (token.Content)
-                                {
-                                    case "+":
-                                        r = n1 + n2;
-                                        break;
-                                    case "-":
-                                        r = n1 - n2;
-                                        break;
-                                    case "÷":
-                                        r = n1 / n2;
-                                        break;
-                                    case "X":
-                                        r = n1 * n2;
-                                        break;
-                                    case "mod":
-                                        r = n1 % n2;
-                                        break;
-                                }
-                            }
+                            object r = HandleOperators(op1, op2, token.Content);
                             result.Push(r);
                         }
                         else throw new ArgumentException("Evaluation error at: " + token.Content);

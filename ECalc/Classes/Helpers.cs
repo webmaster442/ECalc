@@ -23,6 +23,12 @@ namespace ECalc.Classes
             else return new Complex((double)o, 0);
         }
 
+        public static double GetDouble(object o)
+        {
+            if (o is double) return (double)o;
+            else return ((Fraction)o).ToDouble();
+        }
+
         public static void ErrorDialog(Exception ex)
         {
             MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);

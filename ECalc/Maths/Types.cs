@@ -64,6 +64,26 @@ namespace ECalc.Maths
         }
     }
 
+    internal class Fract : IFunction
+    {
+        public string Name
+        {
+            get { return "Fraction"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 2; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double n1 = (double)arguments[0];
+            double n2 = (double)arguments[1];
+            return new Fraction((long)n1, (long)n2);
+        }
+    }
+
     internal class CplxConjugate: IFunction
     {
         public string Name
