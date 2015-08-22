@@ -110,6 +110,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Special\ResistorColorSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\StatInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,7 +130,11 @@
     <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine.cs" />
     <Compile Include="Classes\FractionClass.cs" />
+    <Compile Include="Classes\PrefixDictionary.cs" />
     <Compile Include="Controls\ImageButton.cs" />
+    <Compile Include="Controls\Special\ResistorColorSelector.xaml.cs">
+      <DependentUpon>ResistorColorSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Engineering\EquationSolver.cs" />
     <Compile Include="Maths\AMatrix.cs" />
     <Compile Include="Maths\DoubleMatrix.cs" />
@@ -208,6 +216,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ResistorColorDecoder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Stat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -249,6 +261,9 @@
     </Compile>
     <Compile Include="Pages\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ResistorColorDecoder.xaml.cs">
+      <DependentUpon>ResistorColorDecoder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Stat.xaml.cs">
       <DependentUpon>Stat.xaml</DependentUpon>
@@ -335,6 +350,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\math-black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\resistor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

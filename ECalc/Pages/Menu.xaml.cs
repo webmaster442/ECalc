@@ -45,6 +45,11 @@ namespace ECalc.Pages
                 case "About":
                     control = new About();
                     break;
+                case "Resistor Color":
+                    control = new ResistorColorDecoder();
+                    break;
+                default:
+                    return;
             }
 
             MainWindow.SwithToControl(control);

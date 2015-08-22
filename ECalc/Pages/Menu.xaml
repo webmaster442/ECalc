@@ -23,8 +23,8 @@
 
         <Style TargetType="Image">
             <Setter Property="StretchDirection" Value="DownOnly"/>
-            <Setter Property="MaxWidth" Value="75"/>
-            <Setter Property="MaxHeight" Value="75"/>
+            <Setter Property="MaxWidth" Value="70"/>
+            <Setter Property="MaxHeight" Value="70"/>
         </Style>
 
         <Style TargetType="GroupBox" BasedOn="{StaticResource {x:Type GroupBox}}">
@@ -72,7 +72,7 @@
                 </WrapPanel>
             </GroupBox>
             <GroupBox Header="Engineering"
-                      Width="150">
+                      Width="300">
                 <WrapPanel>
                     <mah:Tile Title="Logic Minimizer"
                           Background="{StaticResource W8Lime}"
@@ -88,6 +88,11 @@
                           Background="{StaticResource W8Olive}"
                           Click="Tile_Click">
                         <Image Source="../Images/100px/hash.png"/>
+                    </mah:Tile>
+                    <mah:Tile Title="Resistor Color"
+                              Background="{StaticResource W8Mauve}"
+                              Click="Tile_Click">
+                        <Image Source="../Images/100px/resistor.png"/>
                     </mah:Tile>
                 </WrapPanel>
             </GroupBox>

@@ -64,7 +64,7 @@ namespace ECalc.Classes
         const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)";
 
         private List<IFunction> _functions;
-        private Dictionary<string, double> _prefixes;
+        private PrefixDictionary _prefixes;
 
         /// <summary>
         /// Trigonometry Mode
@@ -147,26 +147,7 @@ namespace ECalc.Classes
                 Helpers.ErrorDialog(ex);
             }
 
-            _prefixes = new Dictionary<string, double>();
-            _prefixes.Add("da", Math.Pow(10, 1));
-            _prefixes.Add("y", Math.Pow(10, -24));
-            _prefixes.Add("z", Math.Pow(10, -21));
-            _prefixes.Add("f", Math.Pow(10, -18));
-            _prefixes.Add("n", Math.Pow(10, -9));
-            _prefixes.Add("u", Math.Pow(10, -6));
-            _prefixes.Add("m", Math.Pow(10, -3));
-            _prefixes.Add("c", Math.Pow(10, -2));
-            _prefixes.Add("d", Math.Pow(10, -1));
-            _prefixes.Add("a", Math.Pow(10, -18));
-            _prefixes.Add("h", Math.Pow(10, 2));
-            _prefixes.Add("k", Math.Pow(10, 3));
-            _prefixes.Add("M", Math.Pow(10, 6));
-            _prefixes.Add("G", Math.Pow(10, 9));
-            _prefixes.Add("T", Math.Pow(10, 12));
-            _prefixes.Add("P", Math.Pow(10, 15));
-            _prefixes.Add("E", Math.Pow(10, 18));
-            _prefixes.Add("Z", Math.Pow(10, 21));
-            _prefixes.Add("Y", Math.Pow(10, 24));
+            _prefixes = new PrefixDictionary();
 
             Ans = 0.0d; //double
 
