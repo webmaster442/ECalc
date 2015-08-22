@@ -69,6 +69,11 @@
                           Click="Tile_Click">
                         <Image Source="../Images/100px/hash.png"/>
                     </mah:Tile>
+                    <mah:Tile Title="Currency Converter"
+                          Background="{StaticResource W8Taupe}"
+                          Click="Tile_Click">
+                        <Image Source="../Images/100px/currency.png"/>
+                    </mah:Tile>
                 </WrapPanel>
             </GroupBox>
             <GroupBox Header="Engineering"

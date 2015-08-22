@@ -48,6 +48,9 @@ namespace ECalc.Pages
                 case "Resistor Color":
                     control = new ResistorColorDecoder();
                     break;
+                case "Currency Converter":
+                    control = new CurrencyConverter();
+                    break;
                 default:
                     return;
             }
