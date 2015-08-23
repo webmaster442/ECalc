@@ -36,7 +36,7 @@ namespace ECalc.Pages
                 case "Logic Minimizer":
                     control = new LogicFunctionMinimizer();
                     break;
-                case "IP Subnet Calc.":
+                case "IP Subnet Calculator":
                     control = new SubnetCalculator();
                     break;
                 case "Hash Calculator":
@@ -53,6 +53,9 @@ namespace ECalc.Pages
                     break;
                 case "Voltage & Current divider":
                     control = new VoltageCurrentDivider();
+                    break;
+                case "LED Calculator":
+                    control = new LEDCalculator();
                     break;
                 default:
                     return;

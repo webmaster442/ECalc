@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
@@ -69,6 +72,9 @@
     </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LEDCalculator.xaml.cs">
+      <DependentUpon>LEDCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\VoltageCurrentDivider.xaml.cs">
       <DependentUpon>VoltageCurrentDivider.xaml</DependentUpon>
@@ -229,6 +235,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\HashCalculators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LEDCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -409,6 +419,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\electro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\led-paralel.png" />
+    <Resource Include="Images\large\led-serial.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\led.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

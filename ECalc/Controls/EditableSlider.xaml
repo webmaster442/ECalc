@@ -5,7 +5,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="userControl" x:Class="ECalc.Controls.EditableSlider"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400" Height="30" Loaded="UserControl_Loaded">
+    d:DesignHeight="25" d:DesignWidth="200" MinHeight="22" MinWidth="200" Loaded="UserControl_Loaded">
 	<Grid Cursor="SizeWE" HorizontalAlignment="Stretch" x:Name="rootGrid" IsEnabledChanged="rootGrid_IsEnabledChanged">
 		<VisualStateManager.VisualStateGroups>
 			<VisualStateGroup x:Name="States">

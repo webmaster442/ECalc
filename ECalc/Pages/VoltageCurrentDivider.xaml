@@ -10,7 +10,7 @@
         <TabItem Header="Voltage Divider" FontSize="14">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -18,7 +18,7 @@
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="0">
-                    <cont:PrefixInput x:Name="Uin" LabelText="Input voltage (U)" UnitText="V" Margin="5,0,0,0" ValueChanged="PrefixInput_ValueChanged"/>
+                    <cont:PrefixInput x:Name="Uin" LabelText="Input voltage (U)" Width="200" UnitText="V" Margin="5,0,0,0" ValueChanged="PrefixInput_ValueChanged"/>
                     <Button x:Name="BtnAdd" Content="Add Resistor" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="90" Click="BtnAdd_Click"/>
                     <Button x:Name="BtnClear" Content="Clear" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="70" Click="BtnClear_Click"/>
                 </StackPanel>

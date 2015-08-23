@@ -117,6 +117,11 @@
                               Click="Tile_Click">
                         <Image Source="../Images/100px/electro.png"/>
                     </mah:Tile>
+                    <mah:Tile Title="LED Calculator"
+                              Background="{StaticResource W8Brown}"
+                              Click="Tile_Click">
+                        <Image Source="../Images/100px/led.png"/>
+                    </mah:Tile>
                 </WrapPanel>
             </GroupBox>
             <GroupBox Header="Help"

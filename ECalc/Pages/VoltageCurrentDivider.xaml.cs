@@ -32,6 +32,7 @@ namespace ECalc.Pages
             pi.LabelText = "R" + _counter.ToString();
             pi.ValueChanged += PrefixInput_ValueChanged;
             pi.Value = 1;
+            pi.Margin = new Thickness(2);
             SpItems.Children.Add(pi);
             _counter++;
             PrefixInput_ValueChanged(null, null);
