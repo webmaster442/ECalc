@@ -13,7 +13,7 @@ namespace ECalc.Classes
     {
 
         private Dictionary<long, string> textStrings = new Dictionary<long, string>();
-        private Dictionary<int, string> scales = new Dictionary<int, string>();
+        private Dictionary<long, string> scales = new Dictionary<long, string>();
         private StringBuilder builder;
 
         public NumberText()
@@ -28,18 +28,25 @@ namespace ECalc.Classes
         /// <returns>returns a string representaion of the number</returns>
         public string ToText(long num)
         {
-            builder = new StringBuilder();
-
-            if (num == 0)
+            try
             {
-                builder.Append(textStrings[num]);
-                return builder.ToString();
+                builder = new StringBuilder();
+
+                if (num == 0)
+                {
+                    builder.Append(textStrings[num]);
+                    return builder.ToString();
+                }
+
+                num = scales.Aggregate(num, (current, scale) => Append(current, scale.Key));
+                AppendLessThanOneThousand(num);
+
+                return builder.ToString().Trim();
             }
-
-            num = scales.Aggregate(num, (current, scale) => Append(current, scale.Key));
-            AppendLessThanOneThousand(num);
-
-            return builder.ToString().Trim();
+            catch (Exception)
+            {
+                return "Number is too large to convert it to text";
+            }
         }
 
         /// <summary>
@@ -70,7 +77,7 @@ namespace ECalc.Classes
             }
         }
 
-        private long Append(long num, int scale)
+        private long Append(long num, long scale)
         {
             if (num > scale - 1)
             {
@@ -152,6 +159,9 @@ namespace ECalc.Classes
             textStrings.Add(90, "ninety");
             textStrings.Add(100, "hundred");
             scales.Add(1000000000, "billion");
+            scales.Add(1000000000000, "trillion");
+            scales.Add(1000000000000000, "quadrillion");
+            scales.Add(1000000000000000000, "quintillion");
             scales.Add(1000000, "million");
             scales.Add(1000, "thousand");
         }

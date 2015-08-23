@@ -51,6 +51,9 @@ namespace ECalc.Pages
                 case "Currency Converter":
                     control = new CurrencyConverter();
                     break;
+                case "Voltage & Current divider":
+                    control = new VoltageCurrentDivider();
+                    break;
                 default:
                     return;
             }

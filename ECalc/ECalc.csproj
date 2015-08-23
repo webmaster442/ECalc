@@ -64,8 +64,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Special\PrefixInput.xaml.cs">
+      <DependentUpon>PrefixInput.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\VoltageCurrentDivider.xaml.cs">
+      <DependentUpon>VoltageCurrentDivider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\CurrencyConverter\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -119,6 +125,10 @@
     <Page Include="Controls\BasicKeyPad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Special\PrefixInput.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Special\ResistorColorSelector.xaml">
       <SubType>Designer</SubType>
@@ -243,6 +253,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\UnitConverter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\VoltageCurrentDivider.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -392,6 +406,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\currency.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\electro.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

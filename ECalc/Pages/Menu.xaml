@@ -12,19 +12,32 @@
         <Style x:Key="LargeTileStyle" TargetType="mah:Tile">
             <Setter Property="Width" Value="269" />
             <Setter Property="Height" Value="132" />
-            <Setter Property="TitleFontSize" Value="14"/>
+            <Setter Property="TitleFontSize" Value="12"/>
         </Style>
 
         <Style TargetType="mah:Tile">
             <Setter Property="TitleFontSize" Value="13"/>
             <Setter Property="Width" Value="132"/>
             <Setter Property="Height" Value="132"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <ContentPresenter Content="{Binding}">
+                            <ContentPresenter.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="-20" X="-20"/>
+                                </TransformGroup>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="Image">
             <Setter Property="StretchDirection" Value="DownOnly"/>
-            <Setter Property="MaxWidth" Value="70"/>
-            <Setter Property="MaxHeight" Value="70"/>
+            <Setter Property="MaxWidth" Value="85"/>
+            <Setter Property="MaxHeight" Value="85"/>
         </Style>
 
         <Style TargetType="GroupBox" BasedOn="{StaticResource {x:Type GroupBox}}">
@@ -84,7 +97,7 @@
                           Click="Tile_Click">
                         <Image Source="../Images/100px/electronics.png"/>
                     </mah:Tile>
-                    <mah:Tile Title="IP Subnet Calc."
+                    <mah:Tile Title="IP Subnet Calculator"
                           Background="{StaticResource W8Magenta}"
                           Click="Tile_Click">
                         <Image Source="../Images/100px/ipaddress.png"/>
@@ -98,6 +111,11 @@
                               Background="{StaticResource W8Mauve}"
                               Click="Tile_Click">
                         <Image Source="../Images/100px/resistor.png"/>
+                    </mah:Tile>
+                    <mah:Tile Title="Voltage &amp; Current divider"
+                              Background="{StaticResource W8Emerald}"
+                              Click="Tile_Click">
+                        <Image Source="../Images/100px/electro.png"/>
                     </mah:Tile>
                 </WrapPanel>
             </GroupBox>
