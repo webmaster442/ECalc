@@ -102,27 +102,27 @@
         
         <Button Grid.Row="0"
                 Grid.Column="4"
-                Content="NOT" 
+                Content="not" 
                 Click="Button_Click"/>
 
         <Button Grid.Row="0"
                 Grid.Column="5"
-                Content="AND"
+                Content="and"
                 Click="Button_Click"/>
 
         <Button Grid.Row="1"
                 Grid.Column="4"
-                Content="OR" 
+                Content="or" 
                 Click="Button_Click"/>
 
         <Button Grid.Row="1"
                 Grid.Column="5"
-                Content="XOR" 
+                Content="xor" 
                 Click="Button_Click"/>
 
         <Button Grid.Row="2"
                 Grid.Column="4"
-                Content="EQ" 
+                Content="eq" 
                 Click="Button_Click"/>
 
     </Grid>

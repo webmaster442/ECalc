@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using ECalc.Classes;
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using ECalc.Classes;
-using System.Text;
-using System;
-using ECalc.Maths;
-using System.Numerics;
 
 namespace ECalc.Controls
 {
@@ -182,14 +181,21 @@ namespace ECalc.Controls
         private void BtnFractions_Click(object sender, RoutedEventArgs e)
         {
             string message = "Complex values not supported";
-            if (!Helpers.IsComplex(Engine.Ans))
+            try
             {
-                if (Engine.Ans is Fraction) message = Engine.Ans.ToString();
-                else
+                if (!Helpers.IsComplex(Engine.Ans))
                 {
-                    Fraction f = new Fraction((double)Engine.Ans);
-                    message = f.ToString();
+                    if (Engine.Ans is Fraction) message = Engine.Ans.ToString();
+                    else
+                    {
+                        Fraction f = new Fraction((double)Engine.Ans);
+                        message = f.ToString();
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                message = "Conversion is not possible";
             }
             MainWindow.ShowDialog("Result as Fraction", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
@@ -208,6 +214,14 @@ namespace ECalc.Controls
                 message = result.ToString();
             }
             MainWindow.ShowDialog("Divisiors", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+        }
+
+        private void BitEngineMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selection = BitEngineMode.SelectedItem.ToString();
+            BitEngineModes mode = BitEngineModes.Signed64bit;
+            bool result = Enum.TryParse<BitEngineModes>(selection, out mode);
+            if (result) Engine.BitEngineMode = mode;
         }
     }
 }

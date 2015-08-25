@@ -127,6 +127,29 @@ namespace ECalc.Classes
     }
 
     /// <summary>
+    /// Bit engine mode enum
+    /// </summary>
+    internal enum BitEngineModes
+    {
+        Signed8bit,
+        Signed16bit,
+        Signed32bit,
+        Signed64bit,
+        Unsigned8bit,
+        Unsigned16bit,
+        Unsigned32bit,
+        Unsigned64bit
+    }
+
+    /// <summary>
+    /// Memory manager interface
+    /// </summary>
+    public interface IMemManager
+    {
+        object GetItem(string name);
+    }
+
+    /// <summary>
     /// Unit conversion base type
     /// </summary>
     internal class Unit
@@ -169,6 +192,55 @@ namespace ECalc.Classes
             this.Ratio = Ratio;
             this.Action = Action;
             this.offset = offset;
+        }
+    }
+
+    /// <summary>
+    /// Token types for expression evaluator
+    /// </summary>
+    internal enum TokenType
+    {
+        Number,
+        Operator,
+        Function,
+        LeftB,
+        RightB,
+        Seperator,
+        UnaryMinus,
+        Variable,
+        Constant,
+        BitOperator
+    }
+
+    /// <summary>
+    /// Token Class for expression evaluator
+    /// </summary>
+    internal class Token
+    {
+        /// <summary>
+        /// Token type
+        /// </summary>
+        public TokenType Type { get; set; }
+
+        /// <summary>
+        /// Token content
+        /// </summary>
+        public string Content { get; set; }
+
+        /// <summary>
+        /// Creates a new instance of Token
+        /// </summary>
+        /// <param name="T">Token type</param>
+        /// <param name="C">Token content</param>
+        public Token(TokenType T, string C)
+        {
+            Type = T;
+            Content = C;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0}, Type: {1}", Content, Type);
         }
     }
 }

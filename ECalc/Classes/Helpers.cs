@@ -120,38 +120,6 @@ namespace ECalc.Classes
             }
         }
 
-        public static string ResultToString(object o)
-        {
-            StringBuilder sb = new StringBuilder();
-            if (IsComplex(o))
-            {
-                Complex cplx = GetComplex(o);
-                sb.Append("R: ");
-                sb.Append(cplx.Real);
-                sb.Append(" i: ");
-                sb.Append(cplx.Imaginary);
-                sb.Append(" φ: ");
-                switch (Engine.Mode)
-                {
-                    case TrigMode.DEG:
-                        sb.Append(TrigFunctions.Rad2Deg(cplx.Phase));
-                        sb.Append(" °");
-                        break;
-                    case TrigMode.GRAD:
-                        sb.Append(TrigFunctions.Rad2Grad(cplx.Phase));
-                        sb.Append(" grad");
-                        break;
-                    case TrigMode.RAD:
-                        sb.Append(cplx.Phase);
-                        sb.Append(" rad");
-                        break;
-                }
-
-                return sb.ToString();
-            }
-            else return o.ToString();
-        }
-
         public static bool IsInteger(object o)
         {
             if (o is double)

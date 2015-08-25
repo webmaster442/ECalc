@@ -5,78 +5,75 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:ECalc.Controls"
-             mc:Ignorable="d" 
+             xmlns:classes="clr-namespace:ECalc.Classes"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
              d:DesignHeight="140" d:DesignWidth="600">
     <UserControl.Resources>
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Margin" Value="3,0"/>
         </Style>
-
         <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type controls:ImageButton}}">
             <Setter Property="Margin" Value="2,0"/>
         </Style>
-        
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="classes:BitEngineModes"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </UserControl.Resources>
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="28"/>
             <RowDefinition Height="25"/>
             <RowDefinition/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="65"/>
-            <ColumnDefinition Width="65"/>
-            <ColumnDefinition Width="65"/>
-            <ColumnDefinition Width="140"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <RadioButton Content="DEG"
-                     Grid.Row="0"
-                     Grid.Column="0"
-                     IsChecked="True"
-                     Checked="RadioButton_Click"/>
-        <RadioButton Content="RAD"
-                     Grid.Row="0"
-                     Grid.Column="1"
-                     Checked="RadioButton_Click"/>
-        <RadioButton Content="GRAD"
-                     Grid.Row="0"
-                     Grid.Column="2"
-                     Checked="RadioButton_Click"/>
-        <CheckBox Grid.Column="3"
-                  x:Name="CbThousandGrouping"
-                  Grid.Row="0"
-                  Content="Group by thousands"
-                  IsChecked="False"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <RadioButton Content="DEG"
+                         IsChecked="True"
+                         Checked="RadioButton_Click"/>
+            <RadioButton Content="RAD"
+                         Checked="RadioButton_Click"/>
+            <RadioButton Content="GRAD"
+                         Checked="RadioButton_Click"/>
+            <CheckBox x:Name="CbThousandGrouping"
+                      Content="Group by thousands"
+                      IsChecked="False"/>
+            <TextBlock Text="Bit engine Mode:"
+                       VerticalAlignment="Center"
+                       Margin="10,0"/>
+            <ComboBox VerticalAlignment="Center"
+                      x:Name="BitEngineMode"
+                      SelectionChanged="BitEngineMode_SelectionChanged"
+                      ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+                      SelectedIndex="3"/>
+        </StackPanel>
         <TextBox Grid.Row="1"
-                 Grid.ColumnSpan="5"
                  Text="{Binding EquationText, ElementName=userControl}"
                  TextAlignment="Right"
                  FontFamily="Courier New"
                  FontSize="15"
                  Style="{StaticResource BorderlessTextBox}"/>
         <TextBlock Grid.Row="2"
-                   Grid.ColumnSpan="5"
                    Text="{Binding ResultText, ElementName=userControl}"
                    TextAlignment="Right"
                    FontFamily="Consolas"
                    TextWrapping="Wrap"
                    FontSize="28"/>
         <StackPanel Grid.Row="3"
-                    Grid.ColumnSpan="5"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-
             <controls:ImageButton Image="../Images/50px/fractions.png"
                                   ImageWidth="25"
                                   ImageHeight="25"
                                   x:Name="BtnFractions"
                                   ToolTip="Convert current result to fractions"
                                   Click="BtnFractions_Click"/>
-            
+
             <controls:ImageButton Image="../Images/50px/divide.png"
                                   ImageWidth="25"
                                   ImageHeight="25"
@@ -98,7 +95,7 @@
                                   x:Name="BtnNumSys"
                                   ToolTip="Number System"
                                   Click="BtnNumSys_Click"/>
-            
+
             <controls:ImageButton Image="../Images/50px/Up.png"
                                   ImageWidth="25"
                                   ImageHeight="25"

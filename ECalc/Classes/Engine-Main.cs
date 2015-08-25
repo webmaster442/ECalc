@@ -5,63 +5,19 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ECalc.Classes
 {
-    public interface IMemManager
-    {
-        object GetItem(string name);
-    }
-
-    /// <summary>
-    /// Token types for expression evaluator
-    /// </summary>
-    internal enum TokenType
-    {
-        Number, Operator, Function, LeftB, RightB, Seperator, UnaryMinus, Variable, Constant
-    }
-
-    /// <summary>
-    /// Token Class for expression evaluator
-    /// </summary>
-    internal class Token
-    {
-        /// <summary>
-        /// Token type
-        /// </summary>
-        public TokenType Type { get; set; }
-
-        /// <summary>
-        /// Token content
-        /// </summary>
-        public string Content { get; set; }
-
-        /// <summary>
-        /// Creates a new instance of Token
-        /// </summary>
-        /// <param name="T">Token type</param>
-        /// <param name="C">Token content</param>
-        public Token(TokenType T, string C)
-        {
-            Type = T;
-            Content = C;
-        }
-
-        public override string ToString()
-        {
-            return string.Format("{0}, Type: {1}", Content, Type);
-        }
-    }
-
     /// <summary>
     /// Evaluator Engine
     /// </summary>
-    internal class Engine
+    internal partial class Engine
     {
 
-        const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)";
+        const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)";
 
         private List<IFunction> _functions;
         private PrefixDictionary _prefixes;
@@ -94,6 +50,24 @@ namespace ECalc.Classes
         }
 
         /// <summary>
+        /// Gets or sets the bit engine mode
+        /// </summary>
+        public static BitEngineModes BitEngineMode
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets wheather there was an oweflow in the BitEngine Calculations
+        /// </summary>
+        public static bool HadOwerFlow
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// Decimal sepperator char on the current culture
         /// </summary>
         public static string DecimalSeperator
@@ -118,6 +92,8 @@ namespace ECalc.Classes
         {
             DecimalSeperator = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator;
             NumberGroupSeparator = CultureInfo.CurrentCulture.NumberFormat.NumberGroupSeparator;
+            HadOwerFlow = false;
+            BitEngineMode = BitEngineModes.Signed32bit;
         }
 
         /// <summary>
@@ -201,6 +177,23 @@ namespace ECalc.Classes
                     case "X":
                     case "mod":
                         temp = new Token(TokenType.Operator, c);
+                        if (Stack.Count > 0)
+                        {
+                            opstoken = Stack.Peek();
+                            while (opstoken.Type == TokenType.Operator)
+                            {
+                                Output.Enqueue(Stack.Pop());
+                                if (Stack.Count > 0) opstoken = Stack.Peek();
+                                else break;
+                            }
+                        }
+                        Stack.Push(temp);
+                        break;
+                    case "and":
+                    case "or":
+                    case "xor":
+                    case "eq":
+                        temp = new Token(TokenType.BitOperator, c);
                         if (Stack.Count > 0)
                         {
                             opstoken = Stack.Peek();
@@ -318,6 +311,43 @@ namespace ECalc.Classes
         }
 
         /// <summary>
+        /// Converts the ANS value to displayable string
+        /// </summary>
+        /// <returns>Engine.ANS as formatted string</returns>
+        private string ResultToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            if (Engine.Ans is Complex)
+            {
+                Complex cplx = (Complex)Engine.Ans;
+                sb.Append("R: ");
+                sb.Append(cplx.Real);
+                sb.Append(" i: ");
+                sb.Append(cplx.Imaginary);
+                sb.Append(" φ: ");
+                switch (Engine.Mode)
+                {
+                    case TrigMode.DEG:
+                        sb.Append(TrigFunctions.Rad2Deg(cplx.Phase));
+                        sb.Append(" °");
+                        break;
+                    case TrigMode.GRAD:
+                        sb.Append(TrigFunctions.Rad2Grad(cplx.Phase));
+                        sb.Append(" grad");
+                        break;
+                    case TrigMode.RAD:
+                        sb.Append(cplx.Phase);
+                        sb.Append(" rad");
+                        break;
+                }
+            }
+            else sb.Append(Engine.Ans.ToString());
+
+            if (HadOwerFlow) return string.Format("{0} (Overflowed)", sb.ToString());
+            else return sb.ToString();
+        }
+
+        /// <summary>
         /// Gets the currently available function names
         /// </summary>
         public string[] Functions
@@ -329,127 +359,6 @@ namespace ECalc.Classes
             }
         }
 
-        /*  return type matrix:
-            Type       CPLX      Fraction        Double
-            CPX        CPLX      CPLX            CPLX
-            Fraction   CPLX      Fraction        Fraction
-            Double     CPLX      Fraction        Double  */
-        /// <summary>
-        /// Type matching operator handler function
-        /// </summary>
-        /// <param name="op1">operand1</param>
-        /// <param name="op2">operand2</param>
-        /// <param name="op">operation</param>
-        /// <returns>result type</returns>
-        public object HandleOperators(object op1, object op2, string op)
-        {
-            var t1 = op1.GetType().FullName;
-            var t2 = op2.GetType().FullName;
-
-            if (t1 == "System.Numerics.Complex" || t2 == "System.Numerics.Complex")
-            {
-                Complex a = new Complex();
-                Complex b = new Complex();
-                switch (t1)
-                {
-                    case "System.Numerics.Complex":
-                        a = (Complex)op1;
-                        break;
-                    case "System.Double":
-                        a = new Complex((double)op1, 0);
-                        break;
-                    case "ECalc.Classes.Fraction":
-                       double d = ((Fraction)op1).ToDouble();
-                        a = new Complex(d, 0);
-                        break;
-                }
-                switch (t2)
-                {
-                    case "System.Numerics.Complex":
-                        b = (Complex)op2;
-                        break;
-                    case "System.Double":
-                        b = new Complex((double)op2, 0);
-                        break;
-                    case "ECalc.Classes.Fraction":
-                        double d = ((Fraction)op2).ToDouble();
-                        b = new Complex(d, 0);
-                        break;
-                }
-
-                switch (op)
-                {
-                    case "+":
-                        return a + b;
-                    case "-":
-                        return a - b;
-                    case "÷":
-                        return a / b;
-                    case "X":
-                        return a * b;
-                    case "mod":
-                        return new Complex(a.Real % b.Real, a.Imaginary % b.Imaginary);
-                }
-            }
-            if (t1 == "ECalc.Classes.Fraction" || t2 == "ECalc.Classes.Fraction")
-            {
-                Fraction f1 = new Fraction();
-                Fraction f2 = new Fraction();
-                switch (t1)
-                {
-                    case "System.Double":
-                        f1 = new Fraction((double)op1);
-                        break;
-                    case "ECalc.Classes.Fraction":
-                        f1 = (Fraction)op1;
-                        break;
-                }
-                switch (t2)
-                {
-                    case "System.Double":
-                        f2 = new Fraction((double)op2);
-                        break;
-                    case "ECalc.Classes.Fraction":
-                        f2 = (Fraction)op2;
-                        break;
-                }
-                switch (op)
-                {
-                    case "+":
-                        return f1 + f2;
-                    case "-":
-                        return f1 - f2;
-                    case "÷":
-                        return f1 / f2;
-                    case "X":
-                        return f1 * f2;
-                    case "mod":
-                        return new Fraction(f1.ToDouble() % f2.ToDouble());
-                }
-            }
-            else
-            {
-                double n1 = (double)op1;
-                double n2 = (double)op2;
-                switch (op)
-                {
-                    case "+":
-                        return n1 + n2;
-                    case "-":
-                        return n1 - n2;
-                    case "÷":
-                        return n1 / n2;
-                    case "X":
-                        return n1 * n2;
-                    case "mod":
-                        return n1 % n2;
-                }
-            }
-            //default return
-            return null;
-        }
-
-
         /// <summary>
         /// Evaluates an expression
         /// </summary>
@@ -457,6 +366,7 @@ namespace ECalc.Classes
         /// <returns>Evaluated Expression</returns>
         public string Evaluate(string expression)
         {
+            HadOwerFlow = false; //reset overflow
             var que = CompileToRpn(expression);
             Stack<object> result = new Stack<object>();
 
@@ -490,6 +400,16 @@ namespace ECalc.Classes
                         }
                         else throw new ArgumentException("Evaluation error at: " + token.Content);
                         break;
+                    case TokenType.BitOperator:
+                        if (result.Count >= 2)
+                        {
+                            object op2 = result.Pop();
+                            object op1 = result.Pop();
+                            object r = HandleBinOperators(op1, op2, token.Content);
+                            result.Push(r);
+                        }
+                        else throw new ArgumentException("Evaluation error at: " + token.Content);
+                        break;
                     case TokenType.Function:
                         var fnc = (from i in _functions where i.Name == token.Content select i).FirstOrDefault();
                         List<object> args = new List<object>();
@@ -506,7 +426,7 @@ namespace ECalc.Classes
             if (result.Count == 1)
             {
                 Ans = result.Pop();
-                return Helpers.ResultToString(Ans);
+                return ResultToString(Ans);
             }
             else throw new ArgumentException("Evalutation Error!");
         }
