@@ -136,6 +136,26 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="ConstTemplate">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="{Binding Name}"
+                       FontWeight="Bold"/>
+            <TextBlock Grid.Row="1"
+                       Text="{Binding Description}"
+                       MaxWidth="520"
+                       TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="2"
+                       Text="{Binding Value}"
+                       FontStyle="Italic"/>
+        </Grid>
+    </DataTemplate>
+
     <controls:VisibilityConvertor x:Key="VisibilityConvertor"/>
 
     <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type Button}}">

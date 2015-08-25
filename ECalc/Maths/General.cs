@@ -285,4 +285,45 @@ namespace ECalc.Maths
             return onepct * y;
         }
     }
+
+    public class Round : IFunction
+    {
+        public string Name
+        {
+            get { return "Round"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 2; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double x = Convert.ToDouble(arguments[0]);
+            double y = Convert.ToDouble(arguments[1]);
+
+            return Math.Round(x, Convert.ToInt32(y));
+        }
+    }
+
+    public class Floor : IFunction
+    {
+        public string Name
+        {
+            get { return "Floor"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double x = Convert.ToDouble(arguments[0]);
+
+            return Math.Floor(x);
+        }
+    }
 }

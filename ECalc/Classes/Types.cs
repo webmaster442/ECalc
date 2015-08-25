@@ -141,6 +141,14 @@ namespace ECalc.Classes
         Unsigned64bit
     }
 
+    internal enum ConstantCategory
+    {
+        Mathematical,
+        Universal,
+        ElectroMagnetic,
+        Atomic
+    }
+
     /// <summary>
     /// Memory manager interface
     /// </summary>

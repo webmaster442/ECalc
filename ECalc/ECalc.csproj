@@ -82,6 +82,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\ConstantDB.cs" />
+    <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
@@ -169,7 +171,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\ConfigFileHelpers.cs" />
-    <Compile Include="Classes\ConstantList.cs" />
     <Compile Include="Classes\Engine-Main.cs" />
     <Compile Include="Classes\FractionClass.cs" />
     <Compile Include="Classes\PrefixDictionary.cs" />

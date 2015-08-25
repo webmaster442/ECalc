@@ -426,7 +426,7 @@ namespace ECalc.Classes
             if (result.Count == 1)
             {
                 Ans = result.Pop();
-                return ResultToString(Ans);
+                return ResultToString();
             }
             else throw new ArgumentException("Evalutation Error!");
         }

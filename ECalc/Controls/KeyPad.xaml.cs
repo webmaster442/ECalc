@@ -175,10 +175,7 @@ namespace ECalc.Controls
             }
             else
             {
-                var q = from i in _constants where string.Compare(name, i.Name) == 0 select i;
-                var c = q.FirstOrDefault();
-                if (c == null) return null;
-                else return c.Value;
+                return ConstantDB.Lookup(name);
             }
         }
     }

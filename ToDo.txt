@@ -1,1 +1,3 @@
--Nem veszi be a függvény argumentumban a negatív számokat. Pl. Abs( - 90 )
+- NOT implementáció
+- Bit forgatások implementáció
+- Konstans kategória választó a keypad-ba
