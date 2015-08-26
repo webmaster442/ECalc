@@ -3,14 +3,23 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:Classes="clr-namespace:ECalc.Classes"
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="391" d:DesignWidth="654">
     <UserControl.Resources>
         <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="Margin" Value="1"/>
         </Style>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
+                            ObjectType="{x:Type System:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="Classes:ConstantCategory"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </UserControl.Resources>
     <Grid>
         <Grid x:Name="Prefixes" Visibility="Collapsed">
@@ -329,20 +338,27 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <ComboBox Grid.Row="0"
+                      Grid.Column="5"
+                      ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
+                      SelectedIndex="0"
+                      x:Name="CbSelector"
+                      SelectionChanged="ComboBox_SelectionChanged"/>
             <ListBox Grid.ColumnSpan="5"
-                     Grid.RowSpan="2"
+                     Grid.RowSpan="3"
                      x:Name="ConstList"
                      ItemTemplate="{StaticResource ConstTemplate}"/>
             <Button Content="Insert"
-                    Grid.Row="0"
+                    Grid.Row="1"
                     x:Name="BtnInsertConst"
                     Grid.Column="6"
                     Click="BtnInsertConst_Click"/>
             <Button Content="Cancel"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="6"
                     x:Name="BtnConstCancel"
                     Click="BtnConstCancel_Click"/>

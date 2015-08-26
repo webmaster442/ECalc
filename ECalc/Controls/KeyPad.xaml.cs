@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Linq;
+using System;
 
 namespace ECalc.Controls
 {
@@ -12,7 +13,8 @@ namespace ECalc.Controls
     internal partial class KeyPad : UserControl, IMemManager
     {
         private static ObservableCollection<MemoryItem> _memory;
-        private static ConstantList _constants;
+        private ConstantList _constants;
+        private bool _loaded;
 
         public KeyPad()
         {
@@ -177,6 +179,19 @@ namespace ECalc.Controls
             {
                 return ConstantDB.Lookup(name);
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!_loaded) return;
+            ConstantCategory cat = ConstantCategory.Mathematical;
+            Enum.TryParse<ConstantCategory>(CbSelector.SelectedItem.ToString(), out cat);
+            _constants.Category = cat;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            _loaded = true;
         }
     }
 }
