@@ -21,8 +21,7 @@
                 <TextBlock Text="Hexadecimal Form:"/>
                 <TextBox x:Name="Hexa"
                          TextAlignment="Right"/>
-                <TextBlock Text="Roman Form:"
-                           TextAlignment="Right"/>
+                <TextBlock Text="Roman Form:"/>
                 <TextBox x:Name="Roman"
                          TextAlignment="Right"/>
             </StackPanel>

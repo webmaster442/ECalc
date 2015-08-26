@@ -29,7 +29,7 @@ namespace ECalc.Controls
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
-            TbDisplay.Text = "";
+            Clear();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -38,6 +38,11 @@ namespace ECalc.Controls
             {
                 AddClick(sender, e);
             }
+        }
+
+        public void Clear()
+        {
+            TbDisplay.Text = "";
         }
 
         public double Number

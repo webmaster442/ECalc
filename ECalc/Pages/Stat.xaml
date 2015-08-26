@@ -9,7 +9,7 @@
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>
         <Style TargetType="Button" x:Key="BtnStyle" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Width" Value="90"/>
+            <Setter Property="Width" Value="110"/>
             <Setter Property="Height" Value="40"/>
             <Setter Property="Margin" Value="2"/>
         </Style>
@@ -23,11 +23,19 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="280"/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <ListBox x:Name="LbItems"
                  Grid.Column="0"
                  Grid.Row="1"
-                 Grid.RowSpan="2"/>
+                 Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"
+                               FontSize="16"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="0"
                     Grid.Column="0">
@@ -54,8 +62,14 @@
                             Grid.RowSpan="2"
                             AddClick="Input_AddClick"/>
         <ScrollViewer Grid.Row="2"
-                      Grid.Column="1">
+                      Grid.Column="1"
+                      Grid.RowSpan="2">
             <WrapPanel x:Name="FunctionList"></WrapPanel>
         </ScrollViewer>
+        <TextBox x:Name="TbResult"
+                 Grid.Row="3"
+                 Grid.Column="0"
+                 FontSize="18"
+                 IsReadOnly="True"/>
     </Grid>
 </UserControl>

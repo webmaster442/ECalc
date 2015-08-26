@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
 
 namespace ECalc.Pages
 {
@@ -23,6 +13,7 @@ namespace ECalc.Pages
     public partial class Stat : UserControl
     {
         private ObservableCollection<double> _numbers;
+        private Type _enumerablestat;
 
         public Stat()
         {
@@ -30,6 +21,7 @@ namespace ECalc.Pages
             _numbers = new ObservableCollection<double>();
             LbItems.ItemsSource = _numbers;
             RenderFunctionList();
+            _enumerablestat = typeof(Maths.EnumerableStat);
         }
 
         private void RenderFunctionList()
@@ -49,13 +41,20 @@ namespace ECalc.Pages
 
         private void B_Click(object sender, RoutedEventArgs e)
         {
-            Type enumerablestat = typeof(Maths.EnumerableStat);
-            var name = ((Button)sender).Content.ToString();
-            var methood = (from m in enumerablestat.GetMethods() where m.Name == name select m).FirstOrDefault();
-            if (methood != null)
+            try
             {
-                object result = methood.Invoke(null, new object[] { _numbers });
-                MessageBox.Show(result.ToString());
+                var name = ((Button)sender).Content.ToString();
+                var methood = (from m in _enumerablestat.GetMethods() where m.Name == name select m).FirstOrDefault();
+                if (methood != null)
+                {
+                    object result = methood.Invoke(null, new object[] { _numbers });
+                    TbResult.Text = string.Format("{0}: {1}", methood.Name, result);
+                }
+            }
+            catch (Exception ex)
+            {
+                TbResult.Text = "Error";
+                MainWindow.ErrorDialog("An error happened. Collection is maybe empty");
             }
         }
 
@@ -64,6 +63,7 @@ namespace ECalc.Pages
             try
             {
                 _numbers.Add(Input.Number);
+                Input.Clear();
             }
             catch (Exception ex)
             {
