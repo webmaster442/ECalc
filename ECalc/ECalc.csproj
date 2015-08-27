@@ -88,11 +88,16 @@
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Engineering\ResistorSolver.cs" />
+    <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LEDCalculator.xaml.cs">
       <DependentUpon>LEDCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ResistorSolver.xaml.cs">
+      <DependentUpon>ResistorSolver.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\VoltageCurrentDivider.xaml.cs">
       <DependentUpon>VoltageCurrentDivider.xaml</DependentUpon>
@@ -224,8 +229,8 @@
     <Compile Include="Controls\StatInput.xaml.cs">
       <DependentUpon>StatInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Engineering\Crc32.cs" />
-    <Compile Include="Engineering\Crc64.cs" />
+    <Compile Include="Lib\Crc32.cs" />
+    <Compile Include="Lib\Crc64.cs" />
     <Compile Include="Engineering\Functions.cs" />
     <Compile Include="Engineering\HashFunctions.cs" />
     <Compile Include="Engineering\IPExtensions.cs" />
@@ -270,6 +275,10 @@
     <Page Include="Pages\ResistorColorDecoder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ResistorSolver.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Stat.xaml">
       <SubType>Designer</SubType>
