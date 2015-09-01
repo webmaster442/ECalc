@@ -85,11 +85,17 @@
     <Compile Include="Classes\ConstantDB.cs" />
     <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
+    <Compile Include="Controls\Special\BitDisplay.xaml.cs">
+      <DependentUpon>BitDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
+    <Compile Include="Pages\BinaryCalc.xaml.cs">
+      <DependentUpon>BinaryCalc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
     </Compile>
@@ -128,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NumberSystemDisplayDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Special\BitDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +251,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BinaryCalc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -479,6 +493,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\32bit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

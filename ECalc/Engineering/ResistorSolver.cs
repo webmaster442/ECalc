@@ -72,16 +72,28 @@ namespace ECalc.Engineering
 
         }
 
-        public static double StandardResistorValueApproximation(double val, int tolerance)
+        public static string StandardResistorValueApproximation(double val, ResistorSeries tolerance)
         {
             double series = 0;
 
-            if (tolerance == 20) series = 6;
-            else if (tolerance == 10) series = 12;
-            else if (tolerance == 5) series = 24;
-            else if (tolerance == 2) series = 48;
-            else if (tolerance == 1) series = 96;
-            else series = 192;
+            switch (tolerance)
+            {
+                case ResistorSeries.e12:
+                    series = 12;
+                    break;
+                case ResistorSeries.e24:
+                    series = 24;
+                    break;
+                case ResistorSeries.e48:
+                    series = 48;
+                    break;
+                case ResistorSeries.e96:
+                    series = 96;
+                    break;
+                default:
+                    series = 192;
+                    break;
+            }
 
             var l = Math.Log10(val);
 
@@ -98,7 +110,7 @@ namespace ECalc.Engineering
             else if (pref_val == 830) pref_val -= 10;               // fix for E24/E12/E6 series
             else if (pref_val == 919) pref_val++;                   // fix for E192 series
 
-            return pref_val;
+            return string.Format("Nearest standard value within specified tolerance:\r\n{0}", pref_val);
 
         }
     }

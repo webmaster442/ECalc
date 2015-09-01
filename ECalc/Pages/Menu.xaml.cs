@@ -57,6 +57,12 @@ namespace ECalc.Pages
                 case "LED Calculator":
                     control = new LEDCalculator();
                     break;
+                case "Resistor value solver":
+                    control = new ResistorSolver();
+                    break;
+                case "Binary Calculations":
+                    control = new BinaryCalc();
+                    break;
                 default:
                     return;
             }

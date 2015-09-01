@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace MTools.ToolsAnalog
+namespace ECalc.Pages
 {
     /// <summary>
     /// Interaction logic for ResistorSolver.xaml
@@ -17,7 +17,10 @@ namespace MTools.ToolsAnalog
         private void BtnSolve_Click(object sender, RoutedEventArgs e)
         {
             ResistorSeries serie = (ResistorSeries)SeriesSelector.SelectedIndex;
-            TbResult.Text = ResistorValueSolver.Solve(TargetValue.Value, serie);
+
+            if (RbCombination.IsChecked == true) TbResult.Text = ResistorValueSolver.Solve(TargetValue.Value, serie);
+            else TbResult.Text = ResistorValueSolver.StandardResistorValueApproximation(TargetValue.Value, serie);
+
         }
     }
 }
