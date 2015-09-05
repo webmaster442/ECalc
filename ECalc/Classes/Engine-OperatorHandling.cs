@@ -157,6 +157,9 @@ namespace ECalc.Classes
 
                     switch (op)
                     {
+                        case "not":
+                            sres = ~sop1;
+                            break;
                         case "and":
                             sres = sop1 & sop2;
                             break;
@@ -166,8 +169,17 @@ namespace ECalc.Classes
                         case "xor":
                             sres = sop1 ^ sop2;
                             break;
-                        case "eq":
-                            sres = ~(sop1 ^ sop2);
+                        case "shl":
+                            sres = sop1 << (int)sop2;
+                            break;
+                        case "shr":
+                            sres = sop1 >> (int)sop2;
+                            break;
+                        case "rol":
+                            sres = (sop1 << (int)sop2) | (sop1 >> (int)(64 - sop2));
+                            break;
+                        case "ror":
+                            sres = (sop1 >> (int)sop2) | (sop1 << (int)(64 - sop2));
                             break;
                     }
                     break;
@@ -182,6 +194,9 @@ namespace ECalc.Classes
 
                     switch (op)
                     {
+                        case "not":
+                            ures = ~uop1;
+                            break;
                         case "and":
                             ures = uop1 & uop2;
                             break;
@@ -191,8 +206,17 @@ namespace ECalc.Classes
                         case "xor":
                             ures = uop1 ^ uop2;
                             break;
-                        case "eq":
-                            ures = ~(uop1 ^ uop2);
+                        case "shl":
+                            ures = uop1 << (int)uop2;
+                            break;
+                        case "shr":
+                            ures = uop1 >> (int)uop2;
+                            break;
+                        case "rol":
+                            ures = (uop1 << (int)uop2) | (uop1 >> (int)(64 - uop2));
+                            break;
+                        case "ror":
+                            ures = (uop1 >> (int)uop2) | (uop1 << (int)(64 - uop2));
                             break;
                     }
                     break;

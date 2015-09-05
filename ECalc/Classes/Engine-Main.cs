@@ -16,7 +16,7 @@ namespace ECalc.Classes
     internal partial class Engine
     {
 
-        const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)";
+        const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)|(shr)|(shl)|(ror)|(rol)";
 
         private List<IFunction> _functions;
         private PrefixDictionary _prefixes;
@@ -85,12 +85,12 @@ namespace ECalc.Classes
 
             good = Regex.Replace(good, operators, " $0 ");
 
-            good = Regex.Replace(good, @"(?<number>^[^$]([\da-fA-F])+(\,\d+)?[boh]?$)", " ${number} ");
+            good = Regex.Replace(good, @"(?<number>^[^$]([\da-fA-F])+([\,\.]\d+)?[boh]?$)", " ${number} ");
 
             good = Regex.Replace(good, "-", "MINUS");
             // Step 2. Looking for pi or e or generic number \d+(\.\d+)?
             //^\$[a-z1-9]+
-            good = Regex.Replace(good, @"(?<number1>(\$[a-z1-9_-]+|\)|(\@[a-z1-9_-]+\[\d\])|(\#[a-z1-9_-]+\[\d\;\d\])|(\d+(\.\d+)?)))\s+MINUS", "${number1} -");
+            good = Regex.Replace(good, @"(?<number1>(\d+([\.\,]\d+)?))\s+MINUS", "${number1} -");
             // Step 3. Use the tilde ~ as the unary minus operator
             good = Regex.Replace(good, "MINUS", "~");
 
@@ -129,6 +129,11 @@ namespace ECalc.Classes
                     case "or":
                     case "xor":
                     case "eq":
+                    case "ror":
+                    case "rol":
+                    case "shr":
+                    case "shl":
+                    case "not":
                         temp = new Token(TokenType.BitOperator, c);
                         if (Stack.Count > 0)
                         {
@@ -345,7 +350,17 @@ namespace ECalc.Classes
                         else throw new ArgumentException("Evaluation error at: " + token.Content);
                         break;
                     case TokenType.BitOperator:
-                        if (result.Count >= 2)
+                        if (token.Content == "not")
+                        {
+                            if (result.Count >= 1)
+                            {
+                                object op1 = result.Pop();
+                                object r = HandleBinOperators(op1, 0.0d, token.Content);
+                                result.Push(r);
+                            }
+                            else throw new ArgumentException("Evaluation error at: " + token.Content);
+                        }
+                        else if (result.Count >= 2)
                         {
                             object op2 = result.Pop();
                             object op1 = result.Pop();

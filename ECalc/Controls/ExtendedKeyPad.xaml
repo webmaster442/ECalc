@@ -14,10 +14,12 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="0.32*"/>
+            <RowDefinition Height="0.32*"/>
+            <RowDefinition Height="0.16*"/>
+            <RowDefinition Height="0.16*"/>
+            <RowDefinition Height="0.16*"/>
+            <RowDefinition Height="0.16*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -62,41 +64,49 @@
                 Content="I" 
                 Click="Button_Click"/>
         <Button Grid.Row="2"
+                Grid.RowSpan="2"
                 Grid.Column="0"
                 Content="L" 
                 Click="Button_Click"/>
         <Button Grid.Row="2"
+                Grid.RowSpan="2"
                 Grid.Column="1"
                 Content="M" 
                 Click="Button_Click"/>
         <Button Grid.Row="2"
+                Grid.RowSpan="2"
                 Grid.Column="2"
                 Content="V" 
                 Click="Button_Click"/>
         <Button Grid.Row="2"
                 Grid.Column="3"
-                Content="X" 
+                Content="X"
+                Grid.RowSpan="2"
                 Click="Button_Click"/>
-        <Button Grid.Row="3"
+        <Button Grid.Row="4"
+                Grid.RowSpan="2"
                 Grid.Column="0"
                 Content="Roman" 
                 Click="Button_Click"/>
-        <Button Grid.Row="3"
+        <Button Grid.Row="4"
+                Grid.RowSpan="2"
                 Grid.Column="1"
                 Content="BIN" 
                 Click="Button_Click"/>
-        <Button Grid.Row="3"
+        <Button Grid.Row="4"
+                Grid.RowSpan="2"
                 Grid.Column="2"
                 Content="OCT" 
                 Click="Button_Click"/>
-        <Button Grid.Row="3"
+        <Button Grid.Row="4"
+                Grid.RowSpan="2"
                 Grid.Column="3"
                 Content="HEX" 
                 Click="Button_Click"/>
         
         <Button x:Name="BtnExecute" Grid.Row="2"
                 Grid.Column="5"
-                Grid.RowSpan="2"
+                Grid.RowSpan="4"
                 Content="=" 
                 Click="BtnExecute_Click"/>
         
@@ -122,8 +132,22 @@
 
         <Button Grid.Row="2"
                 Grid.Column="4"
-                Content="eq" 
+                Content="shl"
                 Click="Button_Click"/>
 
+        <Button Grid.Row="3"
+                Grid.Column="4"
+                Content="shr"
+                Click="Button_Click"/>
+
+        <Button Grid.Row="4"
+                Grid.Column="4"
+                Content="rol"
+                Click="Button_Click"/>
+
+        <Button Grid.Row="5"
+                Grid.Column="4"
+                Content="ror"
+                Click="Button_Click"/>
     </Grid>
 </UserControl>
