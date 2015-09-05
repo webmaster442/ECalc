@@ -85,6 +85,7 @@
     <Compile Include="Classes\ConstantDB.cs" />
     <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
+    <Compile Include="Classes\Engine-Static.cs" />
     <Compile Include="Controls\Special\BitDisplay.xaml.cs">
       <DependentUpon>BitDisplay.xaml</DependentUpon>
     </Compile>

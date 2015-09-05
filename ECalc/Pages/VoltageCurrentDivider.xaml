@@ -31,7 +31,7 @@
         <TabItem Header="Current Divider" FontSize="14">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -39,7 +39,7 @@
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Row="0">
-                    <cont:PrefixInput x:Name="Iin" LabelText="Input current (I)" UnitText="A" Margin="5,0,0,0" ValueChanged="PrefixInput_ValueChanged2"/>
+                    <cont:PrefixInput x:Name="Iin" Width="200" LabelText="Input current (I)" UnitText="A" Margin="5,0,0,0" ValueChanged="PrefixInput_ValueChanged2"/>
                     <Button x:Name="BtnCurrentAdd" Content="Add Resistor" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="90" Click="BtnCurrentAdd_Click"/>
                     <Button x:Name="BtnCurrentClear" Content="Clear" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Height="35" Width="70" Click="BtnCurrentClear_Click"/>
                 </StackPanel>

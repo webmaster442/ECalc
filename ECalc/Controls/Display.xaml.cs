@@ -27,7 +27,6 @@ namespace ECalc.Controls
 
         public static readonly DependencyProperty ResultTextProperty = DependencyProperty.Register("ResultText", typeof(string), typeof(Display), new PropertyMetadata("0"));
 
-
         private void Reverse(StringBuilder text)
         {
             if (text.Length > 1)
@@ -222,6 +221,11 @@ namespace ECalc.Controls
             BitEngineModes mode = BitEngineModes.Signed64bit;
             bool result = Enum.TryParse<BitEngineModes>(selection, out mode);
             if (result) Engine.BitEngineMode = mode;
+        }
+
+        private void CbPrefixDisplay_Checked(object sender, RoutedEventArgs e)
+        {
+            Engine.PreferPrefixes = (bool)CbPrefixDisplay.IsChecked;
         }
     }
 }

@@ -77,5 +77,25 @@ namespace ECalc.Pages
             Output.Text = buffer.ToString();
 
         }
+
+        private void Template_Click(object sender, RoutedEventArgs e)
+        {
+            var content = ((Button)sender).Content.ToString();
+            switch (content)
+            {
+                case "A":
+                    Network.IP = new IPAddress(new byte[] { 10, 0, 0, 0 });
+                    Mask.IP = new IPAddress(new byte[] { 255, 0, 0, 0 });
+                    break;
+                case "B":
+                    Network.IP = new IPAddress(new byte[] { 128, 1, 0, 0 });
+                    Mask.IP = new IPAddress(new byte[] { 255, 255, 0, 0 });
+                    break;
+                case "C":
+                    Network.IP = new IPAddress(new byte[] { 192, 168, 1, 0 });
+                    Mask.IP = new IPAddress(new byte[] { 255, 255, 255, 0 });
+                    break;
+            }
+        }
     }
 }

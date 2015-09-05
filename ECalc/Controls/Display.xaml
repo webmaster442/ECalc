@@ -8,12 +8,12 @@
              xmlns:classes="clr-namespace:ECalc.Classes"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             d:DesignHeight="140" d:DesignWidth="600">
+             d:DesignHeight="140" d:DesignWidth="960">
     <UserControl.Resources>
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Margin" Value="3,0"/>
+            <Setter Property="Margin" Value="5,0"/>
         </Style>
         <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type controls:ImageButton}}">
             <Setter Property="Margin" Value="2,0"/>
@@ -43,6 +43,11 @@
             <CheckBox x:Name="CbThousandGrouping"
                       Content="Group by thousands"
                       IsChecked="False"/>
+            <CheckBox x:Name="CbPrefixDisplay"
+                      Content="Display with prefixes"
+                      Margin="10,0" 
+                      Checked="CbPrefixDisplay_Checked"
+                      Unchecked="CbPrefixDisplay_Checked"/>
             <TextBlock Text="Bit engine Mode:"
                        VerticalAlignment="Center"
                        Margin="10,0"/>
