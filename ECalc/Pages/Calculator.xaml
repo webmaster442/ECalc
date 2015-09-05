@@ -20,7 +20,8 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="2"
                           x:Name="Display"
-                          ModeChanged="Display_ModeChanged"/>
+                          ModeChanged="Display_ModeChanged"
+                          ExecuteRequested="KeyPad_ExecuteClicked"/>
         <TabControl Grid.Row="1"
                     Grid.Column="1"
                     x:Name="InputSelector">

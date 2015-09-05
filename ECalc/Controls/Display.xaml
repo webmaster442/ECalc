@@ -8,7 +8,8 @@
              xmlns:classes="clr-namespace:ECalc.Classes"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             d:DesignHeight="140" d:DesignWidth="960">
+             d:DesignHeight="140" d:DesignWidth="960"
+             Loaded="userControl_Loaded">
     <UserControl.Resources>
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -58,10 +59,12 @@
                       SelectedIndex="3"/>
         </StackPanel>
         <TextBox Grid.Row="1"
-                 Text="{Binding EquationText, ElementName=userControl}"
+                 Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                  TextAlignment="Right"
                  FontFamily="Courier New"
                  FontSize="15"
+                 x:Name="TbEditor"
+                 PreviewKeyDown="TbEditor_PreviewKeyDown"
                  Style="{StaticResource BorderlessTextBox}"/>
         <TextBlock Grid.Row="2"
                    Text="{Binding ResultText, ElementName=userControl}"

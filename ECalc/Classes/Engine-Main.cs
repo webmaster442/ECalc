@@ -83,6 +83,8 @@ namespace ECalc.Classes
         {
             var good = expression.Trim();
 
+            good = Regex.Replace(good, operators, " $0 ");
+
             good = Regex.Replace(good, @"(?<number>^[^$]([\da-fA-F])+(\,\d+)?[boh]?$)", " ${number} ");
 
             good = Regex.Replace(good, "-", "MINUS");

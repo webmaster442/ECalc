@@ -16,6 +16,7 @@ namespace ECalc.Pages
         public Calculator()
         {
             InitializeComponent();
+            Display.Focus();
         }
 
         private async void KeyPad_ExecuteClicked(object sender, RoutedEventArgs e)

@@ -23,6 +23,16 @@ namespace ECalc.Controls
             _historyIndex = 0;
         }
 
+        /// <summary>
+        /// Occures whern enter is pressed in the editor
+        /// </summary>
+        public event RoutedEventHandler ExecuteRequested;
+
+        /// <summary>
+        /// Calculator mode changed event
+        /// </summary>
+        public event StringEventHandler ModeChanged;
+
         public static readonly DependencyProperty EquationTextProperty = DependencyProperty.Register("EquationText", typeof(string), typeof(Display), new PropertyMetadata(""));
 
         public static readonly DependencyProperty ResultTextProperty = DependencyProperty.Register("ResultText", typeof(string), typeof(Display), new PropertyMetadata("0"));
@@ -92,11 +102,6 @@ namespace ECalc.Controls
                 else SetValue(ResultTextProperty, value);
             }
         }
-
-        /// <summary>
-        /// Calculator mode changed event
-        /// </summary>
-        public event StringEventHandler ModeChanged;
 
         /// <summary>
         /// Add current Equation text to the history
@@ -226,6 +231,20 @@ namespace ECalc.Controls
         private void CbPrefixDisplay_Checked(object sender, RoutedEventArgs e)
         {
             Engine.PreferPrefixes = (bool)CbPrefixDisplay.IsChecked;
+        }
+
+        private void userControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            TbEditor.Focus();
+        }
+
+        private void TbEditor_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                if (ExecuteRequested != null) ExecuteRequested(this, new RoutedEventArgs());
+                e.Handled = true;
+            }
         }
     }
 }
