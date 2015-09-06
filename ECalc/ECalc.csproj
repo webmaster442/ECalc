@@ -94,6 +94,7 @@
     </Compile>
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
+    <Compile Include="Maths\Probability.cs" />
     <Compile Include="Pages\BinaryCalc.xaml.cs">
       <DependentUpon>BinaryCalc.xaml</DependentUpon>
     </Compile>

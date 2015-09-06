@@ -1,3 +1,1 @@
-- NOT implementáció
-- Bit forgatások implementáció
-- Konstans kategória választó a keypad-ba
+- Vágólap kezelés a display modulba
