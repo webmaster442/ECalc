@@ -1,1 +1,2 @@
-- Vágólap kezelés a display modulba
+- Vágólap kezelés a display modulba!!!!
+- ANS gomb kell!! akár a display-be

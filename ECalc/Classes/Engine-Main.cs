@@ -17,6 +17,7 @@ namespace ECalc.Classes
     {
 
         const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)|(shr)|(shl)|(ror)|(rol)";
+        const string exponentfix = @"[eE]\s+([+-~])\s+";
 
         private List<IFunction> _functions;
         private PrefixDictionary _prefixes;
@@ -70,8 +71,8 @@ namespace ECalc.Classes
 
         private bool IsFunction(string s)
         {
-            var q = from f in _functions where string.Compare(f.Name, s, StringComparison.CurrentCultureIgnoreCase) == 0 select f;
-            return q.Count() > 0;
+            var q = (from f in _functions where string.Compare(f.Name, s, StringComparison.CurrentCultureIgnoreCase) == 0 select f).FirstOrDefault();
+            return q != null;
         }
 
         /// <summary>
@@ -85,16 +86,14 @@ namespace ECalc.Classes
 
             good = Regex.Replace(good, operators, " $0 ");
 
-            good = Regex.Replace(good, @"(?<number>^[^$]([\da-fA-F])+([\,\.]\d+)?[boh]?$)", " ${number} ");
+            good = Regex.Replace(good, exponentfix, "e$1").Trim();
 
-            good = Regex.Replace(good, "-", "MINUS");
-            // Step 2. Looking for pi or e or generic number \d+(\.\d+)?
-            //^\$[a-z1-9]+
+            good = Regex.Replace(good, "- ", "MINUS");
             good = Regex.Replace(good, @"(?<number1>(\d+([\.\,]\d+)?))\s+MINUS", "${number1} -");
             // Step 3. Use the tilde ~ as the unary minus operator
             good = Regex.Replace(good, "MINUS", "~");
 
-            var items = Regex.Split(good, operators);
+            var items = good.Split(' ');
 
             Queue<Token> Output = new Queue<Token>();
             Stack<Token> Stack = new Stack<Token>();
