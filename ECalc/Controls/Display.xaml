@@ -75,6 +75,21 @@
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
+            
+            <controls:ImageButton Image="../Images/50px/copy.png"
+                                  ImageHeight="25"
+                                  ImageWidth="25"
+                                  x:Name="BtnClipboardCopy"
+                                  ToolTip="Copy result to Clipboard"
+                                  Click="BtnClipboardCopy_Click"/>
+
+            <controls:ImageButton Image="../Images/50px/Paste.png"
+                                  ImageHeight="25"
+                                  ImageWidth="25"
+                                  x:Name="BtnClipboardPaste"
+                                  ToolTip="Paste from Clipboard"
+                                  Click="BtnClipboardPaste_Click"/>
+            
             <controls:ImageButton Image="../Images/50px/fractions.png"
                                   ImageWidth="25"
                                   ImageHeight="25"
@@ -104,6 +119,13 @@
                                   ToolTip="Number System"
                                   Click="BtnNumSys_Click"/>
 
+            <controls:ImageButton Image="../Images/50px/ans.png"
+                                  ImageHeight="25"
+                                  ImageWidth="25"
+                                  x:Name="BtnAnss"
+                                  ToolTip="Copy result to new calculaton"
+                                  Click="BtnAnss_Click"/>
+            
             <controls:ImageButton Image="../Images/50px/Up.png"
                                   ImageWidth="25"
                                   ImageHeight="25"

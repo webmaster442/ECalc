@@ -246,5 +246,21 @@ namespace ECalc.Controls
                 e.Handled = true;
             }
         }
+
+        private void BtnClipboardCopy_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(ResultText);
+        }
+
+        private void BtnClipboardPaste_Click(object sender, RoutedEventArgs e)
+        {
+            if (Clipboard.ContainsText()) EquationText += Clipboard.GetText();
+            else MainWindow.ErrorDialog("Clipboard doesn't contain valid text to be inserted");
+        }
+
+        private void BtnAnss_Click(object sender, RoutedEventArgs e)
+        {
+            EquationText += ResultText;
+        }
     }
 }

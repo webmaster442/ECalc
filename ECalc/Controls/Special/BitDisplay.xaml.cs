@@ -23,10 +23,15 @@ namespace ECalc.Controls.Special
     /// </summary>
     public partial class BitDisplay : UserControl
     {
-
         public BitDisplay()
         {
             InitializeComponent();
+        }
+
+        public bool IsUnsigned
+        {
+            get;
+            set;
         }
     }
 

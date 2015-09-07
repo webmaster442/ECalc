@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Controls.Special"
              mc:Ignorable="d" 
-             Height="120" Width="960">
+             Height="180" Width="960">
     <UserControl.Resources>
         
         <local:CheckedToColorConverter x:Key="CheckedColor"/>
@@ -39,6 +39,8 @@
             <RowDefinition/>
             <RowDefinition Height="5"/>
             <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <ToggleButton Grid.Column="0"
                       x:Name="Btn0">
@@ -322,5 +324,23 @@
                    Fill="Black"
                    Width="2"
                    Margin="0,10"/>
+        <TextBlock Text="Oct:"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"/>
+        <TextBlock Text="Hex:"
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   VerticalAlignment="Center"/>
+        <TextBox Grid.Column="1"
+                 Grid.Row="3"
+                 VerticalAlignment="Center"
+                 Grid.ColumnSpan="4"
+                 TextAlignment="Right"/>
+        <TextBox Grid.Column="1"
+                 Grid.Row="4"
+                 VerticalAlignment="Center"
+                 Grid.ColumnSpan="4"
+                 TextAlignment="Right"/>
     </Grid>
 </UserControl>
