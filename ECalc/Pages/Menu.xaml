@@ -127,10 +127,10 @@
                               Click="Tile_Click">
                         <Image Source="../Images/100px/resistor.png"/>
                     </mah:Tile>
-                    <mah:Tile Title="Binary Calculations"
-                              Background="{StaticResource W8Violet}"
+                    <mah:Tile Title="OpAmp Calculator"
+                              Background="{StaticResource W8Crimson}"
                               Click="Tile_Click">
-                        <Image Source="../Images/100px/32bit.png"/>
+                        <Image Source="../Images/100px/opamp.png"/>
                     </mah:Tile>
                 </WrapPanel>
             </GroupBox>

@@ -60,9 +60,6 @@ namespace ECalc.Pages
                 case "Resistor value solver":
                     control = new ResistorSolver();
                     break;
-                case "Binary Calculations":
-                    control = new BinaryCalc();
-                    break;
                 default:
                     return;
             }

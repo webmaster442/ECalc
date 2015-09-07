@@ -54,7 +54,7 @@ namespace ECalc.Pages
             double I = Uin.Value / re;
             TbResults.Clear();
             StringBuilder sb = new StringBuilder();
-            foreach (PrefixInput r in SpItems.Children) sb.AppendFormat("{0} voltage: {1} V\r\n", r.LabelText, Math.Round(r.Value * I, 4));
+            foreach (PrefixInput r in SpItems.Children) sb.AppendFormat("{0} voltage: {1} V\r\n", r.LabelText, r.Value * I);
             TbResults.Text = sb.ToString();
         }
 
@@ -90,7 +90,7 @@ namespace ECalc.Pages
             double U = re * Iin.Value;
             TbCurrentResults.Clear();
             StringBuilder sb = new StringBuilder();
-            foreach (PrefixInput r in SpCurrentItems.Children) sb.AppendFormat("{0} current: {1} A\r\n", r.LabelText, Math.Round(U / r.Value, 4));
+            foreach (PrefixInput r in SpCurrentItems.Children) sb.AppendFormat("{0} current: {1} A\r\n", r.LabelText, U / r.Value);
             TbCurrentResults.Text = sb.ToString();
         }
 

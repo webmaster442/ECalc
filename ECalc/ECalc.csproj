@@ -86,23 +86,20 @@
     <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
     <Compile Include="Classes\Engine-Static.cs" />
-    <Compile Include="Controls\Special\BitDisplay.xaml.cs">
-      <DependentUpon>BitDisplay.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Maths\Probability.cs" />
-    <Compile Include="Pages\BinaryCalc.xaml.cs">
-      <DependentUpon>BinaryCalc.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LEDCalculator.xaml.cs">
       <DependentUpon>LEDCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OpAmp.xaml.cs">
+      <DependentUpon>OpAmp.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ResistorSolver.xaml.cs">
       <DependentUpon>ResistorSolver.xaml</DependentUpon>
@@ -136,10 +133,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NumberSystemDisplayDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\Special\BitDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -256,10 +249,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\BinaryCalc.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\Calculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -285,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OpAmp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -497,12 +490,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\100px\32bit.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\50px\ans.png" />
     <Resource Include="Images\50px\copy.png" />
     <Resource Include="Images\50px\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\opamp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\opamp-inverting.png" />
+    <Resource Include="Images\large\opamp-noninvert.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
