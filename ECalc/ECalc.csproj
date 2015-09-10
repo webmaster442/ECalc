@@ -101,6 +101,9 @@
     <Compile Include="Pages\OpAmp.xaml.cs">
       <DependentUpon>OpAmp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PeriodicTable.xaml.cs">
+      <DependentUpon>PeriodicTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ResistorSolver.xaml.cs">
       <DependentUpon>ResistorSolver.xaml</DependentUpon>
     </Compile>
@@ -278,6 +281,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\OpAmp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PeriodicTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -500,6 +507,9 @@
   <ItemGroup>
     <Resource Include="Images\large\opamp-inverting.png" />
     <Resource Include="Images\large\opamp-noninvert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\chemistry.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

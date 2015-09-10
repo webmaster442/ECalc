@@ -60,6 +60,12 @@ namespace ECalc.Pages
                 case "Resistor value solver":
                     control = new ResistorSolver();
                     break;
+                case "OpAmp Calculator":
+                    control = new OpAmp();
+                    break;
+                case "Periodic Talbe":
+                    control = new PeriodicTable();
+                    break;
                 default:
                     return;
             }

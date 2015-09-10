@@ -28,13 +28,16 @@
                     <StackPanel Grid.Column="0">
                         <scontrols:PrefixInput UnitText="V"
                                                LabelText="Vin"
+                                               Value="1"
                                                x:Name="NonInvertVin"
                                                ValueChanged="ValueChanged"/>
                         <scontrols:PrefixInput UnitText="Ω"
                                                LabelText="R1"
+                                               Value="100"
                                                x:Name="NonInvertR1"
                                                ValueChanged="ValueChanged"/>
                         <scontrols:PrefixInput UnitText="Ω"
+                                               Value="1000"
                                                LabelText="R2"
                                                x:Name="NonInvertR2"
                                                ValueChanged="ValueChanged"/>
@@ -53,13 +56,16 @@
                     <StackPanel Grid.Column="0">
                         <scontrols:PrefixInput UnitText="V"
                                                LabelText="Vin"
+                                               Value="1"
                                                x:Name="InvertVin"
                                                ValueChanged="ValueChanged"/>
                         <scontrols:PrefixInput UnitText="Ω"
                                                LabelText="Rf"
+                                               Value="1000"
                                                x:Name="InvertRf"
                                                ValueChanged="ValueChanged"/>
                         <scontrols:PrefixInput UnitText="Ω"
+                                               Value="100"
                                                LabelText="Rin"
                                                x:Name="InvertRin"
                                                ValueChanged="ValueChanged"/>
@@ -72,7 +78,8 @@
         </TabControl>
         <GroupBox Header="Results"
                   Grid.Row="1">
-            <TextBox x:Name="TbOutput"/>
+            <TextBox x:Name="TbOutput"
+                     FontSize="19"/>
         </GroupBox>
     </Grid>
 </UserControl>

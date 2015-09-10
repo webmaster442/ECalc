@@ -41,6 +41,11 @@ namespace ECalc.Pages
                     vout = a * NonInvertVin.Value;
                     TbOutput.Text = string.Format("Vout = {0} V, Gain = {1}", vout, a);
                     break;
+                case 1:
+                    a = -1 * (InvertRf.Value / InvertRin.Value);
+                    vout = a * InvertVin.Value;
+                    TbOutput.Text = string.Format("Vout = {0} V, Gain = {1}", vout, a);
+                    break;
             }
         }
 

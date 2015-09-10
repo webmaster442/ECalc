@@ -1,0 +1,441 @@
+﻿<UserControl x:Class="ECalc.Pages.PeriodicTable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:local="clr-namespace:ECalc.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="960">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Width" Value="49"/>
+            <Setter Property="controls:ButtonHelper.PreserveTextCase" Value="True"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="H"
+                    Grid.Row="0"
+                    Grid.Column="0"/>
+            <Button Content="He"
+                    Grid.Row="0"
+                    Grid.Column="17"/>
+
+            <Button Content="Li"
+                    Grid.Row="1"
+                    Grid.Column="0"/>
+            <Button Content="Be"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+            <Button Content="B"
+                    Grid.Row="1"
+                    Grid.Column="12"/>
+            <Button Content="C"
+                    Grid.Row="1"
+                    Grid.Column="13"/>
+            <Button Content="N"
+                    Grid.Row="1"
+                    Grid.Column="14"/>
+            <Button Content="O"
+                    Grid.Row="1"
+                    Grid.Column="15"/>
+            <Button Content="F"
+                    Grid.Row="1"
+                    Grid.Column="16"/>
+            <Button Content="Ne"
+                    Grid.Row="1"
+                    Grid.Column="17"/>
+
+            <Button Content="Na"
+                    Grid.Row="2"
+                    Grid.Column="0"/>
+            <Button Content="Mg"
+                    Grid.Row="2"
+                    Grid.Column="1"/>
+            <Button Content="Al"
+                    Grid.Row="2"
+                    Grid.Column="12"/>
+            <Button Content="Si"
+                    Grid.Row="2"
+                    Grid.Column="13"/>
+            <Button Content="P"
+                    Grid.Row="2"
+                    Grid.Column="14"/>
+            <Button Content="S"
+                    Grid.Row="2"
+                    Grid.Column="15"/>
+            <Button Content="Cl"
+                    Grid.Row="2"
+                    Grid.Column="16"/>
+            <Button Content="Ar"
+                    Grid.Row="2"
+                    Grid.Column="17"/>
+
+            <Button Content="K"
+                    Grid.Row="3"
+                    Grid.Column="0"/>
+            <Button Content="Ca"
+                    Grid.Row="3"
+                    Grid.Column="1"/>
+            <Button Content="Sc"
+                    Grid.Row="3"
+                    Grid.Column="2"/>
+            <Button Content="Ti"
+                    Grid.Row="3"
+                    Grid.Column="3"/>
+            <Button Content="V"
+                    Grid.Row="3"
+                    Grid.Column="4"/>
+            <Button Content="Cr"
+                    Grid.Row="3"
+                    Grid.Column="5"/>
+            <Button Content="Mn"
+                    Grid.Row="3"
+                    Grid.Column="6"/>
+            <Button Content="Fe"
+                    Grid.Row="3"
+                    Grid.Column="7"/>
+            <Button Content="Co"
+                    Grid.Row="3"
+                    Grid.Column="8"/>
+            <Button Content="Ni"
+                    Grid.Row="3"
+                    Grid.Column="9"/>
+            <Button Content="Cu"
+                    Grid.Row="3"
+                    Grid.Column="10"/>
+            <Button Content="Zn"
+                    Grid.Row="3"
+                    Grid.Column="11"/>
+            <Button Content="Ga"
+                    Grid.Row="3"
+                    Grid.Column="12"/>
+            <Button Content="Ge"
+                    Grid.Row="3"
+                    Grid.Column="13"/>
+            <Button Content="As"
+                    Grid.Row="3"
+                    Grid.Column="14"/>
+            <Button Content="Se"
+                    Grid.Row="3"
+                    Grid.Column="15"/>
+            <Button Content="Br"
+                    Grid.Row="3"
+                    Grid.Column="16"/>
+            <Button Content="Kr"
+                    Grid.Row="3"
+                    Grid.Column="17"/>
+
+            <Button Content="Rb"
+                    Grid.Row="4"
+                    Grid.Column="0"/>
+            <Button Content="Sr"
+                    Grid.Row="4"
+                    Grid.Column="1"/>
+            <Button Content="Y"
+                    Grid.Row="4"
+                    Grid.Column="2"/>
+            <Button Content="Zr"
+                    Grid.Row="4"
+                    Grid.Column="3"/>
+            <Button Content="Nb"
+                    Grid.Row="4"
+                    Grid.Column="4"/>
+            <Button Content="Mo"
+                    Grid.Row="4"
+                    Grid.Column="5"/>
+            <Button Content="Tc"
+                    Grid.Row="4"
+                    Grid.Column="6"/>
+            <Button Content="Ru"
+                    Grid.Row="4"
+                    Grid.Column="7"/>
+            <Button Content="Rh"
+                    Grid.Row="4"
+                    Grid.Column="8"/>
+            <Button Content="Pd"
+                    Grid.Row="4"
+                    Grid.Column="9"/>
+            <Button Content="Ag"
+                    Grid.Row="4"
+                    Grid.Column="10"/>
+            <Button Content="Cd"
+                    Grid.Row="4"
+                    Grid.Column="11"/>
+            <Button Content="In"
+                    Grid.Row="4"
+                    Grid.Column="12"/>
+            <Button Content="Sn"
+                    Grid.Row="4"
+                    Grid.Column="13"/>
+            <Button Content="Sb"
+                    Grid.Row="4"
+                    Grid.Column="14"/>
+            <Button Content="Te"
+                    Grid.Row="4"
+                    Grid.Column="15"/>
+            <Button Content="I"
+                    Grid.Row="4"
+                    Grid.Column="16"/>
+            <Button Content="Xe"
+                    Grid.Row="4"
+                    Grid.Column="17"/>
+
+            <Button Content="Cs"
+                    Grid.Row="5"
+                    Grid.Column="0"/>
+            <Button Content="Ba"
+                    Grid.Row="5"
+                    Grid.Column="1"/>
+            <Button Content="Hf"
+                    Grid.Row="5"
+                    Grid.Column="3"/>
+            <Button Content="Ta"
+                    Grid.Row="5"
+                    Grid.Column="4"/>
+            <Button Content="W"
+                    Grid.Row="5"
+                    Grid.Column="5"/>
+            <Button Content="Re"
+                    Grid.Row="5"
+                    Grid.Column="6"/>
+            <Button Content="Os"
+                    Grid.Row="5"
+                    Grid.Column="7"/>
+            <Button Content="Ir"
+                    Grid.Row="5"
+                    Grid.Column="8"/>
+            <Button Content="Pt"
+                    Grid.Row="5"
+                    Grid.Column="9"/>
+            <Button Content="Au"
+                    Grid.Row="5"
+                    Grid.Column="10"/>
+            <Button Content="Hg"
+                    Grid.Row="5"
+                    Grid.Column="11"/>
+            <Button Content="Ti"
+                    Grid.Row="5"
+                    Grid.Column="12"/>
+            <Button Content="Pb"
+                    Grid.Row="5"
+                    Grid.Column="13"/>
+            <Button Content="Bi"
+                    Grid.Row="5"
+                    Grid.Column="14"/>
+            <Button Content="Po"
+                    Grid.Row="5"
+                    Grid.Column="15"/>
+            <Button Content="At"
+                    Grid.Row="5"
+                    Grid.Column="16"/>
+            <Button Content="Rn"
+                    Grid.Row="5"
+                    Grid.Column="17"/>
+
+            <Button Content="Fr"
+                    Grid.Row="6"
+                    Grid.Column="0"/>
+            <Button Content="Ra"
+                    Grid.Row="6"
+                    Grid.Column="1"/>
+            <Button Content="Rf"
+                    Grid.Row="6"
+                    Grid.Column="3"/>
+            <Button Content="Db"
+                    Grid.Row="6"
+                    Grid.Column="4"/>
+            <Button Content="Sg"
+                    Grid.Row="6"
+                    Grid.Column="5"/>
+            <Button Content="Bh"
+                    Grid.Row="6"
+                    Grid.Column="6"/>
+            <Button Content="Hs"
+                    Grid.Row="6"
+                    Grid.Column="7"/>
+            <Button Content="Mt"
+                    Grid.Row="6"
+                    Grid.Column="8"/>
+            <Button Content="Ds"
+                    Grid.Row="6"
+                    Grid.Column="9"/>
+            <Button Content="Rg"
+                    Grid.Row="6"
+                    Grid.Column="10"/>
+            <Button Content="Cn"
+                    Grid.Row="6"
+                    Grid.Column="11"/>
+            <Button Content="Uut"
+                    Grid.Row="6"
+                    Grid.Column="12"/>
+            <Button Content="Fl"
+                    Grid.Row="6"
+                    Grid.Column="13"/>
+            <Button Content="UUp"
+                    Grid.Row="6"
+                    Grid.Column="14"/>
+            <Button Content="Lv"
+                    Grid.Row="6"
+                    Grid.Column="15"/>
+            <Button Content="Uus"
+                    Grid.Row="6"
+                    Grid.Column="16"/>
+            <Button Content="Uuo"
+                    Grid.Row="6"
+                    Grid.Column="17"/>
+        </Grid>
+        <Grid Grid.Row="1"
+              HorizontalAlignment="Left" Margin="106,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Content="La"
+                    Grid.Row="0"
+                    Grid.Column="0"/>
+            <Button Content="Ce"
+                    Grid.Row="0"
+                    Grid.Column="1"/>
+            <Button Content="Pr"
+                    Grid.Row="0"
+                    Grid.Column="2"/>
+            <Button Content="Nd"
+                    Grid.Row="0"
+                    Grid.Column="3"/>
+            <Button Content="Pm"
+                    Grid.Row="0"
+                    Grid.Column="4"/>
+            <Button Content="Sm"
+                    Grid.Row="0"
+                    Grid.Column="5"/>
+            <Button Content="Eu"
+                    Grid.Row="0"
+                    Grid.Column="6"/>
+            <Button Content="Gd"
+                    Grid.Row="0"
+                    Grid.Column="7"/>
+            <Button Content="Tb"
+                    Grid.Row="0"
+                    Grid.Column="8"/>
+            <Button Content="Dy"
+                    Grid.Row="0"
+                    Grid.Column="9"/>
+            <Button Content="Ho"
+                    Grid.Row="0"
+                    Grid.Column="10"/>
+            <Button Content="Er"
+                    Grid.Row="0"
+                    Grid.Column="11"/>
+            <Button Content="Tm"
+                    Grid.Row="0"
+                    Grid.Column="12"/>
+            <Button Content="Yb"
+                    Grid.Row="0"
+                    Grid.Column="13"/>
+            <Button Content="Lu"
+                    Grid.Row="0"
+                    Grid.Column="14"/>
+
+            <Button Content="Ac"
+                    Grid.Row="1"
+                    Grid.Column="0"/>
+            <Button Content="Th"
+                    Grid.Row="1"
+                    Grid.Column="1"/>
+            <Button Content="Pa"
+                    Grid.Row="1"
+                    Grid.Column="2"/>
+            <Button Content="U"
+                    Grid.Row="1"
+                    Grid.Column="3"/>
+            <Button Content="Np"
+                    Grid.Row="1"
+                    Grid.Column="4"/>
+            <Button Content="Pu"
+                    Grid.Row="1"
+                    Grid.Column="5"/>
+            <Button Content="Am"
+                    Grid.Row="1"
+                    Grid.Column="6"/>
+            <Button Content="Cm"
+                    Grid.Row="1"
+                    Grid.Column="7"/>
+            <Button Content="Bk"
+                    Grid.Row="1"
+                    Grid.Column="8"/>
+            <Button Content="Cf"
+                    Grid.Row="1"
+                    Grid.Column="9"/>
+            <Button Content="Es"
+                    Grid.Row="1"
+                    Grid.Column="10"/>
+            <Button Content="Fm"
+                    Grid.Row="1"
+                    Grid.Column="11"/>
+            <Button Content="Md"
+                    Grid.Row="1"
+                    Grid.Column="12"/>
+            <Button Content="No"
+                    Grid.Row="1"
+                    Grid.Column="13"/>
+            <Button Content="Lr"
+                    Grid.Row="1"
+                    Grid.Column="14"/>
+        </Grid>
+    </Grid>
+</UserControl>
