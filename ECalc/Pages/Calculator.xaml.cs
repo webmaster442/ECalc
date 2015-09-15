@@ -56,7 +56,6 @@ namespace ECalc.Pages
             _engine = new Engine();
             _engine.MemoryManager = Keypad;
             FncList.Functions = _engine.Functions;
-            FncList.Render();
         }
 
         private void Display_ModeChanged(object sender, StringEventArgs e)

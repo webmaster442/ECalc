@@ -63,9 +63,6 @@ namespace ECalc.Pages
                 case "OpAmp Calculator":
                     control = new OpAmp();
                     break;
-                case "Periodic Talbe":
-                    control = new PeriodicTable();
-                    break;
                 default:
                     return;
             }

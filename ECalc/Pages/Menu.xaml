@@ -132,11 +132,6 @@
                               Click="Tile_Click">
                         <Image Source="../Images/100px/opamp.png"/>
                     </mah:Tile>
-                    <mah:Tile Title="Periodic Talbe"
-                              Background="{StaticResource W8GAmber}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/chemistry.png"/>
-                    </mah:Tile>
                 </WrapPanel>
             </GroupBox>
             <GroupBox Header="Help"

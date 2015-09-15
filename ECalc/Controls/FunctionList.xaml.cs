@@ -16,6 +16,7 @@ namespace ECalc.Controls
     internal partial class FunctionList : UserControl
     {
         public static Dictionary<string, uint> UsageStats;
+        private string[] _functions;
 
         private bool _loaded;
 
@@ -27,7 +28,28 @@ namespace ECalc.Controls
         /// <summary>
         /// Functions information
         /// </summary>
-        public string[] Functions { get; set; }
+        public string[] Functions
+        {
+            get { return _functions; }
+            set
+            {
+                _functions = value;
+                Render();
+                UpdateFunctionFilter();
+            }
+        }
+
+        private void UpdateFunctionFilter()
+        {
+            var chars = (from i in _functions orderby i ascending select i.Substring(0, 1).ToUpper()).Distinct().ToArray();
+            LbAlphabet.Items.Clear();
+            LbAlphabet.Items.Add("All");
+            foreach (var c in chars)
+            {
+                LbAlphabet.Items.Add(c);
+            }
+            LbAlphabet.SelectedIndex = 0;
+        }
 
         /// <summary>
         /// Function button click event
@@ -49,14 +71,16 @@ namespace ECalc.Controls
             _loaded = true;
         }
 
-        public void Render()
+        private void Render(string filter = null)
         {
             string[] query = null;
             if (UsageStats != null)
             {
                 if (UsageStats.Count > 0 && RbUsage.IsChecked == true) query = (from i in Functions from j in UsageStats where i == j.Key orderby j.Value descending select i).ToArray();
+                else if (!string.IsNullOrEmpty(filter)) query = (from i in Functions where i.ToUpper().StartsWith(filter) orderby i ascending select i).ToArray();
                 else query = (from i in Functions orderby i ascending select i).ToArray();
             }
+            else if (!string.IsNullOrEmpty(filter)) query = (from i in Functions where i.ToUpper().StartsWith(filter) orderby i ascending select i).ToArray();
             else query = (from i in Functions orderby i ascending select i).ToArray();
             Container.Children.Clear();
             foreach (var item in query)
@@ -87,6 +111,13 @@ namespace ECalc.Controls
         private void RbChecked(object sender, RoutedEventArgs e)
         {
             if (_loaded) Render();
+        }
+
+        private void LbAlphabet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = LbAlphabet.SelectedItem.ToString();
+            if (selected == "All") Render();
+            else Render(selected);
         }
     }
 }

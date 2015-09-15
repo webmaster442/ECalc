@@ -74,12 +74,14 @@
                              Grid.Row="1"
                              Margin="5"
                              Grid.Column="0"
+                             FontSize="22"
                              VerticalAlignment="Stretch"/>
                     <TextBox AcceptsReturn="True"
                              x:Name="TbListDontCare"
                              Grid.Row="1"
                              Margin="5"
                              Grid.Column="1"
+                             FontSize="22"
                              VerticalAlignment="Stretch"/>
                     <TextBlock Text="Number of Variables:"
                                Grid.Row="2"/>

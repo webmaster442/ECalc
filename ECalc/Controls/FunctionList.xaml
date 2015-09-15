@@ -16,6 +16,10 @@
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="Margin" Value="5,0"/>
         </Style>
+        <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -27,6 +31,10 @@
                          x:Name="RbAlphabet"
                          Checked="RbChecked"
                          IsChecked="true"/>
+            <ComboBox x:Name="LbAlphabet"
+                      IsEnabled="{Binding ElementName=RbAlphabet, Path=IsChecked}"
+                      SelectedIndex="0"
+                      SelectionChanged="LbAlphabet_SelectionChanged"/>
             <RadioButton Content="Based on Usage"
                          x:Name="RbUsage"
                          Checked="RbChecked"/>
