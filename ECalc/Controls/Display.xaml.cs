@@ -260,7 +260,7 @@ namespace ECalc.Controls
 
         private void BtnAnss_Click(object sender, RoutedEventArgs e)
         {
-            EquationText += ResultText;
+            EquationText += "$ans";
         }
     }
 }

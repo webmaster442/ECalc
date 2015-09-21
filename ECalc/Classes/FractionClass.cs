@@ -226,7 +226,7 @@ namespace ECalc.Classes
 							strTemp=dTemp.ToString();
 						}
 						int i=0;
-						while ( strTemp[i]!='.' )
+						while ( strTemp[i]!=Engine.DecimalSeperator[0])
 							i++;
 						int iDigitsAfterDecimal=strTemp.Length-i-1;
 						while ( iDigitsAfterDecimal>0  )

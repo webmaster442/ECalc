@@ -170,6 +170,7 @@ namespace ECalc.Controls
         {
             if (name.StartsWith("$"))
             {
+                if (name == "$ans") return Engine.Ans;
                 var query = from i in _memory where string.Compare(name, i.Name) == 0 select i;
                 var result = query.FirstOrDefault();
                 if (result == null) return null;
