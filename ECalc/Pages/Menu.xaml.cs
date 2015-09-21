@@ -63,6 +63,9 @@ namespace ECalc.Pages
                 case "OpAmp Calculator":
                     control = new OpAmp();
                     break;
+                case "Number System converter":
+                    control = new NumberSystems();
+                    break;
                 default:
                     return;
             }

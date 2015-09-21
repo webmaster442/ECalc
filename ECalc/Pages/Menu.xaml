@@ -132,6 +132,11 @@
                               Click="Tile_Click">
                         <Image Source="../Images/100px/opamp.png"/>
                     </mah:Tile>
+                    <mah:Tile Title="Number System converter"
+                              Background="{StaticResource W8GAmber}"
+                              Click="Tile_Click">
+                        <Image Source="../Images/100px/numsystems.png"/>
+                    </mah:Tile>
                 </WrapPanel>
             </GroupBox>
             <GroupBox Header="Help"

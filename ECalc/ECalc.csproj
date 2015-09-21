@@ -90,6 +90,7 @@
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Engineering\NumberSystemConv.cs" />
     <Compile Include="Engineering\PeriodicTableData.cs" />
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
@@ -99,6 +100,9 @@
     </Compile>
     <Compile Include="Pages\LEDCalculator.xaml.cs">
       <DependentUpon>LEDCalculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NumberSystems.xaml.cs">
+      <DependentUpon>NumberSystems.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\OpAmp.xaml.cs">
       <DependentUpon>OpAmp.xaml</DependentUpon>
@@ -276,6 +280,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NumberSystems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -505,6 +513,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\chemistry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\numsystems.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
