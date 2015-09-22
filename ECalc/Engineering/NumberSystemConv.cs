@@ -60,6 +60,62 @@ namespace ECalc.Engineering
             }
         }
 
+        private static char BCDToDecimal(string bcd)
+        {
+            switch (bcd)
+            {
+                case "0000":
+                    return '0';
+                case "0001":
+                    return '1';
+                case "0010":
+                    return '2';
+                case "0011":
+                    return '3';
+                case "0100":
+                    return '4';
+                case "0101":
+                    return '5';
+                case "0110":
+                    return '6';
+                case "0111":
+                    return '7';
+                case "1000":
+                    return '8';
+                case "1001":
+                    return '9';
+                default:
+                    return '-';
+            }
+        }
+
+        private static StringBuilder Reverse(StringBuilder sb)
+        {
+            StringBuilder ret = new StringBuilder(sb.Length);
+            for (int i=sb.Length; i>=0; i--)
+            {
+                ret.Append(sb[i]);
+            }
+            return ret;
+        }
+
+        private static string[] Slice(string input, int slicelen)
+        {
+            Stack<string> stack = new Stack<string>();
+            StringBuilder tmp = new StringBuilder();
+            for (int i=input.Length; i>=0; i--)
+            {
+                tmp.Append(input[i]);
+                if (tmp.Length > slicelen)
+                {
+                    tmp = Reverse(tmp);
+                    stack.Push(tmp.ToString());
+                    tmp.Clear();
+                }
+            }
+            return stack.ToArray();
+        }
+
         /// <summary>
         /// Convert a byte array to hexadecimal representation
         /// </summary>
@@ -70,7 +126,9 @@ namespace ECalc.Engineering
             StringBuilder ret = new StringBuilder();
             foreach (var b in array)
             {
-                ret.Append(Convert.ToString(b, 16));
+                string s = Convert.ToString(b, 16);
+                if (s.Length < 2) s = "0" + s;
+                ret.Append(s);
             }
             return ret.ToString();
         }
@@ -85,8 +143,9 @@ namespace ECalc.Engineering
             StringBuilder ret = new StringBuilder();
             foreach (var b in array)
             {
-                string tmp =Convert.ToString(b, 16);
-                for (int i=0; i<tmp.Length; i++)
+                string tmp = Convert.ToString(b, 16);
+                if (tmp.Length < 2) tmp = "0" + tmp;
+                for (int i = 0; i < tmp.Length; i++)
                 {
                     ret.Append(DecimalToBin(tmp[i]));
                 }
@@ -105,9 +164,20 @@ namespace ECalc.Engineering
             StringBuilder ret = new StringBuilder();
             for (int i=0; i<chars.Length; i++)
             {
-                ret.Append(DecimalToBCDBin(chars[i]));
+                ret.Append(DecimalToBin(chars[i]));
             }
             return ret.ToString();
+        }
+
+        public static long BCDBinToDecimal(string value)
+        {
+            var parts = Slice(value, 4);
+            StringBuilder text = new StringBuilder();
+            foreach (var part in parts)
+            {
+                text.Append(BCDToDecimal(part));
+            }
+            return Convert.ToInt64(text.ToString(), 2);
         }
     }
 }

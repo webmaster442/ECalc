@@ -32,6 +32,8 @@
                                  Checked="RadioButton_Checked"/>
                     <RadioButton Content="Binary"
                                  Checked="RadioButton_Checked"/>
+                    <RadioButton Content="BCD"
+                                 Checked="RadioButton_Checked"/>
                     <RadioButton Content="Octal"
                                  Checked="RadioButton_Checked"/>
                     <RadioButton Content="Hexa"
@@ -52,6 +54,8 @@
                                  Checked="RadioButton_Checked"/>
                     <RadioButton Content="Binary"
                                  Checked="RadioButton_Checked"/>
+                    <RadioButton Content="BCD"
+                                 Checked="RadioButton_Checked"/>
                     <RadioButton Content="Octal"
                                  Checked="RadioButton_Checked"/>
                     <RadioButton Content="Hexa"
@@ -64,8 +68,6 @@
         </TabItem>
         <TabItem Header="IEE754">
             <Grid VerticalAlignment="Center"
-                  HorizontalAlignment="Center"
-                  Width="700"
                   Height="400">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
