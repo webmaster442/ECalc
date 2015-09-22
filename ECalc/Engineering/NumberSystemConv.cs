@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ECalc.Engineering
 {
@@ -92,27 +90,46 @@ namespace ECalc.Engineering
         private static StringBuilder Reverse(StringBuilder sb)
         {
             StringBuilder ret = new StringBuilder(sb.Length);
-            for (int i=sb.Length; i>=0; i--)
+            for (int i=sb.Length-1; i>=0; i--)
             {
                 ret.Append(sb[i]);
             }
             return ret;
         }
 
+        /// <summary>
+        /// Slices a string array to the specified length from backwards
+        /// </summary>
+        /// <param name="input">string input</param>
+        /// <param name="slicelen">slice length</param>
+        /// <returns>an array of slices</returns>
         private static string[] Slice(string input, int slicelen)
         {
             Stack<string> stack = new Stack<string>();
             StringBuilder tmp = new StringBuilder();
-            for (int i=input.Length; i>=0; i--)
+            for (int i = input.Length - 1; i >= 0; i--)
             {
-                tmp.Append(input[i]);
-                if (tmp.Length > slicelen)
+                if (tmp.Length >= slicelen)
                 {
                     tmp = Reverse(tmp);
                     stack.Push(tmp.ToString());
                     tmp.Clear();
                 }
+                tmp.Append(input[i]);
+
             }
+
+            if (tmp.Length > 0)
+            {
+                if (tmp.Length < slicelen)
+                {
+                    for (int i=0; i<slicelen; i++) tmp.Append('0');
+                }
+                tmp = Reverse(tmp);
+                stack.Push(tmp.ToString());
+                tmp.Clear();
+            }
+
             return stack.ToArray();
         }
 
@@ -156,8 +173,8 @@ namespace ECalc.Engineering
         /// <summary>
         /// Convert a decimal value to binary BCD
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <param name="value">a number to convert</param>
+        /// <returns>BCD value</returns>
         public static string DecimalToBCDBin(long value)
         {
             string chars = value.ToString();
@@ -169,6 +186,11 @@ namespace ECalc.Engineering
             return ret.ToString();
         }
 
+        /// <summary>
+        /// Convert a binary BCD number to decimal
+        /// </summary>
+        /// <param name="value">BCD value to convert</param>
+        /// <returns>a number</returns>
         public static long BCDBinToDecimal(string value)
         {
             var parts = Slice(value, 4);
@@ -177,7 +199,7 @@ namespace ECalc.Engineering
             {
                 text.Append(BCDToDecimal(part));
             }
-            return Convert.ToInt64(text.ToString(), 2);
+            return Convert.ToInt64(text.ToString());
         }
     }
 }

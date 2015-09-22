@@ -8,16 +8,16 @@
              xmlns:classes="clr-namespace:ECalc.Classes"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             d:DesignHeight="140" d:DesignWidth="960"
+             d:DesignHeight="120" d:DesignWidth="960"
              Loaded="userControl_Loaded">
     <UserControl.Resources>
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="Margin" Value="3,0"/>
         </Style>
         <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type controls:ImageButton}}">
-            <Setter Property="Margin" Value="2,0"/>
+            <Setter Property="Margin" Value="1,0"/>
         </Style>
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
@@ -25,15 +25,20 @@
                 <x:Type TypeName="classes:BitEngineModes"/>
             </ObjectDataProvider.MethodParameters>
         </ObjectDataProvider>
+
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="LCD">
+            <GradientStop Color="#FFE4E4E4" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+
     </UserControl.Resources>
-    <Grid Background="White">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="28"/>
             <RowDefinition Height="25"/>
             <RowDefinition/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
             <RadioButton Content="DEG"
                          IsChecked="True"
                          Checked="RadioButton_Click"/>
@@ -42,113 +47,128 @@
             <RadioButton Content="GRAD"
                          Checked="RadioButton_Click"/>
             <CheckBox x:Name="CbThousandGrouping"
-                      Content="Group by thousands"
-                      IsChecked="False"/>
+                      IsChecked="False" Margin="10,0,0,0">
+                <CheckBox.Content>
+                    <TextBlock Text="Group by thousands"
+                               TextWrapping="Wrap"
+                               Width="55"/>
+                </CheckBox.Content>
+            </CheckBox>
             <CheckBox x:Name="CbPrefixDisplay"
-                      Content="Display with prefixes"
-                      Margin="10,0" 
+                      Margin="8,0,10,0" 
                       Checked="CbPrefixDisplay_Checked"
-                      Unchecked="CbPrefixDisplay_Checked"/>
+                      Unchecked="CbPrefixDisplay_Checked">
+                <CheckBox.Content>
+                    <TextBlock Text="Display with prefixes"
+                               TextWrapping="Wrap"
+                               Width="70"/>
+                </CheckBox.Content>
+            </CheckBox>
             <TextBlock Text="Bit engine Mode:"
                        VerticalAlignment="Center"
-                       Margin="10,0"/>
+                       Margin="5,0,2,0"
+                       TextWrapping="Wrap"
+                       Width="60"/>
             <ComboBox VerticalAlignment="Center"
                       x:Name="BitEngineMode"
                       SelectionChanged="BitEngineMode_SelectionChanged"
                       ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                       SelectedIndex="3"/>
         </StackPanel>
-        <TextBox Grid.Row="1"
-                 Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                 TextAlignment="Right"
-                 FontFamily="Courier New"
-                 FontSize="15"
-                 x:Name="TbEditor"
-                 PreviewKeyDown="TbEditor_PreviewKeyDown"
-                 Style="{StaticResource BorderlessTextBox}"/>
-        <TextBlock Grid.Row="2"
+        <Border Background="#FFE4E4E4"
+                 Grid.Row="0">
+            <TextBox Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                     TextAlignment="Right"
+                     FontFamily="Courier New"
+                     FontSize="22"
+                     x:Name="TbEditor"
+                     PreviewKeyDown="TbEditor_PreviewKeyDown"
+                     Style="{StaticResource BorderlessTextBox}"/>
+        </Border>
+        <TextBlock Grid.Row="1"
+                   Background="{StaticResource LCD}"
                    Text="{Binding ResultText, ElementName=userControl}"
                    TextAlignment="Right"
                    FontFamily="Consolas"
                    TextWrapping="Wrap"
-                   FontSize="28"/>
+                   FontSize="40"/>
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            
+
             <controls:ImageButton Image="../Images/50px/copy.png"
-                                  ImageHeight="25"
-                                  ImageWidth="25"
+                                  ImageHeight="22"
+                                  ImageWidth="22"
                                   x:Name="BtnClipboardCopy"
                                   ToolTip="Copy result to Clipboard"
                                   Click="BtnClipboardCopy_Click"/>
 
             <controls:ImageButton Image="../Images/50px/Paste.png"
-                                  ImageHeight="25"
-                                  ImageWidth="25"
+                                  ImageHeight="22"
+                                  ImageWidth="22"
                                   x:Name="BtnClipboardPaste"
                                   ToolTip="Paste from Clipboard"
                                   Click="BtnClipboardPaste_Click"/>
-            
+
             <controls:ImageButton Image="../Images/50px/fractions.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   x:Name="BtnFractions"
                                   ToolTip="Convert current result to fractions"
                                   Click="BtnFractions_Click"/>
 
             <controls:ImageButton Image="../Images/50px/divide.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   x:Name="BtnDivisiors"
                                   ToolTip="Divisor test from 2 to 20"
                                   Click="BtnDivisiors_Click"/>
 
 
             <controls:ImageButton Image="../Images/50px/T.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   x:Name="BtnNumToText"
                                   ToolTip="Number to text"
                                   Click="BtnNumToText_Click"/>
 
             <controls:ImageButton Image="../Images/50px/N.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   x:Name="BtnNumSys"
                                   ToolTip="Number System"
                                   Click="BtnNumSys_Click"/>
 
             <controls:ImageButton Image="../Images/50px/ans.png"
-                                  ImageHeight="25"
-                                  ImageWidth="25"
+                                  ImageHeight="22"
+                                  ImageWidth="22"
                                   x:Name="BtnAnss"
                                   ToolTip="Copy result to new calculaton"
                                   Click="BtnAnss_Click"/>
-            
+
             <controls:ImageButton Image="../Images/50px/Up.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   ToolTip="Previous expression in histroy"
                                   x:Name="BtnHistoryPrev"
                                   Click="BtnHistoryPrev_Click"/>
 
             <controls:ImageButton Image="../Images/50px/Down.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   x:Name="BtnHistoryNext"
                                   ToolTip="Next expression in history"/>
 
             <controls:ImageButton Image="../Images/50px/Undo.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   x:Name="BtnUndo"
                                   Click="BtnUndo_Click"
                                   ToolTip="Undo"/>
 
             <controls:ImageButton Image="../Images/50px/Delete.png"
-                                  ImageWidth="25"
-                                  ImageHeight="25"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
                                   x:Name="BtnReset"
                                   Click="BtnReset_Click"
                                   ToolTip="Reset"/>

@@ -7,6 +7,25 @@ namespace ECalc.Engineering
 {
     internal static class ResistorValueSolver
     {
+        private static double ToleranceMultiplier(ResistorSeries serie)
+        {
+            switch (serie)
+            {
+                case ResistorSeries.e12:
+                    return 0.1;
+                case ResistorSeries.e24:
+                    return 0.05;
+                case ResistorSeries.e48:
+                    return 0.02;
+                case ResistorSeries.e96:
+                    return 0.01;
+                case ResistorSeries.e192:
+                    return 0.005;
+                default:
+                    return 1;
+            }
+        }
+
         public static string Solve(double desiredvalue, ResistorSeries serie)
         {
             StringBuilder sb = new StringBuilder();
@@ -15,6 +34,9 @@ namespace ECalc.Engineering
             sb.AppendLine("--------------------------------------------------------------------");
             double remain = desiredvalue;
             double sum = 0;
+            double min_sum = 0;
+            double max_sum = 0;
+            double tolerancemultiplier = ToleranceMultiplier(serie);
             var list = ResitorListGenerator.GenerateList(serie);
             int i, j;
 
@@ -25,13 +47,16 @@ namespace ECalc.Engineering
                 {
                     remain -= q;
                     sum += q;
+                    min_sum += (q - (tolerancemultiplier * q));
+                    max_sum += (q + (tolerancemultiplier * q));
                     sb.AppendLine(q.ToString() + " Ω");
                 }
             }
             sb.AppendLine("--------------------------------------------------------------------");
             sb.AppendFormat("Sum value: {0} Ω\r\n", sum);
-            sb.AppendFormat("Error: {0} Ω\r\n", remain);
-            sb.AppendFormat("Error(%): {0} %\r\n", Math.Round(remain / sum, 4) * 100);
+            sb.AppendFormat("Sum value range: {0} - {1}\r\n", min_sum, max_sum);
+            sb.AppendFormat("Error at best case: {0} Ω\r\n", remain);
+            sb.AppendFormat("Error at worst case: {0} Ω\r\n", (max_sum - min_sum) + remain);
 
             sb.Append("\r\n\r\n\r\n");
 
