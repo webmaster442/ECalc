@@ -39,9 +39,10 @@ namespace ECalc.Classes
         /// <returns>return string</returns>
         public string DivideToPrefix(double value)
         {
+            if (value == 1) return value.ToString();
             double final = value;
             string text = "";
-            var sorted = from i in this orderby i.Value descending select i;
+            var sorted = from i in this where i.Value > 999 || i.Value <= 0.001 orderby i.Value descending select i;
             foreach (var prefix in sorted)
             {
                 if (final > prefix.Value)
