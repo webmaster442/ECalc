@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:local="clr-namespace:ECalc.Pages"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:currency="clr-namespace:ECalc.CurrencyConverter"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="boolconv"/>
         <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -91,5 +93,16 @@
                        Grid.ColumnSpan="2"
                        TextWrapping="Wrap"/>
         </Grid>
+        <StackPanel Background="White"
+                    x:Name="dloadpanel"
+                    VerticalAlignment="Center"
+                    Height="250"
+                    Visibility="Collapsed">
+            <mah:ProgressRing IsActive="True"
+                              Width="120"
+                              Height="120"/>
+            <TextBlock Text="Downloading Data..."
+                       TextAlignment="Center"/>
+        </StackPanel>
     </Grid>
 </UserControl>

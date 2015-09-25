@@ -25,8 +25,10 @@ namespace ECalc.Pages
                 Currency source, target;
                 Enum.TryParse<Currency>(CbSource.SelectedItem.ToString(), out source);
                 Enum.TryParse<Currency>(CbDestination.SelectedItem.ToString(), out target);
+                dloadpanel.Visibility = Visibility.Visible;
                 double rate = await client.ConversionRateAsync(source, target);
                 value *= rate;
+                dloadpanel.Visibility = Visibility.Collapsed;
                 TbResult.Text = value.ToString();
 
             }
