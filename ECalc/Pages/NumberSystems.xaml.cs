@@ -1,4 +1,4 @@
-﻿using ECalc.Engineering;
+﻿using ECalc.Maths;
 using System;
 using System.Linq;
 using System.Text;
@@ -33,7 +33,7 @@ namespace ECalc.Pages
                         input = Convert.ToInt64(InputNumber.Text, 2);
                         break;
                     case "BCD":
-                        input = NumberSystemConv.BCDBinToDecimal(InputNumber.Text);
+                        input = NumberSystemConversions.BCDBinToDecimal(InputNumber.Text);
                         break;
                     case "Octal":
                         input = Convert.ToInt64(InputNumber.Text, 8);
@@ -51,7 +51,7 @@ namespace ECalc.Pages
                         OutputNumber.Text = Convert.ToString(input, 2);
                         break;
                     case "BCD":
-                        OutputNumber.Text = NumberSystemConv.DecimalToBCDBin(input);
+                        OutputNumber.Text = NumberSystemConversions.DecimalToBCDBin(input);
                         break;
                     case "Octal":
                         OutputNumber.Text = Convert.ToString(input, 8);
@@ -82,10 +82,10 @@ namespace ECalc.Pages
                 byte[] doublebytes = BitConverter.GetBytes(d);
                 Array.Reverse(doublebytes);
 
-                string singlebin = NumberSystemConv.ByteArrayToBin(singlebytes);
-                string singlehex = NumberSystemConv.ByteArrayToHex(singlebytes);
-                string doublebin = NumberSystemConv.ByteArrayToBin(doublebytes);
-                string doublehex = NumberSystemConv.ByteArrayToHex(doublebytes);
+                string singlebin = NumberSystemConversions.ByteArrayToBin(singlebytes);
+                string singlehex = NumberSystemConversions.ByteArrayToHex(singlebytes);
+                string doublebin = NumberSystemConversions.ByteArrayToBin(doublebytes);
+                string doublehex = NumberSystemConversions.ByteArrayToHex(doublebytes);
                 buffer.AppendFormat("Hexadecimal single value:   {0}\n", singlehex);
                 buffer.AppendFormat("Binary single value:        {0}\n", singlebin);
                 buffer.AppendFormat("Sign:                       {0}\n", singlebin.Substring(0, 1));

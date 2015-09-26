@@ -90,7 +90,6 @@
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Engineering\NumberSystemConv.cs" />
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Maths\Probability.cs" />

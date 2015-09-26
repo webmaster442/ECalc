@@ -51,7 +51,7 @@ namespace ECalc.Pages
                     TbResult.Text = string.Format("{0}: {1}", methood.Name, result);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 TbResult.Text = "Error";
                 MainWindow.ErrorDialog("An error happened. Collection is maybe empty");

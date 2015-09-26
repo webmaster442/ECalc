@@ -353,4 +353,236 @@ namespace ECalc.Maths
     }
 
     #endregion
+
+    #region Hyperbolic Trigonometric functions
+    public class Sinh : IFunction
+    {
+        public string Name
+        {
+            get { return "Sinh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.Sinh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class Cosh : IFunction
+    {
+        public string Name
+        {
+            get { return "Cosh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.Cosh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class Tanh : IFunction
+    {
+        public string Name
+        {
+            get { return "Tanh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.Tanh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class Ctgh : IFunction
+    {
+        public string Name
+        {
+            get { return "Ctgh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.Ctgh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class Sech : IFunction
+    {
+        public string Name
+        {
+            get { return "Sech"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.Sech(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class Cosech : IFunction
+    {
+        public string Name
+        {
+            get { return "Cosech"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.Cosech(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+    #endregion
+
+    #region Inverse Hyperbolic Trigonometric functions
+    public class ArcSinh : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcSinh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcSinh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcCosh : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcCosh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcCosh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcTanh : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcTanh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcTanh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcCtgh : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcCtgh"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcCtgh(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcSech : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcSech"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcSech(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class ArcCosech : IFunction
+    {
+        public string Name
+        {
+            get { return "ArcCosech"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double d = Convert.ToDouble(arguments[0]);
+            return TrigFunctions.ArcCosech(d);
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+    #endregion
 }

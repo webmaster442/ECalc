@@ -1,9 +1,5 @@
 ﻿using ECalc.Classes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECalc.Maths
 {
@@ -90,6 +86,25 @@ namespace ECalc.Maths
         }
 
         /// <summary>
+        /// Returns the hyperbolic sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Sinh(double value)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Math.Sinh(Deg2Rad(value));
+                case TrigMode.GRAD:
+                    return Math.Sinh(Grad2Rad(value));
+                case TrigMode.RAD:
+                    return Math.Sinh(value);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
         /// Returns the cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
         /// <param name="value1">input number</param>
@@ -112,6 +127,25 @@ namespace ECalc.Maths
         }
 
         /// <summary>
+        /// Returns the hyperbolic cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Cosh(double value)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Math.Cosh(Deg2Rad(value));
+                case TrigMode.GRAD:
+                    return Math.Cosh(Grad2Rad(value));
+                case TrigMode.RAD:
+                    return Math.Cosh(value);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
         /// Returns the tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
         /// <param name="value1">input number</param>
@@ -121,12 +155,50 @@ namespace ECalc.Maths
         }
 
         /// <summary>
+        /// Returns the hyperbolic tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value">input number</param>
+        public static double Tanh(double value)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Math.Tanh(Deg2Rad(value));
+                case TrigMode.GRAD:
+                    return Math.Tanh(Grad2Rad(value));
+                case TrigMode.RAD:
+                    return Math.Tanh(value);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
         /// Returns the cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
-        /// <param name="value1">input number</param>
-        public static double Ctg(double value1)
+        /// <param name="value">input number</param>
+        public static double Ctg(double value)
         {
-            return Cos(value1) / Sin(value1);
+            return Cos(value) / Sin(value);
+        }
+
+        /// <summary>
+        /// Returns the hyperbolic cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Ctgh(double value)
+        {
+            double rad = value;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    rad = Deg2Rad(value);
+                    break;
+                case TrigMode.GRAD:
+                    rad = Grad2Rad(value);
+                    break;
+            }
+            return (Math.Exp(value) + Math.Exp(-value)) / (Math.Exp(value) - Math.Exp(-value));
         }
 
         /// <summary>
@@ -143,6 +215,26 @@ namespace ECalc.Maths
                     return Rad2Grad(Math.Asin(value1));
                 case TrigMode.RAD:
                     return Math.Asin(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the arcus hyperbolic sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value">input number</param>
+        public static double ArcSinh(double value)
+        {
+            double inrad = Math.Log(value + Math.Sqrt(value * value + 1));
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
                 default:
                     return double.NaN;
             }
@@ -168,6 +260,26 @@ namespace ECalc.Maths
         }
 
         /// <summary>
+        /// Returns the arcus hyperbolic cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double ArcCosh(double value)
+        {
+            double inrad = Math.Log(value + Math.Sqrt(value * value - 1));
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
         /// Returns the arcus tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
         /// <param name="value1">input number</param>
@@ -187,12 +299,52 @@ namespace ECalc.Maths
         }
 
         /// <summary>
+        /// Returns the arcus hyperbolic tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value">input number</param>
+        public static double ArcTanh(double value)
+        {
+            double inrad = Math.Log((1 + value) / (1 - value)) / 2;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
         /// returns the arcus cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode 
         /// </summary>
         /// <param name="value">input number</param>
         public static double ArcCtg(double value)
         {
             return ArcTan(1 / value);
+        }
+
+        /// <summary>
+        /// returns the arcus hyperbolic cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="value">input number</param>
+        public static double ArcCtgh(double value)
+        {
+            double inrad = Math.Log((value + 1) / (value - 1)) / 2;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
+                default:
+                    return double.NaN;
+            }
         }
 
         /// <summary>
@@ -205,6 +357,25 @@ namespace ECalc.Maths
         }
 
         /// <summary>
+        /// Returns the hyperbolic secant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="value">input number</param>
+        public static double Sech(double value)
+        {
+            double rad = value;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    rad = Deg2Rad(value);
+                    break;
+                case TrigMode.GRAD:
+                    rad = Grad2Rad(value);
+                    break;
+            }
+            return 2 / (Math.Exp(rad) + Math.Exp(-rad));
+        }
+
+        /// <summary>
         /// Returns the cosecant of a number, depending on the mode set. For more info, see the documentation of SetMode 
         /// </summary>
         /// <param name="x">input number</param>
@@ -213,16 +384,68 @@ namespace ECalc.Maths
             return 1 / Sin(x);
         }
 
+        /// <summary>
+        /// Returns the hyperbolic cosecant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="value">input number</param>
+        public static double Cosech(double value)
+        {
+            double rad = value;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    rad = Deg2Rad(value);
+                    break;
+                case TrigMode.GRAD:
+                    rad = Grad2Rad(value);
+                    break;
+            }
+            return 2 / (Math.Exp(rad) - Math.Exp(-rad));
+        }
+
+
         // Inverse Secant 
         public static double ArcSec(double x)
         {
             return 2 * ArcTan(1) - ArcTan(Math.Sign(x) / Math.Sqrt(x * x - 1));
         }
 
+        public static double ArcSech(double value)
+        {
+            double inrad = Math.Log((Math.Sqrt(-value * value + 1) + 1) / value);
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
+                default:
+                    return double.NaN;
+            }
+        }
+
         // Inverse Cosecant 
         public static double ArcCosec(double x)
         {
             return ArcTan(Math.Sign(x) / Math.Sqrt(x * x - 1));
+        }
+
+        public static double ArcCosech(double value)
+        {
+            double inrad = Math.Log((Math.Sign(value) * Math.Sqrt(value * value + 1) + 1) / value);
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
+                default:
+                    return double.NaN;
+            }
         }
 
     }
