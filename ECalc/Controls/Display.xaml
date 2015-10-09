@@ -86,6 +86,7 @@
                      Style="{StaticResource BorderlessTextBox}"/>
         </Border>
         <TextBlock Grid.Row="1"
+                   x:Name="MainDisplay"
                    Background="{StaticResource LCD}"
                    Text="{Binding ResultText, ElementName=userControl}"
                    TextAlignment="Right"

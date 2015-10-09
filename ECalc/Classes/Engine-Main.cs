@@ -264,7 +264,7 @@ namespace ECalc.Classes
                 sb.Append(cplx.Real);
                 sb.Append(" i: ");
                 sb.Append(cplx.Imaginary);
-                sb.Append(" φ: ");
+                sb.Append("\r\n φ: ");
                 switch (Engine.Mode)
                 {
                     case TrigMode.DEG:
@@ -280,6 +280,8 @@ namespace ECalc.Classes
                         sb.Append(" rad");
                         break;
                 }
+                sb.Append(" abs: ");
+                sb.Append(cplx.Magnitude);
             }
             else if (Engine.Ans is double)
             {

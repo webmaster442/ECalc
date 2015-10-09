@@ -95,6 +95,8 @@ namespace ECalc.Controls
             get { return (string)GetValue(ResultTextProperty); }
             set 
             {
+                if (value.Contains("\n")) MainDisplay.FontSize = 20;
+                else MainDisplay.FontSize = 40;
                 if (CbThousandGrouping.IsChecked == true)
                 {
                     SetValue(ResultTextProperty, Group(value));

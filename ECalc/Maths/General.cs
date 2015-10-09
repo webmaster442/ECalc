@@ -42,9 +42,18 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double b = Convert.ToDouble(arguments[0]);
-            double e = Convert.ToDouble(arguments[1]);
-            return Math.Pow(b, e);
+            if (Helpers.IsComplex(arguments[0]) || Helpers.IsComplex(arguments[1]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                Complex b = Helpers.GetComplex(arguments[1]);
+                return Complex.Pow(a, b);
+            }
+            else
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                double e = Convert.ToDouble(arguments[1]);
+                return Math.Pow(b, e);
+            }
         }
 
         public int ParamCount
@@ -62,8 +71,16 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double b = Convert.ToDouble(arguments[0]);
-            return Math.Pow(b, 2.0d);
+            if (Helpers.IsComplex(arguments[0]) || Helpers.IsComplex(arguments[1]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                return Complex.Pow(a, 2);
+            }
+            else
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                return Math.Pow(b, 2.0d);
+            }
         }
 
         public int ParamCount
@@ -81,9 +98,17 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double b = Convert.ToDouble(arguments[0]);
-            double e = Convert.ToDouble(arguments[1]);
-            return Math.Pow(b, 1/e);
+            if (Helpers.IsComplex(arguments[0]) || Helpers.IsComplex(arguments[1]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                Complex b = Helpers.GetComplex(arguments[1]);
+                return Complex.Pow(a, 1 / b);
+            }
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                double e = Convert.ToDouble(arguments[1]);
+                return Math.Pow(b, 1 / e);
+            }
         }
 
         public int ParamCount
@@ -101,8 +126,17 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double b = Convert.ToDouble(arguments[0]);
-            return Math.Pow(b, 1 / 2.0d);
+            if (Helpers.IsComplex(arguments[0]) || Helpers.IsComplex(arguments[1]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                Complex b = Helpers.GetComplex(arguments[1]);
+                return Complex.Pow(a, 1 / 2);
+            }
+            else 
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                return Math.Pow(b, 1 / 2.0d);
+            }
         }
 
         public int ParamCount
@@ -120,9 +154,18 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double b = Convert.ToDouble(arguments[0]);
-            double e = Convert.ToDouble(arguments[1]);
-            return Math.Log(b, e);
+            if (Helpers.IsComplex(arguments[0]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                double b = Convert.ToDouble(arguments[1]);
+                return Complex.Log(a, b);
+            }
+            else
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                double e = Convert.ToDouble(arguments[1]);
+                return Math.Log(b, e);
+            }
         }
 
         public int ParamCount
@@ -164,8 +207,16 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double b = Convert.ToDouble(arguments[0]);
-            return Math.Abs(b);
+            if (Helpers.IsComplex(arguments[0]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                return a.Magnitude;
+            }
+            else
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                return Math.Abs(b);
+            }
         }
 
         public int ParamCount
