@@ -87,6 +87,9 @@
     <Compile Include="Classes\CSV.cs" />
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
     <Compile Include="Classes\Engine-Static.cs" />
+    <Compile Include="Controls\MatrixEditor.xaml.cs">
+      <DependentUpon>MatrixEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\KeyPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MatrixEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

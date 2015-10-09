@@ -36,6 +36,9 @@
                                          ButtonClicked="KeyPad_ButtonClicked"
                                          BackClicked="Extended_BackClicked"/>
             </TabItem>
+            <TabItem Header="Matrix">
+                <controls:MatrixEditor/>
+            </TabItem>
         </TabControl>
 
         <controls:FunctionList Grid.Row="1"

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="ECalc.Controls.MatrixEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Controls"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="4,0"/>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5,0"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Rows:"/>
+            <mah:NumericUpDown x:Name="Rows"
+                               Minimum="1"
+                               Maximum="10"
+                               Value="2"/>
+                <TextBlock Text="Columns:"/>
+            <mah:NumericUpDown x:Name="Columns"
+                               Minimum="1"
+                               Maximum="10"
+                               Value="2"/>
+            <Button Content="Create"
+                    x:Name="BtnCreate"
+                    Click="BtnCreate_Click"/>
+        </StackPanel>
+        <Grid Grid.Row="1"
+              x:Name="Editor"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+        </Grid>
+    </Grid>
+</UserControl>
