@@ -1,9 +1,9 @@
 ﻿using ECalc.Classes;
+using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Linq;
-using System;
 
 namespace ECalc.Controls
 {
@@ -166,6 +166,12 @@ namespace ECalc.Controls
             }
         }
 
+        #region IMemManager
+        /// <summary>
+        /// Gets the value of a register item
+        /// </summary>
+        /// <param name="name">item to get</param>
+        /// <returns>the value of the item</returns>
         public object GetItem(string name)
         {
             if (name.StartsWith("$"))
@@ -181,6 +187,45 @@ namespace ECalc.Controls
                 return ConstantDB.Lookup(name);
             }
         }
+
+        /// <summary>
+        /// Set an item with name
+        /// </summary>
+        /// <param name="name">name of variable</param>
+        /// <param name="value">vallue of variable</param>
+        public void SetItem(string name, object value)
+        {
+            if (double.IsNaN(ConstantDB.Lookup(name)))
+            {
+                if (name == "$ans") return;
+                var query = (from i in _memory where string.Compare(name, i.Name) == 0 select i).FirstOrDefault();
+                if (query == null) _memory.Add(new MemoryItem(name, value));
+                else
+                {
+                    int index = _memory.IndexOf(query);
+                    _memory[index].Value = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Lists register names
+        /// </summary>
+        /// <param name="query">query string. If null or empty all registers will be returned</param>
+        /// <returns>An array of register names</returns>
+        public string[] ListRegisters(string query)
+        {
+            if (string.IsNullOrEmpty(query))
+            {
+                return (from i in _memory select i.Name).ToArray();
+            }
+            else
+            {
+                var q = from i in _memory where i.Name.StartsWith(query) select i.Name;
+                return q.ToArray();
+            }
+        }
+        #endregion
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -37,7 +37,8 @@
                                          BackClicked="Extended_BackClicked"/>
             </TabItem>
             <TabItem Header="Matrix">
-                <controls:MatrixEditor/>
+                <controls:MatrixEditor x:Name="MatrixEditor"
+                                       RegisterComboOpened="MatrixEditor_RegisterComboOpened"/>
             </TabItem>
         </TabControl>
 

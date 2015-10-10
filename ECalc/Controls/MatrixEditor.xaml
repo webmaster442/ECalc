@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ECalc.Controls"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="391" d:DesignWidth="654">
     <UserControl.Resources>
         <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -23,20 +23,50 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
-            <TextBlock Text="Rows:"/>
-            <mah:NumericUpDown x:Name="Rows"
-                               Minimum="1"
-                               Maximum="10"
-                               Value="2"/>
-                <TextBlock Text="Columns:"/>
-            <mah:NumericUpDown x:Name="Columns"
-                               Minimum="1"
-                               Maximum="10"
-                               Value="2"/>
-            <Button Content="Create"
-                    x:Name="BtnCreate"
-                    Click="BtnCreate_Click"/>
+            <Button Content="Create..."
+                    x:Name="BtnCreatePopup"
+                    Click="BtnCreatePopup_Click"/>
+            <Button Content="Load..."
+                    x:Name="BtnLoadPopup"
+                    Click="BtnLoadPopup_Click"/>
+            <Button Content="Save..."
+                    x:Name="BtnSave"/>
         </StackPanel>
+        <Popup Grid.ColumnSpan="2"
+               Width="200"
+               Height="120"
+               x:Name="PopupCreate"
+               PlacementTarget="{Binding ElementName=BtnCreatePopup}"
+               Placement="Bottom">
+            <StackPanel Style="{StaticResource PopupPanel}">
+                <TextBlock Text="Rows:"/>
+                <mah:NumericUpDown x:Name="Rows"
+                                   Minimum="1"
+                                   Maximum="10"
+                                   Value="2"/>
+                <TextBlock Text="Columns:"/>
+                <mah:NumericUpDown x:Name="Columns"
+                                   Minimum="1"
+                                   Maximum="10"
+                                   Value="2"/>
+                <Button Content="Create"
+                        x:Name="BtnCreate"
+                        Click="BtnCreate_Click"/>
+            </StackPanel>
+        </Popup>
+        <Popup Grid.ColumnSpan="2"
+               Width="200"
+               Height="80"
+               x:Name="PopupLoad"
+               PlacementTarget="{Binding ElementName=BtnLoadPopup}"
+               Placement="Bottom">
+            <StackPanel Style="{StaticResource PopupPanel}">
+                <TextBlock Text="Register:"/>
+                <ComboBox x:Name="RegisterCombo"
+                          DropDownOpened="RegisterCombo_DropDownOpened"/>
+                <Button Content="Load"/>
+            </StackPanel>
+        </Popup>
         <Grid Grid.Row="1"
               x:Name="Editor"
               VerticalAlignment="Center"

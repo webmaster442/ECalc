@@ -104,6 +104,11 @@ namespace ECalc.Classes
             Value = val;
             Name = name;
         }
+
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode() ^ Value.GetHashCode();
+        }
     }
 
     /// <summary>
@@ -154,7 +159,26 @@ namespace ECalc.Classes
     /// </summary>
     public interface IMemManager
     {
+        /// <summary>
+        /// Gets the value of a register item
+        /// </summary>
+        /// <param name="name">item to get</param>
+        /// <returns>the value of the item</returns>
         object GetItem(string name);
+
+        /// <summary>
+        /// Lists register names
+        /// </summary>
+        /// <param name="query">query string. If null or empty all registers will be returned</param>
+        /// <returns>An array of register names</returns>
+        string[] ListRegisters(string query);
+
+        /// <summary>
+        /// Set an item with name
+        /// </summary>
+        /// <param name="name">name of variable</param>
+        /// <param name="value">vallue of variable</param>
+        void SetItem(string name, object value);
     }
 
     /// <summary>

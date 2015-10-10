@@ -71,5 +71,13 @@ namespace ECalc.Pages
         {
             Dispatcher.Invoke(() => { InputSelector.SelectedIndex = 0; });
         }
+
+        private void MatrixEditor_RegisterComboOpened(object sender, RoutedEventArgs e)
+        {
+            var q = Keypad.ListRegisters("$mtrx_");
+            ComboBox cmb = (ComboBox)sender;
+            cmb.Items.Clear();
+            foreach (var i in q) cmb.Items.Add(i);
+        }
     }
 }

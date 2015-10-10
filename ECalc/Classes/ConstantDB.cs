@@ -148,6 +148,11 @@ namespace ECalc.Classes
             };
         }
 
+        /// <summary>
+        /// Return a constant by name
+        /// </summary>
+        /// <param name="name">Name of constant to search</param>
+        /// <returns>Constant value, if not found NaN is returned</returns>
         public static double Lookup(string name)
         {
             var q1 = from i in Mathematical where i.Name == name select i.Value;
@@ -159,7 +164,7 @@ namespace ECalc.Classes
             else if (q2.Count() > 0) return q2.First();
             else if (q3.Count() > 0) return q3.First();
             else if (q4.Count() > 0) return q4.First();
-            else throw new ArgumentException("Constant not found");
+            else return double.NaN;
         }
     }
 }

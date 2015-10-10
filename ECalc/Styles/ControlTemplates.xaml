@@ -178,4 +178,8 @@
         </Setter>
     </Style>
 
+    <Style TargetType="StackPanel" x:Key="PopupPanel">
+        <Setter Property="Background" Value="#eeeeee"/>
+    </Style>
+
 </ResourceDictionary>
