@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:scontrols="clr-namespace:ECalc.Controls.Special"
-             xmlns:controls="clr-namespace:ECalc.Controls"
+             xmlns:controls="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="940"
              Loaded="UserControl_Loaded">

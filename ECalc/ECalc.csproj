@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ECalc</RootNamespace>
     <AssemblyName>ECalc</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,16 +26,16 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -43,7 +44,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -123,10 +124,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\EditableSlider.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\ExtendedKeyPad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -195,7 +192,6 @@
     <Compile Include="Classes\Engine-Main.cs" />
     <Compile Include="Classes\FractionClass.cs" />
     <Compile Include="Classes\PrefixDictionary.cs" />
-    <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\Special\ResistorColorSelector.xaml.cs">
       <DependentUpon>ResistorColorSelector.xaml</DependentUpon>
     </Compile>
@@ -208,9 +204,6 @@
     <Compile Include="Classes\UnitConversion.cs" />
     <Compile Include="Controls\Display.xaml.cs">
       <DependentUpon>Display.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\EditableSlider.xaml.cs">
-      <DependentUpon>EditableSlider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\ExtendedKeyPad.xaml.cs">
       <DependentUpon>ExtendedKeyPad.xaml</DependentUpon>
@@ -401,12 +394,6 @@
     <Resource Include="Images\50px\Up.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\50px\edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\50px\erease.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\50px\N.png" />
     <Resource Include="Images\50px\T.png" />
   </ItemGroup>
@@ -481,16 +468,10 @@
     <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
+    <ProjectReference Include="..\ECalc.Api\ECalc.Api.csproj">
+      <Project>{4bdbc073-620d-4f63-8e86-c15ae3adb6dd}</Project>
+      <Name>ECalc.Api</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
