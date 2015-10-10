@@ -86,5 +86,11 @@ namespace ECalc.Pages
             DoubleMatrix m = (DoubleMatrix)Keypad.GetItem(e.Text);
             MatrixEditor.RenderEditor(m);
         }
+
+        private void MatrixEditor_SaveClicked(object sender, StringEventArgs e)
+        {
+            string name = "$mtrx_" + e.Text;
+            Keypad.SetItem(name, MatrixEditor.GetMatrix());
+        }
     }
 }

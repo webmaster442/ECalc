@@ -20,6 +20,8 @@ namespace ECalc.Controls
 
         public event StringEventHandler LoadClicked;
 
+        public event StringEventHandler SaveClicked;
+
         /// <summary>
         /// Renders the editor
         /// </summary>
@@ -73,6 +75,10 @@ namespace ECalc.Controls
             }
         }
 
+        /// <summary>
+        /// Renders the edtor based on a matrix
+        /// </summary>
+        /// <param name="matrix">Matrix to display in editor</param>
         public void RenderEditor(DoubleMatrix matrix)
         {
             Editor.Children.Clear();
@@ -97,6 +103,10 @@ namespace ECalc.Controls
             }
         }
 
+        /// <summary>
+        /// Gets a matrix from the editor
+        /// </summary>
+        /// <returns>A matrix from the editor</returns>
         public DoubleMatrix GetMatrix()
         {
             DoubleMatrix m = new DoubleMatrix(Editor.RowDefinitions.Count, Editor.ColumnDefinitions.Count);
@@ -121,6 +131,7 @@ namespace ECalc.Controls
         {
             PopupCreate.IsOpen = true;
             PopupLoad.IsOpen = false;
+            PopupSave.IsOpen = false;
         }
 
         private void RegisterCombo_DropDownOpened(object sender, EventArgs e)
@@ -131,12 +142,25 @@ namespace ECalc.Controls
         private void BtnLoadPopup_Click(object sender, RoutedEventArgs e)
         {
             PopupCreate.IsOpen = false;
+            PopupSave.IsOpen = false;
             PopupLoad.IsOpen = true;
         }
 
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         {
             if (LoadClicked != null) LoadClicked(sender, new StringEventArgs(RegisterCombo.SelectedItem.ToString()));
+        }
+
+        private void BtnSavePopup_Click(object sender, RoutedEventArgs e)
+        {
+            PopupCreate.IsOpen = false;
+            PopupSave.IsOpen = true;
+            PopupLoad.IsOpen = false;
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (SaveClicked != null) SaveClicked(sender, new StringEventArgs(RegisterAddress.Value.ToString()));
         }
     }
 }
