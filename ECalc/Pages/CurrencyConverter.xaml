@@ -5,18 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:local="clr-namespace:ECalc.Pages"
-             xmlns:System="clr-namespace:System;assembly=mscorlib"
-             xmlns:currency="clr-namespace:ECalc.CurrencyConverter"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="boolconv"/>
-        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
-                            ObjectType="{x:Type System:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="currency:Currency"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
         <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="22"/>
@@ -67,12 +60,10 @@
                      Grid.Column="1"/>
             <ComboBox Grid.Row="1"
                       x:Name="CbSource"
-                      ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                       SelectedIndex="0"
                       Grid.Column="1"/>
             <ComboBox Grid.Row="2"
                       x:Name="CbDestination"
-                      ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                       SelectedIndex="0"
                       Grid.Column="1"/>
             <TextBlock Text="Result:"
@@ -87,7 +78,7 @@
                     Grid.ColumnSpan="2"
                     x:Name="BtnConvert"
                     Click="BtnConvert_Click"/>
-            <TextBlock Text="Currency rate conversion provided by: http://www.webservicex.net/CurrencyConvertor.asmx Currency rates may differ depending on your bank"
+            <TextBlock Text="Currency rate conversion provided by the Hungraian National Bank (MNB). Currency rates may differ depending on your bank"
                        FontSize="14"
                        Grid.Row="5"
                        Grid.ColumnSpan="2"

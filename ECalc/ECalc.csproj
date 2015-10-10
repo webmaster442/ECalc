@@ -115,7 +115,7 @@
     <Compile Include="Pages\VoltageCurrentDivider.xaml.cs">
       <DependentUpon>VoltageCurrentDivider.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Service References\CurrencyConverter\Reference.cs">
+    <Compile Include="Service References\MNBConverter\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -380,7 +380,50 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Service References\CurrencyConverter\CurrencyConvertor.wsdl" />
+    <None Include="Service References\MNBConverter\arfolyamok.wsdl" />
+    <None Include="Service References\MNBConverter\arfolyamok.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNBConverter\arfolyamok1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetCurrenciesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetCurrenciesResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetCurrencyUnitsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetCurrencyUnitsResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetCurrentExchangeRatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetCurrentExchangeRatesResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetDateIntervalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetDateIntervalResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetExchangeRatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetExchangeRatesResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\ECalc.MNBConverter.GetInfoResponseBody.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MNBConverter\MNBArfolyamServiceSoapImpl.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -434,22 +477,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\CurrencyConverter\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CurrencyConverter\CurrencyConvertor.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CurrencyConverter\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CurrencyConverter\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CurrencyConverter\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <WCFMetadataStorage Include="Service References\MNBConverter\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\currency.png" />
@@ -502,6 +530,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\numsystems.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MNBConverter\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MNBConverter\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MNBConverter\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

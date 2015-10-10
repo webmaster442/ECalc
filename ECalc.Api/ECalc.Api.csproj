@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="EcalcModule.cs" />
+    <Compile Include="ModuleLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
