@@ -38,7 +38,8 @@
             </TabItem>
             <TabItem Header="Matrix">
                 <controls:MatrixEditor x:Name="MatrixEditor"
-                                       RegisterComboOpened="MatrixEditor_RegisterComboOpened"/>
+                                       RegisterComboOpened="MatrixEditor_RegisterComboOpened"
+                                       LoadClicked="MatrixEditor_LoadClicked"/>
             </TabItem>
         </TabControl>
 

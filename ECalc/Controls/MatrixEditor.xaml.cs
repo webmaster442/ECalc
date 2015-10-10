@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using ECalc.Maths;
+using ECalc.Classes;
 
 namespace ECalc.Controls
 {
@@ -16,6 +17,8 @@ namespace ECalc.Controls
         }
 
         public event RoutedEventHandler RegisterComboOpened;
+
+        public event StringEventHandler LoadClicked;
 
         /// <summary>
         /// Renders the editor
@@ -129,6 +132,11 @@ namespace ECalc.Controls
         {
             PopupCreate.IsOpen = false;
             PopupLoad.IsOpen = true;
+        }
+
+        private void BtnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            if (LoadClicked != null) LoadClicked(sender, new StringEventArgs(RegisterCombo.SelectedItem.ToString()));
         }
     }
 }

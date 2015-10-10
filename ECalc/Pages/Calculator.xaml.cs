@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using ECalc.Maths;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
@@ -78,6 +79,12 @@ namespace ECalc.Pages
             ComboBox cmb = (ComboBox)sender;
             cmb.Items.Clear();
             foreach (var i in q) cmb.Items.Add(i);
+        }
+
+        private void MatrixEditor_LoadClicked(object sender, StringEventArgs e)
+        {
+            DoubleMatrix m = (DoubleMatrix)Keypad.GetItem(e.Text);
+            MatrixEditor.RenderEditor(m);
         }
     }
 }

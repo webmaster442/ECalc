@@ -12,12 +12,12 @@ namespace ECalc.Classes
     /// </summary>
     /// <param name="sender">Sender object</param>
     /// <param name="e">parameters</param>
-    internal delegate void StringEventHandler(object sender, StringEventArgs e);
+    public delegate void StringEventHandler(object sender, StringEventArgs e);
 
     /// <summary>
     /// String Event Args
     /// </summary>
-    internal class StringEventArgs: RoutedEventArgs
+    public class StringEventArgs: RoutedEventArgs
     {
         public StringEventArgs() : base() { }
         

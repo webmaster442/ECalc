@@ -64,7 +64,9 @@
                 <TextBlock Text="Register:"/>
                 <ComboBox x:Name="RegisterCombo"
                           DropDownOpened="RegisterCombo_DropDownOpened"/>
-                <Button Content="Load"/>
+                <Button Content="Load"
+                        x:Name="BtnLoad"
+                        Click="BtnLoad_Click"/>
             </StackPanel>
         </Popup>
         <Grid Grid.Row="1"
