@@ -9,11 +9,29 @@ namespace ECalc.Api.Controls
     public partial class EditableSlider : UserControl
     {
 
+        /// <summary>
+        /// Minimum value property
+        /// </summary>
         public static DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(EditableSlider), new PropertyMetadata(0.0d));
+
+        /// <summary>
+        /// Maximum value property
+        /// </summary>
         public static DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(double), typeof(EditableSlider), new PropertyMetadata(10.0d));
+
+        /// <summary>
+        /// Value property
+        /// </summary>
         public static DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(EditableSlider), new PropertyMetadata(3.0d));
+
+        /// <summary>
+        /// Default value property
+        /// </summary>
         public static DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(double), typeof(EditableSlider), new PropertyMetadata(3.0d));
 
+        /// <summary>
+        /// Event Handler for value Changed event
+        /// </summary>
         public event RoutedEventHandler ValueChanged;
 
         private bool _editOnClickSetting = false;
@@ -41,6 +59,9 @@ namespace ECalc.Api.Controls
 
         private bool _isOverEditValueButton = false;
 
+        /// <summary>
+        /// Creates a new instance of EditableSlider
+        /// </summary>
         public EditableSlider()
         {
             InitializeComponent();
@@ -54,6 +75,9 @@ namespace ECalc.Api.Controls
             UpdateView();
         }
 
+        /// <summary>
+        /// Minimal Editor value
+        /// </summary>
         public double Minimum
         {
             get { return (double)GetValue(MinimumProperty); }
@@ -64,6 +88,9 @@ namespace ECalc.Api.Controls
             }
         }
 
+        /// <summary>
+        /// Maximal Editor value
+        /// </summary>
         public double Maximum
         {
             get { return (double)GetValue(MaximumProperty); }
@@ -74,6 +101,9 @@ namespace ECalc.Api.Controls
             }
         }
 
+        /// <summary>
+        /// Current Editor value
+        /// </summary>
         public double Value
         {
             get { return (double)GetValue(ValueProperty); }
@@ -87,12 +117,18 @@ namespace ECalc.Api.Controls
             }
         }
 
+        /// <summary>
+        /// Default Editor value
+        /// </summary>
         public double DefaultValue
         {
             get { return (double)GetValue(DefaultValueProperty); }
             set { SetValue(DefaultValueProperty, value); }
         }
 
+        /// <summary>
+        /// Display format string
+        /// </summary>
         public string DisplayFormat
         {
             get { return _displayFormat; }

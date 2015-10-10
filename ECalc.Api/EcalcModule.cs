@@ -28,9 +28,9 @@ namespace ECalc.Api
         /// <summary>
         /// Control tile color
         /// </summary>
-        public virtual SolidColorBrush Color
+        public virtual TileColor Color
         {
-            get { return new SolidColorBrush(Colors.YellowGreen); }
+            get { return TileColor.Default;  }
         }
 
         /// <summary>
@@ -40,5 +40,97 @@ namespace ECalc.Api
         {
             get { return null; }
         }
+    }
+
+    /// <summary>
+    /// Tile Color Enumeration
+    /// </summary>
+    public enum TileColor: int
+    {
+
+        /// <summary>
+        /// Default Gray color
+        /// </summary>
+        Default = 0xCCCCCC,
+        /// <summary>
+        /// Lime
+        /// </summary>
+        W8Lime = 0xA4C400,
+        /// <summary>
+        /// Green
+        /// </summary>
+        W8Green = 0x60A917,
+        /// <summary>
+        /// Emerald
+        /// </summary>
+        W8Emerald = 0x008A00,
+        /// <summary>
+        /// Teal
+        /// </summary>
+        W8Teal = 0x00ABA9,
+        /// <summary>
+        /// Cyan
+        /// </summary>
+        W8Cyan = 0x1BA1E2,
+        /// <summary>
+        /// Cobalt
+        /// </summary>
+        W8Cobalt = 0x0050EF,
+        /// <summary>
+        /// Indigo
+        /// </summary>
+        W8Indigo = 0x6A00FF,
+        /// <summary>
+        /// Violet
+        /// </summary>
+        W8Violet = 0xAA00FF,
+        /// <summary>
+        /// Pink
+        /// </summary>
+        W8Pink = 0xF472D0,
+        /// <summary>
+        /// Magenta
+        /// </summary>
+        W8Magenta = 0xD80073,
+        /// <summary>
+        /// Crimson
+        /// </summary>
+        W8Crimson = 0xA20025,
+        /// <summary>
+        /// Red
+        /// </summary>
+        W8Red = 0xE51400,
+        /// <summary>
+        /// Orange
+        /// </summary>
+        W8Orange = 0xFA6800,
+        /// <summary>
+        /// Amber
+        /// </summary>
+        W8GAmber = 0xF0A30A,
+        /// <summary>
+        /// Yellow
+        /// </summary>
+        W8Yellow = 0xE3C800,
+        /// <summary>
+        /// Brown
+        /// </summary>
+        W8Brown = 0x825A2C,
+        /// <summary>
+        /// Olive
+        /// </summary>
+        W8Olive = 0x6D8764,
+        /// <summary>
+        /// Steel
+        /// </summary>
+        W8Steel = 0x647687,
+        /// <summary>
+        /// Mauve
+        /// </summary>
+        W8Mauve = 0x76608A,
+        /// <summary>
+        /// Taupe
+        /// </summary>
+        W8Taupe = 0x87794E
     }
 }

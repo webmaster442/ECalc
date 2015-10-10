@@ -16,10 +16,19 @@ namespace ECalc.Api.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ImageButton), new FrameworkPropertyMetadata(typeof(ImageButton)));
         }
 
+        /// <summary>
+        /// Image property
+        /// </summary>
         public static readonly DependencyProperty ImageProperty = DependencyProperty.Register("Image", typeof(ImageSource), typeof(ImageButton), new PropertyMetadata(null));
 
+        /// <summary>
+        /// Image height property
+        /// </summary>
         public static readonly DependencyProperty ImageHeightProperty =  DependencyProperty.Register("ImageHeight", typeof(double), typeof(ImageButton), new PropertyMetadata(Double.NaN));
 
+        /// <summary>
+        /// Image Width property
+        /// </summary>
         public static readonly DependencyProperty ImageWidthProperty = DependencyProperty.Register("ImageWidth", typeof(double), typeof(ImageButton), new PropertyMetadata(Double.NaN));
 
         /// <summary>
@@ -51,7 +60,10 @@ namespace ECalc.Api.Controls
         
     }
 
-    public class VisibilityConvertor : IValueConverter
+    /// <summary>
+    /// Visibility converter class for ImageButton internals
+    /// </summary>
+    internal class VisibilityConvertor : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
