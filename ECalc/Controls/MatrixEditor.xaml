@@ -33,7 +33,7 @@
                     x:Name="BtnSavePopup"
                     Click="BtnSavePopup_Click"/>
         </StackPanel>
-        <Popup Grid.ColumnSpan="2"
+        <Popup Grid.RowSpan="2"
                Width="200"
                Height="120"
                x:Name="PopupCreate"
@@ -55,7 +55,7 @@
                         Click="BtnCreate_Click"/>
             </StackPanel>
         </Popup>
-        <Popup Grid.ColumnSpan="2"
+        <Popup Grid.RowSpan="2"
                Width="200"
                Height="80"
                x:Name="PopupLoad"
@@ -70,11 +70,11 @@
                         Click="BtnLoad_Click"/>
             </StackPanel>
         </Popup>
-        <Popup Grid.ColumnSpan="2"
+        <Popup Grid.RowSpan="2"
                Width="200"
-               Height="70"
+               Height="80"
                x:Name="PopupSave"
-               PlacementTarget="{Binding ElementName=BtbSavePopup}"
+               PlacementTarget="{Binding ElementName=BtnSavePopup}"
                Placement="Bottom">
             <StackPanel Style="{StaticResource PopupPanel}">
                 <TextBlock Text="Save to matrix register:"/>

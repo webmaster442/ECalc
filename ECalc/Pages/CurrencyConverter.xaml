@@ -84,16 +84,16 @@
                        Grid.ColumnSpan="2"
                        TextWrapping="Wrap"/>
         </Grid>
-        <StackPanel Background="White"
-                    x:Name="dloadpanel"
-                    VerticalAlignment="Center"
-                    Height="250"
-                    Visibility="Collapsed">
+        <Grid Background="White"
+              x:Name="dloadpanel"
+              VerticalAlignment="Center"
+              Height="290"
+              Visibility="Collapsed">
             <mah:ProgressRing IsActive="True"
                               Width="120"
                               Height="120"/>
             <TextBlock Text="Downloading Data..."
                        TextAlignment="Center"/>
-        </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

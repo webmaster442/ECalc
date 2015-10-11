@@ -99,7 +99,7 @@ namespace ECalc.Maths
 
         public override int GetHashCode()
         {
-            int hashNum = System.Math.Max(Rows * Columns, 25);
+            int hashNum = System.Math.Min(Rows * Columns, 25);
             double[] hashBase = new double[hashNum];
             for (int i = 0; i < hashNum; i++)
             {

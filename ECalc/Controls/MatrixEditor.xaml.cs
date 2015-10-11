@@ -160,7 +160,11 @@ namespace ECalc.Controls
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (SaveClicked != null) SaveClicked(sender, new StringEventArgs(RegisterAddress.Value.ToString()));
+            if (SaveClicked != null)
+            {
+                SaveClicked(sender, new StringEventArgs(RegisterAddress.Value.ToString()));
+                PopupSave.IsOpen = false;
+            }
         }
     }
 }

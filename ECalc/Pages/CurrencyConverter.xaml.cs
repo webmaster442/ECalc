@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ECalc.MNBConverter;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using ECalc.MNBConverter;
 using System.Xml.Linq;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace ECalc.Pages
 {
@@ -21,8 +21,14 @@ namespace ECalc.Pages
             _rates = new Dictionary<string, double>();
         }
 
-        private async void BtnConvert_Click(object sender, RoutedEventArgs e)
+        private void BtnConvert_Click(object sender, RoutedEventArgs e)
         {
+            var q1 = (from i in _rates where i.Key == CbSource.SelectedItem.ToString() select i.Value);
+            var q2 = (from i in _rates where i.Key == CbDestination.SelectedItem.ToString() select i.Value);
+            var huf = Convert.ToDouble(TbInput.Text) * q1.FirstOrDefault();
+            var curr = huf / q2.FirstOrDefault();
+            TbResult.Text = curr.ToString();
+
         }
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -45,12 +51,17 @@ namespace ECalc.Pages
                     _rates.Add(item.Attribute("curr").Value, Convert.ToDouble(item.Value));
                 }
 
-                dloadpanel.Visibility = Visibility.Collapsed;
-
+                CbSource.ItemsSource = _rates.Keys;
+                CbDestination.ItemsSource = _rates.Keys;
             }
             catch (Exception ex)
             {
                 MainWindow.ErrorDialog(ex.Message);
+            }
+            finally
+            {
+                dloadpanel.Visibility = Visibility.Collapsed;
+                _rates.Add("HUF", 1);
             }
         }
     }
