@@ -34,7 +34,7 @@ namespace ECalc.Api
         }
 
         /// <summary>
-        /// Control tile icon
+        /// Control tile icon will be used later.
         /// </summary>
         public virtual BitmapImage Icon
         {
