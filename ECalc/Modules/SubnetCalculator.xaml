@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ECalc.Pages.SubnetCalculator"
+﻿<UserControl x:Class="ECalc.Modules.SubnetCalculator"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:special="clr-namespace:ECalc.Controls.Special"

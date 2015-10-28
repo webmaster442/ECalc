@@ -32,9 +32,8 @@ namespace ECalc.Api
             try
             {
                 var modules = from t in Assembly.GetExecutingAssembly().GetTypes()
-                              where
-                              t.IsClass &&
-                              t.BaseType == typeof(EcalcModule)
+                              where t.IsClass &&
+                                    t.BaseType == typeof(EcalcModule)
                               select t;
 
                 foreach (var module in modules)
@@ -73,16 +72,86 @@ namespace ECalc.Api
         }
 
         /// <summary>
+        /// Loads modules from a specified namespace
+        /// </summary>
+        /// <param name="ns">Namespace to load from</param>
+        public void LoadFromNameSpace(string ns)
+        {
+            try
+            {
+                var types = from t in Assembly.GetCallingAssembly().GetTypes()
+                            where t.IsClass &&
+                                  t.BaseType == typeof(EcalcModule) &&
+                                  t.Namespace == ns
+                            select t;
+
+                foreach (var type in types)
+                {
+                    var mod = (EcalcModule)Activator.CreateInstance(type);
+                    _modules.Add(mod);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
         /// Runs a module by it's name
         /// </summary>
         /// <param name="name">Module name to run</param>
         /// <returns>A module's user control</returns>
         public UserControl RunByName(string name)
         {
-            var q = from module in _modules where module.ModuleName == name select module;
+            var q = from module in _modules
+                    where module.ModuleName == name
+                    select module;
             var x = q.FirstOrDefault();
             if (x != null) return x.GetControl();
             else return null;
+        }
+
+        /// <summary>
+        /// Get a list of unique categories
+        /// </summary>
+        public string[] Categories
+        {
+            get
+            {
+                var q = from module in _modules.AsParallel()
+                        orderby module.ModuleCategory ascending
+                        select module.ModuleCategory;
+
+                List<string> cats = new List<string>();
+                cats.Add("All");
+                cats.AddRange(q.Distinct());
+                return cats.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Select modules of a category
+        /// </summary>
+        /// <param name="category">Category to filter. Null returns all</param>
+        /// <returns>An array of modules that match the criteria</returns>
+        public EcalcModule[] Select(string category = null)
+        {
+            if (string.IsNullOrEmpty(category) || category == "All")
+            {
+                var sorted = from i in _modules
+                             orderby i.ModuleName ascending
+                             select i;
+                return sorted.ToArray();
+            }
+            else
+            {
+                var q = from i in _modules.AsParallel()
+                        where i.ModuleCategory == category
+                        orderby i.ModuleName ascending
+                        select i;
+                return q.ToArray();
+            }
         }
 
         /// <summary>

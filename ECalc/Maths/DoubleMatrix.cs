@@ -254,6 +254,71 @@ namespace ECalc.Maths
             return ret;
         }
 
+        public static DoubleMatrix operator + (DoubleMatrix left, double right)
+        {
+            DoubleMatrix ret = new DoubleMatrix(left.Rows, left.Columns);
+            for (int i = 0; i < ret.Rows; i++)
+            {
+                for (int j = 0; j < ret.Columns; j++)
+                {
+                    ret[i, j] = left[i, j] + right;
+                }
+            }
+            return ret;
+        }
+
+        public static DoubleMatrix operator -(DoubleMatrix left, double right)
+        {
+            DoubleMatrix ret = new DoubleMatrix(left.Rows, left.Columns);
+            for (int i = 0; i < ret.Rows; i++)
+            {
+                for (int j = 0; j < ret.Columns; j++)
+                {
+                    ret[i, j] = left[i, j] - right;
+                }
+            }
+            return ret;
+        }
+
+        public static DoubleMatrix operator *(DoubleMatrix left, double right)
+        {
+            DoubleMatrix ret = new DoubleMatrix(left.Rows, left.Columns);
+            for (int i = 0; i < ret.Rows; i++)
+            {
+                for (int j = 0; j < ret.Columns; j++)
+                {
+                    ret[i, j] = left[i, j] * right;
+                }
+            }
+            return ret;
+        }
+
+        public static DoubleMatrix operator /(DoubleMatrix left, double right)
+        {
+            DoubleMatrix ret = new DoubleMatrix(left.Rows, left.Columns);
+            for (int i = 0; i < ret.Rows; i++)
+            {
+                for (int j = 0; j < ret.Columns; j++)
+                {
+                    ret[i, j] = left[i, j] / right;
+                }
+            }
+            return ret;
+        }
+
+        public static DoubleMatrix operator %(DoubleMatrix left, double right)
+        {
+            DoubleMatrix ret = new DoubleMatrix(left.Rows, left.Columns);
+            for (int i = 0; i < ret.Rows; i++)
+            {
+                for (int j = 0; j < ret.Columns; j++)
+                {
+                    ret[i, j] = left[i, j] % right;
+                }
+            }
+            return ret;
+        }
+
         #endregion
 
         protected DoubleMatrix mMatrix;

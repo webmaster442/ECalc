@@ -1,6 +1,5 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace ECalc.Api
 {
@@ -34,9 +33,24 @@ namespace ECalc.Api
         }
 
         /// <summary>
+        /// Used to set tile background color
+        /// </summary>
+        public SolidColorBrush BackColor
+        {
+            get
+            {
+                int value = (int)Color;
+                byte red = (byte)((value & 0x00FF0000) >> 16);
+                byte green = (byte)((value & 0x0000FF00) >> 8);
+                byte blue = (byte)((value & 0x000000FF));
+                return new SolidColorBrush(System.Windows.Media.Color.FromRgb(red, green, blue));
+            }
+        }
+
+        /// <summary>
         /// Control tile icon will be used later.
         /// </summary>
-        public virtual BitmapImage Icon
+        public virtual ImageSource Icon
         {
             get { return null; }
         }
@@ -47,7 +61,6 @@ namespace ECalc.Api
     /// </summary>
     public enum TileColor: int
     {
-
         /// <summary>
         /// Default Gray color
         /// </summary>

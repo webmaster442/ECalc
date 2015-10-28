@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ECalc.Pages
+namespace ECalc.Modules
 {
     /// <summary>
     /// Interaction logic for OpAmp.xaml

@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ECalc.Pages
+namespace ECalc.Modules
 {
     /// <summary>
     /// Interaction logic for SubnetCalculator.xaml

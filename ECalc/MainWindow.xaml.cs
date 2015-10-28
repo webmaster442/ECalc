@@ -4,6 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using ECalc.Api;
 
 namespace ECalc
 {
@@ -12,10 +13,14 @@ namespace ECalc
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+
+
         public MainWindow()
         {
+            Modules = new ModuleLoader();
+            Modules.LoadFromNameSpace("ECalc.Modules");
             InitializeComponent();
-            
+
         }
 
         /// <summary>
@@ -50,6 +55,15 @@ namespace ECalc
         {
             MainWindow main = (MainWindow)App.Current.MainWindow;
             await main.ShowMessageAsync(title, text, style);
+        }
+
+        /// <summary>
+        /// Property to acces application modules
+        /// </summary>
+        public static ModuleLoader Modules
+        {
+            get;
+            private set;
         }
 
         /// <summary>

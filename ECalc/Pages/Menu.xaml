@@ -54,106 +54,58 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
     </UserControl.Resources>
-    <ScrollViewer>
-        <StackPanel Orientation="Horizontal">
-            <GroupBox Header="Generic"
-                      Width="304">
-                <WrapPanel>
-                    <mah:Tile Title="Calculator"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="190"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Generic"
+                  Grid.Row="0"
+                  Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <mah:Tile Title="Calculator"
                           Background="{StaticResource W8Indigo}"
                           Style="{StaticResource LargeTileStyle}"
                           Click="Tile_Click">
-                        <Image Source="../Images/100px/calculator.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Statistics"
+                    <Image Source="../Images/100px/calculator.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Statistics"
                           Background="{StaticResource W8Orange}"
                           Click="Tile_Click">
-                        <Image Source="../Images/100px/statistics.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Unit Converter"
+                    <Image Source="../Images/100px/statistics.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Unit Converter"
                           Background="{StaticResource W8Red}"
                           Click="Tile_Click">
-                        <Image Source="../Images/100px/unitconverter.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Equation System Solver"
+                    <Image Source="../Images/100px/unitconverter.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Equation System Solver"
                           Background="{StaticResource W8Yellow}"
                           Click="Tile_Click">
-                        <Image Source="../Images/100px/hash.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Currency Converter"
+                    <Image Source="../Images/100px/hash.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Currency Converter"
                           Background="{StaticResource W8Taupe}"
                           Click="Tile_Click">
-                        <Image Source="../Images/100px/currency.png"/>
-                    </mah:Tile>
-                </WrapPanel>
-            </GroupBox>
-            <GroupBox Header="Engineering"
-                      Width="430">
-                <WrapPanel>
-                    <mah:Tile Title="Logic Minimizer"
-                          Background="{StaticResource W8Lime}"
-                          Click="Tile_Click">
-                        <Image Source="../Images/100px/electronics.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="IP Subnet Calculator"
-                          Background="{StaticResource W8Magenta}"
-                          Click="Tile_Click">
-                        <Image Source="../Images/100px/ipaddress.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Hash Calculator"
-                          Background="{StaticResource W8Olive}"
-                          Click="Tile_Click">
-                        <Image Source="../Images/100px/hash.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Resistor Color"
-                              Background="{StaticResource W8Mauve}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/resistor.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Voltage &amp; Current divider"
-                              Background="{StaticResource W8Emerald}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/electro.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="LED Calculator"
-                              Background="{StaticResource W8Brown}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/led.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Resistor value solver"
-                              Background="{StaticResource W8Violet}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/resistor.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="OpAmp Calculator"
-                              Background="{StaticResource W8Crimson}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/opamp.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Number System converter"
-                              Background="{StaticResource W8GAmber}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/numsystems.png"/>
-                    </mah:Tile>
-                </WrapPanel>
-            </GroupBox>
-            <GroupBox Header="Help"
-                      Width="150">
-                <WrapPanel>
-                    <mah:Tile Title="About"
-                              Background="{StaticResource W8Cobalt}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/about.png"/>
-                    </mah:Tile>
-                    <mah:Tile Title="Online docs"
-                              Background="{StaticResource W8Cyan}"
-                              Click="Tile_Click">
-                        <Image Source="../Images/100px/help.png"/>
-                    </mah:Tile>
-                </WrapPanel>
-            </GroupBox>
-        </StackPanel>
-    </ScrollViewer>
+                    <Image Source="../Images/100px/currency.png"/>
+                </mah:Tile>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="1"
+                  Grid.Column="0"
+                  Header="Modules">
+            <ListBox Margin="3"
+                     x:Name="CategoryView"
+                     SelectionChanged="CategoryView_SelectionChanged"/>
+        </GroupBox>
+        <ScrollViewer Grid.Row="1"
+                      Grid.Column="1">
+            <WrapPanel x:Name="ModuleDisplay"></WrapPanel>
+        </ScrollViewer>
+    </Grid>
 </UserControl>

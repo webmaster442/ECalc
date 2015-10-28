@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="ECalc.Pages.OpAmp"
+﻿<UserControl x:Class="ECalc.Modules.OpAmp"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:scontrols="clr-namespace:ECalc.Controls.Special"
-             xmlns:local="clr-namespace:ECalc.Pages"
+             xmlns:local="clr-namespace:ECalc.Modules"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>

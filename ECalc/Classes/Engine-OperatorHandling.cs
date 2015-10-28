@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECalc.Maths;
+using System;
 using System.Numerics;
 
 namespace ECalc.Classes
@@ -6,10 +7,12 @@ namespace ECalc.Classes
     internal partial class Engine
     {
         /*  return type matrix:
-    Type       CPLX      Fraction        Double
-    CPX        CPLX      CPLX            CPLX
-    Fraction   CPLX      Fraction        Fraction
-    Double     CPLX      Fraction        Double  */
+    Type       CPLX      Fraction        Double         Matrix
+    CPX        CPLX      CPLX            CPLX           Error
+    Fraction   CPLX      Fraction        Fraction       Matrix
+    Double     CPLX      Fraction        Double         Matrix
+    Matrix     Error     Matrix          Matrix         Matrix
+    */
         /// <summary>
         /// Type matching operator handler function
         /// </summary>
@@ -22,7 +25,61 @@ namespace ECalc.Classes
             var t1 = op1.GetType().FullName;
             var t2 = op2.GetType().FullName;
 
-            if (t1 == "System.Numerics.Complex" || t2 == "System.Numerics.Complex")
+            if (t1 == "ECalc.Maths.DoubleMatrix" || t2 == "ECalc.Maths.DoubleMatrix")
+            {
+                DoubleMatrix m1 = null;
+                DoubleMatrix m2 = null;
+                double dbl = double.NaN;
+                switch (t1)
+                {
+                    case "ECalc.Maths.DoubleMatrix":
+                        m1 = (DoubleMatrix)op1;
+                        break;
+                    case "System.Numerics.Complex":
+                        throw new ArgumentException("Type Mismatch. Don't know howto preform operations on CPLX and Matrix");
+                    case "System.Double":
+                        dbl = (double)op1;
+                        break;
+                    case "ECalc.Classes.Fraction":
+                        dbl = ((Fraction)op1).ToDouble();
+                        break;
+                }
+                switch (t2)
+                {
+                    case "ECalc.Maths.DoubleMatrix":
+                        m2 = (DoubleMatrix)op1;
+                        break;
+                    case "System.Numerics.Complex":
+                        throw new ArgumentException("Type Mismatch. Don't know howto preform operations on CPLX and Matrix");
+                    case "System.Double":
+                        dbl = (double)op1;
+                        break;
+                    case "ECalc.Classes.Fraction":
+                        dbl = ((Fraction)op1).ToDouble();
+                        break;
+                }
+
+                switch (op)
+                {
+                    case "+":
+                        if (double.IsNaN(dbl)) return m1 + m2;
+                        else return m1 + dbl;
+                    case "-":
+                        if (double.IsNaN(dbl)) return m1 - m2;
+                        else return m1 - dbl;
+                    case "÷":
+                        if (double.IsNaN(dbl)) throw new ArgumentException("Can't divde matrixes");
+                        else return m1 / dbl;
+                    case "X":
+                        if (double.IsNaN(dbl)) return m1 * m2;
+                        else return m1 * dbl;
+                    case "mod":
+                        if (double.IsNaN(dbl)) throw new ArgumentException("Can't divde matrixes");
+                        else return m1 % dbl;
+                }
+
+            }
+            else if (t1 == "System.Numerics.Complex" || t2 == "System.Numerics.Complex")
             {
                 Complex a = new Complex();
                 Complex b = new Complex();

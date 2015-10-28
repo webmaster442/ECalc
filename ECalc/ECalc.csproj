@@ -97,22 +97,23 @@
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Maths\Probability.cs" />
+    <Compile Include="Modules\Modules.cs" />
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LEDCalculator.xaml.cs">
+    <Compile Include="Modules\LEDCalculator.xaml.cs">
       <DependentUpon>LEDCalculator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NumberSystems.xaml.cs">
+    <Compile Include="Modules\NumberSystems.xaml.cs">
       <DependentUpon>NumberSystems.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\OpAmp.xaml.cs">
+    <Compile Include="Modules\OpAmp.xaml.cs">
       <DependentUpon>OpAmp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ResistorSolver.xaml.cs">
+    <Compile Include="Modules\ResistorSolver.xaml.cs">
       <DependentUpon>ResistorSolver.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\VoltageCurrentDivider.xaml.cs">
+    <Compile Include="Modules\VoltageCurrentDivider.xaml.cs">
       <DependentUpon>VoltageCurrentDivider.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\MNBConverter\Reference.cs">
@@ -265,15 +266,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\HashCalculators.xaml">
+    <Page Include="Modules\HashCalculators.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LEDCalculator.xaml">
+    <Page Include="Modules\LEDCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\LogicFunctionMinimizer.xaml">
+    <Page Include="Modules\LogicFunctionMinimizer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -281,19 +282,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NumberSystems.xaml">
+    <Page Include="Modules\NumberSystems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\OpAmp.xaml">
+    <Page Include="Modules\OpAmp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ResistorColorDecoder.xaml">
+    <Page Include="Modules\ResistorColorDecoder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ResistorSolver.xaml">
+    <Page Include="Modules\ResistorSolver.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -301,7 +302,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SubnetCalculator.xaml">
+    <Page Include="Modules\SubnetCalculator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -309,7 +310,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\VoltageCurrentDivider.xaml">
+    <Page Include="Modules\VoltageCurrentDivider.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -334,22 +335,22 @@
     <Compile Include="Pages\EquationSystemSolver.xaml.cs">
       <DependentUpon>EquationSystemSolver.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\HashCalculators.xaml.cs">
+    <Compile Include="Modules\HashCalculators.xaml.cs">
       <DependentUpon>HashCalculators.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\LogicFunctionMinimizer.xaml.cs">
+    <Compile Include="Modules\LogicFunctionMinimizer.xaml.cs">
       <DependentUpon>LogicFunctionMinimizer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ResistorColorDecoder.xaml.cs">
+    <Compile Include="Modules\ResistorColorDecoder.xaml.cs">
       <DependentUpon>ResistorColorDecoder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Stat.xaml.cs">
       <DependentUpon>Stat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SubnetCalculator.xaml.cs">
+    <Compile Include="Modules\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UnitConverter.xaml.cs">
@@ -372,6 +373,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -543,6 +545,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

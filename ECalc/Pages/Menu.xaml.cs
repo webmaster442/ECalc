@@ -12,6 +12,8 @@ namespace ECalc.Pages
         public Menu()
         {
             InitializeComponent();
+            CategoryView.ItemsSource = MainWindow.Modules.Categories;
+            CategoryView.SelectedIndex = 0;
         }
 
         private void Tile_Click(object sender, RoutedEventArgs e)
@@ -27,44 +29,14 @@ namespace ECalc.Pages
                 case "Statistics":
                     control = new Stat();
                     break;
-                case "Unit Converter":
-                    control = new UnitConverterPage();
-                    break;
                 case "Equation System Solver":
                     control = new EquationSystemSolver();
                     break;
-                case "Logic Minimizer":
-                    control = new LogicFunctionMinimizer();
-                    break;
-                case "IP Subnet Calculator":
-                    control = new SubnetCalculator();
-                    break;
-                case "Hash Calculator":
-                    control = new HashCalculators();
-                    break;
-                case "About":
-                    control = new About();
-                    break;
-                case "Resistor Color":
-                    control = new ResistorColorDecoder();
+                case "Unit Converter":
+                    control = new UnitConverterPage();
                     break;
                 case "Currency Converter":
                     control = new CurrencyConverter();
-                    break;
-                case "Voltage & Current divider":
-                    control = new VoltageCurrentDivider();
-                    break;
-                case "LED Calculator":
-                    control = new LEDCalculator();
-                    break;
-                case "Resistor value solver":
-                    control = new ResistorSolver();
-                    break;
-                case "OpAmp Calculator":
-                    control = new OpAmp();
-                    break;
-                case "Number System converter":
-                    control = new NumberSystems();
                     break;
                 default:
                     return;
@@ -72,6 +44,42 @@ namespace ECalc.Pages
 
             MainWindow.SwithToControl(control);
             MainWindow.SetTitle(title);
+        }
+
+        private void Render()
+        {
+            ModuleDisplay.Children.Clear();
+            var filter = CategoryView.SelectedItem.ToString();
+            var matchs = MainWindow.Modules.Select(filter);
+
+            foreach (var match in matchs)
+            {
+                Tile t = new Tile();
+                t.ToolTip = match.ModuleName;
+                t.Title = match.ModuleName;
+                t.Background = match.BackColor;
+                Image icon = new Image();
+                icon.Source = match.Icon;
+                t.Content = icon;
+                t.Click += T_Click;
+                ModuleDisplay.Children.Add(t);
+
+            }
+
+        }
+
+        private void T_Click(object sender, RoutedEventArgs e)
+        {
+            Tile t = (Tile)sender;
+            var title = t.ToolTip.ToString();
+            var ctrl = MainWindow.Modules.RunByName(title);
+            MainWindow.SwithToControl(ctrl);
+            MainWindow.SetTitle(title);
+        }
+
+        private void CategoryView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Render();
         }
     }
 }
