@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:ECalc.Pages"
              xmlns:controls="clr-namespace:ECalc.Controls"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d" 
              d:DesignHeight="490" d:DesignWidth="960">
     <UserControl.Resources>
@@ -43,12 +44,13 @@
         <Style TargetType="GroupBox" BasedOn="{StaticResource {x:Type GroupBox}}">
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Margin" Value="2"/>
             <Setter Property="HeaderTemplate">
                 <Setter.Value>
                     <DataTemplate>
                         <TextBlock Text="{Binding}"
-                                   FontSize="14"
-                                   Foreground="{StaticResource W8Emerald}"
+                                   FontSize="12"
+                                   Foreground="White"
                                    FontFamily="Arial Black"/>
                     </DataTemplate>
                 </Setter.Value>
@@ -64,6 +66,10 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Rectangle Grid.ColumnSpan="2"
+                   Grid.RowSpan="2"
+                   Opacity="0.5"
+                   x:Name="RectImage"/>
         <GroupBox Header="Generic"
                   Grid.Row="0"
                   Grid.ColumnSpan="2">
@@ -101,6 +107,7 @@
                   Header="Modules">
             <ListBox Margin="3"
                      x:Name="CategoryView"
+                     Background="#66252525"
                      SelectionChanged="CategoryView_SelectionChanged"/>
         </GroupBox>
         <ScrollViewer Grid.Row="1"

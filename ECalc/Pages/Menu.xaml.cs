@@ -1,6 +1,9 @@
 ﻿using MahApps.Metro.Controls;
 using System.Windows;
 using System.Windows.Controls;
+using ECalc.Api;
+using System;
+using System.Windows.Media;
 
 namespace ECalc.Pages
 {
@@ -80,6 +83,20 @@ namespace ECalc.Pages
         private void CategoryView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Render();
+        }
+
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BingWallPaperClient bing = new BingWallPaperClient();
+                await bing.DownloadAsync();
+                var imgbrush = new ImageBrush();
+                imgbrush.ImageSource = bing.WPFPhotoOfTheDay;
+                imgbrush.Stretch = Stretch.UniformToFill;
+                RectImage.Fill = imgbrush;
+            }
+            catch (Exception) { }
         }
     }
 }
