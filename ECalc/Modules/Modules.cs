@@ -258,4 +258,22 @@ namespace ECalc.Modules
             get { return TileColor.W8Magenta; }
         }
     }
+
+    public class Seg714 : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "Digital Electrinics"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "7/14 segment display calculator"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new Segment714Calculator();
+        }
+    }
 }

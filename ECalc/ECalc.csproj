@@ -98,6 +98,9 @@
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Maths\Probability.cs" />
     <Compile Include="Modules\Modules.cs" />
+    <Compile Include="Modules\Segment714Calculator.xaml.cs">
+      <DependentUpon>Segment714Calculator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
     </Compile>
@@ -250,6 +253,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Modules\Segment714Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
