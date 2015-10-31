@@ -66,6 +66,10 @@ namespace ECalc.Api
         /// </summary>
         Default = 0xCCCCCC,
         /// <summary>
+        /// Light Green
+        /// </summary>
+        W8LightGreen= 0x99b433,
+        /// <summary>
         /// Lime
         /// </summary>
         W8Lime = 0xA4C400,
@@ -73,6 +77,14 @@ namespace ECalc.Api
         /// Green
         /// </summary>
         W8Green = 0x60A917,
+        /// <summary>
+        /// Dark Green
+        /// </summary>
+        W8DarkGreen = 0x1e7145,
+        /// <summary>
+        /// Dark orange
+        /// </summary>
+        W8DarkOrange = 0xda532c,
         /// <summary>
         /// Emerald
         /// </summary>
@@ -141,9 +153,5 @@ namespace ECalc.Api
         /// Mauve
         /// </summary>
         W8Mauve = 0x76608A,
-        /// <summary>
-        /// Taupe
-        /// </summary>
-        W8Taupe = 0x87794E
     }
 }
