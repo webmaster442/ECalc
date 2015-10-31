@@ -25,11 +25,11 @@ namespace ECalc.Api
         public abstract UserControl GetControl();
 
         /// <summary>
-        /// Control tile color
+        /// Control tile color. Can be chosen from the TileColor enum, or from a user value
         /// </summary>
-        public virtual TileColor Color
+        public virtual int Color
         {
-            get { return TileColor.Default;  }
+            get { return (int)TileColor.Default;  }
         }
 
         /// <summary>

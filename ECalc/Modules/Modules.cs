@@ -28,9 +28,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/hash.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Olive; }
+            get { return (int)TileColor.W8Olive; }
         }
     }
 
@@ -56,9 +56,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/led.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Brown; }
+            get { return (int)TileColor.W8Brown; }
         }
     }
 
@@ -84,9 +84,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/electronics.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Lime; }
+            get { return (int)TileColor.W8Lime; }
         }
     }
 
@@ -112,9 +112,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/numsystems.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8GAmber; }
+            get { return (int)TileColor.W8GAmber; }
         }
     }
 
@@ -140,9 +140,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/opamp.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Crimson; }
+            get { return (int)TileColor.W8Crimson; }
         }
     }
 
@@ -168,9 +168,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/resistor.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Mauve; }
+            get { return (int)TileColor.W8Mauve; }
         }
     }
 
@@ -196,9 +196,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/resistor.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Violet; }
+            get { return (int)TileColor.W8Violet; }
         }
     }
 
@@ -225,9 +225,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/electro.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Emerald; }
+            get { return (int)TileColor.W8Emerald; }
         }
     }
 
@@ -253,9 +253,9 @@ namespace ECalc.Modules
             get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/ipaddress.png", UriKind.Relative)); }
         }
 
-        public override TileColor Color
+        public override int Color
         {
-            get { return TileColor.W8Magenta; }
+            get { return (int)TileColor.W8Magenta; }
         }
     }
 
