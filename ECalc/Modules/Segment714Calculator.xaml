@@ -5,11 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
              mc:Ignorable="d" 
-             d:DesignHeight="576" d:DesignWidth="970">
+             d:DesignHeight="576" d:DesignWidth="970" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
             <Setter Property="Margin" Value="1"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   FontSize="16"
+                                   FontStyle="Italic"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -42,6 +51,10 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Margin" Value="5,0"/>
         </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="5,2"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -56,10 +69,13 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.Row="0"
                     Grid.ColumnSpan="3"
-                    TabStripPlacement="Left">
+                    TabStripPlacement="Left"
+                    x:Name="TabDisplay"
+                    SelectionChanged="TabDisplay_SelectionChanged">
             <TabItem Header="7 segement">
                 <Grid Width="300"
-                      Height="400">
+                      Height="400"
+                      x:Name="Segment7">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition/>
@@ -75,33 +91,42 @@
                     </Grid.ColumnDefinitions>
                     <ToggleButton Grid.Row="0"
                                   Grid.Column="1"
+                                  Content="A"
                                   x:Name="Seg7a"/>
                     <ToggleButton Grid.Row="1"
                                   Grid.Column="2"
+                                  Content="B"
                                   x:Name="Seg7b"/>
                     <ToggleButton Grid.Row="3"
                                   Grid.Column="2"
+                                  Content="C"
                                   x:Name="Seg7c"/>
                     <ToggleButton Grid.Row="4"
                                   Grid.Column="1"
+                                  Content="D"
                                   x:Name="Seg7d"/>
                     <ToggleButton Grid.Row="3"
                                   Grid.Column="0"
+                                  Content="E"
                                   x:Name="Seg7e"/>
                     <ToggleButton Grid.Row="1"
                                   Grid.Column="0"
+                                  Content="F"
                                   x:Name="Seg7f"/>
                     <ToggleButton Grid.Row="2"
                                   Grid.Column="1"
-                                  x:Name="Seg7g"/>
+                                  x:Name="Seg7g"
+                                  Content="G"/>
                     <ToggleButton Grid.Row="4"
                                   Grid.Column="3"
+                                  Content="DP"
                                   x:Name="Seg7dp"/>
                 </Grid>
             </TabItem>
             <TabItem Header="14 segement">
                 <Grid Width="300"
-                      Height="400">
+                      Height="400"
+                      x:Name="Segment14">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition/>
@@ -120,32 +145,41 @@
                     <ToggleButton Grid.Row="0"
                                   Grid.ColumnSpan="3"
                                   Grid.Column="1"
+                                  Content="A"
                                   x:Name="Seg14a"/>
                     <ToggleButton Grid.Row="1"
                                   Grid.Column="4"
+                                  Content="B"
                                   x:Name="Seg14b"/>
                     <ToggleButton Grid.Row="3"
                                   Grid.Column="4"
+                                  Content="C"
                                   x:Name="Seg14c"/>
                     <ToggleButton Grid.Row="4"
                                   Grid.Column="1"
                                   Grid.ColumnSpan="3"
+                                  Content="D"
                                   x:Name="Seg14d"/>
                     <ToggleButton Grid.Row="3"
                                   Grid.Column="0"
+                                  Content="E"
                                   x:Name="Seg14e"/>
                     <ToggleButton Grid.Row="1"
                                   Grid.Column="0"
+                                  Content="F"
                                   x:Name="Seg14f"/>
                     <ToggleButton Grid.Row="2"
                                   Grid.Column="1"
+                                  Content="G1"
                                   x:Name="Seg14g1"/>
                     <ToggleButton Grid.Row="2"
                                   Grid.Column="3"
+                                  Content="G2"
                                   x:Name="Seg14g2"/>
                     <ToggleButton Grid.Row="1"
                                   Grid.Column="1"
                                   Width="30"
+                                  Content="H"
                                   Height="130"
                                   x:Name="Seg14h">
                         <ToggleButton.LayoutTransform>
@@ -154,10 +188,12 @@
                     </ToggleButton>
                     <ToggleButton Grid.Row="1"
                                   Grid.Column="2"
-                                  x:Name="Seg14gi"/>
+                                  Content="I"
+                                  x:Name="Seg14i"/>
                     <ToggleButton Grid.Row="1"
                                   Grid.Column="3"
                                   Width="30"
+                                  Content="J"
                                   Height="130"
                                   x:Name="Seg14j">
                         <ToggleButton.LayoutTransform>
@@ -168,6 +204,7 @@
                                   Grid.Column="3"
                                   Width="30"
                                   Height="130"
+                                  Content="K"
                                   x:Name="Seg14k">
                         <ToggleButton.LayoutTransform>
                             <RotateTransform Angle="-30"/>
@@ -175,11 +212,13 @@
                     </ToggleButton>
                     <ToggleButton Grid.Row="3"
                                   Grid.Column="2"
-                                  x:Name="Seg14gl"/>
+                                  Content="L"
+                                  x:Name="Seg14l"/>
                     <ToggleButton Grid.Row="3"
                                   Grid.Column="1"
                                   Width="30"
                                   Height="130"
+                                  Content="M"
                                   x:Name="Seg14m">
                         <ToggleButton.LayoutTransform>
                             <RotateTransform Angle="30"/>
@@ -187,8 +226,12 @@
                     </ToggleButton>
                     <ToggleButton Grid.Row="4"
                                   Grid.Column="5"
-                                  x:Name="Seg14dp"/>
+                                  x:Name="Seg14dp"
+                                  Content="DP"/>
                 </Grid>
+            </TabItem>
+            <TabItem Header="Display types">
+                <Image Source="../Images/large/led-segments.png"/>
             </TabItem>
         </TabControl>
         <TextBlock Text="Common Anode:"
@@ -196,8 +239,19 @@
         <TextBlock Text="Common Cathode:"
                    Grid.Row="2"/>
         <TextBox Grid.Row="1"
-                 Grid.Column="1"/>
+                 Grid.Column="1"
+                 x:Name="TbCa"/>
         <TextBox Grid.Row="2"
-                 Grid.Column="1"/>
+                 Grid.Column="1"
+                 x:Name="TbCc"/>
+        <CheckBox Grid.Row="1"
+                  Grid.Column="2"
+                  FontSize="15"
+                  Margin="5,0"
+                  x:Name="CbLSBOrder"
+                  Content="'a' is connected to the Least significant bit"
+                  IsChecked="True"
+                  Checked="SegmentClicked"
+                  Unchecked="SegmentClicked"/>
     </Grid>
 </UserControl>

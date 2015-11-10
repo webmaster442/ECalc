@@ -275,5 +275,15 @@ namespace ECalc.Modules
         {
             return new Segment714Calculator();
         }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/segments.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.W8Brown; }
+        }
     }
 }
