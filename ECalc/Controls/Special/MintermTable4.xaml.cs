@@ -1,5 +1,5 @@
-﻿using ECalc.Classes;
-using ECalc.Engineering;
+﻿using ECalc.Engineering;
+using ECalc.Extensions;
 using System.Collections.Generic;
 using System.Windows.Controls;
 
@@ -20,18 +20,18 @@ namespace ECalc.Controls.Special
             get
             {
                 List<LogicItem> ret = new List<LogicItem>();
-                foreach (var item in Functions.GetMintermTableValues(Minterm4x))
+                foreach (var item in MintermTableHelpers.GetMintermTableValues(Minterm4x))
                 {
                     ret.Add(LogicItem.CreateFromMintermIndex(item.Key, 4, item.Value));
                 }
                 return ret;
             }
-            set { Functions.SetMintermTableValues(Minterm4x, value); }
+            set { MintermTableHelpers.SetMintermTableValues(Minterm4x, value); }
         }
 
         public void ClearInput()
         {
-            Functions.ClearMintermtable(Minterm4x);
+            MintermTableHelpers.ClearMintermtable(Minterm4x);
         }
 
         public void SetAll(bool? value)
@@ -47,7 +47,7 @@ namespace ECalc.Controls.Special
 
         public void SwapVarnames()
         {
-            foreach (var tb in Helpers.FindChildren<TextBlock>(this))
+            foreach (var tb in this.FindChildren<TextBlock>())
             {
                 switch (tb.Text)
                 {

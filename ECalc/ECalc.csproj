@@ -91,11 +91,13 @@
     <Compile Include="Controls\MatrixEditor.xaml.cs">
       <DependentUpon>MatrixEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Special\MintermTableTypes.cs" />
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
+    <Compile Include="Extensions\WPF.cs" />
     <Compile Include="Maths\Probability.cs" />
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\Segment714Calculator.xaml.cs">
@@ -244,7 +246,6 @@
     </Compile>
     <Compile Include="Lib\Crc32.cs" />
     <Compile Include="Lib\Crc64.cs" />
-    <Compile Include="Engineering\Functions.cs" />
     <Compile Include="Engineering\HashFunctions.cs" />
     <Compile Include="Engineering\IPExtensions.cs" />
     <Compile Include="Engineering\LogicItem.cs" />

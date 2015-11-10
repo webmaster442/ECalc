@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ECalc.Classes;
 
 namespace ECalc.Modules
 {
@@ -24,5 +25,11 @@ namespace ECalc.Modules
         {
             InitializeComponent();
         }
+
+        private void Calculate7Segment()
+        {
+
+        }
+
     }
 }

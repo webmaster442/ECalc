@@ -1,4 +1,4 @@
-﻿using ECalc.Classes;
+﻿using ECalc.Extensions;
 using ECalc.Maths;
 using System;
 using System.Linq;
@@ -93,7 +93,7 @@ namespace ECalc.Pages
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (!_loaded) return;
-            var radios = Helpers.FindChildren<RadioButton>(EqSelector);
+            var radios = EqSelector.FindChildren<RadioButton>();
             var num = (from r in radios where r.IsChecked == true select Convert.ToInt32(r.Content)).FirstOrDefault();
             _equations = num;
             RenderUi();
@@ -103,7 +103,7 @@ namespace ECalc.Pages
         {
             DoubleMatrix m = new DoubleMatrix(_equations, _equations + 1);
 
-            var children = Helpers.FindChildren<TextBox>(EquationData);
+            var children = EquationData.FindChildren<TextBox>();
 
             foreach (var child in children)
             {
