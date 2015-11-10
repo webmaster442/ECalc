@@ -14,12 +14,14 @@
             <Setter Property="Width" Value="269" />
             <Setter Property="Height" Value="132" />
             <Setter Property="TitleFontSize" Value="12"/>
+            <Setter Property="Opacity" Value="0.8"/>
         </Style>
 
         <Style TargetType="mah:Tile">
             <Setter Property="TitleFontSize" Value="13"/>
             <Setter Property="Width" Value="132"/>
             <Setter Property="Height" Value="132"/>
+            <Setter Property="Opacity" Value="0.8"/>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
                     <DataTemplate>
@@ -100,6 +102,13 @@
                           Click="Tile_Click">
                     <Image Source="../Images/100px/currency.png"/>
                 </mah:Tile>
+                <Button Height="60"
+                        Margin="15,10,0,0"
+                        x:Name="BtnBing"
+                        Click="BtnBing_Click"
+                        Opacity="0.8" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Image Source="../Images/large/bing.png"/>
+                </Button>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1"

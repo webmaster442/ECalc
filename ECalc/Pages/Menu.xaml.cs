@@ -12,6 +12,8 @@ namespace ECalc.Pages
     /// </summary>
     public partial class Menu : UserControl
     {
+        private string _link;
+
         public Menu()
         {
             InitializeComponent();
@@ -95,8 +97,18 @@ namespace ECalc.Pages
                 imgbrush.ImageSource = bing.WPFPhotoOfTheDay;
                 imgbrush.Stretch = Stretch.UniformToFill;
                 RectImage.Fill = imgbrush;
+                BtnBing.ToolTip = string.Format("Background provided by Bing:\r\n{0}", bing.CoppyRightData);
+                _link = bing.CoppyRightLink;
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                BtnBing.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void BtnBing_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(_link);
         }
     }
 }

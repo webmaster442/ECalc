@@ -30,7 +30,7 @@ namespace ECalc.Api
             _loadcalled = false;
 
             //photo of the day data in xml format
-            _feed = "http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=hu-HU";
+            _feed = "http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1&mkt=en-US";
         }
 
         /// <summary>
