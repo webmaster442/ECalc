@@ -95,8 +95,10 @@
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Engineering\ColorTypes.cs" />
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
+    <Compile Include="Engineering\ColorSpaceConversions.cs" />
     <Compile Include="Extensions\WPF.cs" />
     <Compile Include="Maths\Probability.cs" />
     <Compile Include="Modules\Modules.cs" />
