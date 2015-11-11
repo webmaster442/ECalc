@@ -53,9 +53,8 @@ namespace ECalc.Api
                 var cpy = File.ReadAllText(_tempcoppyright).Split(';');
                 CoppyRightData = cpy[0];
                 CoppyRightLink = cpy[1];
-                downloadneeded = false;
             }
-            else downloadneeded = true;
+            else if (!downloadneeded) downloadneeded = true;
 
             if (!downloadneeded)
             {
