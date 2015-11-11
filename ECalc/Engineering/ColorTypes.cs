@@ -1,30 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ECalc.Engineering
+﻿namespace ECalc.Engineering
 {
-    public class HSB
+    internal class HSB
     {
         public double Hue { get; set; }
         public double Saturation { get; set; }
         public double Brightness { get; set; }
     }
 
-    public class HSL
+    internal class HSL
     {
         public double Hue { get; set; }
         public double Saturation { get; set; }
         public double Luminance { get; set; }
     }
 
-    public class CMYK
+    internal class CMYK
     {
         public double Cyan { get; set; }
         public double Magenta { get; set; }
         public double Yellow { get; set; }
         public double Black { get; set; }
+    }
+
+    internal class YUV
+    {
+        public double Y { get; set; }
+        public double U { get; set; }
+        public double V { get; set; }
     }
 }
