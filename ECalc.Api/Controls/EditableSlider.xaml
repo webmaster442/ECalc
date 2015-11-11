@@ -40,14 +40,14 @@
 			<ToolTipService.ToolTip>
 				<ToolTip Content="Edit Value" Margin="0,14,0,0" />
 			</ToolTipService.ToolTip>
-			<Image Source="../Images/50px/Edit.png" />
+			<Image Source="/ECalc.Api;component/Images/50px/edit.png" />
 		</Button>
 		<Button Margin="3,-1,-1,-1" Grid.Column="2" Padding="1" Cursor="Arrow" x:Name="btnResetValue"
 			MouseEnter="btnEditValue_MouseEnter" MouseLeave="btnEditValue_MouseLeave" Click="btnResetValue_Click">
 			<ToolTipService.ToolTip>
 				<ToolTip Content="Reset Value" Margin="0,14,0,0" />
 			</ToolTipService.ToolTip>
-			<Image Source="../Images/50px/erease.png" />
+			<Image Source="/ECalc.Api;component/Images/50px/erease.png" />
 		</Button>
 	</Grid>
 </UserControl>

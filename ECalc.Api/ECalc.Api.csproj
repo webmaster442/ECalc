@@ -69,8 +69,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\50px\edit.png" />
-    <Content Include="Images\50px\erease.png" />
+    <Resource Include="Images\50px\edit.png" />
+    <Resource Include="Images\50px\erease.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
