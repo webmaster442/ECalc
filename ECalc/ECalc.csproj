@@ -105,6 +105,9 @@
       <DependentUpon>ColorConverters.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Modules.cs" />
+    <Compile Include="Modules\ne555Calc.xaml.cs">
+      <DependentUpon>ne555Calc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Segment714Calculator.xaml.cs">
       <DependentUpon>Segment714Calculator.xaml</DependentUpon>
     </Compile>
@@ -262,6 +265,10 @@
     <Page Include="Modules\ColorConverters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\ne555Calc.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Modules\Segment714Calculator.xaml">
       <SubType>Designer</SubType>
@@ -573,6 +580,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\colorconv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\ne555.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\555_Astable_Diagram.png" />
+    <Resource Include="Images\large\555_Bistable.png" />
+    <Resource Include="Images\large\555_Bloc_Diagram.png" />
+    <Resource Include="Images\large\555_Monostable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

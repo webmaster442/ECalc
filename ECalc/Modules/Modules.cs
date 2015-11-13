@@ -314,4 +314,32 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8Cyan; }
         }
     }
+
+    public class ne555tool : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "Analog Electronics"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "555 timer tool"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new ne555Calc();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/ne555.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.W8Pink; }
+        }
+    }
 }
