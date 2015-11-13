@@ -16,6 +16,9 @@
                 <Button x:Name="WindowCommandKeyboard"
                         Content="Screen Keyboard"
                         Click="WindowCommandKeyboard_Click"/>
+                <Button Content="About"
+                        x:Name="WindowCommandAbout"
+                        Click="WindowCommandAbout_Click"/>
                 <Button x:Name="WindowCommandMenu"
                         Content="Menu"
                         Click="WindowCommandMenu_Click"/>

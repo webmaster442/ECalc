@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using ECalc.Api;
+using ECalc.Pages;
+using ECalc.Controls;
 
 namespace ECalc
 {
@@ -99,6 +101,12 @@ namespace ECalc
         {
             ConfigFileHelpers.SerializeUsageStats();
             Properties.Settings.Default.Save();
+        }
+
+        private void WindowCommandAbout_Click(object sender, RoutedEventArgs e)
+        {
+            AboutDialog w = new AboutDialog();
+            ShowDialog(w);
         }
     }
 }
