@@ -118,6 +118,16 @@ namespace ECalc.Api.Controls
         }
 
         /// <summary>
+        /// Same as
+        /// </summary>
+        public void SetValue(double val)
+        {
+            SetValue(ValueProperty, val);
+            UpdateView();
+            UpdateText();
+        }
+
+        /// <summary>
         /// Default Editor value
         /// </summary>
         public double DefaultValue

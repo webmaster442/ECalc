@@ -286,4 +286,32 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8Brown; }
         }
     }
+
+    public class Colorspaces : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "IT Tools"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Color Space converter"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new ColorConverters();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/colorconv.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.W8Cyan; }
+        }
+    }
 }

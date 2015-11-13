@@ -66,39 +66,41 @@ namespace ECalc.Modules
 
             if (source != ColorType.RGB)
             {
-                RGB_Red.Value = csource.R;
-                RGB_Green.Value = csource.G;
-                RGB_Blue.Value = csource.B;
+                RGB_Red.SetValue(csource.R);
+                RGB_Green.SetValue(csource.G);
+                RGB_Blue.SetValue(csource.B);
             }
 
             if (source != ColorType.CMYK)
             {
-                CMYK_C.Value = cmyk.Cyan;
-                CMYK_M.Value = cmyk.Magenta;
-                CMYK_Y.Value = cmyk.Yellow;
-                CMYK_K.Value = cmyk.Black;
+                CMYK_C.SetValue(cmyk.Cyan);
+                CMYK_M.SetValue(cmyk.Magenta);
+                CMYK_Y.SetValue(cmyk.Yellow);
+                CMYK_K.SetValue(cmyk.Black);
             }
 
             if (source != ColorType.HSB)
             {
-                HSB_Hue.Value = hsb.Hue;
-                HSB_Saturation.Value = hsb.Saturation;
-                HSB_Brightness.Value = hsb.Brightness;
+                HSB_Hue.SetValue(hsb.Hue);
+                HSB_Saturation.SetValue(hsb.Saturation);
+                HSB_Brightness.SetValue(hsb.Brightness);
             }
 
             if (source != ColorType.HSL)
             {
-                HSL_Hue.Value = hsl.Hue;
-                HSL_Saturation.Value = hsl.Saturation;
-                HSL_Lumiance.Value = hsl.Luminance;
+                HSL_Hue.SetValue(hsl.Hue);
+                HSL_Saturation.SetValue(hsl.Saturation);
+                HSL_Lumiance.SetValue(hsl.Luminance);
             }
 
             if (source != ColorType.YUV)
             {
-                YUV_Y.Value = yuv.Y;
-                YUV_U.Value = yuv.U;
-                YUV_V.Value = yuv.V;
+                YUV_Y.SetValue(yuv.Y);
+                YUV_U.SetValue(yuv.U);
+                YUV_V.SetValue(yuv.V);
             }
+
+            RectPreview.Fill = new SolidColorBrush(csource);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
