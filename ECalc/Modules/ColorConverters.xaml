@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
              xmlns:controls="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>
         <Style TargetType="TextBlock">
@@ -55,13 +56,29 @@
                   Header="CMYK">
             <StackPanel>
                 <TextBlock Text="Cyan:"/>
-                <controls:EditableSlider/>
+                <controls:EditableSlider x:Name="CMYK_C"
+                                         Minimum="0"
+                                         Maximum="1"
+                                         Value="0"
+                                         DefaultValue="0"/>
                 <TextBlock Text="Magenta:"/>
-                <controls:EditableSlider/>
+                <controls:EditableSlider x:Name="CMYK_M"
+                                         Minimum="0"
+                                         Maximum="1"
+                                         Value="0"
+                                         DefaultValue="0"/>
                 <TextBlock Text="Yellow:"/>
-                <controls:EditableSlider/>
+                <controls:EditableSlider x:Name="CMYK_Y"
+                                         Minimum="0"
+                                         Maximum="1"
+                                         Value="0"
+                                         DefaultValue="0"/>
                 <TextBlock Text="Black:"/>
-                <controls:EditableSlider/>
+                <controls:EditableSlider x:Name="CMYK_K"
+                                         Minimum="0"
+                                         Maximum="1"
+                                         Value="0"
+                                         DefaultValue="0"/>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="0"
@@ -69,11 +86,23 @@
                   Header="YUV">
             <StackPanel>
                 <TextBlock Text="Y:"/>
-                <controls:EditableSlider/>
+                <controls:EditableSlider x:Name="YUV_Y"
+                                         Minimum="0"
+                                         Maximum="1"
+                                         Value="0"
+                                         DefaultValue="0"/>
                 <TextBlock Text="U:"/>
-                <controls:EditableSlider/>
+                <controls:EditableSlider x:Name="YUV_U"
+                                         Minimum="-0.436"
+                                         Maximum="0.436"
+                                         Value="-0.436"
+                                         DefaultValue="-0.436"/>
                 <TextBlock Text="V:"/>
-                <controls:EditableSlider/>
+                <controls:EditableSlider x:Name="YUV_V"
+                                         Minimum="-0.615"
+                                         Maximum="0.615"
+                                         Value="-0.615"
+                                         DefaultValue="-0.615"/>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1"
@@ -129,6 +158,7 @@
                   Header="Preview">
             <Rectangle Width="200"
                        Height="200"
+                       x:Name="RectPreview"
                        Fill="Black"/>
         </GroupBox>
     </Grid>
