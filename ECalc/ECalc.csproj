@@ -101,6 +101,9 @@
     <Compile Include="Engineering\ColorSpaceConversions.cs" />
     <Compile Include="Extensions\WPF.cs" />
     <Compile Include="Maths\Probability.cs" />
+    <Compile Include="Modules\ASCII.xaml.cs">
+      <DependentUpon>ASCII.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\ColorConverters.xaml.cs">
       <DependentUpon>ColorConverters.xaml</DependentUpon>
     </Compile>
@@ -262,6 +265,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Modules\ASCII.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\ColorConverters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -589,6 +596,9 @@
     <Resource Include="Images\large\555_Bistable.png" />
     <Resource Include="Images\large\555_Bloc_Diagram.png" />
     <Resource Include="Images\large\555_Monostable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\ascii.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
