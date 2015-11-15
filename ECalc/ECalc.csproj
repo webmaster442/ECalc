@@ -111,6 +111,9 @@
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\PeriodicTable.xaml.cs">
+      <DependentUpon>PeriodicTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Segment714Calculator.xaml.cs">
       <DependentUpon>Segment714Calculator.xaml</DependentUpon>
     </Compile>
@@ -276,6 +279,10 @@
     <Page Include="Modules\ne555Calc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\PeriodicTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Segment714Calculator.xaml">
       <SubType>Designer</SubType>
