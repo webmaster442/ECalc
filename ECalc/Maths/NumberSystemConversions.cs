@@ -35,8 +35,8 @@ namespace ECalc.Maths
             {
                 while (textform.IndexOf(pair.Key.ToString()) == 0)
                 {
-                    result += int.Parse(pair.Value.ToString());
-                    textform = input.Substring(pair.Key.ToString().Length);
+                    result += pair.Value;
+                    textform = textform.Substring(pair.Key.ToString().Length);
                 }
             }
 
