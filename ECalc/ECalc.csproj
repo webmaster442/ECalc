@@ -466,10 +466,6 @@
     <Resource Include="Images\50px\Undo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\50px\Down.png" />
-    <Resource Include="Images\50px\Up.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\50px\N.png" />
     <Resource Include="Images\50px\T.png" />
   </ItemGroup>
@@ -605,6 +601,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\large\grid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\plot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

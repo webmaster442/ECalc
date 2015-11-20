@@ -77,13 +77,21 @@
         </StackPanel>
         <Border Background="#FFE4E4E4"
                  Grid.Row="0">
-            <TextBox Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+            <!--<TextBox Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                      TextAlignment="Right"
                      FontFamily="Courier New"
                      FontSize="22"
                      x:Name="TbEditor"
                      PreviewKeyDown="TbEditor_PreviewKeyDown"
-                     Style="{StaticResource BorderlessTextBox}"/>
+                     Style="{StaticResource BorderlessTextBox}"/>-->
+            <ComboBox IsEditable="True"
+                      x:Name="CbEdit"
+                      Background="Transparent"
+                      HorizontalAlignment="Right"
+                      Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      FontSize="18"
+                      FontFamily="Courier New"
+                      PreviewKeyDown="TbEditor_PreviewKeyDown"/>
         </Border>
         <TextBlock Grid.Row="1"
                    x:Name="MainDisplay"
@@ -117,6 +125,13 @@
                                   x:Name="BtnFractions"
                                   ToolTip="Convert current result to fractions"
                                   Click="BtnFractions_Click"/>
+            
+            <controls:ImageButton Image="../Images/50px/plot.png"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
+                                  
+                                  ToolTip="Plot Current input"
+                                  Click="BtnPlot_Click"/>
 
             <controls:ImageButton Image="../Images/50px/divide.png"
                                   ImageWidth="22"
@@ -146,19 +161,6 @@
                                   x:Name="BtnAnss"
                                   ToolTip="Copy result to new calculaton"
                                   Click="BtnAnss_Click"/>
-
-            <controls:ImageButton Image="../Images/50px/Up.png"
-                                  ImageWidth="22"
-                                  ImageHeight="22"
-                                  ToolTip="Previous expression in histroy"
-                                  x:Name="BtnHistoryPrev"
-                                  Click="BtnHistoryPrev_Click"/>
-
-            <controls:ImageButton Image="../Images/50px/Down.png"
-                                  ImageWidth="22"
-                                  ImageHeight="22"
-                                  x:Name="BtnHistoryNext"
-                                  ToolTip="Next expression in history"/>
 
             <controls:ImageButton Image="../Images/50px/Undo.png"
                                   ImageWidth="22"

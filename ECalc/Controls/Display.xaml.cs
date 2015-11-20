@@ -1,6 +1,7 @@
 ﻿using ECalc.Classes;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Numerics;
 using System.Text;
 using System.Windows;
@@ -13,13 +14,14 @@ namespace ECalc.Controls
     /// </summary>
     internal partial class Display : UserControl
     {
-        private List<string> _history;
+        private ObservableCollection<string> _history;
         private int _historyIndex;
 
         public Display()
         {
             InitializeComponent();
-            _history = new List<string>();
+            _history = new ObservableCollection<string>();
+            CbEdit.ItemsSource = _history;
             _historyIndex = 0;
         }
 
@@ -114,23 +116,6 @@ namespace ECalc.Controls
             if (index > -1) _history.RemoveAt(index);
             _history.Add(EquationText);
             if (_history.Count > 15) _history.RemoveAt(0);
-        }
-
-        private void BtnHistoryPrev_Click(object sender, RoutedEventArgs e)
-        {
-            if (_history.Count == 0) return;
-            _historyIndex--;
-            if (_historyIndex < 0) _historyIndex = (_history.Count - 1);
-            EquationText = _history[_historyIndex];
-
-        }
-
-        private void BtnHistoryNext_Click(object sender, RoutedEventArgs e)
-        {
-            if (_history.Count == 0) return;
-            _historyIndex++;
-            if (_historyIndex > (_history.Count - 1)) _historyIndex = 0;
-            EquationText = _history[_historyIndex];
         }
 
         private void BtnUndo_Click(object sender, RoutedEventArgs e)
@@ -237,7 +222,8 @@ namespace ECalc.Controls
 
         private void userControl_Loaded(object sender, RoutedEventArgs e)
         {
-            TbEditor.Focus();
+            CbEdit.Focus();
+            //TbEditor.Focus();
         }
 
         private void TbEditor_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -263,6 +249,13 @@ namespace ECalc.Controls
         private void BtnAnss_Click(object sender, RoutedEventArgs e)
         {
             EquationText += "$ans";
+        }
+
+        private void BtnPlot_Click(object sender, RoutedEventArgs e)
+        {
+            var plot = new Pages.Graphing();
+            plot.FunctionX = CbEdit.Text;
+            MainWindow.SwithToControl(plot);
         }
     }
 }
