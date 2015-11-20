@@ -342,32 +342,4 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8Pink; }
         }
     }
-
-    public class ASCIITable : EcalcModule
-    {
-        public override string ModuleCategory
-        {
-            get { return "IT Tools"; }
-        }
-
-        public override string ModuleName
-        {
-            get { return "ASCII Table"; }
-        }
-
-        public override UserControl GetControl()
-        {
-            return new ECalc.Modules.ASCII();
-        }
-
-        public override ImageSource Icon
-        {
-            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/ascii.png", UriKind.Relative)); }
-        }
-
-        public override int Color
-        {
-            get { return (int)TileColor.W8DarkOrange; }
-        }
-    }
 }

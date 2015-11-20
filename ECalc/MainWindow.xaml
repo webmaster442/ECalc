@@ -7,6 +7,7 @@
                  Title="Engineer's Calculator"
                  Width="960"
                  Height="540"
+                 BorderThickness="1"
                  ResizeMode="CanMinimize"
                  Closing="MetroWindow_Closing"
                  Icon="Images/100px/math.png">

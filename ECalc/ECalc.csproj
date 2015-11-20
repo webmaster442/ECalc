@@ -101,18 +101,12 @@
     <Compile Include="Engineering\ColorSpaceConversions.cs" />
     <Compile Include="Extensions\WPF.cs" />
     <Compile Include="Maths\Probability.cs" />
-    <Compile Include="Modules\ASCII.xaml.cs">
-      <DependentUpon>ASCII.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Modules\ColorConverters.xaml.cs">
       <DependentUpon>ColorConverters.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\PeriodicTable.xaml.cs">
-      <DependentUpon>PeriodicTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Segment714Calculator.xaml.cs">
       <DependentUpon>Segment714Calculator.xaml</DependentUpon>
@@ -134,6 +128,9 @@
     </Compile>
     <Compile Include="Modules\VoltageCurrentDivider.xaml.cs">
       <DependentUpon>VoltageCurrentDivider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Graphing.xaml.cs">
+      <DependentUpon>Graphing.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\MNBConverter\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -268,10 +265,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Modules\ASCII.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Modules\ColorConverters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,10 +272,6 @@
     <Page Include="Modules\ne555Calc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Modules\PeriodicTable.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Segment714Calculator.xaml">
       <SubType>Designer</SubType>
@@ -313,6 +302,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\LogicFunctionMinimizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Graphing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
