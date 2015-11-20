@@ -43,6 +43,9 @@ namespace ECalc.Pages
                 case "Currency Converter":
                     control = new CurrencyConverter();
                     break;
+                case "Function Plot":
+                    control = new Graphing();
+                    break;
                 default:
                     return;
             }

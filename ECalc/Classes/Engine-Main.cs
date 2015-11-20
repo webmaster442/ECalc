@@ -19,7 +19,7 @@ namespace ECalc.Classes
         const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)|(shr)|(shl)|(ror)|(rol)";
         const string exponentfix = @"[eE]\s+([+-~])\s+";
 
-        private List<IFunction> _functions;
+        private static List<IFunction> _functions;
         private PrefixDictionary _prefixes;
 
         /// <summary>

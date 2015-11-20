@@ -22,6 +22,15 @@
         </Style>
     </UserControl.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/ECalc;component/Images/large/grid.png"
+                        TileMode="Tile"
+                        Stretch="None"
+                        Viewport="0,0,200,200"
+                        ViewportUnits="Absolute"
+                        AlignmentX="Left"
+                        AlignmentY="Top"/>
+        </Grid.Background>
         <Canvas Name="ScreenCanvas"
                 ClipToBounds="True" />
         <Button Content="Graph Options"
@@ -53,13 +62,15 @@
                       Content="Y function:"
                       IsChecked="True"/>
             <TextBox Grid.Row="0"
-                     Grid.Column="1"/>
+                     Grid.Column="1"
+                     x:Name="TbYFunction"/>
             <CheckBox Grid.Row="1"
                       Grid.Column="0"
                       Content="X function:"
                       IsChecked="False"/>
             <TextBox Grid.Row="1"
-                     Grid.Column="1"/>
+                     Grid.Column="1"
+                     x:Name="TbXFunction"/>
             <TextBlock Text="X minimum:"
                        Grid.Row="2"
                        Grid.Column="0"/>

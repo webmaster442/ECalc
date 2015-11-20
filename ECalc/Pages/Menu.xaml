@@ -11,16 +11,16 @@
              d:DesignHeight="490" d:DesignWidth="960">
     <UserControl.Resources>
         <Style x:Key="LargeTileStyle" TargetType="mah:Tile">
-            <Setter Property="Width" Value="269" />
-            <Setter Property="Height" Value="132" />
+            <Setter Property="Width" Value="256" />
+            <Setter Property="Height" Value="128" />
             <Setter Property="TitleFontSize" Value="12"/>
             <Setter Property="Opacity" Value="0.8"/>
         </Style>
 
         <Style TargetType="mah:Tile">
             <Setter Property="TitleFontSize" Value="13"/>
-            <Setter Property="Width" Value="132"/>
-            <Setter Property="Height" Value="132"/>
+            <Setter Property="Width" Value="128"/>
+            <Setter Property="Height" Value="128"/>
             <Setter Property="Opacity" Value="0.8"/>
             <Setter Property="ContentTemplate">
                 <Setter.Value>
@@ -63,13 +63,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="190"/>
             <RowDefinition/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="130"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Rectangle Grid.ColumnSpan="2"
-                   Grid.RowSpan="2"
+                   Grid.RowSpan="3"
                    Opacity="0.5"
                    x:Name="RectImage"/>
         <GroupBox Header="Generic"
@@ -102,13 +103,11 @@
                           Click="Tile_Click">
                     <Image Source="../Images/100px/currency.png"/>
                 </mah:Tile>
-                <Button Height="60"
-                        Margin="15,10,0,0"
-                        x:Name="BtnBing"
-                        Click="BtnBing_Click"
-                        Opacity="0.8" HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <Image Source="../Images/large/bing.png"/>
-                </Button>
+                <mah:Tile Title="Function Plot"
+                          Background="#16a085"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/graph.png"/>
+                </mah:Tile>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1"
@@ -119,9 +118,18 @@
                      Background="#66252525"
                      SelectionChanged="CategoryView_SelectionChanged"/>
         </GroupBox>
+        <Button Grid.Row="2"
+                x:Name="BtnBing"
+                Click="BtnBing_Click"
+                Opacity="0.8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <Image Source="../Images/large/bing.png"/>
+        </Button>
         <ScrollViewer Grid.Row="1"
+                      Grid.RowSpan="2"
                       Grid.Column="1">
-            <WrapPanel x:Name="ModuleDisplay"></WrapPanel>
+            <WrapPanel x:Name="ModuleDisplay"/>
         </ScrollViewer>
     </Grid>
 </UserControl>

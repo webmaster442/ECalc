@@ -600,6 +600,12 @@
   <ItemGroup>
     <Resource Include="Images\100px\ascii.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\graph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\grid.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
