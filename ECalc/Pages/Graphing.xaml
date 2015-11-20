@@ -21,7 +21,10 @@
             <Setter Property="Margin" Value="2"/>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid MouseLeftButtonDown="ScreenCanvas_MouseLeftButtonDown"
+          MouseLeftButtonUp="ScreenCanvas_MouseLeftButtonUp"
+          MouseMove="ScreenCanvas_MouseMove"
+          MouseRightButtonDown="ScreenCanvas_MouseRightButtonDown">
         <Grid.Background>
             <ImageBrush ImageSource="/ECalc;component/Images/large/grid.png"
                         TileMode="Tile"
@@ -32,7 +35,16 @@
                         AlignmentY="Top"/>
         </Grid.Background>
         <Canvas Name="ScreenCanvas"
-                ClipToBounds="True" />
+                ClipToBounds="True"/>
+        <Rectangle Name="selection"
+                   Visibility="Collapsed"
+                   Stroke="Black"
+                   Fill="#00000000"
+                   StrokeDashOffset="5"
+                   StrokeThickness=".99"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   StrokeDashArray="3 3" />
         <Button Content="Graph Options"
                 x:Name="BtnGraphOptions"
                 Click="BtnGraphOptions_Click"
