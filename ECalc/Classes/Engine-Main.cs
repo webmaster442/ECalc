@@ -80,7 +80,7 @@ namespace ECalc.Classes
         /// </summary>
         /// <param name="expression">Expression to compile</param>
         /// <returns>a Que containing token items</returns>
-        private Queue<Token> CompileToRpn(string expression)
+        public Queue<Token> CompileToRpn(string expression)
         {
             var good = expression.Trim();
 
@@ -310,14 +310,12 @@ namespace ECalc.Classes
         }
 
         /// <summary>
-        /// Evaluates an expression
+        /// Evaluates an RPN expression
         /// </summary>
-        /// <param name="expression">Expression to evaluate</param>
-        /// <returns>Evaluated Expression</returns>
-        public string Evaluate(string expression)
+        /// <param name="que">An RPN expression. To get this call CompileToRpn</param>
+        public void Evaluate(Queue<Token> que)
         {
             HadOwerFlow = false; //reset overflow
-            var que = CompileToRpn(expression);
             Stack<object> result = new Stack<object>();
 
             foreach (var token in que)
@@ -386,9 +384,20 @@ namespace ECalc.Classes
             if (result.Count == 1)
             {
                 Ans = result.Pop();
-                return ResultToString();
             }
             else throw new ArgumentException("Evalutation Error!");
+        }
+
+        /// <summary>
+        /// Evaluates an expression
+        /// </summary>
+        /// <param name="expression">Expression to evaluate</param>
+        /// <returns>Evaluated Expression</returns>
+        public string Evaluate(string expression)
+        {
+            var que = CompileToRpn(expression);
+            Evaluate(que);
+            return ResultToString();
         }
 
         /// <summary>
