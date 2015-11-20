@@ -88,7 +88,7 @@ namespace ECalc.Api
         }
 
         /// <summary>
-        /// Asyncronous & awaitable version of the download routine
+        /// Asyncronous &amp; awaitable version of the download routine
         /// </summary>
         /// <returns>An awaitable task</returns>
         public Task DownloadAsync()
