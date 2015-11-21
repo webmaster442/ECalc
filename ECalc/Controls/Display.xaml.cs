@@ -15,14 +15,12 @@ namespace ECalc.Controls
     internal partial class Display : UserControl
     {
         private ObservableCollection<string> _history;
-        private int _historyIndex;
 
         public Display()
         {
             InitializeComponent();
             _history = new ObservableCollection<string>();
             CbEdit.ItemsSource = _history;
-            _historyIndex = 0;
         }
 
         /// <summary>
@@ -254,7 +252,7 @@ namespace ECalc.Controls
         private void BtnPlot_Click(object sender, RoutedEventArgs e)
         {
             var plot = new Pages.Graphing();
-            plot.FunctionX = CbEdit.Text;
+            plot.FunctionY = CbEdit.Text;
             MainWindow.SwithToControl(plot);
         }
     }
