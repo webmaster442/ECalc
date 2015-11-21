@@ -88,6 +88,7 @@
     <Compile Include="Classes\CSV.cs" />
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
     <Compile Include="Classes\Engine-Static.cs" />
+    <Compile Include="Classes\NumberToText.cs" />
     <Compile Include="Controls\MatrixEditor.xaml.cs">
       <DependentUpon>MatrixEditor.xaml</DependentUpon>
     </Compile>
