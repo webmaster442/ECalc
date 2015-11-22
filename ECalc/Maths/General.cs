@@ -71,7 +71,7 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            if (Helpers.IsComplex(arguments[0]) || Helpers.IsComplex(arguments[1]))
+            if (Helpers.IsComplex(arguments[0]))
             {
                 Complex a = Helpers.GetComplex(arguments[0]);
                 return Complex.Pow(a, 2);
@@ -126,7 +126,7 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            if (Helpers.IsComplex(arguments[0]) || Helpers.IsComplex(arguments[1]))
+            if (Helpers.IsComplex(arguments[0]))
             {
                 Complex a = Helpers.GetComplex(arguments[0]);
                 Complex b = Helpers.GetComplex(arguments[1]);
