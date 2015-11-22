@@ -89,7 +89,7 @@ namespace ECalc.Classes
             good = Regex.Replace(good, exponentfix, "e$1").Trim();
 
             good = Regex.Replace(good, "- ", "MINUS");
-            good = Regex.Replace(good, @"(?<number1>(\d+([\.\,]\d+)?))\s+MINUS", "${number1} -");
+            good = Regex.Replace(good, @"(?<number1>(\d+([\.\,]\d+)?)|(\)))\s+MINUS", "${number1} -");
             // Step 3. Use the tilde ~ as the unary minus operator
             good = Regex.Replace(good, "MINUS", "~");
 
