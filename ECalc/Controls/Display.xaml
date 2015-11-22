@@ -7,6 +7,7 @@
              xmlns:controls="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
              xmlns:classes="clr-namespace:ECalc.Classes"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d"
              d:DesignHeight="120" d:DesignWidth="960"
              Loaded="userControl_Loaded">
@@ -75,25 +76,24 @@
                       ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
                       SelectedIndex="3"/>
         </StackPanel>
-        <Border Background="#FFE4E4E4"
-                 Grid.Row="0">
-            <!--<TextBox Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                     TextAlignment="Right"
-                     FontFamily="Courier New"
-                     FontSize="22"
-                     x:Name="TbEditor"
-                     PreviewKeyDown="TbEditor_PreviewKeyDown"
-                     Style="{StaticResource BorderlessTextBox}"/>-->
-            <ComboBox IsEditable="True"
-                      x:Name="CbEdit"
-                      Background="Transparent"
-                      HorizontalAlignment="Right"
-                      Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                      FontSize="18"
-                      FontFamily="Courier New"
-                      PreviewKeyDown="TbEditor_PreviewKeyDown"/>
-        </Border>
-        <TextBlock Grid.Row="1"
+        <TextBox Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                 TextAlignment="Right"
+                 FontFamily="Courier New"
+                 FontSize="22"
+                 Margin="0,0,100,0"
+                 x:Name="TbEditor"
+                 PreviewKeyDown="TbEditor_PreviewKeyDown"
+                 Style="{StaticResource BorderlessTextBox}"/>
+        <mah:DropDownButton Width="99"
+                            HorizontalAlignment="Right"
+                            x:Name="BtnHistory"
+                            Content="Histroy">
+            <mah:DropDownButton.Icon>
+                <Image Source="../Images/50px/list.png"/>
+            </mah:DropDownButton.Icon>
+        </mah:DropDownButton>
+
+            <TextBlock Grid.Row="1"
                    x:Name="MainDisplay"
                    Background="{StaticResource LCD}"
                    Text="{Binding ResultText, ElementName=userControl}"

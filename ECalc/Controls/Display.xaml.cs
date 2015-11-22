@@ -20,7 +20,7 @@ namespace ECalc.Controls
         {
             InitializeComponent();
             _history = new ObservableCollection<string>();
-            CbEdit.ItemsSource = _history;
+            BtnHistory.ItemsSource = _history;
         }
 
         /// <summary>
@@ -208,8 +208,7 @@ namespace ECalc.Controls
 
         private void userControl_Loaded(object sender, RoutedEventArgs e)
         {
-            CbEdit.Focus();
-            //TbEditor.Focus();
+            TbEditor.Focus();
         }
 
         private void TbEditor_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -240,7 +239,7 @@ namespace ECalc.Controls
         private void BtnPlot_Click(object sender, RoutedEventArgs e)
         {
             var plot = new Pages.Graphing();
-            plot.FunctionY = CbEdit.Text;
+            plot.FunctionY = TbEditor.Text;
             MainWindow.SwithToControl(plot);
         }
     }
