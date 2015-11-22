@@ -62,6 +62,7 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -91,6 +92,9 @@
     <Compile Include="Classes\NumberToText.cs" />
     <Compile Include="Controls\MatrixEditor.xaml.cs">
       <DependentUpon>MatrixEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NumberToTextDialog.xaml.cs">
+      <DependentUpon>NumberToTextDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Special\MintermTableTypes.cs" />
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
@@ -159,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NumberSystemDisplayDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NumberToTextDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -355,7 +363,6 @@
     <Compile Include="Maths\Types.cs" />
     <Compile Include="Maths\General.cs" />
     <Compile Include="Maths\NumberSystemConversions.cs" />
-    <Compile Include="Classes\NumberText.cs" />
     <Compile Include="Maths\TrigFunctions.cs" />
     <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Controls\AboutDialog.xaml.cs">

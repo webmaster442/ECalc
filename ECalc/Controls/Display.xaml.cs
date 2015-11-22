@@ -150,21 +150,9 @@ namespace ECalc.Controls
 
         private void BtnNumToText_Click(object sender, RoutedEventArgs e)
         {
-            NumberText nt = new NumberText();
-            string message = "";
-
-            if (Engine.Ans is double) message = nt.ToText((double)Engine.Ans);
-            else if (Engine.Ans is Fraction)
-            {
-                Fraction f = (Fraction)Engine.Ans;
-                message = nt.ToText(f.Numerator) + " over " + nt.ToText(f.Denominator);
-            }
-            else
-            {
-                Complex c = (Complex)Engine.Ans;
-                message = "Real: " + nt.ToText(c.Real) + ", Imaginary: " + nt.ToText(c.Imaginary);
-            }
-            MainWindow.ShowDialog("Number to text", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+            NumberToTextDialog ntd = new NumberToTextDialog();
+            ntd.SetNumber(Engine.Ans);
+            MainWindow.ShowDialog(ntd);
         }
 
         private void BtnFractions_Click(object sender, RoutedEventArgs e)

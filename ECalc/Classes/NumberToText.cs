@@ -10,7 +10,7 @@ namespace ECalc.Classes
     /// A decent number to text conversion. Handles negative, floating and scientific notation
     /// Iplementation is Based on: https://github.com/robertgreiner/NumberText/blob/master/NumberText/NumberText.cs
     /// </summary>
-    static class NumberToText
+    public static class NumberToText
     {
         private static Dictionary<double, string> _numbers;
         private static Dictionary<double, string> _scales;
