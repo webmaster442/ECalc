@@ -235,6 +235,7 @@ namespace ECalc.Pages
         #region zoom
         private void ScreenCanvas_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (GridSettings.Visibility == Visibility.Visible) return;
             switch (TabOptions.SelectedIndex)
             {
                 case 0:
@@ -250,6 +251,7 @@ namespace ECalc.Pages
 
         private void ScreenCanvas_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (GridSettings.Visibility == Visibility.Visible) return;
             if (_selectionStarted)
             {
                 var zoomIn = new Rect(_selectionStart, e.GetPosition(ScreenCanvas));
@@ -265,6 +267,7 @@ namespace ECalc.Pages
 
         private void ScreenCanvas_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
+            if (GridSettings.Visibility == Visibility.Visible) return;
             if (_selectionStarted)
             {
                 var rect = new Rect(_selectionStart, e.GetPosition(ScreenCanvas));
@@ -276,6 +279,7 @@ namespace ECalc.Pages
 
         private void ScreenCanvas_MouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            if (GridSettings.Visibility == Visibility.Visible) return;
             if (_selectionStarted)
             {
                 _selectionStarted = false;
