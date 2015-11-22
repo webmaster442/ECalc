@@ -28,14 +28,14 @@
         </ObjectDataProvider>
 
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="LCD">
-            <GradientStop Color="#FFE4E4E4" Offset="0"/>
-            <GradientStop Color="White" Offset="1"/>
+            <GradientStop Color="#FFE4E4E4" Offset="1"/>
+            <GradientStop Color="White" Offset="0"/>
         </LinearGradientBrush>
-
+        
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="{StaticResource LCD}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
@@ -87,20 +87,24 @@
         <mah:DropDownButton Width="99"
                             HorizontalAlignment="Right"
                             x:Name="BtnHistory"
-                            Content="Histroy">
+                            Content="History">
+            <mah:DropDownButton.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" MouseDown="TextBlock_MouseDown"/>
+                </DataTemplate>
+            </mah:DropDownButton.ItemTemplate>
             <mah:DropDownButton.Icon>
                 <Image Source="../Images/50px/list.png"/>
             </mah:DropDownButton.Icon>
         </mah:DropDownButton>
 
-            <TextBlock Grid.Row="1"
+        <TextBlock Grid.Row="1"
                    x:Name="MainDisplay"
-                   Background="{StaticResource LCD}"
                    Text="{Binding ResultText, ElementName=userControl}"
                    TextAlignment="Right"
                    FontFamily="Consolas"
                    TextWrapping="Wrap"
-                   FontSize="40"/>
+                   FontSize="38"/>
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
@@ -125,7 +129,7 @@
                                   x:Name="BtnFractions"
                                   ToolTip="Convert current result to fractions"
                                   Click="BtnFractions_Click"/>
-            
+
             <controls:ImageButton Image="../Images/50px/plot.png"
                                   ImageWidth="22"
                                   ImageHeight="22"

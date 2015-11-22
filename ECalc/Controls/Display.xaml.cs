@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ECalc.Controls
 {
@@ -83,6 +84,15 @@ namespace ECalc.Controls
         {
             get { return (string)GetValue(EquationTextProperty); }
             set { SetValue(EquationTextProperty, value); }
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left && BtnHistory.IsExpanded)
+            {
+                var value = ((TextBlock)e.Source).DataContext;
+                EquationText = value.ToString();
+            }
         }
 
         /// <summary>
