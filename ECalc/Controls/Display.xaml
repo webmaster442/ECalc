@@ -80,24 +80,42 @@
                  TextAlignment="Right"
                  FontFamily="Courier New"
                  FontSize="22"
-                 Margin="0,0,100,0"
+                 Margin="0,0,90,0"
                  x:Name="TbEditor"
                  PreviewKeyDown="TbEditor_PreviewKeyDown"
                  Style="{StaticResource BorderlessTextBox}"/>
-        <mah:DropDownButton Width="99"
-                            HorizontalAlignment="Right"
-                            x:Name="BtnHistory"
-                            Content="History">
-            <mah:DropDownButton.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}" MouseDown="TextBlock_MouseDown"/>
-                </DataTemplate>
-            </mah:DropDownButton.ItemTemplate>
-            <mah:DropDownButton.Icon>
-                <Image Source="../Images/50px/list.png"/>
-            </mah:DropDownButton.Icon>
-        </mah:DropDownButton>
 
+        <Image Source="../Images/50px/list.png"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Right"
+               Margin="0,0,60,0"
+               Width="24"
+               Height="24"
+               MouseDown="HistoryText_MouseDown"/>
+
+        <TextBlock Text="History"
+                   x:Name="HistoryText"
+                   VerticalAlignment="Center"
+                   FontSize="14"
+                   Foreground="Blue"
+                   FontWeight="Bold"
+                   Width="50"
+                   HorizontalAlignment="Right"
+                   TextAlignment="Right"
+                   Style="{StaticResource HoverUnderlineStyle}"
+                   Margin="0,0,5,0"
+                   MouseDown="HistoryText_MouseDown">
+            <TextBlock.ContextMenu>
+                <ContextMenu x:Name="HistoryContext">
+                    <ContextMenu.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" MouseDown="TextBlock_MouseDown"/>
+                        </DataTemplate>
+                    </ContextMenu.ItemTemplate>
+                </ContextMenu>
+            </TextBlock.ContextMenu>
+        </TextBlock>
+        
         <TextBlock Grid.Row="1"
                    x:Name="MainDisplay"
                    Text="{Binding ResultText, ElementName=userControl}"

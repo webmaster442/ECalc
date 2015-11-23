@@ -19,7 +19,7 @@ namespace ECalc.Controls
         {
             InitializeComponent();
             _history = new ObservableCollection<string>();
-            BtnHistory.ItemsSource = _history;
+            HistoryContext.ItemsSource = _history;
         }
 
         /// <summary>
@@ -88,11 +88,16 @@ namespace ECalc.Controls
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left && BtnHistory.IsExpanded)
+            if (e.ChangedButton == MouseButton.Left && HistoryText.ContextMenu.IsOpen)
             {
                 var value = ((TextBlock)e.Source).DataContext;
                 EquationText = value.ToString();
             }
+        }
+
+        private void HistoryText_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            HistoryText.ContextMenu.IsOpen = true;
         }
 
         /// <summary>
