@@ -51,12 +51,13 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Opacity="0.8"/>
-        <Border BorderThickness="1" BorderBrush="Black"
+        <Border BorderThickness="1"
+                BorderBrush="Black"
                 VerticalAlignment="Center"
+                x:Name="GridSettings"
                 Width="500"
                 Height="320">
-            <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
-                  x:Name="GridSettings">
+            <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="30"/>
