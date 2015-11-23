@@ -138,8 +138,12 @@ namespace ECalc.Pages
                     _engine.MemoryManager.SetItem("$x", x);
                     var xCanvas = (x + offsetX) * graphToCanvasX;
                     _engine.Evaluate(rpnY);
-                    var yCanvas = (offsetY - (double)Classes.Engine.Ans) * graphToCanvasY;
-                    points.Add(ClampedPoint((double)xCanvas, (double)yCanvas));
+                    double y = (double)Classes.Engine.Ans;
+                    if (!double.IsNaN(y))
+                    {
+                        var yCanvas = (offsetY - y) * graphToCanvasY;
+                        points.Add(ClampedPoint((double)xCanvas, (double)yCanvas));
+                    }
                 }
 
                 ScreenCanvas.Children.Clear();
