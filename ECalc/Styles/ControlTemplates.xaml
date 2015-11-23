@@ -53,59 +53,7 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
-
-    <Style x:Key="FlatButton" TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="Margin" Value="2,1"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Grid>
-
-                        <Button Opacity="0.1">
-                            <!-- Inherit properties here with TemplateBinding -->
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Style.Triggers>
-                                        <MultiTrigger>
-
-                                            <MultiTrigger.Conditions>
-                                                <Condition Property="IsFocused" Value="False" />
-                                                <Condition Property="IsMouseOver" Value="False" />
-                                            </MultiTrigger.Conditions>
-
-                                            <MultiTrigger.EnterActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation To="0.0" Duration="0:0:0.5" Storyboard.TargetProperty="Opacity" />
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </MultiTrigger.EnterActions>
-
-                                            <MultiTrigger.ExitActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation To="1.0" Duration="0:0:0.25" Storyboard.TargetProperty="Opacity" />
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </MultiTrigger.ExitActions>
-
-                                        </MultiTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-
-                        <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="3" IsHitTestVisible="False">
-                            <ContentPresenter />
-                        </Label>
-
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
+    
     <DataTemplate x:Key="MemConstTemplate">
         <Grid>
             <Grid.RowDefinitions>
@@ -143,6 +91,14 @@
 
     <Style TargetType="StackPanel" x:Key="PopupPanel">
         <Setter Property="Background" Value="#eeeeee"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="HoverUnderlineStyle">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
