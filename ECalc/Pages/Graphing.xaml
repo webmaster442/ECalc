@@ -51,177 +51,194 @@
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Opacity="0.8"/>
-        <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
-              VerticalAlignment="Center"
-              Width="300"
-              Height="320"
-              x:Name="GridSettings">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="30"/>
-            </Grid.RowDefinitions>
-            <TabControl x:Name="TabOptions">
-                <TabItem Header="2D">
-                    <Grid VerticalAlignment="Top">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="85"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Y function:"/>
-                        <TextBox Grid.Row="0"
-                                 Grid.Column="1"
-                                 x:Name="TbYFunction"/>
-                        <TextBlock Text="X minimum:"
-                                   Grid.Row="1"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="MinX"
-                                    Minimum="-1000"
-                                    Maximum="10000"
-                                    Value="-15"
-                                    Grid.Row="1"
-                                    Grid.Column="1"/>
-                        <TextBlock Text="X maximum:"
-                                   Grid.Row="2"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="MaxX"
-                                                Minimum="-1000"
-                                                Maximum="10000"
-                                                Value="15"
-                                                Grid.Row="2"
-                                                Grid.Column="1"/>
-                        <TextBlock Text="Y minimum:"
-                                   Grid.Row="3"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="MinY"
-                                                Minimum="-1000"
-                                                Maximum="10000"
-                                                Value="-15"
-                                                Grid.Row="3"
-                                                Grid.Column="1"/>
-                        <TextBlock Text="Y maximum:"
-                                   Grid.Row="4"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="MaxY"
-                                    Minimum="-1000"
-                                    Maximum="10000"
-                                    Value="15"
-                                    Grid.Row="4"
-                                    Grid.Column="1"/>
-                    </Grid>
-                </TabItem>
-                <TabItem Header="2D Parametric">
-                    <Grid VerticalAlignment="Top">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="85"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="Y function:"/>
-                        <TextBox Grid.Row="0"
-                                 Grid.Column="1"
-                                 x:Name="Tb2DYFunction"/>
-                        <TextBlock Text="X function:"
-                                   Grid.Row="1"/>
-                        <TextBox Grid.Row="1"
-                                 Grid.Column="1"
-                                 x:Name="Tb2DXFunction"/>
-                        <TextBlock Text="X minimum:"
-                                   Grid.Row="2"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="Min2DX"
-                                    Minimum="-1000"
-                                    Maximum="10000"
-                                    Value="-15"
-                                    Grid.Row="2"
-                                    Grid.Column="1"/>
-                        <TextBlock Text="X maximum:"
-                                   Grid.Row="3"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="Max2DX"
-                                                Minimum="-1000"
-                                                Maximum="10000"
-                                                Value="15"
-                                                Grid.Row="3"
-                                                Grid.Column="1"/>
-                        <TextBlock Text="Y minimum:"
-                                   Grid.Row="4"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="Min2DY"
-                                                Minimum="-1000"
-                                                Maximum="10000"
-                                                Value="-15"
-                                                Grid.Row="4"
-                                                Grid.Column="1"/>
-                        <TextBlock Text="Y maximum:"
-                                   Grid.Row="5"
-                                   Grid.Column="0"/>
-                        <Controls:NumericUpDown x:Name="Max2DY"
-                                    Minimum="-1000"
-                                    Maximum="10000"
-                                    Value="15"
-                                    Grid.Row="5"
-                                    Grid.Column="1"/>
-                        <TextBlock Text="t Min:"
-                                   Grid.Row="6"/>
-                        <Controls:NumericUpDown x:Name="Min2Dt"
-                                                Minimum="-1000"
-                                                Maximum="10000"
-                                                Value="-15"
-                                                Grid.Row="6"
-                                                Grid.Column="1"/>
-                        <TextBlock Text="t Max:"
-                                   Grid.Row="7"/>
-                        <Controls:NumericUpDown x:Name="Max2Dt"
-                                                Minimum="-1000"
-                                                Maximum="10000"
-                                                Value="-15"
-                                                Grid.Row="7"
-                                                Grid.Column="1"/>
-                        <TextBlock Text="t Step:"
-                                   Grid.Row="8"/>
-                        <Controls:NumericUpDown x:Name="Step2Dt"
-                                                Minimum="-1000"
-                                                Maximum="10000"
-                                                Value="-15"
-                                                Grid.Row="8"
-                                                Grid.Column="1"/>
-                    </Grid>
-                </TabItem>
-            </TabControl>
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="6"
-                        Grid.ColumnSpan="2"
-                        HorizontalAlignment="Right">
-                <Button Content="Plot"
-                        Width="80"
-                        x:Name="BtnPlot"
-                        Click="BtnPlot_Click"/>
-                <Button Content="Reset"
-                        Width="80"
-                        x:Name="BtnReset"
-                        Click="BtnReset_Click"/>
-                <Button Content="Cancel"
-                        Width="80"
-                        x:Name="BtnCancel"
-                        Click="BtnCancel_Click"/>
-            </StackPanel>
-        </Grid>
+        <Border BorderThickness="1" BorderBrush="Black"
+                VerticalAlignment="Center"
+                Width="500"
+                Height="320">
+            <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+                  x:Name="GridSettings">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Templates"
+                          Grid.Column="1">
+                    <ListBox x:Name="FunctionTemplates"
+                             SelectionChanged="FunctionTemplates_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Code}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </GroupBox>
+                <TabControl x:Name="TabOptions">
+                    <TabItem Header="2D">
+                        <Grid VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Y function:"/>
+                            <TextBox Grid.Row="0"
+                                     Grid.Column="1"
+                                     x:Name="TbYFunction"/>
+                            <TextBlock Text="X minimum:"
+                                       Grid.Row="1"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="MinX"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="-15"
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="X maximum:"
+                                       Grid.Row="2"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="MaxX"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="15"
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="Y minimum:"
+                                       Grid.Row="3"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="MinY"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="-15"
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="Y maximum:"
+                                       Grid.Row="4"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="MaxY"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="15"
+                                                    Grid.Row="4"
+                                                    Grid.Column="1"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="2D Parametric">
+                        <Grid VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="85"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Y function:"/>
+                            <TextBox Grid.Row="0"
+                                     Grid.Column="1"
+                                     x:Name="Tb2DYFunction"/>
+                            <TextBlock Text="X function:"
+                                       Grid.Row="1"/>
+                            <TextBox Grid.Row="1"
+                                     Grid.Column="1"
+                                     x:Name="Tb2DXFunction"/>
+                            <TextBlock Text="X minimum:"
+                                       Grid.Row="2"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="Min2DX"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="-15"
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="X maximum:"
+                                       Grid.Row="3"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="Max2DX"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="15"
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="Y minimum:"
+                                       Grid.Row="4"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="Min2DY"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="-15"
+                                                    Grid.Row="4"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="Y maximum:"
+                                       Grid.Row="5"
+                                       Grid.Column="0"/>
+                            <Controls:NumericUpDown x:Name="Max2DY"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="15"
+                                                    Grid.Row="5"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="t Min:"
+                                       Grid.Row="6"/>
+                            <Controls:NumericUpDown x:Name="Min2Dt"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="-15"
+                                                    Grid.Row="6"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="t Max:"
+                                       Grid.Row="7"/>
+                            <Controls:NumericUpDown x:Name="Max2Dt"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="-15"
+                                                    Grid.Row="7"
+                                                    Grid.Column="1"/>
+                            <TextBlock Text="t Step:"
+                                       Grid.Row="8"/>
+                            <Controls:NumericUpDown x:Name="Step2Dt"
+                                                    Minimum="-1000"
+                                                    Maximum="10000"
+                                                    Value="-15"
+                                                    Grid.Row="8"
+                                                    Grid.Column="1"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Row="6"
+                            Grid.ColumnSpan="2"
+                            HorizontalAlignment="Right">
+                    <Button Content="Plot"
+                            Width="80"
+                            x:Name="BtnPlot"
+                            Click="BtnPlot_Click"/>
+                    <Button Content="Reset"
+                            Width="80"
+                            x:Name="BtnReset"
+                            Click="BtnReset_Click"/>
+                    <Button Content="Cancel"
+                            Width="80"
+                            x:Name="BtnCancel"
+                            Click="BtnCancel_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

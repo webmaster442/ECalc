@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECalc.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -16,12 +17,15 @@ namespace ECalc.Pages
         private Classes.Engine _engine;
         private Point _selectionStart;
         private bool _selectionStarted;
+        private FunctionPlotSource _source;
 
         public Graphing()
         {
             InitializeComponent();
             _engine = new Classes.Engine();
             _engine.MemoryManager = new SimpleMemmMan();
+            _source = new FunctionPlotSource();
+            FunctionTemplates.ItemsSource = _source;
         }
 
         private double CanvasWidth
@@ -217,6 +221,16 @@ namespace ECalc.Pages
             MaxX.Value = 15;
             MaxY.Value = 15;
             TbYFunction.Text = "";
+
+            Min2DX.Value = -15;
+            Min2DY.Value = -15;
+            Max2DX.Value = 15;
+            Max2DY.Value = 15;
+            Min2Dt.Value = 0;
+            Max2Dt.Value = 15;
+            Step2Dt.Value = 1;
+            Tb2DXFunction.Text = "";
+            Tb2DYFunction.Text = "";
         }
 
         private void BtnPlot_Click(object sender, RoutedEventArgs e)
@@ -229,6 +243,17 @@ namespace ECalc.Pages
         {
             if (GridSettings.Visibility == Visibility.Visible) GridSettings.Visibility = Visibility.Collapsed;
             else GridSettings.Visibility = Visibility.Visible;
+        }
+
+        private void FunctionTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var fnc = _source[FunctionTemplates.SelectedIndex];
+            Dispatcher.Invoke(() => { TabOptions.SelectedIndex = 0; });
+            MinX.Value = fnc.XMin;
+            MaxX.Value = fnc.XMax;
+            MinY.Value = fnc.YMin;
+            MaxY.Value = fnc.YMax;
+            TbYFunction.Text = fnc.Code;
         }
         #endregion
 
