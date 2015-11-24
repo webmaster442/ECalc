@@ -2,6 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/ECalc/bin/Debug
-/ECalc/obj/Debug
-/.vs
+/ECalc/bin/
+/ECalc/obj/
+/ECalc.Api/bin/
+/ECalc.Api/obj/
+/compile.log
+/.vs/
