@@ -16,11 +16,15 @@ SET PATH=%PATH%;%msbuildp%;
 rem ---------------------------------------------------------------------------
 rem compile
 rem ---------------------------------------------------------------------------
-msbuild /m ECalc.sln /p:Configuration=Release
+echo Running MSBuild...
+msbuild /m ECalc.sln /p:Configuration=Release /l:FileLogger,Microsoft.Build.Engine;logfile=compile.log;append=false
+if %errorlevel%==1 echo Build Failed. Check compile.log
+if %errorlevel%==0 echo Build Succesfull.
 
 rem ---------------------------------------------------------------------------
 rem cleanup
 rem ---------------------------------------------------------------------------
+echo Cleaning ...
 cd bin\Release
 del *.pdb
 del *.vshost.exe.config
