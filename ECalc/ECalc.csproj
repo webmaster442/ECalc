@@ -97,6 +97,9 @@
     <Compile Include="Controls\NumberToTextDialog.xaml.cs">
       <DependentUpon>NumberToTextDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Special\DateTimeSelector.xaml.cs">
+      <DependentUpon>DateTimeSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Special\MintermTableTypes.cs" />
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
@@ -168,6 +171,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NumberToTextDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Special\DateTimeSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
