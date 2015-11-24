@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ECalc.Engineering
 {
@@ -95,6 +96,43 @@ namespace ECalc.Engineering
                     default:
                         return "";
                 }
+            });
+        }
+
+        public static Task<string> HashFile(Algorithms algorithm, string filename)
+        {
+            return Task.Run(() =>
+            {
+                HashAlgorithm hasher = null;
+                byte[] hash = null;
+                switch (algorithm)
+                {
+                    case Algorithms.MD5:
+                        hasher = MD5.Create();
+                        break;
+                    case Algorithms.CRC32:
+                        hasher = new Crc32();
+                        break;
+                    case Algorithms.CRC64:
+                        hasher = new Crc64Iso();
+                        break;
+                    case Algorithms.SHA1:
+                        hasher = SHA1.Create();
+                        break;
+                    case Algorithms.SHA256:
+                        hasher = SHA256.Create();
+                        break;
+                    case Algorithms.SHA512:
+                        hasher = SHA512.Create();
+                        break;
+                }
+                using (var stream = File.OpenRead(filename))
+                {
+                     hash = hasher.ComputeHash(stream);
+                }
+                hasher.Dispose();
+                hasher = null;
+                return BytesToString(hash);
             });
         }
 

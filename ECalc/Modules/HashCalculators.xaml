@@ -14,11 +14,11 @@
         <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="FontSize" Value="14"/>
         </Style>
     </UserControl.Resources>
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition Height="40"/>
@@ -41,17 +41,56 @@
             <ComboBoxItem Content="CRC32"/>
             <ComboBoxItem Content="CRC64"/>
         </ComboBox>
-        <TextBlock Text="Input Text:"
-                   Grid.Row="1"/>
-        <TextBox Grid.Row="2"
-                 FontSize="18"
-                 Grid.ColumnSpan="2"
-                 VerticalScrollBarVisibility="Visible"
-                 VerticalAlignment="Stretch"
-                 AcceptsReturn="True"
-                 x:Name="TbInput"
-                 TextChanged="TbInput_TextChanged"
-                 AcceptsTab="True"/>
+        <TabControl Grid.Row="1"
+                    x:Name="TabMode"
+                    Grid.ColumnSpan="2">
+            <TabItem Header="Text">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Input Text:"
+                               Grid.Row="0"/>
+                    <TextBox Grid.Row="2"
+                             FontSize="18"
+                             Grid.ColumnSpan="2"
+                             VerticalScrollBarVisibility="Visible"
+                             VerticalAlignment="Stretch"
+                             AcceptsReturn="True"
+                             x:Name="TbInput"
+                             TextChanged="TbInput_TextChanged"
+                             AcceptsTab="True"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="File">
+                <Grid VerticalAlignment="Center"
+                      Margin="100">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Input File">
+                        <Button Content="Select.."
+                                x:Name="BtnSelectFile"
+                                Click="BtnSelectFile_Click"
+                                Margin="5"/>
+                    </GroupBox>
+                    <GroupBox Grid.Row="1"
+                              Header="Options">
+                        <StackPanel>
+                            <Button Content="Start"
+                                    x:Name="BtnStart"
+                                    Click="BtnStart_Click"
+                                    Margin="5"/>
+                            <ProgressBar Height="30"
+                                         x:Name="Progress"
+                                         Margin="5"/>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
         <TextBlock Text="Hash:"
                    Grid.Row="3"
                    Grid.Column="0"/>
