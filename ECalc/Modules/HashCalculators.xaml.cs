@@ -21,7 +21,9 @@ namespace ECalc.Modules
             if (!_loaded) return;
             var selected = (CbHash.Items[CbHash.SelectedIndex] as ComboBoxItem).Content.ToString();
             HashFunctions.Algorithms algo = HashFunctions.Algorithms.MD5;
-            Enum.TryParse<HashFunctions.Algorithms>(selected, out algo);
+            bool convresult = Enum.TryParse<HashFunctions.Algorithms>(selected, out algo);
+            if (!convresult) algo = HashFunctions.Algorithms.MD5;
+           
             string result = await HashFunctions.HashString(algo, TbInput.Text);
             TbOutput.Text = result;
         }

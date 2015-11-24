@@ -215,6 +215,59 @@ namespace ECalc.Maths
             return ret;
         }
 
+        public static bool operator ==(DoubleMatrix left, DoubleMatrix right)
+        {
+            if (left.Columns != right.Columns || left.Rows != right.Rows)
+            {
+                return false;
+            }
+
+            // Accept if the argument is the same object as this.
+            if (ReferenceEquals(left, right))
+            {
+                return true;
+            }
+
+            // If all else fails, perform elementwise comparison.
+            for (int i = 0; i < left.Rows; i++)
+            {
+                for (int j = 0; j < left.Columns; j++)
+                {
+                    if (left.ValueAt(i, j) != right.ValueAt(i, j))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public static bool operator !=(DoubleMatrix left, DoubleMatrix right)
+        {
+            return !(left == right);
+        }
+
+        public override bool Equals(object obj)
+        {
+            DoubleMatrix good = obj as DoubleMatrix;
+            if (obj == null) return false;
+            return this == good;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashNum = System.Math.Min(Rows * Columns, 25);
+            double[] hashBase = new double[hashNum];
+            for (int i = 0; i < hashNum; i++)
+            {
+                int col = i % Columns;
+                int row = (i - col) / Rows;
+                hashBase[i] = this[row, col];
+            }
+            return hashBase.GetHashCode();
+        }
+
         public static DoubleMatrix operator *(DoubleMatrix left, DoubleMatrix right)
         {
             if (left == null) throw new ArgumentNullException("left");

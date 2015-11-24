@@ -231,7 +231,8 @@ namespace ECalc.Controls
         {
             if (!_loaded) return;
             ConstantCategory cat = ConstantCategory.Mathematical;
-            Enum.TryParse<ConstantCategory>(CbSelector.SelectedItem.ToString(), out cat);
+            bool res = Enum.TryParse<ConstantCategory>(CbSelector.SelectedItem.ToString(), out cat);
+            if (!res) cat = ConstantCategory.Mathematical;
             _constants.Category = cat;
         }
 

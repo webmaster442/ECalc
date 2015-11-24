@@ -45,13 +45,13 @@ namespace ECalc.Classes
             {
                 _tx.Dispose();
                 _tx = null;
-                GC.SuppressFinalize(this);
             }
         }
 
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>
@@ -114,13 +114,13 @@ namespace ECalc.Classes
             {
                 _sw.Dispose();
                 _sw = null;
-                GC.SuppressFinalize(this);
             }
         }
 
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 

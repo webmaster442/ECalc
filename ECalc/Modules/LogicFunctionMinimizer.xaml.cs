@@ -55,29 +55,28 @@ namespace ECalc.Modules
         {
             try
             {
-                List<LogicItem> items = null;
+                List<LogicItem> items = new List<LogicItem>();
                 int variables = 2;
                 switch (TabInputMode.SelectedIndex)
                 {
                     case 0:
-                        items = Minterm2x.Selected;
+                        items.AddRange(Minterm2x.GetSelected());
                         variables = 2;
                         break;
                     case 1:
-                        items = Minterm3x.Selected;
+                        items.AddRange(Minterm3x.GetSelected());
                         variables = 3;
                         break;
                     case 2:
-                        items = Minterm4x.Selected;
+                        items.AddRange(Minterm4x.GetSelected());
                         variables = 4;
                         break;
                     case 3:
-                        items = Minterm5x.Selected;
+                        items.AddRange(Minterm5x.GetSelected());
                         variables = 5;
                         break;
                     case 4:
                         variables = (int)EsListVarCount.Value;
-                        items = new List<LogicItem>();
                         foreach (var line in TbListSet.Text.Split('\n'))
                         {
                             if (string.IsNullOrEmpty(line)) continue;

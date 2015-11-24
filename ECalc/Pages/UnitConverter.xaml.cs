@@ -121,7 +121,8 @@ namespace ECalc.Pages
             if (!_loaded) return;
             double outval = 0;
             double inval = 0;
-            double.TryParse(TbInput.Text, out inval);
+            bool res = double.TryParse(TbInput.Text, out inval);
+            if (!res) outval = 0;
             inval *= ParsePrefix();
             if (_source != _dest)
             {

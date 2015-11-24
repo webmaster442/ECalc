@@ -525,6 +525,7 @@ namespace ECalc.Classes
 	/// <summary>
 	/// Exception class for Fraction, derived from System.Exception
 	/// </summary>
+    [Serializable]
 	public class FractionException : Exception
 	{
 		public FractionException() : base()

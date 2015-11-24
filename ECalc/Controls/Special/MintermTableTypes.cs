@@ -22,7 +22,7 @@ namespace ECalc.Controls.Special
             return ret;
         }
 
-        public static void SetMintermTableValues(Grid Minterm, List<LogicItem> items)
+        public static void SetMintermTableValues(Grid Minterm, IEnumerable<LogicItem> items)
         {
             var chbox = Minterm.FindChildren<CheckBox>();
             foreach (var item in items)
@@ -44,7 +44,8 @@ namespace ECalc.Controls.Special
 
     public interface IMintermTable
     {
-        List<LogicItem> Selected { get; set; }
+        LogicItem[] GetSelected();
+        void SetSelected(LogicItem[] vals);
         void ClearInput();
         void SwapVarnames();
         void SetAll(bool? value);

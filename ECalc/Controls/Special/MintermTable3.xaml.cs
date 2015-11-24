@@ -15,26 +15,26 @@ namespace ECalc.Controls.Special
             InitializeComponent();
         }
 
-        public List<LogicItem> Selected
+        public LogicItem[] GetSelected()
         {
-            get
+            List<LogicItem> ret = new List<LogicItem>();
+            foreach (var item in MintermTableHelpers.GetMintermTableValues(Minterm3x))
             {
-                List<LogicItem> ret = new List<LogicItem>();
-                foreach (var item in MintermTableHelpers.GetMintermTableValues(Minterm3x))
-                {
-                    ret.Add(LogicItem.CreateFromMintermIndex(item.Key, 3, item.Value));
-                }
-                return ret;
+                ret.Add(LogicItem.CreateFromMintermIndex(item.Key, 3, item.Value));
             }
-            set { MintermTableHelpers.SetMintermTableValues(Minterm3x, value); }
+            return ret.ToArray();
         }
 
+        public void SetSelected(LogicItem[] vals)
+        {
+            MintermTableHelpers.SetMintermTableValues(Minterm3x, vals);
+        }
 
         public void ClearInput()
         {
             MintermTableHelpers.ClearMintermtable(Minterm3x);
         }
-
+  
         public void SetAll(bool? value)
         {
             List<LogicItem> items = new List<LogicItem>();
@@ -43,7 +43,7 @@ namespace ECalc.Controls.Special
                 LogicItem lo = LogicItem.CreateFromMintermIndex(i, 3, value);
                 items.Add(lo);
             }
-            Selected = items;
+            SetSelected(items.ToArray());
         }
 
         public void SwapVarnames()

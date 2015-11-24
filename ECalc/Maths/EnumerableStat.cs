@@ -13,25 +13,6 @@ namespace ECalc.Maths
     /// </summary>
     internal static class EnumerableStat
     {
-
-        /// <summary>
-        /// Contains the exception that is thrown when ApproximationIterations null collection argument is passed.
-        /// </summary>
-        private static readonly ArgumentNullException ArgumentNullException =
-            new ArgumentNullException("numbers", "The collection must not be null!");
-
-        /// <summary>
-        /// Contains the exception that is thrown when an empty collection is passed.
-        /// </summary>
-        private static readonly InvalidOperationException EmptyNumbersCollectionException
-            = new InvalidOperationException("The collection must not be empty!");
-
-        /// <summary>
-        /// Contains the exception that is thrown when ApproximationIterations collection containing negative numbers is passed.
-        /// </summary>
-        private static readonly InvalidOperationException CollectionContainingNegativeNumbersException =
-            new InvalidOperationException("The collection must not contain negative numbers!");
-
         /// <summary>
         /// Variance is the measure of the amount of variation of all the scores for a variable (not just the extremes which give the range).
         /// </summary>
@@ -149,7 +130,7 @@ namespace ECalc.Maths
         /// <returns>The minimum of the given numbers.</returns>
         public static double Minimum(IEnumerable<double> source)
         {
-            if (!source.Any()) throw EmptyNumbersCollectionException;
+            if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
             return source.Min();
         }
 
@@ -160,7 +141,7 @@ namespace ECalc.Maths
         /// <returns>The maximum of the given numbers.</returns>
         public static double Maximum(IEnumerable<double> source)
         {
-            if (!source.Any()) throw EmptyNumbersCollectionException;
+            if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
             return source.Max();
         }
 
@@ -171,7 +152,7 @@ namespace ECalc.Maths
         /// <returns>The arithmetic mean of the given numbers.</returns>
         public static double ArithmeticMean(IEnumerable<double> source)
         {
-            if (!source.Any()) throw EmptyNumbersCollectionException;
+            if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
             return source.Average();
         }
 
@@ -182,9 +163,9 @@ namespace ECalc.Maths
         /// <returns>The geometric mean of the given numbers.</returns>
         public static double GeometricMean(IEnumerable<double> source)
         {
-            if (!source.Any()) throw EmptyNumbersCollectionException;
+            if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
-            if (source.Any(number => number < 0)) throw CollectionContainingNegativeNumbersException;
+            if (source.Any(number => number < 0)) throw new InvalidOperationException("The collection must not contain negative numbers!");
             double productOfNumbers = 1;
 
             foreach (double number in source)
@@ -207,9 +188,9 @@ namespace ECalc.Maths
         /// <returns>The harmonic mean of the given numbers.</returns>
         public static double HarmonicMean(IEnumerable<double> source)
         {
-            if (!source.Any()) throw EmptyNumbersCollectionException;
+            if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
-            if (source.Any(number => number < 0)) throw CollectionContainingNegativeNumbersException;
+            if (source.Any(number => number < 0)) throw new InvalidOperationException("The collection must not contain negative numbers!");
 
             if (source.Contains(0)) return 0;
 
@@ -226,7 +207,7 @@ namespace ECalc.Maths
         /// <returns>The midrange of the specified collection of numbers.</returns>
         public static double Midrange(IEnumerable<double> source)
         {
-            if (!source.Any()) throw EmptyNumbersCollectionException;
+            if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
             double minValue = source.Min();
             double maxValue = source.Max();
@@ -242,7 +223,7 @@ namespace ECalc.Maths
         /// <param name="source">The numbers whose quadratic mean is to be calculated.</param>
         public static double QuadraticMean(IEnumerable<double> source)
         {
-            if (!source.Any()) throw EmptyNumbersCollectionException;
+            if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
             IEnumerable<double> squaredNumbers = source.Select(n => n * n);
 

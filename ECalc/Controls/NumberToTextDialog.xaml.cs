@@ -10,7 +10,7 @@ namespace ECalc.Controls
     /// <summary>
     /// Interaction logic for NumberToTextWindow.xaml
     /// </summary>
-    public partial class NumberToTextDialog : CustomDialog
+    public partial class NumberToTextDialog : CustomDialog, IDisposable
     {
         private SpeechSynthesizer _synthesizer;
 
@@ -69,6 +69,21 @@ namespace ECalc.Controls
         {
             MainWindow main = (MainWindow)App.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
+        }
+
+        protected virtual void Dispose(bool native)
+        {
+            if (_synthesizer != null)
+            {
+                _synthesizer.Dispose();
+                _synthesizer = null;
+            }
+        }
+            
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }

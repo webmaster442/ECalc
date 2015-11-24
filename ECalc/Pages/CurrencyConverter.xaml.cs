@@ -33,26 +33,25 @@ namespace ECalc.Pages
 
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-
             try
             {
-
-                MNBArfolyamServiceSoapClient client2 = new MNBArfolyamServiceSoapClient();
-
-                dloadpanel.Visibility = Visibility.Visible;
-
-                var response = await client2.GetCurrentExchangeRatesAsync(new GetCurrentExchangeRatesRequestBody());
-                var xml = response.GetCurrentExchangeRatesResponse1;
-
-                var doc = XDocument.Parse(xml.GetCurrentExchangeRatesResult);
-
-                foreach (var item in doc.Elements().Elements().Elements())
+                using (MNBArfolyamServiceSoapClient client2 = new MNBArfolyamServiceSoapClient())
                 {
-                    _rates.Add(item.Attribute("curr").Value, Convert.ToDouble(item.Value));
-                }
+                    dloadpanel.Visibility = Visibility.Visible;
 
-                CbSource.ItemsSource = _rates.Keys;
-                CbDestination.ItemsSource = _rates.Keys;
+                    var response = await client2.GetCurrentExchangeRatesAsync(new GetCurrentExchangeRatesRequestBody());
+                    var xml = response.GetCurrentExchangeRatesResponse1;
+
+                    var doc = XDocument.Parse(xml.GetCurrentExchangeRatesResult);
+
+                    foreach (var item in doc.Elements().Elements().Elements())
+                    {
+                        _rates.Add(item.Attribute("curr").Value, Convert.ToDouble(item.Value));
+                    }
+
+                    CbSource.ItemsSource = _rates.Keys;
+                    CbDestination.ItemsSource = _rates.Keys;
+                }
             }
             catch (Exception ex)
             {
