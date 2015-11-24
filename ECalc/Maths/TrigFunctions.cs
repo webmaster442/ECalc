@@ -12,7 +12,8 @@ namespace ECalc.Maths
         /// <param name="rad">input radians</param>
         public static double Rad2Deg(double rad)
         {
-            return (rad * 180) / Math.PI;
+            //return (rad * 180) / Math.PI;
+            return rad * (180 / Math.PI);
         }
 
         /// <summary>
@@ -21,7 +22,8 @@ namespace ECalc.Maths
         /// <param name="deg">input degrees</param>
         public static double Deg2Rad(double deg)
         {
-            return (deg * Math.PI) / 180;
+            //return (deg * Math.PI) / 180;
+            return deg * (Math.PI / 180);
         }
 
         /// <summary>
