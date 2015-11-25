@@ -66,8 +66,6 @@ namespace ECalc.Maths
 
         #region Operators
 
-        
-
         public static bool operator == (Vector v1, Vector v2)
         {
             if (v1.Dimensions != v2.Dimensions) return false;
@@ -103,6 +101,11 @@ namespace ECalc.Maths
             }
         }
 
+        public static Vector operator + (double num, Vector v)
+        {
+            return v + num;
+        }
+
         public static Vector operator + (Vector v, double num)
         {
             if (v.Dimensions == 2) return new Vector(v._x * num, v._y * num);
@@ -134,6 +137,52 @@ namespace ECalc.Maths
         {
             if (v.Dimensions == 2) return new Vector(v._x - num, v._y - num);
             else return new Vector(v._x - num, v._y - num, (double)v._z - num);
+        }
+
+        public static Vector operator -(double num, Vector v)
+        {
+            if (v.Dimensions == 2) return new Vector(num - v._x, num - v._y);
+            else return new Vector(num - v._x, num - v._y, num - (double)v._z);
+        }
+
+        public static Vector operator *(Vector v, double num)
+        {
+            if (v.Dimensions == 2) return new Vector(v._x * num, v._y * num);
+            else return new Vector(v._x * num, v._y * num, (double)v._z * num);
+        }
+
+        public static Vector operator /(Vector v, double num)
+        {
+            if (v.Dimensions == 2) return new Vector(v._x / num, v._y / num);
+            else return new Vector(v._x / num, v._y / num, (double)v._z / num);
+        }
+
+        public static Vector operator /(double num, Vector v)
+        {
+            if (v.Dimensions == 2) return new Vector(num / v._x, num / v._y);
+            else return new Vector(num / v._x, num / v._y, num / (double)v._z);
+        }
+
+        public static Vector operator *(double num, Vector v)
+        {
+            return v * num;
+        }
+
+        public static double operator * (Vector v1, Vector v2)
+        {
+            int dimensions = Math.Max(v1.Dimensions, v2.Dimensions);
+            if (dimensions == 2)
+            {
+                return (v1._x * v2._x) + (v1._y * v2._y);
+            }
+            else
+            {
+                double z = 0;
+                if (v1._z == null) z = 0;
+                else if (v2._z == null) z = 0;
+                else z = (double)v1._z * (double)v2._z;
+                return (v1._x * v2._x) + (v1._y * v2._y) + z;
+            }
         }
         #endregion
 
