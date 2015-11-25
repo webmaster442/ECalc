@@ -10,23 +10,21 @@ namespace ECalc.Controls
     /// <summary>
     /// Interaction logic for KeyPad.xaml
     /// </summary>
-    internal partial class KeyPad : UserControl, IMemManager
+    internal partial class KeyPad : UserControl
     {
-        private static ObservableCollection<MemoryItem> _memory;
         private ConstantList _constants;
         private bool _loaded;
 
         public KeyPad()
         {
             InitializeComponent();
-            _memory = new ObservableCollection<MemoryItem>();
             _constants = new ConstantList();
-            MemList.ItemsSource = _memory;
             ConstList.ItemsSource = _constants;
             DecimalSeperator.Content = Engine.DecimalSeperator;
         }
 
         public event RoutedEventHandler ExecuteClicked;
+        public event RoutedEventHandler FromExpressionClicked;
 
         public event StringEventHandler ButtonClicked;
 
@@ -42,12 +40,6 @@ namespace ECalc.Controls
             Keys.Visibility = System.Windows.Visibility.Collapsed;
         }
 
-        private void BtnMemCancel_Click(object sender, RoutedEventArgs e)
-        {
-            Memory.Visibility = System.Windows.Visibility.Collapsed;
-            Keys.Visibility = System.Windows.Visibility.Visible;
-        }
-
         private void BtnConstCancel_Click(object sender, RoutedEventArgs e)
         {
             Constants.Visibility = System.Windows.Visibility.Collapsed;
@@ -56,7 +48,7 @@ namespace ECalc.Controls
 
         private void BtnMem_Click(object sender, RoutedEventArgs e)
         {
-            Memory.Visibility = System.Windows.Visibility.Visible;
+            MemMan.Visibility = System.Windows.Visibility.Visible;
             Keys.Visibility = System.Windows.Visibility.Collapsed;
         }
 
@@ -97,23 +89,36 @@ namespace ECalc.Controls
             }
         }
 
-        private void BtnMemInsert_Click(object sender, RoutedEventArgs e)
+        private void MemMan_CancelClicked(object sender, RoutedEventArgs e)
         {
-             if (ButtonClicked != null)
-             {
-                 if (MemList.SelectedIndex > -1)
-                 {
-                     var content = _memory[MemList.SelectedIndex].Name;
+            MemMan.Visibility = System.Windows.Visibility.Collapsed;
+            Keys.Visibility = System.Windows.Visibility.Visible;
+        }
 
-                     if (Memory.Visibility == System.Windows.Visibility.Visible)
-                     {
-                         Memory.Visibility = System.Windows.Visibility.Collapsed;
-                         Keys.Visibility = System.Windows.Visibility.Visible;
-                     }
+        private void MemMan_InsertClicked(object sender, StringEventArgs e)
+        {
+            if (ButtonClicked != null)
+            {
+                if (MemMan.Visibility == System.Windows.Visibility.Visible)
+                {
+                    MemMan.Visibility = System.Windows.Visibility.Collapsed;
+                    Keys.Visibility = System.Windows.Visibility.Visible;
+                }
+                ButtonClicked(sender, e);
+            }
+        }
 
-                     ButtonClicked(sender, new StringEventArgs(content));
-                 }
-             }
+        private void MemMan_FromExpressionClick(object sender, RoutedEventArgs e)
+        {
+            if (FromExpressionClicked != null)
+            {
+                if (MemMan.Visibility == System.Windows.Visibility.Visible)
+                {
+                    MemMan.Visibility = System.Windows.Visibility.Collapsed;
+                    Keys.Visibility = System.Windows.Visibility.Visible;
+                }
+                FromExpressionClicked(sender, e);
+            }
         }
 
         private void BtnInsertConst_Click(object sender, RoutedEventArgs e)
@@ -134,99 +139,6 @@ namespace ECalc.Controls
             }
         }
 
-        private void BtnMemAdd_Click(object sender, RoutedEventArgs e)
-        {
-            _memory.Add(new MemoryItem(Engine.Ans));
-            if (Memory.Visibility == System.Windows.Visibility.Visible)
-            {
-                Memory.Visibility = System.Windows.Visibility.Collapsed;
-                Keys.Visibility = System.Windows.Visibility.Visible;
-            }
-        }
-
-        private void BtnMemReplace_Click(object sender, RoutedEventArgs e)
-        {
-            if (MemList.SelectedIndex > -1)
-            {
-                var item = _memory[MemList.SelectedIndex];
-                _memory[MemList.SelectedIndex] = new MemoryItem(item.Name, Engine.Ans);
-            }
-            if (Memory.Visibility == System.Windows.Visibility.Visible)
-            {
-                Memory.Visibility = System.Windows.Visibility.Collapsed;
-                Keys.Visibility = System.Windows.Visibility.Visible;
-            }
-        }
-
-        private void BtnMemDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (MemList.SelectedIndex > -1)
-            {
-                _memory.RemoveAt(MemList.SelectedIndex);
-            }
-        }
-
-        #region IMemManager
-        /// <summary>
-        /// Gets the value of a register item
-        /// </summary>
-        /// <param name="name">item to get</param>
-        /// <returns>the value of the item</returns>
-        public object GetItem(string name)
-        {
-            if (name.StartsWith("$"))
-            {
-                if (name == "$ans") return Engine.Ans;
-                var query = from i in _memory where string.Compare(name, i.Name) == 0 select i;
-                var result = query.FirstOrDefault();
-                if (result == null) return null;
-                else return result.Value;
-            }
-            else
-            {
-                return ConstantDB.Lookup(name);
-            }
-        }
-
-        /// <summary>
-        /// Set an item with name
-        /// </summary>
-        /// <param name="name">name of variable</param>
-        /// <param name="value">vallue of variable</param>
-        public void SetItem(string name, object value)
-        {
-            if (double.IsNaN(ConstantDB.Lookup(name)))
-            {
-                if (name == "$ans") return;
-                var query = (from i in _memory where string.Compare(name, i.Name) == 0 select i).FirstOrDefault();
-                if (query == null) _memory.Add(new MemoryItem(name, value));
-                else
-                {
-                    int index = _memory.IndexOf(query);
-                    _memory[index].Value = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Lists register names
-        /// </summary>
-        /// <param name="query">query string. If null or empty all registers will be returned</param>
-        /// <returns>An array of register names</returns>
-        public string[] ListRegisters(string query)
-        {
-            if (string.IsNullOrEmpty(query))
-            {
-                return (from i in _memory select i.Name).ToArray();
-            }
-            else
-            {
-                var q = from i in _memory where i.Name.StartsWith(query) select i.Name;
-                return q.ToArray();
-            }
-        }
-        #endregion
-
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (!_loaded) return;
@@ -239,6 +151,11 @@ namespace ECalc.Controls
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             _loaded = true;
+        }
+
+        public IMemManager MemManager
+        {
+            get { return MemMan; }
         }
     }
 }

@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="clr-namespace:ECalc.Controls"
              xmlns:Classes="clr-namespace:ECalc.Classes"
              mc:Ignorable="d"
              Loaded="UserControl_Loaded"
@@ -136,7 +137,7 @@
                     Grid.Row="3"
                     Grid.Column="4"
                     Click="Button_Click"/>
-            
+
             <Button Content="E"
                     Grid.Row="0"
                     Grid.Column="5"
@@ -181,7 +182,7 @@
                     Grid.Row="2"
                     Grid.Column="2"
                     Click="Button_Click"/>
-            
+
             <Button Content="4"
                     Grid.Row="1"
                     Grid.Column="0"
@@ -276,58 +277,11 @@
                     Grid.RowSpan="2"
                     Grid.Column="5"/>
         </Grid>
-        <Grid x:Name="Memory" Visibility="Collapsed">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <ListBox Grid.Column="0"
-                     Grid.RowSpan="5"
-                     Grid.ColumnSpan="5"
-                     x:Name="MemList"
-                     ItemTemplate="{StaticResource MemConstTemplate}">
-            </ListBox>
-            <Button Grid.Row="0"
-                    Grid.Column="5"
-                    Content="Insert"
-                    ToolTip="Insert selected to expression"
-                    x:Name="BtnMemInsert"
-                    Click="BtnMemInsert_Click"/>
-            <Button Grid.Row="1"
-                    Grid.Column="5"
-                    Content="Add"
-                    x:Name="BtnMemAdd"
-                    ToolTip="Add a new variable"
-                    Click="BtnMemAdd_Click"/>
-            <Button Grid.Row="2"
-                    Grid.Column="5"
-                    Content="Replace"
-                    ToolTip="Replace selected variable with a value"
-                    x:Name="BtnMemReplace"
-                    Click="BtnMemReplace_Click"/>
-            <Button Grid.Row="3"
-                    Grid.Column="5"
-                    Content="Delete"
-                    x:Name="BtnMemDelete"
-                    ToolTip="Delete Selected variable"
-                    Click="BtnMemDelete_Click"/>
-            <Button Grid.Row="4"
-                    Grid.Column="5"
-                    x:Name="BtnMemCancel"
-                    Content="Cancel"
-                    Click="BtnMemCancel_Click"/>
-        </Grid>
+        <controls:MemoryManagement Visibility="Collapsed"
+                                   x:Name="MemMan"
+                                   CancelClicked="MemMan_CancelClicked"
+                                   InsertClicked="MemMan_InsertClicked"
+                                   FromExpressionClick="MemMan_FromExpressionClick"/>
         <Grid x:Name="Constants" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

@@ -102,8 +102,8 @@
     <Compile Include="Classes\Engine-Static.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
     <Compile Include="Classes\NumberToText.cs" />
-    <Compile Include="Controls\MatrixEditor.xaml.cs">
-      <DependentUpon>MatrixEditor.xaml</DependentUpon>
+    <Compile Include="Controls\EditNewVariableDialog.xaml.cs">
+      <DependentUpon>EditNewVariableDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MemoryManagement.xaml.cs">
       <DependentUpon>MemoryManagement.xaml</DependentUpon>
@@ -165,6 +165,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\EditNewVariableDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ExtendedKeyPad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -174,10 +178,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\KeyPad.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\MatrixEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

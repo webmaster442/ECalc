@@ -401,6 +401,11 @@ namespace ECalc.Pages
             return _mem.Keys.ToArray();
         }
 
+        public void SetItem(object value)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SetItem(string name, object value)
         {
             if (_mem.ContainsKey(name)) _mem[name] = value;

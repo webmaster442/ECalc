@@ -1,0 +1,119 @@
+﻿<mahdialogs:CustomDialog x:Class="ECalc.Controls.EditNewVariableDialog"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                         xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
+    <mahdialogs:CustomDialog.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TabControl Grid.Row="0"
+                        TabStripPlacement="Left"
+                        SelectionChanged="TabTypeSelector_SelectionChanged"
+                        x:Name="TabTypeSelector">
+                <TabItem Header="Double">
+                    <GroupBox Header="Value"
+                              VerticalAlignment="Top">
+                        <TextBox x:Name="TbDoubleValue"/>
+                    </GroupBox>
+                </TabItem>
+                <TabItem Header="Complex">
+                    <StackPanel>
+                        <GroupBox Header="Real:"
+                                  VerticalAlignment="Top">
+                            <TextBox x:Name="TbRealValue"/>
+                        </GroupBox>
+                        <GroupBox Header="Imaginary:"
+                                  VerticalAlignment="Top">
+                            <TextBox x:Name="TbImaginaryValue"/>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Fraction">
+                    <StackPanel>
+                        <GroupBox Header="Numerator:"
+                                  VerticalAlignment="Top">
+                            <TextBox x:Name="TbNumeratorValue"/>
+                        </GroupBox>
+                        <GroupBox Header="Denumerator:"
+                                  VerticalAlignment="Top">
+                            <TextBox x:Name="TbDenumeratorValue"/>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Vector">
+                    <StackPanel>
+                        <GroupBox Header="X:">
+                            <TextBox/>
+                        </GroupBox>
+                        <GroupBox Header="Y:">
+                            <TextBox/>
+                        </GroupBox>
+                        <GroupBox>
+                            <GroupBox.Header>
+                                <CheckBox Content="Z:" 
+                                          Foreground="White"
+                                          x:Name="Cb3D"/>
+                            </GroupBox.Header>
+                            <TextBox IsEnabled="{Binding ElementName=Cb3D, Path=IsChecked}"/>
+                        </GroupBox>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Matrix">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center">
+                            <TextBlock Text="Rows:"/>
+                            <mah:NumericUpDown x:Name="Rows"
+                                               Minimum="1"
+                                               Maximum="10"
+                                               Width="80"
+                                               Value="2"/>
+                            <TextBlock Text="Columns:"/>
+                            <mah:NumericUpDown x:Name="Columns"
+                                               Minimum="1"
+                                               Maximum="10"
+                                               Width="80"
+                                               Value="2"/>
+                            <Button Content="Set Size"
+                                    x:Name="BtnSetSize"
+                                    Click="BtnSetSize_Click"/>
+                        </StackPanel>
+                        <Grid Grid.Row="1"
+                              x:Name="Editor"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center">
+                        </Grid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Height="85">
+                <Button x:Name="BtnSave"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="Save"
+                        Click="BtnSave_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
+                <Button x:Name="PART_NegativeButton"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="Cancel"
+                        Click="PART_NegativeButton_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
+            </StackPanel>
+        </Grid>
+    </mahdialogs:CustomDialog.Content>
+</mahdialogs:CustomDialog>

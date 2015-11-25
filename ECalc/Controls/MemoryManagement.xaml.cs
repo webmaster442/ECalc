@@ -1,6 +1,8 @@
 ﻿using ECalc.Classes;
+using ECalc.Maths;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,6 +19,7 @@ namespace ECalc.Controls
         {
             InitializeComponent();
             _memory = new ObservableCollection<MemoryItem>();
+            MemList.ItemsSource = _memory;
         }
 
         public event RoutedEventHandler CancelClicked;
@@ -42,7 +45,7 @@ namespace ECalc.Controls
         /// Set an item with name
         /// </summary>
         /// <param name="name">name of variable</param>
-        /// <param name="value">vallue of variable</param>
+        /// <param name="value">value of variable</param>
         public void SetItem(string name, object value)
         {
             if (name == "$ans") return;
@@ -53,6 +56,15 @@ namespace ECalc.Controls
                 int index = _memory.IndexOf(query);
                 _memory[index].Value = value;
             }
+        }
+
+        /// <summary>
+        /// Set an item with default name
+        /// </summary>
+        /// <param name="value">value of variable</param>
+        public void SetItem(object value)
+        {
+            _memory.Add(new MemoryItem(value));
         }
 
         /// <summary>
@@ -128,12 +140,20 @@ namespace ECalc.Controls
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
-
+            EditNewVariableDialog ed = new EditNewVariableDialog();
+            MainWindow.ShowDialog(ed);
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            object o = _memory[MemList.SelectedIndex].Value;
+            EditNewVariableDialog ed = new EditNewVariableDialog();
+            if (o is double) ed.Double = (double)o;
+            else if (o is Complex) ed.Complex = (Complex)o;
+            else if (o is Fraction) ed.Fraction = (Fraction)o;
+            else if (o is DoubleMatrix) ed.Matrix = (DoubleMatrix)o;
+            ed.IsEditDialog = true;
+            MainWindow.ShowDialog(ed);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)

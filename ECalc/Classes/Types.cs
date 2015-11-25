@@ -177,8 +177,14 @@ namespace ECalc.Classes
         /// Set an item with name
         /// </summary>
         /// <param name="name">name of variable</param>
-        /// <param name="value">vallue of variable</param>
+        /// <param name="value">value of variable</param>
         void SetItem(string name, object value);
+
+        /// <summary>
+        /// Set an item with default name
+        /// </summary>
+        /// <param name="value">value of variable</param>
+        void SetItem(object value);
     }
 
     /// <summary>

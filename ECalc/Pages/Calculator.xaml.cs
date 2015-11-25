@@ -45,6 +45,19 @@ namespace ECalc.Pages
             else Display.EquationText += e.Text;
         }
 
+        private async void Keypad_FromExpressionClicked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var result = await _engine.EvaluateAsync(Display.EquationText);
+                Keypad.MemManager.SetItem(Engine.Ans);
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
+        }
+
         private void FunctionList_FunctionButtonCliked(object sender, StringEventArgs e)
         {
             Display.EquationText += string.Format(" {0}( ", e.Text);
@@ -55,7 +68,7 @@ namespace ECalc.Pages
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (designTime) return;
             _engine = new Engine();
-            _engine.MemoryManager = Keypad;
+            _engine.MemoryManager = Keypad.MemMan;
             FncList.Functions = _engine.Functions;
         }
 
@@ -71,26 +84,6 @@ namespace ECalc.Pages
         private void Extended_BackClicked(object sender, RoutedEventArgs e)
         {
             Dispatcher.Invoke(() => { InputSelector.SelectedIndex = 0; });
-        }
-
-        private void MatrixEditor_RegisterComboOpened(object sender, RoutedEventArgs e)
-        {
-            var q = Keypad.ListRegisters("$mtrx_");
-            ComboBox cmb = (ComboBox)sender;
-            cmb.Items.Clear();
-            foreach (var i in q) cmb.Items.Add(i);
-        }
-
-        private void MatrixEditor_LoadClicked(object sender, StringEventArgs e)
-        {
-            DoubleMatrix m = (DoubleMatrix)Keypad.GetItem(e.Text);
-            MatrixEditor.RenderEditor(m);
-        }
-
-        private void MatrixEditor_SaveClicked(object sender, StringEventArgs e)
-        {
-            string name = "$mtrx_" + e.Text;
-            Keypad.SetItem(name, MatrixEditor.GetMatrix());
         }
     }
 }

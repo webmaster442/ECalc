@@ -7,6 +7,21 @@
              xmlns:EcalcApi="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
              mc:Ignorable="d" 
              d:DesignHeight="391" d:DesignWidth="654">
+    <UserControl.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   FontSize="13"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
@@ -25,6 +40,7 @@
         </Grid.ColumnDefinitions>
         <ListBox Grid.Column="0"
                  Grid.Row="1"
+                 Margin="2"
                  Grid.RowSpan="5"
                  Grid.ColumnSpan="5"
                  x:Name="MemList"
@@ -32,16 +48,19 @@
         </ListBox>
         
         <Button Content="Load Memory..."
+                ToolTip="Load Memory from File..."
                 Grid.Row="0"
                 Grid.Column="0"
                 x:Name="BtnLoad"
                 Click="BtnLoad_Click"/>
         <Button Content="Save Memory..."
+                ToolTip="Save Memory to File..."
                 Grid.Row="0"
                 Grid.Column="1"
                 x:Name="BtnSave"
                 Click="BtnSave_Click"/>
         <Button Content="Add new..."
+                ToolTip="Add new Item..."
                 Grid.Row="0"
                 Grid.Column="2"
                 x:Name="BtnNew"
@@ -50,26 +69,32 @@
                 Grid.Row="0"
                 Grid.Column="3"
                 x:Name="BtnEdit"
+                ToolTip="Edit Value..."
                 IsEnabled="{Binding ElementName=MemList, Path=SelectedItem, Converter={EcalcApi:SelectedToEnabledConverter}}"
                 Click="BtnEdit_Click"/>
         <Button Content="Delete"
                 Grid.Row="0"
                 Grid.Column="4"
                 x:Name="BtnDelete"
+                ToolTip="Delete selected"
                 IsEnabled="{Binding ElementName=MemList, Path=SelectedItem, Converter={EcalcApi:SelectedToEnabledConverter}}"
                 Click="BtnDelete_Click"/>
         
-        <Button Content="Insert to Expr."
+        <Button Content="Insert to Expression"
+                IsEnabled="{Binding ElementName=MemList, Path=SelectedItem, Converter={EcalcApi:SelectedToEnabledConverter}}"
                 Grid.Row="1"
+                ToolTip="Insert currently selected variable name to the calculation expression"
                 Grid.Column="5"
                 x:Name="BtnInsert"
                 Click="BtnInsert_Click"/>
         <Button Content="From Expression"
+                ToolTip="Create a new Variable by evaluating the current expression"
                 Grid.Row="2"
                 Grid.Column="5"
                 x:Name="BtnFromExpression"
                 Click="BtnFromExpression_Click"/>
         <Button Content="From Last result"
+                ToolTip="Create a variable from the last calculation result"
                 Grid.Row="3"
                 Grid.Column="5"
                 x:Name="BtnFromLast"

@@ -1,0 +1,209 @@
+﻿using ECalc.Classes;
+using ECalc.Maths;
+using MahApps.Metro.Controls.Dialogs;
+using System;
+using System.Numerics;
+using System.Windows;
+using System.Windows.Controls;
+
+namespace ECalc.Controls
+{
+    /// <summary>
+    /// Interaction logic for EditNewVariableDialog.xaml
+    /// </summary>
+    public partial class EditNewVariableDialog : CustomDialog
+    {
+        public EditNewVariableDialog()
+        {
+            InitializeComponent();
+        }
+
+        private int _index;
+
+        public bool IsEditDialog
+        {
+            get;
+            set;
+        }
+
+        #region Double Editor
+        public double Double
+        {
+            get { return Convert.ToDouble(TbDoubleValue.Text); }
+            set
+            {
+                TbDoubleValue.Text = value.ToString();
+                Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = 0; });
+            }
+        }
+        #endregion
+
+        #region Complex Editor
+        public Complex Complex
+        {
+            get
+            {
+                var r = Convert.ToDouble(TbRealValue.Text);
+                var i = Convert.ToDouble(TbImaginaryValue.Text);
+                return new Complex(r, i);
+            }
+            set
+            {
+                TbRealValue.Text = value.Real.ToString();
+                TbImaginaryValue.Text = value.Imaginary.ToString();
+                Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = 1; });
+            }
+        }
+        #endregion
+
+        #region Fraction Editor
+        public Fraction Fraction
+        {
+            get
+            {
+                var n = Convert.ToInt64(TbNumeratorValue.Text);
+                var d = Convert.ToInt64(TbDenumeratorValue.Text);
+                return new Fraction(n, d);
+            }
+            set
+            {
+                TbDenumeratorValue.Text = value.Denominator.ToString();
+                TbNumeratorValue.Text = value.Numerator.ToString();
+                Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = 2; });
+            }
+        }
+        #endregion
+
+        #region Matrix Editor
+
+        /// <summary>
+        /// Renders the editor
+        /// </summary>
+        /// <param name="rows">Number of desired rows</param>
+        /// <param name="columns">Number of desired columns</param>
+        private void RenderEditor(int rows, int columns)
+        {
+            string[,] copy = null;
+
+            if (Editor.Children.Count > 0)
+            {
+                int r = Editor.RowDefinitions.Count;
+                int c = Editor.ColumnDefinitions.Count;
+                copy = new string[r, c];
+                foreach (TextBox tx in Editor.Children)
+                {
+                    r = Grid.GetRow(tx);
+                    c = Grid.GetColumn(tx);
+                    if (!string.IsNullOrEmpty(tx.Text)) copy[r, c] = tx.Text;
+                }
+            }
+
+            Editor.Children.Clear();
+            Editor.ColumnDefinitions.Clear();
+            Editor.RowDefinitions.Clear();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+
+            for (int i = 0; i < rows; i++) Editor.RowDefinitions.Add(new RowDefinition());
+            for (int i = 0; i < columns; i++) Editor.ColumnDefinitions.Add(new ColumnDefinition());
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    TextBox tx = new TextBox();
+                    tx.MinWidth = 60;
+                    tx.Margin = new Thickness(2);
+                    Grid.SetRow(tx, i);
+                    Grid.SetColumn(tx, j);
+
+                    if (copy != null)
+                    {
+                        if (i < copy.GetLength(0) && j < copy.GetLength(1)) tx.Text = copy[i, j].ToString();
+                        else tx.Text = "0";
+                    }
+                    else tx.Text = "0";
+                    Editor.Children.Add(tx);
+                }
+            }
+        }
+
+        public DoubleMatrix Matrix
+        {
+            get
+            {
+                DoubleMatrix m = new DoubleMatrix(Editor.RowDefinitions.Count, Editor.ColumnDefinitions.Count);
+                int i = 0;
+                int j = 0;
+                foreach (TextBox tx in Editor.Children)
+                {
+                    i = Grid.GetRow(tx);
+                    j = Grid.GetColumn(tx);
+                    m[i, j] = Convert.ToDouble(tx.Text);
+                }
+                return m;
+            }
+            set
+            {
+                DoubleMatrix matrix = value;
+                Editor.Children.Clear();
+                Editor.RowDefinitions.Clear();
+                Editor.ColumnDefinitions.Clear();
+
+                for (int i = 0; i < matrix.Rows; i++) Editor.RowDefinitions.Add(new RowDefinition());
+                for (int i = 0; i < matrix.Columns; i++) Editor.ColumnDefinitions.Add(new ColumnDefinition());
+
+                for (int i = 0; i < matrix.Rows; i++)
+                {
+                    for (int j = 0; j < matrix.Columns; j++)
+                    {
+                        TextBox tx = new TextBox();
+                        tx.MinWidth = 60;
+                        tx.Margin = new Thickness(2);
+                        Grid.SetRow(tx, i);
+                        Grid.SetColumn(tx, j);
+                        tx.Text = matrix[i, j].ToString();
+                        Editor.Children.Add(tx);
+                    }
+                }
+                Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = 4; });
+            }
+        }
+
+        private void BtnSetSize_Click(object sender, RoutedEventArgs e)
+        {
+            RenderEditor((int)Rows.Value, (int)Columns.Value);
+        }
+
+        #endregion
+
+        private async void PART_NegativeButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)App.Current.MainWindow;
+            await main.HideMetroDialogAsync(this);
+        }
+
+        private async void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)App.Current.MainWindow;
+            await main.HideMetroDialogAsync(this);
+        }
+
+        private void TabTypeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.OriginalSource == TabTypeSelector)
+            {
+                if (IsEditDialog)
+                {
+                    e.Handled = true;
+                    Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = _index; });
+                }
+                else
+                {
+                    _index = TabTypeSelector.SelectedIndex;
+                }
+            }
+        }
+    }
+}
