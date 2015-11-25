@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="ECalc.Controls.MemoryManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Controls"
+             xmlns:EcalcApi="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
+             mc:Ignorable="d" 
+             d:DesignHeight="391" d:DesignWidth="654">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Column="0"
+                 Grid.Row="1"
+                 Grid.RowSpan="5"
+                 Grid.ColumnSpan="5"
+                 x:Name="MemList"
+                 ItemTemplate="{StaticResource MemConstTemplate}">
+        </ListBox>
+        
+        <Button Content="Load Memory..."
+                Grid.Row="0"
+                Grid.Column="0"
+                x:Name="BtnLoad"
+                Click="BtnLoad_Click"/>
+        <Button Content="Save Memory..."
+                Grid.Row="0"
+                Grid.Column="1"
+                x:Name="BtnSave"
+                Click="BtnSave_Click"/>
+        <Button Content="Add new..."
+                Grid.Row="0"
+                Grid.Column="2"
+                x:Name="BtnNew"
+                Click="BtnNew_Click"/>
+        <Button Content="Edit value..."
+                Grid.Row="0"
+                Grid.Column="3"
+                x:Name="BtnEdit"
+                IsEnabled="{Binding ElementName=MemList, Path=SelectedItem, Converter={EcalcApi:SelectedToEnabledConverter}}"
+                Click="BtnEdit_Click"/>
+        <Button Content="Delete"
+                Grid.Row="0"
+                Grid.Column="4"
+                x:Name="BtnDelete"
+                IsEnabled="{Binding ElementName=MemList, Path=SelectedItem, Converter={EcalcApi:SelectedToEnabledConverter}}"
+                Click="BtnDelete_Click"/>
+        
+        <Button Content="Insert to Expr."
+                Grid.Row="1"
+                Grid.Column="5"
+                x:Name="BtnInsert"
+                Click="BtnInsert_Click"/>
+        <Button Content="From Expression"
+                Grid.Row="2"
+                Grid.Column="5"
+                x:Name="BtnFromExpression"
+                Click="BtnFromExpression_Click"/>
+        <Button Content="From Last result"
+                Grid.Row="3"
+                Grid.Column="5"
+                x:Name="BtnFromLast"
+                Click="BtnFromLast_Click"/>
+        <Button Content="Cancel"
+                Grid.Row="4"
+                Grid.Column="5"
+                x:Name="BtnCancel"
+                Click="BtnCancel_Click"/>
+    </Grid>
+</UserControl>
