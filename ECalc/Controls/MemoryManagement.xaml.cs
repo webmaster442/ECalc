@@ -5,6 +5,8 @@ using System.Linq;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace ECalc.Controls
 {
@@ -86,6 +88,29 @@ namespace ECalc.Controls
         }
         #endregion
 
+        #region Serialization
+
+        private void Serialize(string target)
+        {
+            using (var Stream = File.Create(target))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(MemoryItem[]));
+                xs.Serialize(Stream, _memory.ToArray());
+            }
+        }
+
+        private void DeSerialize(string target)
+        {
+            using (var Stream = File.OpenRead(target))
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(MemoryItem[]));
+                var mem = (MemoryItem[])xs.Deserialize(Stream);
+                foreach (var m in mem) _memory.Add(m);
+            }
+        }
+
+        #endregion
+
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             if (CancelClicked != null)
@@ -121,9 +146,10 @@ namespace ECalc.Controls
             System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
             ofd.Filter = "Memory Files | *.mem";
             ofd.Multiselect = false;
+            ofd.CheckFileExists = true;
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                DeSerialize(ofd.FileName);
             }
         }
 
@@ -134,7 +160,7 @@ namespace ECalc.Controls
             sfd.AddExtension = true;
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
+                Serialize(sfd.FileName);
             }
         }
 

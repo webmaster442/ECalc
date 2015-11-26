@@ -101,6 +101,7 @@
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
     <Compile Include="Classes\Engine-Static.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
+    <Compile Include="Classes\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
     <Compile Include="Controls\EditNewVariableDialog.xaml.cs">
       <DependentUpon>EditNewVariableDialog.xaml</DependentUpon>

@@ -55,7 +55,7 @@ namespace ECalc.Classes
             }
             catch (Exception ex)
             {
-                Helpers.ErrorDialog(ex);
+                MainWindow.ErrorDialog(ex.Message);
             }
 
             _prefixes = new PrefixDictionary();

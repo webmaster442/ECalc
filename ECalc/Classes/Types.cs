@@ -56,62 +56,6 @@ namespace ECalc.Classes
     }
 
     /// <summary>
-    /// Used in memory management
-    /// </summary>
-    internal class MemoryItem
-    {
-        /// <summary>
-        /// Register counter
-        /// </summary>
-        private static int Counter;
-
-        public static void ResetCounter()
-        {
-            Counter = 0;
-        }
-
-        static MemoryItem()
-        {
-            Counter = 0;
-        }
-
-        /// <summary>
-        /// Variable name
-        /// </summary>
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Variable value
-        /// </summary>
-        public object Value { get; set; }
-
-        public MemoryItem()
-        {
-            Name = String.Format("$Reg_{0}", Counter);
-            Value = null;
-            Counter++;
-        }
-
-        public MemoryItem(object val)
-        {
-            Name = String.Format("$Reg_{0}", Counter);
-            Value = val;
-            Counter++;
-        }
-
-        public MemoryItem(string name, object val)
-        {
-            Value = val;
-            Name = name;
-        }
-
-        public override int GetHashCode()
-        {
-            return Name.GetHashCode() ^ Value.GetHashCode();
-        }
-    }
-
-    /// <summary>
     /// Trigonometry modes
     /// </summary>
     internal enum TrigMode

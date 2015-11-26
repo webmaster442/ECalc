@@ -1,6 +1,4 @@
-﻿using System;
-using System.Numerics;
-using System.Windows;
+﻿using System.Numerics;
 
 namespace ECalc.Classes
 {
@@ -21,22 +19,6 @@ namespace ECalc.Classes
         {
             if (o is double) return (double)o;
             else return ((Fraction)o).ToDouble();
-        }
-
-        public static void ErrorDialog(Exception ex)
-        {
-            MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
-        public static bool IsInteger(object o)
-        {
-            if (o is double)
-            {
-                double d = Convert.ToDouble(o);
-                double calc = d - Math.Truncate(d);
-                return calc == 0.0d;
-            }
-            else return false;
         }
     }
 }
