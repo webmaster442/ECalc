@@ -2,6 +2,7 @@
 using ECalc.Maths;
 using MahApps.Metro.Controls.Dialogs;
 using System;
+using System.Globalization;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,9 +17,16 @@ namespace ECalc.Controls
         public EditNewVariableDialog()
         {
             InitializeComponent();
+            Index = -1;
         }
 
-        private int _index;
+        public RoutedEventHandler SaveClicked;
+
+        public int Index
+        {
+            get;
+            private set;
+        }
 
         public bool IsEditDialog
         {
@@ -180,12 +188,18 @@ namespace ECalc.Controls
 
         private async void PART_NegativeButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            Index = -1;
             MainWindow main = (MainWindow)App.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
 
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            Index = TabTypeSelector.SelectedIndex;
+            if (SaveClicked != null)
+            {
+                SaveClicked(sender, e);
+            }
             MainWindow main = (MainWindow)App.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
@@ -197,11 +211,11 @@ namespace ECalc.Controls
                 if (IsEditDialog)
                 {
                     e.Handled = true;
-                    Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = _index; });
+                    Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = Index; });
                 }
                 else
                 {
-                    _index = TabTypeSelector.SelectedIndex;
+                    Index = TabTypeSelector.SelectedIndex;
                 }
             }
         }

@@ -83,10 +83,17 @@ namespace ECalc.Classes
 
         public void ReadXml(XmlReader reader)
         {
+            int rows = 0;
+            int columns = 0;
             reader.MoveToContent();
             Name = reader.GetAttribute("Name");
             var typestring = reader.GetAttribute("Type");
             var type = (VarType)Enum.Parse(typeof(VarType), typestring);
+            if (type == VarType.Matrix)
+            {
+                rows = Convert.ToInt32(reader.GetAttribute("Rows"));
+                columns = Convert.ToInt32(reader.GetAttribute("Columns"));
+            }
             bool isempty = reader.IsEmptyElement;
             reader.ReadStartElement();
 
@@ -114,6 +121,18 @@ namespace ECalc.Classes
                         Value = new Fraction(n, d);
                         break;
                     case VarType.Matrix:
+                        var lines = xml.Split('\n'); // get lines
+                        DoubleMatrix matrix = new DoubleMatrix(rows, columns);
+                        for (int row=0; row<rows; row++)
+                        {
+                            parts = lines[row].Replace("[", "").Replace("]", "").Split(';');
+                            for (int column=0; column<columns; column++)
+                            {
+                                matrix[row, column] = double.Parse(parts[column], culture);
+                            }
+                        }
+                        Value = matrix;
+                        break;
                     case VarType.Vector:
                         throw new NotImplementedException();
                 }
@@ -162,6 +181,8 @@ namespace ECalc.Classes
                 case VarType.Matrix:
                     StringBuilder sb = new StringBuilder();
                     DoubleMatrix m = ((DoubleMatrix)Value);
+                    writer.WriteAttributeString("Rows", m.Rows.ToString());
+                    writer.WriteAttributeString("Columns", m.Columns.ToString());
                     for (int row=0; row<m.Rows; row++)
                     {
                         sb.Append("[");
@@ -169,7 +190,7 @@ namespace ECalc.Classes
                         {
                             sb.AppendFormat("{0};", m[row, column].ToString("G17", culture));
                         }
-                        sb.Append("]\r\n");
+                        sb.Append("]\n");
                     }
                     writer.WriteElementString("Content", sb.ToString());
                     break;

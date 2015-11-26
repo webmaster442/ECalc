@@ -7,6 +7,7 @@ using MahApps.Metro.Controls.Dialogs;
 using ECalc.Api;
 using ECalc.Pages;
 using ECalc.Controls;
+using System.Threading.Tasks;
 
 namespace ECalc
 {
@@ -69,7 +70,7 @@ namespace ECalc
         }
 
         /// <summary>
-        /// Show a custom dialog
+        /// Shows a custom dialog
         /// </summary>
         /// <param name="dialog">dialog to display</param>
         public static async void ShowDialog(CustomDialog dialog)

@@ -1,12 +1,13 @@
 ﻿using ECalc.Classes;
 using ECalc.Maths;
+using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Serialization;
-using System.IO;
 
 namespace ECalc.Controls
 {
@@ -16,12 +17,15 @@ namespace ECalc.Controls
     public partial class MemoryManagement : UserControl, IMemManager
     {
         private ObservableCollection<MemoryItem> _memory;
+        private EditNewVariableDialog _editdialog;
 
         public MemoryManagement()
         {
             InitializeComponent();
             _memory = new ObservableCollection<MemoryItem>();
             MemList.ItemsSource = _memory;
+            _editdialog = new EditNewVariableDialog();
+            _editdialog.SaveClicked += ed_SaveClicked;
         }
 
         public event RoutedEventHandler CancelClicked;
@@ -164,27 +168,73 @@ namespace ECalc.Controls
             }
         }
 
+        private void ed_SaveClicked(object sender, RoutedEventArgs e)
+        {
+            if (_editdialog.IsEditDialog)
+            {
+                switch (_editdialog.Index)
+                {
+                    case 0:
+                        _memory[MemList.SelectedIndex].Value = _editdialog.Double;
+                        break;
+                    case 1:
+                        _memory[MemList.SelectedIndex].Value = _editdialog.Complex;
+                        break;
+                    case 2:
+                        _memory[MemList.SelectedIndex].Value = _editdialog.Fraction;
+                        break;
+                    case 3:
+                        throw new NotImplementedException();
+                    case 4:
+                        _memory[MemList.SelectedIndex].Value = _editdialog.Matrix;
+                        break;
+                }
+            }
+            else
+            {
+                switch (_editdialog.Index)
+                {
+                    case 0:
+                        _memory.Add(new MemoryItem(_editdialog.Double));
+                        break;
+                    case 1:
+                        _memory.Add(new MemoryItem(_editdialog.Complex));
+                        break;
+                    case 2:
+                        _memory.Add(new MemoryItem(_editdialog.Fraction));
+                        break;
+                    case 3:
+                        throw new NotImplementedException();
+                    case 4:
+                        _memory.Add(new MemoryItem(_editdialog.Matrix));
+                        break;
+                }
+            }
+        }
+
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
-            EditNewVariableDialog ed = new EditNewVariableDialog();
-            MainWindow.ShowDialog(ed);
+            _editdialog.IsEditDialog = false;
+            MainWindow.ShowDialog(_editdialog);
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
             object o = _memory[MemList.SelectedIndex].Value;
-            EditNewVariableDialog ed = new EditNewVariableDialog();
-            if (o is double) ed.Double = (double)o;
-            else if (o is Complex) ed.Complex = (Complex)o;
-            else if (o is Fraction) ed.Fraction = (Fraction)o;
-            else if (o is DoubleMatrix) ed.Matrix = (DoubleMatrix)o;
-            ed.IsEditDialog = true;
-            MainWindow.ShowDialog(ed);
+            if (o is double) _editdialog.Double = (double)o;
+            else if (o is Complex) _editdialog.Complex = (Complex)o;
+            else if (o is Fraction) _editdialog.Fraction = (Fraction)o;
+            else if (o is DoubleMatrix) _editdialog.Matrix = (DoubleMatrix)o;
+            _editdialog.IsEditDialog = true;
+            MainWindow.ShowDialog(_editdialog);
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            _memory.RemoveAt(MemList.SelectedIndex);
+            if (MemList.SelectedIndex > -1)
+            {
+                _memory.RemoveAt(MemList.SelectedIndex);
+            }
         }
     }
 }
