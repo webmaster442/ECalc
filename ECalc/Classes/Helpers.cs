@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using ECalc.Maths;
+using System.Numerics;
 
 namespace ECalc.Classes
 {

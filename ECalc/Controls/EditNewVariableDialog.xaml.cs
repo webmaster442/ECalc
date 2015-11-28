@@ -1,5 +1,4 @@
-﻿using ECalc.Classes;
-using ECalc.Maths;
+﻿using ECalc.Maths;
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Globalization;

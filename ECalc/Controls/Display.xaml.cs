@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using ECalc.Maths;
 using System;
 using System.Collections.ObjectModel;
 using System.Text;

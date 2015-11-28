@@ -244,7 +244,7 @@
     </Compile>
     <Compile Include="Classes\ConfigFileHelpers.cs" />
     <Compile Include="Classes\Engine-Main.cs" />
-    <Compile Include="Classes\FractionClass.cs" />
+    <Compile Include="Maths\FractionClass.cs" />
     <Compile Include="Classes\PrefixDictionary.cs" />
     <Compile Include="Controls\Special\ResistorColorSelector.xaml.cs">
       <DependentUpon>ResistorColorSelector.xaml</DependentUpon>
