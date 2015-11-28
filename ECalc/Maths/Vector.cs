@@ -5,11 +5,8 @@ namespace ECalc.Maths
     /// <summary>
     /// Vector Implementation. Supports 2D & 3D
     /// </summary>
-    public class Vector
+    public class Vector: IEquatable<Vector>, ICloneable
     {
-        private double _x, _y;
-        private double? _z;
-
         /// <summary>
         /// Crates a new instance of a 2D vector
         /// </summary>
@@ -17,10 +14,7 @@ namespace ECalc.Maths
         /// <param name="y">Y coordinate</param>
         public Vector(double x, double y)
         {
-            Dimensions = 2;
-            _x = x;
-            _y = y;
-            _z = null;
+            X = x; Y = y; Z = null;
         }
 
         /// <summary>
@@ -31,10 +25,25 @@ namespace ECalc.Maths
         /// <param name="z">Z coordinate</param>
         public Vector(double x, double y, double z)
         {
-            Dimensions = 3;
-            _x = x;
-            _y = y;
-            _z = z;
+            X = x; Y = y; Z = z;
+        }
+
+        public double X
+        {
+            get;
+            set;
+        }
+
+        public double Y
+        {
+            get;
+            set;
+        }
+
+        public double? Z
+        {
+            get;
+            set;
         }
 
         /// <summary>
@@ -42,8 +51,11 @@ namespace ECalc.Maths
         /// </summary>
         public int Dimensions
         {
-            get;
-            private set;
+            get
+            {
+                if (Z == null) return 2;
+                else return 3;
+            }
         }
 
         /// <summary>
@@ -55,11 +67,11 @@ namespace ECalc.Maths
             {
                 if (Dimensions == 2)
                 {
-                    return Math.Sqrt((_x * _x) + (_y * _y));
+                    return Math.Sqrt((X * X) + (Y * Y));
                 }
                 else
                 {
-                    return Math.Sqrt((_x * _x) + (_y * _y) + (double)(_z * _z));
+                    return Math.Sqrt((X * X) + (Y * Y) + (double)(Z * Z));
                 }
             }
         }
@@ -69,9 +81,9 @@ namespace ECalc.Maths
         public static bool operator == (Vector v1, Vector v2)
         {
             if (v1.Dimensions != v2.Dimensions) return false;
-            if (v1._x != v2._x) return false;
-            if (v1._y != v2._y) return false;
-            if (v1._z != v2._z) return false;
+            if (v1.X != v2.X) return false;
+            if (v1.Y != v2.Y) return false;
+            if (v1.Z != v2.Z) return false;
             return true;
         }
 
@@ -86,17 +98,17 @@ namespace ECalc.Maths
             double x, y, z;
             if (dimensions == 3)
             {
-                x = v1._x + v2._x;
-                y = v1._y + v2._y;
-                if (v1._z == null) z = (double)v2._z;
-                else if (v2._z == null) z = (double)v1._z;
-                else z = (double)v1._z + (double)v2._z;
+                x = v1.X + v2.X;
+                y = v1.Y + v2.Y;
+                if (v1.Z == null) z = (double)v2.Z;
+                else if (v2.Z == null) z = (double)v1.Z;
+                else z = (double)v1.Z + (double)v2.Z;
                 return new Vector(x, y, z);
             }
             else
             {
-                x = v1._x + v2._x;
-                y = v1._y + v2._y;
+                x = v1.X + v2.X;
+                y = v1.Y + v2.Y;
                 return new Vector(x, y);
             }
         }
@@ -108,8 +120,8 @@ namespace ECalc.Maths
 
         public static Vector operator + (Vector v, double num)
         {
-            if (v.Dimensions == 2) return new Vector(v._x * num, v._y * num);
-            else return new Vector(v._x + num, v._y + num, (double)v._z + num);
+            if (v.Dimensions == 2) return new Vector(v.X * num, v.Y * num);
+            else return new Vector(v.X + num, v.Y + num, (double)v.Z + num);
         }
 
         public static Vector operator -(Vector v1, Vector v2)
@@ -118,49 +130,49 @@ namespace ECalc.Maths
             double x, y, z;
             if (dimensions == 3)
             {
-                x = v1._x - v2._x;
-                y = v1._y - v2._y;
-                if (v1._z == null) z = 0 - (double)v2._z;
-                else if (v2._z == null) z = 0 - (double)v1._z;
-                else z = (double)v1._z - (double)v2._z;
+                x = v1.X - v2.X;
+                y = v1.Y - v2.Y;
+                if (v1.Z == null) z = 0 - (double)v2.Z;
+                else if (v2.Z == null) z = 0 - (double)v1.Z;
+                else z = (double)v1.Z - (double)v2.Z;
                 return new Vector(x, y, z);
             }
             else
             {
-                x = v1._x - v2._x;
-                y = v1._y - v2._y;
+                x = v1.X - v2.X;
+                y = v1.Y - v2.Y;
                 return new Vector(x, y);
             }
         }
 
         public static Vector operator -(Vector v, double num)
         {
-            if (v.Dimensions == 2) return new Vector(v._x - num, v._y - num);
-            else return new Vector(v._x - num, v._y - num, (double)v._z - num);
+            if (v.Dimensions == 2) return new Vector(v.X - num, v.Y - num);
+            else return new Vector(v.X - num, v.Y - num, (double)v.Z - num);
         }
 
         public static Vector operator -(double num, Vector v)
         {
-            if (v.Dimensions == 2) return new Vector(num - v._x, num - v._y);
-            else return new Vector(num - v._x, num - v._y, num - (double)v._z);
+            if (v.Dimensions == 2) return new Vector(num - v.X, num - v.Y);
+            else return new Vector(num - v.X, num - v.Y, num - (double)v.Z);
         }
 
         public static Vector operator *(Vector v, double num)
         {
-            if (v.Dimensions == 2) return new Vector(v._x * num, v._y * num);
-            else return new Vector(v._x * num, v._y * num, (double)v._z * num);
+            if (v.Dimensions == 2) return new Vector(v.X * num, v.Y * num);
+            else return new Vector(v.X * num, v.Y * num, (double)v.Z * num);
         }
 
         public static Vector operator /(Vector v, double num)
         {
-            if (v.Dimensions == 2) return new Vector(v._x / num, v._y / num);
-            else return new Vector(v._x / num, v._y / num, (double)v._z / num);
+            if (v.Dimensions == 2) return new Vector(v.X / num, v.Y / num);
+            else return new Vector(v.X / num, v.Y / num, (double)v.Z / num);
         }
 
         public static Vector operator /(double num, Vector v)
         {
-            if (v.Dimensions == 2) return new Vector(num / v._x, num / v._y);
-            else return new Vector(num / v._x, num / v._y, num / (double)v._z);
+            if (v.Dimensions == 2) return new Vector(num / v.X, num / v.Y);
+            else return new Vector(num / v.X, num / v.Y, num / (double)v.Z);
         }
 
         public static Vector operator *(double num, Vector v)
@@ -173,15 +185,15 @@ namespace ECalc.Maths
             int dimensions = Math.Max(v1.Dimensions, v2.Dimensions);
             if (dimensions == 2)
             {
-                return (v1._x * v2._x) + (v1._y * v2._y);
+                return (v1.X * v2.X) + (v1.Y * v2.Y);
             }
             else
             {
                 double z = 0;
-                if (v1._z == null) z = 0;
-                else if (v2._z == null) z = 0;
-                else z = (double)v1._z * (double)v2._z;
-                return (v1._x * v2._x) + (v1._y * v2._y) + z;
+                if (v1.Z == null) z = 0;
+                else if (v2.Z == null) z = 0;
+                else z = (double)v1.Z * (double)v2.Z;
+                return (v1.X * v2.X) + (v1.Y * v2.Y) + z;
             }
         }
         #endregion
@@ -193,8 +205,8 @@ namespace ECalc.Maths
         /// <returns>a string representing the vector</returns>
         public override string ToString()
         {
-            if (Dimensions == 2) return string.Format("x: {0}; y: {1}", _x, _y);
-            else return string.Format("x: {0}; y: {1}; z: {2}", _x, _y, _z);
+            if (Dimensions == 2) return string.Format("x: {0}; y: {1}", X, Y);
+            else return string.Format("x: {0}; y: {1}; z: {2}", X, Y, Z);
         }
 
         /// <summary>
@@ -215,8 +227,19 @@ namespace ECalc.Maths
         /// <returns>an int value</returns>
         public override int GetHashCode()
         {
-            return Dimensions.GetHashCode() ^ _x.GetHashCode() ^ _y.GetHashCode() ^ _z.GetHashCode();
+            return Dimensions.GetHashCode() ^ X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
         }
         #endregion
+
+        public bool Equals(Vector other)
+        {
+            return this == other;
+        }
+
+        public object Clone()
+        {
+            if (Dimensions == 2) return new Vector(X, Y);
+            else return new Vector(X, Y, (double)Z);
+        }
     }
 }
