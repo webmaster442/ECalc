@@ -94,6 +94,10 @@ namespace ECalc.Classes
                 rows = Convert.ToInt32(reader.GetAttribute("Rows"));
                 columns = Convert.ToInt32(reader.GetAttribute("Columns"));
             }
+            if (type == VarType.Vector)
+            {
+                columns = Convert.ToInt32(reader.GetAttribute("Dimensions"));
+            }
             bool isempty = reader.IsEmptyElement;
             reader.ReadStartElement();
 
@@ -134,7 +138,16 @@ namespace ECalc.Classes
                         Value = matrix;
                         break;
                     case VarType.Vector:
-                        throw new NotImplementedException();
+                        parts = xml.Split(';');
+                        var x = double.Parse(parts[0], culture);
+                        var y = double.Parse(parts[1], culture);
+                        if (columns == 3)
+                        {
+                            var z = double.Parse(parts[2], culture);
+                            Value = new Vector(x, y, z);
+                        }
+                        else Value = new Vector(x, y);
+                        break;
                 }
 
                 reader.ReadEndElement();
@@ -195,7 +208,15 @@ namespace ECalc.Classes
                     writer.WriteElementString("Content", sb.ToString());
                     break;
                 case VarType.Vector:
-                    throw new NotImplementedException();
+                    Vector v = (Vector)Value;
+                    writer.WriteAttributeString("Dimensions", v.Dimensions.ToString());
+                    if (v.Dimensions == 2) xml = string.Format("{0};{1}", v.X.ToString("G17", culture),
+                                                                          v.Y.ToString("G17", culture));
+                    else xml = string.Format("{0};{1};{2}", v.X.ToString("G17", culture),
+                                                            v.Y.ToString("G17", culture),
+                                                            ((double)v.Z).ToString("G17", culture));
+                    writer.WriteElementString("Content", xml);
+                    break;
             }
         }
     }

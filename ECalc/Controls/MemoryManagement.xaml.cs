@@ -184,7 +184,8 @@ namespace ECalc.Controls
                         _memory[MemList.SelectedIndex].Value = _editdialog.Fraction;
                         break;
                     case 3:
-                        throw new NotImplementedException();
+                        _memory[MemList.SelectedIndex].Value = _editdialog.Vector;
+                        break;
                     case 4:
                         _memory[MemList.SelectedIndex].Value = _editdialog.Matrix;
                         break;
@@ -204,7 +205,8 @@ namespace ECalc.Controls
                         _memory.Add(new MemoryItem(_editdialog.Fraction));
                         break;
                     case 3:
-                        throw new NotImplementedException();
+                        _memory.Add(new MemoryItem(_editdialog.Vector));
+                        break;
                     case 4:
                         _memory.Add(new MemoryItem(_editdialog.Matrix));
                         break;

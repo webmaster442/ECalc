@@ -46,10 +46,10 @@
                 <TabItem Header="Vector">
                     <StackPanel>
                         <GroupBox Header="X:">
-                            <TextBox/>
+                            <TextBox x:Name="TbXValue"/>
                         </GroupBox>
                         <GroupBox Header="Y:">
-                            <TextBox/>
+                            <TextBox x:Name="TbYValue"/>
                         </GroupBox>
                         <GroupBox>
                             <GroupBox.Header>
@@ -57,7 +57,8 @@
                                           Foreground="White"
                                           x:Name="Cb3D"/>
                             </GroupBox.Header>
-                            <TextBox IsEnabled="{Binding ElementName=Cb3D, Path=IsChecked}"/>
+                            <TextBox IsEnabled="{Binding ElementName=Cb3D, Path=IsChecked}"
+                                      x:Name="TbZValue"/>
                         </GroupBox>
                     </StackPanel>
                 </TabItem>

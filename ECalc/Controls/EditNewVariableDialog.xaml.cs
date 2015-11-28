@@ -81,6 +81,38 @@ namespace ECalc.Controls
         }
         #endregion
 
+        #region Vector Editor
+        public Maths.Vector Vector
+        {
+            get
+            {
+                var x = Convert.ToDouble(TbXValue.Text);
+                var y = Convert.ToDouble(TbYValue.Text);
+                if (Cb3D.IsChecked == true)
+                {
+                    var z = Convert.ToDouble(TbZValue.Text);
+                    return new Maths.Vector(x, y, z);
+                }
+                else return new Maths.Vector(x, y);
+            }
+            set
+            {
+                TbXValue.Text = value.X.ToString();
+                TbYValue.Text = value.Y.ToString();
+                if (value.Dimensions == 2)
+                {
+                    Cb3D.IsChecked = false;
+                    TbZValue.Text = "";
+                }
+                else
+                {
+                    TbZValue.Text = value.Z.ToString();
+                    Cb3D.IsChecked = true;
+                }
+            }
+        }
+        #endregion
+
         #region Matrix Editor
 
         /// <summary>
