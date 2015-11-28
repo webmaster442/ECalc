@@ -98,6 +98,9 @@
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         Height="85">
+                <TextBlock x:Name="TbError"
+                           Visibility="Collapsed"
+                           Text="Input Not formatted correctly. Please fix it before save"/>
                 <Button x:Name="BtnSave"
                         Height="35"
                         MinWidth="80"

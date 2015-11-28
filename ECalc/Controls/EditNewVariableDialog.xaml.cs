@@ -1,7 +1,6 @@
 ﻿using ECalc.Maths;
 using MahApps.Metro.Controls.Dialogs;
 using System;
-using System.Globalization;
 using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
@@ -227,6 +226,35 @@ namespace ECalc.Controls
         private async void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             Index = TabTypeSelector.SelectedIndex;
+
+            try
+            {
+                object test = null;
+                switch (Index)
+                {
+                    case 0:
+                        test = this.Double;
+                        break;
+                    case 1:
+                        test = this.Complex;
+                        break;
+                    case 2:
+                        test = this.Fraction;
+                        break;
+                    case 3:
+                        test = this.Vector;
+                        break;
+                    case 4:
+                        test = this.Matrix;
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                TbError.Visibility = Visibility.Visible;
+                return;
+            }
+
             if (SaveClicked != null)
             {
                 SaveClicked(sender, e);
@@ -249,6 +277,28 @@ namespace ECalc.Controls
                     Index = TabTypeSelector.SelectedIndex;
                 }
             }
+        }
+
+        protected override void OnShown()
+        {
+            base.OnShown();
+            Dispatcher.Invoke(() =>
+            {
+                if (TbError.Visibility == Visibility.Visible) TbError.Visibility = Visibility.Collapsed;
+                if (this.IsEditDialog) return;
+                TbDenumeratorValue.Text = "";
+                TbNumeratorValue.Text = "";
+                TbRealValue.Text = "";
+                TbImaginaryValue.Text = "";
+                TbDoubleValue.Text = "";
+                TbXValue.Text = "";
+                TbYValue.Text = "";
+                TbZValue.Text = "";
+                Cb3D.IsChecked = false;
+                Editor.Children.Clear();
+                Rows.Value = 2;
+                Columns.Value = 2;
+            });
         }
     }
 }

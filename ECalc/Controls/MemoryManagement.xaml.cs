@@ -229,7 +229,6 @@ namespace ECalc.Controls
             else if (o is Fraction) _editdialog.Fraction = (Fraction)o;
             else if (o is Matrix) _editdialog.Matrix = (Matrix)o;
             _editdialog.IsEditDialog = true;
-            MemList.SelectedIndex = -1;
             MainWindow.ShowDialog(_editdialog);
         }
 
