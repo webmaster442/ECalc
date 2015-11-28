@@ -217,6 +217,7 @@ namespace ECalc.Maths
 
         public static bool operator ==(DoubleMatrix left, DoubleMatrix right)
         {
+            if (object.Equals(right, null)) return false;
             if (left.Columns != right.Columns || left.Rows != right.Rows)
             {
                 return false;
@@ -250,9 +251,7 @@ namespace ECalc.Maths
 
         public override bool Equals(object obj)
         {
-            DoubleMatrix good = obj as DoubleMatrix;
-            if (obj == null) return false;
-            return this == good;
+            return base.Equals(obj);
         }
 
         public override int GetHashCode()

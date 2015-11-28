@@ -1,10 +1,5 @@
 ﻿using ECalc.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECalc.Maths
 {
@@ -100,6 +95,105 @@ namespace ECalc.Maths
         public int ParamCount
         {
             get { return 1; }
+        }
+    }
+
+    internal class Vector2D : IFunction
+    {
+        public string Name
+        {
+            get { return "Vect2D"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 2; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double n1 = (double)arguments[0];
+            double n2 = (double)arguments[1];
+            return new Vector(n1, n2);
+        }
+    }
+
+    internal class Vector3D : IFunction
+    {
+        public string Name
+        {
+            get { return "Vect3D"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 3; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double n1 = (double)arguments[0];
+            double n2 = (double)arguments[1];
+            double n3 = (double)arguments[2];
+            return new Vector(n1, n2, n3);
+        }
+    }
+
+    internal class Determinant : IFunction
+    {
+        public string Name
+        {
+            get { return "Det"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            DoubleMatrix matrix = (DoubleMatrix)arguments[0];
+            return matrix.Determinant();
+        }
+    }
+
+    internal class Transpose : IFunction
+    {
+        public string Name
+        {
+            get { return "Transpose"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            DoubleMatrix matrix = (DoubleMatrix)arguments[0];
+            return (DoubleMatrix)matrix.Transpose();
+        }
+    }
+
+    internal class Negate : IFunction
+    {
+        public string Name
+        {
+            get { return "Negate"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            DoubleMatrix matrix = (DoubleMatrix)((DoubleMatrix)arguments[0]).Clone();
+            matrix.Negate();
+            return matrix;
         }
     }
 }

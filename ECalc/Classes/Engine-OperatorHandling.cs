@@ -56,7 +56,7 @@ namespace ECalc.Classes
                         v2 = Vector.FromComplex((Complex)op2);
                         break;
                     case "System.Double":
-                        dbl = (double)op1;
+                        dbl = (double)op2;
                         break;
                     case "ECalc.Maths.Fraction":
                         dbl = ((Fraction)op2).ToDouble();
