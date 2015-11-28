@@ -7,11 +7,12 @@ namespace ECalc.Classes
     internal partial class Engine
     {
         /*  return type matrix:
-    Type       CPLX      Fraction        Double         Matrix
-    CPX        CPLX      CPLX            CPLX           Error
-    Fraction   CPLX      Fraction        Fraction       Matrix
-    Double     CPLX      Fraction        Double         Matrix
-    Matrix     Error     Matrix          Matrix         Matrix
+    Type       CPLX      Fraction        Double         Matrix      Vector
+    CPX        CPLX      CPLX            CPLX           Error       Vector
+    Fraction   CPLX      Fraction        Fraction       Matrix      Vector
+    Double     CPLX      Fraction        Double         Matrix      Vector
+    Matrix     Error     Matrix          Matrix         Matrix      Error
+    Vector     Vector    Vector          Vector         Error       Vector
     */
         /// <summary>
         /// Type matching operator handler function
@@ -25,7 +26,66 @@ namespace ECalc.Classes
             var t1 = op1.GetType().FullName;
             var t2 = op2.GetType().FullName;
 
-            if (t1 == "ECalc.Maths.DoubleMatrix" || t2 == "ECalc.Maths.DoubleMatrix")
+            if (t1 == "ECalc.Maths.Vector" || t2 == "ECalc.Maths.Vector")
+            {
+                Vector v1 = null;
+                Vector v2 = null;
+                double dbl = double.NaN;
+                switch (t1)
+                {
+                    case "ECalc.Maths.DoubleMatrix":
+                        throw new ArgumentException("Type Mismatch. Don't know howto preform operations on Vector and Matrix");
+                    case "System.Numerics.Complex":
+                        v1 = Vector.FromComplex((Complex)op1);
+                        break;
+                    case "System.Double":
+                        dbl = (double)op1;
+                        break;
+                    case "ECalc.Maths.Fraction":
+                        dbl = ((Fraction)op1).ToDouble();
+                        break;
+                    case "ECalc.Maths.Vector":
+                        v1 = (Vector)op1;
+                        break;
+                }
+                switch (t2)
+                {
+                    case "ECalc.Maths.DoubleMatrix":
+                        throw new ArgumentException("Type Mismatch. Don't know howto preform operations on Vector and Matrix");
+                    case "System.Numerics.Complex":
+                        v2 = Vector.FromComplex((Complex)op2);
+                        break;
+                    case "System.Double":
+                        dbl = (double)op1;
+                        break;
+                    case "ECalc.Maths.Fraction":
+                        dbl = ((Fraction)op2).ToDouble();
+                        break;
+                    case "ECalc.Maths.Vector":
+                        v2 = (Vector)op2;
+                        break;
+                }
+
+                switch (op)
+                {
+                    case "+":
+                        if (double.IsNaN(dbl)) return v1 + v2;
+                        else return v1 + dbl;
+                    case "-":
+                        if (double.IsNaN(dbl)) return v1 - v2;
+                        else return v1 - dbl;
+                    case "÷":
+                        if (double.IsNaN(dbl)) return v1 / v2;
+                        else return v1 / dbl;
+                    case "X":
+                        if (double.IsNaN(dbl)) return v1 * v2;
+                        else return v1 * dbl;
+                    case "mod":
+                        if (double.IsNaN(dbl)) return v1 % v2;
+                        else return v1 % dbl;
+                }
+            }
+            else if (t1 == "ECalc.Maths.DoubleMatrix" || t2 == "ECalc.Maths.DoubleMatrix")
             {
                 DoubleMatrix m1 = null;
                 DoubleMatrix m2 = null;
@@ -40,7 +100,7 @@ namespace ECalc.Classes
                     case "System.Double":
                         dbl = (double)op1;
                         break;
-                    case "ECalc.Classes.Fraction":
+                    case "ECalc.Maths.Fraction":
                         dbl = ((Fraction)op1).ToDouble();
                         break;
                 }
@@ -52,9 +112,9 @@ namespace ECalc.Classes
                     case "System.Numerics.Complex":
                         throw new ArgumentException("Type Mismatch. Don't know howto preform operations on CPLX and Matrix");
                     case "System.Double":
-                        dbl = (double)op1;
+                        dbl = (double)op2;
                         break;
-                    case "ECalc.Classes.Fraction":
+                    case "ECalc.Maths.Fraction":
                         dbl = ((Fraction)op1).ToDouble();
                         break;
                 }
@@ -91,7 +151,7 @@ namespace ECalc.Classes
                     case "System.Double":
                         a = new Complex((double)op1, 0);
                         break;
-                    case "ECalc.Classes.Fraction":
+                    case "ECalc.Maths.Fraction":
                         double d = ((Fraction)op1).ToDouble();
                         a = new Complex(d, 0);
                         break;
@@ -104,7 +164,7 @@ namespace ECalc.Classes
                     case "System.Double":
                         b = new Complex((double)op2, 0);
                         break;
-                    case "ECalc.Classes.Fraction":
+                    case "ECalc.Maths.Fraction":
                         double d = ((Fraction)op2).ToDouble();
                         b = new Complex(d, 0);
                         break;
@@ -124,7 +184,7 @@ namespace ECalc.Classes
                         return new Complex(a.Real % b.Real, a.Imaginary % b.Imaginary);
                 }
             }
-            if (t1 == "ECalc.Classes.Fraction" || t2 == "ECalc.Classes.Fraction")
+            if (t1 == "ECalc.Maths.Fraction" || t2 == "ECalc.Maths.Fraction")
             {
                 Fraction f1 = new Fraction();
                 Fraction f2 = new Fraction();
@@ -133,7 +193,7 @@ namespace ECalc.Classes
                     case "System.Double":
                         f1 = new Fraction((double)op1);
                         break;
-                    case "ECalc.Classes.Fraction":
+                    case "ECalc.Maths.Fraction":
                         f1 = (Fraction)op1;
                         break;
                 }
@@ -142,7 +202,7 @@ namespace ECalc.Classes
                     case "System.Double":
                         f2 = new Fraction((double)op2);
                         break;
-                    case "ECalc.Classes.Fraction":
+                    case "ECalc.Maths.Fraction":
                         f2 = (Fraction)op2;
                         break;
                 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace ECalc.Maths
 {
@@ -28,18 +29,27 @@ namespace ECalc.Maths
             X = x; Y = y; Z = z;
         }
 
+        /// <summary>
+        /// X coordinate
+        /// </summary>
         public double X
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Y coordinate
+        /// </summary>
         public double Y
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Z coordinate. Will return null, if its a 2D vector
+        /// </summary>
         public double? Z
         {
             get;
@@ -74,6 +84,16 @@ namespace ECalc.Maths
                     return Math.Sqrt((X * X) + (Y * Y) + (double)(Z * Z));
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates a vector from a complex number
+        /// </summary>
+        /// <param name="c">complex number</param>
+        /// <returns>A vector from the argument complex number</returns>
+        public static Vector FromComplex(Complex c)
+        {
+            return new Vector(c.Real, c.Imaginary);
         }
 
         #region Operators
@@ -151,12 +171,6 @@ namespace ECalc.Maths
             else return new Vector(v.X - num, v.Y - num, (double)v.Z - num);
         }
 
-        public static Vector operator -(double num, Vector v)
-        {
-            if (v.Dimensions == 2) return new Vector(num - v.X, num - v.Y);
-            else return new Vector(num - v.X, num - v.Y, num - (double)v.Z);
-        }
-
         public static Vector operator *(Vector v, double num)
         {
             if (v.Dimensions == 2) return new Vector(v.X * num, v.Y * num);
@@ -169,15 +183,44 @@ namespace ECalc.Maths
             else return new Vector(v.X / num, v.Y / num, (double)v.Z / num);
         }
 
-        public static Vector operator /(double num, Vector v)
+        public static Vector operator %(Vector v, double num)
         {
-            if (v.Dimensions == 2) return new Vector(num / v.X, num / v.Y);
-            else return new Vector(num / v.X, num / v.Y, num / (double)v.Z);
+            if (v.Dimensions == 2) return new Vector(v.X % num, v.Y % num);
+            else return new Vector(v.X % num, v.Y % num, (double)v.Z % num);
         }
 
-        public static Vector operator *(double num, Vector v)
+        public static Vector operator / (Vector v1, Vector v2)
         {
-            return v * num;
+            int dimensions = Math.Max(v1.Dimensions, v2.Dimensions);
+            if (dimensions == 2)
+            {
+                return new Vector(v1.X / v2.X, v1.Y / v2.Y);
+            }
+            else
+            {
+                double z = 0;
+                if (v1.Z == null) z = 0;
+                else if (v2.Z == null) z = 0;
+                else z = (double)v1.Z / (double)v2.Z;
+                return new Vector(v1.X / v2.X, v1.Y / v2.Y, z);
+            }
+        }
+
+        public static Vector operator %(Vector v1, Vector v2)
+        {
+            int dimensions = Math.Max(v1.Dimensions, v2.Dimensions);
+            if (dimensions == 2)
+            {
+                return new Vector(v1.X % v2.X, v1.Y % v2.Y);
+            }
+            else
+            {
+                double z = 0;
+                if (v1.Z == null) z = 0;
+                else if (v2.Z == null) z = 0;
+                else z = (double)v1.Z % (double)v2.Z;
+                return new Vector(v1.X % v2.X, v1.Y % v2.Y, z);
+            }
         }
 
         public static double operator * (Vector v1, Vector v2)
