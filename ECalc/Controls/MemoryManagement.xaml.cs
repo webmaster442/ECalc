@@ -141,6 +141,7 @@ namespace ECalc.Controls
             {
                 var content = _memory[MemList.SelectedIndex].Name;
                 InsertClicked(sender, new StringEventArgs(content));
+                Dispatcher.Invoke(() => { MemList.SelectedIndex = -1; });
             }
         }
 

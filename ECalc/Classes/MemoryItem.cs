@@ -1,5 +1,6 @@
 ﻿using ECalc.Maths;
 using System;
+using System.ComponentModel;
 using System.Globalization;
 using System.Numerics;
 using System.Text;
@@ -23,12 +24,26 @@ namespace ECalc.Classes
     /// Used in memory management
     /// </summary>
     [Serializable]
-    public class MemoryItem: IXmlSerializable
+    public class MemoryItem: IXmlSerializable, INotifyPropertyChanged
     {
         /// <summary>
         /// Register counter
         /// </summary>
         private static int Counter;
+
+        private object _object;
+
+        private string _name;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
 
         public static void ResetCounter()
         {
@@ -44,12 +59,28 @@ namespace ECalc.Classes
         /// Variable name
         /// </summary>
         [XmlAttribute("Name")]
-        public string Name { get; private set; }
+        public string Name
+        {
+            get { return _name; }
+            private set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
 
         /// <summary>
         /// Variable value
         /// </summary>
-        public object Value { get; set; }
+        public object Value
+        {
+            get { return _object; }
+            set
+            {
+                _object = value;
+                OnPropertyChanged("Value");
+            }
+        }
 
         public MemoryItem()
         {
