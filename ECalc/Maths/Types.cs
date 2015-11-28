@@ -153,7 +153,7 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            DoubleMatrix matrix = (DoubleMatrix)arguments[0];
+            Matrix matrix = (Matrix)arguments[0];
             return matrix.Determinant();
         }
     }
@@ -172,8 +172,8 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            DoubleMatrix matrix = (DoubleMatrix)arguments[0];
-            return (DoubleMatrix)matrix.Transpose();
+            Matrix matrix = (Matrix)arguments[0];
+            return (Matrix)matrix.Transpose();
         }
     }
 
@@ -191,7 +191,7 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            DoubleMatrix matrix = (DoubleMatrix)((DoubleMatrix)arguments[0]).Clone();
+            Matrix matrix = (Matrix)((Matrix)arguments[0]).Clone();
             matrix.Negate();
             return matrix;
         }

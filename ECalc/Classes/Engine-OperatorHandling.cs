@@ -33,7 +33,7 @@ namespace ECalc.Classes
                 double dbl = double.NaN;
                 switch (t1)
                 {
-                    case "ECalc.Maths.DoubleMatrix":
+                    case "ECalc.Maths.Matrix":
                         throw new ArgumentException("Type Mismatch. Don't know howto preform operations on Vector and Matrix");
                     case "System.Numerics.Complex":
                         v1 = Vector.FromComplex((Complex)op1);
@@ -50,7 +50,7 @@ namespace ECalc.Classes
                 }
                 switch (t2)
                 {
-                    case "ECalc.Maths.DoubleMatrix":
+                    case "ECalc.Maths.Matrix":
                         throw new ArgumentException("Type Mismatch. Don't know howto preform operations on Vector and Matrix");
                     case "System.Numerics.Complex":
                         v2 = Vector.FromComplex((Complex)op2);
@@ -85,15 +85,15 @@ namespace ECalc.Classes
                         else return v1 % dbl;
                 }
             }
-            else if (t1 == "ECalc.Maths.DoubleMatrix" || t2 == "ECalc.Maths.DoubleMatrix")
+            else if (t1 == "ECalc.Maths.Matrix" || t2 == "ECalc.Maths.Matrix")
             {
-                DoubleMatrix m1 = null;
-                DoubleMatrix m2 = null;
+                Matrix m1 = null;
+                Matrix m2 = null;
                 double dbl = double.NaN;
                 switch (t1)
                 {
-                    case "ECalc.Maths.DoubleMatrix":
-                        m1 = (DoubleMatrix)op1;
+                    case "ECalc.Maths.Matrix":
+                        m1 = (Matrix)op1;
                         break;
                     case "System.Numerics.Complex":
                         throw new ArgumentException("Type Mismatch. Don't know howto preform operations on CPLX and Matrix");
@@ -106,8 +106,8 @@ namespace ECalc.Classes
                 }
                 switch (t2)
                 {
-                    case "ECalc.Maths.DoubleMatrix":
-                        m2 = (DoubleMatrix)op1;
+                    case "ECalc.Maths.Matrix":
+                        m2 = (Matrix)op1;
                         break;
                     case "System.Numerics.Complex":
                         throw new ArgumentException("Type Mismatch. Don't know howto preform operations on CPLX and Matrix");

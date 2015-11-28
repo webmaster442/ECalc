@@ -99,9 +99,9 @@ namespace ECalc.Pages
             RenderUi();
         }
 
-        private DoubleMatrix GetInputMatrix()
+        private Matrix GetInputMatrix()
         {
-            DoubleMatrix m = new DoubleMatrix(_equations, _equations + 1);
+            Matrix m = new Matrix(_equations, _equations + 1);
 
             var children = EquationData.FindChildren<TextBox>();
 
@@ -122,16 +122,16 @@ namespace ECalc.Pages
             if (!_loaded) return;
             try
             {
-                DoubleMatrix inputmatrix = GetInputMatrix();
+                Matrix inputmatrix = GetInputMatrix();
                 double[] resultvector = inputmatrix.GetColumn(_equations);
-                DoubleMatrix D = inputmatrix.TrimTo(_equations, _equations);
+                Matrix D = inputmatrix.TrimTo(_equations, _equations);
                 double detd = D.Determinant();
-                DoubleMatrix[] eqs = new DoubleMatrix[_equations];
+                Matrix[] eqs = new Matrix[_equations];
                 StringBuilder outtext = new StringBuilder();
 
                 for (int i = 0; i < eqs.Length; i++)
                 {
-                    eqs[i] = (DoubleMatrix)D.Clone();
+                    eqs[i] = (Matrix)D.Clone();
                     eqs[i].SetColumn(i, resultvector);
                     outtext.AppendFormat("{0}: {1}\r\n", _labels[i], eqs[i].Determinant() / detd);
                 }

@@ -22,9 +22,9 @@ namespace ECalc.Controls
         {
             InitializeComponent();
             _memory = new ObservableCollection<MemoryItem>();
-            MemList.ItemsSource = _memory;
             _editdialog = new EditNewVariableDialog();
             _editdialog.SaveClicked += ed_SaveClicked;
+            MemList.ItemsSource = _memory;
         }
 
         public event RoutedEventHandler CancelClicked;
@@ -137,12 +137,13 @@ namespace ECalc.Controls
 
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
         {
+            if (MemList.SelectedIndex < 0) return;
+            var content = _memory[MemList.SelectedIndex].Name;
             if (InsertClicked != null)
             {
-                var content = _memory[MemList.SelectedIndex].Name;
                 InsertClicked(sender, new StringEventArgs(content));
-                Dispatcher.Invoke(() => { MemList.SelectedIndex = -1; });
             }
+            MemList.SelectedIndex = -1;
         }
 
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
@@ -226,8 +227,9 @@ namespace ECalc.Controls
             if (o is double) _editdialog.Double = (double)o;
             else if (o is Complex) _editdialog.Complex = (Complex)o;
             else if (o is Fraction) _editdialog.Fraction = (Fraction)o;
-            else if (o is DoubleMatrix) _editdialog.Matrix = (DoubleMatrix)o;
+            else if (o is Matrix) _editdialog.Matrix = (Matrix)o;
             _editdialog.IsEditDialog = true;
+            MemList.SelectedIndex = -1;
             MainWindow.ShowDialog(_editdialog);
         }
 

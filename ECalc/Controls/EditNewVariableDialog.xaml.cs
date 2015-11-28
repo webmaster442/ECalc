@@ -168,11 +168,11 @@ namespace ECalc.Controls
             }
         }
 
-        public DoubleMatrix Matrix
+        public Matrix Matrix
         {
             get
             {
-                DoubleMatrix m = new DoubleMatrix(Editor.RowDefinitions.Count, Editor.ColumnDefinitions.Count);
+                Matrix m = new Matrix(Editor.RowDefinitions.Count, Editor.ColumnDefinitions.Count);
                 int i = 0;
                 int j = 0;
                 foreach (TextBox tx in Editor.Children)
@@ -185,7 +185,7 @@ namespace ECalc.Controls
             }
             set
             {
-                DoubleMatrix matrix = value;
+                Matrix matrix = value;
                 Editor.Children.Clear();
                 Editor.RowDefinitions.Clear();
                 Editor.ColumnDefinitions.Clear();

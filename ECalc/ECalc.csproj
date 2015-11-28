@@ -124,6 +124,7 @@
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Engineering\ColorSpaceConversions.cs" />
     <Compile Include="Extensions\WPF.cs" />
+    <Compile Include="Maths\Matrix.cs" />
     <Compile Include="Maths\Probability.cs" />
     <Compile Include="Maths\Vector.cs" />
     <Compile Include="Modules\ColorConverters.xaml.cs">
@@ -250,8 +251,6 @@
       <DependentUpon>ResistorColorSelector.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\EquationSolver.cs" />
-    <Compile Include="Maths\AMatrix.cs" />
-    <Compile Include="Maths\DoubleMatrix.cs" />
     <Compile Include="Maths\EnumerableStat.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />

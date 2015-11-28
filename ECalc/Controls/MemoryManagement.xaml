@@ -44,7 +44,6 @@
                  Grid.RowSpan="5"
                  Grid.ColumnSpan="5"
                  x:Name="MemList"
-                 SelectionMode="Single"
                  ItemTemplate="{StaticResource MemConstTemplate}">
         </ListBox>
         

@@ -157,7 +157,7 @@ namespace ECalc.Classes
                         break;
                     case VarType.Matrix:
                         var lines = xml.Split('\n'); // get lines
-                        DoubleMatrix matrix = new DoubleMatrix(rows, columns);
+                        Matrix matrix = new Matrix(rows, columns);
                         for (int row=0; row<rows; row++)
                         {
                             parts = lines[row].Replace("[", "").Replace("]", "").Split(';');
@@ -198,7 +198,7 @@ namespace ECalc.Classes
             if (valtype == typeof(double)) type = VarType.Double;
             else if (valtype == typeof(Complex)) type = VarType.Complex;
             else if (valtype == typeof(Fraction)) type = VarType.Fraction;
-            else if (valtype == typeof(DoubleMatrix)) type = VarType.Matrix;
+            else if (valtype == typeof(Matrix)) type = VarType.Matrix;
             else if (valtype == typeof(Vector)) type = VarType.Vector;
 
             writer.WriteAttributeString("Type", type.ToString());
@@ -224,7 +224,7 @@ namespace ECalc.Classes
                     break;
                 case VarType.Matrix:
                     StringBuilder sb = new StringBuilder();
-                    DoubleMatrix m = ((DoubleMatrix)Value);
+                    Matrix m = ((Matrix)Value);
                     writer.WriteAttributeString("Rows", m.Rows.ToString());
                     writer.WriteAttributeString("Columns", m.Columns.ToString());
                     for (int row=0; row<m.Rows; row++)
