@@ -109,5 +109,12 @@ namespace ECalc
             AboutDialog w = new AboutDialog();
             ShowDialog(w);
         }
+
+        private void WindowCommandIssue_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            p.StartInfo.FileName = "https://github.com/webmaster442/ECalc/issues";
+            p.Start();
+        }
     }
 }

@@ -20,6 +20,9 @@
                 <Button Content="About"
                         x:Name="WindowCommandAbout"
                         Click="WindowCommandAbout_Click"/>
+                <Button Content="Report Bug"
+                        x:Name="WindowCommandIssue"
+                        Click="WindowCommandIssue_Click"/>
                 <Button x:Name="WindowCommandMenu"
                         Content="Menu"
                         Click="WindowCommandMenu_Click"/>
