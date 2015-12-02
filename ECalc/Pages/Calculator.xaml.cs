@@ -1,7 +1,5 @@
 ﻿using ECalc.Classes;
-using ECalc.Maths;
 using System;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -50,7 +48,7 @@ namespace ECalc.Pages
             try
             {
                 var result = await _engine.EvaluateAsync(Display.EquationText);
-                Keypad.MemManager.SetItem(Engine.Ans);
+                Keypad.SetItem(Engine.Ans);
             }
             catch (Exception ex)
             {
@@ -68,7 +66,7 @@ namespace ECalc.Pages
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (designTime) return;
             _engine = new Engine();
-            _engine.MemoryManager = Keypad.MemMan;
+            _engine.MemoryManager = Keypad;
             FncList.Functions = _engine.Functions;
         }
 

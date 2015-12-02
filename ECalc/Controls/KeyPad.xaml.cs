@@ -1,6 +1,5 @@
 ﻿using ECalc.Classes;
 using System;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +9,7 @@ namespace ECalc.Controls
     /// <summary>
     /// Interaction logic for KeyPad.xaml
     /// </summary>
-    internal partial class KeyPad : UserControl
+    internal partial class KeyPad : UserControl, IMemManager
     {
         private ConstantList _constants;
         private bool _loaded;
@@ -125,7 +124,6 @@ namespace ECalc.Controls
         {
             if (ButtonClicked != null)
             {
-
                 if (ConstList.SelectedIndex > -1)
                 {
                     var content = _constants[ConstList.SelectedIndex].Name;
@@ -153,9 +151,29 @@ namespace ECalc.Controls
             _loaded = true;
         }
 
-        public IMemManager MemManager
+        public object GetItem(string name)
         {
-            get { return MemMan; }
+            if (name.StartsWith("&"))
+            {
+                var q = from i in _constants where i.Name == name select i.Value;
+                return q.FirstOrDefault();
+            }
+            else return MemMan.GetItem(name);
+        }
+
+        public string[] ListRegisters(string query)
+        {
+            return MemMan.ListRegisters(query);
+        }
+
+        public void SetItem(string name, object value)
+        {
+            MemMan.SetItem(name, value);
+        }
+
+        public void SetItem(object value)
+        {
+            MemMan.SetItem(value);
         }
     }
 }
