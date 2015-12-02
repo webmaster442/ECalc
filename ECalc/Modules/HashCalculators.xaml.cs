@@ -35,6 +35,7 @@ namespace ECalc.Modules
 
         private void CbHash_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!_loaded) return;
             if (TabMode.SelectedIndex == 0) ComputeHash();
         }
 
