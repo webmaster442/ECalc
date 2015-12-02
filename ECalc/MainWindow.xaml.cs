@@ -33,6 +33,11 @@ namespace ECalc
         public static void SwithToControl(UserControl control)
         {
             MainWindow main = (MainWindow)App.Current.MainWindow;
+            if (main.TransitionControl.Content is Calculator)
+            {
+                ConfigFileHelpers.SerializeUsageStats();
+                Properties.Settings.Default.Save();
+            }
             main.TransitionControl.Content = null;
             foreach (Flyout flyout in main.Flyouts.Items) flyout.IsOpen = false;
             GC.WaitForPendingFinalizers();
@@ -100,8 +105,11 @@ namespace ECalc
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ConfigFileHelpers.SerializeUsageStats();
-            Properties.Settings.Default.Save();
+            if (TransitionControl.Content is Calculator)
+            {
+                ConfigFileHelpers.SerializeUsageStats();
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void WindowCommandAbout_Click(object sender, RoutedEventArgs e)
