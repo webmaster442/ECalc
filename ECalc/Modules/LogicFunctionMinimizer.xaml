@@ -101,7 +101,7 @@
                   Grid.Row="1"
                   Grid.Column="0">
             <StackPanel Orientation="Horizontal">
-                <CheckBox Content="Make Harard Free"
+                <CheckBox Content="Make Hazard Free"
                           x:Name="CbHazardFree"/>
                 <RadioButton Content="A is MSB"
                              IsChecked="True"

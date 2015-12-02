@@ -71,7 +71,7 @@ namespace ECalc.Modules
                 uint val = tmp + sh;
                 IPAddress addr = new IPAddress(0);
                 addr = addr.SetUint(val);
-                buffer.AppendFormat("Subnet {0,-4} Network adress: {1,-15} Brodecast Adress: {2,-15}\r\n", i, addr, addr.GetBroadcastAddress(SubnetMask.CreateByNetBitLength(outmaskbits)));
+                buffer.AppendFormat("Subnet {0,-4} Network adress: {1,-15} Broadcast Adress: {2,-15}\r\n", i, addr, addr.GetBroadcastAddress(SubnetMask.CreateByNetBitLength(outmaskbits)));
             }
 
             Output.Text = buffer.ToString();

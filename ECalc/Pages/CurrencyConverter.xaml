@@ -78,7 +78,7 @@
                     Grid.ColumnSpan="2"
                     x:Name="BtnConvert"
                     Click="BtnConvert_Click"/>
-            <TextBlock Text="Currency rate conversion provided by the Hungraian National Bank (MNB). Currency rates may differ depending on your bank"
+            <TextBlock Text="Currency rate conversion provided by the Hungarian National Bank (MNB). Currency rates may differ depending on your bank"
                        FontSize="14"
                        Grid.Row="5"
                        Grid.ColumnSpan="2"

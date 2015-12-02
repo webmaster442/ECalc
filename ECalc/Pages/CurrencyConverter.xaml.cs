@@ -48,9 +48,6 @@ namespace ECalc.Pages
                     {
                         _rates.Add(item.Attribute("curr").Value, Convert.ToDouble(item.Value));
                     }
-
-                    CbSource.ItemsSource = _rates.Keys;
-                    CbDestination.ItemsSource = _rates.Keys;
                 }
             }
             catch (Exception ex)
@@ -61,6 +58,9 @@ namespace ECalc.Pages
             {
                 dloadpanel.Visibility = Visibility.Collapsed;
                 _rates.Add("HUF", 1);
+                CbSource.ItemsSource = _rates.Keys.OrderBy(i => i);
+                CbDestination.ItemsSource = _rates.Keys.OrderBy(i => i);
+
             }
         }
     }
