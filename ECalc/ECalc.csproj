@@ -524,9 +524,6 @@
     <Resource Include="Images\100px\help.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Docs\about.md" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\100px\about.png" />
   </ItemGroup>
   <ItemGroup>

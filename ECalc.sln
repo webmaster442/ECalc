@@ -5,12 +5,17 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECalc", "ECalc\ECalc.csproj", "{5AFABC1C-1E86-4E34-BA5A-6A1AF1F6EA09}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{76C562B8-CFE3-4807-BCAA-66439E111CA9}"
-	ProjectSection(SolutionItems) = preProject
-		ToDo.txt = ToDo.txt
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECalc.Api", "ECalc.Api\ECalc.Api.csproj", "{4BDBC073-620D-4F63-8E86-C15AE3ADB6DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{4027A27B-3D4D-4DF5-AB1F-82542B2E410F}"
+	ProjectSection(SolutionItems) = preProject
+		Documentation\about.md = Documentation\about.md
+		Documentation\functions-A.md = Documentation\functions-A.md
+		Documentation\functions-C.md = Documentation\functions-C.md
+		Documentation\functions-D.md = Documentation\functions-D.md
+		Documentation\functions-F.md = Documentation\functions-F.md
+		Documentation\functions-G.md = Documentation\functions-G.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
