@@ -174,6 +174,60 @@ namespace ECalc.Maths
         }
     }
 
+    public class Log10 : IFunction
+    {
+        public string Name
+        {
+            get { return "Log10"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            if (Helpers.IsComplex(arguments[0]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                return Complex.Log(a, 10);
+            }
+            else
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                return Math.Log(b, 10);
+            }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
+    public class Loge : IFunction
+    {
+        public string Name
+        {
+            get { return "Loge"; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            if (Helpers.IsComplex(arguments[0]))
+            {
+                Complex a = Helpers.GetComplex(arguments[0]);
+                return Complex.Log(a, Math.E);
+            }
+            else
+            {
+                double b = Convert.ToDouble(arguments[0]);
+                return Math.Log(b, Math.E);
+            }
+        }
+
+        public int ParamCount
+        {
+            get { return 1; }
+        }
+    }
+
     public class Factorial : IFunction
     {
         public string Name
