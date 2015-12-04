@@ -27,6 +27,12 @@
                              ImageWidth="35"
                              x:Name="BtnAbout"
                              Click="BtnAbout_Click"/>
+            <api:ImageButton Content="Documentation"
+                             Image="/ECalc;component/Images/50px/book.png"
+                             ImageHeight="35"
+                             ImageWidth="35"
+                             x:Name="BtnDocs"
+                             Click="BtnDocs_Click"/>
             <api:ImageButton Content="Report Bug"
                              Image="/ECalc;component/Images/50px/issue.png"
                              ImageHeight="35"

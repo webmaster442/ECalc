@@ -569,6 +569,10 @@
       <Project>{4bdbc073-620d-4f63-8e86-c15ae3adb6dd}</Project>
       <Name>ECalc.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ECalc.Docs\ECalc.Docs.csproj">
+      <Project>{f88b5dbe-b27e-4c34-8ccb-baae76b832fa}</Project>
+      <Name>ECalc.Docs</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -652,6 +656,9 @@
     <Resource Include="Images\50px\about.png" />
     <Resource Include="Images\50px\issue.png" />
     <Resource Include="Images\50px\keyboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\book.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

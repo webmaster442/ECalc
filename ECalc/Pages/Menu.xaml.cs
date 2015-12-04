@@ -1,6 +1,7 @@
 ﻿using ECalc.Controls;
 using System.Windows;
 using System.Windows.Controls;
+using ECalc.Docs;
 
 namespace ECalc.Pages
 {
@@ -33,6 +34,12 @@ namespace ECalc.Pages
             p.StartInfo.FileName = "osk.exe";
             p.StartInfo.UseShellExecute = true;
             p.Start();
+        }
+
+        private void BtnDocs_Click(object sender, RoutedEventArgs e)
+        {
+            DocumentationViewer dv = new DocumentationViewer();
+            MainWindow.SwithToControl(dv);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ECalc.Docs.UserContDocumentationViewer"
+﻿<UserControl x:Class="ECalc.Docs.DocumentationViewer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,14 +13,18 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TreeView Grid.Row="1"
-                  Grid.Column="0">
-            <TreeViewItem Header="Function Documentation" IsExpanded="True">
-                <TreeViewItem Header="A"/>
-                <TreeViewItem Header="C"/>
+                  Grid.Column="0"
+                  x:Name="TvTOC"
+                  SelectedItemChanged="TvTOC_SelectedItemChanged">
+            <TreeViewItem Header="Function Documentation"
+                          IsExpanded="True">
+                <TreeViewItem Header="A"
+                              ToolTip="functions-A.md"/>
+                <TreeViewItem Header="C"
+                              ToolTip="functions-C.md"/>
                 <TreeViewItem Header="D"/>
                 <TreeViewItem Header="F"/>
                 <TreeViewItem Header="G"/>
@@ -31,8 +35,7 @@
             </TreeViewItem>
         </TreeView>
         
-        <FlowDocumentScrollViewer Grid.Row="1"
-                                  Grid.Column="2"
-                                  x:Name="DocContent"/>
+        <WebBrowser Grid.Column="2"
+                    x:Name="DocContent"/>
     </Grid>
 </UserControl>

@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,8 +65,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Markdown.xaml\Markdown.cs" />
-    <Compile Include="Markdown.xaml\TextToFlowDocumentConverter.cs" />
+    <Compile Include="MarkdownSharp\Escapes.cs" />
+    <Compile Include="MarkdownSharp\Markdown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -83,12 +84,24 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Documentation\functions-A.md" />
+    <Resource Include="Documentation\functions-C.md" />
+    <Resource Include="Documentation\functions-D.md" />
+    <Resource Include="Documentation\functions-F.md" />
+    <Resource Include="Documentation\functions-G.md" />
+    <Resource Include="Documentation\functions-L.md" />
+    <Resource Include="Documentation\functions-N.md" />
+    <Resource Include="Documentation\functions-P.md" />
+    <Resource Include="Documentation\functions-R.md" />
     <None Include="ECalc.Docs.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Documentation\template.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
