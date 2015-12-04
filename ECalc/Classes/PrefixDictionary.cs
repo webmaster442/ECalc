@@ -11,26 +11,26 @@ namespace ECalc.Classes
     {
         public PrefixDictionary() : base(19)
         {
-            this.Add("y", 10E-24);
-            this.Add("z", 10E-21);
-            this.Add("a", 10E-18);
-            this.Add("f", 10E-15);
-            this.Add("p", 10E-12);
-            this.Add("n", 10E-9);
-            this.Add("u", 10E-6);
-            this.Add("m", 10E-3);
-            this.Add("c", 10E-2);
-            this.Add("d", 10E-1);
-            this.Add("da", 10E1);
-            this.Add("h", 10E2);
-            this.Add("k", 10E3);
-            this.Add("M", 10E6);
-            this.Add("G", 10E9);
-            this.Add("T", 10E12);
-            this.Add("P", 10E15);
-            this.Add("E", 10E18);
-            this.Add("Z", 10E21);
-            this.Add("Y", 10E24);
+            this.Add("y", 1E-24);
+            this.Add("z", 1E-21);
+            this.Add("a", 1E-18);
+            this.Add("f", 1E-15);
+            this.Add("p", 1E-12);
+            this.Add("n", 1E-9);
+            this.Add("u", 1E-6);
+            this.Add("m", 1E-3);
+            this.Add("c", 1E-2);
+            this.Add("d", 1E-1);
+            this.Add("da", 1E1);
+            this.Add("h", 1E2);
+            this.Add("k", 1E3);
+            this.Add("M", 1E6);
+            this.Add("G", 1E9);
+            this.Add("T", 1E12);
+            this.Add("P", 1E15);
+            this.Add("E", 1E18);
+            this.Add("Z", 1E21);
+            this.Add("Y", 1E24);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace ECalc.Classes
         /// <returns>return string</returns>
         public string DivideToPrefix(double value)
         {
-            if (value == 1) return value.ToString();
+            if (((value < 999) && (value >= 0.001)) || value == 1 || value == 0) return value.ToString();
             double final = value;
             string text = "";
             var sorted = from i in this where i.Value > 999 || i.Value <= 0.001 orderby i.Value descending select i;
