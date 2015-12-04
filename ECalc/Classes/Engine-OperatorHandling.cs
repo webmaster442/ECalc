@@ -75,9 +75,11 @@ namespace ECalc.Classes
                         if (double.IsNaN(dbl)) return v1 - v2;
                         else return v1 - dbl;
                     case "÷":
+                    case "/":
                         if (double.IsNaN(dbl)) return v1 / v2;
                         else return v1 / dbl;
                     case "×":
+                    case "*":
                         if (double.IsNaN(dbl)) return v1 * v2;
                         else return v1 * dbl;
                     case "mod":
@@ -128,9 +130,11 @@ namespace ECalc.Classes
                         if (double.IsNaN(dbl)) return m1 - m2;
                         else return m1 - dbl;
                     case "÷":
+                    case "/":
                         if (double.IsNaN(dbl)) throw new ArgumentException("Can't divde matrixes");
                         else return m1 / dbl;
                     case "×":
+                    case "*":
                         if (double.IsNaN(dbl)) return m1 * m2;
                         else return m1 * dbl;
                     case "mod":
@@ -177,8 +181,10 @@ namespace ECalc.Classes
                     case "-":
                         return a - b;
                     case "÷":
+                    case "/":
                         return a / b;
                     case "×":
+                    case "*":
                         return a * b;
                     case "mod":
                         return new Complex(a.Real % b.Real, a.Imaginary % b.Imaginary);
@@ -213,8 +219,10 @@ namespace ECalc.Classes
                     case "-":
                         return f1 - f2;
                     case "÷":
+                    case "/":
                         return f1 / f2;
                     case "×":
+                    case "*":
                         return f1 * f2;
                     case "mod":
                         return new Fraction(f1.ToDouble() % f2.ToDouble());
@@ -231,8 +239,10 @@ namespace ECalc.Classes
                     case "-":
                         return n1 - n2;
                     case "÷":
+                    case "/":
                         return n1 / n2;
                     case "×":
+                    case "*":
                         return n1 * n2;
                     case "mod":
                         return n1 % n2;
