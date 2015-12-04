@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,6 +67,98 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HTMLRenderer\Adapters\BrushAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\ContextMenuAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\ControlAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RColor.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RDashStyle.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RFontStyle.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RKeyEvent.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RMouseEvent.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RPoint.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RRect.cs" />
+    <Compile Include="HTMLRenderer\Adapters\Entities\RSize.cs" />
+    <Compile Include="HTMLRenderer\Adapters\FontAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\FontFamilyAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\GraphicsAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\GraphicsPathAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\ImageAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\PenAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RAdapter.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RBrush.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RContextMenu.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RControl.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RFont.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RFontFamily.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RGraphics.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RGraphicsPath.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RImage.cs" />
+    <Compile Include="HTMLRenderer\Adapters\RPen.cs" />
+    <Compile Include="HTMLRenderer\Adapters\WpfAdapter.cs" />
+    <Compile Include="HTMLRenderer\Core\CssData.cs" />
+    <Compile Include="HTMLRenderer\Core\CssDefaults.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\Border.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssBox.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssBoxFrame.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssBoxHr.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssBoxImage.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssBoxProperties.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssLayoutEngine.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssLayoutEngineTable.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssLength.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssLineBox.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssRect.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssRectImage.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssRectWord.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssSpacingBox.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\CssUnit.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\HoverBoxBlock.cs" />
+    <Compile Include="HTMLRenderer\Core\Dom\HtmlTag.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\CssBlock.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\CssBlockSelectorItem.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlGenerationStyle.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlImageLoadEventArgs.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlLinkClickedEventArgs.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlLinkClickedException.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlRefreshEventArgs.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlRenderErrorEventArgs.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlRenderErrorType.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlScrollEventArgs.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\HtmlStylesheetLoadEventArgs.cs" />
+    <Compile Include="HTMLRenderer\Core\Entities\LinkElementData.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\BackgroundImageDrawHandler.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\BordersDrawHandler.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\ContextMenuHandler.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\FontsHandler.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\ImageDownloader.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\ImageLoadHandler.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\SelectionHandler.cs" />
+    <Compile Include="HTMLRenderer\Core\Handlers\StylesheetLoadHandler.cs" />
+    <Compile Include="HTMLRenderer\Core\HtmlContainerInt.cs" />
+    <Compile Include="HTMLRenderer\Core\HtmlRendererUtils.cs" />
+    <Compile Include="HTMLRenderer\Core\Parse\CssParser.cs" />
+    <Compile Include="HTMLRenderer\Core\Parse\CssValueParser.cs" />
+    <Compile Include="HTMLRenderer\Core\Parse\DomParser.cs" />
+    <Compile Include="HTMLRenderer\Core\Parse\HtmlParser.cs" />
+    <Compile Include="HTMLRenderer\Core\Parse\RegexParserHelper.cs" />
+    <Compile Include="HTMLRenderer\Core\Parse\RegexParserUtils.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\ArgChecker.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\CommonUtils.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\CssConstants.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\CssUtils.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\DomUtils.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\HtmlConstants.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\HtmlUtils.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\RenderUtils.cs" />
+    <Compile Include="HTMLRenderer\Core\Utils\SubString.cs" />
+    <Compile Include="HTMLRenderer\HtmlContainer.cs" />
+    <Compile Include="HTMLRenderer\HtmlControl.cs" />
+    <Compile Include="HTMLRenderer\HtmlLabel.cs" />
+    <Compile Include="HTMLRenderer\HtmlPanel.cs" />
+    <Compile Include="HTMLRenderer\HtmlRender.cs" />
+    <Compile Include="HTMLRenderer\RoutedEvenArgs.cs" />
+    <Compile Include="HTMLRenderer\Utilities\ClipboardHelper.cs" />
+    <Compile Include="HTMLRenderer\Utilities\Utils.cs" />
     <Compile Include="MarkdownSharp\Escapes.cs" />
     <Compile Include="MarkdownSharp\Markdown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -102,6 +196,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Documentation\template.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HTMLRenderer\Core\Utils\ImageError.png" />
+    <Resource Include="HTMLRenderer\Core\Utils\ImageLoad.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -38,7 +38,7 @@ namespace ECalc.Docs
                     PageContent.Append(_template);
                     PageContent.Append(_markdown.Transform(sr.ReadToEnd()));
                     PageContent.Append("</div></body></html>");
-                    DocContent.NavigateToString(PageContent.ToString());
+                    DocPanel.Text = PageContent.ToString();
                 }
             }
             catch (Exception) { }

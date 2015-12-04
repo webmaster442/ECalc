@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ECalc.Docs"
+             xmlns:html="clr-namespace:TheArtOfDev.HtmlRenderer.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="520" d:DesignWidth="900">
     <Grid>
@@ -25,17 +25,23 @@
                               ToolTip="functions-A.md"/>
                 <TreeViewItem Header="C"
                               ToolTip="functions-C.md"/>
-                <TreeViewItem Header="D"/>
-                <TreeViewItem Header="F"/>
-                <TreeViewItem Header="G"/>
-                <TreeViewItem Header="L"/>
-                <TreeViewItem Header="N"/>
-                <TreeViewItem Header="P"/>
-                <TreeViewItem Header="R"/>
+                <TreeViewItem Header="D"
+                              ToolTip="functions-D.md"/>
+                <TreeViewItem Header="F"
+                              ToolTip="functions-F.md"/>
+                <TreeViewItem Header="G"
+                              ToolTip="functions-G.md"/>
+                <TreeViewItem Header="L"
+                              ToolTip="functions-L.md"/>
+                <TreeViewItem Header="N"
+                              ToolTip="functions-N.md"/>
+                <TreeViewItem Header="P"
+                              ToolTip="functions-P.md"/>
+                <TreeViewItem Header="R"
+                              ToolTip="functions-R.md"/>
             </TreeViewItem>
         </TreeView>
-        
-        <WebBrowser Grid.Column="2"
-                    x:Name="DocContent"/>
+        <html:HtmlPanel Grid.Column="2"
+                        x:Name="DocPanel"/>
     </Grid>
 </UserControl>
