@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="ECalc.Docs.UserContDocumentationViewer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Docs"
+             mc:Ignorable="d" 
+             d:DesignHeight="520" d:DesignWidth="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TreeView Grid.Row="1"
+                  Grid.Column="0">
+            <TreeViewItem Header="Function Documentation" IsExpanded="True">
+                <TreeViewItem Header="A"/>
+                <TreeViewItem Header="C"/>
+                <TreeViewItem Header="D"/>
+                <TreeViewItem Header="F"/>
+                <TreeViewItem Header="G"/>
+                <TreeViewItem Header="L"/>
+                <TreeViewItem Header="N"/>
+                <TreeViewItem Header="P"/>
+                <TreeViewItem Header="R"/>
+            </TreeViewItem>
+        </TreeView>
+        
+        <FlowDocumentScrollViewer Grid.Row="1"
+                                  Grid.Column="2"
+                                  x:Name="DocContent"/>
+    </Grid>
+</UserControl>
