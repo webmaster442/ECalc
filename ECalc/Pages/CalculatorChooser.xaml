@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="ECalc.Pages.CalculatorChooser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Pages"
+             xmlns:controls="clr-namespace:ECalc.Controls"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d" 
+             d:DesignHeight="490" d:DesignWidth="960">
+    <UserControl.Resources>
+        <Style x:Key="LargeTileStyle" TargetType="mah:Tile">
+            <Setter Property="Width" Value="256" />
+            <Setter Property="Height" Value="128" />
+            <Setter Property="TitleFontSize" Value="12"/>
+            <Setter Property="Opacity" Value="0.8"/>
+        </Style>
+
+        <Style TargetType="mah:Tile">
+            <Setter Property="TitleFontSize" Value="13"/>
+            <Setter Property="Width" Value="128"/>
+            <Setter Property="Height" Value="128"/>
+            <Setter Property="Opacity" Value="0.8"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <ContentPresenter Content="{Binding}">
+                            <ContentPresenter.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="-20" X="-20"/>
+                                </TransformGroup>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="StretchDirection" Value="DownOnly"/>
+            <Setter Property="MaxWidth" Value="85"/>
+            <Setter Property="MaxHeight" Value="85"/>
+        </Style>
+
+        <Style TargetType="GroupBox" BasedOn="{StaticResource {x:Type GroupBox}}">
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   FontSize="12"
+                                   Foreground="White"
+                                   FontFamily="Arial Black"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="190"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="130"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.ColumnSpan="2"
+                   Grid.RowSpan="3"
+                   Opacity="0.5"
+                   x:Name="RectImage"/>
+        <GroupBox Header="Generic"
+                  Grid.Row="0"
+                  Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <mah:Tile Title="Calculator"
+                          Background="{StaticResource W8Indigo}"
+                          Style="{StaticResource LargeTileStyle}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/calculator.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Statistics"
+                          Background="{StaticResource W8Orange}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/statistics.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Unit Converter"
+                          Background="{StaticResource W8Red}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/unitconverter.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Equation System Solver"
+                          Background="{StaticResource W8Yellow}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/hash.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Currency Converter"
+                          Background="{StaticResource W8Taupe}"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/currency.png"/>
+                </mah:Tile>
+                <mah:Tile Title="Function Plot"
+                          Background="#16a085"
+                          Click="Tile_Click">
+                    <Image Source="../Images/100px/graph.png"/>
+                </mah:Tile>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Row="1"
+                  Grid.Column="0"
+                  Header="Modules">
+            <ListBox Margin="3"
+                     x:Name="CategoryView"
+                     Background="#66252525"
+                     SelectionChanged="CategoryView_SelectionChanged"/>
+        </GroupBox>
+        <Button Grid.Row="2"
+                x:Name="BtnBing"
+                Click="BtnBing_Click"
+                Opacity="0.8"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+            <Image Source="../Images/large/bing.png"/>
+        </Button>
+        <ScrollViewer Grid.Row="1"
+                      Grid.RowSpan="2"
+                      Grid.Column="1">
+            <WrapPanel x:Name="ModuleDisplay"/>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

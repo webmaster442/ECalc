@@ -17,10 +17,13 @@ namespace ECalc.Controls
     {
         private ObservableCollection<MemoryItem> _memory;
         private EditNewVariableDialog _editdialog;
+        private bool _designtime;
 
         public MemoryManagement()
         {
             InitializeComponent();
+            _designtime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            if (_designtime) return;
             _memory = new ObservableCollection<MemoryItem>();
             _editdialog = new EditNewVariableDialog();
             _editdialog.SaveClicked += ed_SaveClicked;

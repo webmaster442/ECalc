@@ -158,6 +158,9 @@
     <Compile Include="Pages\Graphing.xaml.cs">
       <DependentUpon>Graphing.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\MNBConverter\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -345,7 +348,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Menu.xaml">
+    <Page Include="Pages\CalculatorChooser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -364,6 +367,10 @@
     <Page Include="Modules\ResistorSolver.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Stat.xaml">
       <SubType>Designer</SubType>
@@ -407,8 +414,8 @@
     <Compile Include="Modules\LogicFunctionMinimizer.xaml.cs">
       <DependentUpon>LogicFunctionMinimizer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Menu.xaml.cs">
-      <DependentUpon>Menu.xaml</DependentUpon>
+    <Compile Include="Pages\CalculatorChooser.xaml.cs">
+      <DependentUpon>CalculatorChooser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\ResistorColorDecoder.xaml.cs">
       <DependentUpon>ResistorColorDecoder.xaml</DependentUpon>
@@ -640,6 +647,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\50px\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\about.png" />
+    <Resource Include="Images\50px\issue.png" />
+    <Resource Include="Images\50px\keyboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

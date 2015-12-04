@@ -1,13 +1,11 @@
-﻿using ECalc.Classes;
+﻿using ECalc.Api;
+using ECalc.Classes;
+using ECalc.Pages;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using MahApps.Metro.Controls.Dialogs;
-using ECalc.Api;
-using ECalc.Pages;
-using ECalc.Controls;
-using System.Threading.Tasks;
 
 namespace ECalc
 {
@@ -16,8 +14,6 @@ namespace ECalc
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-
-
         public MainWindow()
         {
             Modules = new ModuleLoader();
@@ -90,17 +86,16 @@ namespace ECalc
             main.Title = titletext;
         }
 
-        private void WindowCommandMenu_Click(object sender, RoutedEventArgs e)
+        private void WindowCommandCalculatorChooser_Click(object sender, RoutedEventArgs e)
         {
-            MenuFlyOut.IsOpen = !MenuFlyOut.IsOpen;
+            MainMenuFlyOut.IsOpen = false;
+            CalculatorChooserFlyOut.IsOpen = !CalculatorChooserFlyOut.IsOpen;
         }
 
-        private void WindowCommandKeyboard_Click(object sender, RoutedEventArgs e)
+        private void WindowCommandMenu_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo.FileName = "osk.exe";
-            p.StartInfo.UseShellExecute = true;
-            p.Start();
+            CalculatorChooserFlyOut.IsOpen = false;
+            MainMenuFlyOut.IsOpen = !MainMenuFlyOut.IsOpen;
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -110,19 +105,6 @@ namespace ECalc
                 ConfigFileHelpers.SerializeUsageStats();
                 Properties.Settings.Default.Save();
             }
-        }
-
-        private void WindowCommandAbout_Click(object sender, RoutedEventArgs e)
-        {
-            AboutDialog w = new AboutDialog();
-            ShowDialog(w);
-        }
-
-        private void WindowCommandIssue_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
-            p.StartInfo.FileName = "https://github.com/webmaster442/ECalc/issues";
-            p.Start();
         }
     }
 }
