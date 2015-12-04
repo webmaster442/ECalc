@@ -256,7 +256,7 @@
                     Grid.Row="1"
                     Grid.Column="4"
                     Click="Button_Click"/>
-            <Button Content="X"
+            <Button Content="×"
                     Grid.Row="1"
                     Grid.Column="5"
                     Click="Button_Click"/>
