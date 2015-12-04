@@ -449,7 +449,5 @@ namespace ECalc.Maths
                     return double.NaN;
             }
         }
-
     }
-
 }

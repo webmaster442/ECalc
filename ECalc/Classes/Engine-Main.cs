@@ -16,7 +16,7 @@ namespace ECalc.Classes
     internal partial class Engine
     {
 
-        const string operators = @"(\+)|(\-)|(\÷)|(X)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)|(shr)|(shl)|(ror)|(rol)";
+        const string operators = @"(\+)|(\-)|(\÷)|(×)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)|(shr)|(shl)|(ror)|(rol)";
         const string exponentfix = @"[eE]\s+([+-~])\s+";
 
         private static List<IFunction> _functions;
@@ -109,7 +109,7 @@ namespace ECalc.Classes
                     case "+":
                     case "-":
                     case "÷":
-                    case "X":
+                    case "×":
                     case "mod":
                         temp = new Token(TokenType.Operator, c);
                         if (Stack.Count > 0)
