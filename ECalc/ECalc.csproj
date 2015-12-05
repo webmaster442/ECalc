@@ -542,12 +542,6 @@
     <Resource Include="Images\100px\unitconverter.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\100px\help.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\100px\about.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\100px\math.png" />
   </ItemGroup>
   <ItemGroup>

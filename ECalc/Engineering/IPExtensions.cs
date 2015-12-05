@@ -38,14 +38,6 @@ namespace ECalc.Engineering
             return new IPAddress(broadcastAddress);
         }
 
-        public static bool IsInSameSubnet(this IPAddress address2, IPAddress address, IPAddress subnetMask)
-        {
-            IPAddress network1 = address.GetNetworkAddress(subnetMask);
-            IPAddress network2 = address2.GetNetworkAddress(subnetMask);
-
-            return network1.Equals(network2);
-        }
-
         public static uint GetUint(this IPAddress address)
         {
             byte[] bytes = address.GetAddressBytes();
@@ -106,15 +98,6 @@ namespace ECalc.Engineering
         {
             int hostPartLength = 32 - netpartLength;
             return CreateByHostBitLength(hostPartLength);
-        }
-
-        public static IPAddress CreateByHostNumber(int numberOfHosts)
-        {
-            int maxNumber = numberOfHosts + 1;
-
-            string b = Convert.ToString(maxNumber, 2);
-
-            return CreateByHostBitLength(b.Length);
         }
 
         public static int GetBitLength(IPAddress adr)
