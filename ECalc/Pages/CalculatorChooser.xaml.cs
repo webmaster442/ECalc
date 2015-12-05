@@ -120,5 +120,30 @@ namespace ECalc.Pages
         {
             System.Diagnostics.Process.Start(_link);
         }
+
+        private void ContextNormal_Click(object sender, RoutedEventArgs e)
+        {
+            Tile t = (Tile)sender;
+            var title = t.ToolTip.ToString();
+            switch (title)
+            {
+                case "Statistics":
+                case "Equation System Solver":
+                case "Unit Converter":
+                case "Currency Converter":
+                case "Function Plot":
+                    Tile_Click(t, new RoutedEventArgs());
+                    break;
+                default:
+                    T_Click(t, new RoutedEventArgs());
+                    break;
+            }
+        }
+
+        private void ContextNewWindow_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+        }
     }
 }

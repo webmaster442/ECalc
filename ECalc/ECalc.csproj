@@ -124,6 +124,9 @@
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Engineering\ColorSpaceConversions.cs" />
     <Compile Include="Extensions\WPF.cs" />
+    <Compile Include="FloatWindow.xaml.cs">
+      <DependentUpon>FloatWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Maths\Matrix.cs" />
     <Compile Include="Maths\Probability.cs" />
     <Compile Include="Maths\Vector.cs" />
@@ -238,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\StatInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FloatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

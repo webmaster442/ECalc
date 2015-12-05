@@ -35,6 +35,18 @@
                     </DataTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="ContextMenu">
+                <Setter.Value>
+                    <ContextMenu>
+                        <MenuItem Header="Open normally"
+                                  x:Name="ContextNormal"
+                                  Click="ContextNormal_Click"/>
+                        <MenuItem Header="Open in a new Window"
+                                  x:Name="ContextNewWindow"
+                                  Click="ContextNewWindow_Click"/>
+                    </ContextMenu>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="Image">
