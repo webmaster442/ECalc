@@ -130,6 +130,9 @@
     <Compile Include="Modules\ColorConverters.xaml.cs">
       <DependentUpon>ColorConverters.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\CuttingSpeedCalculator.xaml.cs">
+      <DependentUpon>CuttingSpeedCalculator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
@@ -305,6 +308,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Modules\ColorConverters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\CuttingSpeedCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -659,6 +666,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\50px\book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\cuttingspeed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\cutspeed.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
