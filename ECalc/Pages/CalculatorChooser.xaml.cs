@@ -26,12 +26,32 @@ namespace ECalc.Pages
             CategoryView.SelectedIndex = 0;
         }
 
-        private void Tile_Click(object sender, RoutedEventArgs e)
+        private void Render()
         {
-            var title = ((Tile)sender).Title;
+            ModuleDisplay.Children.Clear();
+            var filter = CategoryView.SelectedItem.ToString();
+            var matchs = MainWindow.Modules.Select(filter);
+
+            foreach (var match in matchs)
+            {
+                Tile t = new Tile();
+                t.ToolTip = match.ModuleName;
+                t.Title = match.ModuleName;
+                t.Background = match.BackColor;
+                Image icon = new Image();
+                icon.Source = match.Icon;
+                t.Content = icon;
+                t.Click += Tile_Click;
+                ModuleDisplay.Children.Add(t);
+
+            }
+        }
+
+        private UserControl GetControl(Tile t)
+        {
             UserControl control = null;
 
-            switch (title)
+            switch (t.Title)
             {
                 case "Calculator":
                     control = new Calculator();
@@ -52,42 +72,20 @@ namespace ECalc.Pages
                     control = new Graphing();
                     break;
                 default:
-                    return;
+                    var title = t.ToolTip.ToString();
+                    control = MainWindow.Modules.RunByName(title);
+                    break;
             }
 
-            MainWindow.SwithToControl(control);
-            MainWindow.SetTitle(title);
+            return control;
         }
 
-        private void Render()
+        private void Tile_Click(object sender, RoutedEventArgs e)
         {
-            ModuleDisplay.Children.Clear();
-            var filter = CategoryView.SelectedItem.ToString();
-            var matchs = MainWindow.Modules.Select(filter);
-
-            foreach (var match in matchs)
-            {
-                Tile t = new Tile();
-                t.ToolTip = match.ModuleName;
-                t.Title = match.ModuleName;
-                t.Background = match.BackColor;
-                Image icon = new Image();
-                icon.Source = match.Icon;
-                t.Content = icon;
-                t.Click += T_Click;
-                ModuleDisplay.Children.Add(t);
-
-            }
-
-        }
-
-        private void T_Click(object sender, RoutedEventArgs e)
-        {
-            Tile t = (Tile)sender;
-            var title = t.ToolTip.ToString();
-            var ctrl = MainWindow.Modules.RunByName(title);
+            var tile = ((Tile)sender);
+            var ctrl = GetControl(tile);
             MainWindow.SwithToControl(ctrl);
-            MainWindow.SetTitle(title);
+            MainWindow.SetTitle(tile.Title);
         }
 
         private void CategoryView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -123,27 +121,20 @@ namespace ECalc.Pages
 
         private void ContextNormal_Click(object sender, RoutedEventArgs e)
         {
-            Tile t = (Tile)sender;
-            var title = t.ToolTip.ToString();
-            switch (title)
-            {
-                case "Statistics":
-                case "Equation System Solver":
-                case "Unit Converter":
-                case "Currency Converter":
-                case "Function Plot":
-                    Tile_Click(t, new RoutedEventArgs());
-                    break;
-                default:
-                    T_Click(t, new RoutedEventArgs());
-                    break;
-            }
+            Tile_Click(sender, e);
         }
 
         private void ContextNewWindow_Click(object sender, RoutedEventArgs e)
         {
-
-            
+            MenuItem mnu = (MenuItem)sender;
+            if (mnu != null)
+            {
+                var tile = ((ContextMenu)mnu.Parent).PlacementTarget as Tile;
+                var ctrl = GetControl(tile);
+                FloatWindow fw = new FloatWindow();
+                fw.SetWindowContent(ctrl, tile.Title);
+                fw.Show();
+            }
         }
     }
 }
