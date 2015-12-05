@@ -6,6 +6,8 @@
 /ECalc/obj/
 /ECalc.Api/bin/
 /ECalc.Api/obj/
+/ECalc.Docs/obj/
+/ECalc.Docs/bin/
 /compile.log
 /.vs/
 /bin/
