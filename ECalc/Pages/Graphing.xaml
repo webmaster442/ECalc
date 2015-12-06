@@ -72,7 +72,7 @@
                              SelectionChanged="FunctionTemplates_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Code}"/>
+                                <TextBlock Text="{Binding Title}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

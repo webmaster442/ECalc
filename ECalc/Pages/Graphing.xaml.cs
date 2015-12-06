@@ -253,12 +253,28 @@ namespace ECalc.Pages
         private void FunctionTemplates_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var fnc = _source[FunctionTemplates.SelectedIndex];
-            Dispatcher.Invoke(() => { TabOptions.SelectedIndex = 0; });
-            MinX.Value = fnc.XMin;
-            MaxX.Value = fnc.XMax;
-            MinY.Value = fnc.YMin;
-            MaxY.Value = fnc.YMax;
-            TbYFunction.Text = fnc.Code;
+            if (!fnc.Parametric)
+            {
+                Dispatcher.Invoke(() => { TabOptions.SelectedIndex = 0; });
+                MinX.Value = fnc.XMin;
+                MaxX.Value = fnc.XMax;
+                MinY.Value = fnc.YMin;
+                MaxY.Value = fnc.YMax;
+                TbYFunction.Text = fnc.CodeY;
+            }
+            else
+            {
+                Dispatcher.Invoke(() => { TabOptions.SelectedIndex = 1; });
+                Min2DX.Value = fnc.XMin;
+                Max2DX.Value = fnc.XMax;
+                Min2DY.Value = fnc.YMin;
+                Max2DY.Value = fnc.YMax;
+                Tb2DYFunction.Text = fnc.CodeY;
+                Tb2DXFunction.Text = fnc.CodeX;
+                Min2Dt.Value = fnc.tMin;
+                Max2Dt.Value = fnc.tMax;
+                Step2Dt.Value = fnc.tStep;
+            }
         }
         #endregion
 

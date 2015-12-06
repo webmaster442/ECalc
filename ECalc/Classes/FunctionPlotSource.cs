@@ -4,97 +4,58 @@ namespace ECalc.Classes
 {
     public class FunctionSettings
     {
-        public string Code { get; set; }
+        public string CodeY { get; set; }
+        public string CodeX { get; set; }
+        public bool Parametric { get; set; }
         public double XMin { get; set; }
         public double XMax { get; set; }
         public double YMin { get; set; }
         public double YMax { get; set; }
+        public double tMin { get; set; }
+        public double tMax { get; set; }
+        public double tStep { get; set; }
+        public string Title { get; set; }
+
+        public FunctionSettings() { }
+
+        public FunctionSettings(string code, double xmin, double xmax, double ymin, double ymax)
+        {
+            Parametric = false;
+            Title = code;
+            CodeY = code;
+            XMin = xmin;
+            XMax = xmax;
+            YMin = ymin;
+            YMax = ymax;
+        }
+
+        public FunctionSettings(string title, string codex, string codey, double xmin, double xmax, double ymin, double ymax,
+                                double tmin, double tmax, double tstep) : this(codey, xmin, xmax, ymin, ymax)
+        {
+            Parametric = true;
+            Title = title;
+            CodeX = codex;
+            tMin = tmin;
+            tMax = tmax;
+            tStep = tstep;
+        }
     }
 
     class FunctionPlotSource: ObservableCollection<FunctionSettings>
     {
         public FunctionPlotSource(): base()
         {
-            this.Add(new FunctionSettings
-            {
-                Code = "Sin($x)",
-                XMin = -180,
-                XMax = 360,
-                YMin = -1.05,
-                YMax = 1.05
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Cos($x)",
-                XMin = -180,
-                XMax = 360,
-                YMin = -1.05,
-                YMax = 1.05
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Tan($x)",
-                XMin = -180,
-                XMax = 360,
-                YMin = -100,
-                YMax = 100
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Ctg($x)",
-                XMin = -180,
-                XMax = 360,
-                YMin = -100,
-                YMax = 100
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Sec($x)",
-                XMin = -180,
-                XMax = 360,
-                YMin = -100,
-                YMax = 100
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Cosec($x)",
-                XMin = -180,
-                XMax = 360,
-                YMin = -100,
-                YMax = 100
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Pow($x;2)",
-                XMin = -15,
-                XMax = 15,
-                YMin = -5,
-                YMax = 200
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Pow($x;3)",
-                XMin = -15,
-                XMax = 15,
-                YMin = -200,
-                YMax = 200
-            });
-
-            this.Add(new FunctionSettings
-            {
-                Code = "Pow(2; $x)",
-                XMin = -5,
-                XMax = 10,
-                YMin = -5,
-                YMax = 200
-            });
+            this.Add(new FunctionSettings("Sin($x)", -180, 360, -1.05, 1.05));
+            this.Add(new FunctionSettings("Cos($x)", -180, 360, -1.05, 1.05));
+            this.Add(new FunctionSettings("Tan($x)", -180, 360, -100, 100));
+            this.Add(new FunctionSettings("Ctg($x)", -180, 360, -100, 100));
+            this.Add(new FunctionSettings("Sec($x)", -180, 360, -100, 100));
+            this.Add(new FunctionSettings("Cosec($x)",-180,360,-100, 100));
+            this.Add(new FunctionSettings("Pow($x;2)", -15, 15, -5, 200));
+            this.Add(new FunctionSettings("Pow($x;3)", -15, 15, -200, 200));
+            this.Add(new FunctionSettings("Pow(2; $x)", -5, 10, -5, 200));
+            this.Add(new FunctionSettings("Elipse", "8*Sin($t)", "8*Cos($t)", -9, 9, -9, 9, 0, 360, 1));
+            this.Add(new FunctionSettings("Spiral", "Sin($t)*$t/16", "Cos($t)*$t/16", -62, 52, -65, 63, 0, 1000, 1));
         }
     }
 }
