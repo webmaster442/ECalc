@@ -29,9 +29,13 @@ namespace ECalc.Api
         /// <param name="assembly">assembly to load from</param>
         public void LoadFromAssembly(Assembly assembly)
         {
+            if (assembly == null) throw new ArgumentException("assembly");
             try
             {
-                var modules = from t in Assembly.GetExecutingAssembly().GetTypes()
+                var key = assembly.GetName().GetPublicKey();
+                if (key.Length == 0) throw new Exception("Assembly doesn't have a strong name");
+
+                var modules = from t in assembly.GetTypes()
                               where t.IsClass &&
                                     t.BaseType == typeof(EcalcModule)
                               select t;
@@ -61,8 +65,11 @@ namespace ECalc.Api
                 var files = Directory.GetFiles(directory, filter);
                 foreach (var file in files)
                 {
-                    Assembly a = Assembly.LoadFrom(file);
+                    var buffer = File.ReadAllBytes(file);
+                    Assembly a = Assembly.Load(buffer);
                     LoadFromAssembly(a);
+                    buffer = null;
+                    GC.Collect();
                 }
             }
             catch (Exception ex)
