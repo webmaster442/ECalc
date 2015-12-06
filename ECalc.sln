@@ -7,16 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECalc", "ECalc\ECalc.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECalc.Api", "ECalc.Api\ECalc.Api.csproj", "{4BDBC073-620D-4F63-8E86-C15AE3ADB6DD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{4027A27B-3D4D-4DF5-AB1F-82542B2E410F}"
-	ProjectSection(SolutionItems) = preProject
-		Documentation\about.md = Documentation\about.md
-		Documentation\functions-A.md = Documentation\functions-A.md
-		Documentation\functions-C.md = Documentation\functions-C.md
-		Documentation\functions-D.md = Documentation\functions-D.md
-		Documentation\functions-F.md = Documentation\functions-F.md
-		Documentation\functions-G.md = Documentation\functions-G.md
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECalc.Docs", "ECalc.Docs\ECalc.Docs.csproj", "{F88B5DBE-B27E-4C34-8CCB-BAAE76B832FA}"
 EndProject
 Global
