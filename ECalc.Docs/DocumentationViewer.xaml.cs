@@ -25,23 +25,31 @@ namespace ECalc.Docs
             }
         }
 
+        private void LoadMarkDown(string file)
+        {
+            Uri uri = new Uri("/ECalc.Docs;component/Documentation/" + file, UriKind.Relative);
+            using (StreamReader sr = new StreamReader(Application.GetResourceStream(uri).Stream))
+            {
+                StringBuilder PageContent = new StringBuilder();
+                PageContent.Append(_template);
+                PageContent.Append(_markdown.Transform(sr.ReadToEnd()));
+                PageContent.Append("</div></body></html>");
+                DocPanel.Text = PageContent.ToString();
+            }
+        }
+
         private void TvTOC_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            try
-            {
-                TreeViewItem selected = (TreeViewItem)TvTOC.SelectedItem;
-                var file = selected.ToolTip.ToString();
-                Uri uri = new Uri("/ECalc.Docs;component/Documentation/" + file, UriKind.Relative);
-                using (StreamReader sr = new StreamReader(Application.GetResourceStream(uri).Stream))
-                {
-                    StringBuilder PageContent = new StringBuilder();
-                    PageContent.Append(_template);
-                    PageContent.Append(_markdown.Transform(sr.ReadToEnd()));
-                    PageContent.Append("</div></body></html>");
-                    DocPanel.Text = PageContent.ToString();
-                }
-            }
-            catch (Exception) { }
+            TreeViewItem selected = (TreeViewItem)TvTOC.SelectedItem;
+            if (selected.ToolTip == null) return;
+            var file = selected.ToolTip.ToString();
+            if (string.IsNullOrEmpty(file)) return;
+            LoadMarkDown(file);
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadMarkDown("welcome.md");
         }
     }
 }

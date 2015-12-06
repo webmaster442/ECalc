@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:html="clr-namespace:TheArtOfDev.HtmlRenderer.WPF"
              mc:Ignorable="d" 
-             d:DesignHeight="520" d:DesignWidth="900">
+             d:DesignHeight="520"
+             d:DesignWidth="900"
+             Loaded="UserControl_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -19,6 +21,12 @@
                   Grid.Column="0"
                   x:Name="TvTOC"
                   SelectedItemChanged="TvTOC_SelectedItemChanged">
+            <TreeViewItem Header="Welcome page"
+                          ToolTip="welcome.md"/>
+            <TreeViewItem Header="Changelogs"
+                          ToolTip="changelog.md"/>
+            <TreeViewItem Header="Genearal Usage"
+                          ToolTip="general-usage.md"/>
             <TreeViewItem Header="Function Documentation"
                           IsExpanded="True">
                 <TreeViewItem Header="A"
@@ -39,7 +47,13 @@
                               ToolTip="functions-P.md"/>
                 <TreeViewItem Header="R"
                               ToolTip="functions-R.md"/>
+                <TreeViewItem Header="T"
+                              ToolTip="functions-T.md"/>
+                <TreeViewItem Header="V, W"
+                              ToolTip="functions-V-W.md"/>
             </TreeViewItem>
+            <TreeViewItem Header="License"
+                          ToolTip="license.md"/>
         </TreeView>
         <html:HtmlPanel Grid.Column="2"
                         x:Name="DocPanel"/>

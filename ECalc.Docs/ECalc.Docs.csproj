@@ -159,7 +159,6 @@
     <Compile Include="HTMLRenderer\RoutedEvenArgs.cs" />
     <Compile Include="HTMLRenderer\Utilities\ClipboardHelper.cs" />
     <Compile Include="HTMLRenderer\Utilities\Utils.cs" />
-    <Compile Include="MarkdownSharp\Escapes.cs" />
     <Compile Include="MarkdownSharp\Markdown.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -187,6 +186,13 @@
     <Resource Include="Documentation\functions-N.md" />
     <Resource Include="Documentation\functions-P.md" />
     <Resource Include="Documentation\functions-R.md" />
+    <Resource Include="Documentation\functions-S.md" />
+    <Resource Include="Documentation\functions-T.md" />
+    <Resource Include="Documentation\functions-V-W.md" />
+    <Resource Include="Documentation\general-usage.md" />
+    <Resource Include="Documentation\license.md" />
+    <Resource Include="Documentation\welcome.md" />
+    <Resource Include="Documentation\changelog.md" />
     <None Include="ECalc.Docs.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

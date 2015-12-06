@@ -31,16 +31,7 @@ The calculator supports various number systems as an input methood for numbers. 
 Standard number system. Floating point numbers are only supported in this input system.
 * **Octal**  
 Base-8 number system, uses the digits 0 to 7. To use this format you must start the number with the #O characters. Example:
-```
-#O123
-```
 * **Hexadecimal**  
-Base-16 number system, uses the digits 0 to 9 and the letters A to F. To use this format you must start the number with the #H characters. Example:
-```
-#HFF
-```
+Base-16 number system, uses the digits 0 to 9 and the letters A to F. To use this format you must start the number with the #H characters.
 * **Roman**  
-Roman numerals, the numeric system used in ancient Rome, employs combinations of letters from the Latin alphabet to signify values. To use this format you must start the number with the #R characters. Example:
-```
-#RVIII
-```
+Roman numerals, the numeric system used in ancient Rome, employs combinations of letters from the Latin alphabet to signify values. To use this format you must start the number with the #R characters.
