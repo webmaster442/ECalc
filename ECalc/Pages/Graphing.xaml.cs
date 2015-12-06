@@ -239,7 +239,8 @@ namespace ECalc.Pages
 
         private void BtnPlot_Click(object sender, RoutedEventArgs e)
         {
-            Draw();
+            if (TabOptions.SelectedIndex == 0) Draw();
+            else Draw2D();
             GridSettings.Visibility = Visibility.Collapsed;
         }
 

@@ -200,7 +200,7 @@
                             <Controls:NumericUpDown x:Name="Min2Dt"
                                                     Minimum="-1000"
                                                     Maximum="10000"
-                                                    Value="-15"
+                                                    Value="0"
                                                     Grid.Row="6"
                                                     Grid.Column="1"/>
                             <TextBlock Text="t Max:"
@@ -208,7 +208,7 @@
                             <Controls:NumericUpDown x:Name="Max2Dt"
                                                     Minimum="-1000"
                                                     Maximum="10000"
-                                                    Value="-15"
+                                                    Value="7"
                                                     Grid.Row="7"
                                                     Grid.Column="1"/>
                             <TextBlock Text="t Step:"
@@ -216,7 +216,7 @@
                             <Controls:NumericUpDown x:Name="Step2Dt"
                                                     Minimum="-1000"
                                                     Maximum="10000"
-                                                    Value="-15"
+                                                    Value="0.1"
                                                     Grid.Row="8"
                                                     Grid.Column="1"/>
                         </Grid>
