@@ -25,7 +25,7 @@ Rad2Grad(rad) - Converts radians to gradians
 
 ##Number systems
 
-The calculator supports various number systems as an input methood for numbers. The following systems are supported:
+The calculator supports various number systems as an input method for numbers. The following systems are supported:
 
 * **Decimal**  
 Standard number system. Floating point numbers are only supported in this input system.
