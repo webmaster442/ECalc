@@ -41,5 +41,10 @@ namespace ECalc.Pages
             DocumentationViewer dv = new DocumentationViewer();
             MainWindow.SwithToControl(dv);
         }
+
+        private void BtnDonate_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AVUW7CAHC2LES");
+        }
     }
 }
