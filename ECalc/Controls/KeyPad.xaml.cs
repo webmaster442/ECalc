@@ -155,8 +155,7 @@ namespace ECalc.Controls
         {
             if (name.StartsWith("&"))
             {
-                var q = from i in _constants where i.Name == name select i.Value;
-                return q.FirstOrDefault();
+                return ConstantDB.Lookup(name);
             }
             else return MemMan.GetItem(name);
         }

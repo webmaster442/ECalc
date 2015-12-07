@@ -26,12 +26,24 @@ namespace ECalc.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UsageStats {
+        public string FunctionUsageStats {
             get {
-                return ((string)(this["UsageStats"]));
+                return ((string)(this["FunctionUsageStats"]));
             }
             set {
-                this["UsageStats"] = value;
+                this["FunctionUsageStats"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ConstantUsageStats {
+            get {
+                return ((string)(this["ConstantUsageStats"]));
+            }
+            set {
+                this["ConstantUsageStats"] = value;
             }
         }
     }

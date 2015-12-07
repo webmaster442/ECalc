@@ -27,9 +27,12 @@ namespace ECalc.Classes
         public static Constant[] Universal { get; private set; }
         public static Constant[] ElectroMagnetic { get; private set; }
         public static Constant[] Atomic { get; private set; }
+        public static Dictionary<string, uint> UsageStats { get; private set; }
 
         static ConstantDB()
         {
+            UsageStats = ConfigFileHelpers.DeSerializeConstantUsageStats();
+
             Mathematical = new Constant[]
             {
                 new Constant("The number e", "&e", 2.7182818284590452353602874713526624977572470937000d),
@@ -148,6 +151,12 @@ namespace ECalc.Classes
             };
         }
 
+        private static void PromoteConstant(string name)
+        {
+            if (UsageStats.ContainsKey(name)) UsageStats[name] += 1;
+            else UsageStats.Add(name, 1);
+        }
+
         /// <summary>
         /// Return a constant by name
         /// </summary>
@@ -160,11 +169,29 @@ namespace ECalc.Classes
             var q3 = from i in ElectroMagnetic where i.Name == name select i.Value;
             var q4 = from i in Atomic where i.Name == name select i.Value;
 
+            PromoteConstant(name);
+
             if (q1.Count() > 0) return q1.First();
             else if (q2.Count() > 0) return q2.First();
             else if (q3.Count() > 0) return q3.First();
             else if (q4.Count() > 0) return q4.First();
             else return double.NaN;
+        }
+
+        public static IEnumerable<Constant> Favorites()
+        {
+            List<Constant> ret = new List<Constant>(UsageStats.Keys.Count);
+
+            var tmp1 = from i in Mathematical from j in UsageStats.Keys where i.Name == j select i;
+            var tmp2 = from i in Universal from j in UsageStats.Keys where i.Name == j select i;
+            var tmp3 = from i in ElectroMagnetic from j in UsageStats.Keys where i.Name == j select i;
+            var tmp4 = from i in Atomic from j in UsageStats.Keys where i.Name == j select i;
+
+            ret.AddRange(tmp1);
+            ret.AddRange(tmp2);
+            ret.AddRange(tmp3);
+            ret.AddRange(tmp4);
+            return ret;
         }
     }
 }

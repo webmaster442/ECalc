@@ -41,6 +41,9 @@ namespace ECalc.Classes
                     case ConstantCategory.Atomic:
                         Add(ConstantDB.Atomic);
                         break;
+                    case ConstantCategory.Favorites:
+                        Add(ConstantDB.Favorites());
+                        break;
                 }
             }
         }

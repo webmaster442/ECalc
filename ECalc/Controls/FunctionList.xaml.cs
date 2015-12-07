@@ -62,7 +62,7 @@ namespace ECalc.Controls
             {
                 bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
                 if (designTime) return;
-                UsageStats = ConfigFileHelpers.DeSerializeUsageStats();
+                UsageStats = ConfigFileHelpers.DeSerializeFunctionUsageStats();
             }
             catch (Exception)
             {

@@ -31,7 +31,8 @@ namespace ECalc
             MainWindow main = (MainWindow)App.Current.MainWindow;
             if (main.TransitionControl.Content is Calculator)
             {
-                ConfigFileHelpers.SerializeUsageStats();
+                ConfigFileHelpers.SerializeFunctionUsageStats();
+                ConfigFileHelpers.SerializeConstantUsageStats();
                 Properties.Settings.Default.Save();
             }
             main.TransitionControl.Content = null;
@@ -102,7 +103,8 @@ namespace ECalc
         {
             if (TransitionControl.Content is Calculator)
             {
-                ConfigFileHelpers.SerializeUsageStats();
+                ConfigFileHelpers.SerializeFunctionUsageStats();
+                ConfigFileHelpers.SerializeConstantUsageStats();
                 Properties.Settings.Default.Save();
             }
         }

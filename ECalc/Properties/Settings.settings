@@ -2,7 +2,10 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ECalc.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="UsageStats" Type="System.String" Scope="User">
+    <Setting Name="FunctionUsageStats" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ConstantUsageStats" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

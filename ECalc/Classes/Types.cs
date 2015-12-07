@@ -95,7 +95,8 @@ namespace ECalc.Classes
         Mathematical,
         Universal,
         ElectroMagnetic,
-        Atomic
+        Atomic,
+        Favorites,
     }
 
     /// <summary>
