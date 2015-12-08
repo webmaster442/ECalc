@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ECalc.Modules.Trigonometry"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:api="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0"
+               Source="/ECalc;component/Images/large/trigonometry.png"/>
+        <StackPanel Grid.Column="1">
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="a"
+                               Foreground="White"/>
+                </GroupBox.Header>
+            </GroupBox>
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="b"
+                               Foreground="White"/>
+                </GroupBox.Header>
+            </GroupBox>
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="c"
+                               Foreground="White"/>
+                </GroupBox.Header>
+            </GroupBox>
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="α"
+                               Foreground="White"/>
+                    
+                </GroupBox.Header>
+            </GroupBox>
+            <GroupBox>
+                <GroupBox.Header>
+                    <TextBlock Text="β"
+                               Foreground="White"/>
+                </GroupBox.Header>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
