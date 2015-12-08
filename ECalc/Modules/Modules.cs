@@ -370,4 +370,32 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8Teal; }
         }
     }
+
+    public class TrigTool : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "Mechanics"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Trigonometry"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new Trigonometry();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/trigonometry.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.W8DarkOrange; }
+        }
+    }
 }

@@ -14,38 +14,68 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0"
                Source="/ECalc;component/Images/large/trigonometry.png"/>
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1"
+                    VerticalAlignment="Center">
             <GroupBox>
                 <GroupBox.Header>
                     <TextBlock Text="a"
                                Foreground="White"/>
                 </GroupBox.Header>
+                <api:EditableSlider x:Name="A"
+                                    Minimum="0"
+                                    Maximum="1000"
+                                    Value="100"
+                                    DisplayFormat="0.0000"
+                                    DefaultValue="100"
+                                    ValueChanged="A_ValueChanged"/>
             </GroupBox>
             <GroupBox>
                 <GroupBox.Header>
                     <TextBlock Text="b"
                                Foreground="White"/>
                 </GroupBox.Header>
+                <api:EditableSlider x:Name="B"
+                                    Minimum="0"
+                                    Maximum="1000"
+                                    Value="100"
+                                    DisplayFormat="0.0000"
+                                    DefaultValue="100"
+                                    ValueChanged="A_ValueChanged"/>
             </GroupBox>
             <GroupBox>
                 <GroupBox.Header>
                     <TextBlock Text="c"
                                Foreground="White"/>
                 </GroupBox.Header>
+                <api:EditableSlider x:Name="C"
+                                    Minimum="0"
+                                    Maximum="1000"
+                                    Value="141.4213"
+                                    DisplayFormat="0.0000"
+                                    DefaultValue="141.4213"
+                                    ValueChanged="C_ValueChanged"/>
             </GroupBox>
             <GroupBox>
                 <GroupBox.Header>
                     <TextBlock Text="α"
                                Foreground="White"/>
-                    
                 </GroupBox.Header>
+                <TextBox x:Name="TbAlpha"/>
             </GroupBox>
             <GroupBox>
                 <GroupBox.Header>
                     <TextBlock Text="β"
                                Foreground="White"/>
                 </GroupBox.Header>
+                <TextBox x:Name="TbBeta"/>
             </GroupBox>
+            <TextBlock Text="This is not a valid triangle. Check settings!"
+                       Foreground="Red"
+                       x:Name="TbError"
+                       FontSize="32"
+                       TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Visibility="Collapsed"/>
         </StackPanel>
     </Grid>
 </UserControl>
