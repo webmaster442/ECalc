@@ -25,6 +25,8 @@
                           ToolTip="welcome.md"/>
             <TreeViewItem Header="Changelogs"
                           ToolTip="changelog.md"/>
+            <TreeViewItem Header="Plugin Interface"
+                          ToolTip="pluginiface.md"/>
             <TreeViewItem Header="Genearal Usage"
                           ToolTip="general-usage.md"/>
             <TreeViewItem Header="Function Documentation"
