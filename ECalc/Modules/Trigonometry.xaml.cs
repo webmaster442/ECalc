@@ -25,9 +25,9 @@ namespace ECalc.Modules
                 var newAlpha = TrigFunctions.ArcSin(A.Value / newC);
                 var newBeta = 90 - newAlpha;
                 if (newBeta < 0 || double.IsNaN(newBeta)) throw new ArgumentException();
-                TbAlpha.Text = string.Format("{0:0.0000}", newAlpha);
-                TbBeta.Text = string.Format("{0:0.0000}", newBeta);
                 C.SetValue(newC);
+                Alpha.SetValue(newAlpha);
+                Beta.SetValue(newBeta);
             }
             catch (Exception)
             {
@@ -45,8 +45,44 @@ namespace ECalc.Modules
                 var newBeta = 90 - newAlpha;
                 if (newBeta < 0 || double.IsNaN(newBeta)) throw new ArgumentException();
                 B.SetValue(newB);
-                TbAlpha.Text = string.Format("{0:0.0000}", newAlpha);
-                TbBeta.Text = string.Format("{0:0.0000}", newBeta);
+                Alpha.SetValue(newAlpha);
+                Beta.SetValue(newBeta);
+            }
+            catch (Exception)
+            {
+                TbError.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Alpha_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var newa = TrigFunctions.Tan(Alpha.Value) * B.Value;
+                var newBeta = 90 - Alpha.Value;
+                if (newBeta < 0 || double.IsNaN(newBeta)) throw new ArgumentException();
+                var newC = Math.Sqrt((B.Value * B.Value) + (newa * newa));
+                C.SetValue(newC);
+                A.SetValue(newa);
+                Beta.SetValue(newBeta);
+            }
+            catch (Exception)
+            {
+                TbError.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Beta_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var newb = TrigFunctions.Tan(Beta.Value) * A.Value;
+                var newAlpha = 90 - Beta.Value;
+                if (newAlpha < 0 || double.IsNaN(newAlpha)) throw new ArgumentException();
+                var newC = Math.Sqrt((newb * newb) + (A.Value * A.Value));
+                C.SetValue(newC);
+                B.SetValue(newb);
+                Alpha.SetValue(newAlpha);
             }
             catch (Exception)
             {

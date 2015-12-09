@@ -60,14 +60,26 @@
                     <TextBlock Text="α"
                                Foreground="White"/>
                 </GroupBox.Header>
-                <TextBox x:Name="TbAlpha"/>
+                <api:EditableSlider x:Name="Alpha"
+                                    Minimum="0"
+                                    Maximum="90"
+                                    Value="45"
+                                    DisplayFormat="0.0000"
+                                    DefaultValue="45"
+                                    ValueChanged="Alpha_ValueChanged"/>
             </GroupBox>
             <GroupBox>
                 <GroupBox.Header>
                     <TextBlock Text="β"
                                Foreground="White"/>
                 </GroupBox.Header>
-                <TextBox x:Name="TbBeta"/>
+                <api:EditableSlider x:Name="Beta"
+                                    Minimum="0"
+                                    Maximum="90"
+                                    Value="45"
+                                    DisplayFormat="0.0000"
+                                    DefaultValue="45"
+                                    ValueChanged="Beta_ValueChanged"/>
             </GroupBox>
             <TextBlock Text="This is not a valid triangle. Check settings!"
                        Foreground="Red"
