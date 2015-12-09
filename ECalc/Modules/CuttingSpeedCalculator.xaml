@@ -19,6 +19,7 @@
                                          Minimum="0"
                                          Maximum="1000"
                                          DefaultValue="100"
+                                         DisplayFormat="0.0000"
                                          ValueChanged="N_ValueChanged"/>
             </GroupBox>
             <GroupBox Header="RPM: (n)">
@@ -26,6 +27,7 @@
                                          Minimum="0"
                                          Maximum="10000"
                                          DefaultValue="100"
+                                         DisplayFormat="0.0000"
                                          ValueChanged="N_ValueChanged"/>
             </GroupBox>
             <GroupBox Header="Cutting Speed: (v)">
@@ -33,6 +35,7 @@
                                          Minimum="0"
                                          Maximum="10000"
                                          DefaultValue="100"
+                                         DisplayFormat="0.0000"
                                          ValueChanged="V_ValueChanged"/>
             </GroupBox>
         </StackPanel>
