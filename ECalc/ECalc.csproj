@@ -149,6 +149,7 @@
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engineering\ColorTypes.cs" />
+    <Compile Include="Engineering\RandomGens.cs" />
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Engineering\ColorSpaceConversions.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="FloatWindow.xaml.cs">
       <DependentUpon>FloatWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Lib\CryptoRNG.cs" />
     <Compile Include="Maths\Matrix.cs" />
     <Compile Include="Maths\Probability.cs" />
     <Compile Include="Maths\Vector.cs" />
@@ -168,6 +170,9 @@
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\RandomGenerators.xaml.cs">
+      <DependentUpon>RandomGenerators.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Segment714Calculator.xaml.cs">
       <DependentUpon>Segment714Calculator.xaml</DependentUpon>
@@ -357,6 +362,10 @@
     <Page Include="Modules\ne555Calc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\RandomGenerators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Segment714Calculator.xaml">
       <SubType>Designer</SubType>
@@ -719,6 +728,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\trigonometry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\dice.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="ECalc.Modules.RandomGenerators"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:api="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
+             mc:Ignorable="d" 
+             d:DesignHeight="520" d:DesignWidth="900">
+    <TabControl>
+        <TabItem Header="Numbers">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0"
+                         FontSize="16"
+                         Style="{StaticResource BorderlessTextBox}"
+                         VerticalScrollBarVisibility="Visible"
+                         x:Name="TbResults"
+                         AcceptsReturn="True"/>
+                <StackPanel Grid.Column="1">
+                    <GroupBox Header="Number of items">
+                        <api:EditableSlider x:Name="Count"
+                                            Minimum="0"
+                                            Maximum="1000"
+                                            Value="10"
+                                            DefaultValue="10"/>
+                    </GroupBox>
+                    <GroupBox Header="Minimum">
+                        <api:EditableSlider x:Name="Minimum"
+                                            Minimum="-2147483648"
+                                            Maximum="2147483647"
+                                            Value="0"
+                                            DefaultValue="0"/>
+                    </GroupBox>
+                    <GroupBox Header="Maximum">
+                        <api:EditableSlider x:Name="Maximum"
+                                            Minimum="-2147483648"
+                                            Maximum="2147483647"
+                                            Value="100"
+                                            DefaultValue="100"/>
+                    </GroupBox>
+                    <GroupBox Header="Generator">
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton Content="Normal"
+                                         Margin="5"
+                                         IsChecked="True"
+                                         x:Name="CbNormal"/>
+                            <RadioButton Content="Cryptographic"
+                                         Margin="5"
+                                         x:Name="CbCrypto"/>
+                        </StackPanel>
+                    </GroupBox>
+                    <Button Content="Generate!"
+                            Width="150"
+                            Height="45"
+                            x:Name="BtnGenerate"
+                            HorizontalAlignment="Right"
+                            Click="BtnGenerate_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Lorem Ipsum">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0"
+                         FontSize="16"
+                         Style="{StaticResource BorderlessTextBox}"
+                         VerticalScrollBarVisibility="Visible"
+                         x:Name="TbIpsum"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"/>
+                <StackPanel Grid.Column="1">
+                    <GroupBox Header="Minimum Words">
+                        <api:EditableSlider x:Name="MinWords"
+                                            Minimum="5"
+                                            Maximum="30"
+                                            Value="5"
+                                            DisplayFormat="0"
+                                            DefaultValue="5"/>
+                    </GroupBox>
+                    <GroupBox Header="Maximum Words">
+                        <api:EditableSlider x:Name="MaxWords"
+                                            Minimum="5"
+                                            Maximum="30"
+                                            Value="30"
+                                            DisplayFormat="0"
+                                            DefaultValue="30"/>
+                    </GroupBox>
+                    <GroupBox Header="Minimum Sentences">
+                        <api:EditableSlider x:Name="MinSentences"
+                                            Minimum="1"
+                                            Maximum="35"
+                                            Value="3"
+                                            DisplayFormat="0"
+                                            DefaultValue="3"/>
+                    </GroupBox>
+                    <GroupBox Header="Max Sentences">
+                        <api:EditableSlider x:Name="MaxSentences"
+                                            Minimum="1"
+                                            Maximum="35"
+                                            Value="7"
+                                            DisplayFormat="0"
+                                            DefaultValue="7"/>
+                    </GroupBox>
+                    <GroupBox Header="Paragraphs">
+                        <api:EditableSlider x:Name="Paragraphs"
+                                            Minimum="1"
+                                            Maximum="100"
+                                            Value="2"
+                                            DisplayFormat="0"
+                                            DefaultValue="2"/>
+                    </GroupBox>
+                    <Button Content="Generate!"
+                            Width="150"
+                            Height="45"
+                            x:Name="BtnGenerateIpsum"
+                            HorizontalAlignment="Right"
+                            Click="BtnGenerateIpsum_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
+    
+</UserControl>

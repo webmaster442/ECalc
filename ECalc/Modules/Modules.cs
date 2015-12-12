@@ -398,4 +398,36 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8DarkOrange; }
         }
     }
+
+    public class Randoms : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "IT Tools"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Random Generators"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new RandomGenerators();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/dice.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get
+            {
+                Random r = new Random();
+                return r.Next(0, 0xc0c0c0);
+            }
+        }
+    }
 }
