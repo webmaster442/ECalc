@@ -156,10 +156,19 @@
         <GroupBox Grid.Row="1"
                   Grid.Column="1"
                   Header="Preview">
-            <Rectangle Width="200"
-                       Height="200"
-                       x:Name="RectPreview"
-                       Fill="Black"/>
+            <Grid>
+                <Rectangle Width="200"
+                           Height="200"
+                           x:Name="RectPreview"
+                           Fill="Black"/>
+                <TextBox Style="{StaticResource BorderlessTextBox}"
+                         Foreground="White"
+                         Text="#000000"
+                         x:Name="HexPreview"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         FontSize="28"/>
+            </Grid>
         </GroupBox>
     </Grid>
 </UserControl>

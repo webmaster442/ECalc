@@ -101,6 +101,9 @@ namespace ECalc.Modules
             }
 
             RectPreview.Fill = new SolidColorBrush(csource);
+            var inv = Color.FromRgb((byte)(255 - csource.R), (byte)(255 - csource.G), (byte)(255 - csource.B));
+            HexPreview.Foreground = new SolidColorBrush(inv);
+            HexPreview.Text = string.Format("#{0:X2}{1:X2}{2:X2}", csource.R, csource.G, csource.B);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
