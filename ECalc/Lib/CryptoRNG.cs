@@ -6,7 +6,7 @@ namespace ECalc.Lib
     /// <summary>
     /// Based on: http://www.informit.com/guides/content.aspx?g=dotnet&seqNum=775
     /// </summary>
-    public class CryptoRNG
+    public class CryptoRNG: IDisposable
     {
         private const int _BufferSize = 4066;
 
@@ -19,6 +19,11 @@ namespace ECalc.Lib
             rng = new RNGCryptoServiceProvider();
             RandomBuffer = new byte[_BufferSize];
             BufferOffset = RandomBuffer.Length;
+        }
+
+        ~CryptoRNG()
+        {
+            Dispose(true);
         }
 
         private void FillBuffer()
@@ -51,6 +56,21 @@ namespace ECalc.Lib
             }
             int range = maxValue - minValue;
             return minValue + Next(range);
+        }
+
+        protected virtual void Dispose(bool native)
+        {
+            if (rng != null)
+            {
+                rng.Dispose();
+                rng = null;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }
