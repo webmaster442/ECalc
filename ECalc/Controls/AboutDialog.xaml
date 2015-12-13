@@ -1,8 +1,8 @@
-﻿<mahdialogs:CustomDialog  x:Class="ECalc.Controls.AboutDialog"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
-             Loaded="UserControl_Loaded">
+﻿<mahdialogs:CustomDialog x:Class="ECalc.Controls.AboutDialog"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                         Loaded="UserControl_Loaded">
     <mahdialogs:CustomDialog.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -49,7 +49,16 @@
                         </ListItem>
                         <ListItem>
                             <Paragraph>
-                                Color space conversion is based on the following article:
+                                <Hyperlink NavigateUri="https://github.com/ArthurHub/HTML-Renderer">HTML Renderer</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                <Hyperlink NavigateUri="https://github.com/KyleGobel/MarkdownSharp-GithubCodeBlocks">MarkdownSharp - With Github style code blocks</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
                                 <Hyperlink NavigateUri="http://www.codeproject.com/Articles/19045/Manipulating-colors-in-NET-Part">Manipulating colors in .NET - Part 1</Hyperlink>
                             </Paragraph>
                         </ListItem>
