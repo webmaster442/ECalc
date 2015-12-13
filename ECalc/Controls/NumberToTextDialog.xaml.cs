@@ -22,6 +22,11 @@ namespace ECalc.Controls
             _synthesizer.SpeakCompleted += _synthesizer_SpeakCompleted;
         }
 
+        ~NumberToTextDialog()
+        {
+            Dispose(true);
+        }
+
         public void SetNumber(object o)
         {
             if (o is double)

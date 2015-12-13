@@ -22,6 +22,11 @@ namespace ECalc.Classes
             _seperator = seperator;
         }
 
+        ~CSVReader()
+        {
+            Dispose(true);
+        }
+
         public IEnumerator<string[]> GetEnumerator()
         {
             string line;
@@ -84,6 +89,11 @@ namespace ECalc.Classes
         {
             _sw = File.CreateText(file);
             _seperator = seperator;
+        }
+
+        ~CSVWriter()
+        {
+            Dispose(true);
         }
 
         public void WriteLine(params string[] array)
