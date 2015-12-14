@@ -180,18 +180,15 @@ namespace ECalc.Classes
 
         public static IEnumerable<Constant> Favorites()
         {
-            List<Constant> ret = new List<Constant>(UsageStats.Keys.Count);
+            var size = Mathematical.Length + Universal.Length + ElectroMagnetic.Length + Atomic.Length;
+            List<Constant> temp = new List<Constant>(size);
+            temp.AddRange(Mathematical);
+            temp.AddRange(Universal);
+            temp.AddRange(ElectroMagnetic);
+            temp.AddRange(Atomic);
 
-            var tmp1 = from i in Mathematical from j in UsageStats.Keys where i.Name == j select i;
-            var tmp2 = from i in Universal from j in UsageStats.Keys where i.Name == j select i;
-            var tmp3 = from i in ElectroMagnetic from j in UsageStats.Keys where i.Name == j select i;
-            var tmp4 = from i in Atomic from j in UsageStats.Keys where i.Name == j select i;
-
-            ret.AddRange(tmp1);
-            ret.AddRange(tmp2);
-            ret.AddRange(tmp3);
-            ret.AddRange(tmp4);
-            return ret;
+            var q = from i in temp from j in UsageStats.Keys where i.Name == j select i;
+            return q;
         }
     }
 }
