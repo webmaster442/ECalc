@@ -356,7 +356,7 @@ namespace ECalc.Classes
                             if (result.Count >= 1)
                             {
                                 object op1 = result.Pop();
-                                object r = HandleBinOperators(op1, 0.0d, token.Content);
+                                object r = (double)HandleBinOperators(op1, 0.0d, token.Content);
                                 result.Push(r);
                             }
                             else throw new ArgumentException("Evaluation error at: " + token.Content);
@@ -365,7 +365,7 @@ namespace ECalc.Classes
                         {
                             object op2 = result.Pop();
                             object op1 = result.Pop();
-                            object r = HandleBinOperators(op1, op2, token.Content);
+                            object r = (double)HandleBinOperators(op1, op2, token.Content);
                             result.Push(r);
                         }
                         else throw new ArgumentException("Evaluation error at: " + token.Content);
