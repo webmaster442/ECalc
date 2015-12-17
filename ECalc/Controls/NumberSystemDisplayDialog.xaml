@@ -1,4 +1,5 @@
 ﻿<mahdialogs:CustomDialog x:Class="ECalc.Controls.NumberSystemDisplayDialog"
+                         Style="{StaticResource FullSizeDialog}"
                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                          xmlns:local="clr-namespace:ECalc.Controls"
@@ -9,10 +10,16 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <local:NumberSystemTextBox x:Name="NumBox"
-                                       Grid.Row="0"
-                                       FontFamily="Consolas"
-                                       FontSize="18"/>
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Result in various number systems"
+                           FontSize="32"/>
+                <TextBlock Text="Note: Display mode is affected by BitEngine mode"/>
+                <local:NumberSystemTextBox x:Name="NumBox"
+                                           Grid.Row="0"
+                                           Style="{StaticResource BorderlessTextBox}"
+                                           FontFamily="Consolas"
+                                           FontSize="18"/>
+            </StackPanel>
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
