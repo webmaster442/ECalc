@@ -58,6 +58,7 @@ namespace ECalc.Modules
         {
             try
             {
+                TbError.Visibility = Visibility.Collapsed;
                 var newa = TrigFunctions.Tan(Alpha.Value) * B.Value;
                 var newBeta = 90 - Alpha.Value;
                 if (newBeta < 0 || double.IsNaN(newBeta)) throw new ArgumentException();
@@ -76,6 +77,7 @@ namespace ECalc.Modules
         {
             try
             {
+                TbError.Visibility = Visibility.Collapsed;
                 var newb = TrigFunctions.Tan(Beta.Value) * A.Value;
                 var newAlpha = 90 - Beta.Value;
                 if (newAlpha < 0 || double.IsNaN(newAlpha)) throw new ArgumentException();
