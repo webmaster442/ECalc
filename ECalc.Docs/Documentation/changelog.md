@@ -1,6 +1,16 @@
 Changelog
 ---
 
+##V. 1.1
+* Trigonometry tool updated
+* Cutting speed calculator precision updated
+* New tools: Random generator & Date calculators
+* Color space converters display color hex value
+* Bit operators bugfix
+* Divide to file size button added to main display
+* Numbersystem display dialog update
+
+
 ##V. 1.0
 * Fixed hash calculator crash
 * Fixed Roman number parsing error
