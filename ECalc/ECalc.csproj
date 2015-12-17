@@ -139,6 +139,7 @@
     <Compile Include="Controls\MemoryManagement.xaml.cs">
       <DependentUpon>MemoryManagement.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NumberSystemTextBox.cs" />
     <Compile Include="Controls\NumberToTextDialog.xaml.cs">
       <DependentUpon>NumberToTextDialog.xaml</DependentUpon>
     </Compile>

@@ -158,7 +158,7 @@ namespace ECalc.Controls
         private void BtnNumSys_Click(object sender, RoutedEventArgs e)
         {
             NumberSystemDisplayDialog nd = new NumberSystemDisplayDialog();
-            nd.DisplayValue = Engine.Ans;
+            nd.SetDisplay(Engine.Ans);
             MainWindow.ShowDialog(nd);
         }
 
