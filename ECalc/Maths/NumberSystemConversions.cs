@@ -50,7 +50,7 @@ namespace ECalc.Maths
         /// <returns>A roman number representation of the input</returns>
         public static string IntToRoman(int number)
         {
-            if ((number < 0) || (number > 3999)) throw new ArgumentOutOfRangeException("insert value betwheen 1 and 3999");
+            if ((number < 0) || (number > 3999)) return "Roman numbers are represented between 1 and 3999";
             if (number < 1) return string.Empty;
             if (number >= 1000) return "M" + IntToRoman(number - 1000);
             if (number >= 900) return "CM" + IntToRoman(number - 900); //EDIT: i've typed 400 instead 900
