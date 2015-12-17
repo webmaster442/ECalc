@@ -256,5 +256,16 @@ namespace ECalc.Controls
             plot.FunctionY = TbEditor.Text;
             MainWindow.SwithToControl(plot);
         }
+
+        private void BtnFileSize_Click(object sender, RoutedEventArgs e)
+        {
+            string message = "Complex, Vector and Matrix values not supported";
+            if (!Helpers.IsComplex(Engine.Ans))
+            {
+                double x = Helpers.GetDouble(Engine.Ans);
+                message = Helpers.DivideToFileSize(x);
+            }
+            MainWindow.ShowDialog("Resut as File size", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+        }
     }
 }

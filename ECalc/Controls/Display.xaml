@@ -176,6 +176,13 @@
                                   x:Name="BtnNumSys"
                                   ToolTip="Number System"
                                   Click="BtnNumSys_Click"/>
+            
+            <controls:ImageButton Image="../Images/50px/F.png"
+                                  ImageWidth="22"
+                                  ImageHeight="22"
+                                  x:Name="BtnFileSize"
+                                  ToolTip="Display as File size"
+                                  Click="BtnFileSize_Click"/>
 
             <controls:ImageButton Image="../Images/50px/ans.png"
                                   ImageHeight="22"

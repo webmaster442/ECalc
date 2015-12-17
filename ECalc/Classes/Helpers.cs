@@ -1,4 +1,5 @@
 ﻿using ECalc.Maths;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace ECalc.Classes
@@ -20,6 +21,39 @@ namespace ECalc.Classes
         {
             if (o is double) return (double)o;
             else return ((Fraction)o).ToDouble();
+        }
+
+        public static string DivideToFileSize(double val)
+        {
+            double value = val;
+            string prefix = "Byte";
+
+            if (value > 1125899906842624)
+            {
+                value /= 1125899906842624;
+                prefix = "PiB";
+            }
+            else if (value > 1099511627776)
+            {
+                value /= 1099511627776;
+                prefix = "TiB";
+            }
+            else if (value > 1073741824)
+            {
+                value /= 1073741824;
+                prefix = "GiB";
+            }
+            else if (value > 1048576)
+            {
+                value /= 1048576;
+                prefix = "MiB";
+            }
+            else if (value > 1024)
+            {
+                value /= 1024;
+                prefix = "kiB";
+            }
+            return string.Format("{0} {1}", value, prefix);
         }
     }
 }
