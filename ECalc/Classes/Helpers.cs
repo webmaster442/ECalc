@@ -23,6 +23,11 @@ namespace ECalc.Classes
             else return ((Fraction)o).ToDouble();
         }
 
+        public static bool IsSpecialType(object o)
+        {
+            return (o is Complex) || (o is Fraction) || (o is Matrix) || (o is Vector);
+        }
+
         public static string DivideToFileSize(double val)
         {
             double value = val;

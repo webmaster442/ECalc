@@ -59,11 +59,11 @@ namespace ECalc.Controls
             string[] parts = s.Split(',');
             StringBuilder sb = new StringBuilder();
             int j = 0;
-            for (int i=parts[0].Length-1; i>=0; i--)
+            for (int i = parts[0].Length - 1; i >= 0; i--)
             {
                 sb.Append(parts[0][i]);
                 j++;
-                if (j>2)
+                if (j > 2)
                 {
                     j = 0;
                     sb.Append(Engine.NumberGroupSeparator);
@@ -107,7 +107,7 @@ namespace ECalc.Controls
         public string ResultText
         {
             get { return (string)GetValue(ResultTextProperty); }
-            set 
+            set
             {
                 if (value.Contains("\n")) MainDisplay.FontSize = 20;
                 else MainDisplay.FontSize = 40;
@@ -171,17 +171,13 @@ namespace ECalc.Controls
 
         private void BtnFractions_Click(object sender, RoutedEventArgs e)
         {
-            string message = "Complex values not supported";
+            string message = "Complex, Vector, Fraction and Matrix values not supported";
             try
             {
-                if (!Helpers.IsComplex(Engine.Ans))
+                if (!Helpers.IsSpecialType(Engine.Ans))
                 {
-                    if (Engine.Ans is Fraction) message = Engine.Ans.ToString();
-                    else
-                    {
-                        Fraction f = new Fraction((double)Engine.Ans);
-                        message = f.ToString();
-                    }
+                    Fraction f = new Fraction((double)Engine.Ans);
+                    message = f.ToString();
                 }
             }
             catch (Exception)
@@ -193,8 +189,8 @@ namespace ECalc.Controls
 
         private void BtnDivisiors_Click(object sender, RoutedEventArgs e)
         {
-            string message = "Complex values not supported";
-            if (!Helpers.IsComplex(Engine.Ans))
+            string message = "Complex, Vector, Fraction and Matrix values not supported";
+            if (!Helpers.IsSpecialType(Engine.Ans))
             {
                 StringBuilder result = new StringBuilder();
                 double x = Helpers.GetDouble(Engine.Ans);
@@ -259,8 +255,8 @@ namespace ECalc.Controls
 
         private void BtnFileSize_Click(object sender, RoutedEventArgs e)
         {
-            string message = "Complex, Vector and Matrix values not supported";
-            if (!Helpers.IsComplex(Engine.Ans))
+            string message = "Complex, Vector, Fraction and Matrix values not supported";
+            if (!Helpers.IsSpecialType(Engine.Ans))
             {
                 double x = Helpers.GetDouble(Engine.Ans);
                 message = Helpers.DivideToFileSize(x);
