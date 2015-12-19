@@ -4,10 +4,10 @@
     <ProjectView>ShowAllFiles</ProjectView>
     <PublishUrlHistory>..\bin\publish\|publish\</PublishUrlHistory>
     <InstallUrlHistory>https://ecalc.codeplex.com/releases/clickonce/</InstallUrlHistory>
-    <SupportUrlHistory />
+    <SupportUrlHistory>https://github.com/webmaster442/ECalc/wiki</SupportUrlHistory>
     <UpdateUrlHistory />
     <BootstrapperUrlHistory />
-    <ErrorReportUrlHistory />
+    <ErrorReportUrlHistory>https://github.com/webmaster442/ECalc/issues</ErrorReportUrlHistory>
     <FallbackCulture>en-US</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>

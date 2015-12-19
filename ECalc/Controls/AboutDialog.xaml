@@ -14,7 +14,7 @@
                 <FlowDocument>
                     <Paragraph>
                         <Image Source="/Images/100px/math-black.png" Width="48" Height="48"/>
-                        <Run FontSize="28">Engineer Calculator 1.0</Run>
+                        <Run FontSize="28">Engineer Calculator 1.1</Run>
                     </Paragraph>
                     <Paragraph>
                         Created by: webmaster442 aka. Ruzsinszki Gábor. This is a free software.
