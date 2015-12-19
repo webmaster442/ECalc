@@ -66,10 +66,12 @@ namespace ECalc.Controls
                         break;
                 }
                 Array.Reverse(dataarray);
-                buffer.Append(DoRow("Bin:   ", dataarray, 2));
+                var x = DoRow("Bin:   ", dataarray, 2);
+                buffer.Append(x);
                 buffer.Append(DoRow("Hex:   ", dataarray, 16));
-                buffer.AppendFormat("Oct:   {0,72}\r\n", octsting);
-                buffer.AppendFormat("Roman: {0,72}", NumberSystemConversions.IntToRoman(Convert.ToInt32(o)));
+                var len = x.Length - 2 - "Roman: ".Length;
+                buffer.AppendFormat("Oct:   {0," + len + "}\r\n", octsting);
+                buffer.AppendFormat("Roman: {0," + len + "}", NumberSystemConversions.IntToRoman(Convert.ToInt32(o)));
                 Text = buffer.ToString();
             }
         }
