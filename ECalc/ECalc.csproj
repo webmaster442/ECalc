@@ -85,8 +85,7 @@
     <ManifestCertificateThumbprint>301ECAAF2AEB44BBC2A91D36AB203D3348448A6A</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>ApplicationSigning.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
