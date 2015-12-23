@@ -90,15 +90,6 @@ namespace ECalc.Pages
             _loaded = true;
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            if (!_loaded) return;
-            var radios = EqSelector.FindChildren<RadioButton>();
-            var num = (from r in radios where r.IsChecked == true select Convert.ToInt32(r.Content)).FirstOrDefault();
-            _equations = num;
-            RenderUi();
-        }
-
         private Matrix GetInputMatrix()
         {
             Matrix m = new Matrix(_equations, _equations + 1);
@@ -144,6 +135,11 @@ namespace ECalc.Pages
             }
         }
 
-
+        private void EqSelector_SelectedItemChanged(object sender, RoutedEventArgs e)
+        {
+            if (!_loaded) return;
+            _equations = (int)EqSelector.SelectedItem;
+            RenderUi();
+        }
     }
 }

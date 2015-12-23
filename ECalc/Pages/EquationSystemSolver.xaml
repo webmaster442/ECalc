@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Pages"
+             xmlns:api="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960"
              Loaded="UserControl_Loaded">
@@ -31,22 +32,11 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="200"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal"
-                    Grid.Row="0"
-                    x:Name="EqSelector">
-            <TextBlock Text="Equations:"/>
-            <RadioButton Content="2" 
-                         IsChecked="True"
-                         Checked="RadioButton_Checked"/>
-            <RadioButton Content="3" 
-                         Checked="RadioButton_Checked"/>
-            <RadioButton Content="4" 
-                         Checked="RadioButton_Checked"/>
-            <RadioButton Content="5"
-                         Checked="RadioButton_Checked"/>
-            <RadioButton Content="6" 
-                         Checked="RadioButton_Checked"/>
-        </StackPanel>
+        <api:ValueSelector Values="2,3,4,5,6"
+                           Grid.Row="0"
+                           x:Name="EqSelector"
+                           SelectedItem="2"
+                           SelectedItemChanged="EqSelector_SelectedItemChanged"/>
         <TextBlock Grid.Row="1"
                    Text="Equation data:"/>
         <Grid Grid.Row="2"

@@ -15,11 +15,17 @@ namespace ECalc.Api.Controls
     {
         private double[] _values;
         private StackPanel Content;
+        private string toselect;
 
         static ValueSelector()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ValueSelector), new FrameworkPropertyMetadata(typeof(ValueSelector)));
         }
+
+        /// <summary>
+        /// Selected Item changed event
+        /// </summary>
+        public event RoutedEventHandler SelectedItemChanged;
 
         /// <summary>
         /// Aply the control theme
@@ -43,6 +49,10 @@ namespace ECalc.Api.Controls
             {
                 _values = value;
                 Render();
+                if (SelectedItemChanged != null)
+                {
+                    SelectedItemChanged(this, new RoutedEventArgs());
+                }
             }
         }
 
@@ -60,10 +70,20 @@ namespace ECalc.Api.Controls
             }
             set
             {
-                string s = value.ToString();
-                var q = (from i in Content.FindChildren<RadioButton>() where i.Content.ToString() == s select i).FirstOrDefault();
-                if (q == null) return;
+                toselect = value.ToString();
+                DoSelection();
+            }
+        }
+
+        private void DoSelection()
+        {
+            if (toselect == null) return;
+            var q = (from i in Content.FindChildren<RadioButton>() where i.Content.ToString() == toselect select i).FirstOrDefault();
+            if (q == null) return;
+            else
+            {
                 q.IsChecked = true;
+                toselect = null;
             }
         }
 
@@ -78,7 +98,18 @@ namespace ECalc.Api.Controls
                 r.Content = Values[i];
                 r.ToolTip = Values[i];
                 r.Margin = new Thickness(3);
+                r.Checked += R_Checked;
+                r.Unchecked += R_Checked;
                 Content.Children.Add(r);
+            }
+            DoSelection();
+        }
+
+        private void R_Checked(object sender, RoutedEventArgs e)
+        {
+            if (SelectedItemChanged != null)
+            {
+                SelectedItemChanged(this, new RoutedEventArgs());
             }
         }
     }
