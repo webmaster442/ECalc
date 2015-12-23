@@ -35,6 +35,9 @@ namespace ECalc.Modules
                     double megapixels = ImgHeight.Value * ImgWidth.Value;
                     filesize = megapixels * ((double)BitsPerPixel.SelectedItem / 8);
                     break;
+                case 1:
+                    filesize = Lenght.TimeSpan.TotalSeconds * SampleRate.Value * (double)Channels.SelectedItem * ((double)BitDepth.SelectedItem / 8);
+                    break;
             }
             TbFileSize.Text = Helpers.DivideToFileSize(filesize);
         }

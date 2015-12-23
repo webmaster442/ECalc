@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
              xmlns:api="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
+             xmlns:special="clr-namespace:ECalc.Controls.Special"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="900">
+             d:DesignHeight="520" d:DesignWidth="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -38,6 +39,32 @@
                         <api:ValueSelector Values="8,16,24,32"
                                            SelectedItem="24"
                                            x:Name="BitsPerPixel"/>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Raw audio size calculator">
+                <StackPanel>
+                    <GroupBox Header="Adudio Length">
+                        <special:TimeSpanSelector HorizontalAlignment="Left"
+                                                  Width="300"
+                                                  x:Name="Lenght"/>
+                    </GroupBox>
+                    <GroupBox Header="Bit depth">
+                        <api:ValueSelector Values="8,16,24,32"
+                                           SelectedItem="16"
+                                           x:Name="BitDepth"/>
+                    </GroupBox>
+                    <GroupBox Header="Sample Rate">
+                        <api:EditableSlider Minimum="0"
+                                            Maximum="192000"
+                                            Value="44100"
+                                            x:Name="SampleRate"
+                                            DefaultValue="44100"/>
+                    </GroupBox>
+                    <GroupBox Header="Channels">
+                        <api:ValueSelector Values="1,2,3,4,5,6,7,8"
+                                           SelectedItem="2"
+                                           x:Name="Channels"/>
                     </GroupBox>
                 </StackPanel>
             </TabItem>

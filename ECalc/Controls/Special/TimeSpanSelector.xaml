@@ -5,7 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="300">
+             d:DesignHeight="120" d:DesignWidth="300"
+             MaxWidth="400"
+             MaxHeight="150">
     <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -16,9 +18,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -60,11 +62,10 @@
                            Minimum="0"
                            Maximum="10000"
                            Value="0"/>
-        <Button Grid.Row="4"
-                Grid.Column="1"
-                Width="100"
+        <Button Grid.Row="0"
+                Grid.Column="2"
+                Grid.RowSpan="4"
                 Margin="2"
-                HorizontalAlignment="Right"
                 Content="Reset"
                 Click="Button_Click"/>
     </Grid>
