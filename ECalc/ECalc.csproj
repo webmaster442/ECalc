@@ -153,6 +153,9 @@
     <Compile Include="Controls\Special\PrefixInput.xaml.cs">
       <DependentUpon>PrefixInput.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Special\TimeSpanSelector.xaml.cs">
+      <DependentUpon>TimeSpanSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Engineering\ColorTypes.cs" />
     <Compile Include="Engineering\RandomGens.cs" />
     <Compile Include="Engineering\ResistorSolver.cs" />
@@ -284,6 +287,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\Special\ResistorColorSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Special\TimeSpanSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
