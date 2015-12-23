@@ -158,7 +158,6 @@
     <Compile Include="Engineering\ResistorSolver.cs" />
     <Compile Include="Engineering\ResitorListGenerator.cs" />
     <Compile Include="Engineering\ColorSpaceConversions.cs" />
-    <Compile Include="Extensions\WPF.cs" />
     <Compile Include="FloatWindow.xaml.cs">
       <DependentUpon>FloatWindow.xaml</DependentUpon>
     </Compile>

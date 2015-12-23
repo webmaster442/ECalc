@@ -73,6 +73,7 @@
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ValueSelector.cs" />
     <Compile Include="EcalcModule.cs" />
+    <Compile Include="Extensions\WPF.cs" />
     <Compile Include="ModuleLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

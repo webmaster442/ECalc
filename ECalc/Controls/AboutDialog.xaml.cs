@@ -1,4 +1,4 @@
-﻿using ECalc.Extensions;
+﻿using ECalc.Api.Extensions;
 using System.Windows.Documents;
 using MahApps.Metro.Controls.Dialogs;
 

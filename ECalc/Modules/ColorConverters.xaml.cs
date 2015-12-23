@@ -1,6 +1,6 @@
 ﻿using ECalc.Api.Controls;
 using ECalc.Engineering;
-using ECalc.Extensions;
+using ECalc.Api.Extensions;
 using System;
 using System.Windows;
 using System.Windows.Controls;

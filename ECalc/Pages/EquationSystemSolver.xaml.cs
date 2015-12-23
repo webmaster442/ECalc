@@ -1,4 +1,4 @@
-﻿using ECalc.Extensions;
+﻿using ECalc.Api.Extensions;
 using ECalc.Maths;
 using System;
 using System.Linq;
