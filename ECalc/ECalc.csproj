@@ -188,6 +188,9 @@
     <Compile Include="Modules\Trigonometry.xaml.cs">
       <DependentUpon>Trigonometry.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\MediaCalculator.xaml.cs">
+      <DependentUpon>MediaCalculator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
     </Compile>
@@ -390,6 +393,10 @@
     <Page Include="Modules\Trigonometry.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\MediaCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Calculator.xaml">
       <SubType>Designer</SubType>

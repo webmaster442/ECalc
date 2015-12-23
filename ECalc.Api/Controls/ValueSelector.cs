@@ -7,22 +7,31 @@ using System.Windows.Controls;
 
 namespace ECalc.Api.Controls
 {
-    class ValueSelector: StackPanel
+    public class ValueSelector: Control
     {
+        private double[] _values;
+        private StackPanel Content;
+
         static ValueSelector()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ValueSelector), new FrameworkPropertyMetadata(typeof(ValueSelector)));
         }
 
-        public DependencyProperty ValuesProperty = DependencyProperty.Register("Values", typeof(double[]), typeof(ValueSelector));
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            Content = (StackPanel)Template.FindName("PART_Content", this);
+            Render();
+        }
+
 
         [TypeConverter(typeof(ArrayTypeConverter))]
         public double[] Values
         {
-            get { return (double[])GetValue(ValuesProperty); }
+            get { return _values;  }
             set
             {
-                SetValue(ValuesProperty, value);
+                _values = value;
                 Render();
             }
         }
@@ -30,12 +39,15 @@ namespace ECalc.Api.Controls
         private void Render()
         {
             if (Values == null) return;
+            if (Content == null) return;
+            Content.Children.Clear();
             for (int i = 0; i < Values.Length; i++)
             {
                 RadioButton r = new RadioButton();
                 r.Content = Values[i];
                 r.ToolTip = Values[i];
-                this.Children.Add(r);
+                r.Margin = new Thickness(3);
+                Content.Children.Add(r);
             }
         }
     }
@@ -48,6 +60,7 @@ namespace ECalc.Api.Controls
             if (list != null)
             {
                 var ret = (from i in list.Split(',') select double.Parse(i)).ToArray();
+                return ret;
             }
 
             return base.ConvertFrom(context, culture, value);

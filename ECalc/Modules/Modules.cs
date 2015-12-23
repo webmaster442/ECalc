@@ -458,4 +458,22 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8Steel; }
         }
     }
+
+    public class MediaCalc : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "IT Tools"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Media Calculators"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new MediaCalculator();
+        }
+    }
 }

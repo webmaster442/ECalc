@@ -24,9 +24,16 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type controls:ValueSelector}" BasedOn="{StaticResource {x:Type StackPanel}}">
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Orientation" Value="Horizontal"/>
+    <Style TargetType="{x:Type controls:ValueSelector}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ValueSelector}">
+                    <StackPanel x:Name="PART_Content"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
 </ResourceDictionary>
