@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <TabControl Grid.Row="0"
                     x:Name="TabTool">
-            <TabItem Header="Raw image size calculator">
+            <TabItem Header="Raw image size">
                 <StackPanel>
                     <GroupBox Header="Image Width">
                         <api:EditableSlider x:Name="ImgWidth"
@@ -42,7 +42,7 @@
                     </GroupBox>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Raw audio size calculator">
+            <TabItem Header="Raw audio size">
                 <StackPanel>
                     <GroupBox Header="Adudio Length">
                         <special:TimeSpanSelector HorizontalAlignment="Left"
@@ -54,7 +54,7 @@
                                            SelectedItem="16"
                                            x:Name="BitDepth"/>
                     </GroupBox>
-                    <GroupBox Header="Sample Rate">
+                    <GroupBox Header="Sample Rate (HZ)">
                         <api:EditableSlider Minimum="0"
                                             Maximum="192000"
                                             Value="44100"
@@ -65,6 +65,29 @@
                         <api:ValueSelector Values="1,2,3,4,5,6,7,8"
                                            SelectedItem="2"
                                            x:Name="Channels"/>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Video Size">
+                <StackPanel>
+                    <GroupBox Header="Length">
+                        <special:TimeSpanSelector HorizontalAlignment="Left"
+                                                  Width="300"
+                                                  x:Name="VidLenght"/>
+                    </GroupBox>
+                    <GroupBox Header="Video Bitrate (KBPS)">
+                        <api:EditableSlider Minimum="0"
+                                            Maximum="20000"
+                                            Value="1000"
+                                            DefaultValue="1000"
+                                            x:Name="VidRate"/>
+                    </GroupBox>
+                    <GroupBox Header="Audio Bitrate (KBPS)">
+                        <api:EditableSlider Minimum="0"
+                                            Maximum="2000"
+                                            Value="1000"
+                                            DefaultValue="320"
+                                            x:Name="AudioRate"/>
                     </GroupBox>
                 </StackPanel>
             </TabItem>

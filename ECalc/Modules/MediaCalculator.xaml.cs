@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ECalc.Classes;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ECalc.Classes;
 
 namespace ECalc.Modules
 {
@@ -37,6 +25,10 @@ namespace ECalc.Modules
                     break;
                 case 1:
                     filesize = Lenght.TimeSpan.TotalSeconds * SampleRate.Value * (double)Channels.SelectedItem * ((double)BitDepth.SelectedItem / 8);
+                    break;
+                case 2:
+                    var persec = ((VidRate.Value / 8) * 1024) + ((AudioRate.Value / 8) * 1024);
+                    filesize = VidLenght.TimeSpan.TotalSeconds * persec;
                     break;
             }
             TbFileSize.Text = Helpers.DivideToFileSize(filesize);
