@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ECalc.Classes;
 
 namespace ECalc.Modules
 {
@@ -23,6 +24,19 @@ namespace ECalc.Modules
         public MediaCalculator()
         {
             InitializeComponent();
+        }
+
+        private void BtnCalc_Click(object sender, RoutedEventArgs e)
+        {
+            double filesize = 0;
+            switch (TabTool.SelectedIndex)
+            {
+                case 0:
+                    double megapixels = ImgHeight.Value * ImgWidth.Value;
+                    filesize = megapixels * ((double)BitsPerPixel.SelectedItem / 8);
+                    break;
+            }
+            TbFileSize.Text = Helpers.DivideToFileSize(filesize);
         }
     }
 }

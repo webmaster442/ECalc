@@ -7,10 +7,52 @@
              xmlns:api="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="900">
-    <TabControl>
-        <TabItem Header="Video size calculator"></TabItem>
-        <TabItem Header="Raw audio size calculator"></TabItem>
-        <TabItem Header="Raw image size calculator">
-        </TabItem>
-    </TabControl>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="85"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.Row="0"
+                    x:Name="TabTool">
+            <TabItem Header="Raw image size calculator">
+                <StackPanel>
+                    <GroupBox Header="Image Width">
+                        <api:EditableSlider x:Name="ImgWidth"
+                                            Minimum="0"
+                                            Maximum="10000"
+                                            Value="1024"
+                                            DefaultValue="1024"/>
+                    </GroupBox>
+                    <GroupBox Header="Image Height">
+                        <api:EditableSlider x:Name="ImgHeight"
+                                            Minimum="0"
+                                            Maximum="10000"
+                                            Value="768"
+                                            DefaultValue="768"/>
+                    </GroupBox>
+                    <GroupBox Header="Bits/Pixel">
+                        <api:ValueSelector Values="8,16,24,32"
+                                           SelectedItem="24"
+                                           x:Name="BitsPerPixel"/>
+                    </GroupBox>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <GroupBox Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  Header="Result File Size:">
+            <TextBox FontSize="18"
+                     x:Name="TbFileSize"/>
+        </GroupBox>
+        <Button Content="Calculate"
+                x:Name="BtnCalc"
+                Grid.Column="1"
+                Grid.Row="0"
+                Margin="5"
+                Click="BtnCalc_Click"/>
+    </Grid>
 </UserControl>
