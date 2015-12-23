@@ -12,22 +12,36 @@ namespace ECalc.Api.Controls
         /// <summary>
         /// Minimum value property
         /// </summary>
-        public static DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(EditableSlider), new PropertyMetadata(0.0d));
+        public static DependencyProperty MinimumProperty = DependencyProperty.Register("Minimum", typeof(double), typeof(EditableSlider), new PropertyMetadata(0.0d, Rerender));
 
         /// <summary>
         /// Maximum value property
         /// </summary>
-        public static DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(double), typeof(EditableSlider), new PropertyMetadata(10.0d));
+        public static DependencyProperty MaximumProperty = DependencyProperty.Register("Maximum", typeof(double), typeof(EditableSlider), new PropertyMetadata(10.0d, Rerender));
 
         /// <summary>
         /// Value property
         /// </summary>
-        public static DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(EditableSlider), new PropertyMetadata(3.0d));
+        public static DependencyProperty ValueProperty = DependencyProperty.Register("Value", typeof(double), typeof(EditableSlider), new PropertyMetadata(3.0d, RerenderText));
 
         /// <summary>
         /// Default value property
         /// </summary>
         public static DependencyProperty DefaultValueProperty = DependencyProperty.Register("DefaultValue", typeof(double), typeof(EditableSlider), new PropertyMetadata(3.0d));
+
+
+        private static void Rerender(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            EditableSlider slider = (EditableSlider)d;
+            slider.UpdateView();
+        }
+
+        private static void RerenderText(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            EditableSlider slider = (EditableSlider)d;
+            slider.UpdateView();
+            slider.UpdateText();
+        }
 
         /// <summary>
         /// Event Handler for value Changed event
@@ -81,11 +95,7 @@ namespace ECalc.Api.Controls
         public double Minimum
         {
             get { return (double)GetValue(MinimumProperty); }
-            set
-            {
-                SetValue(MinimumProperty, value);
-                UpdateView();
-            }
+            set { SetValue(MinimumProperty, value); }
         }
 
         /// <summary>
@@ -94,11 +104,7 @@ namespace ECalc.Api.Controls
         public double Maximum
         {
             get { return (double)GetValue(MaximumProperty); }
-            set
-            {
-                SetValue(MaximumProperty, value);
-                UpdateView();
-            }
+            set { SetValue(MaximumProperty, value); }
         }
 
         /// <summary>
@@ -110,9 +116,6 @@ namespace ECalc.Api.Controls
             set
             {
                 SetValue(ValueProperty, value);
-                //_value = value;
-                UpdateView();
-                UpdateText();
                 if (ValueChanged != null) ValueChanged(this, new RoutedEventArgs());
             }
         }
