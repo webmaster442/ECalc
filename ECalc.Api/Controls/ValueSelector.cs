@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECalc.Api.Extensions;
+using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -7,7 +8,10 @@ using System.Windows.Controls;
 
 namespace ECalc.Api.Controls
 {
-    public class ValueSelector: Control
+    /// <summary>
+    /// Creates a value selector, that lets you choose from a range of items
+    /// </summary>
+    public class ValueSelector : Control
     {
         private double[] _values;
         private StackPanel Content;
@@ -17,6 +21,9 @@ namespace ECalc.Api.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ValueSelector), new FrameworkPropertyMetadata(typeof(ValueSelector)));
         }
 
+        /// <summary>
+        /// Aply the control theme
+        /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -25,14 +32,38 @@ namespace ECalc.Api.Controls
         }
 
 
+        /// <summary>
+        /// An array of values that the user can choose from
+        /// </summary>
         [TypeConverter(typeof(ArrayTypeConverter))]
         public double[] Values
         {
-            get { return _values;  }
+            get { return _values; }
             set
             {
                 _values = value;
                 Render();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the Selected item
+        /// </summary>
+        public double? SelectedItem
+        {
+            get
+            {
+                if (_values == null) return null;
+                var radio = (from i in Content.FindChildren<RadioButton>() where i.IsChecked == true select i).FirstOrDefault();
+                if (radio == null) return null;
+                return double.Parse(radio.Content.ToString());
+            }
+            set
+            {
+                string s = value.ToString();
+                var q = (from i in Content.FindChildren<RadioButton>() where i.Content.ToString() == s select i).FirstOrDefault();
+                if (q == null) return;
+                q.IsChecked = true;
             }
         }
 
