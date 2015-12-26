@@ -5,8 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignHeight="500" d:DesignWidth="900"
+             Loaded="UserControl_Loaded">
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox IsReadOnly="true"
+                 Grid.Row="0"
+                 Background="Black"
+                 Foreground="Green"
+                 FontSize="16"
+                 Grid.ColumnSpan="2"
+                 FontFamily="Consolas"
+                 x:Name="TbOutput"/>
+        <TextBlock Text="Commands:"
+                   Grid.Row="1"
+                   Margin="5,0"
+                   Grid.Column="0"
+                   Foreground="Green"
+                   VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2"
+                 Grid.ColumnSpan="2"
+                 Background="Black"
+                 Foreground="Green"
+                 x:Name="TbInput"/>
     </Grid>
 </UserControl>
