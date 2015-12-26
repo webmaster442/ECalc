@@ -138,6 +138,9 @@
     <Compile Include="Classes\Engine-OperatorHandling.cs" />
     <Compile Include="Classes\Engine-Static.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
+    <Compile Include="Classes\GnuPlotRunner.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
     <Compile Include="Controls\EditNewVariableDialog.xaml.cs">
@@ -180,6 +183,9 @@
     </Compile>
     <Compile Include="Modules\DateTimeCalc.xaml.cs">
       <DependentUpon>DateTimeCalc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\GnuPlotShell.xaml.cs">
+      <DependentUpon>GnuPlotShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
@@ -381,6 +387,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\DateTimeCalc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\GnuPlotShell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

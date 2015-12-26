@@ -46,5 +46,17 @@ namespace ECalc.Properties {
                 this["ConstantUsageStats"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string GNUPlotPath {
+            get {
+                return ((string)(this["GNUPlotPath"]));
+            }
+            set {
+                this["GNUPlotPath"] = value;
+            }
+        }
     }
 }
