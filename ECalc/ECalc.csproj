@@ -237,10 +237,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\FunctionList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\FunctionList2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -334,9 +330,6 @@
     </Compile>
     <Compile Include="Controls\ExtendedKeyPad.xaml.cs">
       <DependentUpon>ExtendedKeyPad.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\FunctionList.xaml.cs">
-      <DependentUpon>FunctionList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\KeyPad.xaml.cs">
       <DependentUpon>KeyPad.xaml</DependentUpon>

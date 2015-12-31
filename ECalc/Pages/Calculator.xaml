@@ -39,7 +39,7 @@
             </TabItem>
         </TabControl>
 
-        <controls:FunctionList Grid.Row="1"
+        <controls:FunctionList2 Grid.Row="1"
                                x:Name="FncList"
                                Grid.RowSpan="2"
                                FunctionButtonCliked="FunctionList_FunctionButtonCliked"/>

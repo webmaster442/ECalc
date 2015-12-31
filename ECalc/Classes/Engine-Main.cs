@@ -302,13 +302,9 @@ namespace ECalc.Classes
         /// <summary>
         /// Gets the currently available function names
         /// </summary>
-        public string[] Functions
+        public IFunction[] Functions
         {
-            get
-            {
-                var q = from i in _functions select i.Name;
-                return q.ToArray();
-            }
+            get { return _functions.ToArray(); }
         }
 
         /// <summary>

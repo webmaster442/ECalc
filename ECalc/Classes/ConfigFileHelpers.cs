@@ -9,9 +9,9 @@ namespace ECalc.Classes
     {
         public static void SerializeFunctionUsageStats()
         {
-            if (FunctionList.UsageStats == null) return;
+            if (FunctionList2.UsageStats == null) return;
             StringBuilder sb = new StringBuilder();
-            foreach (var entry in FunctionList.UsageStats)
+            foreach (var entry in FunctionList2.UsageStats)
             {
                 sb.AppendFormat("{0};{1}\n", entry.Key, entry.Value);
             }
@@ -32,7 +32,7 @@ namespace ECalc.Classes
 
         public static void SerializeConstantUsageStats()
         {
-            if (FunctionList.UsageStats == null) return;
+            if (ConstantDB.UsageStats == null) return;
             StringBuilder sb = new StringBuilder();
             foreach (var entry in ConstantDB.UsageStats)
             {

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using ECalc.Api.Extensions;
+using ECalc.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using ECalc.Classes;
 
 namespace ECalc.Controls
 {
@@ -28,7 +28,8 @@ namespace ECalc.Controls
             {
                 _functions = value;
                 RenderCategoryView();
-                RenderAlphabeticalView();
+                RenderAlphabeticalViewHeader();
+                RenderAlphabeticalView("all");
             }
         }
 
@@ -41,6 +42,7 @@ namespace ECalc.Controls
             btn.Click += Btn_Click;
             wp.Children.Add(btn);
         }
+
 
         private void Btn_Click(object sender, RoutedEventArgs e)
         {
@@ -55,12 +57,23 @@ namespace ECalc.Controls
 
         private void BtnExpandColapse_Click(object sender, RoutedEventArgs e)
         {
-
+            var expanders = CategoryPanel.FindChildren<Expander>();
+            bool expand = false;
+            if (BtnExpandColapse.Content.ToString() == "Colapse all")
+            {
+                BtnExpandColapse.Content = "Expand all";
+            }
+            else
+            {
+                BtnExpandColapse.Content = "Colapse all";
+                expand = true;
+            }
+            foreach (var expander in expanders) expander.IsExpanded = expand;
         }
 
         private void RenderCategoryView()
         {
-            var categories = (from i in _functions select i.Category).Distinct();
+            var categories = (from i in _functions orderby i.Category ascending select i.Category).Distinct();
             foreach (var category in categories)
             {
                 var functions = from i in _functions where i.Category == category orderby i.Name ascending select i.Name;
@@ -79,15 +92,44 @@ namespace ECalc.Controls
 
         }
 
-        private void RenderAlphabeticalView()
+        private void RenderAlphabeticalViewHeader()
         {
-            var abc = (from i in _functions orderby i ascending select i.Name.Substring(0, 1).ToUpper()).Distinct().ToList();
+            var abc = (from i in _functions orderby i.Name ascending select i.Name.Substring(0, 1).ToUpper()).Distinct().ToList();
             abc.Add("All");
             abc.Add("Usage");
+            LetterSelector.ItemsSource = abc;
+        }
+
+        private void RenderAlphabeticalView(string letter)
+        {
+            string[] items = null;
+            if (letter == "All") items = (from i in _functions orderby i.Name select i.Name).ToArray();
+            else items = (from i in _functions where i.Name.StartsWith(letter) orderby i.Name ascending select i.Name).ToArray();
+            AlphabetPanel.Children.Clear();
+            foreach (var item in items)
+            {
+                RenderButton(item, AlphabetPanel);
+            }
+        }
+
+        private void BtnAlphabet_Click(object sender, RoutedEventArgs e)
+        {
+            var content = ((Button)sender).Content.ToString();
+            if (content == "Usage") RenderUsageView();
+            else RenderAlphabeticalView(content);
         }
 
         private void RenderUsageView()
         {
+            var usageinfo = (from i in _functions from j in UsageStats
+                             where i.Name == j.Key
+                             orderby j.Value descending, i.Name ascending
+                             select i.Name).ToArray();
+            AlphabetPanel.Children.Clear();
+            foreach (var item in usageinfo)
+            {
+                RenderButton(item, AlphabetPanel);
+            }
 
         }
 

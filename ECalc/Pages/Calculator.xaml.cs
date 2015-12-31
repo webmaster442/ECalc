@@ -67,7 +67,7 @@ namespace ECalc.Pages
             if (designTime) return;
             _engine = new Engine();
             _engine.MemoryManager = Keypad;
-            FncList.Functions = _engine.Functions;
+            FncList.Funtions = _engine.Functions;
         }
 
         private void Display_ModeChanged(object sender, StringEventArgs e)
