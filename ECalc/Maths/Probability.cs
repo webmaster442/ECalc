@@ -20,6 +20,11 @@ namespace ECalc.Maths
             get { return "ProbNotA"; }
         }
 
+        public string Category
+        {
+            get { return "Probability"; }
+        }
+
         public int ParamCount
         {
             get { return 1; }
@@ -38,6 +43,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ProbAorB"; }
+        }
+
+        public string Category
+        {
+            get { return "Probability"; }
         }
 
         public int ParamCount
@@ -62,6 +72,11 @@ namespace ECalc.Maths
             get { return "ProbAandB"; }
         }
 
+        public string Category
+        {
+            get { return "Probability"; }
+        }
+
         public int ParamCount
         {
             get { return 2; }
@@ -82,6 +97,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ProbAgivenB"; }
+        }
+
+        public string Category
+        {
+            get { return "Probability"; }
         }
 
         public int ParamCount

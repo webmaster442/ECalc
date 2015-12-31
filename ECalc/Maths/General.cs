@@ -11,6 +11,11 @@ namespace ECalc.Maths
             get { return "Replus"; }
         }
 
+        public string Category
+        {
+            get { return "General"; }
+        }
+
         public object Run(params object[] arguments)
         {
             if (Helpers.IsComplex(arguments[0]) || Helpers.IsComplex(arguments[1]))
@@ -38,6 +43,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Pow"; }
+        }
+
+        public string Category
+        {
+            get { return "General"; }
         }
 
         public object Run(params object[] arguments)
@@ -69,6 +79,11 @@ namespace ECalc.Maths
             get { return "Square"; }
         }
 
+        public string Category
+        {
+            get { return "General"; }
+        }
+
         public object Run(params object[] arguments)
         {
             if (Helpers.IsComplex(arguments[0]))
@@ -94,6 +109,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Root"; }
+        }
+
+        public string Category
+        {
+            get { return "General"; }
         }
 
         public object Run(params object[] arguments)
@@ -124,6 +144,11 @@ namespace ECalc.Maths
             get { return "Sqrt"; }
         }
 
+        public string Category
+        {
+            get { return "General"; }
+        }
+
         public object Run(params object[] arguments)
         {
             if (Helpers.IsComplex(arguments[0]))
@@ -150,6 +175,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Log"; }
+        }
+
+        public string Category
+        {
+            get { return "General"; }
         }
 
         public object Run(params object[] arguments)
@@ -181,6 +211,11 @@ namespace ECalc.Maths
             get { return "Log10"; }
         }
 
+        public string Category
+        {
+            get { return "General"; }
+        }
+
         public object Run(params object[] arguments)
         {
             if (Helpers.IsComplex(arguments[0]))
@@ -206,6 +241,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Loge"; }
+        }
+
+        public string Category
+        {
+            get { return "General"; }
         }
 
         public object Run(params object[] arguments)
@@ -235,6 +275,11 @@ namespace ECalc.Maths
             get { return "Factorial"; }
         }
 
+        public string Category
+        {
+            get { return "General"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double b = Convert.ToDouble(arguments[0]);
@@ -257,6 +302,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Abs"; }
+        }
+
+        public string Category
+        {
+            get { return "General"; }
         }
 
         public object Run(params object[] arguments)
@@ -284,6 +334,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "GCD"; }
+        }
+
+        public string Category
+        {
+            get { return "Specials"; }
         }
 
         public static double FGcd(double x, double y) //LNKO
@@ -318,6 +373,11 @@ namespace ECalc.Maths
             get { return "LCM"; }
         }
 
+        public string Category
+        {
+            get { return "General"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double x = Convert.ToDouble(arguments[0]);
@@ -336,6 +396,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "AngularFreq"; }
+        }
+
+        public string Category
+        {
+            get { return "Specials"; }
         }
 
         public int ParamCount
@@ -357,6 +422,11 @@ namespace ECalc.Maths
             get { return "Wavelength"; }
         }
 
+        public string Category
+        {
+            get { return "Specials"; }
+        }
+
         public int ParamCount
         {
             get { return 1; }
@@ -374,6 +444,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Percent"; }
+        }
+
+        public string Category
+        {
+            get { return "Specials"; }
         }
 
         public int ParamCount
@@ -398,6 +473,11 @@ namespace ECalc.Maths
             get { return "Round"; }
         }
 
+        public string Category
+        {
+            get { return "Specials"; }
+        }
+
         public int ParamCount
         {
             get { return 2; }
@@ -417,6 +497,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Floor"; }
+        }
+
+        public string Category
+        {
+            get { return "Specials"; }
         }
 
         public int ParamCount

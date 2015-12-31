@@ -12,6 +12,11 @@ namespace ECalc.Maths
             get { return "Rad2Deg"; }
         }
 
+        public string Category
+        {
+            get { return "Angle conversions"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -29,6 +34,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Deg2Rad"; }
+        }
+
+        public string Category
+        {
+            get { return "Angle conversions"; }
         }
 
         public object Run(params object[] arguments)
@@ -50,6 +60,11 @@ namespace ECalc.Maths
             get { return "Grad2Deg"; }
         }
 
+        public string Category
+        {
+            get { return "Angle conversions"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -67,6 +82,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Deg2Grad"; }
+        }
+
+        public string Category
+        {
+            get { return "Angle conversions"; }
         }
 
         public object Run(params object[] arguments)
@@ -88,6 +108,11 @@ namespace ECalc.Maths
             get { return "Rad2Grad"; }
         }
 
+        public string Category
+        {
+            get { return "Angle conversions"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -105,6 +130,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Grad2Rad"; }
+        }
+
+        public string Category
+        {
+            get { return "Angle conversions"; }
         }
 
         public object Run(params object[] arguments)
@@ -129,6 +159,12 @@ namespace ECalc.Maths
             get { return "Sin"; }
         }
 
+
+        public string Category
+        {
+            get { return "Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -146,6 +182,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Cos"; }
+        }
+
+        public string Category
+        {
+            get { return "Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -167,6 +208,11 @@ namespace ECalc.Maths
             get { return "Tan"; }
         }
 
+        public string Category
+        {
+            get { return "Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -184,6 +230,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Ctg"; }
+        }
+
+        public string Category
+        {
+            get { return "Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -205,6 +256,11 @@ namespace ECalc.Maths
             get { return "Sec"; }
         }
 
+        public string Category
+        {
+            get { return "Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -222,6 +278,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Cosec"; }
+        }
+
+        public string Category
+        {
+            get { return "Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -245,6 +306,11 @@ namespace ECalc.Maths
             get { return "ArcSin"; }
         }
 
+        public string Category
+        {
+            get { return "Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -262,6 +328,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ArcCos"; }
+        }
+
+        public string Category
+        {
+            get { return "Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -283,6 +354,11 @@ namespace ECalc.Maths
             get { return "ArcTan"; }
         }
 
+        public string Category
+        {
+            get { return "Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -300,6 +376,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ArcCtg"; }
+        }
+
+        public string Category
+        {
+            get { return "Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -321,6 +402,11 @@ namespace ECalc.Maths
             get { return "ArcSec"; }
         }
 
+        public string Category
+        {
+            get { return "Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -338,6 +424,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ArcCosec"; }
+        }
+
+        public string Category
+        {
+            get { return "Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -362,6 +453,11 @@ namespace ECalc.Maths
             get { return "Sinh"; }
         }
 
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -379,6 +475,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Cosh"; }
+        }
+
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -400,6 +501,11 @@ namespace ECalc.Maths
             get { return "Tanh"; }
         }
 
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -417,6 +523,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Ctgh"; }
+        }
+
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -438,6 +549,11 @@ namespace ECalc.Maths
             get { return "Sech"; }
         }
 
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -455,6 +571,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Cosech"; }
+        }
+
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -478,6 +599,11 @@ namespace ECalc.Maths
             get { return "ArcSinh"; }
         }
 
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -495,6 +621,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ArcCosh"; }
+        }
+
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -516,6 +647,11 @@ namespace ECalc.Maths
             get { return "ArcTanh"; }
         }
 
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -533,6 +669,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ArcCtgh"; }
+        }
+
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
         }
 
         public object Run(params object[] arguments)
@@ -554,6 +695,11 @@ namespace ECalc.Maths
             get { return "ArcSech"; }
         }
 
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double d = Convert.ToDouble(arguments[0]);
@@ -571,6 +717,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "ArcCosech"; }
+        }
+
+        public string Category
+        {
+            get { return "Hyperbolic Trigonometry"; }
         }
 
         public object Run(params object[] arguments)

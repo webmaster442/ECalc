@@ -10,6 +10,11 @@ namespace ECalc.Maths
             get { return "CplxRi"; }
         }
 
+        public string Category
+        {
+            get { return "Type functions"; }
+        }
+
         public object Run(params object[] arguments)
         {
             double n1 = (double)arguments[0];
@@ -34,6 +39,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "CplxPolar"; }
+        }
+
+        public string Category
+        {
+            get { return "Type functions"; }
         }
 
         public object Run(params object[] arguments)
@@ -66,6 +76,11 @@ namespace ECalc.Maths
             get { return "Fraction"; }
         }
 
+        public string Category
+        {
+            get { return "Type functions"; }
+        }
+
         public int ParamCount
         {
             get { return 2; }
@@ -84,6 +99,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "CplxConjugate"; }
+        }
+
+        public string Category
+        {
+            get { return "Type functions"; }
         }
 
         public object Run(params object[] arguments)
@@ -105,6 +125,11 @@ namespace ECalc.Maths
             get { return "Vect2D"; }
         }
 
+        public string Category
+        {
+            get { return "Type functions"; }
+        }
+
         public int ParamCount
         {
             get { return 2; }
@@ -123,6 +148,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Vect3D"; }
+        }
+
+        public string Category
+        {
+            get { return "Type functions"; }
         }
 
         public int ParamCount
@@ -146,6 +176,11 @@ namespace ECalc.Maths
             get { return "Det"; }
         }
 
+        public string Category
+        {
+            get { return "Type functions"; }
+        }
+
         public int ParamCount
         {
             get { return 1; }
@@ -165,6 +200,11 @@ namespace ECalc.Maths
             get { return "Transpose"; }
         }
 
+        public string Category
+        {
+            get { return "Type functions"; }
+        }
+
         public int ParamCount
         {
             get { return 1; }
@@ -182,6 +222,11 @@ namespace ECalc.Maths
         public string Name
         {
             get { return "Negate"; }
+        }
+
+        public string Category
+        {
+            get { return "Type functions"; }
         }
 
         public int ParamCount

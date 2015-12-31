@@ -43,6 +43,11 @@ namespace ECalc.Classes
         string Name { get; }
 
         /// <summary>
+        /// Function category
+        /// </summary>
+        string Category { get; }
+
+        /// <summary>
         /// Function code
         /// </summary>
         /// <param name="arguments">function arguments</param>
