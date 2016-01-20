@@ -45,8 +45,8 @@ namespace ECalc.Controls
             }
             else
             {
+
                 byte[] dataarray = null;
-                string octsting = Convert.ToString(Convert.ToInt64(o), 8);
                 switch (Engine.BitEngineMode)
                 {
                     case BitEngineModes.Signed16bit:
@@ -67,7 +67,6 @@ namespace ECalc.Controls
                 buffer.Append(x);
                 buffer.Append(DoRow("Hex:   ", dataarray, 16));
                 var len = x.Length - 2 - "Roman: ".Length;
-                buffer.AppendFormat("Oct:   {0," + len + "}\r\n", octsting);
                 buffer.AppendFormat("Roman: {0," + len + "}", NumberSystemConversions.IntToRoman(Convert.ToInt32(o)));
                 Text = buffer.ToString();
             }

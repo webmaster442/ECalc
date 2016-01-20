@@ -1,7 +1,7 @@
 F
 ---
 ```
-Factorial(value)
+Fact(value)
 ```
 
 Calculates the factorial of a number. In mathematics, the factorial of a non-negative integer n, denoted by n!, is the product of all positive integers less than or equal to n.

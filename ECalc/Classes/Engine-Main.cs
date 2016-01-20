@@ -287,11 +287,20 @@ namespace ECalc.Classes
             }
             else if (Engine.Ans is double)
             {
+                double d = (double)Engine.Ans;
                 if (Engine.PreferPrefixes)
                 {
-                    sb.Append(_prefixes.DivideToPrefix((double)Engine.Ans));
+                    sb.Append(_prefixes.DivideToPrefix(d));
                 }
-                else sb.Append(Engine.Ans.ToString());
+                else
+                {
+                    if ((d - Math.Truncate(d)) == 0)
+                    {
+                        BigInteger a = (BigInteger)d;
+                        sb.Append(a);
+                    }
+                    else sb.Append(d);
+                }
             }
             else sb.Append(Engine.Ans.ToString());
 

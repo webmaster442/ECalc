@@ -268,11 +268,11 @@ namespace ECalc.Maths
         }
     }
 
-    public class Factorial : IFunction
+    public class Fact: IFunction
     {
         public string Name
         {
-            get { return "Factorial"; }
+            get { return "Fact"; }
         }
 
         public string Category
