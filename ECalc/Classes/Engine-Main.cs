@@ -93,16 +93,17 @@ namespace ECalc.Classes
             // Step 3. Use the tilde ~ as the unary minus operator
             good = Regex.Replace(good, "MINUS", "~");
 
-            var items = good.Split(' ');
+            var items = from i in good.Split(' ') where string.IsNullOrEmpty(i) == false select i;
 
             Queue<Token> Output = new Queue<Token>();
             Stack<Token> Stack = new Stack<Token>();
             Token temp = null;
             Token opstoken = null;
 
+            var negative = false;
+
             foreach (var token in items)
             {
-                if (string.IsNullOrWhiteSpace(token)) continue;
                 var c = token.Trim();
                 switch (c)
                 {
@@ -149,8 +150,7 @@ namespace ECalc.Classes
                         Stack.Push(temp);
                         break;
                     case "~":
-                        temp = new Token(TokenType.UnaryMinus, c);
-                        Stack.Push(temp);
+                        negative = true;
                         break;
                     case "(":
                         temp = new Token(TokenType.LeftB, c);
@@ -202,6 +202,11 @@ namespace ECalc.Classes
                                 try
                                 {
                                     double val = ParseNumber(c);
+                                    if (negative)
+                                    {
+                                        val *= -1;
+                                        negative = false;
+                                    }
                                     temp = new Token(TokenType.Number, val.ToString());
                                     Output.Enqueue(temp);
                                 }
@@ -221,6 +226,8 @@ namespace ECalc.Classes
                 }
                 else Output.Enqueue(opstoken);
             }
+
+            if (negative) throw new ArgumentException("Negative error");
 
             return Output;
         }
