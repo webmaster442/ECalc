@@ -1,5 +1,4 @@
-﻿using ECalc.Api.Extensions;
-using ECalc.Classes;
+﻿using ECalc.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,39 +54,21 @@ namespace ECalc.Controls
             }
         }
 
-        private void BtnExpandColapse_Click(object sender, RoutedEventArgs e)
-        {
-            var expanders = CategoryPanel.FindChildren<Expander>();
-            bool expand = false;
-            if (BtnExpandColapse.Content.ToString() == "Colapse all")
-            {
-                BtnExpandColapse.Content = "Expand all";
-            }
-            else
-            {
-                BtnExpandColapse.Content = "Colapse all";
-                expand = true;
-            }
-            foreach (var expander in expanders) expander.IsExpanded = expand;
-        }
-
         private void RenderCategoryView()
         {
             var categories = (from i in _functions orderby i.Category ascending select i.Category).Distinct();
             foreach (var category in categories)
             {
                 var functions = from i in _functions where i.Category == category orderby i.Name ascending select i.Name;
-                Expander expander = new Expander();
-                expander.Header = category;
-                expander.IsExpanded = false;
+                GroupBox group = new GroupBox();
+                group.Header = category;
                 WrapPanel wp = new WrapPanel();
-                expander.Content = wp;
-                expander.IsExpanded = true;
+                group.Content = wp;
                 foreach (var function in functions)
                 {
                     RenderButton(function, wp);
                 }
-                CategoryPanel.Children.Add(expander);
+                CategoryPanel.Children.Add(group);
             }
 
         }

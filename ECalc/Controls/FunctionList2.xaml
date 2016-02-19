@@ -10,26 +10,18 @@
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="MinWidth" Value="85"/>
+            <Setter Property="MinWidth" Value="82"/>
             <Setter Property="Margin" Value="2"/>
             <Setter Property="controls:ButtonHelper.PreserveTextCase" Value="True"/>
-            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontSize" Value="12"/>
         </Style>
     </UserControl.Resources>
     <TabControl>
         <TabItem Header="Category">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0"
-                            Orientation="Horizontal">
-                    <Button Content="Colapse all"
-                            Margin="2"
-                            x:Name="BtnExpandColapse"
-                            Click="BtnExpandColapse_Click"/>
-                </StackPanel>
                 <ScrollViewer Grid.Row="1">
                     <StackPanel x:Name="CategoryPanel"/>
                 </ScrollViewer>

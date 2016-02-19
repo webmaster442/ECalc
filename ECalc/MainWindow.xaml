@@ -15,7 +15,7 @@
         <mah:WindowCommands>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="WindowCommandMenu"
-                        Content="Menu"
+                        Content="Menu "
                         Click="WindowCommandMenu_Click"/>
                 <Button x:Name="WindowCommandCalculatorChooser"
                         Content="Calculators"
