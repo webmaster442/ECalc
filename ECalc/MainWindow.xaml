@@ -15,11 +15,21 @@
         <mah:WindowCommands>
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="WindowCommandMenu"
-                        Content="Menu "
-                        Click="WindowCommandMenu_Click"/>
+                        Click="WindowCommandMenu_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/50px/menu.png"/>
+                        <TextBlock Text="Menu"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
                 <Button x:Name="WindowCommandCalculatorChooser"
-                        Content="Calculators"
-                        Click="WindowCommandCalculatorChooser_Click"/>
+                        Click="WindowCommandCalculatorChooser_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/50px/calc.png"/>
+                        <TextBlock Text="Calculators"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
@@ -28,7 +38,7 @@
             <mah:Flyout x:Name="CalculatorChooserFlyOut"
                         Theme="Dark"
                         Position="Right"
-                        Header="Menu" 
+                        Header="Calculators" 
                         Width="960">
                 <pages:CalculatorChooser/>
             </mah:Flyout>

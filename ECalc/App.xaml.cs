@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -13,6 +14,26 @@ namespace ECalc
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+            var theme = ThemeManager.DetectAppStyle(Application.Current);
+
+            var accents = new Accent[]
+            {
+                ThemeManager.GetAccent("Red"), ThemeManager.GetAccent("Green"), ThemeManager.GetAccent("Blue"),
+                ThemeManager.GetAccent("Purple"), ThemeManager.GetAccent("Orange"), ThemeManager.GetAccent("Lime"),
+                ThemeManager.GetAccent("Emerald"), ThemeManager.GetAccent("Teal"), ThemeManager.GetAccent("Cyan"),
+                ThemeManager.GetAccent("Cobalt"), ThemeManager.GetAccent("Indigo"), ThemeManager.GetAccent("Violet"),
+                ThemeManager.GetAccent("Pink"), ThemeManager.GetAccent("Magenta"), ThemeManager.GetAccent("Crimson"),
+                ThemeManager.GetAccent("Amber"), ThemeManager.GetAccent("Yellow"), ThemeManager.GetAccent("Brown"),
+                ThemeManager.GetAccent("Olive"), ThemeManager.GetAccent("Steel"), ThemeManager.GetAccent("Mauve"),
+                ThemeManager.GetAccent("Taupe"), ThemeManager.GetAccent("Sienna")
+            };
+
+            Random r = new Random();
+            int index = r.Next(0, accents.Length);
+
+            ThemeManager.ChangeAppStyle(Application.Current, accents[index], ThemeManager.GetAppTheme("BaseLight"));
+
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

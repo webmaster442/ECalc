@@ -1,5 +1,10 @@
 Changelog
 ---
+##V. 1.2
+* updated MahApps framework
+* Negative number interpretation fixed
+* New function list
+* New Calculator tools: MultiMedia calculators
 
 ##V. 1.1
 * Trigonometry tool updated
