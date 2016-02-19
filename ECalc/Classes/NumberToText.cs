@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ECalc.Classes
 {
@@ -49,12 +48,28 @@ namespace ECalc.Classes
             _numbers.Add(80, "eighty");
             _numbers.Add(90, "ninety");
             _numbers.Add(100, "hundred");
-            _scales.Add(1000000000, "billion");
-            _scales.Add(1000000000000, "trillion");
-            _scales.Add(1000000000000000, "quadrillion");
-            _scales.Add(1000000000000000000, "quintillion");
-            _scales.Add(1000000, "million");
-            _scales.Add(1000, "thousand");
+
+            _scales.Add(1E3, "thousand");
+            _scales.Add(1E6, "million");
+            _scales.Add(1E9, "billion");
+            _scales.Add(1E12, "trillion");
+            _scales.Add(1E15, "quadrillion");
+            _scales.Add(1E18, "quintillion");
+            _scales.Add(1E21, "sextillion");
+            _scales.Add(1E24, "septillion");
+            _scales.Add(1E27, "octillion");
+            _scales.Add(1E30, "nonillion");
+            _scales.Add(1E33, "decillion");
+            _scales.Add(1E36, "undecillion");
+            _scales.Add(1E39, "duodecillion");
+            _scales.Add(1E42, "tredecillion");
+            _scales.Add(1E45, "quattuordecillion");
+            _scales.Add(1E48, "quindecillion");
+            _scales.Add(1E51, "sexdecillion");
+            _scales.Add(1E54, "septendecillion");
+            _scales.Add(1E57, "octodecillion");
+            _scales.Add(1E60, "novemdecillion");
+            _scales.Add(1E63, "vigintillion");
             _output = new StringBuilder();
         }
 
