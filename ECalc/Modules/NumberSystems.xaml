@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:controls="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>
         <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+        </Style>
+        <Style TargetType="controls:EditableSlider">
             <Setter Property="Margin" Value="10,0,0,0"/>
         </Style>
         <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
@@ -20,8 +23,8 @@
         <TabItem Header="Integers">
             <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center"
-                        Width="500"
-                        Height="180">
+                        Width="680"
+                        Height="200">
                 <TextBlock Text="Input Number"
                            Margin="5,0,0,0"/>
                 <StackPanel x:Name="InputSelector"
@@ -38,6 +41,17 @@
                                  Checked="RadioButton_Checked"/>
                     <RadioButton Content="Hexa"
                                  Checked="RadioButton_Checked"/>
+                    <RadioButton Content="Custom"
+                                 x:Name="RbCustomSource"
+                                 Checked="RadioButton_Checked"/>
+                    <controls:EditableSlider Minimum="2"
+                                             Maximum="36"
+                                             Value="10"
+                                             DisplayFormat="0"
+                                             Height="28"
+                                             x:Name="SourceSystem"
+                                             ValueChanged="System_ValueChanged"
+                                             IsEnabled="{Binding ElementName=RbCustomSource, Path=IsChecked}"/>
                 </StackPanel>
                 <TextBox Text="0"
                          x:Name="InputNumber"
@@ -60,6 +74,17 @@
                                  Checked="RadioButton_Checked"/>
                     <RadioButton Content="Hexa"
                                  Checked="RadioButton_Checked"/>
+                    <RadioButton Content="Custom"
+                                 x:Name="RbCustomTarget"
+                                 Checked="RadioButton_Checked"/>
+                    <controls:EditableSlider Minimum="2"
+                                             Maximum="36"
+                                             Value="10"
+                                             DisplayFormat="0"
+                                             Height="28"
+                                             x:Name="TargetSystem"
+                                             ValueChanged="System_ValueChanged"
+                                             IsEnabled="{Binding ElementName=RbCustomTarget, Path=IsChecked}"/>
                 </StackPanel>
                 <TextBox Text="0"
                          IsReadOnly="True"

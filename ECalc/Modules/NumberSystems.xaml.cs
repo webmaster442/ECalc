@@ -17,7 +17,7 @@ namespace ECalc.Modules
             InitializeComponent();
         }
 
-        private void ConverInt()
+        private void ConvertInt()
         {
             try
             {
@@ -41,6 +41,10 @@ namespace ECalc.Modules
                     case "Hexa":
                         input = Convert.ToInt64(InputNumber.Text, 16);
                         break;
+                    case "Custom":
+                        input = NumberSystemConversions.FromSystem(InputNumber.Text,
+                                                                  (int)Math.Round(SourceSystem.Value));
+                        break;
                 }
                 switch (output_radio.Content.ToString())
                 {
@@ -58,6 +62,10 @@ namespace ECalc.Modules
                         break;
                     case "Hexa":
                         OutputNumber.Text = Convert.ToString(input, 16);
+                        break;
+                    case "Custom":
+                        OutputNumber.Text = NumberSystemConversions.ToSystem(input,
+                                                                             (int)Math.Round(TargetSystem.Value));
                         break;
                 }
             }
@@ -107,17 +115,22 @@ namespace ECalc.Modules
 
         private void InputNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ConverInt();
+            ConvertInt();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            ConverInt();
+            ConvertInt();
         }
 
         private void IEEE754Input_TextChanged(object sender, TextChangedEventArgs e)
         {
             ConvertIEEE754(IEEE754Input.Text);
+        }
+
+        private void TargetSystem_ValueChanged(object sender, RoutedEventArgs e)
+        {
+            ConvertInt();
         }
     }
 }
