@@ -361,7 +361,7 @@ namespace ECalc.Classes
                     HadOwerFlow = (sres > int.MaxValue || sres < int.MinValue);
                     return (sres & 0x00000000FFFFFFFF);
                 case BitEngineModes.Signed64bit:
-                    HadOwerFlow = (sres > long.MaxValue || sres < long.MinValue);
+                    HadOwerFlow = false;
                     return sres;
                 case BitEngineModes.Unsigned8bit:
                     HadOwerFlow = (ures > byte.MaxValue || ures < byte.MinValue);
@@ -373,7 +373,7 @@ namespace ECalc.Classes
                     HadOwerFlow = (ures > uint.MaxValue || ures < uint.MinValue);
                     return (ures & 0x00000000FFFFFFFF);
                 case BitEngineModes.Unsigned64bit:
-                    HadOwerFlow = (ures > ulong.MaxValue || ures < ulong.MinValue);
+                    HadOwerFlow = false;
                     return ures;
             }
 

@@ -51,7 +51,7 @@ namespace ECalc.Modules
             if (IsOn(Seg14e)) cc += CbLSBOrder.IsChecked == true ? 16 : 1024;
             if (IsOn(Seg14f)) cc += CbLSBOrder.IsChecked == true ? 32 : 512;
             if (IsOn(Seg14g1)) cc += CbLSBOrder.IsChecked == true ? 64 : 256;
-            if (IsOn(Seg14g2)) cc += CbLSBOrder.IsChecked == true ? 128 : 128;
+            if (IsOn(Seg14g2)) cc += 128;
             if (IsOn(Seg14h)) cc += CbLSBOrder.IsChecked == true ? 256 : 64;
             if (IsOn(Seg14i)) cc += CbLSBOrder.IsChecked == true ? 512 : 32;
             if (IsOn(Seg14j)) cc += CbLSBOrder.IsChecked == true ? 1024 : 16;

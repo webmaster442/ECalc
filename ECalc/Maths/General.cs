@@ -155,7 +155,7 @@ namespace ECalc.Maths
             {
                 Complex a = Helpers.GetComplex(arguments[0]);
                 Complex b = Helpers.GetComplex(arguments[1]);
-                return Complex.Pow(a, 1 / 2);
+                return Complex.Pow(a, 1.0d / 2.0d);
             }
             else 
             {

@@ -100,9 +100,7 @@ namespace ECalc.Maths
             if (target == null) throw new ArgumentNullException("target");
             if (Rows != target.Rows || Columns != target.Columns) throw new Exception("Target and Source row/column count mismatch");
 
-            Matrix Dbl = target as Matrix;
-            if (Dbl == null) throw new ArgumentNullException("target");
-            else Buffer.BlockCopy(mData, 0, Dbl.mData, 0, mData.Length * sizeof(double));
+            Buffer.BlockCopy(mData, 0, target.mData, 0, target.mData.Length * sizeof(double));
         }
 
         public void Negate()

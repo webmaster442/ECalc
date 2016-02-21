@@ -190,7 +190,7 @@ namespace ECalc.Maths
         /// <param name="value1">input number</param>
         public static double Ctgh(double value)
         {
-            double rad = value;
+            double rad = 0;
             switch (Engine.Mode)
             {
                 case TrigMode.DEG:
@@ -198,6 +198,9 @@ namespace ECalc.Maths
                     break;
                 case TrigMode.GRAD:
                     rad = Grad2Rad(value);
+                    break;
+                default:
+                    rad = value;
                     break;
             }
             return (Math.Exp(value) + Math.Exp(-value)) / (Math.Exp(value) - Math.Exp(-value));
@@ -364,7 +367,7 @@ namespace ECalc.Maths
         /// <param name="value">input number</param>
         public static double Sech(double value)
         {
-            double rad = value;
+            double rad = 0;
             switch (Engine.Mode)
             {
                 case TrigMode.DEG:
@@ -373,8 +376,11 @@ namespace ECalc.Maths
                 case TrigMode.GRAD:
                     rad = Grad2Rad(value);
                     break;
+                default:
+                    rad = value;
+                    break;
             }
-            return 2 / (Math.Exp(rad) + Math.Exp(-rad));
+            return 2.0d / (Math.Exp(rad) + Math.Exp(-rad));
         }
 
         /// <summary>
@@ -392,7 +398,7 @@ namespace ECalc.Maths
         /// <param name="value">input number</param>
         public static double Cosech(double value)
         {
-            double rad = value;
+            double rad = 0;
             switch (Engine.Mode)
             {
                 case TrigMode.DEG:
@@ -401,8 +407,11 @@ namespace ECalc.Maths
                 case TrigMode.GRAD:
                     rad = Grad2Rad(value);
                     break;
+                default:
+                    rad = value;
+                    break;
             }
-            return 2 / (Math.Exp(rad) - Math.Exp(-rad));
+            return 2.0d/ (Math.Exp(rad) - Math.Exp(-rad));
         }
 
 
