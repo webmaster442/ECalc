@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ECalc.Api.Extensions
 {
@@ -111,6 +112,19 @@ namespace ECalc.Api.Extensions
                     yield return VisualTreeHelper.GetChild(parent, i);
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates a thumbnail of a Window
+        /// </summary>
+        /// <param name="w">Window that's thumbnail is needed</param>
+        /// <returns>A bindable imagesource</returns>
+        public static ImageSource Thumbnail(this Window w)
+        {
+            var rtb = new RenderTargetBitmap((int)w.ActualWidth, (int)w.ActualHeight,
+                                             96, 96, PixelFormats.Pbgra32);
+            rtb.Render(w);
+            return rtb;
         }
     }
 }

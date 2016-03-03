@@ -21,13 +21,18 @@
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right">
+            <api:ImageButton Content="Window manager"
+                             Image="/ECalc;component/Images/50px/windowmanager.png"
+                             ImageHeight="35"
+                             ImageWidth="35"
+                             x:Name="BtnWindManager"
+                             Click="BtnWindManager_Click"/>
             <api:ImageButton Content="Support development"
                              Image="/ECalc;component/Images/50px/donate.png"
                              ImageHeight="35"
                              ImageWidth="35"
                              x:Name="BtnDonate"
-                             Click="BtnDonate_Click">
-            </api:ImageButton>
+                             Click="BtnDonate_Click"/>
             <api:ImageButton Content="About"
                              Image="/ECalc;component/Images/50px/about.png"
                              ImageHeight="35"

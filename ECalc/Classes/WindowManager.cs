@@ -65,5 +65,7 @@ namespace ECalc.Classes
                 window.WindowState = WindowState.Normal;
             }
         }
+
+
     }
 }

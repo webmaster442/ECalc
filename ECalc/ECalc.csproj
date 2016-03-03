@@ -227,6 +227,9 @@
     <Compile Include="Pages\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WindowManager.xaml.cs">
+      <DependentUpon>WindowManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\MNBConverter\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -478,6 +481,10 @@
     <Page Include="Modules\VoltageCurrentDivider.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\WindowManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Styles\ControlTemplates.xaml">
       <SubType>Designer</SubType>
@@ -778,6 +785,9 @@
   <ItemGroup>
     <Resource Include="Images\50px\alwaystop-disabled.png" />
     <Resource Include="Images\50px\alwaystop-enabled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\windowmanager.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

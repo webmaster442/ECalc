@@ -46,5 +46,11 @@ namespace ECalc.Pages
         {
             System.Diagnostics.Process.Start("https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=AVUW7CAHC2LES");
         }
+
+        private void BtnWindManager_Click(object sender, RoutedEventArgs e)
+        {
+            WindowsManager wm = new WindowsManager();
+            MainWindow.SwithToControl(wm);
+        }
     }
 }
