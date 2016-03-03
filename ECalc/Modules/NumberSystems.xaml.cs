@@ -128,7 +128,7 @@ namespace ECalc.Modules
             ConvertIEEE754(IEEE754Input.Text);
         }
 
-        private void TargetSystem_ValueChanged(object sender, RoutedEventArgs e)
+        private void System_ValueChanged(object sender, RoutedEventArgs e)
         {
             ConvertInt();
         }

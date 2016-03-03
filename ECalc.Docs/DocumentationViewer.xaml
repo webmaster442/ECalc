@@ -51,8 +51,8 @@
                               ToolTip="functions-R.md"/>
                 <TreeViewItem Header="T"
                               ToolTip="functions-T.md"/>
-                <TreeViewItem Header="V, W"
-                              ToolTip="functions-V-W.md"/>
+                <TreeViewItem Header="V, W, X"
+                              ToolTip="functions-V-W-X.md"/>
             </TreeViewItem>
             <TreeViewItem Header="License"
                           ToolTip="license.md"/>

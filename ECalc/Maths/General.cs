@@ -516,4 +516,60 @@ namespace ECalc.Maths
             return Math.Floor(x);
         }
     }
+
+    public class XC : IFunction
+    {
+        public string Category
+        {
+            get { return "Specials"; }
+        }
+
+        public string Name
+        {
+            get { return "XC"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 2; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double omega = Convert.ToDouble(arguments[1]);
+            omega *= 2;
+            omega *= Math.PI;
+
+            var j =  1 / (omega * Convert.ToDouble(arguments[0]));
+            return new Complex(0, -j);
+        }
+    }
+
+    public class XL : IFunction
+    {
+        public string Category
+        {
+            get { return "Specials"; }
+        }
+
+        public string Name
+        {
+            get { return "XL"; }
+        }
+
+        public int ParamCount
+        {
+            get { return 2; }
+        }
+
+        public object Run(params object[] arguments)
+        {
+            double omega = Convert.ToDouble(arguments[1]);
+            omega *= 2;
+            omega *= Math.PI;
+
+            var j = omega * Convert.ToDouble(arguments[0]);
+            return new Complex(0, j);
+        }
+    }
 }

@@ -202,7 +202,7 @@
     <Resource Include="Documentation\functions-R.md" />
     <Resource Include="Documentation\functions-S.md" />
     <Resource Include="Documentation\functions-T.md" />
-    <Resource Include="Documentation\functions-V-W.md" />
+    <Resource Include="Documentation\functions-V-W-X.md" />
     <Resource Include="Documentation\general-usage.md" />
     <Resource Include="Documentation\license.md" />
     <Resource Include="Documentation\welcome.md" />
