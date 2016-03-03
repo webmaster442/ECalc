@@ -121,7 +121,9 @@ namespace ECalc.Pages
 
         private void ContextNormal_Click(object sender, RoutedEventArgs e)
         {
-            Tile_Click(sender, e);
+            var menu = ((MenuItem)sender).Parent as ContextMenu;
+            var tile = (Tile)menu.PlacementTarget;
+            Tile_Click(tile, e);
         }
 
         private void ContextNewWindow_Click(object sender, RoutedEventArgs e)

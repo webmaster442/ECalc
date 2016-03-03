@@ -108,5 +108,17 @@ namespace ECalc
                 Properties.Settings.Default.Save();
             }
         }
+
+        private void ThumbMenu_Click(object sender, EventArgs e)
+        {
+            WindowCommandMenu_Click(sender, null);
+            WindowManager.BringToFront(this);
+        }
+
+        private void ThumbCalculators_Click(object sender, EventArgs e)
+        {
+            WindowCommandCalculatorChooser_Click(sender, null);
+            WindowManager.BringToFront(this);
+        }
     }
 }

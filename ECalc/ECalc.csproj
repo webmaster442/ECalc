@@ -142,6 +142,7 @@
     <Compile Include="Classes\FunctionPlotSource.cs" />
     <Compile Include="Classes\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
+    <Compile Include="Classes\WindowManager.cs" />
     <Compile Include="Controls\EditNewVariableDialog.xaml.cs">
       <DependentUpon>EditNewVariableDialog.xaml</DependentUpon>
     </Compile>
@@ -773,6 +774,10 @@
   <ItemGroup>
     <Resource Include="Images\50px\calc.png" />
     <Resource Include="Images\50px\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\alwaystop-disabled.png" />
+    <Resource Include="Images\50px\alwaystop-enabled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

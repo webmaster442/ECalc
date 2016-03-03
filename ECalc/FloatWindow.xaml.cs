@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using System.Windows.Controls;
 using System;
+using ECalc.Classes;
 
 namespace ECalc
 {
@@ -12,6 +13,7 @@ namespace ECalc
         public FloatWindow()
         {
             InitializeComponent();
+            WindowManager.RegisterChild(this);
         }
 
         public void SetWindowContent(UserControl u, string title)
@@ -27,6 +29,7 @@ namespace ECalc
                 (Content as IDisposable).Dispose();
             }
             Content = null;
+            WindowManager.UnRegisterChild(this);
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
