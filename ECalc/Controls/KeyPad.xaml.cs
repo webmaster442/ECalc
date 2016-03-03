@@ -81,6 +81,9 @@ namespace ECalc.Controls
                     case "mod":
                         ButtonClicked(sender, new StringEventArgs(content));
                         break;
+                    case "micro":
+                        ButtonClicked(sender, new StringEventArgs("u"));
+                        break;
                     default:
                         ButtonClicked(sender, new StringEventArgs(content.Substring(0, 1)));
                         break;
