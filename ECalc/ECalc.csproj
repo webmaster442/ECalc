@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Lib\CryptoRNG.cs" />
     <Compile Include="Maths\Matrix.cs" />
+    <Compile Include="Maths\NumberTester.cs" />
     <Compile Include="Maths\Probability.cs" />
     <Compile Include="Maths\Vector.cs" />
     <Compile Include="Modules\ColorConverters.xaml.cs">
@@ -610,7 +611,6 @@
     <Resource Include="Images\50px\T.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\50px\divide.png" />
     <Resource Include="Images\50px\fractions.png" />
   </ItemGroup>
   <ItemGroup>
@@ -788,6 +788,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\50px\windowmanager.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\test.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

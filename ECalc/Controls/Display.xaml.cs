@@ -187,20 +187,16 @@ namespace ECalc.Controls
             MainWindow.ShowDialog("Result as Fraction", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
 
-        private void BtnDivisiors_Click(object sender, RoutedEventArgs e)
+        private void BtnNumTest_Click(object sender, RoutedEventArgs e)
         {
             string message = "Complex, Vector, Fraction and Matrix values not supported";
             if (!Helpers.IsSpecialType(Engine.Ans))
             {
-                StringBuilder result = new StringBuilder();
-                double x = Helpers.GetDouble(Engine.Ans);
-                for (int i = 2; i < 21; i++)
-                {
-                    if (x % i == 0) result.AppendFormat("{0}, ", i);
-                }
-                message = result.ToString();
+                NumberTester tester = new NumberTester();
+                tester.Test(Engine.Ans);
+                message = tester.ToString();
             }
-            MainWindow.ShowDialog("Divisiors", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+            MainWindow.ShowDialog("Number informations", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
 
         private void BitEngineMode_SelectionChanged(object sender, SelectionChangedEventArgs e)

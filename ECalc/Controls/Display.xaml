@@ -155,12 +155,12 @@
                                   ToolTip="Plot Current input"
                                   Click="BtnPlot_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/divide.png"
+            <controls:ImageButton Image="../Images/50px/test.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
-                                  x:Name="BtnDivisiors"
-                                  ToolTip="Divisor test from 2 to 20"
-                                  Click="BtnDivisiors_Click"/>
+                                  x:Name="BtnNumTest"
+                                  ToolTip="Number tests &amp; infromations"
+                                  Click="BtnNumTest_Click"/>
 
 
             <controls:ImageButton Image="../Images/50px/T.png"
