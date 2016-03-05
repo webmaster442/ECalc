@@ -120,5 +120,10 @@ namespace ECalc
             WindowCommandCalculatorChooser_Click(sender, null);
             WindowManager.BringToFront(this);
         }
+
+        private void ThumbWinManager_Click(object sender, EventArgs e)
+        {
+            SwithToControl(new WindowsManager());
+        }
     }
 }

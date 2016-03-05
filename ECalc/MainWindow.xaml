@@ -26,6 +26,11 @@
                                      Description="Calculators"
                                      ImageSource="Images/50px/calc.png"
                                      Click="ThumbCalculators_Click"/>
+                    <ThumbButtonInfo x:Name="ThumbWinManager"
+                                     DismissWhenClicked="False"
+                                     Description="Child window management"
+                                     ImageSource="Images/50px/windowmanager.png"
+                                     Click="ThumbWinManager_Click"/>
                 </ThumbButtonInfoCollection>
             </TaskbarItemInfo.ThumbButtonInfos>
         </TaskbarItemInfo>
