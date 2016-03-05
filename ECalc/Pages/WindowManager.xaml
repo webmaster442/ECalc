@@ -6,17 +6,87 @@
              xmlns:local="clr-namespace:ECalc.Pages"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <TextBlock Text="Actions:"
+                       VerticalAlignment="Center"
+                       Margin="5,0"/>
+            <Button Content="Minimize all to tray"
+                    x:Name="BtnMinimizeAll"
+                    Click="BtnMinimizeAll_Click"/>
+            <Button Content="Restore all from tray"
+                    x:Name="BtnRestoreAll"
+                    Click="BtnRestoreAll_Click"/>
+            <Button Content="Close all"
+                    x:Name="BtnCloseAll"
+                    Click="BtnCloseAll_Click"/>
+            <Button Content="Refresh list"
+                    x:Name="BtnRefresh"
+                    Click="BtnRefresh_Click"/>
+        </StackPanel>
         <TextBlock Text="Windows:"
                    Grid.Row="1"
+                   Margin="5,0"
                    VerticalAlignment="Center"/>
-        <ItemsControl Grid.Row="2"
-                      x:Name="WinList">
-        </ItemsControl>
+        <ScrollViewer Grid.Row="2">
+            <ListBox x:Name="WinList">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="IsSelected" Value="True"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="230"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0"
+                                   Grid.RowSpan="2"
+                                   Source="{Binding Image}"
+                                   Margin="2"
+                                   StretchDirection="DownOnly"/>
+                            <TextBlock Grid.Column="1"
+                                       Grid.Row="0"
+                                       FontSize="18"
+                                       Margin="2"
+                                       FontWeight="Bold"
+                                       Text="{Binding Title}"/>
+                            <StackPanel Grid.Column="1"
+                                        Grid.Row="1"
+                                        Orientation="Horizontal">
+                                <Button Content="Bring to front"
+                                        x:Name="WinBringToFront"
+                                        Click="WinBringToFront_Click"/>
+                                <Button Content="Close"
+                                        x:Name="WinClose"
+                                        Click="WinClose_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
     </Grid>
 </UserControl>
