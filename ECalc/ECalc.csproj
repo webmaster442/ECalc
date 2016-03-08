@@ -686,10 +686,6 @@
     <Resource Include="Images\100px\opamp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\large\opamp-inverting.png" />
-    <Resource Include="Images\large\opamp-noninvert.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\100px\chemistry.png" />
   </ItemGroup>
   <ItemGroup>
@@ -791,6 +787,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\50px\test.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\lm317-ireg.png" />
+    <Resource Include="Images\large\lm317-vreg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\Op-Amp_Differential_Amplifier.png" />
+    <Resource Include="Images\large\Op-Amp_Inverting_Amplifier.png" />
+    <Resource Include="Images\large\Op-Amp_Non-Inverting_Amplifier.png" />
+    <Resource Include="Images\large\Op-Amp_Summing_Amplifier.png" />
+    <Resource Include="Images\large\Op-Amp_Unity-Gain_Buffer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

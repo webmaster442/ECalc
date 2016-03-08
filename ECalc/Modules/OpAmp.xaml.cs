@@ -46,6 +46,18 @@ namespace ECalc.Modules
                     vout = a * InvertVin.Value;
                     TbOutput.Text = string.Format("Vout = {0} V, Gain = {1}", vout, a);
                     break;
+                case 2:
+                    vout = UgainVin.Value;
+                    TbOutput.Text = string.Format("Vout = {0} V, Gain = {1}", vout, 1);
+                    break;
+                case 3:
+                    double v2 = (DifRf.Value + DifR1.Value) * DifRg.Value;
+                    v2 /= (DifRg.Value + DifR2.Value) * DifR1.Value;
+                    v2 *= DifV2.Value;
+                    double v1 = (DifRf.Value / DifR1.Value) * DifV1.Value;
+                    vout = v2 - v1;
+                    TbOutput.Text = string.Format("Vout = {0} V", vout);
+                    break;
             }
         }
 

@@ -27,7 +27,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
                         <scontrols:PrefixInput UnitText="V"
-                                               LabelText="Vin"
+                                               LabelText="Vi"
                                                Value="1"
                                                x:Name="NonInvertVin"
                                                ValueChanged="ValueChanged"/>
@@ -42,7 +42,7 @@
                                                x:Name="NonInvertR2"
                                                ValueChanged="ValueChanged"/>
                     </StackPanel>
-                    <Image Source="../Images/large/opamp-noninvert.png"
+                    <Image Source="../Images/large/Op-Amp_Non-Inverting_Amplifier.png"
                            Grid.Column="1"
                            StretchDirection="DownOnly"/>
                 </Grid>
@@ -55,7 +55,7 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
                         <scontrols:PrefixInput UnitText="V"
-                                               LabelText="Vin"
+                                               LabelText="Vi"
                                                Value="1"
                                                x:Name="InvertVin"
                                                ValueChanged="ValueChanged"/>
@@ -70,7 +70,70 @@
                                                x:Name="InvertRin"
                                                ValueChanged="ValueChanged"/>
                     </StackPanel>
-                    <Image Source="../Images/large/opamp-inverting.png"
+                    <Image Source="../Images/large/Op-Amp_Inverting_Amplifier.png"
+                           Grid.Column="1"
+                           StretchDirection="DownOnly"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Uity Gain">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <scontrols:PrefixInput UnitText="V"
+                                               LabelText="Vin"
+                                               Value="1"
+                                               x:Name="UgainVin"
+                                               ValueChanged="ValueChanged"/>
+                    </StackPanel>
+                    <Image Source="../Images/large/Op-Amp_Unity-Gain_Buffer.png"
+                           Grid.Column="1"
+                           StretchDirection="DownOnly"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Differential">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer Grid.Column="0">
+                        <StackPanel>
+                            <scontrols:PrefixInput UnitText="V"
+                                                   LabelText="V1"
+                                                   Value="1"
+                                                   x:Name="DifV1"
+                                                   ValueChanged="ValueChanged"/>
+                            <scontrols:PrefixInput UnitText="V"
+                                                   LabelText="V2"
+                                                   Value="1"
+                                                   x:Name="DifV2"
+                                                   ValueChanged="ValueChanged"/>
+                            <scontrols:PrefixInput UnitText="Ω"
+                                                   LabelText="R1"
+                                                   Value="1000"
+                                                   x:Name="DifR1"
+                                                   ValueChanged="ValueChanged"/>
+                            <scontrols:PrefixInput UnitText="Ω"
+                                                   LabelText="R2"
+                                                   Value="1000"
+                                                   x:Name="DifR2"
+                                                   ValueChanged="ValueChanged"/>
+                            <scontrols:PrefixInput UnitText="Ω"
+                                                   Value="100"
+                                                   LabelText="Rf"
+                                                   x:Name="DifRf"
+                                                   ValueChanged="ValueChanged"/>
+                            <scontrols:PrefixInput UnitText="Ω"
+                                                   Value="100"
+                                                   LabelText="Rg"
+                                                   x:Name="DifRg"
+                                                   ValueChanged="ValueChanged"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Image Source="../Images/large/Op-Amp_Differential_Amplifier.png"
                            Grid.Column="1"
                            StretchDirection="DownOnly"/>
                 </Grid>
