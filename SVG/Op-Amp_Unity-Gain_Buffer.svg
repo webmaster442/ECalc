@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -12,9 +13,9 @@
    height="100"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.46"
+   inkscape:version="0.91 r13725"
    version="1.0"
-   sodipodi:docname="Op-Amp Unity-Gain Buffer.svg"
+   sodipodi:docname="Op-Amp_Unity-Gain_Buffer.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape">
   <defs
      id="defs4">
@@ -232,18 +233,19 @@
      objecttolerance="10"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1"
-     inkscape:cx="148.3226"
-     inkscape:cy="49.755516"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="112.39768"
+     inkscape:cy="38.633194"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1399"
-     inkscape:window-height="874"
-     inkscape:window-x="33"
-     inkscape:window-y="0"
+     inkscape:window-width="1846"
+     inkscape:window-height="1057"
+     inkscape:window-x="66"
+     inkscape:window-y="-8"
      showguides="true"
-     inkscape:guide-bbox="true">
+     inkscape:guide-bbox="true"
+     inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
        id="grid2650"
@@ -289,7 +291,7 @@
        sodipodi:cy="62.5"
        sodipodi:rx="2.5"
        sodipodi:ry="2.5"
-       d="M 10,62.5 A 2.5,2.5 0 1 1 5,62.5 A 2.5,2.5 0 1 1 10,62.5 z"
+       d="m 10,62.5 a 2.5,2.5 0 0 1 -2.5,2.5 2.5,2.5 0 0 1 -2.5,-2.5 2.5,2.5 0 0 1 2.5,-2.5 2.5,2.5 0 0 1 2.5,2.5 z"
        transform="translate(30.939367,-120.85938)" />
     <path
        sodipodi:type="arc"
@@ -299,36 +301,32 @@
        sodipodi:cy="62.5"
        sodipodi:rx="2.5"
        sodipodi:ry="2.5"
-       d="M 10,62.5 A 2.5,2.5 0 1 1 5,62.5 A 2.5,2.5 0 1 1 10,62.5 z"
+       d="m 10,62.5 a 2.5,2.5 0 0 1 -2.5,2.5 2.5,2.5 0 0 1 -2.5,-2.5 2.5,2.5 0 0 1 2.5,-2.5 2.5,2.5 0 0 1 2.5,2.5 z"
        transform="translate(181.18936,-110.85938)" />
-    <g
-       transform="translate(-190.43816,-0.4724858)"
-       id="g4151">
-      <text
-         xml:space="preserve"
-         style="font-size:18px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Serif;-inkscape-font-specification:DejaVu Serif Italic"
-         x="199.89223"
-         y="-52.886894"
-         id="text4153"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan4155"
-           x="199.89223"
-           y="-52.886894">V<tspan
-   style="font-size:18px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:DejaVu Serif;-inkscape-font-specification:DejaVu Serif Italic"
-   id="tspan4157" /></tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:DejaVu Serif;-inkscape-font-specification:DejaVu Serif Italic"
-         x="209.77013"
-         y="-46.997822"
-         id="text4159"
-         sodipodi:linespacing="125%"><tspan
-           sodipodi:role="line"
-           id="tspan4161"
-           x="209.77013"
-           y="-46.997822">in</tspan></text>
-    </g>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4153"
+       y="-53.359379"
+       x="9.4540672"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif Italic';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="-53.359379"
+         x="9.4540672"
+         id="tspan4155"
+         sodipodi:role="line">V<tspan
+   id="tspan4157"
+   style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18px;line-height:125%;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif Italic';text-align:start;writing-mode:lr-tb;text-anchor:start" /></tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text4159"
+       y="-47.470306"
+       x="19.331966"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14px;line-height:125%;font-family:'DejaVu Serif';-inkscape-font-specification:'DejaVu Serif Italic';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       xml:space="preserve"><tspan
+         y="-47.470306"
+         x="19.331966"
+         id="tspan4161"
+         sodipodi:role="line">i</tspan></text>
     <g
        transform="matrix(1,0,0,-1,74.577554,-6.5820847)"
        id="g3808"
@@ -420,7 +418,7 @@
          id="g4542">
         <path
            transform="matrix(0.6666667,0,0,0.6666667,24.734373,79.9014)"
-           d="M 10,14.5 A 2.5,2.5 0 1 1 5,14.5 A 2.5,2.5 0 1 1 10,14.5 z"
+           d="m 10,14.5 a 2.5,2.5 0 0 1 -2.5,2.5 2.5,2.5 0 0 1 -2.5,-2.5 2.5,2.5 0 0 1 2.5,-2.5 2.5,2.5 0 0 1 2.5,2.5 z"
            sodipodi:ry="2.5"
            sodipodi:rx="2.5"
            sodipodi:cy="14.5"
@@ -428,6 +426,143 @@
            id="path4544"
            style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.99999994;stroke-linecap:square;stroke-linejoin:miter;marker:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
            sodipodi:type="arc" />
+      </g>
+    </g>
+    <g
+       class="OLE2"
+       id="g4463"
+       transform="matrix(0.03543307,0,0,0.03543307,-445.00731,-433.86988)">
+      <g
+         id="id11">
+        <text
+           class="TextShape"
+           id="text4466">
+          <tspan
+             class="TextParagraph"
+             font-size="422px"
+             font-style="italic"
+             font-weight="400"
+             id="tspan4468"
+             style="font-style:italic;font-weight:400;font-size:422px;font-family:'Liberation Serif', serif">
+            <tspan
+               class="TextPosition"
+               x="2050"
+               y="12239"
+               id="tspan4470" />
+            <tspan
+               class="TextPosition"
+               x="12906"
+               y="12470"
+               id="tspan4472">
+              <tspan
+                 id="tspan4474"
+                 style="fill:#000000;stroke:none">V</tspan>
+            </tspan>
+          </tspan>
+        </text>
+        <text
+           class="TextShape"
+           id="text4476">
+          <tspan
+             class="TextParagraph"
+             font-size="253px"
+             font-style="italic"
+             font-weight="400"
+             id="tspan4478"
+             style="font-style:italic;font-weight:400;font-size:253px;font-family:'Liberation Serif', serif">
+            <tspan
+               class="TextPosition"
+               x="12906"
+               y="12470"
+               id="tspan4480" />
+            <tspan
+               class="TextPosition"
+               x="13223"
+               y="12576"
+               id="tspan4482">
+              <tspan
+                 id="tspan4484"
+                 style="fill:#000000;stroke:none">out</tspan>
+            </tspan>
+          </tspan>
+        </text>
+        <text
+           class="TextShape"
+           id="text4486">
+          <tspan
+             class="TextParagraph"
+             font-size="422px"
+             font-weight="400"
+             id="tspan4488"
+             style="font-weight:400;font-size:422px;font-family:OpenSymbol">
+            <tspan
+               class="TextPosition"
+               x="13223"
+               y="12576"
+               id="tspan4490" />
+            <tspan
+               class="TextPosition"
+               x="13594"
+               y="12470"
+               id="tspan4492">
+              <tspan
+                 id="tspan4494"
+                 style="fill:#000000;stroke:none">=</tspan>
+            </tspan>
+          </tspan>
+        </text>
+        <text
+           class="TextShape"
+           id="text4496">
+          <tspan
+             class="TextParagraph"
+             font-size="422px"
+             font-style="italic"
+             font-weight="400"
+             id="tspan4498"
+             style="font-style:italic;font-weight:400;font-size:422px;font-family:'Liberation Serif', serif">
+            <tspan
+               class="TextPosition"
+               x="13594"
+               y="12470"
+               id="tspan4500" />
+            <tspan
+               class="TextPosition"
+               x="13911"
+               y="12470"
+               id="tspan4502">
+              <tspan
+                 id="tspan4504"
+                 style="fill:#000000;stroke:none">V</tspan>
+            </tspan>
+          </tspan>
+        </text>
+        <text
+           class="TextShape"
+           id="text4506">
+          <tspan
+             class="TextParagraph"
+             font-size="253px"
+             font-style="italic"
+             font-weight="400"
+             id="tspan4508"
+             style="font-style:italic;font-weight:400;font-size:253px;font-family:'Liberation Serif', serif">
+            <tspan
+               class="TextPosition"
+               x="13911"
+               y="12470"
+               id="tspan4510" />
+            <tspan
+               class="TextPosition"
+               x="14255"
+               y="12576"
+               id="tspan4512">
+              <tspan
+                 id="tspan4514"
+                 style="fill:#000000;stroke:none">i</tspan>
+            </tspan>
+          </tspan>
+        </text>
       </g>
     </g>
   </g>
