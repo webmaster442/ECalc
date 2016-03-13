@@ -175,6 +175,7 @@
       <DependentUpon>FloatWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\CryptoRNG.cs" />
+    <Compile Include="Lib\QuantumRandom.cs" />
     <Compile Include="Maths\Matrix.cs" />
     <Compile Include="Maths\NumberTester.cs" />
     <Compile Include="Maths\Probability.cs" />

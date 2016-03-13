@@ -1,4 +1,5 @@
 ﻿using ECalc.Lib;
+using Sublight.Utilities;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,21 +23,6 @@ namespace ECalc.Engineering
             });
         }
 
-        public static Task<string> RandomDoubles(int count)
-        {
-            return Task.Run(() =>
-            {
-                StringBuilder buffer = new StringBuilder();
-                Random r = new Random();
-                for (int i = 0; i < count; i++)
-                {
-                    buffer.Append(r.NextDouble());
-                    buffer.Append("\r\n");
-                }
-                return buffer.ToString();
-            });
-        }
-
         public static Task<string> CryptoRandom(int count, int minimum, int maximum)
         {
             return Task.Run(() =>
@@ -52,7 +38,20 @@ namespace ECalc.Engineering
             });
         }
 
-
+        public static Task<string> QuantumRandom(int count, int minimum, int maximum)
+        {
+            return Task.Run(() =>
+            {
+                StringBuilder buffer = new StringBuilder();
+                QuantumRandomNumberGenerator r = new QuantumRandomNumberGenerator();
+                for (int i = 0; i < count; i++)
+                {
+                    buffer.Append(r.Next(minimum, maximum));
+                    buffer.Append("\r\n");
+                }
+                return buffer.ToString();
+            });
+        }
 
         public static Task<string> LoremIpsum(int minWords, int maxWords, int minSentences, int maxSentences, int numParagraphs)
         {

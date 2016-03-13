@@ -14,6 +14,13 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="350"/>
                 </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+                           Text="Generating..."
+                           FontSize="72"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Visibility="Collapsed"
+                           x:Name="WaitText"/>
                 <TextBox Grid.Column="0"
                          FontSize="16"
                          Style="{StaticResource BorderlessTextBox}"
@@ -51,6 +58,9 @@
                             <RadioButton Content="Cryptographic"
                                          Margin="5"
                                          x:Name="CbCrypto"/>
+                            <RadioButton Content="Quantum (Internet)"
+                                         Margin="5"
+                                         x:Name="CbQuantum"/>
                         </StackPanel>
                     </GroupBox>
                     <Button Content="Generate!"

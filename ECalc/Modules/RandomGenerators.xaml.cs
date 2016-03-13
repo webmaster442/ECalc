@@ -19,20 +19,28 @@ namespace ECalc.Modules
         {
             try
             {
-                if (CbNormal.IsChecked == true)
+                WaitText.Visibility = Visibility.Visible;
+                if (CbNormal.IsChecked.Value)
                 {
                     var response = await RandomGens.DefaultRandom((int)Count.Value, (int)Minimum.Value, (int)Maximum.Value);
                     TbResults.Text = response;
                 }
-                else
+                else if (CbCrypto.IsChecked.Value)
                 {
                     var response = await RandomGens.CryptoRandom((int)Count.Value, (int)Minimum.Value, (int)Maximum.Value);
                     TbResults.Text = response;
                 }
+                else
+                {
+                    var response = await RandomGens.QuantumRandom((int)Count.Value, (int)Minimum.Value, (int)Maximum.Value);
+                    TbResults.Text = response;
+                }
+                WaitText.Visibility = Visibility.Collapsed;
             }
             catch (Exception ex)
             {
                 MainWindow.ErrorDialog(ex.Message);
+                WaitText.Visibility = Visibility.Collapsed;
             }
         }
 
