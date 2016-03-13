@@ -364,13 +364,13 @@ namespace ECalc.Classes
                     HadOwerFlow = false;
                     return sres;
                 case BitEngineModes.Unsigned8bit:
-                    HadOwerFlow = (ures > byte.MaxValue || ures < byte.MinValue);
+                    HadOwerFlow = (ures > byte.MaxValue);
                     return (ures & 0x00000000000000FF);
                 case BitEngineModes.Unsigned16bit:
-                    HadOwerFlow = (ures > ushort.MaxValue || ures < ushort.MinValue);
+                    HadOwerFlow = (ures > ushort.MaxValue);
                     return (ures & 0x000000000000FFFF);
                 case BitEngineModes.Unsigned32bit:
-                    HadOwerFlow = (ures > uint.MaxValue || ures < uint.MinValue);
+                    HadOwerFlow = (ures > uint.MaxValue);
                     return (ures & 0x00000000FFFFFFFF);
                 case BitEngineModes.Unsigned64bit:
                     HadOwerFlow = false;
