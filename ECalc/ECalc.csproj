@@ -189,6 +189,9 @@
     <Compile Include="Modules\DateTimeCalc.xaml.cs">
       <DependentUpon>DateTimeCalc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\GreekAlphabet.xaml.cs">
+      <DependentUpon>GreekAlphabet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
@@ -389,6 +392,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\DateTimeCalc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\GreekAlphabet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -799,6 +806,9 @@
     <Resource Include="Images\large\Op-Amp_Non-Inverting_Amplifier.png" />
     <Resource Include="Images\large\Op-Amp_Summing_Amplifier.png" />
     <Resource Include="Images\large\Op-Amp_Unity-Gain_Buffer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\100px\alphabet.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

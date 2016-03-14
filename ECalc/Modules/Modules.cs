@@ -486,4 +486,32 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8Red; }
         }
     }
+
+    public class GreekAlpha : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "IT Tools"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Greek Alphabet"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new GreekAlphabet();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/alphabet.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.W8Indigo; }
+        }
+    }
 }
