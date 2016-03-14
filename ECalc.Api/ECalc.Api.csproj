@@ -80,6 +80,7 @@
     <Compile Include="Extensions\WPF.cs" />
     <Compile Include="ModuleLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TileColor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ECalc.Api.pfx" />
