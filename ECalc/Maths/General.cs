@@ -283,8 +283,9 @@ namespace ECalc.Maths
         public object Run(params object[] arguments)
         {
             double b = Convert.ToDouble(arguments[0]);
+            if (b < 0) throw new ArgumentException("Argument must be positive");
             double result = 1;
-            for (int i = 1; i < b; i++)
+            for (int i = 1; i <= b; i++)
             {
                 result *= i;
             }
