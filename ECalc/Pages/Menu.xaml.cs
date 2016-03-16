@@ -52,5 +52,10 @@ namespace ECalc.Pages
             WindowsManager wm = new WindowsManager();
             MainWindow.SwithToControl(wm);
         }
+
+        private void BtnChangeTheme_Click(object sender, RoutedEventArgs e)
+        {
+            App.NextTheme();
+        }
     }
 }

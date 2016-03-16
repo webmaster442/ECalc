@@ -11,13 +11,25 @@ namespace ECalc
     /// </summary>
     public partial class App : Application
     {
+        private static Accent[] _accents;
+        private static Random _random;
+        private static int _index;
+
+        public static void NextTheme()
+        {
+            int next = _index + 1;
+            if (next > _accents.Length - 1) next = 0;
+            _index = next;
+            ThemeManager.ChangeAppStyle(Application.Current, _accents[_index], ThemeManager.GetAppTheme("BaseLight"));
+        }
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
             var theme = ThemeManager.DetectAppStyle(Application.Current);
 
-            var accents = new Accent[]
+            _accents = new Accent[]
             {
                 ThemeManager.GetAccent("Red"), ThemeManager.GetAccent("Green"), ThemeManager.GetAccent("Blue"),
                 ThemeManager.GetAccent("Purple"), ThemeManager.GetAccent("Orange"), ThemeManager.GetAccent("Lime"),
@@ -29,11 +41,9 @@ namespace ECalc
                 ThemeManager.GetAccent("Taupe"), ThemeManager.GetAccent("Sienna")
             };
 
-            Random r = new Random();
-            int index = r.Next(0, accents.Length);
-
-            ThemeManager.ChangeAppStyle(Application.Current, accents[index], ThemeManager.GetAppTheme("BaseLight"));
-
+            _random = new Random();
+            _index = _random.Next(0, _accents.Length);
+            ThemeManager.ChangeAppStyle(Application.Current, _accents[_index], ThemeManager.GetAppTheme("BaseLight"));
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -21,6 +21,12 @@
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Right">
+            <api:ImageButton Content="Change Theme"
+                             Image="/ECalc;component/Images/50px/theme.png"
+                             ImageHeight="35"
+                             ImageWidth="35"
+                             x:Name="BtnChangeTheme"
+                             Click="BtnChangeTheme_Click"/>
             <api:ImageButton Content="Window manager"
                              Image="/ECalc;component/Images/50px/windowmanager.png"
                              ImageHeight="35"
