@@ -11,9 +11,10 @@
         <Style TargetType="Button">
             <Setter Property="Height" Value="50"/>
             <Setter Property="MinWidth" Value="70"/>
-            <Setter Property="Margin" Value="3"/>
+            <Setter Property="Margin" Value="2.5"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
         </Style>
     </UserControl.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto"
@@ -23,44 +24,44 @@
                     HorizontalAlignment="Right">
             <api:ImageButton Content="Change Theme"
                              Image="/ECalc;component/Images/50px/theme.png"
-                             ImageHeight="35"
-                             ImageWidth="35"
+                             ImageHeight="32"
+                             ImageWidth="32"
                              x:Name="BtnChangeTheme"
                              Click="BtnChangeTheme_Click"/>
             <api:ImageButton Content="Window manager"
                              Image="/ECalc;component/Images/50px/windowmanager.png"
-                             ImageHeight="35"
-                             ImageWidth="35"
+                             ImageHeight="32"
+                             ImageWidth="32"
                              x:Name="BtnWindManager"
                              Click="BtnWindManager_Click"/>
             <api:ImageButton Content="Support development"
                              Image="/ECalc;component/Images/50px/donate.png"
-                             ImageHeight="35"
-                             ImageWidth="35"
+                             ImageHeight="32"
+                             ImageWidth="32"
                              x:Name="BtnDonate"
                              Click="BtnDonate_Click"/>
             <api:ImageButton Content="About"
                              Image="/ECalc;component/Images/50px/about.png"
-                             ImageHeight="35"
-                             ImageWidth="35"
+                             ImageHeight="32"
+                             ImageWidth="32"
                              x:Name="BtnAbout"
                              Click="BtnAbout_Click"/>
             <api:ImageButton Content="Documentation"
                              Image="/ECalc;component/Images/50px/book.png"
-                             ImageHeight="35"
-                             ImageWidth="35"
+                             ImageHeight="32"
+                             ImageWidth="32"
                              x:Name="BtnDocs"
                              Click="BtnDocs_Click"/>
             <api:ImageButton Content="Report Bug"
                              Image="/ECalc;component/Images/50px/issue.png"
-                             ImageHeight="35"
-                             ImageWidth="35"
+                             ImageHeight="32"
+                             ImageWidth="32"
                              x:Name="BtnIssue"
                              Click="BtnIssue_Click"/>
             <api:ImageButton Content="Screen Keyboard"
                              Image="/ECalc;component/Images/50px/keyboard.png"
-                             ImageHeight="35"
-                             ImageWidth="35"
+                             ImageHeight="32"
+                             ImageWidth="32"
                              x:Name="BtnScreenKeyboard"
                              Click="BtnScreenKeyboard_Click"/>
         </StackPanel>
