@@ -1,0 +1,49 @@
+﻿<Window x:Class="ECalc.SplashScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ECalc"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        Title="SplashScreen"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Height="300" Width="576">
+    <Border Background="#2980b9"
+            BorderBrush="#3498db"
+            BorderThickness="3">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Image Source="Images/100px/math.png"
+                   StretchDirection="DownOnly"
+                   Grid.RowSpan="2"
+                   Width="110"
+                   Height="110"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Bottom"
+                   Margin="10"/>
+            <TextBlock Text="Engineers Calculator"
+                       VerticalAlignment="Center"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       FontSize="59"
+                       Foreground="#ecf0f1"/>
+            <TextBlock Text="v. 1.0"
+                       Grid.Row="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Foreground="#ecf0f1"
+                       Margin="5,0"
+                       x:Name="VersionString"
+                       FontSize="35"/>
+        </Grid>
+    </Border>
+</Window>

@@ -10,6 +10,7 @@
                  x:Name="MainWin"
                  BorderThickness="1"
                  ResizeMode="CanMinimize"
+                 Loaded="MainWin_Loaded"
                  Closing="MetroWindow_Closing"
                  Icon="Images/100px/math.png">
     <Window.TaskbarItemInfo>

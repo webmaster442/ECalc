@@ -100,7 +100,7 @@ namespace ECalc
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
+        { 
             if (TransitionControl.Content is Calculator)
             {
                 ConfigFileHelpers.SerializeFunctionUsageStats();
@@ -124,6 +124,11 @@ namespace ECalc
         private void ThumbWinManager_Click(object sender, EventArgs e)
         {
             SwithToControl(new WindowsManager());
+        }
+
+        private void MainWin_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.Splash.Close();
         }
     }
 }

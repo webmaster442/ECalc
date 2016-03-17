@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
+using System.Linq;
 
 namespace ECalc.Classes
 {
@@ -69,6 +72,8 @@ namespace ECalc.Classes
             set;
         }
 
+        private static List<IFunction> _functions;
+
         /// <summary>
         /// Static ctor
         /// </summary>
@@ -79,6 +84,29 @@ namespace ECalc.Classes
             HadOwerFlow = false;
             BitEngineMode = BitEngineModes.Signed32bit;
             PreferPrefixes = false;
+
+            _functions = new List<IFunction>();
+
+            try
+            {
+                var q = from t in Assembly.GetExecutingAssembly().GetTypes()
+                        where
+                        t.IsClass &&
+                        t.Namespace == "ECalc.Maths" &&
+                        t.GetInterfaces().Contains(typeof(IFunction))
+                        select t;
+
+                foreach (var item in q)
+                {
+                    var fnc = (IFunction)Activator.CreateInstance(item);
+                    _functions.Add(fnc);
+                }
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
+
         }
     }
 }

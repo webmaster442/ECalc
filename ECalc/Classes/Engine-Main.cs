@@ -19,7 +19,6 @@ namespace ECalc.Classes
         const string operators = @"(\+)|(\-)|(\÷)|(\×)|(\*)|(\/)|(\()|(\))|(\;)|(~)|(mod)|(and)|(or)|(not)|(xor)|(eq)|(shr)|(shl)|(ror)|(rol)";
         const string exponentfix = @"[eE]\s+([+-~])\s+";
 
-        private static List<IFunction> _functions;
         private PrefixDictionary _prefixes;
 
         /// <summary>
@@ -36,32 +35,8 @@ namespace ECalc.Classes
         /// </summary>
         public Engine()
         {
-            _functions = new List<IFunction>();
-
-            try
-            {
-                var q = from t in Assembly.GetExecutingAssembly().GetTypes()
-                        where
-                        t.IsClass &&
-                        t.Namespace == "ECalc.Maths" &&
-                        t.GetInterfaces().Contains(typeof(IFunction))
-                        select t;
-
-                foreach (var item in q)
-                {
-                    var fnc = (IFunction)Activator.CreateInstance(item);
-                    _functions.Add(fnc);
-                }
-            }
-            catch (Exception ex)
-            {
-                MainWindow.ErrorDialog(ex.Message);
-            }
-
             _prefixes = new PrefixDictionary();
-
             Ans = 0.0d; //double
-
         }
 
         public static bool IsOperator(string s)

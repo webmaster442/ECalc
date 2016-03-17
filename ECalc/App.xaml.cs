@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace ECalc
@@ -15,6 +16,8 @@ namespace ECalc
         private static Random _random;
         private static int _index;
 
+        public static SplashScreen Splash { get; private set; }
+
         public static void NextTheme()
         {
             int next = _index + 1;
@@ -25,12 +28,18 @@ namespace ECalc
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            Splash = new SplashScreen();
+            Splash.Show();
 
-            var theme = ThemeManager.DetectAppStyle(Application.Current);
-
-            _accents = new Accent[]
+            var loadtask = new Task(() =>
             {
+                //here to do long stuff;
+                AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+                var theme = ThemeManager.DetectAppStyle(Application.Current);
+
+                _accents = new Accent[]
+                {
                 ThemeManager.GetAccent("Red"), ThemeManager.GetAccent("Green"), ThemeManager.GetAccent("Blue"),
                 ThemeManager.GetAccent("Purple"), ThemeManager.GetAccent("Orange"), ThemeManager.GetAccent("Lime"),
                 ThemeManager.GetAccent("Emerald"), ThemeManager.GetAccent("Teal"), ThemeManager.GetAccent("Cyan"),
@@ -39,11 +48,20 @@ namespace ECalc
                 ThemeManager.GetAccent("Amber"), ThemeManager.GetAccent("Yellow"), ThemeManager.GetAccent("Brown"),
                 ThemeManager.GetAccent("Olive"), ThemeManager.GetAccent("Steel"), ThemeManager.GetAccent("Mauve"),
                 ThemeManager.GetAccent("Taupe"), ThemeManager.GetAccent("Sienna")
-            };
+                };
 
-            _random = new Random();
-            _index = _random.Next(0, _accents.Length);
-            ThemeManager.ChangeAppStyle(Application.Current, _accents[_index], ThemeManager.GetAppTheme("BaseLight"));
+                _random = new Random();
+                _index = _random.Next(0, _accents.Length);
+                ThemeManager.ChangeAppStyle(Application.Current, _accents[_index], ThemeManager.GetAppTheme("BaseLight"));
+            });
+            loadtask.ContinueWith(t =>
+            {
+                MainWindow mw = new MainWindow();
+                MainWindow = mw;
+                mw.Show();
+
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+            loadtask.Start();
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
