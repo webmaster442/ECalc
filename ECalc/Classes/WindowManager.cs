@@ -41,15 +41,26 @@ namespace ECalc.Classes
         /// <summary>
         /// Closes all child windows
         /// </summary>
-        public static void CloseAll()
+        /// <returns>true, if all child windows has been closed</returns>
+        public static bool CloseAll()
         {
-            while (_childs.Count > 0)
+            if (_childs.Count > 0)
             {
-                var child = _childs[0];
-                _childs.RemoveAt(0);
-                child.Close();
-                child = null;
+                var question = MessageBox.Show("Close all open windows ?", "Close Windows", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (question == MessageBoxResult.Yes)
+                {
+                    while (_childs.Count > 0)
+                    {
+                        var child = _childs[0];
+                        _childs.RemoveAt(0);
+                        child.Close();
+                        child = null;
+                    }
+                    return true;
+                }
+                return false;
             }
+            return true;
         }
 
         /// <summary>

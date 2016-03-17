@@ -88,6 +88,7 @@ namespace ECalc
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = !WindowManager.CloseAll();
             if (TransitionControl.Content is Calculator)
             {
                 ConfigFileHelpers.SerializeFunctionUsageStats();
