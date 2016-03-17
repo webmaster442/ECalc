@@ -64,11 +64,11 @@ namespace ECalc
                 _index = _random.Next(0, _accents.Length);
                 ThemeManager.ChangeAppStyle(Application.Current, _accents[_index], ThemeManager.GetAppTheme("BaseLight"));
 
-                Modules = new ModuleLoader();
-                Modules.LoadFromNameSpace("ECalc.Modules");
             });
             loadtask.ContinueWith(t =>
             {
+                Modules = new ModuleLoader();
+                Modules.LoadFromNameSpace("ECalc.Modules");
                 MainWindow mw = new MainWindow();
                 MainWindow = mw;
                 mw.Show();
