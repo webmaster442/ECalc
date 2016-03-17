@@ -16,10 +16,7 @@ namespace ECalc
     {
         public MainWindow()
         {
-            Modules = new ModuleLoader();
-            Modules.LoadFromNameSpace("ECalc.Modules");
             InitializeComponent();
-
         }
 
         /// <summary>
@@ -63,15 +60,6 @@ namespace ECalc
         }
 
         /// <summary>
-        /// Property to acces application modules
-        /// </summary>
-        public static ModuleLoader Modules
-        {
-            get;
-            private set;
-        }
-
-        /// <summary>
         /// Shows a custom dialog
         /// </summary>
         /// <param name="dialog">dialog to display</param>
@@ -100,7 +88,7 @@ namespace ECalc
         }
 
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        { 
+        {
             if (TransitionControl.Content is Calculator)
             {
                 ConfigFileHelpers.SerializeFunctionUsageStats();

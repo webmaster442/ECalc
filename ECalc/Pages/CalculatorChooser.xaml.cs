@@ -22,7 +22,7 @@ namespace ECalc.Pages
             _designtime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (_designtime) return;
 
-            CategoryView.ItemsSource = MainWindow.Modules.Categories;
+            CategoryView.ItemsSource = App.Modules.Categories;
             CategoryView.SelectedIndex = 0;
         }
 
@@ -30,7 +30,7 @@ namespace ECalc.Pages
         {
             ModuleDisplay.Children.Clear();
             var filter = CategoryView.SelectedItem.ToString();
-            var matchs = MainWindow.Modules.Select(filter);
+            var matchs = App.Modules.Select(filter);
 
             foreach (var match in matchs)
             {
@@ -73,7 +73,7 @@ namespace ECalc.Pages
                     break;
                 default:
                     var title = t.ToolTip.ToString();
-                    control = MainWindow.Modules.RunByName(title);
+                    control = App.Modules.RunByName(title);
                     break;
             }
 

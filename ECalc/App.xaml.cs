@@ -1,4 +1,5 @@
-﻿using MahApps.Metro;
+﻿using ECalc.Api;
+using MahApps.Metro;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -17,6 +18,15 @@ namespace ECalc
         private static int _index;
 
         public static SplashScreen Splash { get; private set; }
+
+        /// <summary>
+        /// Property to acces application modules
+        /// </summary>
+        public static ModuleLoader Modules
+        {
+            get;
+            private set;
+        }
 
         public static void NextTheme()
         {
@@ -53,6 +63,9 @@ namespace ECalc
                 _random = new Random();
                 _index = _random.Next(0, _accents.Length);
                 ThemeManager.ChangeAppStyle(Application.Current, _accents[_index], ThemeManager.GetAppTheme("BaseLight"));
+
+                Modules = new ModuleLoader();
+                Modules.LoadFromNameSpace("ECalc.Modules");
             });
             loadtask.ContinueWith(t =>
             {
