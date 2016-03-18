@@ -19,9 +19,12 @@ namespace ECalc.Controls
         private EditNewVariableDialog _editdialog;
         private bool _designtime;
 
+        private int _tempcounter;
+
         public MemoryManagement()
         {
             InitializeComponent();
+            _tempcounter = 1;
             _designtime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (_designtime) return;
             _memory = new ObservableCollection<MemoryItem>();
@@ -64,6 +67,28 @@ namespace ECalc.Controls
                 int index = _memory.IndexOf(query);
                 _memory[index].Value = value;
             }
+        }
+
+        public void PushTemp(object value)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                _memory.Add(new MemoryItem("$arg" + _tempcounter.ToString(), value));
+                _tempcounter++;
+            });
+        }
+
+        public void ClearTemp()
+        {
+            for (int i=_tempcounter; i>=1; i--)
+            {
+                var item = (from itm in _memory where
+                            itm.Name == "$arg" + _tempcounter.ToString()
+                            select itm).FirstOrDefault();
+
+                _memory.Remove(item);
+            }
+            _tempcounter = 1;
         }
 
         /// <summary>

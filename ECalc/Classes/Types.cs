@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 
 namespace ECalc.Classes
 {
@@ -135,6 +130,17 @@ namespace ECalc.Classes
         /// </summary>
         /// <param name="value">value of variable</param>
         void SetItem(object value);
+
+        /// <summary>
+        /// Push a variable as a temp
+        /// </summary>
+        /// <param name="value">value</param>
+        void PushTemp(object value);
+
+        /// <summary>
+        /// Clear temp variables
+        /// </summary>
+        void ClearTemp();
     }
 
     /// <summary>
@@ -191,6 +197,7 @@ namespace ECalc.Classes
         Number,
         Operator,
         Function,
+        UserFunction,
         LeftB,
         RightB,
         Seperator,

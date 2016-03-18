@@ -402,10 +402,12 @@ namespace ECalc.Pages
     internal class SimpleMemmMan : Classes.IMemManager
     {
         private Dictionary<string, object> _mem;
+        private int _TempCounter;
 
         public SimpleMemmMan()
         {
             _mem = new Dictionary<string, object>();
+            _TempCounter = 1;
         }
 
         public object GetItem(string name)
@@ -427,6 +429,22 @@ namespace ECalc.Pages
         {
             if (_mem.ContainsKey(name)) _mem[name] = value;
             else _mem.Add(name, value);
+        }
+
+        public void ClearTemp()
+        {
+            //Befejezni itt ezt a fost!
+            for (int i=_TempCounter; i>=1; i--)
+            {
+                _mem.Remove("$arg" + _TempCounter.ToString());
+            }
+            _TempCounter = 1;
+        }
+
+        public void PushTemp(object value)
+        {
+            _mem["$arg" + _TempCounter.ToString()] = value;
+            _TempCounter++;
         }
     }
 }

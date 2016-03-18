@@ -163,6 +163,16 @@ namespace ECalc.Controls
             else return MemMan.GetItem(name);
         }
 
+        public void PushTemp(object value)
+        {
+            MemMan.PushTemp(value);
+        }
+
+        public void ClearTemp()
+        {
+            MemMan.ClearTemp();
+        }
+
         public string[] ListRegisters(string query)
         {
             return MemMan.ListRegisters(query);

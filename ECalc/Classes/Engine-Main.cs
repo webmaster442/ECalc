@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -36,6 +35,14 @@ namespace ECalc.Classes
         public Engine()
         {
             _prefixes = new PrefixDictionary();
+
+            _userfunctions.Add(new UserFuntion()
+            {
+                Name = "Test",
+                ArgCount = 2,
+                Commands = "$arg1 - $arg2"
+            });
+
             Ans = 0.0d; //double
         }
 
@@ -46,7 +53,17 @@ namespace ECalc.Classes
 
         private bool IsFunction(string s)
         {
-            var q = (from f in _functions where string.Compare(f.Name, s, StringComparison.CurrentCultureIgnoreCase) == 0 select f).FirstOrDefault();
+            var q = (from f in _functions where
+                     string.Compare(f.Name, s, StringComparison.CurrentCultureIgnoreCase) == 0
+                     select f).FirstOrDefault();
+            return q != null;
+        }
+
+        private bool IsUserFunction(string s)
+        {
+            var q = (from f in _userfunctions where
+                     string.Compare(f.Name, s, StringComparison.CurrentCultureIgnoreCase) == 0
+                     select f).FirstOrDefault();
             return q != null;
         }
 
@@ -158,6 +175,11 @@ namespace ECalc.Classes
                         if (IsFunction(c))
                         {
                             temp = new Token(TokenType.Function, c);
+                            Stack.Push(temp);
+                        }
+                        else if (IsUserFunction(c))
+                        {
+                            temp = new Token(TokenType.UserFunction, c);
                             Stack.Push(temp);
                         }
                         else
@@ -298,6 +320,29 @@ namespace ECalc.Classes
             get { return _functions.ToArray(); }
         }
 
+        private object RunUserFunction(string name, Stack<object> result)
+        {
+            var fnc = (from i in _userfunctions where i.Name == name select i).FirstOrDefault();
+            List<object> args = new List<object>();
+            if (result.Count < fnc.ArgCount) throw new ArgumentException("Too few parameters for function");
+            else if (result.Count > (fnc.ArgCount + 1)) throw new ArgumentException("Too many parameters for function");
+            var array = result.ToArray();
+            for (int j = fnc.ArgCount -1; j >=0; j--)
+            {
+                result.Pop();
+                MemoryManager.PushTemp(array[j]);
+            }
+
+            var lines = fnc.Commands.Split('\r', '\n');
+            foreach (var line in lines)
+            {
+                if (string.IsNullOrEmpty(line)) continue;
+                Evaluate(line);
+            }
+
+            return Ans;
+        }
+
         /// <summary>
         /// Evaluates an RPN expression
         /// </summary>
@@ -366,6 +411,10 @@ namespace ECalc.Classes
                         args.Reverse();
                         object o = fnc.Run(args.ToArray());
                         result.Push(o);
+                        break;
+                    case TokenType.UserFunction:
+                        object user = RunUserFunction(token.Content, result);
+                        result.Push(user);
                         break;
                 }
             }

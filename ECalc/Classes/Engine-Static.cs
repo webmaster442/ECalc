@@ -72,7 +72,15 @@ namespace ECalc.Classes
             set;
         }
 
+        /// <summary>
+        /// Function list
+        /// </summary>
         private static List<IFunction> _functions;
+
+        /// <summary>
+        /// User function list
+        /// </summary>
+        private static List<UserFuntion> _userfunctions;
 
         /// <summary>
         /// Static ctor
@@ -86,6 +94,7 @@ namespace ECalc.Classes
             PreferPrefixes = false;
 
             _functions = new List<IFunction>();
+            _userfunctions = new List<UserFuntion>();
 
             try
             {
