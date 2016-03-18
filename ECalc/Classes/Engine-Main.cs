@@ -36,7 +36,7 @@ namespace ECalc.Classes
         {
             _prefixes = new PrefixDictionary();
 
-            _userfunctions.Add(new UserFuntion()
+            UserFunctions.Add(new UserFuntion()
             {
                 Name = "Test",
                 ArgCount = 2,
@@ -61,7 +61,7 @@ namespace ECalc.Classes
 
         private bool IsUserFunction(string s)
         {
-            var q = (from f in _userfunctions where
+            var q = (from f in UserFunctions where
                      string.Compare(f.Name, s, StringComparison.CurrentCultureIgnoreCase) == 0
                      select f).FirstOrDefault();
             return q != null;
@@ -322,7 +322,7 @@ namespace ECalc.Classes
 
         private object RunUserFunction(string name, Stack<object> result)
         {
-            var fnc = (from i in _userfunctions where i.Name == name select i).FirstOrDefault();
+            var fnc = (from i in UserFunctions where i.Name == name select i).FirstOrDefault();
             List<object> args = new List<object>();
             if (result.Count < fnc.ArgCount) throw new ArgumentException("Too few parameters for function");
             else if (result.Count > (fnc.ArgCount + 1)) throw new ArgumentException("Too many parameters for function");

@@ -80,7 +80,11 @@ namespace ECalc.Classes
         /// <summary>
         /// User function list
         /// </summary>
-        private static List<UserFuntion> _userfunctions;
+        public static List<UserFuntion> UserFunctions
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Static ctor
@@ -94,7 +98,7 @@ namespace ECalc.Classes
             PreferPrefixes = false;
 
             _functions = new List<IFunction>();
-            _userfunctions = new List<UserFuntion>();
+            UserFunctions = new List<UserFuntion>();
 
             try
             {
@@ -115,7 +119,7 @@ namespace ECalc.Classes
             {
                 MainWindow.ErrorDialog(ex.Message);
             }
-
+            ConfigFileHelpers.LoadUserFunctions();
         }
     }
 }

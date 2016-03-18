@@ -95,6 +95,7 @@ namespace ECalc
                 ConfigFileHelpers.SerializeConstantUsageStats();
                 Properties.Settings.Default.Save();
             }
+            ConfigFileHelpers.SaveUserFunctions();
         }
 
         private void ThumbMenu_Click(object sender, EventArgs e)

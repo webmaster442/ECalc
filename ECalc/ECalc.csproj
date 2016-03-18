@@ -206,6 +206,9 @@
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ProgramEditor.xaml.cs">
+      <DependentUpon>ProgramEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\RandomGenerators.xaml.cs">
       <DependentUpon>RandomGenerators.xaml</DependentUpon>
     </Compile>
@@ -415,6 +418,10 @@
     <Page Include="Modules\ne555Calc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\ProgramEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\RandomGenerators.xaml">
       <SubType>Designer</SubType>

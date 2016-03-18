@@ -1,7 +1,9 @@
 ﻿using ECalc.Controls;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace ECalc.Classes
 {
@@ -51,6 +53,41 @@ namespace ECalc.Classes
                 if (csv.Length > 1) ret.Add(csv[0], Convert.ToUInt32(csv[1]));
             }
             return ret;
+        }
+
+        public static void SaveUserFunctions()
+        {
+            try
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(UserFuntion[]));
+                using (var stream = File.Create("userprograms.xml"))
+                {
+                    xs.Serialize(stream, Engine.UserFunctions.ToArray());
+                }
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
+        }
+
+        public static void LoadUserFunctions()
+        {
+            try
+            {
+                if (!File.Exists("userprograms.xml")) return;
+                XmlSerializer xs = new XmlSerializer(typeof(UserFuntion[]));
+                using (var stream = File.OpenRead("userprograms.xml"))
+                {
+                    var items = (UserFuntion[])xs.Deserialize(stream);
+                    Engine.UserFunctions.Clear();
+                    Engine.UserFunctions.AddRange(items);
+                }
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
         }
     }
 }
