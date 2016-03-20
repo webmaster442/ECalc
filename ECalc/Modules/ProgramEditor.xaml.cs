@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ECalc.Classes;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ECalc.Modules
 {
@@ -23,6 +13,58 @@ namespace ECalc.Modules
         public ProgramEditor()
         {
             InitializeComponent();
+            UpdateBinding();
+        }
+
+        private void UpdateBinding()
+        {
+            LbFunctions.ItemsSource = null;
+            LbFunctions.ItemsSource = Engine.UserFunctions;
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TbName.Text))
+            {
+                MainWindow.ErrorDialog("Name can't be empty");
+                return;
+            }
+            if (string.IsNullOrEmpty(TbCode.Text))
+            {
+                MainWindow.ErrorDialog("Code can't be empty");
+                return;
+            }
+
+            UserFuntion f = new UserFuntion()
+            {
+                Name = TbName.Text,
+                Commands = TbCode.Text,
+                ArgCount = (int)NumArgCount.Value
+            };
+            Engine.UserFunctions.Add(f);
+            UpdateBinding();
+        }
+
+        private void LoadFunctionEditor(UserFuntion f)
+        {
+            TbName.Text = f.Name;
+            NumArgCount.Value = f.ArgCount;
+            TbCode.Text = f.Commands;
+        }
+
+        private void LbFunctions_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (LbFunctions.SelectedItem == null) return;
+            int index = LbFunctions.SelectedIndex;
+            LoadFunctionEditor(Engine.UserFunctions[index]);
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (LbFunctions.SelectedItem == null) return;
+            int index = LbFunctions.SelectedIndex;
+            Engine.UserFunctions.RemoveAt(index);
+            UpdateBinding();
         }
     }
 }

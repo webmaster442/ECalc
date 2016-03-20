@@ -117,7 +117,7 @@ namespace ECalc.Classes
                 {
                     ret.Add(new WindowData()
                     {
-                        Image = window.Thumbnail(),
+                        Image = window.ToImage(),
                         Title = window.Title
                     });
                 }

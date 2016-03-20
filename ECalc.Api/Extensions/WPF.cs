@@ -119,7 +119,7 @@ namespace ECalc.Api.Extensions
         /// </summary>
         /// <param name="w">Window that's thumbnail is needed</param>
         /// <returns>A bindable imagesource</returns>
-        public static ImageSource Thumbnail(this Window w)
+        public static ImageSource ToImage(this Window w)
         {
             var rtb = new RenderTargetBitmap((int)w.ActualWidth, (int)w.ActualHeight,
                                              96, 96, PixelFormats.Pbgra32);

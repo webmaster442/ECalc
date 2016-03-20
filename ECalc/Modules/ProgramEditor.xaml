@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0"
                    Grid.Column="0"
-                   Text="Functions"
+                   Text="Functions (Double Click to edit)"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
                    Margin="2"/>
@@ -30,7 +30,14 @@
                  Grid.Row="1"
                  Grid.Column="0"
                  Grid.RowSpan="3"
-                 Margin="2"/>
+                 Margin="2"
+                 MouseDoubleClick="LbFunctions_MouseDoubleClick">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <TextBlock Grid.Row="1"
                    Grid.Column="1"
                    Text="Name:"
@@ -68,10 +75,10 @@
             <Button Content="Delete Function"
                     x:Name="BtnDelete"
                     Width="200"
-                    Margin="5,0"/>
+                    Margin="5,0" Click="BtnDelete_Click"/>
             <Button Content="Save"
                     x:Name="BtnSave"
-                    Width="200"/>
+                    Width="200" Click="BtnSave_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
