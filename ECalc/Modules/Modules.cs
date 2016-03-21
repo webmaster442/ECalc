@@ -491,7 +491,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return "Calculator"; }
         }
 
         public override string ModuleName
@@ -512,6 +512,29 @@ namespace ECalc.Modules
         public override int Color
         {
             get { return (int)TileColor.W8Indigo; }
+        }
+    }
+
+    public class Editor : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return "Calculator"; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Program Editor"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new ProgramEditor();
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.FlatEmerald; }
         }
     }
 }
