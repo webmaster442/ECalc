@@ -10,7 +10,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return ModuleCategories.IT; }
         }
 
         public override string ModuleName
@@ -38,7 +38,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Analog Electronics"; }
+            get { return ModuleCategories.Analog; }
         }
 
         public override string ModuleName
@@ -66,7 +66,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Digital Electrinics"; }
+            get { return ModuleCategories.Digital; }
         }
 
         public override string ModuleName
@@ -94,7 +94,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return ModuleCategories.IT; }
         }
 
         public override string ModuleName
@@ -122,7 +122,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Analog Electronics"; }
+            get { return ModuleCategories.Analog; }
         }
 
         public override string ModuleName
@@ -150,7 +150,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Analog Electronics"; }
+            get { return ModuleCategories.Analog; }
         }
 
         public override string ModuleName
@@ -178,7 +178,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Analog Electronics"; }
+            get { return ModuleCategories.Analog; }
         }
 
         public override string ModuleName
@@ -207,7 +207,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Analog Electronics"; }
+            get { return ModuleCategories.Analog; }
         }
 
         public override string ModuleName
@@ -235,7 +235,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return ModuleCategories.IT; }
         }
 
         public override string ModuleName
@@ -263,7 +263,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Digital Electrinics"; }
+            get { return ModuleCategories.Digital; }
         }
 
         public override string ModuleName
@@ -291,7 +291,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return ModuleCategories.IT; }
         }
 
         public override string ModuleName
@@ -319,7 +319,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Analog Electronics"; }
+            get { return ModuleCategories.Analog; }
         }
 
         public override string ModuleName
@@ -347,7 +347,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Mechanics"; }
+            get { return ModuleCategories.Mechanics; }
         }
 
         public override string ModuleName
@@ -375,7 +375,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Mechanics"; }
+            get { return ModuleCategories.Mechanics; }
         }
 
         public override string ModuleName
@@ -403,7 +403,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return ModuleCategories.IT; }
         }
 
         public override string ModuleName
@@ -435,7 +435,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return ModuleCategories.IT; }
         }
 
         public override string ModuleName
@@ -463,7 +463,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "IT Tools"; }
+            get { return ModuleCategories.IT; }
         }
 
         public override string ModuleName
@@ -491,7 +491,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Calculator"; }
+            get { return ModuleCategories.Calculator; }
         }
 
         public override string ModuleName
@@ -519,7 +519,7 @@ namespace ECalc.Modules
     {
         public override string ModuleCategory
         {
-            get { return "Calculator"; }
+            get { return ModuleCategories.Calculator; }
         }
 
         public override string ModuleName
