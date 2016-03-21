@@ -35,14 +35,6 @@ namespace ECalc.Classes
         public Engine()
         {
             _prefixes = new PrefixDictionary();
-
-            UserFunctions.Add(new UserFuntion()
-            {
-                Name = "Test",
-                ArgCount = 2,
-                Commands = "$arg1 - $arg2"
-            });
-
             Ans = 0.0d; //double
         }
 

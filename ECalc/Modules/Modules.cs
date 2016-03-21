@@ -532,6 +532,11 @@ namespace ECalc.Modules
             return new ProgramEditor();
         }
 
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/programeditor.png", UriKind.Relative)); }
+        }
+
         public override int Color
         {
             get { return (int)TileColor.FlatEmerald; }
