@@ -80,15 +80,18 @@ namespace ECalc.Controls
 
         public void ClearTemp()
         {
-            for (int i=_tempcounter; i>=1; i--)
+            Dispatcher.Invoke(() =>
             {
-                var item = (from itm in _memory where
-                            itm.Name == "$arg" + _tempcounter.ToString()
-                            select itm).FirstOrDefault();
+                for (int i = _tempcounter; i >= 1; i--)
+                {
+                    var item = (from itm in _memory where
+                                itm.Name == "$arg" + _tempcounter.ToString()
+                                select itm).FirstOrDefault();
 
-                _memory.Remove(item);
-            }
-            _tempcounter = 1;
+                    _memory.Remove(item);
+                }
+                _tempcounter = 1;
+            });
         }
 
         /// <summary>

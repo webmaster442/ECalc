@@ -34,7 +34,28 @@
                  MouseDoubleClick="LbFunctions_MouseDoubleClick">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
+                    <Grid Margin="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding Name}"
+                                   Grid.Row="0"
+                                   FontFamily="Courier New"
+                                   FontWeight="Bold"
+                                   FontSize="18"
+                                   Grid.ColumnSpan="2"/>
+                        <TextBlock Text="Arguments:"
+                                   Grid.Row="1"
+                                   Grid.Column="0"/>
+                        <TextBlock Text="{Binding ArgCount}"
+                                   Grid.Row="1"
+                                   Grid.Column="1"/>
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -61,11 +82,14 @@
                            Width="200"
                            HorizontalAlignment="Left"
                            VerticalAlignment="Center"/>
-        <TextBox x:Name="TbCode" Grid.Row="3"
+        <TextBox x:Name="TbCode"
+                 Grid.Row="3"
                  Grid.Column="1"
                  Grid.ColumnSpan="2"
                  AcceptsReturn="True"
-                 Margin="2">
+                 Margin="2"
+                 FontFamily="Courier New"
+                 FontSize="18">
         </TextBox>
         <StackPanel Grid.Row="4"
                     Grid.ColumnSpan="4"
@@ -76,7 +100,7 @@
                     x:Name="BtnDelete"
                     Width="200"
                     Margin="5,0" Click="BtnDelete_Click"/>
-            <Button Content="Save"
+            <Button Content="Save / Add"
                     x:Name="BtnSave"
                     Width="200" Click="BtnSave_Click"/>
         </StackPanel>

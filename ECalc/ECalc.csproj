@@ -151,6 +151,7 @@
     <Compile Include="Classes\FunctionPlotSource.cs" />
     <Compile Include="Classes\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
+    <Compile Include="Classes\SimpleMemMan.cs" />
     <Compile Include="Classes\UserFuntions.cs" />
     <Compile Include="Classes\WindowManager.cs" />
     <Compile Include="Controls\EditNewVariableDialog.xaml.cs">

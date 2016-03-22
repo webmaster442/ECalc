@@ -314,6 +314,7 @@ namespace ECalc.Classes
 
         private object RunUserFunction(string name, Stack<object> result)
         {
+            MemoryManager.ClearTemp();
             var fnc = (from i in UserFunctions where i.Name == name select i).FirstOrDefault();
             List<object> args = new List<object>();
             if (result.Count < fnc.ArgCount) throw new ArgumentException("Too few parameters for function");
@@ -329,6 +330,7 @@ namespace ECalc.Classes
             foreach (var line in lines)
             {
                 if (string.IsNullOrEmpty(line)) continue;
+                if (line.StartsWith("#")) continue; //comment
                 Evaluate(line);
             }
 
