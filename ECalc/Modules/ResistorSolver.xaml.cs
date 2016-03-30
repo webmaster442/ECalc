@@ -16,7 +16,7 @@ namespace ECalc.Modules
 
         private void BtnSolve_Click(object sender, RoutedEventArgs e)
         {
-            ResistorSeries serie = (ResistorSeries)SeriesSelector.SelectedIndex;
+            var serie = (ResistorSeries)SeriesSelector.SelectedIndex;
 
             if (RbCombination.IsChecked == true) TbResult.Text = ResistorValueSolver.Solve(TargetValue.Value, serie);
             else TbResult.Text = ResistorValueSolver.StandardResistorValueApproximation(TargetValue.Value, serie);

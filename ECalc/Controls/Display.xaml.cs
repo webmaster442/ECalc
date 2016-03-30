@@ -57,7 +57,7 @@ namespace ECalc.Controls
         {
             if (s == "Error") return s;
             string[] parts = s.Split(',');
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             int j = 0;
             for (int i = parts[0].Length - 1; i >= 0; i--)
             {
@@ -157,14 +157,14 @@ namespace ECalc.Controls
 
         private void BtnNumSys_Click(object sender, RoutedEventArgs e)
         {
-            NumberSystemDisplayDialog nd = new NumberSystemDisplayDialog();
+            var nd = new NumberSystemDisplayDialog();
             nd.SetDisplay(Engine.Ans);
             MainWindow.ShowDialog(nd);
         }
 
         private void BtnNumToText_Click(object sender, RoutedEventArgs e)
         {
-            NumberToTextDialog ntd = new NumberToTextDialog();
+            var ntd = new NumberToTextDialog();
             ntd.SetNumber(Engine.Ans);
             MainWindow.ShowDialog(ntd);
         }
@@ -176,7 +176,7 @@ namespace ECalc.Controls
             {
                 if (!Helpers.IsSpecialType(Engine.Ans))
                 {
-                    Fraction f = new Fraction((double)Engine.Ans);
+                    var f = new Fraction((double)Engine.Ans);
                     message = f.ToString();
                 }
             }
@@ -192,7 +192,7 @@ namespace ECalc.Controls
             string message = "Complex, Vector, Fraction and Matrix values not supported";
             if (!Helpers.IsSpecialType(Engine.Ans))
             {
-                NumberTester tester = new NumberTester();
+                var tester = new NumberTester();
                 tester.Test(Engine.Ans);
                 message = tester.ToString();
             }

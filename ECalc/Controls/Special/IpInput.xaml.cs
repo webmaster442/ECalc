@@ -19,7 +19,7 @@ namespace ECalc.Controls.Special
         {
             get
             {
-                IPAddress addr = new IPAddress(new byte[] { Convert.ToByte(Octet0.Value),
+                var addr = new IPAddress(new byte[] { Convert.ToByte(Octet0.Value),
                                                             Convert.ToByte(Octet1.Value),
                                                             Convert.ToByte(Octet2.Value),
                                                             Convert.ToByte(Octet3.Value) });

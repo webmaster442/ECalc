@@ -8,7 +8,7 @@ namespace ECalc.Classes
     /// </summary>
     internal class UnitConverter
     {
-        private Unit[] Distance, Flow, Area, Aceleration, Speed, Power, Pressure, Mass, Volume, Time, Temperature, FileSize;
+        private readonly Unit[] Distance, Flow, Area, Aceleration, Speed, Power, Pressure, Mass, Volume, Time, Temperature, FileSize;
 
         public UnitConverter()
         {
@@ -201,12 +201,12 @@ namespace ECalc.Classes
         /// <returns>a treeviewItem with sub items</returns>
         public TreeViewItem ListCategory(Unit[] Array, string Header, bool isexpanded = false)
         {
-            TreeViewItem itm = new TreeViewItem();
+            var itm = new TreeViewItem();
             itm.Header = Header;
             var ordered = (from i in Array orderby i.Name ascending select i).ToArray();
             foreach (var unit in ordered)
             {
-                TreeViewItem i = new TreeViewItem();
+                var i = new TreeViewItem();
                 i.Header = unit.Name;
                 itm.Items.Add(i);
             }

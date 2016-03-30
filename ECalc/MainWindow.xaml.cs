@@ -24,7 +24,7 @@ namespace ECalc
         /// <param name="control">A user control to show</param>
         public static void SwithToControl(UserControl control)
         {
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             if (main.TransitionControl.Content is Calculator)
             {
                 ConfigFileHelpers.SerializeFunctionUsageStats();
@@ -44,7 +44,7 @@ namespace ECalc
         /// <param name="error">error text</param>
         public static async void ErrorDialog(string error)
         {
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             await main.ShowMessageAsync("Error", error, MessageDialogStyle.Affirmative);
         }
 
@@ -54,7 +54,7 @@ namespace ECalc
         /// <param name="error">error text</param>
         public static async void ShowDialog(string title, string text, MessageDialogStyle style)
         {
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             await main.ShowMessageAsync(title, text, style);
         }
 
@@ -64,13 +64,13 @@ namespace ECalc
         /// <param name="dialog">dialog to display</param>
         public static async void ShowDialog(CustomDialog dialog)
         {
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             await main.ShowMetroDialogAsync(dialog);
         }
 
         public static void SetTitle(string titletext)
         {
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             main.Title = titletext;
         }
 

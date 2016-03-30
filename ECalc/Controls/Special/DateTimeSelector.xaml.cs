@@ -18,7 +18,7 @@ namespace ECalc.Controls.Special
         {
             get
             {
-                DateTime dt = (DateTime)DatePicker.SelectedDate;
+                var dt = (DateTime)DatePicker.SelectedDate;
                 return dt.Add(new TimeSpan((int)SelH.Value, (int)SelM.Value, (int)SelS.Value));
             }
             set

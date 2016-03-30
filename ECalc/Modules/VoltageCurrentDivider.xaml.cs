@@ -27,7 +27,7 @@ namespace ECalc.Modules
         {
             if (!_loaded) return;
 
-            PrefixInput pi = new PrefixInput();
+            var pi = new PrefixInput();
             pi.UnitText = "Ω";
             pi.LabelText = "R" + _counter.ToString();
             pi.ValueChanged += PrefixInput_ValueChanged;
@@ -53,7 +53,7 @@ namespace ECalc.Modules
             foreach (PrefixInput r in SpItems.Children) re += r.Value;
             double I = Uin.Value / re;
             TbResults.Clear();
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (PrefixInput r in SpItems.Children) sb.AppendFormat("{0} voltage: {1} V\r\n", r.LabelText, r.Value * I);
             TbResults.Text = sb.ToString();
         }
@@ -62,7 +62,7 @@ namespace ECalc.Modules
         {
             if (!_loaded) return;
 
-            PrefixInput pi = new PrefixInput();
+            var pi = new PrefixInput();
             pi.UnitText = "Ω";
             pi.LabelText = "R" + _ccounter.ToString();
             pi.ValueChanged += PrefixInput_ValueChanged2;
@@ -89,7 +89,7 @@ namespace ECalc.Modules
 
             double U = re * Iin.Value;
             TbCurrentResults.Clear();
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (PrefixInput r in SpCurrentItems.Children) sb.AppendFormat("{0} current: {1} A\r\n", r.LabelText, U / r.Value);
             TbCurrentResults.Text = sb.ToString();
         }

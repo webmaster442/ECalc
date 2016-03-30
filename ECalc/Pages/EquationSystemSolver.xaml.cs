@@ -43,7 +43,7 @@ namespace ECalc.Pages
             {
                 for (int j=0; j<_equations; j++)
                 {
-                    TextBox tx = new TextBox();
+                    var tx = new TextBox();
                     tx.Margin = new Thickness(3);
                     tx.Name = string.Format("Tb_{0}_{1}", i, j);
                     tx.Text = "0";
@@ -56,7 +56,7 @@ namespace ECalc.Pages
 
             for (int i=0; i<_equations; i++)
             {
-                TextBlock tx = new TextBlock();
+                var tx = new TextBlock();
                 tx.TextAlignment = TextAlignment.Center;
                 tx.Text = _labels[i];
                 Grid.SetRow(tx, 0);
@@ -64,7 +64,7 @@ namespace ECalc.Pages
                 EquationData.Children.Add(tx);
             }
 
-            TextBlock eq = new TextBlock();
+            var eq = new TextBlock();
             eq.Text = "=";
             eq.VerticalAlignment = VerticalAlignment.Center;
             eq.HorizontalAlignment = HorizontalAlignment.Center;
@@ -74,7 +74,7 @@ namespace ECalc.Pages
 
             for (int i=0; i<_equations; i++)
             {
-                TextBox tx = new TextBox();
+                var tx = new TextBox();
                 tx.Margin = new Thickness(3);
                 tx.Name = string.Format("Tb_{0}_{1}", _equations+1, i);
                 tx.Width = 80;
@@ -92,7 +92,7 @@ namespace ECalc.Pages
 
         private Matrix GetInputMatrix()
         {
-            Matrix m = new Matrix(_equations, _equations + 1);
+            var m = new Matrix(_equations, _equations + 1);
 
             var children = EquationData.FindChildren<TextBox>();
 
@@ -118,7 +118,7 @@ namespace ECalc.Pages
                 Matrix D = inputmatrix.TrimTo(_equations, _equations);
                 double detd = D.Determinant();
                 Matrix[] eqs = new Matrix[_equations];
-                StringBuilder outtext = new StringBuilder();
+                var outtext = new StringBuilder();
 
                 for (int i = 0; i < eqs.Length; i++)
                 {

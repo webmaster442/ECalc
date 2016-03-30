@@ -22,7 +22,7 @@ namespace ECalc.Controls.Special
 
         public LogicItem[] GetSelected()
         {
-            List<LogicItem> ret = new List<LogicItem>();
+            var ret = new List<LogicItem>();
             foreach (var item in MintermTableHelpers.GetMintermTableValues(Minterm2x))
             {
                 ret.Add(LogicItem.CreateFromMintermIndex(item.Key, 2, item.Value));
@@ -37,7 +37,7 @@ namespace ECalc.Controls.Special
 
         public void SetAll(bool? value)
         {
-            List<LogicItem> items = new List<LogicItem>();
+            var items = new List<LogicItem>();
             for (int i=0; i<3; i++)
             {
                 LogicItem lo = LogicItem.CreateFromMintermIndex(i, 2, value);

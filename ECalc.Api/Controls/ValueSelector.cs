@@ -94,7 +94,7 @@ namespace ECalc.Api.Controls
             Content.Children.Clear();
             for (int i = 0; i < Values.Length; i++)
             {
-                RadioButton r = new RadioButton();
+                var r = new RadioButton();
                 r.Content = Values[i];
                 r.ToolTip = Values[i];
                 r.Margin = new Thickness(3);
@@ -118,7 +118,7 @@ namespace ECalc.Api.Controls
     {
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
-            string list = value as string;
+            var list = value as string;
             if (list != null)
             {
                 var ret = (from i in list.Split(',') select double.Parse(i)).ToArray();

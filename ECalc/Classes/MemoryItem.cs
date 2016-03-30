@@ -157,7 +157,7 @@ namespace ECalc.Classes
                         break;
                     case VarType.Matrix:
                         var lines = xml.Split('\n'); // get lines
-                        Matrix matrix = new Matrix(rows, columns);
+                        var matrix = new Matrix(rows, columns);
                         for (int row=0; row<rows; row++)
                         {
                             parts = lines[row].Replace("[", "").Replace("]", "").Split(';');
@@ -223,7 +223,7 @@ namespace ECalc.Classes
                     writer.WriteElementString("Content", xml);
                     break;
                 case VarType.Matrix:
-                    StringBuilder sb = new StringBuilder();
+                    var sb = new StringBuilder();
                     Matrix m = ((Matrix)Value);
                     writer.WriteAttributeString("Rows", m.Rows.ToString());
                     writer.WriteAttributeString("Columns", m.Columns.ToString());
@@ -239,7 +239,7 @@ namespace ECalc.Classes
                     writer.WriteElementString("Content", sb.ToString());
                     break;
                 case VarType.Vector:
-                    Vector v = (Vector)Value;
+                    var v = (Vector)Value;
                     writer.WriteAttributeString("Dimensions", v.Dimensions.ToString());
                     if (v.Dimensions == 2) xml = string.Format("{0};{1}", v.X.ToString("G17", culture),
                                                                           v.Y.ToString("G17", culture));

@@ -425,7 +425,7 @@ namespace ECalc.Modules
         {
             get
             {
-                Random r = new Random();
+                var r = new Random();
                 return r.Next(0, 0xc0c0c0);
             }
         }

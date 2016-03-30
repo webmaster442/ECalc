@@ -8,7 +8,7 @@ namespace ECalc.Controls
 {
     internal class NumberSystemTextBox: TextBox
     {
-        public NumberSystemTextBox(): base()
+        public NumberSystemTextBox()
         {
             AcceptsReturn = true;
             AcceptsTab = true;
@@ -27,7 +27,7 @@ namespace ECalc.Controls
             float f = Convert.ToSingle(o);
             bool floats = (d - Math.Truncate(d)) != 0;
 
-            StringBuilder buffer = new StringBuilder();
+            var buffer = new StringBuilder();
 
             //display floats
             if (floats)
@@ -74,7 +74,7 @@ namespace ECalc.Controls
 
         private StringBuilder DoRow(string label, byte[] data, int system)
         {
-            StringBuilder ret = new StringBuilder();
+            var ret = new StringBuilder();
             ret.Append(label);
             ret.Append(" ");
             int startindex = 0;

@@ -80,7 +80,7 @@ namespace ECalc.Modules
         {
             try
             {
-                StringBuilder buffer = new StringBuilder();
+                var buffer = new StringBuilder();
                 float single = Convert.ToSingle(text);
                 double d = Convert.ToDouble(text);
 

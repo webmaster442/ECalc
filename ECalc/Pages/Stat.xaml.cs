@@ -28,10 +28,10 @@ namespace ECalc.Pages
         {
             Type enumerablestat = typeof(Maths.EnumerableStat);
             var methoods = from m in enumerablestat.GetMethods() where m.IsStatic == true && m.IsPublic == true && m.ReturnType == typeof(double) select m;
-            Style style = this.FindResource("BtnStyle") as Style;
+            var style = this.FindResource("BtnStyle") as Style;
             foreach (var m in methoods)
             {
-                Button b = new Button();
+                var b = new Button();
                 b.Content = m.Name;
                 b.Click += B_Click;
                 b.Style = style;
@@ -75,7 +75,7 @@ namespace ECalc.Pages
         {
             try
             {
-                System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+                var ofd = new System.Windows.Forms.OpenFileDialog();
                 ofd.Filter = "Text files |*.txt";
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -106,7 +106,7 @@ namespace ECalc.Pages
         {
             try
             {
-                System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog();
+                var sfd = new System.Windows.Forms.SaveFileDialog();
                 sfd.Filter = "Text files |*.txt";
                 if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

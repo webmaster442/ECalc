@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECalc.Engineering
 {
-    public class QuineMcclusky
+    public static class QuineMcclusky
     {
         #region "Support Classes"
 
@@ -125,7 +125,7 @@ namespace ECalc.Engineering
         {
             int count = 0;
 
-            foreach (char c in a.ToCharArray())
+            foreach (char c in a)
                 if (c == '1')
                     count++;
 
@@ -167,7 +167,7 @@ namespace ECalc.Engineering
              * Group by number of 1's and determine relationships by comparing.
              */
             var groups = (from i in Group(implicants) orderby i.Key select i).ToDictionary(i => i.Key, i => i.Value);
-            ImplicantRelationshipCollection relationships = new ImplicantRelationshipCollection();
+            var relationships = new ImplicantRelationshipCollection();
             for (int i = 0; i < groups.Keys.Count; i++)
             {
                 if (i == (groups.Keys.Count - 1)) break;
@@ -185,7 +185,7 @@ namespace ECalc.Engineering
              */
             foreach (ImplicantRelationship r in relationships)
             {
-                ImplicantCollection rmList = new ImplicantCollection();
+                var rmList = new ImplicantCollection();
 
                 foreach (Implicant m in implicants)
                 {
@@ -194,7 +194,7 @@ namespace ECalc.Engineering
 
                 foreach (Implicant m in rmList) implicants.Remove(m);
 
-                Implicant newImplicant = new Implicant();
+                var newImplicant = new Implicant();
                 newImplicant.Mask = GetMask(r.a.Mask, r.b.Mask);
                 newImplicant.Minterms.AddRange(r.a.Minterms);
                 newImplicant.Minterms.AddRange(r.b.Minterms);
@@ -235,7 +235,7 @@ namespace ECalc.Engineering
          */
         private static Dictionary<int, ImplicantCollection> Group(ImplicantCollection implicants)
         {
-            Dictionary<int, ImplicantCollection> group = new Dictionary<int, ImplicantCollection>();
+            var group = new Dictionary<int, ImplicantCollection>();
             foreach (Implicant m in implicants)
             {
                 int count = GetOneCount(m.Mask);
@@ -312,8 +312,8 @@ namespace ECalc.Engineering
          */
         private static ImplicantCollection SelectImplicants(ImplicantCollection implicants, int[] inputs)
         {
-            List<int> lstToRemove = new List<int>(inputs);
-            ImplicantCollection final = new ImplicantCollection();
+            var lstToRemove = new List<int>(inputs);
+            var final = new ImplicantCollection();
             int runnumber = 0;
             while (lstToRemove.Count != 0)
             {
@@ -349,7 +349,7 @@ namespace ECalc.Engineering
         
         public static string GetSimplified(IEnumerable<LogicItem> List, int variables, bool hazardsafe = false, bool lsba = false, bool negate = false)
         {
-            ImplicantCollection implicants = new ImplicantCollection();
+            var implicants = new ImplicantCollection();
 
             var items = (from i in List where i.Checked == true || i.Checked == null orderby i.Index ascending select i.Index).ToArray();
             var careminterms = (from i in List where i.Checked == true orderby i.Index ascending select i.Index).ToArray();
@@ -358,7 +358,7 @@ namespace ECalc.Engineering
 
             foreach (var item in items)
             {
-                Implicant m = new Implicant();
+                var m = new Implicant();
                 m.Mask = LogicItem.GetBinaryValue(item, variables);
                 m.Minterms.Add(item);
                 implicants.Add(m);

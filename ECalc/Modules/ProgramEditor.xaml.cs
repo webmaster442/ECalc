@@ -35,7 +35,7 @@ namespace ECalc.Modules
                 return;
             }
 
-            UserFuntion f = new UserFuntion()
+            var f = new UserFuntion
             {
                 Name = TbName.Text,
                 Commands = TbCode.Text,

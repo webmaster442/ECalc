@@ -49,7 +49,7 @@ namespace ECalc.Maths
             if (IsPrime) Divisiors = new long[] { 1, _int };
             else
             {
-                List<long> divisors = new List<long>(20);
+                var divisors = new List<long>(20);
                 for (long i = 2; i < 200; i++)
                 {
                     if (_int < i) break;
@@ -62,7 +62,7 @@ namespace ECalc.Maths
 
         private string RenderText()
         {
-            StringBuilder render = new StringBuilder();
+            var render = new StringBuilder();
             Type current = this.GetType();
             foreach (var prop in current.GetProperties())
             {
@@ -70,7 +70,7 @@ namespace ECalc.Maths
                 var enumerable = value as IEnumerable;
                 if (enumerable != null)
                 {
-                    StringBuilder sub = new StringBuilder();
+                    var sub = new StringBuilder();
                     foreach (var item in enumerable)
                     {
                         sub.AppendFormat("{0}; ", item.ToString());

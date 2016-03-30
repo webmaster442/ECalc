@@ -11,9 +11,9 @@ namespace ECalc.Classes
     /// </summary>
     public static class NumberToText
     {
-        private static Dictionary<double, string> _numbers;
+        private static readonly Dictionary<double, string> _numbers;
         private static Dictionary<double, string> _scales;
-        private static StringBuilder _output;
+        private static readonly StringBuilder _output;
 
         static NumberToText()
         {

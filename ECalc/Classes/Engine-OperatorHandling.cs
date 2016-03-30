@@ -145,8 +145,8 @@ namespace ECalc.Classes
             }
             else if (t1 == "System.Numerics.Complex" || t2 == "System.Numerics.Complex")
             {
-                Complex a = new Complex();
-                Complex b = new Complex();
+                var a = new Complex();
+                var b = new Complex();
                 switch (t1)
                 {
                     case "System.Numerics.Complex":
@@ -192,8 +192,8 @@ namespace ECalc.Classes
             }
             if (t1 == "ECalc.Maths.Fraction" || t2 == "ECalc.Maths.Fraction")
             {
-                Fraction f1 = new Fraction();
-                Fraction f2 = new Fraction();
+                var f1 = new Fraction();
+                var f2 = new Fraction();
                 switch (t1)
                 {
                     case "System.Double":
@@ -230,8 +230,8 @@ namespace ECalc.Classes
             }
             else
             {
-                double n1 = (double)op1;
-                double n2 = (double)op2;
+                var n1 = (double)op1;
+                var n2 = (double)op2;
                 switch (op)
                 {
                     case "+":

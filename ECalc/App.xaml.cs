@@ -69,7 +69,7 @@ namespace ECalc
             {
                 Modules = new ModuleLoader();
                 Modules.LoadFromNameSpace("ECalc.Modules");
-                MainWindow mw = new MainWindow();
+                var mw = new MainWindow();
                 MainWindow = mw;
                 mw.Show();
 
@@ -79,7 +79,7 @@ namespace ECalc
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            Exception data = (Exception)e.ExceptionObject;
+            var data = (Exception)e.ExceptionObject;
             var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "EcalcCrashLog.txt");
             using (var text = File.CreateText(filename))
             {
@@ -99,7 +99,7 @@ namespace ECalc
                 text.WriteLine("Stack Trace:\r\n{0}", data.StackTrace);
                 text.WriteLine("--------------------------------------------");
             }
-            Process p = new Process();
+            var p = new Process();
             p.StartInfo.FileName = filename;
             p.Start();
         }

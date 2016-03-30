@@ -12,7 +12,7 @@ namespace ECalc.Maths
 
         static NumberSystemConversions()
         {
-            RomanNumbers = new Dictionary<string, int>()
+            RomanNumbers = new Dictionary<string, int>
             {
                 { "M", 1000}, {"CM", 900}, {"D", 500},
                 { "CD", 400}, { "C", 100}, {"XC", 90},
@@ -21,7 +21,7 @@ namespace ECalc.Maths
                 { "I", 1}
             };
 
-            Digits = new Dictionary<byte, char>()
+            Digits = new Dictionary<byte, char>
             {
                 {10, 'A'}, {11, 'B'}, {12, 'C'}, {13, 'D'},
                 {14, 'E'}, {15, 'F'}, {16, 'G'}, {17, 'H'},
@@ -199,7 +199,7 @@ namespace ECalc.Maths
         /// <returns>Reversed stringBuilder</returns>
         private static StringBuilder Reverse(StringBuilder sb)
         {
-            StringBuilder ret = new StringBuilder(sb.Length);
+            var ret = new StringBuilder(sb.Length);
             for (int i = sb.Length - 1; i >= 0; i--)
             {
                 ret.Append(sb[i]);
@@ -215,8 +215,8 @@ namespace ECalc.Maths
         /// <returns>an array of slices</returns>
         private static string[] Slice(string input, int slicelen)
         {
-            Stack<string> stack = new Stack<string>();
-            StringBuilder tmp = new StringBuilder();
+            var stack = new Stack<string>();
+            var tmp = new StringBuilder();
             for (int i = input.Length - 1; i >= 0; i--)
             {
                 if (tmp.Length >= slicelen)
@@ -250,7 +250,7 @@ namespace ECalc.Maths
         /// <returns>hexadecimal string</returns>
         public static string ByteArrayToHex(byte[] array)
         {
-            StringBuilder ret = new StringBuilder();
+            var ret = new StringBuilder();
             foreach (var b in array)
             {
                 string s = Convert.ToString(b, 16);
@@ -267,7 +267,7 @@ namespace ECalc.Maths
         /// <returns>binary string</returns>
         public static string ByteArrayToBin(byte[] array)
         {
-            StringBuilder ret = new StringBuilder();
+            var ret = new StringBuilder();
             foreach (var b in array)
             {
                 string tmp = Convert.ToString(b, 16);
@@ -288,7 +288,7 @@ namespace ECalc.Maths
         public static string DecimalToBCDBin(long value)
         {
             string chars = value.ToString();
-            StringBuilder ret = new StringBuilder();
+            var ret = new StringBuilder();
             for (int i = 0; i < chars.Length; i++)
             {
                 ret.Append(DecimalToBin(chars[i]));
@@ -304,7 +304,7 @@ namespace ECalc.Maths
         public static long BCDBinToDecimal(string value)
         {
             var parts = Slice(value, 4);
-            StringBuilder text = new StringBuilder();
+            var text = new StringBuilder();
             foreach (var part in parts)
             {
                 text.Append(BCDToDecimal(part));

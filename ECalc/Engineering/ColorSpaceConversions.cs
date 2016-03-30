@@ -16,7 +16,7 @@ namespace ECalc.Engineering
             {
                 // the color wheel consists of 6 sectors. Figure out which sector you're in.
                 double sectorPos = Hue / 60.0;
-                int sectorNumber = (int)(Math.Floor(sectorPos));
+                var sectorNumber = (int)(Math.Floor(sectorPos));
                 // get the fractional part of the sector
                 double fractionalSector = sectorPos - sectorNumber;
 
@@ -121,7 +121,7 @@ namespace ECalc.Engineering
             double m = (double)(255 - input.G) / 255;
             double y = (double)(255 - input.B) / 255;
 
-            double min = (double)Math.Min(c, Math.Min(m, y));
+            var min = (double)Math.Min(c, Math.Min(m, y));
             if (min == 1.0)
             {
                 return new CMYK
@@ -275,7 +275,7 @@ namespace ECalc.Engineering
 
         public static YUV ToYUV(Color c)
         {
-            YUV yuv = new YUV();
+            var yuv = new YUV();
 
             // normalizes red/green/blue values
             double nRed = (double)c.R / 255.0;

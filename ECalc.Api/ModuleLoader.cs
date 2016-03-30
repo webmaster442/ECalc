@@ -13,7 +13,7 @@ namespace ECalc.Api
     /// </summary>
     public class ModuleLoader
     {
-        private List<EcalcModule> _modules;
+        private readonly List<EcalcModule> _modules;
 
         /// <summary>
         /// Creates a new Instance of ModuleLoaer
@@ -130,7 +130,7 @@ namespace ECalc.Api
                         orderby module.ModuleCategory ascending
                         select module.ModuleCategory;
 
-                List<string> cats = new List<string>();
+                var cats = new List<string>();
                 cats.Add("All");
                 cats.AddRange(q.Distinct());
                 return cats.ToArray();

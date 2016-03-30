@@ -12,8 +12,8 @@ namespace ECalc.Engineering
         {
             return Task.Run(() =>
             {
-                StringBuilder buffer = new StringBuilder();
-                Random r = new Random();
+                var buffer = new StringBuilder();
+                var r = new Random();
                 for (int i=0; i<count; i++)
                 {
                     buffer.Append(r.Next(minimum, maximum));
@@ -27,8 +27,8 @@ namespace ECalc.Engineering
         {
             return Task.Run(() =>
             {
-                StringBuilder buffer = new StringBuilder();
-                CryptoRNG r = new CryptoRNG();
+                var buffer = new StringBuilder();
+                var r = new CryptoRNG();
                 for (int i = 0; i < count; i++)
                 {
                     buffer.Append(r.Next(minimum, maximum));
@@ -42,8 +42,8 @@ namespace ECalc.Engineering
         {
             return Task.Run(() =>
             {
-                StringBuilder buffer = new StringBuilder();
-                QuantumRandomNumberGenerator r = new QuantumRandomNumberGenerator();
+                var buffer = new StringBuilder();
+                var r = new QuantumRandomNumberGenerator();
                 for (int i = 0; i < count; i++)
                 {
                     buffer.Append(r.Next(minimum, maximum));
@@ -65,7 +65,7 @@ namespace ECalc.Engineering
                 int numSentences = rand.Next(maxSentences - minSentences) + minSentences + 1;
                 int numWords = rand.Next(maxWords - minWords) + minWords + 1;
 
-                StringBuilder result = new StringBuilder();
+                var result = new StringBuilder();
 
                 for (int p = 0; p < numParagraphs; p++)
                 {

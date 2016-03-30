@@ -26,8 +26,8 @@ namespace ECalc.Maths
             }
             else
             {
-                double n1 = (double)arguments[0];
-                double n2 = (double)arguments[1];
+                var n1 = (double)arguments[0];
+                var n2 = (double)arguments[1];
                 return (n1 * n2) / (n1 + n2);
             }
         }

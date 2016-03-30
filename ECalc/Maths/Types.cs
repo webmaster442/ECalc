@@ -17,8 +17,8 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double n1 = (double)arguments[0];
-            double n2 = (double)arguments[1];
+            var n1 = (double)arguments[0];
+            var n2 = (double)arguments[1];
             return new Complex(n1, n2);
         }
 
@@ -48,8 +48,8 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double n1 = (double)arguments[0];
-            double n2 = (double)arguments[1];
+            var n1 = (double)arguments[0];
+            var n2 = (double)arguments[1];
 
             switch (Engine.Mode)
             {
@@ -57,8 +57,8 @@ namespace ECalc.Maths
                 case TrigMode.RAD:
                     return Complex.FromPolarCoordinates(n1, n2);
                 default:
-                    double real = TrigFunctions.Cos(n2) * n1;
-                    double imaginary = TrigFunctions.Sin(n2) * n1;
+                    var real = TrigFunctions.Cos(n2) * n1;
+                    var imaginary = TrigFunctions.Sin(n2) * n1;
                     return new Complex(real, imaginary);
             }
         }
@@ -88,8 +88,8 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double n1 = (double)arguments[0];
-            double n2 = (double)arguments[1];
+            var n1 = (double)arguments[0];
+            var n2 = (double)arguments[1];
             return new Fraction((long)n1, (long)n2);
         }
     }
@@ -137,8 +137,8 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double n1 = (double)arguments[0];
-            double n2 = (double)arguments[1];
+            var n1 = (double)arguments[0];
+            var n2 = (double)arguments[1];
             return new Vector(n1, n2);
         }
     }
@@ -162,9 +162,9 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            double n1 = (double)arguments[0];
-            double n2 = (double)arguments[1];
-            double n3 = (double)arguments[2];
+            var n1 = (double)arguments[0];
+            var n2 = (double)arguments[1];
+            var n3 = (double)arguments[2];
             return new Vector(n1, n2, n3);
         }
     }
@@ -188,7 +188,7 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            Matrix matrix = (Matrix)arguments[0];
+            var matrix = (Matrix)arguments[0];
             return matrix.Determinant();
         }
     }
@@ -212,7 +212,7 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            Matrix matrix = (Matrix)arguments[0];
+            var matrix = (Matrix)arguments[0];
             return (Matrix)matrix.Transpose();
         }
     }
@@ -236,7 +236,7 @@ namespace ECalc.Maths
 
         public object Run(params object[] arguments)
         {
-            Matrix matrix = (Matrix)((Matrix)arguments[0]).Clone();
+            var matrix = (Matrix)((Matrix)arguments[0]).Clone();
             matrix.Negate();
             return matrix;
         }

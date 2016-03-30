@@ -28,7 +28,7 @@ namespace ECalc.Engineering
 
         public static string Solve(double desiredvalue, ResistorSeries serie)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.AppendLine("--------------------------------------------------------------------");
             sb.AppendLine("Serial configuration:");
             sb.AppendLine("--------------------------------------------------------------------");
@@ -65,7 +65,7 @@ namespace ECalc.Engineering
             sb.AppendLine("--------------------------------------------------------------------");
 
             list = (from item in ResitorListGenerator.GenerateList(serie) where item > (desiredvalue / 2) select item).ToList();
-            Dictionary<double, double[]> _results = new Dictionary<double, double[]>();
+            var _results = new Dictionary<double, double[]>();
             double marginp = desiredvalue + (desiredvalue * ResitorListGenerator.GetTolerance(serie));
             double marginn = desiredvalue - (desiredvalue * ResitorListGenerator.GetTolerance(serie));
 

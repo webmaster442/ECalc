@@ -39,10 +39,10 @@ namespace ECalc.Api
         {
             get
             {
-                int value = (int)Color;
-                byte red = (byte)((value & 0x00FF0000) >> 16);
-                byte green = (byte)((value & 0x0000FF00) >> 8);
-                byte blue = (byte)((value & 0x000000FF));
+                var value = (int)Color;
+                var red = (byte)((value & 0x00FF0000) >> 16);
+                var green = (byte)((value & 0x0000FF00) >> 8);
+                var blue = (byte)((value & 0x000000FF));
                 return new SolidColorBrush(System.Windows.Media.Color.FromRgb(red, green, blue));
             }
         }

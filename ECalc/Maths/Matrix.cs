@@ -279,7 +279,7 @@ namespace ECalc.Maths
 
         public Matrix Transpose()
         {
-            Matrix ret = new Matrix(Columns, Rows);
+            var ret = new Matrix(Columns, Rows);
             for (int j = 0; j < Columns; j++)
             {
                 int index = j * Rows;
@@ -296,7 +296,7 @@ namespace ECalc.Maths
             Compute();
             if (mIsSingular) throw new ArgumentException("Can't compute inverse, because matrix is singular");
             int order = this.Rows;
-            Matrix inverse = new Matrix(order, order);
+            var inverse = new Matrix(order, order);
             for (int i = 0; i < order; i++)
             {
                 inverse.Data[i + order * i] = 1.0;
@@ -339,7 +339,7 @@ namespace ECalc.Maths
         public Matrix TrimTo(int rows, int columns)
         {
             if (rows > Rows || columns > Columns) throw new ArgumentException("Can't trim the matrix to a bigger matrix");
-            Matrix ret = new Matrix(rows, columns);
+            var ret = new Matrix(rows, columns);
 
             for (int i = 0; i < rows; i++)
             {
@@ -359,13 +359,13 @@ namespace ECalc.Maths
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
-            Matrix m = obj as Matrix;
+            var m = obj as Matrix;
             return this == m;
         }
 
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Columns; j++)
@@ -386,7 +386,7 @@ namespace ECalc.Maths
 
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Columns; j++)
@@ -415,7 +415,7 @@ namespace ECalc.Maths
             if (left == null) throw new ArgumentNullException("left");
             if (right == null) throw new ArgumentNullException("right");
             if (left.Rows != right.Rows || left.Columns != right.Columns) throw new Exception("Input matrix row/column count mismatch");
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < left.Rows; i++)
             {
                 for (int j = 0; j < right.Columns; j++)
@@ -454,7 +454,7 @@ namespace ECalc.Maths
             if (left == null) throw new ArgumentNullException("left");
             if (right == null) throw new ArgumentNullException("right");
             if (left.Rows != right.Rows || left.Columns != right.Columns) throw new Exception("Input matrix row/column count mismatch");
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < left.Rows; i++)
             {
                 for (int j = 0; j < right.Columns; j++)
@@ -470,7 +470,7 @@ namespace ECalc.Maths
             if (left == null) throw new ArgumentNullException("left");
             if (right == null) throw new ArgumentNullException("right");
             if (left.Columns != right.Rows) throw new Exception("Input matrix row/column count mismatch");
-            Matrix ret = new Matrix(left.Rows, right.Columns);
+            var ret = new Matrix(left.Rows, right.Columns);
 
             for (int j = 0; j != right.Columns; j++)
             {
@@ -492,7 +492,7 @@ namespace ECalc.Maths
             if (left == null) throw new ArgumentNullException("left");
             if (right == null) throw new ArgumentNullException("right");
             if (left.Rows != right.Rows && left.Columns != right.Columns) throw new Exception("Input matrix row/column count mismatch");
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
 
             for (int i = 0; i < ret.Rows; i++)
             {
@@ -506,7 +506,7 @@ namespace ECalc.Maths
 
         public static Matrix operator +(Matrix left, double right)
         {
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < ret.Rows; i++)
             {
                 for (int j = 0; j < ret.Columns; j++)
@@ -519,7 +519,7 @@ namespace ECalc.Maths
 
         public static Matrix operator -(Matrix left, double right)
         {
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < ret.Rows; i++)
             {
                 for (int j = 0; j < ret.Columns; j++)
@@ -532,7 +532,7 @@ namespace ECalc.Maths
 
         public static Matrix operator *(Matrix left, double right)
         {
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < ret.Rows; i++)
             {
                 for (int j = 0; j < ret.Columns; j++)
@@ -545,7 +545,7 @@ namespace ECalc.Maths
 
         public static Matrix operator /(Matrix left, double right)
         {
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < ret.Rows; i++)
             {
                 for (int j = 0; j < ret.Columns; j++)
@@ -558,7 +558,7 @@ namespace ECalc.Maths
 
         public static Matrix operator %(Matrix left, double right)
         {
-            Matrix ret = new Matrix(left.Rows, left.Columns);
+            var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < ret.Rows; i++)
             {
                 for (int j = 0; j < ret.Columns; j++)

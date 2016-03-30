@@ -6,7 +6,7 @@ namespace ECalc.Classes
 {
     internal class SimpleMemmMan : IMemManager
     {
-        private Dictionary<string, object> _mem;
+        private readonly Dictionary<string, object> _mem;
         private int _TempCounter;
 
         public SimpleMemmMan()
@@ -27,7 +27,7 @@ namespace ECalc.Classes
 
         public void SetItem(object value)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void SetItem(string name, object value)

@@ -260,7 +260,7 @@ namespace ECalc.Maths
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
-            Vector v = obj as Vector;
+            var v = obj as Vector;
             return this == v;
         }
 

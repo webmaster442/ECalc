@@ -14,9 +14,9 @@ namespace ECalc.Classes
     /// </summary>
     public class StringEventArgs: RoutedEventArgs
     {
-        public StringEventArgs() : base() { }
+        public StringEventArgs()  { }
         
-        public StringEventArgs(string param): base()
+        public StringEventArgs(string param)
         {
             Text = param;
         }

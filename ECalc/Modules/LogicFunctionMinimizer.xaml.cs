@@ -55,7 +55,7 @@ namespace ECalc.Modules
         {
             try
             {
-                List<LogicItem> items = new List<LogicItem>();
+                var items = new List<LogicItem>();
                 int variables = 2;
                 switch (TabInputMode.SelectedIndex)
                 {

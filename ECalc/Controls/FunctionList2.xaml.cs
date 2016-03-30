@@ -36,7 +36,7 @@ namespace ECalc.Controls
 
         private void RenderButton(string function, WrapPanel wp)
         {
-            Button btn = new Button();
+            var btn = new Button();
             btn.Content = function;
             btn.Click += Btn_Click;
             wp.Children.Add(btn);
@@ -60,9 +60,9 @@ namespace ECalc.Controls
             foreach (var category in categories)
             {
                 var functions = from i in _functions where i.Category == category orderby i.Name ascending select i.Name;
-                GroupBox group = new GroupBox();
+                var group = new GroupBox();
                 group.Header = category;
-                WrapPanel wp = new WrapPanel();
+                var wp = new WrapPanel();
                 group.Content = wp;
                 foreach (var function in functions)
                 {

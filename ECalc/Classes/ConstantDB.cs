@@ -69,7 +69,7 @@ namespace ECalc.Classes
                 new Constant("The Euler-Mascheroni constant", "&EulerMascheroni", 0.5772156649015328606065120900824024310421593359399235988057672348849d),
                 new Constant("The number (1+sqrt(5))/2, also known as the golden ratio", "&GoldenRatio", 1.6180339887498948482045868343656381177203091798057628621354486227052604628189024497072d),
                 new Constant("The Glaisher constant", "&Glaisher", 1.2824271291006226368753425688697917277676889273250011920637400217404063088588264611297d),
-                new Constant("The Khinchin constant", "&Khinchin", 2.6854520010653064453097148354817956938203822939944629530511523455572188595371520028011d),
+                new Constant("The Khinchin constant", "&Khinchin", 2.6854520010653064453097148354817956938203822939944629530511523455572188595371520028011d)
             };
             Universal = new Constant[]
             {
@@ -83,7 +83,7 @@ namespace ECalc.Classes
                 new Constant("Planck mass: m_p = (h_bar*c_0/G)^(1/2) [kg] (2007 CODATA)", "&PlancksMass", 2.17644e-8),
                 new Constant("Planck temperature: T_p = (h_bar*c_0^5/G)^(1/2)/k [K] (2007 CODATA)", "&PlancksTemperature", 1.416786e32),
                 new Constant("Planck length: l_p = h_bar/(m_p*c_0) [m] (2007 CODATA)", "&PlancksLength", 1.616253e-35),
-                new Constant("Planck time: t_p = l_p/c_0 [s] (2007 CODATA)", "&PlancksTime", 5.39124e-44),
+                new Constant("Planck time: t_p = l_p/c_0 [s] (2007 CODATA)", "&PlancksTime", 5.39124e-44)
             };
             ElectroMagnetic = new Constant[]
             {
@@ -93,7 +93,7 @@ namespace ECalc.Classes
                 new Constant("Josephson Constant: K_J = 2*e/h [Hz V^-1] (2007 CODATA)", "&JosephsonConstant", 483597.891e9),
                 new Constant("Von Klitzing Constant: R_K = h/e^2 [Ohm = m^2 kg s^-3 A^-2] (2007 CODATA)", "&VonKlitzingConstant", 25812.807557),
                 new Constant("Bohr Magneton: mu_B = e*h_bar/2*m_e [J T^-1] (2007 CODATA)", "&BohrMagneton", 927.400915e-26),
-                new Constant("Nuclear Magneton: mu_N = e*h_bar/2*m_p [J T^-1] (2007 CODATA)", "&NuclearMagneton", 5.05078324e-27),
+                new Constant("Nuclear Magneton: mu_N = e*h_bar/2*m_p [J T^-1] (2007 CODATA)", "&NuclearMagneton", 5.05078324e-27)
             };
             Atomic = new Constant[]
             {
@@ -144,7 +144,7 @@ namespace ECalc.Classes
                 new Constant("Deuteron Magnetic Moment: [J T^-1] (2007 CODATA)", "&DeuteronMagneticMoment", 0.433073465e-26),
                 new Constant("Helion Mass: [kg] (2007 CODATA)", "&HelionMass", 5.00641192e-27),
                 new Constant("Helion Mass Energy Equivalent: [J] (2007 CODATA)", "&HelionMassEnegryEquivalent", 4.49953864e-10),
-                new Constant("Helion Molar Mass: [kg mol^-1] (2007 CODATA)", "&HelionMolarMass", 3.0149322473e-3),
+                new Constant("Helion Molar Mass: [kg mol^-1] (2007 CODATA)", "&HelionMolarMass", 3.0149322473e-3)
             };
         }
 
@@ -178,7 +178,7 @@ namespace ECalc.Classes
         public static IEnumerable<Constant> Favorites()
         {
             var size = Mathematical.Length + Universal.Length + ElectroMagnetic.Length + Atomic.Length;
-            List<Constant> temp = new List<Constant>(size);
+            var temp = new List<Constant>(size);
             temp.AddRange(Mathematical);
             temp.AddRange(Universal);
             temp.AddRange(ElectroMagnetic);

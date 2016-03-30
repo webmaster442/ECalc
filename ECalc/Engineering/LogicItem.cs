@@ -53,7 +53,7 @@ namespace ECalc.Engineering
         public static string GetBinaryValue(int number, int chars)
         {
             string bin = Convert.ToString(number, 2);
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i = 0; i < chars - bin.Length; i++)
             {
                 sb.Append("0");
@@ -64,7 +64,7 @@ namespace ECalc.Engineering
 
         public static LogicItem CreateFromMintermIndex(int index, int chars, bool? value)
         {
-            LogicItem ret = new LogicItem();
+            var ret = new LogicItem();
             ret.Index = index;
             ret.BinaryValue = GetBinaryValue(index, chars);
             ret.Checked = value;

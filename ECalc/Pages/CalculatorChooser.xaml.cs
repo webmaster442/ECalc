@@ -34,11 +34,11 @@ namespace ECalc.Pages
 
             foreach (var match in matchs)
             {
-                Tile t = new Tile();
+                var t = new Tile();
                 t.ToolTip = match.ModuleName;
                 t.Title = match.ModuleName;
                 t.Background = match.BackColor;
-                Image icon = new Image();
+                var icon = new Image();
                 icon.Source = match.Icon;
                 t.Content = icon;
                 t.Click += Tile_Click;
@@ -99,7 +99,7 @@ namespace ECalc.Pages
             if (designTime) return;
             try
             {
-                BingWallPaperClient bing = new BingWallPaperClient();
+                var bing = new BingWallPaperClient();
                 await bing.DownloadAsync();
                 var imgbrush = new ImageBrush();
                 imgbrush.ImageSource = bing.WPFPhotoOfTheDay;
@@ -128,12 +128,12 @@ namespace ECalc.Pages
 
         private void ContextNewWindow_Click(object sender, RoutedEventArgs e)
         {
-            MenuItem mnu = (MenuItem)sender;
+            var mnu = (MenuItem)sender;
             if (mnu != null)
             {
                 var tile = ((ContextMenu)mnu.Parent).PlacementTarget as Tile;
                 var ctrl = GetControl(tile);
-                FloatWindow fw = new FloatWindow();
+                var fw = new FloatWindow();
                 fw.SetWindowContent(ctrl, tile.Title);
                 fw.Show();
             }

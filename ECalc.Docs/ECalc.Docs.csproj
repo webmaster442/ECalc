@@ -69,6 +69,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HTMLRenderer\Adapters\BrushAdapter.cs" />
     <Compile Include="HTMLRenderer\Adapters\ContextMenuAdapter.cs" />
     <Compile Include="HTMLRenderer\Adapters\ControlAdapter.cs" />

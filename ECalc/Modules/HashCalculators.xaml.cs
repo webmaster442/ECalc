@@ -46,7 +46,7 @@ namespace ECalc.Modules
 
         private void BtnSelectFile_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+            var ofd = new System.Windows.Forms.OpenFileDialog();
             ofd.Filter = "All files | *.*";
             ofd.Multiselect = false;
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)

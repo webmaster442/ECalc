@@ -98,7 +98,7 @@ namespace ECalc.Classes
 
         public void WriteLine(params string[] array)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i=0; i<array.Length; i++)
             {
                 sb.Append(array[i]);
@@ -109,7 +109,7 @@ namespace ECalc.Classes
 
         public void WriteLine(params object[] array)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i = 0; i < array.Length; i++)
             {
                 sb.Append(array[i].ToString());

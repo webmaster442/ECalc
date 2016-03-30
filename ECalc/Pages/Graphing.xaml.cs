@@ -104,8 +104,8 @@ namespace ECalc.Pages
         {
             var graphWidth = xmax - xmin;
             var graphHeight = ymax - ymin;
-            double xOffset = (double)((xmin >= 0) ? 0.0 : (xmax <= 0) ? 1.0 : -xmin / graphWidth);
-            double yOffset = (double)((ymin >= 0) ? 1.0 : (ymax <= 0) ? 0.0 : ymax / graphHeight);
+            var xOffset = (double)((xmin >= 0) ? 0.0 : (xmax <= 0) ? 1.0 : -xmin / graphWidth);
+            var  yOffset = (double)((ymin >= 0) ? 1.0 : (ymax <= 0) ? 0.0 : ymax / graphHeight);
             xOffset = Math.Floor((double)(xOffset * (CanvasWidth - 0.0)));
             yOffset = Math.Floor((double)(yOffset * (CanvasHeight - 0.0)));
 
@@ -138,7 +138,7 @@ namespace ECalc.Pages
                     _engine.MemoryManager.SetItem("$x", x);
                     var xCanvas = (x + offsetX) * graphToCanvasX;
                     _engine.Evaluate(rpnY);
-                    double y = (double)Classes.Engine.Ans;
+                    var y = (double)Classes.Engine.Ans;
                     if (!double.IsNaN(y))
                     {
                         var yCanvas = (offsetY - y) * graphToCanvasY;
@@ -183,9 +183,9 @@ namespace ECalc.Pages
                 {
                     _engine.MemoryManager.SetItem("$t", t);
                     _engine.Evaluate(rpnX);
-                    double x = (double)Classes.Engine.Ans;
+                    var x = (double)Classes.Engine.Ans;
                     _engine.Evaluate(rpnY);
-                    double y = (double)Classes.Engine.Ans;
+                    var y = (double)Classes.Engine.Ans;
 
                     // Translate the origin based on the max/min parameters (y axis is flipped), then scale to canvas.
                     var xCanvas = (x + offsetX) * graphToCanvasX;

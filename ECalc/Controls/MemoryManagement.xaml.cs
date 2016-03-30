@@ -128,7 +128,7 @@ namespace ECalc.Controls
         {
             using (var Stream = File.Create(target))
             {
-                XmlSerializer xs = new XmlSerializer(typeof(MemoryItem[]));
+                var xs = new XmlSerializer(typeof(MemoryItem[]));
                 xs.Serialize(Stream, _memory.ToArray());
             }
         }
@@ -137,7 +137,7 @@ namespace ECalc.Controls
         {
             using (var Stream = File.OpenRead(target))
             {
-                XmlSerializer xs = new XmlSerializer(typeof(MemoryItem[]));
+                var xs = new XmlSerializer(typeof(MemoryItem[]));
                 var mem = (MemoryItem[])xs.Deserialize(Stream);
                 foreach (var m in mem) _memory.Add(m);
             }
@@ -179,7 +179,7 @@ namespace ECalc.Controls
 
         private void BtnLoad_Click(object sender, RoutedEventArgs e)
         { 
-            System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+            var ofd = new System.Windows.Forms.OpenFileDialog();
             ofd.Filter = "Memory Files | *.mem";
             ofd.Multiselect = false;
             ofd.CheckFileExists = true;
@@ -191,7 +191,7 @@ namespace ECalc.Controls
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.SaveFileDialog sfd = new System.Windows.Forms.SaveFileDialog();
+            var sfd = new System.Windows.Forms.SaveFileDialog();
             sfd.Filter = "Memory Files | *.mem";
             sfd.AddExtension = true;
             if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)

@@ -41,7 +41,7 @@ namespace ECalc.Api
             bool downloadneeded = true;
             if (File.Exists(_tempfilename))
             {
-                FileInfo fi = new FileInfo(_tempfilename);
+                var fi = new FileInfo(_tempfilename);
                 if (DateTime.UtcNow.DayOfYear == fi.LastWriteTimeUtc.DayOfYear)
                 {
                     downloadneeded = false;

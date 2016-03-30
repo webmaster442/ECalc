@@ -7,7 +7,7 @@ namespace ECalc.Classes
     {
         internal ConstantCategory _category;
 
-        public ConstantList() : base()
+        public ConstantList()
         {
             Category = ConstantCategory.Mathematical;
         }

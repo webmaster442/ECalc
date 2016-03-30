@@ -15,7 +15,7 @@ namespace ECalc.Engineering
 
         private static string BytesToString(byte[] bytes)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++) sb.Append(bytes[i].ToString("X2"));
             return sb.ToString();
         }
@@ -59,7 +59,7 @@ namespace ECalc.Engineering
 
         private static string Crc32String(string input)
         {
-            Crc32 crc32 = new Crc32();
+            var crc32 = new Crc32();
             byte[] inputBytes = Encoding.UTF8.GetBytes(input);
             byte[] hash = crc32.ComputeHash(inputBytes);
 

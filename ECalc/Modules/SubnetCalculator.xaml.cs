@@ -43,9 +43,9 @@ namespace ECalc.Modules
             Output.Clear();
 
             if (Network.IP == null || Mask.IP == null) return;
-            int numnet = (int)ReqNetworks.Value;
+            var numnet = (int)ReqNetworks.Value;
 
-            StringBuilder buffer = new StringBuilder();
+            var buffer = new StringBuilder();
             int requiredbits = GetBits(numnet);
             int maskbits = SubnetMask.GetBitLength(Mask.IP);
             int outmaskbits = requiredbits + maskbits;
@@ -69,7 +69,7 @@ namespace ECalc.Modules
             {
                 uint sh = i << shift;
                 uint val = tmp + sh;
-                IPAddress addr = new IPAddress(0);
+                var addr = new IPAddress(0);
                 addr = addr.SetUint(val);
                 buffer.AppendFormat("Subnet {0,-4} Network adress: {1,-15} Broadcast Adress: {2,-15}\r\n", i, addr, addr.GetBroadcastAddress(SubnetMask.CreateByNetBitLength(outmaskbits)));
             }

@@ -17,20 +17,20 @@ namespace ECalc.Pages
 
         private void BtnAbout_Click(object sender, RoutedEventArgs e)
         {
-            AboutDialog w = new AboutDialog();
+            var w = new AboutDialog();
             MainWindow.ShowDialog(w);
         }
 
         private void BtnIssue_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            var p = new System.Diagnostics.Process();
             p.StartInfo.FileName = "https://github.com/webmaster442/ECalc/issues";
             p.Start();
         }
 
         private void BtnScreenKeyboard_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process p = new System.Diagnostics.Process();
+            var p = new System.Diagnostics.Process();
             p.StartInfo.FileName = "osk.exe";
             p.StartInfo.UseShellExecute = true;
             p.Start();
@@ -38,7 +38,7 @@ namespace ECalc.Pages
 
         private void BtnDocs_Click(object sender, RoutedEventArgs e)
         {
-            DocumentationViewer dv = new DocumentationViewer();
+            var dv = new DocumentationViewer();
             MainWindow.SwithToControl(dv);
         }
 
@@ -49,7 +49,7 @@ namespace ECalc.Pages
 
         private void BtnWindManager_Click(object sender, RoutedEventArgs e)
         {
-            WindowsManager wm = new WindowsManager();
+            var wm = new WindowsManager();
             MainWindow.SwithToControl(wm);
         }
 

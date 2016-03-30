@@ -11,7 +11,7 @@ namespace ECalc.Classes
     /// </summary>
     internal static class WindowManager
     {
-        private static List<Window> _childs;
+        private readonly static List<Window> _childs;
 
         static WindowManager()
         {
@@ -115,7 +115,7 @@ namespace ECalc.Classes
 
                 foreach (var window in _childs)
                 {
-                    ret.Add(new WindowData()
+                    ret.Add(new WindowData
                     {
                         Image = window.Render(),
                         Title = window.Title

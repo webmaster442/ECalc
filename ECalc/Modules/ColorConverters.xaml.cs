@@ -25,7 +25,7 @@ namespace ECalc.Modules
 
         private ColorType IdentifySender(object o)
         {
-            EditableSlider slider = (EditableSlider)o;
+            var slider = (EditableSlider)o;
             if (slider.Name.StartsWith("RGB")) return ColorType.RGB;
             else if (slider.Name.StartsWith("HSL")) return ColorType.HSL;
             else if (slider.Name.StartsWith("HSB")) return ColorType.HSB;

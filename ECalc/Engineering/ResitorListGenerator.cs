@@ -7,7 +7,7 @@ namespace ECalc.Engineering
         e12 = 0, e24 = 1, e48 = 2, e96 = 3, e192 = 4
     }
 
-    internal class ResitorListGenerator
+    internal static class ResitorListGenerator
     {
         private static double[] multipliers = { 0.01, 0.1, 1, 10, 100, 1000, 10000 };
 

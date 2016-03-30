@@ -18,7 +18,7 @@ namespace ECalc.Docs
         {
             InitializeComponent();
             _markdown = new MarkdownSharp.Markdown();
-            Uri uri = new Uri("/ECalc.Docs;component/Documentation/template.html", UriKind.Relative);
+            var uri = new Uri("/ECalc.Docs;component/Documentation/template.html", UriKind.Relative);
             using (StreamReader sr = new StreamReader(Application.GetResourceStream(uri).Stream))
             {
                 _template = sr.ReadToEnd();
@@ -27,10 +27,10 @@ namespace ECalc.Docs
 
         private void LoadMarkDown(string file)
         {
-            Uri uri = new Uri("/ECalc.Docs;component/Documentation/" + file, UriKind.Relative);
+            var uri = new Uri("/ECalc.Docs;component/Documentation/" + file, UriKind.Relative);
             using (StreamReader sr = new StreamReader(Application.GetResourceStream(uri).Stream))
             {
-                StringBuilder PageContent = new StringBuilder();
+                var PageContent = new StringBuilder();
                 PageContent.Append(_template);
                 PageContent.Append(_markdown.Transform(sr.ReadToEnd()));
                 PageContent.Append("</div></body></html>");
@@ -40,7 +40,7 @@ namespace ECalc.Docs
 
         private void TvTOC_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            TreeViewItem selected = (TreeViewItem)TvTOC.SelectedItem;
+            var selected = (TreeViewItem)TvTOC.SelectedItem;
             if (selected.ToolTip == null) return;
             var file = selected.ToolTip.ToString();
             if (string.IsNullOrEmpty(file)) return;

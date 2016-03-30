@@ -79,8 +79,8 @@ namespace ECalc.Classes
 
             var items = from i in good.Split(' ') where string.IsNullOrEmpty(i) == false select i;
 
-            Queue<Token> Output = new Queue<Token>();
-            Stack<Token> Stack = new Stack<Token>();
+            var Output = new Queue<Token>();
+            var Stack = new Stack<Token>();
             Token temp = null;
             Token opstoken = null;
 
@@ -254,10 +254,10 @@ namespace ECalc.Classes
         /// <returns>Engine.ANS as formatted string</returns>
         private string ResultToString()
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             if (Engine.Ans is Complex)
             {
-                Complex cplx = (Complex)Engine.Ans;
+                var cplx = (Complex)Engine.Ans;
                 sb.Append("R: ");
                 sb.Append(cplx.Real);
                 sb.Append(" i: ");
@@ -283,7 +283,7 @@ namespace ECalc.Classes
             }
             else if (Engine.Ans is double)
             {
-                double d = (double)Engine.Ans;
+                var d = (double)Engine.Ans;
                 if (Engine.PreferPrefixes)
                 {
                     sb.Append(_prefixes.DivideToPrefix(d));
@@ -292,7 +292,7 @@ namespace ECalc.Classes
                 {
                     if ((d - Math.Truncate(d)) == 0)
                     {
-                        BigInteger a = (BigInteger)d;
+                        var a = (BigInteger)d;
                         sb.Append(a);
                     }
                     else sb.Append(d);
@@ -316,7 +316,7 @@ namespace ECalc.Classes
         {
             MemoryManager.ClearTemp();
             var fnc = (from i in UserFunctions where i.Name == name select i).FirstOrDefault();
-            List<object> args = new List<object>();
+            var args = new List<object>();
             if (result.Count < fnc.ArgCount) throw new ArgumentException("Too few parameters for function");
             else if (result.Count > (fnc.ArgCount + 1)) throw new ArgumentException("Too many parameters for function");
             var array = result.ToArray();
@@ -344,7 +344,7 @@ namespace ECalc.Classes
         public void Evaluate(Queue<Token> que)
         {
             HadOwerFlow = false; //reset overflow
-            Stack<object> result = new Stack<object>();
+            var result = new Stack<object>();
 
             foreach (var token in que)
             {
@@ -398,7 +398,7 @@ namespace ECalc.Classes
                         break;
                     case TokenType.Function:
                         var fnc = (from i in _functions where i.Name == token.Content select i).FirstOrDefault();
-                        List<object> args = new List<object>();
+                        var args = new List<object>();
                         if (result.Count < fnc.ParamCount) throw new ArgumentException("Too few parameters for function");
                         else if (result.Count > (fnc.ParamCount + 1)) throw new ArgumentException("Too many parameters for function");
                         for (int j = 0; j < fnc.ParamCount; j++) args.Add(result.Pop());

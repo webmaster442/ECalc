@@ -150,7 +150,7 @@ namespace ECalc.Controls
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    TextBox tx = new TextBox();
+                    var tx = new TextBox();
                     tx.MinWidth = 60;
                     tx.Margin = new Thickness(2);
                     Grid.SetRow(tx, i);
@@ -171,7 +171,7 @@ namespace ECalc.Controls
         {
             get
             {
-                Matrix m = new Matrix(Editor.RowDefinitions.Count, Editor.ColumnDefinitions.Count);
+                var m = new Matrix(Editor.RowDefinitions.Count, Editor.ColumnDefinitions.Count);
                 int i = 0;
                 int j = 0;
                 foreach (TextBox tx in Editor.Children)
@@ -196,7 +196,7 @@ namespace ECalc.Controls
                 {
                     for (int j = 0; j < matrix.Columns; j++)
                     {
-                        TextBox tx = new TextBox();
+                        var tx = new TextBox();
                         tx.MinWidth = 60;
                         tx.Margin = new Thickness(2);
                         Grid.SetRow(tx, i);
@@ -219,7 +219,7 @@ namespace ECalc.Controls
         private async void PART_NegativeButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Index = -1;
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
 
@@ -259,7 +259,7 @@ namespace ECalc.Controls
             {
                 SaveClicked(sender, e);
             }
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
 

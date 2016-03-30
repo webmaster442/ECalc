@@ -256,7 +256,7 @@ namespace ECalc.Maths
         /// </summary>
         public Fraction Duplicate()
         {
-            Fraction frac=new Fraction();
+            var frac=new Fraction();
             frac.Numerator=Numerator;
             frac.Denominator=Denominator;
             return frac;
@@ -399,7 +399,7 @@ namespace ECalc.Maths
         /// </summary>
         public override bool Equals(object obj)
         {
-            Fraction frac=(Fraction)obj;
+            var frac=(Fraction)obj;
             return ( Numerator==frac.Numerator && Denominator==frac.Denominator);
         }
         
@@ -529,7 +529,7 @@ namespace ECalc.Maths
     [Serializable]
     public class FractionException : Exception
     {
-        public FractionException() : base()
+        public FractionException()
         {}
     
         public FractionException(string Message) : base(Message)

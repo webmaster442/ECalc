@@ -12,7 +12,7 @@ namespace ECalc.Classes
         public static void SerializeFunctionUsageStats()
         {
             if (FunctionList2.UsageStats == null) return;
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (var entry in FunctionList2.UsageStats)
             {
                 sb.AppendFormat("{0};{1}\n", entry.Key, entry.Value);
@@ -22,7 +22,7 @@ namespace ECalc.Classes
 
         public static Dictionary<string, uint> DeSerializeFunctionUsageStats()
         {
-            Dictionary<string, uint> ret = new Dictionary<string, uint>();
+            var ret = new Dictionary<string, uint>();
             string[] lines = Properties.Settings.Default.FunctionUsageStats.Split('\n');
             foreach (var line in lines)
             {
@@ -35,7 +35,7 @@ namespace ECalc.Classes
         public static void SerializeConstantUsageStats()
         {
             if (ConstantDB.UsageStats == null) return;
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (var entry in ConstantDB.UsageStats)
             {
                 sb.AppendFormat("{0};{1}\n", entry.Key, entry.Value);
@@ -45,7 +45,7 @@ namespace ECalc.Classes
 
         public static Dictionary<string, uint> DeSerializeConstantUsageStats()
         {
-            Dictionary<string, uint> ret = new Dictionary<string, uint>();
+            var ret = new Dictionary<string, uint>();
             string[] lines = Properties.Settings.Default.ConstantUsageStats.Split('\n');
             foreach (var line in lines)
             {
@@ -59,7 +59,7 @@ namespace ECalc.Classes
         {
             try
             {
-                XmlSerializer xs = new XmlSerializer(typeof(UserFuntion[]));
+                var xs = new XmlSerializer(typeof(UserFuntion[]));
                 using (var stream = File.Create("userprograms.xml"))
                 {
                     xs.Serialize(stream, Engine.UserFunctions.ToArray());
@@ -76,7 +76,7 @@ namespace ECalc.Classes
             try
             {
                 if (!File.Exists("userprograms.xml")) return;
-                XmlSerializer xs = new XmlSerializer(typeof(UserFuntion[]));
+                var xs = new XmlSerializer(typeof(UserFuntion[]));
                 using (var stream = File.OpenRead("userprograms.xml"))
                 {
                     var items = (UserFuntion[])xs.Deserialize(stream);

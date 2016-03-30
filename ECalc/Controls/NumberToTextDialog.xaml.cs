@@ -35,14 +35,14 @@ namespace ECalc.Controls
             }
             else if (o is Complex)
             {
-                Complex par = (Complex)o;
+                var par = (Complex)o;
                 TbText.Text = string.Format("Real part: {0}, Imaginary part: {1}",
                                             NumberToText.NumberText(par.Real),
                                             NumberToText.NumberText(par.Imaginary));
             }
             else if (o is Fraction)
             {
-                Fraction fr = (Fraction)o;
+                var fr = (Fraction)o;
                 TbText.Text = string.Format("{0} over {1}",
                                             NumberToText.NumberText(fr.Numerator),
                                             NumberToText.NumberText(fr.Denominator));
@@ -73,7 +73,7 @@ namespace ECalc.Controls
 
         private async void PART_NegativeButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            MainWindow main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)App.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
 

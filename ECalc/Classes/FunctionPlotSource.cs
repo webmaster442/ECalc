@@ -43,7 +43,7 @@ namespace ECalc.Classes
 
     class FunctionPlotSource: ObservableCollection<FunctionSettings>
     {
-        public FunctionPlotSource(): base()
+        public FunctionPlotSource()
         {
             this.Add(new FunctionSettings("Sin($x)", -180, 360, -1.05, 1.05));
             this.Add(new FunctionSettings("Cos($x)", -180, 360, -1.05, 1.05));

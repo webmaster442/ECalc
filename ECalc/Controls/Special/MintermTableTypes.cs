@@ -11,7 +11,7 @@ namespace ECalc.Controls.Special
     {
         public static Dictionary<int, bool?> GetMintermTableValues(Grid Minterm)
         {
-            Dictionary<int, bool?> ret = new Dictionary<int, bool?>();
+            var ret = new Dictionary<int, bool?>();
             var chbox = Minterm.FindChildren<CheckBox>();
             foreach (var ch in chbox)
             {
