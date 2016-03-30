@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
-             xmlns:api="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
+             xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
              mc:Ignorable="d" 
              d:DesignHeight="520" d:DesignWidth="900">
     <TabControl>
@@ -29,21 +29,21 @@
                          AcceptsReturn="True"/>
                 <StackPanel Grid.Column="1">
                     <GroupBox Header="Number of items">
-                        <api:EditableSlider x:Name="Count"
+                        <controls:EditableSlider x:Name="Count"
                                             Minimum="0"
                                             Maximum="1000"
                                             Value="10"
                                             DefaultValue="10"/>
                     </GroupBox>
                     <GroupBox Header="Minimum">
-                        <api:EditableSlider x:Name="Minimum"
+                        <controls:EditableSlider x:Name="Minimum"
                                             Minimum="-2147483648"
                                             Maximum="2147483647"
                                             Value="0"
                                             DefaultValue="0"/>
                     </GroupBox>
                     <GroupBox Header="Maximum">
-                        <api:EditableSlider x:Name="Maximum"
+                        <controls:EditableSlider x:Name="Maximum"
                                             Minimum="-2147483648"
                                             Maximum="2147483647"
                                             Value="100"
@@ -87,7 +87,7 @@
                          AcceptsReturn="True"/>
                 <StackPanel Grid.Column="1">
                     <GroupBox Header="Minimum Words">
-                        <api:EditableSlider x:Name="MinWords"
+                        <controls:EditableSlider x:Name="MinWords"
                                             Minimum="5"
                                             Maximum="30"
                                             Value="5"
@@ -95,7 +95,7 @@
                                             DefaultValue="5"/>
                     </GroupBox>
                     <GroupBox Header="Maximum Words">
-                        <api:EditableSlider x:Name="MaxWords"
+                        <controls:EditableSlider x:Name="MaxWords"
                                             Minimum="5"
                                             Maximum="30"
                                             Value="30"
@@ -103,7 +103,7 @@
                                             DefaultValue="30"/>
                     </GroupBox>
                     <GroupBox Header="Minimum Sentences">
-                        <api:EditableSlider x:Name="MinSentences"
+                        <controls:EditableSlider x:Name="MinSentences"
                                             Minimum="1"
                                             Maximum="35"
                                             Value="3"
@@ -111,7 +111,7 @@
                                             DefaultValue="3"/>
                     </GroupBox>
                     <GroupBox Header="Max Sentences">
-                        <api:EditableSlider x:Name="MaxSentences"
+                        <controls:EditableSlider x:Name="MaxSentences"
                                             Minimum="1"
                                             Maximum="35"
                                             Value="7"
@@ -119,7 +119,7 @@
                                             DefaultValue="7"/>
                     </GroupBox>
                     <GroupBox Header="Paragraphs">
-                        <api:EditableSlider x:Name="Paragraphs"
+                        <controls:EditableSlider x:Name="Paragraphs"
                                             Minimum="1"
                                             Maximum="100"
                                             Value="2"

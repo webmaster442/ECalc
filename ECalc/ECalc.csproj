@@ -697,6 +697,10 @@
       <Project>{f88b5dbe-b27e-4c34-8ccb-baae76b832fa}</Project>
       <Name>ECalc.Docs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WPFLib\WPFLib\WPFLib.csproj">
+      <Project>{faf19388-a6c0-46f9-a588-a46db392ace4}</Project>
+      <Name>WPFLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

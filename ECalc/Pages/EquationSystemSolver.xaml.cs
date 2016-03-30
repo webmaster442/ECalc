@@ -1,10 +1,10 @@
-﻿using ECalc.Api.Extensions;
-using ECalc.Maths;
+﻿using ECalc.Maths;
 using System;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using WPFLib.Extensions;
 
 namespace ECalc.Pages
 {

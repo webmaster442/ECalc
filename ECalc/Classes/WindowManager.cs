@@ -1,8 +1,8 @@
-﻿using ECalc.Api.Extensions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
+using WPFLib.Extensions;
 
 namespace ECalc.Classes
 {
@@ -117,7 +117,7 @@ namespace ECalc.Classes
                 {
                     ret.Add(new WindowData()
                     {
-                        Image = window.ToImage(),
+                        Image = window.Render(),
                         Title = window.Title
                     });
                 }

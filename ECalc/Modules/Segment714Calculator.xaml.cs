@@ -1,8 +1,8 @@
-﻿using ECalc.Api.Extensions;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using WPFLib.Extensions;
 
 namespace ECalc.Modules
 {

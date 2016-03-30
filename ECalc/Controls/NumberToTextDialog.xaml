@@ -1,7 +1,7 @@
 ﻿<mahdialogs:CustomDialog x:Class="ECalc.Controls.NumberToTextDialog"
                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                         xmlns:controls="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
+                         xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
                          xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
     <mahdialogs:CustomDialog.Resources>
         <Style TargetType="TextBlock">

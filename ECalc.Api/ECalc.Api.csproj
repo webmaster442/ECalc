@@ -78,13 +78,8 @@
   <ItemGroup>
     <Compile Include="BingPhotoOfTheDay.cs" />
     <Compile Include="Controls\Converters.cs" />
-    <Compile Include="Controls\EditableSlider.xaml.cs">
-      <DependentUpon>EditableSlider.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ValueSelector.cs" />
     <Compile Include="EcalcModule.cs" />
-    <Compile Include="Extensions\WPF.cs" />
     <Compile Include="ModuleCategories.cs" />
     <Compile Include="ModuleLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,18 +89,16 @@
     <None Include="ECalc.Api.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\EditableSlider.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Styles\ControlTemplates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\50px\edit.png" />
-    <Resource Include="Images\50px\erease.png" />
+    <ProjectReference Include="..\WPFLib\WPFLib\WPFLib.csproj">
+      <Project>{faf19388-a6c0-46f9-a588-a46db392ace4}</Project>
+      <Name>WPFLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

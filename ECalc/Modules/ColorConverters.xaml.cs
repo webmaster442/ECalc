@@ -1,10 +1,10 @@
-﻿using ECalc.Api.Controls;
-using ECalc.Engineering;
-using ECalc.Api.Extensions;
+﻿using ECalc.Engineering;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using WPFLib.Controls;
+using WPFLib.Extensions;
 
 namespace ECalc.Modules
 {

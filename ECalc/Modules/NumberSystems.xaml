@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:controls="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
+             xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>

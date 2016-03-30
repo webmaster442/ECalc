@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
              xmlns:api="clr-namespace:ECalc.Api.Controls;assembly=ECalc.Api"
              xmlns:special="clr-namespace:ECalc.Controls.Special"
              mc:Ignorable="d" 
@@ -22,14 +23,14 @@
             <TabItem Header="Raw image size">
                 <StackPanel>
                     <GroupBox Header="Image Width">
-                        <api:EditableSlider x:Name="ImgWidth"
+                        <controls:EditableSlider x:Name="ImgWidth"
                                             Minimum="0"
                                             Maximum="10000"
                                             Value="1024"
                                             DefaultValue="1024"/>
                     </GroupBox>
                     <GroupBox Header="Image Height">
-                        <api:EditableSlider x:Name="ImgHeight"
+                        <controls:EditableSlider x:Name="ImgHeight"
                                             Minimum="0"
                                             Maximum="10000"
                                             Value="768"
@@ -55,7 +56,7 @@
                                            x:Name="BitDepth"/>
                     </GroupBox>
                     <GroupBox Header="Sample Rate (HZ)">
-                        <api:EditableSlider Minimum="0"
+                        <controls:EditableSlider Minimum="0"
                                             Maximum="192000"
                                             Value="44100"
                                             x:Name="SampleRate"
@@ -76,14 +77,14 @@
                                                   x:Name="VidLenght"/>
                     </GroupBox>
                     <GroupBox Header="Video Bitrate (KBPS)">
-                        <api:EditableSlider Minimum="0"
+                        <controls:EditableSlider Minimum="0"
                                             Maximum="20000"
                                             Value="1000"
                                             DefaultValue="1000"
                                             x:Name="VidRate"/>
                     </GroupBox>
                     <GroupBox Header="Audio Bitrate (KBPS)">
-                        <api:EditableSlider Minimum="0"
+                        <controls:EditableSlider Minimum="0"
                                             Maximum="2000"
                                             Value="1000"
                                             DefaultValue="320"

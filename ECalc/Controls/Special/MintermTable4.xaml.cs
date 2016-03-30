@@ -1,7 +1,7 @@
 ﻿using ECalc.Engineering;
-using ECalc.Api.Extensions;
 using System.Collections.Generic;
 using System.Windows.Controls;
+using WPFLib.Extensions;
 
 namespace ECalc.Controls.Special
 {

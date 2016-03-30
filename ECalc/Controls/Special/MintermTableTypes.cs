@@ -1,11 +1,9 @@
 ﻿using ECalc.Engineering;
-using ECalc.Api.Extensions;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Windows.Controls;
+using WPFLib.Extensions;
 
 namespace ECalc.Controls.Special
 {
