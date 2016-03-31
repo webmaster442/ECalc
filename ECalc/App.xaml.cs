@@ -46,7 +46,7 @@ namespace ECalc
                 //here to do long stuff;
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
-                var theme = ThemeManager.DetectAppStyle(Application.Current);
+                ThemeManager.DetectAppStyle(Application.Current);
 
                 _accents = new Accent[]
                 {
