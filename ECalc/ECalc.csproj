@@ -89,8 +89,40 @@
     <ManifestTimestampUrl>http://timestamp.digicert.com</ManifestTimestampUrl>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="IronPython, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.Modules.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IronPython.SQLite, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="IronPython.Wpf, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.AspNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.AspNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\IronPython.2.7.5\lib\Net45\Microsoft.Scripting.Metadata.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -125,8 +157,6 @@
     <Compile Include="Classes\ConstantDB.cs" />
     <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\CSV.cs" />
-    <Compile Include="Classes\Engine-OperatorHandling.cs" />
-    <Compile Include="Classes\Engine-Static.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
     <Compile Include="Classes\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
@@ -164,11 +194,15 @@
     <Compile Include="FloatWindow.xaml.cs">
       <DependentUpon>FloatWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IronPythonEngine\CategoryAttribute.cs" />
+    <Compile Include="IronPythonEngine\IronPythonEngine.cs" />
+    <Compile Include="IronPythonEngine\IronPythonEngine.Static.cs" />
     <Compile Include="Lib\CryptoRNG.cs" />
     <Compile Include="Lib\QuantumRandom.cs" />
+    <Compile Include="Maths\Functions.cs" />
     <Compile Include="Maths\Matrix.cs" />
     <Compile Include="Maths\NumberTester.cs" />
-    <Compile Include="Maths\Probability.cs" />
+    <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Maths\Vector.cs" />
     <Compile Include="Modules\ColorConverters.xaml.cs">
       <DependentUpon>ColorConverters.xaml</DependentUpon>
@@ -185,9 +219,6 @@
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\ProgramEditor.xaml.cs">
-      <DependentUpon>ProgramEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\RandomGenerators.xaml.cs">
       <DependentUpon>RandomGenerators.xaml</DependentUpon>
@@ -325,7 +356,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\ConfigFileHelpers.cs" />
-    <Compile Include="Classes\Engine-Main.cs" />
     <Compile Include="Maths\FractionClass.cs" />
     <Compile Include="Classes\PrefixDictionary.cs" />
     <Compile Include="Controls\Special\ResistorColorSelector.xaml.cs">
@@ -398,10 +428,6 @@
     <Page Include="Modules\ne555Calc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Modules\ProgramEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\RandomGenerators.xaml">
       <SubType>Designer</SubType>
@@ -505,11 +531,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maths\Types.cs" />
     <Compile Include="Maths\General.cs" />
     <Compile Include="Maths\NumberSystemConversions.cs" />
-    <Compile Include="Maths\TrigFunctions.cs" />
-    <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="Controls\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
     </Compile>

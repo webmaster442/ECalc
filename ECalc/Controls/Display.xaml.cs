@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using ECalc.IronPythonEngine;
 using ECalc.Maths;
 using System;
 using System.Collections.ObjectModel;
@@ -66,13 +67,13 @@ namespace ECalc.Controls
                 if (j > 2)
                 {
                     j = 0;
-                    sb.Append(Engine.NumberGroupSeparator);
+                    sb.Append(" ");
                 }
             }
             Reverse(sb);
             if (parts.Length > 1)
             {
-                sb.Append(Engine.DecimalSeperator);
+                sb.Append(".");
                 sb.Append(parts[1]);
             }
             return sb.ToString().Trim();
@@ -201,15 +202,15 @@ namespace ECalc.Controls
 
         private void BitEngineMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selection = BitEngineMode.SelectedItem.ToString();
+            /*var selection = BitEngineMode.SelectedItem.ToString();
             BitEngineModes mode = BitEngineModes.Signed64bit;
             bool result = Enum.TryParse<BitEngineModes>(selection, out mode);
-            if (result) Engine.BitEngineMode = mode;
+            if (result) Engine.BitEngineMode = mode;*/
         }
 
         private void CbPrefixDisplay_Checked(object sender, RoutedEventArgs e)
         {
-            Engine.PreferPrefixes = (bool)CbPrefixDisplay.IsChecked;
+            //Engine.PreferPrefixes = (bool)CbPrefixDisplay.IsChecked;
         }
 
         private void userControl_Loaded(object sender, RoutedEventArgs e)

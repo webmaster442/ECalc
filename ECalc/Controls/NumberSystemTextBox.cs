@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using ECalc.IronPythonEngine;
 using ECalc.Maths;
 using System;
 using System.Text;
@@ -47,21 +48,7 @@ namespace ECalc.Controls
             {
 
                 byte[] dataarray = null;
-                switch (Engine.BitEngineMode)
-                {
-                    case BitEngineModes.Signed16bit:
-                    case BitEngineModes.Signed32bit:
-                    case BitEngineModes.Signed64bit:
-                    case BitEngineModes.Signed8bit:
-                        dataarray = BitConverter.GetBytes(Convert.ToInt64(o));
-                        break;
-                    case BitEngineModes.Unsigned16bit:
-                    case BitEngineModes.Unsigned32bit:
-                    case BitEngineModes.Unsigned64bit:
-                    case BitEngineModes.Unsigned8bit:
-                        dataarray = BitConverter.GetBytes(Convert.ToUInt64(o));
-                        break;
-                }
+                dataarray = BitConverter.GetBytes(Convert.ToInt64(o));
                 Array.Reverse(dataarray);
                 var x = DoRow("Bin:   ", dataarray, 2);
                 buffer.Append(x);
@@ -78,26 +65,6 @@ namespace ECalc.Controls
             ret.Append(label);
             ret.Append(" ");
             int startindex = 0;
-
-            switch (Engine.BitEngineMode)
-            {
-                case BitEngineModes.Signed16bit:
-                case BitEngineModes.Unsigned16bit:
-                    startindex = 6;
-                    break;
-                case BitEngineModes.Signed32bit:
-                case BitEngineModes.Unsigned32bit:
-                    startindex = 4;
-                    break;
-                case BitEngineModes.Signed64bit:
-                case BitEngineModes.Unsigned64bit:
-                    startindex = 0;
-                    break;
-                case BitEngineModes.Signed8bit:
-                case BitEngineModes.Unsigned8bit:
-                    startindex = 7;
-                    break;
-            }
 
             for (int i=startindex; i<8; i++)
             {

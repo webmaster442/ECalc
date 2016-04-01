@@ -19,7 +19,7 @@ namespace ECalc.Controls
             InitializeComponent();
             _constants = new ConstantList();
             ConstList.ItemsSource = _constants;
-            DecimalSeperator.Content = Engine.DecimalSeperator;
+            DecimalSeperator.Content = " ";
         }
 
         public event RoutedEventHandler ExecuteClicked;

@@ -158,7 +158,7 @@ namespace ECalc.Classes
 
         private static void AppendFloatingPart(string number)
         {
-            var parts = number.Split(Engine.DecimalSeperator[0]);
+            var parts = number.Split('.');
             _output.Append(" point ");
             foreach (var part in parts[1])
             {

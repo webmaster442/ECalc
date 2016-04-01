@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using ECalc.IronPythonEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace ECalc.Pages
     /// </summary>
     public partial class Graphing : UserControl
     {
-        private Classes.Engine _engine;
+        private Engine _engine;
         private Point _selectionStart;
         private bool _selectionStarted;
         private FunctionPlotSource _source;
@@ -22,8 +23,7 @@ namespace ECalc.Pages
         public Graphing()
         {
             InitializeComponent();
-            _engine = new Classes.Engine();
-            _engine.MemoryManager = new SimpleMemmMan();
+            _engine = new Engine();
             _source = new FunctionPlotSource();
             FunctionTemplates.ItemsSource = _source;
         }
@@ -124,7 +124,7 @@ namespace ECalc.Pages
         {
             try
             {
-                var rpnY = _engine.CompileToRpn(TbYFunction.Text);
+                //var rpnY = _engine.CompileToRpn(TbYFunction.Text);
                 var width = CanvasWidth;
                 var height = CanvasHeight;
                 var offsetX = -MinX.Value;
@@ -135,6 +135,8 @@ namespace ECalc.Pages
                 var points = new PointCollection();
                 for (var x = MinX.Value; x < MaxX.Value; x += 1 / graphToCanvasX)
                 {
+
+                    /*
                     _engine.MemoryManager.SetItem("$x", x);
                     var xCanvas = (x + offsetX) * graphToCanvasX;
                     _engine.Evaluate(rpnY);
@@ -143,7 +145,7 @@ namespace ECalc.Pages
                     {
                         var yCanvas = (offsetY - y) * graphToCanvasY;
                         points.Add(ClampedPoint((double)xCanvas, (double)yCanvas));
-                    }
+                    }*/
                 }
 
                 ScreenCanvas.Children.Clear();
@@ -164,6 +166,7 @@ namespace ECalc.Pages
 
         private void Draw2D()
         {
+            /*
             try
             {
                 var rpnX = _engine.CompileToRpn(Tb2DXFunction.Text);
@@ -210,6 +213,7 @@ namespace ECalc.Pages
             {
                 MainWindow.ErrorDialog(ex.Message);
             }
+            */
         }
 
         #region UI

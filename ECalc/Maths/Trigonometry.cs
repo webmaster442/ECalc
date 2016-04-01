@@ -1,739 +1,317 @@
-﻿using ECalc.Classes;
-using System;
+﻿using System;
+using System.Numerics;
+using ECalc.Classes;
+using ECalc.IronPythonEngine;
 
 namespace ECalc.Maths
 {
-
-    #region Conversion functions
-    public class Rad2Deg : IFunction
+    /// <summary>
+    /// Trigonometrical functions
+    /// </summary>
+    public static class TrigFunctions
     {
-        public string Name
+
+        /// <summary>
+        /// Converts radians to degrees. Current trig mode does not affect this function.
+        /// </summary>
+        /// <param name="rad">input radians</param>
+        public static double Rad2Deg(double rad)
         {
-            get { return "Rad2Deg"; }
+            return (rad * 180) / Math.PI;
         }
 
-        public string Category
+        /// <summary>
+        /// Converts degrees to radians. Current trig mode does not affect this function.
+        /// </summary>
+        /// <param name="deg">input degrees</param>
+        public static double Deg2Rad(double deg)
         {
-            get { return "Angle conversions"; }
+            return (Math.PI / 180) * deg;
         }
 
-        public object Run(params object[] arguments)
+        /// <summary>
+        /// Converts degress to gradians. Current trig mode does not affect this function.
+        /// </summary>
+        /// <param name="deg">input degrees</param>
+        public static double Deg2Grad(double deg)
         {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Rad2Deg(d);
+            return (400.0 / 360.0) * deg;
         }
 
-        public int ParamCount
+        /// <summary>
+        /// Converts gradians to degrees. Current trig mode does not affect this function.
+        /// </summary>
+        /// <param name="grad">input gradians</param>
+        /// <returns></returns>
+        public static double Grad2Deg(double grad)
         {
-            get { return 1; }
+            return (360.0 / 400.0) * grad;
+        }
+
+        /// <summary>
+        /// Converts gradians to radians. Current trig mode does not affect this function.
+        /// </summary>
+        /// <param name="grad">input gradians</param>
+        public static double Grad2Rad(double grad)
+        {
+            double fok = (360.0 / 400.0) * grad;
+            return (Math.PI / 180) * fok;
+        }
+
+        /// <summary>
+        /// Converts radians to gradians. Current trig mode does not affect this function.
+        /// </summary>
+        /// <param name="rad">input radians</param>
+        public static double Rad2Grad(double rad)
+        {
+            double fok = (rad * 180) / Math.PI;
+            return (400.0 / 360.0) * fok;
+        }
+
+        /// <summary>
+        /// Returns the sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Sin(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    if ((Deg2Rad(value1) >= Math.PI) && ((Deg2Rad(value1) % Math.PI) == 0)) return 0;
+                    else return Math.Sin(Deg2Rad(value1));
+                case TrigMode.GRAD:
+                    if ((Grad2Rad(value1) >= Math.PI) && ((Grad2Rad(value1) % Math.PI) == 0)) return 0;
+                    else return Math.Sin(Grad2Rad(value1));
+                case TrigMode.RAD:
+                    if ((value1 >= Math.PI) && ((value1 % Math.PI) == 0)) return 0;
+                    else return Math.Sin(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Cos(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    if ((((Deg2Rad(value1) - (Math.PI / 2)) % Math.PI) == 0) || Deg2Rad(value1) == (Math.PI / 2)) return 0;
+                    else return Math.Cos(Deg2Rad(value1));
+                case TrigMode.GRAD:
+                    if ((((Grad2Rad(value1) - (Math.PI / 2)) % Math.PI) == 0) || Grad2Rad(value1) == (Math.PI / 2)) return 0;
+                    else return Math.Cos(Grad2Rad(value1));
+                case TrigMode.RAD:
+                    if ((((value1 - (Math.PI / 2)) % Math.PI) == 0) || value1 == (Math.PI / 2)) return 0;
+                    else return Math.Cos(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Tan(double value1)
+        {
+            return TrigFunctions.Sin(value1) / TrigFunctions.Cos(value1);
+        }
+
+        /// <summary>
+        /// Returns the cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Ctg(double value1)
+        {
+            return TrigFunctions.Cos(value1) / TrigFunctions.Sin(value1);
+        }
+
+        /// <summary>
+        /// Returns the hyperbolic sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Sinh(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Math.Sinh(Deg2Rad(value1));
+                case TrigMode.GRAD:
+                    return Math.Sinh(Grad2Rad(value1));
+                case TrigMode.RAD:
+                    return Math.Sinh(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the hyperbolic cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Cosh(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Math.Cosh(Deg2Rad(value1));
+                case TrigMode.RAD:
+                    return Math.Cosh(Grad2Rad(value1));
+                case TrigMode.GRAD:
+                    return Math.Cosh(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the hyperbolic tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double Tanh(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Math.Tanh(Deg2Rad(value1));
+                case TrigMode.GRAD:
+                    return Math.Tanh(Grad2Rad(value1));
+                case TrigMode.RAD:
+                    return Math.Tanh(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the arcus sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double ArcSin(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(Math.Asin(value1));
+                case TrigMode.GRAD:
+                    return Rad2Grad(Math.Asin(value1));
+                case TrigMode.RAD:
+                    return Math.Asin(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the arcus cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double ArcCos(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(Math.Acos(value1));
+                case TrigMode.GRAD:
+                    return Rad2Grad(Math.Acos(value1));
+                case TrigMode.RAD:
+                    return Math.Acos(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the arcus tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double ArcTan(double value1)
+        {
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(Math.Atan(value1));
+                case TrigMode.GRAD:
+                    return Rad2Grad(Math.Atan(value1));
+                case TrigMode.RAD:
+                    return Math.Atan(value1);
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// returns the arcus cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="value">input number</param>
+        public static double ArcCtg(double value)
+        {
+            return ArcTan(1 / value);
+        }
+
+        /// <summary>
+        /// Returns the arcus hyperboc sine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double ArcSinh(double value1)
+        {
+            double inrads = Math.Log(Math.Pow(Math.Pow(value1, 2) + 1, 0.5), Math.E);
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrads);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrads);
+                case TrigMode.RAD:
+                    return inrads;
+                default:
+                    return double.NaN;
+            }
+        }
+
+        /// <summary>
+        /// Returns the arcus hyperbolic cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double ArcCosh(double value1)
+        {
+            double inrads = Math.Log(Math.Pow(Math.Pow(value1, 2) - 1, 0.5), Math.E);
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrads);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrads);
+                case TrigMode.RAD:
+                    return inrads;
+                default:
+                    return double.NaN;
+            }
+        }
+
+
+        /// <summary>
+        /// Returns the arcus hyperbolic tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        public static double ArcTanh(double value1)
+        {
+            double inrads = 0.5 * Math.Log((1 + value1 / 1 - value1), Math.E);
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrads);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrads);
+                case TrigMode.RAD:
+                    return inrads;
+                default:
+                    return double.NaN;
+            }
         }
     }
-
-    public class Deg2Rad : IFunction
-    {
-        public string Name
-        {
-            get { return "Deg2Rad"; }
-        }
-
-        public string Category
-        {
-            get { return "Angle conversions"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Deg2Rad(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Grad2Deg : IFunction
-    {
-        public string Name
-        {
-            get { return "Grad2Deg"; }
-        }
-
-        public string Category
-        {
-            get { return "Angle conversions"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Grad2Deg(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Deg2Grad : IFunction
-    {
-        public string Name
-        {
-            get { return "Deg2Grad"; }
-        }
-
-        public string Category
-        {
-            get { return "Angle conversions"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Deg2Grad(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Rad2Grad : IFunction
-    {
-        public string Name
-        {
-            get { return "Rad2Grad"; }
-        }
-
-        public string Category
-        {
-            get { return "Angle conversions"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Rad2Grad(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Grad2Rad : IFunction
-    {
-        public string Name
-        {
-            get { return "Grad2Rad"; }
-        }
-
-        public string Category
-        {
-            get { return "Angle conversions"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Grad2Rad(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    #endregion
-
-    #region Trigonometrical functions
-    public class Sin : IFunction
-    {
-        public string Name
-        {
-            get { return "Sin"; }
-        }
-
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Sin(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Cos : IFunction
-    {
-        public string Name
-        {
-            get { return "Cos"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Cos(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Tan : IFunction
-    {
-        public string Name
-        {
-            get { return "Tan"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Tan(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Ctg : IFunction
-    {
-        public string Name
-        {
-            get { return "Ctg"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Ctg(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Sec : IFunction
-    {
-        public string Name
-        {
-            get { return "Sec"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Sec(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Cosec : IFunction
-    {
-        public string Name
-        {
-            get { return "Cosec"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Cosec(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-    #endregion
-
-    #region Inverse Trigonometrical Functions
-    public class ArcSin : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcSin"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcSin(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcCos : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcCos"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcCos(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcTan : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcTan"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcTan(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcCtg : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcCtg"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcCtg(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcSec : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcSec"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcSec(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcCosec : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcCosec"; }
-        }
-
-        public string Category
-        {
-            get { return "Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcCosec(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    #endregion
-
-    #region Hyperbolic Trigonometric functions
-    public class Sinh : IFunction
-    {
-        public string Name
-        {
-            get { return "Sinh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Sinh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Cosh : IFunction
-    {
-        public string Name
-        {
-            get { return "Cosh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Cosh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Tanh : IFunction
-    {
-        public string Name
-        {
-            get { return "Tanh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Tanh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Ctgh : IFunction
-    {
-        public string Name
-        {
-            get { return "Ctgh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Ctgh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Sech : IFunction
-    {
-        public string Name
-        {
-            get { return "Sech"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Sech(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class Cosech : IFunction
-    {
-        public string Name
-        {
-            get { return "Cosech"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.Cosech(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-    #endregion
-
-    #region Inverse Hyperbolic Trigonometric functions
-    public class ArcSinh : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcSinh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcSinh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcCosh : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcCosh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcCosh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcTanh : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcTanh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcTanh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcCtgh : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcCtgh"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcCtgh(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcSech : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcSech"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcSech(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-
-    public class ArcCosech : IFunction
-    {
-        public string Name
-        {
-            get { return "ArcCosech"; }
-        }
-
-        public string Category
-        {
-            get { return "Hyperbolic Trigonometry"; }
-        }
-
-        public object Run(params object[] arguments)
-        {
-            double d = Convert.ToDouble(arguments[0]);
-            return TrigFunctions.ArcCosech(d);
-        }
-
-        public int ParamCount
-        {
-            get { return 1; }
-        }
-    }
-    #endregion
 }

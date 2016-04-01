@@ -42,10 +42,9 @@ namespace ECalc
         /// Display an error dialog
         /// </summary>
         /// <param name="error">error text</param>
-        public static async void ErrorDialog(string error)
+        public static void ErrorDialog(string error)
         {
-            var main = (MainWindow)App.Current.MainWindow;
-            await main.ShowMessageAsync("Error", error, MessageDialogStyle.Affirmative);
+            MessageBox.Show(error);
         }
 
         /// <summary>
@@ -95,7 +94,6 @@ namespace ECalc
                 ConfigFileHelpers.SerializeConstantUsageStats();
                 Properties.Settings.Default.Save();
             }
-            ConfigFileHelpers.SaveUserFunctions();
         }
 
         private void ThumbMenu_Click(object sender, EventArgs e)

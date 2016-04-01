@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using ECalc.IronPythonEngine;
 
 namespace ECalc.Pages
 {
@@ -12,10 +13,12 @@ namespace ECalc.Pages
     {
         private Engine _engine;
 
+
         public Calculator()
         {
             InitializeComponent();
             Display.Focus();
+            _engine = new Engine();
         }
 
         private async void KeyPad_ExecuteClicked(object sender, RoutedEventArgs e)
@@ -48,7 +51,7 @@ namespace ECalc.Pages
             try
             {
                 var result = await _engine.EvaluateAsync(Display.EquationText);
-                Keypad.SetItem(Engine.Ans);
+                Keypad.SetItem(result);
             }
             catch (Exception ex)
             {
@@ -66,8 +69,8 @@ namespace ECalc.Pages
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (designTime) return;
             _engine = new Engine();
-            _engine.MemoryManager = Keypad;
-            FncList.Funtions = _engine.Functions;
+            //_engine.MemoryManager = Keypad;
+            FncList.Funtions = Engine.Functions;
         }
 
         private void Display_ModeChanged(object sender, StringEventArgs e)

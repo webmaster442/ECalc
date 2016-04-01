@@ -12,7 +12,6 @@ namespace ECalc.Controls
         public BasicKeyPad()
         {
             InitializeComponent();
-            DecimalSeperator.Content = Engine.DecimalSeperator;
         }
 
         public TextBox Target { get; set; }

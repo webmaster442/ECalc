@@ -54,40 +54,5 @@ namespace ECalc.Classes
             }
             return ret;
         }
-
-        public static void SaveUserFunctions()
-        {
-            try
-            {
-                var xs = new XmlSerializer(typeof(UserFuntion[]));
-                using (var stream = File.Create("userprograms.xml"))
-                {
-                    xs.Serialize(stream, Engine.UserFunctions.ToArray());
-                }
-            }
-            catch (Exception ex)
-            {
-                MainWindow.ErrorDialog(ex.Message);
-            }
-        }
-
-        public static void LoadUserFunctions()
-        {
-            try
-            {
-                if (!File.Exists("userprograms.xml")) return;
-                var xs = new XmlSerializer(typeof(UserFuntion[]));
-                using (var stream = File.OpenRead("userprograms.xml"))
-                {
-                    var items = (UserFuntion[])xs.Deserialize(stream);
-                    Engine.UserFunctions.Clear();
-                    Engine.UserFunctions.AddRange(items);
-                }
-            }
-            catch (Exception ex)
-            {
-                MainWindow.ErrorDialog(ex.Message);
-            }
-        }
     }
 }

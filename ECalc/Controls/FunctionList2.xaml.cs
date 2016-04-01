@@ -70,28 +70,16 @@ namespace ECalc.Controls
                 }
                 CategoryPanel.Children.Add(group);
             }
-            var ufunctions = from i in Engine.UserFunctions orderby i.Name ascending select i.Name;
-            var ugroup = new GroupBox();
-            ugroup.Header = "User";
-            var uwp = new WrapPanel();
-            ugroup.Content = uwp;
-            foreach (var ufunction in ufunctions)
-            {
-                RenderButton(ufunction, uwp);
-            }
-            CategoryPanel.Children.Add(ugroup);
 
         }
 
         private void RenderAlphabeticalViewHeader()
         {
 
-            var q1 = (from i in _functions select i.Name.Substring(0, 1).ToUpper()).Distinct();
-            var q2 = (from i in Engine.UserFunctions select i.Name.Substring(0, 1).ToUpper()).Distinct();
-            var q3 = (from i in q1.Union(q2) orderby i ascending select i).Distinct().ToList();
-            q3.Add("All");
-            q3.Add("Usage");
-            LetterSelector.ItemsSource = q3;
+            var q1 = (from i in _functions orderby i.Name ascending select i.Name.Substring(0, 1).ToUpper()).Distinct().ToList();
+            q1.Add("All");
+            q1.Add("Usage");
+            LetterSelector.ItemsSource = q1;
         }
 
         private void RenderAlphabeticalView(string letter)
@@ -99,17 +87,13 @@ namespace ECalc.Controls
             string[] items = null;
             if (letter == "All")
             {
-                var q1 = from i in _functions select i.Name;
-                var q2 = from i in Engine.UserFunctions select i.Name;
-                var q3 = from i in q1.Concat(q2) orderby i ascending select i;
-                items = q3.ToArray();
+                var q1 = from i in _functions orderby i.Name ascending select i.Name;
+                items = q1.ToArray();
             }
             else
             {
-                var q1 = from i in _functions where i.Name.StartsWith(letter) select i.Name;
-                var q2 = from i in Engine.UserFunctions where i.Name.StartsWith(letter) select i.Name;
-                var q3 = from i in q1.Concat(q2) orderby i ascending select i;
-                items = q3.ToArray();
+                var q1 = from i in _functions where i.Name.StartsWith(letter) orderby i.Name ascending select i.Name;
+                items = q1.ToArray();
             }
             AlphabetPanel.Children.Clear();
             foreach (var item in items)
@@ -128,7 +112,7 @@ namespace ECalc.Controls
         private void RenderUsageView()
         {
 
-            var names = _functions.Select(q => q.Name).Concat(Engine.UserFunctions.Select(q => q.Name));
+            var names = _functions.Select(q => q.Name);
 
             var usageinfo = (from i in names from j in UsageStats
                              where i == j.Key
