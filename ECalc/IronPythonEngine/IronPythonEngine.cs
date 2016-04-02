@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ECalc.IronPythonEngine
@@ -21,6 +22,7 @@ namespace ECalc.IronPythonEngine
     {
         private ScriptEngine _engine;
         private ScriptScope _scope;
+        private Dictionary<string, string> _functioncache;
 
         public Engine()
         {
@@ -28,6 +30,12 @@ namespace ECalc.IronPythonEngine
             options["DivisionOptions"] = PythonDivisionOptions.New;
             _engine = Python.CreateEngine(options);
             _scope = _engine.CreateScope();
+            foreach (var t in _pluggable)
+            {
+                _scope.SetVariable(t.Name, DynamicHelpers.GetPythonTypeFromType(t));
+            }
+            _functioncache = new Dictionary<string, string>();
+            foreach (var f in _functions) _functioncache.Add(f.Name, f.FullName);
         }
 
         private bool ParseNumber(out string parsed, string c)
@@ -79,15 +87,25 @@ namespace ECalc.IronPythonEngine
             }
         }
 
+        /// <summary>
+        /// Pre process calculator raw input
+        /// </summary>
+        /// <param name="input">raw input</param>
+        /// <returns>executable python code</returns>
         public string PreProcess(string input)
         {
-            var parts = input.Split(' ');
+            var parts = Regex.Split(input, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)");
             string temp;
             for (int i=0; i<parts.Length; i++)
             {
+                if (string.IsNullOrWhiteSpace(parts[i])) continue;
+
+                parts[i] = parts[i].Trim();
+
                 if (parts[i] == "×") parts[i] = "*";
                 else if (parts[i] == "÷") parts[i] = "/";
                 else if (parts[i].StartsWith("&")) parts[i] = ConstantDB.Lookup(parts[i]).ToString(CultureInfo.InvariantCulture);
+                else if (_functioncache.ContainsKey(parts[i])) parts[i] = _functioncache[parts[i]];
                 else
                 {
                     var result = ParseNumber(out temp, parts[i]);
@@ -97,6 +115,7 @@ namespace ECalc.IronPythonEngine
             StringBuilder processed = new StringBuilder();
             for (int i = 0; i < parts.Length; i++)
             {
+                if (string.IsNullOrWhiteSpace(parts[i])) continue;
                 processed.Append(parts[i]);
                 if (i != parts.Length - 1) processed.Append(" ");
             }

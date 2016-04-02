@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using ECalc.IronPythonEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace ECalc.Controls
     /// </summary>
     public partial class FunctionList2 : UserControl
     {
-        private IFunction[] _functions;
+        private FunctionInfo[] _functions;
         public static Dictionary<string, uint> UsageStats;
 
         public FunctionList2()
@@ -20,7 +21,7 @@ namespace ECalc.Controls
             InitializeComponent();
         }
 
-        internal IFunction[] Funtions
+        internal FunctionInfo[] Funtions
         {
             get { return _functions; }
             set

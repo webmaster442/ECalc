@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ECalc.IronPythonEngine
 {
     [AttributeUsage(AttributeTargets.Method)]
-    class CategoryAttribute: Attribute
+    internal class CategoryAttribute: Attribute
     {
         public string Category
         {
@@ -20,4 +20,16 @@ namespace ECalc.IronPythonEngine
             Category = cat;
         }
     }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    internal class LoadableAttribute: Attribute { }
+
+    [Serializable]
+    internal class FunctionInfo
+    {
+        public string Name { get; set; }
+        public string FullName { get; set; }
+        public string Category { get; set; }
+    }
+
 }

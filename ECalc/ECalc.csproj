@@ -194,7 +194,7 @@
     <Compile Include="FloatWindow.xaml.cs">
       <DependentUpon>FloatWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IronPythonEngine\CategoryAttribute.cs" />
+    <Compile Include="IronPythonEngine\EngineTypes.cs" />
     <Compile Include="IronPythonEngine\IronPythonEngine.cs" />
     <Compile Include="IronPythonEngine\IronPythonEngine.Static.cs" />
     <Compile Include="Lib\CryptoRNG.cs" />
