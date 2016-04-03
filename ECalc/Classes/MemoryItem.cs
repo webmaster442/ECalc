@@ -84,14 +84,14 @@ namespace ECalc.Classes
 
         public MemoryItem()
         {
-            Name = String.Format("$Reg_{0}", Counter);
+            Name = String.Format("Reg_{0}", Counter);
             Value = null;
             Counter++;
         }
 
         public MemoryItem(object val)
         {
-            Name = String.Format("$Reg_{0}", Counter);
+            Name = String.Format("Reg_{0}", Counter);
             Value = val;
             Counter++;
         }

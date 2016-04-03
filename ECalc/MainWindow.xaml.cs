@@ -42,9 +42,17 @@ namespace ECalc
         /// Display an error dialog
         /// </summary>
         /// <param name="error">error text</param>
-        public static void ErrorDialog(string error)
+        public static async void ErrorDialog(string error)
         {
-            MessageBox.Show(error);
+            try
+            {
+                var main = (MainWindow)App.Current.MainWindow;
+                await main.ShowMessageAsync("Error", error, MessageDialogStyle.Affirmative);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>

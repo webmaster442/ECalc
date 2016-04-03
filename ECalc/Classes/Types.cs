@@ -28,34 +28,6 @@ namespace ECalc.Classes
     }
 
     /// <summary>
-    /// Function Interface
-    /// </summary>
-    internal interface IFunction
-    {
-        /// <summary>
-        /// Function name
-        /// </summary>
-        string Name { get; }
-
-        /// <summary>
-        /// Function category
-        /// </summary>
-        string Category { get; }
-
-        /// <summary>
-        /// Function code
-        /// </summary>
-        /// <param name="arguments">function arguments</param>
-        /// <returns>a result object</returns>
-        object Run(params object[] arguments);
-
-        /// <summary>
-        /// Argument count
-        /// </summary>
-        int ParamCount { get; }
-    }
-
-    /// <summary>
     /// Trigonometry modes
     /// </summary>
     internal enum TrigMode
@@ -130,17 +102,6 @@ namespace ECalc.Classes
         /// </summary>
         /// <param name="value">value of variable</param>
         void SetItem(object value);
-
-        /// <summary>
-        /// Push a variable as a temp
-        /// </summary>
-        /// <param name="value">value</param>
-        void PushTemp(object value);
-
-        /// <summary>
-        /// Clear temp variables
-        /// </summary>
-        void ClearTemp();
     }
 
     /// <summary>

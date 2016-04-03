@@ -215,13 +215,13 @@
                     Click="Exponent_Click"
                     Grid.Column="1"/>
 
-            <Button Content=","
+            <Button Content="."
                     x:Name="DecimalSeperator"
                     Grid.Row="3"
                     Grid.Column="2"
                     Click="Button_Click"/>
 
-            <Button Content=";"
+            <Button Content=","
                     Grid.Row="3"
                     Grid.Column="3"
                     Click="Button_Click"/>

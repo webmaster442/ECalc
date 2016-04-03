@@ -16,19 +16,22 @@ namespace ECalc.IronPythonEngine
         static Engine()
         {
             _prefixes = new PrefixDictionary();
-            _operators = new string[] { "+", "*", "/", "×", "÷", "(", ")" };
+            _operators = new string[] { "+", "*", "/", "×", "÷", "(", ")", "%" };
             _functions = new List<FunctionInfo>();
             _pluggable = new List<Type>();
-            try { ReflectLoad(); }
+            try
+            {
+                ReflectLoad("ECalc.Maths");
+            }
             catch (Exception ex) { MainWindow.ErrorDialog(ex.Message); }
         }
 
-        public static void ReflectLoad()
+        public static void ReflectLoad(string ns)
         {
             var classes = from t in Assembly.GetExecutingAssembly().GetTypes()
                           where
                           t.IsClass &&
-                          t.Namespace == "ECalc.Maths" &&
+                          t.Namespace == ns &&
                           Attribute.IsDefined(t, typeof(LoadableAttribute))
                           select t;
 

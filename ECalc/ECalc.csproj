@@ -194,6 +194,7 @@
     <Compile Include="FloatWindow.xaml.cs">
       <DependentUpon>FloatWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IronPythonEngine\CalculatorFunctions.cs" />
     <Compile Include="IronPythonEngine\EngineTypes.cs" />
     <Compile Include="IronPythonEngine\IronPythonEngine.cs" />
     <Compile Include="IronPythonEngine\IronPythonEngine.Static.cs" />
@@ -531,7 +532,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Maths\General.cs" />
     <Compile Include="Maths\NumberSystemConversions.cs" />
     <Compile Include="Controls\AboutDialog.xaml.cs">
       <DependentUpon>AboutDialog.xaml</DependentUpon>
@@ -846,6 +846,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\programeditor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\large\ironpython-logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -15,7 +15,7 @@ namespace ECalc.Maths
         /// Converts radians to degrees. Current trig mode does not affect this function.
         /// </summary>
         /// <param name="rad">input radians</param>
-        [Category("Ange Conversions")]
+        [Category("Angle Conversions")]
         public static double Rad2Deg(double rad)
         {
             return (rad * 180) / Math.PI;
@@ -25,7 +25,7 @@ namespace ECalc.Maths
         /// Converts degrees to radians. Current trig mode does not affect this function.
         /// </summary>
         /// <param name="deg">input degrees</param>
-        [Category("Ange Conversions")]
+        [Category("Angle Conversions")]
         public static double Deg2Rad(double deg)
         {
             return (Math.PI / 180) * deg;
@@ -35,7 +35,7 @@ namespace ECalc.Maths
         /// Converts degress to gradians. Current trig mode does not affect this function.
         /// </summary>
         /// <param name="deg">input degrees</param>
-        [Category("Ange Conversions")]
+        [Category("Angle Conversions")]
         public static double Deg2Grad(double deg)
         {
             return (400.0 / 360.0) * deg;
@@ -46,7 +46,7 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="grad">input gradians</param>
         /// <returns></returns>
-        [Category("Ange Conversions")]
+        [Category("Angle Conversions")]
         public static double Grad2Deg(double grad)
         {
             return (360.0 / 400.0) * grad;
@@ -56,7 +56,7 @@ namespace ECalc.Maths
         /// Converts gradians to radians. Current trig mode does not affect this function.
         /// </summary>
         /// <param name="grad">input gradians</param>
-        [Category("Ange Conversions")]
+        [Category("Angle Conversions")]
         public static double Grad2Rad(double grad)
         {
             double fok = (360.0 / 400.0) * grad;
@@ -67,7 +67,7 @@ namespace ECalc.Maths
         /// Converts radians to gradians. Current trig mode does not affect this function.
         /// </summary>
         /// <param name="rad">input radians</param>
-        [Category("Ange Conversions")]
+        [Category("Angle Conversions")]
         public static double Rad2Grad(double rad)
         {
             double fok = (rad * 180) / Math.PI;

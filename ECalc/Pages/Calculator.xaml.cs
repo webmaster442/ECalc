@@ -50,8 +50,9 @@ namespace ECalc.Pages
         {
             try
             {
-                var result = await _engine.EvaluateAsync(Display.EquationText);
-                Keypad.SetItem(result);
+                await _engine.EvaluateAsync(Display.EquationText);
+                Keypad.SetItem(Engine.Ans);
+                Display.EquationText = "";
             }
             catch (Exception ex)
             {
@@ -69,7 +70,7 @@ namespace ECalc.Pages
             bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (designTime) return;
             _engine = new Engine();
-            //_engine.MemoryManager = Keypad;
+            _engine.MemoryManager = Keypad;
             FncList.Funtions = Engine.Functions;
         }
 

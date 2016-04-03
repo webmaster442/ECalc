@@ -23,6 +23,7 @@ namespace ECalc.IronPythonEngine
         private ScriptEngine _engine;
         private ScriptScope _scope;
         private Dictionary<string, string> _functioncache;
+        private IMemManager _mem;
 
         public Engine()
         {
@@ -34,8 +35,24 @@ namespace ECalc.IronPythonEngine
             {
                 _scope.SetVariable(t.Name, DynamicHelpers.GetPythonTypeFromType(t));
             }
+            _scope.SetVariable("CalculatorFunctions", DynamicHelpers.GetPythonTypeFromType(typeof(CalculatorFunctions)));
             _functioncache = new Dictionary<string, string>();
-            foreach (var f in _functions) _functioncache.Add(f.Name, f.FullName);
+            _functioncache.Add("Var", "CalculatorFunctions.Var");
+            foreach (var f in _functions)
+            {
+                if (_functioncache.ContainsKey(f.Name)) continue;
+                _functioncache.Add(f.Name, f.FullName);
+            }
+        }
+
+        public IMemManager MemoryManager
+        {
+            get { return _mem; }
+            set
+            {
+                _mem = value;
+                CalculatorFunctions.MemoryManager = value;
+            }
         }
 
         private bool ParseNumber(out string parsed, string c)
@@ -94,9 +111,9 @@ namespace ECalc.IronPythonEngine
         /// <returns>executable python code</returns>
         public string PreProcess(string input)
         {
-            var parts = Regex.Split(input, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)");
+            var parts = Regex.Split(input, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)");
             string temp;
-            for (int i=0; i<parts.Length; i++)
+            for (int i = 0; i < parts.Length; i++)
             {
                 if (string.IsNullOrWhiteSpace(parts[i])) continue;
 
@@ -181,16 +198,7 @@ namespace ECalc.IronPythonEngine
             Type t = o.GetType();
             switch (t.Name)
             {
-                case "Byte":
-                case "SByte":
-                case "Int16":
-                case "Int32":
-                case "Int64":
-                case "UInt16":
-                case "UInt32":
-                case "UInt64":
                 case "Double":
-                case "Single":
                     return FormatDouble(Convert.ToDouble(o));
                 case "Complex":
                     return FormatComplex((Complex)o);

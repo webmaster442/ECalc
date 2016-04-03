@@ -19,12 +19,10 @@ namespace ECalc.Controls
             InitializeComponent();
             _constants = new ConstantList();
             ConstList.ItemsSource = _constants;
-            DecimalSeperator.Content = " ";
         }
 
         public event RoutedEventHandler ExecuteClicked;
         public event RoutedEventHandler FromExpressionClicked;
-
         public event StringEventHandler ButtonClicked;
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -70,6 +68,7 @@ namespace ECalc.Controls
             if (ButtonClicked != null)
             {
                 var content = ((Button)sender).Content.ToString();
+
                 if (Prefixes.Visibility == System.Windows.Visibility.Visible)
                 {
                     Prefixes.Visibility = System.Windows.Visibility.Collapsed;
@@ -79,7 +78,7 @@ namespace ECalc.Controls
                 switch (content)
                 {
                     case "mod":
-                        ButtonClicked(sender, new StringEventArgs(content));
+                        ButtonClicked(sender, new StringEventArgs("%"));
                         break;
                     case "micro":
                         ButtonClicked(sender, new StringEventArgs("u"));
@@ -106,7 +105,8 @@ namespace ECalc.Controls
                     MemMan.Visibility = System.Windows.Visibility.Collapsed;
                     Keys.Visibility = System.Windows.Visibility.Visible;
                 }
-                ButtonClicked(sender, e);
+                ButtonClicked(sender, new StringEventArgs(string.Format("Var(\'{0}\')", e.Text)));
+                //ButtonClicked(sender, e);
             }
         }
 
@@ -156,21 +156,7 @@ namespace ECalc.Controls
 
         public object GetItem(string name)
         {
-            if (name.StartsWith("&"))
-            {
-                return ConstantDB.Lookup(name);
-            }
-            else return MemMan.GetItem(name);
-        }
-
-        public void PushTemp(object value)
-        {
-            MemMan.PushTemp(value);
-        }
-
-        public void ClearTemp()
-        {
-            MemMan.ClearTemp();
+            return MemMan.GetItem(name);
         }
 
         public string[] ListRegisters(string query)
