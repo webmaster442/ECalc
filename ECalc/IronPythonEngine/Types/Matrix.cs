@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace ECalc.Maths
+namespace ECalc.IronPythonEngine.Types
 {
     public class Matrix : ICloneable, IFormattable
     {

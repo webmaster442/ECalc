@@ -1,5 +1,4 @@
-﻿using ECalc.Classes;
-using ECalc.Maths;
+﻿using ECalc.IronPythonEngine.Types;
 using System;
 using System.Numerics;
 
@@ -13,7 +12,11 @@ namespace ECalc.IronPythonEngine
         [Category("Calculator")]
         public static dynamic Var(string name)
         {
-            var o = MemoryManager.GetItem(name);
+            object o;
+
+            if (name == "ans") o = Engine.Ans;
+            else o = MemoryManager.GetItem(name);
+
             if (o == null) throw new ArgumentException("Variable not found");
             else if (o is Complex) return (Complex)o;
             else if (o is Vector) return (Vector)o;

@@ -16,7 +16,7 @@ namespace ECalc.IronPythonEngine
         static Engine()
         {
             _prefixes = new PrefixDictionary();
-            _operators = new string[] { "+", "*", "/", "×", "÷", "(", ")", "%" };
+            _operators = new string[] { "+", "*", "/", "×", "÷", "(", ")", "%", "," };
             _functions = new List<FunctionInfo>();
             _pluggable = new List<Type>();
             try
@@ -53,11 +53,21 @@ namespace ECalc.IronPythonEngine
             }
 
         }
-        
+
         public static TrigMode Mode
         {
             get;
             set;
+        }
+
+        public static bool PreferPrefixes
+        {
+            get; set;
+        }
+
+        public static bool GroupByThousands
+        {
+            get; set;
         }
 
         public static object Ans

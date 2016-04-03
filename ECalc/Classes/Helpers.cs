@@ -1,4 +1,4 @@
-﻿using ECalc.Maths;
+﻿using ECalc.IronPythonEngine.Types;
 using System.Numerics;
 
 namespace ECalc.Classes

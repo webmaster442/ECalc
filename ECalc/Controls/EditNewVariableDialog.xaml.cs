@@ -1,4 +1,4 @@
-﻿using ECalc.Maths;
+﻿using ECalc.IronPythonEngine.Types;
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Numerics;
@@ -81,7 +81,7 @@ namespace ECalc.Controls
         #endregion
 
         #region Vector Editor
-        public Maths.Vector Vector
+        public IronPythonEngine.Types.Vector Vector
         {
             get
             {
@@ -90,9 +90,9 @@ namespace ECalc.Controls
                 if (Cb3D.IsChecked == true)
                 {
                     var z = Convert.ToDouble(TbZValue.Text);
-                    return new Maths.Vector(x, y, z);
+                    return new IronPythonEngine.Types.Vector(x, y, z);
                 }
-                else return new Maths.Vector(x, y);
+                else return new IronPythonEngine.Types.Vector(x, y);
             }
             set
             {

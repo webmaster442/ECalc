@@ -158,7 +158,7 @@
     <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\CSV.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
-    <Compile Include="Classes\MemoryItem.cs" />
+    <Compile Include="IronPythonEngine\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
     <Compile Include="Classes\SimpleMemMan.cs" />
     <Compile Include="Classes\UserFuntions.cs" />
@@ -201,10 +201,11 @@
     <Compile Include="Lib\CryptoRNG.cs" />
     <Compile Include="Lib\QuantumRandom.cs" />
     <Compile Include="Maths\Functions.cs" />
-    <Compile Include="Maths\Matrix.cs" />
+    <Compile Include="IronPythonEngine\Types\Matrix.cs" />
     <Compile Include="Maths\NumberTester.cs" />
     <Compile Include="Maths\Trigonometry.cs" />
-    <Compile Include="Maths\Vector.cs" />
+    <Compile Include="IronPythonEngine\Types\Vector.cs" />
+    <Compile Include="Maths\TypeFunctions.cs" />
     <Compile Include="Modules\ColorConverters.xaml.cs">
       <DependentUpon>ColorConverters.xaml</DependentUpon>
     </Compile>
@@ -357,7 +358,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\ConfigFileHelpers.cs" />
-    <Compile Include="Maths\FractionClass.cs" />
+    <Compile Include="IronPythonEngine\Types\FractionClass.cs" />
     <Compile Include="Classes\PrefixDictionary.cs" />
     <Compile Include="Controls\Special\ResistorColorSelector.xaml.cs">
       <DependentUpon>ResistorColorSelector.xaml</DependentUpon>

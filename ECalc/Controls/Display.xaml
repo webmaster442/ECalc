@@ -5,13 +5,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
-             xmlns:classes="clr-namespace:ECalc.Classes"
+             xmlns:converters="clr-namespace:WPFLib.Converters;assembly=WPFLib"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d"
              d:DesignHeight="120" d:DesignWidth="960"
              Loaded="userControl_Loaded">
     <UserControl.Resources>
+
+        <converters:NegateConverter x:Key="Negate"/>
+
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="12"/>
@@ -20,12 +23,6 @@
         <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type controls:ImageButton}}">
             <Setter Property="Margin" Value="1,0"/>
         </Style>
-        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValues"
-                            ObjectType="{x:Type System:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type TypeName="classes:BitEngineModes"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
 
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" x:Key="LCD">
             <GradientStop Color="#FFE4E4E4" Offset="1"/>
@@ -48,6 +45,9 @@
             <RadioButton Content="GRAD"
                          Checked="RadioButton_Click"/>
             <CheckBox x:Name="CbThousandGrouping"
+                      Checked="CbThousandGrouping_Checked"
+                      Unchecked="CbThousandGrouping_Checked"
+                      IsEnabled="{Binding ElementName=CbPrefixDisplay, Path=IsChecked, Converter={StaticResource Negate}}"
                       IsChecked="False" Margin="10,0,0,0">
                 <CheckBox.Content>
                     <TextBlock Text="Group by thousands"
@@ -65,16 +65,6 @@
                                Width="70"/>
                 </CheckBox.Content>
             </CheckBox>
-            <TextBlock Text="Bit engine Mode:"
-                       VerticalAlignment="Center"
-                       Margin="5,0,2,0"
-                       TextWrapping="Wrap"
-                       Width="60"/>
-            <ComboBox VerticalAlignment="Center"
-                      x:Name="BitEngineMode"
-                      SelectionChanged="BitEngineMode_SelectionChanged"
-                      ItemsSource="{Binding Source={StaticResource dataFromEnum}}"
-                      SelectedIndex="3"/>
         </StackPanel>
         <TextBox Text="{Binding EquationText, ElementName=userControl, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                  TextAlignment="Right"

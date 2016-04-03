@@ -1,5 +1,6 @@
 ﻿using ECalc.Classes;
 using ECalc.IronPythonEngine;
+using ECalc.IronPythonEngine.Types;
 using ECalc.Maths;
 using System.Collections.ObjectModel;
 using System.IO;

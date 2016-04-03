@@ -28,14 +28,6 @@ namespace ECalc.Classes
     }
 
     /// <summary>
-    /// Trigonometry modes
-    /// </summary>
-    internal enum TrigMode
-    {
-        DEG, RAD, GRAD
-    }
-
-    /// <summary>
     /// Unit Converter actions
     /// </summary>
     internal enum Actions
@@ -69,39 +61,6 @@ namespace ECalc.Classes
         ElectroMagnetic,
         Atomic,
         Favorites,
-    }
-
-    /// <summary>
-    /// Memory manager interface
-    /// </summary>
-    public interface IMemManager
-    {
-        /// <summary>
-        /// Gets the value of a register item
-        /// </summary>
-        /// <param name="name">item to get</param>
-        /// <returns>the value of the item</returns>
-        object GetItem(string name);
-
-        /// <summary>
-        /// Lists register names
-        /// </summary>
-        /// <param name="query">query string. If null or empty all registers will be returned</param>
-        /// <returns>An array of register names</returns>
-        string[] ListRegisters(string query);
-
-        /// <summary>
-        /// Set an item with name
-        /// </summary>
-        /// <param name="name">name of variable</param>
-        /// <param name="value">value of variable</param>
-        void SetItem(string name, object value);
-
-        /// <summary>
-        /// Set an item with default name
-        /// </summary>
-        /// <param name="value">value of variable</param>
-        void SetItem(object value);
     }
 
     /// <summary>

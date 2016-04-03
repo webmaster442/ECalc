@@ -14,10 +14,22 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="x1">Parameter 1</param>
         /// <param name="x2">Parameter 2</param>
-        [Category("General")]
+        [Category("Engineering")]
         public static double Replus(double x1, double x2)
         {
             return (x1 * x2) / (x1 + x2);
+        }
+
+        [Category("Engineering")]
+        public static double AngularFreq(double freq)
+        {
+            return Math.PI * 2 * freq;
+        }
+
+        [Category("General")]
+        public static double Abs(double param)
+        {
+            return Math.Abs(param);
         }
 
         /// <summary>

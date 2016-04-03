@@ -111,7 +111,7 @@ namespace ECalc.IronPythonEngine
         /// <returns>executable python code</returns>
         public string PreProcess(string input)
         {
-            var parts = Regex.Split(input, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)");
+            var parts = Regex.Split(input, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)");
             string temp;
             for (int i = 0; i < parts.Length; i++)
             {
@@ -141,55 +141,84 @@ namespace ECalc.IronPythonEngine
 
         private string FormatDouble(double input)
         {
-            string gchar = CultureInfo.CurrentCulture.NumberFormat.CurrencyGroupSeparator;
-            string fchar = CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
-            if (double.IsNaN(input) || double.IsInfinity(input)) return input.ToString(CultureInfo.CurrentCulture);
-            StringBuilder sb = new StringBuilder();
-            bool passed = false;
-            int j = 1;
-            int i;
-            char[] ar;
-            string text = input.ToString();
-            if (text.Contains(fchar))
+            if (PreferPrefixes)
             {
-                for (i = text.Length - 1; i >= 0; i--)
+                PrefixDictionary pfx = new PrefixDictionary();
+                return pfx.DivideToPrefix(input);
+            }
+            if (GroupByThousands)
+            {
+                string gchar = " ";
+                string fchar = ".";
+                if (double.IsNaN(input) || double.IsInfinity(input)) return input.ToString(CultureInfo.InvariantCulture);
+                StringBuilder sb = new StringBuilder();
+                bool passed = false;
+                int j = 1;
+                int i;
+                char[] ar;
+                string text = input.ToString();
+                if (text.Contains(fchar))
                 {
-                    if (!passed && text[i] != fchar[0]) sb.Append(text[i]);
-                    else if (text[i] == fchar[0])
+                    for (i = text.Length - 1; i >= 0; i--)
                     {
-                        sb.Append(text[i]);
-                        passed = true;
+                        if (!passed && text[i] != fchar[0]) sb.Append(text[i]);
+                        else if (text[i] == fchar[0])
+                        {
+                            sb.Append(text[i]);
+                            passed = true;
+                        }
+                        if (passed && text[i] != fchar[0])
+                        {
+                            sb.Append(text[i]);
+                            if (j % 3 == 0) sb.Append(gchar);
+                            j++;
+                        }
                     }
-                    if (passed && text[i] != fchar[0])
+                    ar = sb.ToString().ToCharArray();
+                    Array.Reverse(ar);
+                    return new string(ar).Trim();
+                }
+                else
+                {
+                    for (i = text.Length - 1; i >= 0; i--)
                     {
                         sb.Append(text[i]);
                         if (j % 3 == 0) sb.Append(gchar);
                         j++;
                     }
+                    ar = sb.ToString().ToCharArray();
+                    Array.Reverse(ar);
+                    return new string(ar).Trim();
                 }
-                ar = sb.ToString().ToCharArray();
-                Array.Reverse(ar);
-                return new string(ar).Trim();
             }
-            else
-            {
-                for (i = text.Length - 1; i >= 0; i--)
-                {
-                    sb.Append(text[i]);
-                    if (j % 3 == 0) sb.Append(gchar);
-                    j++;
-                }
-                ar = sb.ToString().ToCharArray();
-                Array.Reverse(ar);
-                return new string(ar).Trim();
-            }
+            else return input.ToString(CultureInfo.InvariantCulture);
         }
 
-        private string FormatComplex(Complex c)
+        private string FormatComplex(Complex cplx)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("Algebric: {0} + {1}*i\tAbs: {2}\tPhase: {3} rad\r\n", c.Real, c.Imaginary, c.Magnitude, c.Phase);
-            sb.AppendFormat("Trigonometric: {0} * ({1} + i*{2})", c.Magnitude, Math.Cos(c.Phase), Math.Sin(c.Phase));
+            sb.Append("R: ");
+            sb.Append(cplx.Real);
+            sb.Append(" i: ");
+            sb.Append(cplx.Imaginary);
+            sb.Append("\r\n φ: ");
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    sb.Append(TrigFunctions.Rad2Deg(cplx.Phase));
+                    sb.Append(" °");
+                    break;
+                case TrigMode.GRAD:
+                    sb.Append(TrigFunctions.Rad2Grad(cplx.Phase));
+                    sb.Append(" grad");
+                    break;
+                case TrigMode.RAD:
+                    sb.Append(cplx.Phase);
+                    sb.Append(" rad");
+                    break;
+            }
+            sb.Append(" ABS: ");
+            sb.Append(cplx.Magnitude);
             return sb.ToString();
         }
 
@@ -199,6 +228,13 @@ namespace ECalc.IronPythonEngine
             switch (t.Name)
             {
                 case "Double":
+                case "Single":
+                case "Int32":
+                case "Int16":
+                case "Byte":
+                case "SByte":
+                case "UInt32":
+                case "UInt64":
                     return FormatDouble(Convert.ToDouble(o));
                 case "Complex":
                     return FormatComplex((Complex)o);

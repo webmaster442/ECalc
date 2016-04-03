@@ -1,4 +1,5 @@
 ﻿using ECalc.Classes;
+using ECalc.IronPythonEngine.Types;
 using ECalc.Maths;
 using MahApps.Metro.Controls.Dialogs;
 using System;

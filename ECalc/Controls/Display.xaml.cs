@@ -1,9 +1,9 @@
 ﻿using ECalc.Classes;
 using ECalc.IronPythonEngine;
+using ECalc.IronPythonEngine.Types;
 using ECalc.Maths;
 using System;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -38,47 +38,6 @@ namespace ECalc.Controls
 
         public static readonly DependencyProperty ResultTextProperty = DependencyProperty.Register("ResultText", typeof(string), typeof(Display), new PropertyMetadata("0"));
 
-        private void Reverse(StringBuilder text)
-        {
-            if (text.Length > 1)
-            {
-                int pivotPos = text.Length / 2;
-                for (int i = 0; i < pivotPos; i++)
-                {
-                    int iRight = text.Length - (i + 1);
-                    char rightChar = text[i];
-                    char leftChar = text[iRight];
-                    text[i] = leftChar;
-                    text[iRight] = rightChar;
-                }
-            }
-        }
-
-        private string Group(string s)
-        {
-            if (s == "Error") return s;
-            string[] parts = s.Split(',');
-            var sb = new StringBuilder();
-            int j = 0;
-            for (int i = parts[0].Length - 1; i >= 0; i--)
-            {
-                sb.Append(parts[0][i]);
-                j++;
-                if (j > 2)
-                {
-                    j = 0;
-                    sb.Append(" ");
-                }
-            }
-            Reverse(sb);
-            if (parts.Length > 1)
-            {
-                sb.Append(".");
-                sb.Append(parts[1]);
-            }
-            return sb.ToString().Trim();
-        }
-
         /// <summary>
         /// Equation Text
         /// </summary>
@@ -112,11 +71,7 @@ namespace ECalc.Controls
             {
                 if (value.Contains("\n")) MainDisplay.FontSize = 20;
                 else MainDisplay.FontSize = 40;
-                if (CbThousandGrouping.IsChecked == true)
-                {
-                    SetValue(ResultTextProperty, Group(value));
-                }
-                else SetValue(ResultTextProperty, value);
+                SetValue(ResultTextProperty, value);
             }
         }
 
@@ -200,17 +155,14 @@ namespace ECalc.Controls
             MainWindow.ShowDialog("Number informations", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
 
-        private void BitEngineMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            /*var selection = BitEngineMode.SelectedItem.ToString();
-            BitEngineModes mode = BitEngineModes.Signed64bit;
-            bool result = Enum.TryParse<BitEngineModes>(selection, out mode);
-            if (result) Engine.BitEngineMode = mode;*/
-        }
-
         private void CbPrefixDisplay_Checked(object sender, RoutedEventArgs e)
         {
-            //Engine.PreferPrefixes = (bool)CbPrefixDisplay.IsChecked;
+            Engine.PreferPrefixes = (bool)CbPrefixDisplay.IsChecked;
+        }
+
+        private void CbThousandGrouping_Checked(object sender, RoutedEventArgs e)
+        {
+            Engine.GroupByThousands = (bool)CbThousandGrouping.IsChecked;
         }
 
         private void userControl_Loaded(object sender, RoutedEventArgs e)
@@ -240,7 +192,7 @@ namespace ECalc.Controls
 
         private void BtnAnss_Click(object sender, RoutedEventArgs e)
         {
-            EquationText += "$ans";
+            EquationText += "Var('ans')";
         }
 
         private void BtnPlot_Click(object sender, RoutedEventArgs e)

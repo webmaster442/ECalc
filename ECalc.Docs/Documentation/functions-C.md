@@ -33,7 +33,7 @@ Calculates the complex conjugate of a complex number, which is the number with e
 ```
 CplxPolar(abs; angle)
 ```
-Creates a complex number using the polar coordinate system. The first parameter is the absolute value, the second parameter is the angle. 
+Creates a complex number using the polar coordinate system. The first parameter is the absolute value, the second parameter is the angle.
 
 ```
 CplxRi(real; imaginary)
