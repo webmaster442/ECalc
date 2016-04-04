@@ -44,5 +44,29 @@ namespace ECalc.Maths
         {
             return new Fraction(Convert.ToInt64(numerator), Convert.ToInt64(denominator));
         }
+
+        [Category("Types")]
+        public static Vector Vect2D(double x, double y)
+        {
+            return new Vector(x, y);
+        }
+
+        [Category("Types")]
+        public static Vector Vect3D(double x, double y, double z)
+        {
+            return new Vector(x, y, z);
+        }
+
+        [Category("Types")]
+        public static double Det(Matrix m)
+        {
+            return m.Determinant();
+        }
+
+        [Category("Types")]
+        public static Matrix Transpose(Matrix m)
+        {
+            return m.Transpose();
+        }
     }
 }

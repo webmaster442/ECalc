@@ -9,23 +9,12 @@ namespace ECalc.Maths
     [Loadable]
     public static class Functions
     {
+
         /// <summary>
-        /// Replus calculation
+        /// Returns the absolute value of the parameter
         /// </summary>
-        /// <param name="x1">Parameter 1</param>
-        /// <param name="x2">Parameter 2</param>
-        [Category("Engineering")]
-        public static double Replus(double x1, double x2)
-        {
-            return (x1 * x2) / (x1 + x2);
-        }
-
-        [Category("Engineering")]
-        public static double AngularFreq(double freq)
-        {
-            return Math.PI * 2 * freq;
-        }
-
+        /// <param name="param">the number that's absolute value will be reaturned</param>
+        /// <returns>the absolute value of the parameter</returns>
         [Category("General")]
         public static double Abs(double param)
         {
@@ -74,6 +63,22 @@ namespace ECalc.Maths
         {
             return Math.Pow(num, exp);
         }
+
+        /// <summary>
+        /// Calculates the factorial of a parameter number
+        /// </summary>
+        /// <param name="target">target number</param>
+        /// <returns>factorial of target</returns>
+        [Category("General")]
+        public static double Fact(double target)
+        {
+            double result = 1;
+            for (int i = 1; i < target; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
        
         /// <summary>
         /// Returns the least common multiple of two numbers
@@ -102,6 +107,29 @@ namespace ECalc.Maths
                 else y = y - x;
             }
             return x;
+        }
+
+        /// <summary>
+        ///  Rounds a double-precision floating-point value to a specified number of fractional digits.
+        /// </summary>
+        /// <param name="number">A double-precision floating-point number to be rounded</param>
+        /// <param name="digits">The number of fractional digits in the return value</param>
+        /// <returns> The number nearest to value that contains a number of fractional digits equal to digits</returns>
+        [Category("General")]
+        public static double Round(double number, int digits)
+        {
+            return Math.Round(number, digits);
+        }
+
+        /// <summary>
+        /// Returns the largest integer less than or equal to the specified double-precision floating-point number.
+        /// </summary>
+        /// <param name="number">A double-precision floating-point number</param>
+        /// <returns>The largest integer less than or equal to number</returns>
+        [Category("General")]
+        public static double Floor(double number)
+        {
+            return Math.Floor(number);
         }
     }
 }

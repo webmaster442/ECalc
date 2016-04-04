@@ -201,6 +201,7 @@
     <Compile Include="IronPythonEngine\IronPythonEngine.Static.cs" />
     <Compile Include="Lib\CryptoRNG.cs" />
     <Compile Include="Lib\QuantumRandom.cs" />
+    <Compile Include="Maths\Engineering.cs" />
     <Compile Include="Maths\Functions.cs" />
     <Compile Include="IronPythonEngine\Types\Matrix.cs" />
     <Compile Include="Maths\NumberTester.cs" />
