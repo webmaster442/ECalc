@@ -34,9 +34,26 @@ namespace ECalc.Controls
         /// </summary>
         public event StringEventHandler ModeChanged;
 
-        public static readonly DependencyProperty EquationTextProperty = DependencyProperty.Register("EquationText", typeof(string), typeof(Display), new PropertyMetadata(""));
+        public static readonly DependencyProperty EquationTextProperty = DependencyProperty.Register("EquationText",
+                                                                                                      typeof(string),
+                                                                                                      typeof(Display),
+                                                                                                      new PropertyMetadata(""));
 
-        public static readonly DependencyProperty ResultTextProperty = DependencyProperty.Register("ResultText", typeof(string), typeof(Display), new PropertyMetadata("0"));
+        public static readonly DependencyProperty ResultTextProperty = DependencyProperty.Register("ResultText",
+                                                                                                   typeof(string),
+                                                                                                   typeof(Display),
+                                                                                                   new PropertyMetadata("0"));
+
+        public static readonly DependencyProperty IsCalcualtingProperty = DependencyProperty.Register("IsCalculatong",
+                                                                                                      typeof(bool),
+                                                                                                      typeof(Display),
+                                                                                                      new PropertyMetadata(false));
+
+        public bool IsCalculating
+        {
+            get { return (bool)GetValue(IsCalcualtingProperty); }
+            set { SetValue(IsCalcualtingProperty, value); }
+        }
 
         /// <summary>
         /// Equation Text

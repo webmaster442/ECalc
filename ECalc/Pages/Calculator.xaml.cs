@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using ECalc.IronPythonEngine;
+using System.Text;
 
 namespace ECalc.Pages
 {
@@ -12,22 +13,39 @@ namespace ECalc.Pages
     public partial class Calculator : UserControl
     {
         private Engine _engine;
-
+        private StringBuilder _stdout;
 
         public Calculator()
         {
             InitializeComponent();
-            Display.Focus();
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            if (designTime) return;
             _engine = new Engine();
+            _engine.StdOutWriten += _engine_StdOutWriten;
+            _engine.MemoryManager = Keypad;
+            FncList.Funtions = Engine.Functions;
+            _stdout = new StringBuilder();
+            Display.Focus();
         }
 
         private async void KeyPad_ExecuteClicked(object sender, RoutedEventArgs e)
         {
             try
             {
+                Display.IsCalculating = true;
+                _stdout.Clear();
                 var result = await _engine.EvaluateAsync(Display.EquationText);
+                if (_stdout.Length > 0)
+                {
+                    MainWindow.ShowDialog("StdOut", _stdout.ToString(), MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+                }
                 Display.AddToHistory();
                 Display.ResultText = result;
+                Display.IsCalculating = false;
             }
             catch (Exception ex)
             {
@@ -35,6 +53,11 @@ namespace ECalc.Pages
                 MainWindow.ErrorDialog(ex.Message);
             }
             Display.EquationText = "";
+        }
+
+        private void _engine_StdOutWriten(object sender, MyEvtArgs<string> e)
+        {
+            _stdout.Append(e);
         }
 
         private void KeyPad_ButtonClicked(object sender, StringEventArgs e)
@@ -63,15 +86,6 @@ namespace ECalc.Pages
         private void FunctionList_FunctionButtonCliked(object sender, StringEventArgs e)
         {
             Display.EquationText += string.Format(" {0}( ", e.Text);
-        }
-
-        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
-            if (designTime) return;
-            _engine = new Engine();
-            _engine.MemoryManager = Keypad;
-            FncList.Funtions = Engine.Functions;
         }
 
         private void Display_ModeChanged(object sender, StringEventArgs e)

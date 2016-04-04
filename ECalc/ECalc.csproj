@@ -158,6 +158,7 @@
     <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\CSV.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
+    <Compile Include="IronPythonEngine\EventRaisingStreamWriter.cs" />
     <Compile Include="IronPythonEngine\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
     <Compile Include="Classes\SimpleMemMan.cs" />

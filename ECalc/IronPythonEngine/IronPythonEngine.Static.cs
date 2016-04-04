@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace ECalc.IronPythonEngine
 {
-    internal partial class Engine
+    internal partial class Engine: IDisposable
     {
         private static PrefixDictionary _prefixes;
         private static readonly string[] _operators;

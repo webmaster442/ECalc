@@ -6,7 +6,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
              xmlns:converters="clr-namespace:WPFLib.Converters;assembly=WPFLib"
-             xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d"
              d:DesignHeight="120" d:DesignWidth="960"
@@ -14,6 +13,7 @@
     <UserControl.Resources>
 
         <converters:NegateConverter x:Key="Negate"/>
+        <BooleanToVisibilityConverter x:Key="VisibilityConv"/>
 
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -113,6 +113,13 @@
                    FontFamily="Consolas"
                    TextWrapping="Wrap"
                    FontSize="38"/>
+
+        <ProgressBar Grid.Row="1"
+                     x:Name="PbProgress"
+                     Height="55"
+                     IsIndeterminate="True"
+                     Visibility="{Binding ElementName=userControl, Path=IsCalculating, Converter={StaticResource VisibilityConv}}"/>
+
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">

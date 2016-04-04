@@ -16,20 +16,25 @@ using System.Threading.Tasks;
 
 namespace ECalc.IronPythonEngine
 {
-    internal delegate object Pyf(params object[] arguments);
-
-    internal partial class Engine
+    internal partial class Engine: IDisposable
     {
         private ScriptEngine _engine;
         private ScriptScope _scope;
         private Dictionary<string, string> _functioncache;
         private IMemManager _mem;
+        private EventRaisingStreamWriter _output;
+        private NullStream _history;
 
         public Engine()
         {
             Dictionary<String, Object> options = new Dictionary<string, object>();
             options["DivisionOptions"] = PythonDivisionOptions.New;
+            _history = new NullStream();
+            _output = new EventRaisingStreamWriter(_history);
+            _output.StringWritten += _output_StringWritten;
             _engine = Python.CreateEngine(options);
+            _engine.Runtime.IO.SetOutput(_history, _output);
+            _engine.Runtime.IO.SetErrorOutput(_history, _output);
             _scope = _engine.CreateScope();
             foreach (var t in _pluggable)
             {
@@ -43,6 +48,13 @@ namespace ECalc.IronPythonEngine
                 if (_functioncache.ContainsKey(f.Name)) continue;
                 _functioncache.Add(f.Name, f.FullName);
             }
+        }
+
+        public event EventHandler<MyEvtArgs<string>> StdOutWriten;
+
+        private void _output_StringWritten(object sender, MyEvtArgs<string> e)
+        {
+            if (StdOutWriten != null) StdOutWriten(this, e);
         }
 
         public IMemManager MemoryManager
@@ -295,6 +307,26 @@ namespace ECalc.IronPythonEngine
                     return null;
                 }
             });
+        }
+
+        protected virtual void Dispose(bool native)
+        {
+            if (_output != null)
+            {
+                _output.Dispose();
+                _output = null;
+            }
+            if (_history != null)
+            {
+                _history.Dispose();
+                _history = null;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }
