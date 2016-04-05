@@ -44,7 +44,7 @@ namespace ECalc.Controls
                                                                                                    typeof(Display),
                                                                                                    new PropertyMetadata("0"));
 
-        public static readonly DependencyProperty IsCalcualtingProperty = DependencyProperty.Register("IsCalculatong",
+        public static readonly DependencyProperty IsCalcualtingProperty = DependencyProperty.Register("IsCalculating",
                                                                                                       typeof(bool),
                                                                                                       typeof(Display),
                                                                                                       new PropertyMetadata(false));
@@ -78,6 +78,16 @@ namespace ECalc.Controls
             HistoryText.ContextMenu.IsOpen = true;
         }
 
+        private int Lines(string s)
+        {
+            int lines = 0;
+            foreach (var c in s)
+            {
+                if (c == '\n') ++lines;
+            }
+            return lines;
+        }
+
         /// <summary>
         /// Result Text
         /// </summary>
@@ -86,9 +96,23 @@ namespace ECalc.Controls
             get { return (string)GetValue(ResultTextProperty); }
             set
             {
-                if (value.Contains("\n")) MainDisplay.FontSize = 20;
-                else MainDisplay.FontSize = 40;
-                SetValue(ResultTextProperty, value);
+                int l = Lines(value);
+                if (l < 2)
+                {
+                    MainDisplay.FontSize = 40;
+                    SetValue(ResultTextProperty, value);
+                }
+                else if (l == 2)
+                {
+                    MainDisplay.FontSize = 20;
+                    SetValue(ResultTextProperty, value);
+                }
+                else
+                {
+                    MultiLineResultDialog mld = new MultiLineResultDialog();
+                    mld.Text = value;
+                    MainWindow.ShowDialog(mld);
+                }
             }
         }
 

@@ -36,7 +36,9 @@
             <RowDefinition/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
             <RadioButton Content="DEG"
                          IsChecked="True"
                          Checked="RadioButton_Click"/>
@@ -118,7 +120,8 @@
                      x:Name="PbProgress"
                      Height="55"
                      IsIndeterminate="True"
-                     Visibility="{Binding ElementName=userControl, Path=IsCalculating, Converter={StaticResource VisibilityConv}}"/>
+                     Visibility="{Binding ElementName=userControl, Path=IsCalculating, Converter={StaticResource VisibilityConv}}"
+                     d:IsHidden="True"/>
 
         <StackPanel Grid.Row="3"
                     Orientation="Horizontal"

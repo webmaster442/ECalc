@@ -158,6 +158,9 @@
     <Compile Include="Classes\ConstantList2.cs" />
     <Compile Include="Classes\CSV.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
+    <Compile Include="Controls\MultiLineResultDialog.xaml.cs">
+      <DependentUpon>MultiLineResultDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IronPythonEngine\EventRaisingStreamWriter.cs" />
     <Compile Include="IronPythonEngine\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
@@ -295,6 +298,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\MultiLineResultDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\NumberSystemDisplayDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -365,7 +372,6 @@
     <Compile Include="Controls\Special\ResistorColorSelector.xaml.cs">
       <DependentUpon>ResistorColorSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Engineering\EquationSolver.cs" />
     <Compile Include="Maths\EnumerableStat.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\Types.cs" />

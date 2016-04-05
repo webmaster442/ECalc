@@ -234,6 +234,36 @@ namespace ECalc.IronPythonEngine
             return sb.ToString();
         }
 
+        private string FormatEnumerable(object o)
+        {
+            StringBuilder sb = new StringBuilder();
+            IEnumerable coll = (IEnumerable)o;
+
+            int idx = 0;
+            if (o is Array || o is IList)
+            {
+                foreach (var i in coll)
+                {
+                    sb.AppendFormat("{0} =>\n", idx);
+                    if (i is Complex) sb.Append(FormatComplex((Complex)i));
+                    else sb.Append(i.ToString());
+                    sb.Append("\n");
+                    ++idx;
+                }
+            }
+            else
+            {
+                foreach (var i in coll)
+                {
+                    if (i is Complex) sb.Append(FormatComplex((Complex)i));
+                    else sb.Append(i.ToString());
+                    sb.Append("\n");
+                }
+            }
+
+            return sb.ToString();
+        }
+
         private string DisplayString(object o)
         {
             Type t = o.GetType();
@@ -251,35 +281,7 @@ namespace ECalc.IronPythonEngine
                 case "Complex":
                     return FormatComplex((Complex)o);
                 default:
-                    if (t.IsArray)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append("Array of " + t.Name + " {\n");
-                        foreach (object x in (object[])o)
-                        {
-                            sb.Append(x.ToString());
-                            sb.Append("\n");
-                        }
-                        sb.Append("}");
-                        return sb.ToString();
-                    }
-                    else if (o is IEnumerable)
-                    {
-                        StringBuilder sb = new StringBuilder();
-                        sb.Append("Collection {\n");
-                        IEnumerable coll = (IEnumerable)o;
-                        foreach (var i in coll)
-                        {
-                            sb.Append(i.ToString());
-                            sb.Append("\n");
-                        }
-                        sb.Append("}");
-                        return sb.ToString();
-                    }
-                    else if ((o is IronPython.Runtime.PythonFunction) || (o is IronPython.Runtime.Types.BuiltinFunction))
-                    {
-                        return "This is a function.";
-                    }
+                    if (o is IEnumerable) return FormatEnumerable(o);
                     else return o.ToString();
             }
         }

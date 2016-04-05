@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using ECalc.IronPythonEngine;
 using System.Text;
+using ECalc.Controls;
 
 namespace ECalc.Pages
 {
@@ -41,7 +42,9 @@ namespace ECalc.Pages
                 var result = await _engine.EvaluateAsync(Display.EquationText);
                 if (_stdout.Length > 0)
                 {
-                    MainWindow.ShowDialog("StdOut", _stdout.ToString(), MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+                    MultiLineResultDialog mld = new MultiLineResultDialog();
+                    mld.Text = _stdout.ToString();
+                    MainWindow.ShowDialog(mld);
                 }
                 Display.AddToHistory();
                 Display.ResultText = result;
