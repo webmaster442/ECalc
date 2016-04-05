@@ -7,6 +7,7 @@
  *
  */
 using System;
+using System.Globalization;
 
 namespace ECalc.IronPythonEngine.Types
 {
@@ -15,8 +16,8 @@ namespace ECalc.IronPythonEngine.Types
     /// 	Fraction
     /// 	FractionException
     /// </summary>
-    
-    
+
+
     /// Class name: Fraction
     /// Developed by: Syed Mehroz Alam
     /// Email: smehrozalam@yahoo.com
@@ -217,12 +218,12 @@ namespace ECalc.IronPythonEngine.Types
                     {
                         double dTemp=dValue;
                         long iMultiple=1;
-                        string strTemp=dValue.ToString();
+                        string strTemp=dValue.ToString(CultureInfo.InvariantCulture);
                         while ( strTemp.IndexOf("E")>0 )	// if in the form like 12E-9
                         {
                             dTemp*=10;
                             iMultiple*=10;
-                            strTemp=dTemp.ToString();
+                            strTemp=dTemp.ToString(CultureInfo.InvariantCulture);
                         }
                         int i=0;
                         while ( strTemp[i]!='.')
