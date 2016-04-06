@@ -162,7 +162,19 @@
     <Compile Include="HTMLRenderer\RoutedEvenArgs.cs" />
     <Compile Include="HTMLRenderer\Utilities\ClipboardHelper.cs" />
     <Compile Include="HTMLRenderer\Utilities\Utils.cs" />
-    <Compile Include="MarkdownSharp\Markdown.cs" />
+    <Compile Include="MarkdownDeep\Abbreviation.cs" />
+    <Compile Include="MarkdownDeep\Block.cs" />
+    <Compile Include="MarkdownDeep\BlockProcessor.cs" />
+    <Compile Include="MarkdownDeep\FootnoteReference.cs" />
+    <Compile Include="MarkdownDeep\HtmlTag.cs" />
+    <Compile Include="MarkdownDeep\LinkDefinition.cs" />
+    <Compile Include="MarkdownDeep\LinkInfo.cs" />
+    <Compile Include="MarkdownDeep\MardownDeep.cs" />
+    <Compile Include="MarkdownDeep\SpanFormatter.cs" />
+    <Compile Include="MarkdownDeep\StringScanner.cs" />
+    <Compile Include="MarkdownDeep\TableSpec.cs" />
+    <Compile Include="MarkdownDeep\Token.cs" />
+    <Compile Include="MarkdownDeep\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

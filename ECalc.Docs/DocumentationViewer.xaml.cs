@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MarkdownDeep;
+using System;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -11,13 +12,14 @@ namespace ECalc.Docs
     /// </summary>
     public partial class DocumentationViewer : UserControl
     {
-        private MarkdownSharp.Markdown _markdown;
+        private Markdown _markdown;
         private string _template;
 
         public DocumentationViewer()
         {
             InitializeComponent();
-            _markdown = new MarkdownSharp.Markdown();
+            _markdown = new Markdown();
+            _markdown.ExtraMode = true;
             var uri = new Uri("/ECalc.Docs;component/Documentation/template.html", UriKind.Relative);
             using (StreamReader sr = new StreamReader(Application.GetResourceStream(uri).Stream))
             {

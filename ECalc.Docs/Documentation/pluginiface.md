@@ -73,32 +73,51 @@ This function is the main entry point for your module. It must return a System.W
 int Color { get; }
 ```
 
-This property can be overridden, but it's not necessary. It specifies the color of the tile, which will be generated for the module. The default tile color is: #CCCCCC (Gray). The TileColor enumeration defines some colors that can be used. The following table contains the names of the colors and their hexadecimal values:
-Name | Value
---- | ---
-Default | 0xCCCCCC
-W8LightGreen | 0x99b433
-W8Lime | 0xA4C400
-W8Green | 0x60A917
-W8DarkGreen | 0x1e7145
-W8DarkOrange | 0xda532c
-W8Emerald | 0x008A00
-W8Teal | 0x00ABA9
-W8Cyan | 0x1BA1E2
-W8Cobalt | 0x0050EF
-W8Indigo | 0x6A00FF
-W8Violet | 0xAA00FF
-W8Pink | 0xF472D0
-W8Magenta | 0xD80073
-W8Crimson | 0xA20025
-W8Red | 0xE51400
-W8Orange | 0xFA6800
-W8GAmber | 0xF0A30A
-W8Yellow | 0xE3C800
-W8Brown | 0x825A2C
-W8Olive | 0x6D8764
-W8Steel | 0x647687
-W8Mauve | 0x76608A
+This property can be overridden, but it's not necessary. It specifies the color of the tile, which will be generated for the module. The default tile color is: #CCCCCC (Gray). The TileColor enumeration defines some colors that can be used. The following list contains the names of the colors and their hexadecimal values:
+
+* Default = 0xCCCCCC,
+* W8LightGreen = 0x99b433,
+* W8Lime = 0xA4C400,
+* W8Green = 0x60A917,
+* W8DarkGreen = 0x1e7145,
+* W8DarkOrange = 0xda532c,
+* W8Emerald = 0x008A00,
+* W8Teal = 0x00ABA9,
+* W8Cyan = 0x1BA1E2,
+* W8Cobalt = 0x0050EF,
+* W8Indigo = 0x6A00FF,
+* W8Violet = 0xAA00FF,
+* W8Pink = 0xF472D0,
+* W8Magenta = 0xD80073,
+* W8Crimson = 0xA20025,
+* W8Red = 0xE51400,
+* W8Orange = 0xFA6800,
+* W8GAmber = 0xF0A30A,
+* W8Yellow = 0xE3C800,
+* W8Brown = 0x825A2C,
+* W8Olive = 0x6D8764,
+* W8Steel = 0x647687,
+* W8Mauve = 0x76608A,
+* FlatTurquoise = 0x1abc9c,
+* FlatEmerald = 0x2ecc71,
+* FlatPeterRiver = 0x3498db,
+* FlatAmethyst = 0x9b59b6,
+* FlatWetAsphalt = 0x34495e,
+* FlatGeenSea = 0x16a085,
+* FlatNephritis = 0x27ae60,
+* FlatBelizeHole = 0x2980b9,
+* FlatWisteria = 0x8e44ad,
+* FlatMidnightBlue = 0x2c3e50,
+* FlatSunFlower = 0xf1c40f,
+* FlatCarrot = 0xe67e22,
+* FlatAlizarin = 0xe74c3c,
+* FlatClouds = 0xecf0f1,
+* FlatConcrete = 0x95a5a6,
+* FlatOrange = 0xf39c12,
+* FlatPumpkin = 0xd35400,
+* FlatPomegrande = 0xc0392b,
+* FlatSilver = 0xbdc3c7,
+* FlatAsbestos = 0x7f8c8d
 
 ```
 ImageSource Icon
