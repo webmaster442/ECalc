@@ -2,6 +2,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace ECalc.Pages
 {
@@ -10,9 +11,22 @@ namespace ECalc.Pages
     /// </summary>
     public partial class WindowsManager : UserControl
     {
+        private DispatcherTimer _timer;
+        private int _lastcounter;
+
         public WindowsManager()
         {
             InitializeComponent();
+            _timer = new DispatcherTimer();
+            _timer.Interval = TimeSpan.FromSeconds(1.5);
+            _timer.Tick += _timer_Tick;
+            _timer.IsEnabled = true;
+            _lastcounter = 0;
+        }
+
+        private void _timer_Tick(object sender, EventArgs e)
+        {
+            Refresh();
         }
 
         private void BtnMinimizeAll_Click(object sender, RoutedEventArgs e)
@@ -33,8 +47,14 @@ namespace ECalc.Pages
 
         private void Refresh()
         {
-            WinList.ItemsSource = null;
-            WinList.ItemsSource = WindowManager.Previews;
+            var previews = WindowManager.Previews;
+
+            if (previews.Count != _lastcounter)
+            {
+                WinList.ItemsSource = null;
+                WinList.ItemsSource = previews;
+                _lastcounter = previews.Count;
+            }
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
