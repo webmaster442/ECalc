@@ -295,9 +295,9 @@ namespace ECalc.IronPythonEngine
                     var processed = PreProcess(input);
                     ScriptSource source = _engine.CreateScriptSourceFromString(processed, SourceCodeKind.AutoDetect);
                     object result = source.Execute(_scope);
-                    _scope.SetVariable("ans", result);
                     if (result != null)
                     {
+                        _scope.SetVariable("ans", result);
                         Engine.Ans = result;
                         return DisplayString(result);
                     }
@@ -307,6 +307,38 @@ namespace ECalc.IronPythonEngine
                 {
                     MainWindow.ErrorDialog(ex.Message);
                     return null;
+                }
+            });
+        }
+
+        public CompiledCode Compile(string input)
+        {
+            try
+            {
+                var processed = PreProcess(input);
+                ScriptSource source = _engine.CreateScriptSourceFromString(processed, SourceCodeKind.AutoDetect);
+                return source.Compile();
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+                return null;
+            }
+        }
+
+        public Task<double> EvaluateCompiled(CompiledCode c)
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    object result = c.Execute(_scope);
+                    return (double)result;
+                }
+                catch (Exception ex)
+                {
+                    MainWindow.ErrorDialog(ex.Message);
+                    return double.NaN;
                 }
             });
         }

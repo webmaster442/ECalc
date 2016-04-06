@@ -45,19 +45,19 @@ namespace ECalc.Classes
     {
         public FunctionPlotSource()
         {
-            this.Add(new FunctionSettings("Sin($x)", -180, 360, -1.05, 1.05));
-            this.Add(new FunctionSettings("Cos($x)", -180, 360, -1.05, 1.05));
-            this.Add(new FunctionSettings("Tan($x)", -180, 360, -100, 100));
-            this.Add(new FunctionSettings("Ctg($x)", -180, 360, -100, 100));
-            this.Add(new FunctionSettings("Sec($x)", -180, 360, -100, 100));
-            this.Add(new FunctionSettings("Cosec($x)",-180,360,-100, 100));
-            this.Add(new FunctionSettings("Pow($x;2)", -15, 15, -5, 200));
-            this.Add(new FunctionSettings("Pow($x;3)", -15, 15, -200, 200));
-            this.Add(new FunctionSettings("Pow(2; $x)", -5, 10, -5, 200));
-            this.Add(new FunctionSettings("Log($x; 2)", -0.06, 2, -12, 1.1));
-            this.Add(new FunctionSettings("Elipse", "8*Sin($t)", "8*Cos($t)", -9, 9, -9, 9, 0, 360, 1));
-            this.Add(new FunctionSettings("Spiral", "Sin($t)*$t/16", "Cos($t)*$t/16", -62, 52, -65, 63, 0, 1000, 1));
-            this.Add(new FunctionSettings("Lissajous", "3*Sin($t*3)", "3*Sin($t*2)", -3.2, 3.1, -4, 4, 0, 1000, 1));
+            this.Add(new FunctionSettings("Sin(Var('x'))", -180, 360, -1.05, 1.05));
+            this.Add(new FunctionSettings("Cos(Var('x'))", -180, 360, -1.05, 1.05));
+            this.Add(new FunctionSettings("Tan(Var('x'))", -180, 360, -100, 100));
+            this.Add(new FunctionSettings("Ctg(Var('x'))", -180, 360, -100, 100));
+            this.Add(new FunctionSettings("Sec(Var('x'))", -180, 360, -100, 100));
+            this.Add(new FunctionSettings("Cosec(Var('x'))",-180,360,-100, 100));
+            this.Add(new FunctionSettings("Pow(Var('x'),2)", -15, 15, -5, 200));
+            this.Add(new FunctionSettings("Pow(Var('x'),3)", -15, 15, -200, 200));
+            this.Add(new FunctionSettings("Pow(2; Var('x'))", -5, 10, -5, 200));
+            this.Add(new FunctionSettings("Log(Var('x'), 2)", -0.06, 2, -12, 1.1));
+            this.Add(new FunctionSettings("Elipse", "8*Sin(Var('t'))", "8*Cos(Var('t'))", -9, 9, -9, 9, 0, 360, 1));
+            this.Add(new FunctionSettings("Spiral", "Sin(Var('t'))*Var('t')/16", "Cos(Var('t'))*Var('t')/16", -62, 52, -65, 63, 0, 1000, 1));
+            this.Add(new FunctionSettings("Lissajous", "3*Sin(Var('t')*3)", "3*Sin(Var('t')*2)", -3.2, 3.1, -4, 4, 0, 1000, 1));
         }
     }
 }

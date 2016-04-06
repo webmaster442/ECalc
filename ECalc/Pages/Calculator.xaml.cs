@@ -1,10 +1,10 @@
 ﻿using ECalc.Classes;
+using ECalc.Controls;
+using ECalc.IronPythonEngine;
 using System;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using ECalc.IronPythonEngine;
-using System.Text;
-using ECalc.Controls;
 
 namespace ECalc.Pages
 {

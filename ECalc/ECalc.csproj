@@ -161,10 +161,10 @@
     <Compile Include="Controls\MultiLineResultDialog.xaml.cs">
       <DependentUpon>MultiLineResultDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IronPythonEngine\SimpleMemMan.cs" />
     <Compile Include="IronPythonEngine\EventRaisingStreamWriter.cs" />
     <Compile Include="IronPythonEngine\MemoryItem.cs" />
     <Compile Include="Classes\NumberToText.cs" />
-    <Compile Include="Classes\SimpleMemMan.cs" />
     <Compile Include="Classes\UserFuntions.cs" />
     <Compile Include="Classes\WindowManager.cs" />
     <Compile Include="Controls\EditNewVariableDialog.xaml.cs">

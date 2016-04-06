@@ -1,5 +1,4 @@
-﻿using ECalc.Classes;
-using ECalc.IronPythonEngine;
+﻿using ECalc.IronPythonEngine;
 using System;
 
 namespace ECalc.Maths
@@ -18,7 +17,7 @@ namespace ECalc.Maths
         [Category("Angle Conversions")]
         public static double Rad2Deg(double rad)
         {
-            return (rad * 180) / Math.PI;
+            return rad * (180 / Math.PI);
         }
 
         /// <summary>
@@ -28,7 +27,7 @@ namespace ECalc.Maths
         [Category("Angle Conversions")]
         public static double Deg2Rad(double deg)
         {
-            return (Math.PI / 180) * deg;
+            return deg * (Math.PI / 180);
         }
 
         /// <summary>
@@ -131,6 +130,27 @@ namespace ECalc.Maths
         }
 
         /// <summary>
+        /// Returns the secant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="x">input number</param>
+        [Category("Trigonometry")]
+        public static double Sec(double x)
+        {
+            return 1 / Cos(x);
+        }
+
+        /// <summary>
+        /// Returns the cosecant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="x">input number</param>
+        [Category("Trigonometry")]
+        public static double Cosec(double x)
+        {
+            return 1 / Sin(x);
+        }
+
+
+        /// <summary>
         /// Returns the cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
         /// <param name="value1">input number</param>
@@ -198,6 +218,26 @@ namespace ECalc.Maths
                 default:
                     return double.NaN;
             }
+        }
+
+        /// <summary>
+        /// Returns the hyperbolic secant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="value">input number</param>
+        [Category("Trigonometry")]
+        public static double Sech(double value)
+        {
+            double rad = value;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    rad = Deg2Rad(value);
+                    break;
+                case TrigMode.GRAD:
+                    rad = Grad2Rad(value);
+                    break;
+            }
+            return 2 / (Math.Exp(rad) + Math.Exp(-rad));
         }
 
         /// <summary>
@@ -270,6 +310,13 @@ namespace ECalc.Maths
             return ArcTan(1 / value);
         }
 
+        [Category("Trigonometry")]
+        public static double ArcSec(double x)
+        {
+            return 2 * ArcTan(1) - ArcTan(Math.Sign(x) / Math.Sqrt(x * x - 1));
+        }
+
+
         /// <summary>
         /// Returns the arcus hyperboc sine of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
@@ -329,6 +376,47 @@ namespace ECalc.Maths
                     return Rad2Grad(inrads);
                 case TrigMode.RAD:
                     return inrads;
+                default:
+                    return double.NaN;
+            }
+        }
+
+        [Category("Trigonometry")]
+        public static double ArcSech(double value)
+        {
+            double inrad = Math.Log((Math.Sqrt(-value * value + 1) + 1) / value);
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
+                default:
+                    return double.NaN;
+            }
+        }
+
+        // Inverse Cosecant 
+        [Category("Trigonometry")]
+        public static double ArcCosec(double x)
+        {
+            return ArcTan(Math.Sign(x) / Math.Sqrt(x * x - 1));
+        }
+
+        [Category("Trigonometry")]
+        public static double ArcCosech(double value)
+        {
+            double inrad = Math.Log((Math.Sign(value) * Math.Sqrt(value * value + 1) + 1) / value);
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    return Rad2Deg(inrad);
+                case TrigMode.GRAD:
+                    return Rad2Grad(inrad);
+                case TrigMode.RAD:
+                    return inrad;
                 default:
                     return double.NaN;
             }

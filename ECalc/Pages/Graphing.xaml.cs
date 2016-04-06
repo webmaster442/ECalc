@@ -1,8 +1,6 @@
 ﻿using ECalc.Classes;
 using ECalc.IronPythonEngine;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -24,6 +22,7 @@ namespace ECalc.Pages
         {
             InitializeComponent();
             _engine = new Engine();
+            _engine.MemoryManager = new SimpleMemmMan();
             _source = new FunctionPlotSource();
             FunctionTemplates.ItemsSource = _source;
         }
@@ -120,11 +119,11 @@ namespace ECalc.Pages
         /// <summary>
         /// Draw a simple function
         /// </summary>
-        private void Draw()
+        private async void Draw()
         {
             try
             {
-                //var rpnY = _engine.CompileToRpn(TbYFunction.Text);
+                var fncx = _engine.Compile(TbYFunction.Text);
                 var width = CanvasWidth;
                 var height = CanvasHeight;
                 var offsetX = -MinX.Value;
@@ -135,17 +134,15 @@ namespace ECalc.Pages
                 var points = new PointCollection();
                 for (var x = MinX.Value; x < MaxX.Value; x += 1 / graphToCanvasX)
                 {
-
-                    /*
-                    _engine.MemoryManager.SetItem("$x", x);
+                    _engine.MemoryManager.SetItem("x", x);
                     var xCanvas = (x + offsetX) * graphToCanvasX;
-                    _engine.Evaluate(rpnY);
-                    var y = (double)Classes.Engine.Ans;
+                    var y = await _engine.EvaluateCompiled(fncx);
+
                     if (!double.IsNaN(y))
                     {
                         var yCanvas = (offsetY - y) * graphToCanvasY;
                         points.Add(ClampedPoint((double)xCanvas, (double)yCanvas));
-                    }*/
+                    }
                 }
 
                 ScreenCanvas.Children.Clear();
@@ -164,13 +161,12 @@ namespace ECalc.Pages
             }
         }
 
-        private void Draw2D()
+        private async void Draw2D()
         {
-            /*
             try
             {
-                var rpnX = _engine.CompileToRpn(Tb2DXFunction.Text);
-                var rpnY = _engine.CompileToRpn(Tb2DYFunction.Text);
+                var fncx = _engine.Compile(Tb2DXFunction.Text);
+                var fncy = _engine.Compile(Tb2DYFunction.Text);
 
                 var width = CanvasWidth;
                 var height = CanvasHeight;
@@ -184,11 +180,9 @@ namespace ECalc.Pages
                 var points = new PointCollection();
                 for (var t = Min2Dt.Value; t <= Max2Dt.Value + 0.000001; t += Step2Dt.Value)
                 {
-                    _engine.MemoryManager.SetItem("$t", t);
-                    _engine.Evaluate(rpnX);
-                    var x = (double)Classes.Engine.Ans;
-                    _engine.Evaluate(rpnY);
-                    var y = (double)Classes.Engine.Ans;
+                    _engine.MemoryManager.SetItem("t", t);
+                    var x = await _engine.EvaluateCompiled(fncx);
+                    var y = await _engine.EvaluateCompiled(fncy);
 
                     // Translate the origin based on the max/min parameters (y axis is flipped), then scale to canvas.
                     var xCanvas = (x + offsetX) * graphToCanvasX;
@@ -213,7 +207,6 @@ namespace ECalc.Pages
             {
                 MainWindow.ErrorDialog(ex.Message);
             }
-            */
         }
 
         #region UI
