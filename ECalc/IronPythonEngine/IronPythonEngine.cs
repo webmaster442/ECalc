@@ -292,6 +292,8 @@ namespace ECalc.IronPythonEngine
             {
                 try
                 {
+                    if (string.IsNullOrEmpty(input)) return "0";
+
                     var processed = PreProcess(input);
                     ScriptSource source = _engine.CreateScriptSourceFromString(processed, SourceCodeKind.AutoDetect);
                     object result = source.Execute(_scope);

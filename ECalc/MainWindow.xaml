@@ -82,6 +82,27 @@
                                     VerticalAlignment="Center"/>
                     </StackPanel>
                 </ToggleButton>
+                <ToggleButton Margin="5,0,5,0"
+                              x:Name="WindowCommandSize"
+                              Click="WindowCommandSize_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/50px/resize.png"/>
+                        <TextBlock VerticalAlignment="Center">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=WindowCommandSize, Path=IsChecked}" Value="true">
+                                            <Setter Property="Text" Value="Large"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=WindowCommandSize, Path=IsChecked}" Value="false">
+                                            <Setter Property="Text" Value="Normal"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                </ToggleButton>
             </StackPanel>
         </mah:WindowCommands>
     </mah:MetroWindow.RightWindowCommands>
@@ -91,7 +112,7 @@
                         Theme="Dark"
                         Position="Right"
                         Header="Calculators" 
-                        Width="960">
+                        Width="{Binding ElementName=MainWin, Path=Width}">
                 <pages:CalculatorChooser/>
             </mah:Flyout>
             <mah:Flyout x:Name="MainMenuFlyOut"

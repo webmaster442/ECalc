@@ -93,6 +93,12 @@ namespace ECalc
             MainMenuFlyOut.IsOpen = !MainMenuFlyOut.IsOpen;
         }
 
+        private void WindowCommandSize_Click(object sender, RoutedEventArgs e)
+        {
+            var ws = WindowCommandSize.IsChecked.Value == true ? WindowSizes.Large : WindowSizes.Normal;
+            WindowManager.ResizeWindows(ws);
+        }
+
         private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = !WindowManager.CloseAll();

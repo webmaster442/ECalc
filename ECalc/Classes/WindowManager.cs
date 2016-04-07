@@ -6,6 +6,12 @@ using WPFLib.Extensions;
 
 namespace ECalc.Classes
 {
+
+    internal enum WindowSizes
+    {
+        Large, Normal
+    }
+
     /// <summary>
     /// Window management class
     /// </summary>
@@ -102,6 +108,28 @@ namespace ECalc.Classes
         public static Window GetWindow(int index)
         {
             return _childs[index];
+        }
+
+        public static void ResizeWindows(WindowSizes ws)
+        {
+            double w, h;
+            if (ws == WindowSizes.Normal)
+            {
+                w = 960;
+                h = 540;
+            }
+            else
+            {
+                w = 1152;
+                h = 648;
+            }
+            Application.Current.MainWindow.Width = w;
+            Application.Current.MainWindow.Height = h;
+            foreach (var window in _childs)
+            {
+                window.Width = w;
+                window.Height = h;
+            }
         }
 
         /// <summary>

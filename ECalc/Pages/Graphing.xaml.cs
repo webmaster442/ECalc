@@ -123,10 +123,10 @@ namespace ECalc.Pages
         {
             try
             {
-                var fncx = _engine.Compile(TbYFunction.Text);
-
                 if (string.IsNullOrEmpty(TbYFunction.Text))
                     throw new Exception("Invalid or empty function");
+
+                var fncx = _engine.Compile(TbYFunction.Text);
 
                 var width = CanvasWidth;
                 var height = CanvasHeight;
@@ -169,14 +169,14 @@ namespace ECalc.Pages
         {
             try
             {
-                var fncx = _engine.Compile(Tb2DXFunction.Text);
-                var fncy = _engine.Compile(Tb2DYFunction.Text);
-
                 if (string.IsNullOrEmpty(Tb2DXFunction.Text))
                     throw new Exception("Invalid or empty function");
 
                 if (string.IsNullOrEmpty(Tb2DYFunction.Text))
                     throw new Exception("Invalid or empty function");
+
+                var fncx = _engine.Compile(Tb2DXFunction.Text);
+                var fncy = _engine.Compile(Tb2DYFunction.Text);
 
                 var width = CanvasWidth;
                 var height = CanvasHeight;

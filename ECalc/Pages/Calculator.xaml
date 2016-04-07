@@ -13,8 +13,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="660"/>
         </Grid.ColumnDefinitions>
         <controls:Display Grid.Row="0"
                           Grid.Column="0"
@@ -24,7 +24,9 @@
                           ExecuteRequested="KeyPad_ExecuteClicked"/>
         <TabControl Grid.Row="1"
                     Grid.Column="1"
-                    x:Name="InputSelector">
+                    x:Name="InputSelector"
+                    Height="390"
+                    VerticalAlignment="Bottom">
             <TabItem Header="KeyPad">
                 <controls:KeyPad x:Name="Keypad"
                                  ExecuteClicked="KeyPad_ExecuteClicked"

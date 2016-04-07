@@ -14,18 +14,18 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="95"/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="110"/>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Network Adress:"
+        <TextBlock Text="Network Address:"
                    Grid.Column="0"
                    Grid.Row="0"/>
         <special:IpInput x:Name="Network"
