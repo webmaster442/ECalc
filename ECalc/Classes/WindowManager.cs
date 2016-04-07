@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
+using WPFLib;
 using WPFLib.Extensions;
 
 namespace ECalc.Classes
@@ -112,6 +113,7 @@ namespace ECalc.Classes
 
         public static void ResizeWindows(WindowSizes ws)
         {
+            var screen = ScreenHelper.GetCurrentScreenSize(Application.Current.MainWindow);
             double w, h;
             if (ws == WindowSizes.Normal)
             {
@@ -123,6 +125,13 @@ namespace ECalc.Classes
                 w = 1152;
                 h = 648;
             }
+
+            if (screen.Width < w || screen.Height < h)
+            {
+                MainWindow.ErrorDialog("Current monitor does not have the needed resolution for large mode");
+                return;
+            }
+
             Application.Current.MainWindow.Width = w;
             Application.Current.MainWindow.Height = h;
             foreach (var window in _childs)
