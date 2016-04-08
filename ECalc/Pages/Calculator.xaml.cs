@@ -53,6 +53,7 @@ namespace ECalc.Pages
             catch (Exception ex)
             {
                 Display.ResultText = "Error";
+                Display.IsCalculating = false;
                 MainWindow.ErrorDialog(ex.Message);
             }
             Display.EquationText = "";

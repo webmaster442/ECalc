@@ -2,6 +2,7 @@
 using ECalc.IronPythonEngine;
 using ECalc.Maths;
 using System;
+using System.Numerics;
 using System.Text;
 using System.Windows.Controls;
 
@@ -17,20 +18,15 @@ namespace ECalc.Controls
 
         public void DisplayNumber(object o)
         {
-            //check for double type
             if (Helpers.IsSpecialType(o))
             {
                 Text = "Special types are not supported for conversion";
                 return;
             }
-
             double d = Convert.ToDouble(o);
             float f = Convert.ToSingle(o);
             bool floats = (d - Math.Truncate(d)) != 0;
-
             var buffer = new StringBuilder();
-
-            //display floats
             if (floats)
             {
                 byte[] singlebytes = BitConverter.GetBytes(f);
@@ -46,33 +42,23 @@ namespace ECalc.Controls
             }
             else
             {
+                string bin, oct, hex;
+                BigInteger bi = new BigInteger(d);
+                bin = NumberSystemConversions.ToSystem(bi, 2);
+                oct = NumberSystemConversions.ToSystem(bi, 8);
+                hex = NumberSystemConversions.ToSystem(bi, 16);
 
-                byte[] dataarray = null;
-                dataarray = BitConverter.GetBytes(Convert.ToInt64(o));
-                Array.Reverse(dataarray);
-                var x = DoRow("Bin:   ", dataarray, 2);
-                buffer.Append(x);
-                buffer.Append(DoRow("Hex:   ", dataarray, 16));
-                var len = x.Length - 2 - "Roman: ".Length;
-                buffer.AppendFormat("Roman: {0," + len + "}", NumberSystemConversions.IntToRoman(Convert.ToInt32(o)));
-                Text = buffer.ToString();
+                int bits = bin.Length;
+                bin = NumberSystemConversions.FormatBin(bin);
+
+                buffer.AppendFormat("DEC: {0}\n", bi);
+                buffer.AppendFormat("BIN: {0}\n", bin);
+                buffer.AppendFormat("OCT: {0}\n", oct);
+                buffer.AppendFormat("HEX: {0}\n", hex);
+                buffer.AppendFormat("-------------------------------------\n");
+                buffer.AppendFormat("Bits: {0}", bits);
             }
-        }
-
-        private StringBuilder DoRow(string label, byte[] data, int system)
-        {
-            var ret = new StringBuilder();
-            ret.Append(label);
-            ret.Append(" ");
-            int startindex = 0;
-
-            for (int i=startindex; i<8; i++)
-            {
-                ret.AppendFormat("{0,8}", Convert.ToString(data[i], system));
-                if (i != 7) ret.Append(" ");
-            }
-            ret.Append("\r\n");
-            return ret;
+            Text = buffer.ToString();
         }
     }
 }

@@ -30,11 +30,7 @@ namespace ECalc.Controls
 
         public void SetNumber(object o)
         {
-            if (o is double)
-            {
-                TbText.Text = NumberToText.NumberText((double)o);
-            }
-            else if (o is Complex)
+            if (o is Complex)
             {
                 var par = (Complex)o;
                 TbText.Text = string.Format("Real part: {0}, Imaginary part: {1}",
@@ -50,7 +46,13 @@ namespace ECalc.Controls
             }
             else
             {
-                TbText.Text = "Not a number";
+                try
+                {
+                    var d = Convert.ToDouble(o);
+                    TbText.Text = NumberToText.NumberText(d);
+                }
+                catch (Exception) { TbText.Text = "Not a number"; }
+                
             }
         }
 

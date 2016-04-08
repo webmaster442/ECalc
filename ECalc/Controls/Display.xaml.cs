@@ -248,7 +248,7 @@ namespace ECalc.Controls
             string message = "Complex, Vector, Fraction and Matrix values not supported";
             if (!Helpers.IsSpecialType(Engine.Ans))
             {
-                double x = Helpers.GetDouble(Engine.Ans);
+                double x = Convert.ToDouble(Engine.Ans);
                 message = Helpers.DivideToFileSize(x);
             }
             MainWindow.ShowDialog("Resut as File size", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);

@@ -1,6 +1,7 @@
 ﻿using ECalc.Maths;
 using System;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace ECalc.Modules
         {
             try
             {
-                long input = 0;
+                BigInteger input = 0;
                 var input_radio = InputSelector.Children.OfType<RadioButton>().FirstOrDefault(i => i.IsChecked.Value);
                 var output_radio = OutputSelector.Children.OfType<RadioButton>().FirstOrDefault(i => i.IsChecked.Value);
                 switch (input_radio.Content.ToString())
@@ -49,19 +50,19 @@ namespace ECalc.Modules
                 switch (output_radio.Content.ToString())
                 {
                     case "Decimal":
-                        OutputNumber.Text = Convert.ToString(input, 10);
+                        OutputNumber.Text = NumberSystemConversions.ToSystem(input, 10);
                         break;
                     case "Binary":
-                        OutputNumber.Text = Convert.ToString(input, 2);
+                        OutputNumber.Text = NumberSystemConversions.ToSystem(input, 2);
                         break;
                     case "BCD":
-                        OutputNumber.Text = NumberSystemConversions.DecimalToBCDBin(input);
+                        OutputNumber.Text = NumberSystemConversions.DecimalToBCDBin((long)input);
                         break;
                     case "Octal":
-                        OutputNumber.Text = Convert.ToString(input, 8);
+                        OutputNumber.Text = NumberSystemConversions.ToSystem(input, 8);
                         break;
                     case "Hexa":
-                        OutputNumber.Text = Convert.ToString(input, 16);
+                        OutputNumber.Text = NumberSystemConversions.ToSystem(input, 16);
                         break;
                     case "Custom":
                         OutputNumber.Text = NumberSystemConversions.ToSystem(input,

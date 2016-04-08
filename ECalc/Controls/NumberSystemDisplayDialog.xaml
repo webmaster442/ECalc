@@ -13,7 +13,6 @@
             <StackPanel Grid.Row="0">
                 <TextBlock Text="Result in various number systems"
                            FontSize="32"/>
-                <TextBlock Text="Note: Display mode is affected by BitEngine mode"/>
                 <local:NumberSystemTextBox x:Name="NumBox"
                                            Grid.Row="0"
                                            Style="{StaticResource BorderlessTextBox}"

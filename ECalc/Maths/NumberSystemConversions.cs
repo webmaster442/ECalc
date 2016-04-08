@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 
 namespace ECalc.Maths
@@ -318,7 +319,7 @@ namespace ECalc.Maths
         /// <param name="number">number to convert</param>
         /// <param name="system">Target system between 2 and 36</param>
         /// <returns>The number in the specified system</returns>
-        public static string ToSystem(long number, int system)
+        public static string ToSystem(BigInteger number, int system)
         {
             if (system < 2 || system > 36)
                 throw new ArgumentException("System must be between 2 and 36");
@@ -340,7 +341,7 @@ namespace ECalc.Maths
         /// <param name="input">Input in system</param>
         /// <param name="system">system</param>
         /// <returns>value in decimal</returns>
-        public static long FromSystem(string input, int system)
+        public static BigInteger FromSystem(string input, int system)
         {
             int exponent = 0;
             long value = 0;
@@ -350,6 +351,24 @@ namespace ECalc.Maths
                 exponent++;
             }
             return value;
+        }
+
+        public static string FormatBin(string input)
+        {
+            StringBuilder buffer = new StringBuilder();
+            int counter = 0;
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                if (counter == 4)
+                {
+                    buffer.Append(" ");
+                    counter = 0;
+                }
+                buffer.Append(input[i]);
+                counter++;
+            }
+            for (int i = 0; i < (4 - counter); i++) buffer.Append(" ");
+            return Reverse(buffer).ToString();
         }
     }
 }

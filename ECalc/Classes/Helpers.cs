@@ -16,12 +16,6 @@ namespace ECalc.Classes
             else return new Complex((double)o, 0);
         }
 
-        public static double GetDouble(object o)
-        {
-            if (o is double) return (double)o;
-            else return ((Fraction)o).ToDouble();
-        }
-
         public static bool IsSpecialType(object o)
         {
             return (o is Complex) || (o is Fraction) || (o is Matrix) || (o is Vector);

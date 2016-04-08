@@ -39,8 +39,8 @@
                                          Minimum="0"
                                          Maximum="100"
                                          MaxWidth="300"
-                                         Value="80"
-                                         DefaultValue="80"/>
+                                         Value="90"
+                                         DefaultValue="90"/>
                 <TextBlock Text="Speed:"
                            Grid.Row="1"
                            Grid.Column="0"/>
@@ -48,10 +48,11 @@
                                          Grid.Row="1"
                                          Grid.Column="1"
                                          Minimum="0"
+                                         DisplayFormat="0"
                                          Maximum="5"
                                          MaxWidth="300"
-                                         DefaultValue="3"
-                                         Value="3"/>
+                                         DefaultValue="2"
+                                         Value="2"/>
                 <TextBox Grid.Row="2"
                          Grid.ColumnSpan="2"
                          FontSize="14"
