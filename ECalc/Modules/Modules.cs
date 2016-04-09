@@ -514,4 +514,33 @@ namespace ECalc.Modules
             get { return (int)TileColor.W8Indigo; }
         }
     }
+
+    public class ProgEditor : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return ModuleCategories.Calculator; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Program Editor"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new ProgramEditor();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/programeditor.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.FlatSunFlower; }
+        }
+    }
+
 }
