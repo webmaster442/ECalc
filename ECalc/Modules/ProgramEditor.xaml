@@ -4,8 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:wpflib="clr-namespace:WPFLib.Controls;assembly=WPFLib"
+             xmlns:converters="clr-namespace:WPFLib.Converters;assembly=WPFLib"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <converters:FileSizeConverter x:Key="FileSizeConv"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -13,7 +18,23 @@
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Compile"
+                    x:Name="BtnCompile"
+                    Click="BtnCompile_Click"/>
+            <Button Content="Save"
+                    x:Name="BtnSave"
+                    Click="BtnSave_Click"/>
+        </StackPanel>
+        
         <wpflib:SyntaxHighlightBox Grid.Row="1"
-                                   x:Name="SyntaxBox"/>
+                                   x:Name="SyntaxBox"
+                                   />
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+            <TextBlock Text="File size: "/>
+            <TextBlock Text="{Binding ElementName=SyntaxBox, Path=Text.Length, Converter={StaticResource FileSizeConv}}"/>
+        </StackPanel>
     </Grid>
 </UserControl>

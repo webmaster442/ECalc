@@ -28,7 +28,8 @@ namespace ECalc.Pages
             _engine = new Engine();
             _engine.StdOutWriten += _engine_StdOutWriten;
             _engine.MemoryManager = Keypad;
-            FncList.Funtions = Engine.Functions;
+            _engine.LoadUserFunctions();
+            FncList.Funtions = Engine.Functions.ToArray();
             _stdout = new StringBuilder();
             Display.Focus();
         }
@@ -65,7 +66,7 @@ namespace ECalc.Pages
 
         private void _engine_StdOutWriten(object sender, MyEvtArgs<string> e)
         {
-            _stdout.Append(e);
+            _stdout.Append(e.Value);
         }
 
         private void KeyPad_ButtonClicked(object sender, StringEventArgs e)

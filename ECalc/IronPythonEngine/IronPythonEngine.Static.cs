@@ -10,7 +10,7 @@ namespace ECalc.IronPythonEngine
     {
         private static PrefixDictionary _prefixes;
         private static readonly string[] _operators;
-        private static List<FunctionInfo> _functions;
+        private static readonly List<FunctionInfo> _functions;
         private static List<Type> _pluggable;
 
         static Engine()
@@ -76,9 +76,9 @@ namespace ECalc.IronPythonEngine
             private set;
         }
 
-        public static FunctionInfo[] Functions
+        public static List<FunctionInfo> Functions
         {
-            get { return _functions.ToArray(); }
+            get { return _functions; }
         }
 
         public static bool IsOperator(string s)

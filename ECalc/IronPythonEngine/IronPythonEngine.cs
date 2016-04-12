@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Numerics;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace ECalc.IronPythonEngine
 {
-    internal partial class Engine: IDisposable
+    internal partial class Engine : IDisposable
     {
         private ScriptEngine _engine;
         private ScriptScope _scope;
@@ -45,6 +46,7 @@ namespace ECalc.IronPythonEngine
             //hidden functions
             _functioncache.Add("Var", "CalculatorFunctions.Var");
             _functioncache.Add("FncList", "CalculatorFunctions.FncList");
+            _functioncache.Add("RegFunction", "CalculatorFunctions.RegFunction");
 
             foreach (var f in _functions)
             {
@@ -94,19 +96,19 @@ namespace ECalc.IronPythonEngine
             }
             else
             {
-                foreach (var item in _prefixes)
-                {
-                    if (c.EndsWith(item.Key))
-                    {
-                        string num = c.Replace(item.Key, "");
-                        double n = Convert.ToDouble(num);
-                        n *= item.Value;
-                        parsed = n.ToString();
-                        return true;
-                    }
-                }
                 try
                 {
+                    foreach (var item in _prefixes)
+                    {
+                        if (c.EndsWith(item.Key))
+                        {
+                            string number = c.Replace(item.Key, "");
+                            double n = Convert.ToDouble(number);
+                            n *= item.Value;
+                            parsed = n.ToString();
+                            return true;
+                        }
+                    }
                     var num = Convert.ToDouble(c).ToString();
                     parsed = num;
                     return true;
@@ -124,32 +126,38 @@ namespace ECalc.IronPythonEngine
         /// </summary>
         /// <param name="input">raw input</param>
         /// <returns>executable python code</returns>
-        public string PreProcess(string input)
+        public string PreProcess(string input, bool multiline = false)
         {
-            var parts = Regex.Split(input, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)");
-            string temp;
-            for (int i = 0; i < parts.Length; i++)
-            {
-                if (string.IsNullOrWhiteSpace(parts[i])) continue;
-
-                parts[i] = parts[i].Trim();
-
-                if (parts[i] == "×") parts[i] = "*";
-                else if (parts[i] == "÷") parts[i] = "/";
-                else if (parts[i].StartsWith("&")) parts[i] = ConstantDB.Lookup(parts[i]).ToString(CultureInfo.InvariantCulture);
-                else if (_functioncache.ContainsKey(parts[i])) parts[i] = _functioncache[parts[i]];
-                else
-                {
-                    var result = ParseNumber(out temp, parts[i]);
-                    if (result) parts[i] = temp;
-                }
-            }
+            var lines = input.Split('\n');
             StringBuilder processed = new StringBuilder();
-            for (int i = 0; i < parts.Length; i++)
+            foreach (var line in lines)
             {
-                if (string.IsNullOrWhiteSpace(parts[i])) continue;
-                processed.Append(parts[i]);
-                if (i != parts.Length - 1) processed.Append(" ");
+                if (string.IsNullOrEmpty(line)) continue;
+                var parts = Regex.Split(line, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)");
+                string temp;
+                for (int i = 0; i < parts.Length; i++)
+                {
+                    if (string.IsNullOrWhiteSpace(parts[i])) continue;
+
+                    if (!multiline) parts[i] = parts[i].Trim();
+
+                    if (parts[i] == "×") parts[i] = "*";
+                    else if (parts[i] == "÷") parts[i] = "/";
+                    else if (parts[i].StartsWith("&")) parts[i] = ConstantDB.Lookup(parts[i]).ToString(CultureInfo.InvariantCulture);
+                    else if (_functioncache.ContainsKey(parts[i])) parts[i] = _functioncache[parts[i]];
+                    else
+                    {
+                        var result = ParseNumber(out temp, parts[i]);
+                        if (result) parts[i] = temp;
+                    }
+                }
+                for (int i = 0; i < parts.Length; i++)
+                {
+                    if (string.IsNullOrWhiteSpace(parts[i])) continue;
+                    processed.Append(parts[i]);
+                    if (i != (parts.Length - 1) && parts[i] != "(" && parts[i] != ")" ) processed.Append(" ");
+                }
+                processed.Append("\n");
             }
             return processed.ToString();
         }
@@ -316,6 +324,27 @@ namespace ECalc.IronPythonEngine
                     return null;
                 }
             });
+        }
+
+        public void LoadUserFunctions()
+        {
+            try
+            {
+                var appdir = AppDomain.CurrentDomain.BaseDirectory;
+                var file = Path.Combine(appdir, "UserFunctions.py");
+
+                if (File.Exists(file))
+                {
+                    var content = File.ReadAllText(file);
+                    var processed = PreProcess(content, true);
+                    ScriptSource source = _engine.CreateScriptSourceFromString(processed, SourceCodeKind.AutoDetect);
+                    source.Execute(_scope);
+                }
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog("Error while parsing user functions!\r\n" + ex.Message);
+            }
         }
 
         public CompiledCode Compile(string input)

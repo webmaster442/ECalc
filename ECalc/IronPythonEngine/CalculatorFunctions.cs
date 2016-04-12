@@ -60,5 +60,21 @@ namespace ECalc.IronPythonEngine
             }
             return buffer.ToString();
         }
+
+        [Category("Calculator")]
+        public static void RegFunction(string name)
+        {
+            var exists = from i in Engine.Functions where i.Category == "User" && i.Name == name select i;
+
+            if (exists.Count() == 0)
+            {
+                Engine.Functions.Add(new FunctionInfo
+                {
+                    Name = name,
+                    FullName = name,
+                    Category = "User"
+                });
+            }
+        }
     }
 }
