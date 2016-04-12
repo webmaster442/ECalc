@@ -42,7 +42,10 @@ namespace ECalc.IronPythonEngine
             }
             _scope.SetVariable("CalculatorFunctions", DynamicHelpers.GetPythonTypeFromType(typeof(CalculatorFunctions)));
             _functioncache = new Dictionary<string, string>();
+            //hidden functions
             _functioncache.Add("Var", "CalculatorFunctions.Var");
+            _functioncache.Add("FncList", "CalculatorFunctions.FncList");
+
             foreach (var f in _functions)
             {
                 if (_functioncache.ContainsKey(f.Name)) continue;
@@ -280,6 +283,8 @@ namespace ECalc.IronPythonEngine
                     return FormatDouble(Convert.ToDouble(o));
                 case "Complex":
                     return FormatComplex((Complex)o);
+                case "String":
+                    return (string)o;
                 default:
                     if (o is IEnumerable) return FormatEnumerable(o);
                     else return o.ToString();

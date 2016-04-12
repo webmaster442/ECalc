@@ -4,6 +4,7 @@
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                          xmlns:local="clr-namespace:ECalc.Controls"
                          xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
+    <mahdialogs:CustomDialog.Title>Result in various number systems</mahdialogs:CustomDialog.Title>
     <mahdialogs:CustomDialog.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -11,8 +12,6 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <TextBlock Text="Result in various number systems"
-                           FontSize="32"/>
                 <local:NumberSystemTextBox x:Name="NumBox"
                                            Grid.Row="0"
                                            Style="{StaticResource BorderlessTextBox}"

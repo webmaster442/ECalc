@@ -61,38 +61,16 @@ namespace ECalc.Controls
         /// <param name="value">value of variable</param>
         public void SetItem(string name, object value)
         {
-            if (name == "$ans") return;
-            var query = (from i in _memory where string.Compare(name, i.Name) == 0 select i).FirstOrDefault();
-            if (query == null) _memory.Add(new MemoryItem(name, value));
-            else
-            {
-                int index = _memory.IndexOf(query);
-                _memory[index].Value = value;
-            }
-        }
-
-        public void PushTemp(object value)
-        {
             Dispatcher.Invoke(() =>
             {
-                _memory.Add(new MemoryItem("$arg" + _tempcounter.ToString(), value));
-                _tempcounter++;
-            });
-        }
-
-        public void ClearTemp()
-        {
-            Dispatcher.Invoke(() =>
-            {
-                for (int i = _tempcounter; i >= 1; i--)
+                if (name == "$ans") return;
+                var query = (from i in _memory where string.Compare(name, i.Name) == 0 select i).FirstOrDefault();
+                if (query == null) _memory.Add(new MemoryItem(name, value));
+                else
                 {
-                    var item = (from itm in _memory where
-                                itm.Name == "$arg" + _tempcounter.ToString()
-                                select itm).FirstOrDefault();
-
-                    _memory.Remove(item);
+                    int index = _memory.IndexOf(query);
+                    _memory[index].Value = value;
                 }
-                _tempcounter = 1;
             });
         }
 

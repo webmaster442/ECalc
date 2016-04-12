@@ -47,7 +47,11 @@ namespace ECalc.Pages
                     MainWindow.ShowDialog(mld);
                 }
                 Display.AddToHistory();
-                Display.ResultText = result;
+                if (!string.IsNullOrEmpty(result))
+                {
+                    Display.ResultText = result;
+                }
+                else Display.ResultText = "Completed";
                 Display.IsCalculating = false;
             }
             catch (Exception ex)

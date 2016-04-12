@@ -4,6 +4,7 @@
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                          xmlns:local="clr-namespace:ECalc.Controls"
                          xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
+    <mahdialogs:CustomDialog.Title>Output</mahdialogs:CustomDialog.Title>
     <mahdialogs:CustomDialog.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -11,12 +12,14 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0">
-                <TextBlock Text="Result:"
-                           FontSize="24"/>
-                <TextBox MinHeight="250"
+                <TextBox Height="250"
                          x:Name="TbResult"
                          FontFamily="Consolas"
-                         FontSize="18"/>
+                         FontSize="18"
+                         VerticalScrollBarVisibility="Visible"
+                         IsReadOnly="True"
+                         AcceptsTab="True"
+                         AcceptsReturn="True"/>
             </StackPanel>
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"

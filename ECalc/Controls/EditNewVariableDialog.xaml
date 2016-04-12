@@ -3,6 +3,7 @@
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                          xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                          xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
+    <mahdialogs:CustomDialog.Title>Variable Editor</mahdialogs:CustomDialog.Title>
     <mahdialogs:CustomDialog.Content>
         <Grid>
             <Grid.RowDefinitions>

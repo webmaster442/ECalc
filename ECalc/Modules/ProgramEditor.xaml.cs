@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WPFLib.Controls;
 
 namespace ECalc.Modules
@@ -24,8 +13,8 @@ namespace ECalc.Modules
         public ProgramEditor()
         {
             InitializeComponent();
-            SyntaxBox.CurrentHighlighter = new XmlHighlighter("ecalc.xml");
-
+            var syntax = Application.GetResourceStream(new Uri("pack://application:,,,/ECalc;component/EcalcSyntax.xml"));
+            SyntaxBox.CurrentHighlighter = new XmlHighlighter(syntax.Stream);
         }
     }
 }

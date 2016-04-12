@@ -1,6 +1,8 @@
 ﻿using ECalc.IronPythonEngine.Types;
 using System;
+using System.Linq;
 using System.Numerics;
+using System.Text;
 
 namespace ECalc.IronPythonEngine
 {
@@ -44,6 +46,19 @@ namespace ECalc.IronPythonEngine
         {
             var s = Var(source);
             MemoryManager.SetItem(destination, s);
+        }
+
+        [Category("Calculator")]
+        public static string FncList()
+        {
+            StringBuilder buffer = new StringBuilder();
+            var names = (from i in Engine.Functions orderby i.Name select i.Name).Distinct();
+            foreach (var name in names)
+            {
+                buffer.Append(name);
+                buffer.Append("\r\n");
+            }
+            return buffer.ToString();
         }
     }
 }
