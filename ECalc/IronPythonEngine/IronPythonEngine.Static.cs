@@ -10,6 +10,7 @@ namespace ECalc.IronPythonEngine
     {
         private static PrefixDictionary _prefixes;
         private static readonly string[] _operators;
+        private static readonly string[] _bitoperators;
         private static readonly List<FunctionInfo> _functions;
         private static List<Type> _pluggable;
 
@@ -17,6 +18,7 @@ namespace ECalc.IronPythonEngine
         {
             _prefixes = new PrefixDictionary();
             _operators = new string[] { "+", "*", "/", "×", "÷", "(", ")", "%", "," };
+            _bitoperators = new string[] { "|AND|", "|OR|", "|NOT|" };
             _functions = new List<FunctionInfo>();
             _pluggable = new List<Type>();
             try
@@ -83,7 +85,12 @@ namespace ECalc.IronPythonEngine
 
         public static bool IsOperator(string s)
         {
-            return _operators.Contains(s);
+            return _operators.Contains(s) || _bitoperators.Contains(s);
+        }
+
+        public static bool IsBitOperator(string s)
+        {
+            return _bitoperators.Contains(s);
         }
     }
 }

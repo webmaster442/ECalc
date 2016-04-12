@@ -1,5 +1,7 @@
 ﻿using ECalc.IronPythonEngine.Types;
+using System;
 using System.Numerics;
+using System.Windows;
 
 namespace ECalc.Classes
 {
@@ -18,7 +20,16 @@ namespace ECalc.Classes
 
         public static bool IsSpecialType(object o)
         {
-            return (o is Complex) || (o is Fraction) || (o is Matrix) || (o is Vector);
+            return (o is Complex) || (o is Fraction) || (o is Matrix) || (o is IronPythonEngine.Types.Vector);
+        }
+
+        public static string ReadResourceStream(string path)
+        {
+            var resx = Application.GetResourceStream(new Uri("pack://application:,,,/ECalc;component/" + path));
+            using (System.IO.StreamReader sr = new System.IO.StreamReader(resx.Stream))
+            {
+                return sr.ReadToEnd();
+            }
         }
 
         public static string DivideToFileSize(double val)

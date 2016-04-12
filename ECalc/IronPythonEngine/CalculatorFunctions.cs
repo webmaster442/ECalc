@@ -76,5 +76,24 @@ namespace ECalc.IronPythonEngine
                 });
             }
         }
+
+        [Category("Calculator")]
+        public static double BitOp(double d1, double d2, string op)
+        {
+            BitFunction f = BitFunction.AND;
+            switch (op)
+            {
+                case "and":
+                    f = BitFunction.AND;
+                    break;
+                case "or":
+                    f = BitFunction.OR;
+                    break;
+                case "not":
+                    f = BitFunction.NOT;
+                    break;
+            }
+            return BitOps.DoFunction(d1, d2, f);
+        }
     }
 }

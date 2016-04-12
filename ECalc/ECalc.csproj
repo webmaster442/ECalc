@@ -598,6 +598,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="ApplicationSigning.pfx" />
+    <Resource Include="IronPythonEngine\BitOps.py" />
     <None Include="NumberTypes.cd" />
     <None Include="ECalc.pfx" />
     <None Include="packages.config" />

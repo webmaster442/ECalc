@@ -112,22 +112,22 @@
         
         <Button Grid.Row="0"
                 Grid.Column="4"
-                Content="not" 
+                Content="|NOT|" 
                 Click="Button_Click"/>
 
         <Button Grid.Row="0"
                 Grid.Column="5"
-                Content="and"
+                Content="|AND|"
                 Click="Button_Click"/>
 
         <Button Grid.Row="1"
                 Grid.Column="4"
-                Content="or" 
+                Content="|OR|" 
                 Click="Button_Click"/>
 
         <Button Grid.Row="1"
                 Grid.Column="5"
-                Content="xor" 
+                Content="|XOR|" 
                 Click="Button_Click"/>
 
         <Button Grid.Row="2"

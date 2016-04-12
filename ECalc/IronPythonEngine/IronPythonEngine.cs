@@ -53,6 +53,21 @@ namespace ECalc.IronPythonEngine
                 if (_functioncache.ContainsKey(f.Name)) continue;
                 _functioncache.Add(f.Name, f.FullName);
             }
+            LoadBitops();
+        }
+
+        private void LoadBitops()
+        {
+            try
+            {
+                var s = Helpers.ReadResourceStream("IronPythonEngine/BitOps.py");
+                ScriptSource source = _engine.CreateScriptSourceFromString(s, SourceCodeKind.AutoDetect);
+                source.Execute(_scope);
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
         }
 
         public event EventHandler<MyEvtArgs<string>> StdOutWriten;
@@ -133,7 +148,7 @@ namespace ECalc.IronPythonEngine
             foreach (var line in lines)
             {
                 if (string.IsNullOrEmpty(line)) continue;
-                var parts = Regex.Split(line, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)");
+                var parts = Regex.Split(line, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)|(\|AND\|)|(\|OR\|)|(\|NOT\|)|(\|XOR\|)");
                 string temp;
                 for (int i = 0; i < parts.Length; i++)
                 {

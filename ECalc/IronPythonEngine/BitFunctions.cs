@@ -5,7 +5,7 @@ namespace ECalc.IronPythonEngine
 {
     enum BitFunction
     {
-        AND, OR, NOT
+        AND, OR, NOT, XOR
     }
 
     static class BitOps
@@ -30,6 +30,9 @@ namespace ECalc.IronPythonEngine
                         break;
                     case BitFunction.NOT:
                         ret[i] = (byte)(~array1[i]);
+                        break;
+                    case BitFunction.XOR:
+                        ret[i] = (byte)(array1[i] ^ array2[i]);
                         break;
                 }
             }
@@ -58,11 +61,14 @@ namespace ECalc.IronPythonEngine
                     case BitFunction.OR:
                         result = n1 | n2;
                         break;
+                    case BitFunction.XOR:
+                        result = n1 ^ n2;
+                        break;
                     case BitFunction.NOT:
                         result = ~n1;
                         break;
                 }
-                return Convert.ToDouble(result);
+                return (double)result;
             }
         }
     }
