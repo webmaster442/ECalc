@@ -49,7 +49,7 @@
   <HighlightLineRule name="Comments">
     <LineStart>#</LineStart>
     <IgnoreCase>false</IgnoreCase>
-    <Foreground>#00FF00</Foreground>
+    <Foreground>#003c00</Foreground>
     <FontWeight>Normal</FontWeight>
     <FontStyle>Italic</FontStyle>
   </HighlightLineRule>

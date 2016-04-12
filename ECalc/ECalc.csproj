@@ -161,6 +161,7 @@
     <Compile Include="Controls\MultiLineResultDialog.xaml.cs">
       <DependentUpon>MultiLineResultDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IronPythonEngine\BitFunctions.cs" />
     <Compile Include="IronPythonEngine\SimpleMemMan.cs" />
     <Compile Include="IronPythonEngine\EventRaisingStreamWriter.cs" />
     <Compile Include="IronPythonEngine\MemoryItem.cs" />

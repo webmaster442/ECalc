@@ -44,16 +44,16 @@ namespace ECalc.Controls
                 switch (content)
                 {
                     case "Roman":
-                        ButtonClicked(sender, new StringEventArgs("R#"));
+                        ButtonClicked(sender, new StringEventArgs("Rx"));
                         break;
                     case "BIN":
-                        ButtonClicked(sender, new StringEventArgs("B#"));
+                        ButtonClicked(sender, new StringEventArgs("Bx"));
                         break;
                     case "OCT":
-                        ButtonClicked(sender, new StringEventArgs("O#"));
+                        ButtonClicked(sender, new StringEventArgs("Ox"));
                         break;
                     case "HEX":
-                        ButtonClicked(sender, new StringEventArgs("H#"));
+                        ButtonClicked(sender, new StringEventArgs("Hx"));
                         break;
                     default:
                         ButtonClicked(sender, new StringEventArgs(content));

@@ -23,7 +23,9 @@
                     x:Name="BtnCompile"
                     Click="BtnCompile_Click"/>
             <Button Content="Save"
+                    Margin="10,0"
                     x:Name="BtnSave"
+                    IsEnabled="False"
                     Click="BtnSave_Click"/>
         </StackPanel>
         

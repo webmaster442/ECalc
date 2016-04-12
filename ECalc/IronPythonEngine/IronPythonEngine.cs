@@ -74,24 +74,24 @@ namespace ECalc.IronPythonEngine
 
         private bool ParseNumber(out string parsed, string c)
         {
-            if (c.StartsWith("H#"))
+            if (c.StartsWith("Hx"))
             {
-                parsed = Convert.ToInt64(c.Replace("H#", ""), 16).ToString();
+                parsed = Convert.ToInt64(c.Replace("Hx", ""), 16).ToString();
                 return true;
             }
-            else if (c.StartsWith("O#"))
+            else if (c.StartsWith("Ox"))
             {
-                parsed = Convert.ToInt64(c.Replace("O#", ""), 8).ToString();
+                parsed = Convert.ToInt64(c.Replace("Ox", ""), 8).ToString();
                 return true;
             }
-            else if (c.StartsWith("B#"))
+            else if (c.StartsWith("Bx"))
             {
-                parsed = Convert.ToInt64(c.Replace("B#", ""), 2).ToString();
+                parsed = Convert.ToInt64(c.Replace("Bx", ""), 2).ToString();
                 return true;
             }
-            else if (c.StartsWith("R#"))
+            else if (c.StartsWith("Rx"))
             {
-                parsed = NumberSystemConversions.RomanToInt(c.Replace("R#", "")).ToString();
+                parsed = NumberSystemConversions.RomanToInt(c.Replace("Rx", "")).ToString();
                 return true;
             }
             else
@@ -161,7 +161,7 @@ namespace ECalc.IronPythonEngine
             }
             return processed.ToString();
         }
-
+        #region Output formating
         private string FormatDouble(double input)
         {
             if (PreferPrefixes)
@@ -298,6 +298,7 @@ namespace ECalc.IronPythonEngine
                     else return o.ToString();
             }
         }
+        #endregion
 
         public Task<string> EvaluateAsync(string input)
         {
@@ -379,6 +380,7 @@ namespace ECalc.IronPythonEngine
             });
         }
 
+        #region IDisposable
         protected virtual void Dispose(bool native)
         {
             if (_output != null)
@@ -398,5 +400,6 @@ namespace ECalc.IronPythonEngine
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        #endregion
     }
 }
