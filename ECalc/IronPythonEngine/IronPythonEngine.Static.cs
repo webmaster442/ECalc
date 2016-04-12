@@ -18,7 +18,7 @@ namespace ECalc.IronPythonEngine
         {
             _prefixes = new PrefixDictionary();
             _operators = new string[] { "+", "*", "/", "×", "÷", "(", ")", "%", "," };
-            _bitoperators = new string[] { "|AND|", "|OR|", "|NOT|" };
+            _bitoperators = new string[] { "|AND|", "|OR|", "|NOT|", "|SHL|", "|SHR|" };
             _functions = new List<FunctionInfo>();
             _pluggable = new List<Type>();
             try

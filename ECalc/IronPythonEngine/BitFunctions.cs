@@ -5,7 +5,7 @@ namespace ECalc.IronPythonEngine
 {
     enum BitFunction
     {
-        AND, OR, NOT, XOR
+        AND, OR, NOT, XOR, SHL, SHR
     }
 
     static class BitOps
@@ -15,37 +15,11 @@ namespace ECalc.IronPythonEngine
             return d - Math.Truncate(d) != 0;
         }
 
-        private static byte[] DoFunction(byte[]array1, byte[] array2, BitFunction f)
-        {
-            byte[] ret = new byte[8];
-            for (int i=0; i< ret.Length; i++)
-            {
-                switch (f)
-                {
-                    case BitFunction.AND:
-                        ret[i] = (byte)(array1[i] & array2[i]);
-                        break;
-                    case BitFunction.OR:
-                        ret[i] = (byte)(array1[i] | array2[i]);
-                        break;
-                    case BitFunction.NOT:
-                        ret[i] = (byte)(~array1[i]);
-                        break;
-                    case BitFunction.XOR:
-                        ret[i] = (byte)(array1[i] ^ array2[i]);
-                        break;
-                }
-            }
-            return ret;
-        }
-
         public static double DoFunction(double p1, double p2, BitFunction function)
         {
             if (Floats(p1) || Floats(p2))
             {
-                var array1 = BitConverter.GetBytes(p1);
-                var array2 = BitConverter.GetBytes(p2);
-                return BitConverter.ToDouble(DoFunction(array1, array2, function), 0);
+                throw new Exception("Binary operations only supported on integer types");
             }
             else
             {
@@ -66,6 +40,12 @@ namespace ECalc.IronPythonEngine
                         break;
                     case BitFunction.NOT:
                         result = ~n1;
+                        break;
+                    case BitFunction.SHL:
+                        result = n1 << (int)n2;
+                        break;
+                    case BitFunction.SHR:
+                        result = n1 >> (int)n2;
                         break;
                 }
                 return (double)result;

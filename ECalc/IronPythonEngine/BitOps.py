@@ -18,5 +18,7 @@ class Infix:
 
 AND=Infix(lambda x,y: CalculatorFunctions.BitOp(x, y, 'and'))
 XOR=Infix(lambda x,y: CalculatorFunctions.BitOp(x, y, 'xor'))
+SHL=Infix(lambda x,y: CalculatorFunctions.BitOp(x, y, 'shl'))
+SHR=Infix(lambda x,y: CalculatorFunctions.BitOp(x, y, 'shr'))
 OR=Infix(lambda x,y: CalculatorFunctions.BitOp(x, y, 'or'))
 NOT=Infix(lambda x: CalculatorFunctions.BitOp(x, 0, 'not'))

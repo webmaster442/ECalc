@@ -148,7 +148,7 @@ namespace ECalc.IronPythonEngine
             foreach (var line in lines)
             {
                 if (string.IsNullOrEmpty(line)) continue;
-                var parts = Regex.Split(line, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)|(\|AND\|)|(\|OR\|)|(\|NOT\|)|(\|XOR\|)");
+                var parts = Regex.Split(line, @"(\+)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)|(\|AND\|)|(\|OR\|)|(\|NOT\|)|(\|XOR\|)|(\|SHL\|)|(\|SHR\|)");
                 string temp;
                 for (int i = 0; i < parts.Length; i++)
                 {

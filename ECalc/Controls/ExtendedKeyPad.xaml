@@ -132,12 +132,12 @@
 
         <Button Grid.Row="2"
                 Grid.Column="4"
-                Content="shl"
+                Content="|SHL|"
                 Click="Button_Click"/>
 
         <Button Grid.Row="3"
                 Grid.Column="4"
-                Content="shr"
+                Content="|SHR|"
                 Click="Button_Click"/>
 
         <Button Grid.Row="4"
