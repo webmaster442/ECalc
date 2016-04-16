@@ -131,23 +131,15 @@
                 Click="Button_Click"/>
 
         <Button Grid.Row="2"
+                Grid.RowSpan="2"
                 Grid.Column="4"
                 Content="|SHL|"
                 Click="Button_Click"/>
 
-        <Button Grid.Row="3"
+        <Button Grid.Row="4"
+                Grid.RowSpan="2"
                 Grid.Column="4"
                 Content="|SHR|"
-                Click="Button_Click"/>
-
-        <Button Grid.Row="4"
-                Grid.Column="4"
-                Content="rol"
-                Click="Button_Click"/>
-
-        <Button Grid.Row="5"
-                Grid.Column="4"
-                Content="ror"
                 Click="Button_Click"/>
     </Grid>
 </UserControl>
