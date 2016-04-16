@@ -68,6 +68,14 @@ namespace ECalc.Maths
         }
 
         [Category("Engineering")]
+        public static double Percent(double input, double percent)
+        {
+            if (percent < 0) throw new ArgumentException("Percent must be positive", nameof(percent));
+            var multiplier = percent / 100;
+            return input * multiplier;
+        }
+
+        [Category("Engineering")]
         public static object QuadraticEq(double a, double b, double c)
         {
             if (a == 0)

@@ -56,9 +56,6 @@ namespace ECalc.Pages
                 case "Calculator":
                     control = new Calculator();
                     break;
-                case "Statistics":
-                    control = new Stat();
-                    break;
                 case "Equation System Solver":
                     control = new EquationSystemSolver();
                     break;

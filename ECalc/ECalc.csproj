@@ -203,6 +203,7 @@
     <Compile Include="IronPythonEngine\EngineTypes.cs" />
     <Compile Include="IronPythonEngine\IronPythonEngine.cs" />
     <Compile Include="IronPythonEngine\IronPythonEngine.Static.cs" />
+    <Compile Include="IronPythonEngine\Types\Set.cs" />
     <Compile Include="Lib\CryptoRNG.cs" />
     <Compile Include="Lib\QuantumRandom.cs" />
     <Compile Include="Maths\Engineering.cs" />
@@ -338,10 +339,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\BasicKeyPad.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\Special\PrefixInput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -351,10 +348,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Special\TimeSpanSelector.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\StatInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -406,12 +399,6 @@
     </Compile>
     <Compile Include="Controls\Special\MintermTable5.xaml.cs">
       <DependentUpon>MintermTable5.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\BasicKeyPad.xaml.cs">
-      <DependentUpon>BasicKeyPad.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\StatInput.xaml.cs">
-      <DependentUpon>StatInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Lib\Crc32.cs" />
     <Compile Include="Lib\Crc64.cs" />
@@ -519,10 +506,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Stat.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Modules\SubnetCalculator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -570,9 +553,6 @@
     </Compile>
     <Compile Include="Modules\ResistorColorDecoder.xaml.cs">
       <DependentUpon>ResistorColorDecoder.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Stat.xaml.cs">
-      <DependentUpon>Stat.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\SubnetCalculator.xaml.cs">
       <DependentUpon>SubnetCalculator.xaml</DependentUpon>
@@ -677,7 +657,6 @@
     <Resource Include="Images\100px\ipaddress.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\100px\statistics.png" />
     <Resource Include="Images\100px\unitconverter.png" />
   </ItemGroup>
   <ItemGroup>

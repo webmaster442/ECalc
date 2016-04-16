@@ -76,7 +76,7 @@ namespace ECalc.IronPythonEngine.Types
     /// 	Implicit:	From double/long/string to Fraction
     /// 	Explicit:	From Fraction to double/string
     /// </summary>
-    public class Fraction
+    public class Fraction: IEquatable<Fraction>
     {
         /// <summary>
         /// Class attributes/members
@@ -518,7 +518,11 @@ namespace ECalc.IronPythonEngine.Types
                 throw new FractionException("Cannot reduce Fraction: " + exp.Message);
             }
         }
-            
+
+        public bool Equals(Fraction other)
+        {
+            return this == other;
+        }
     }	//end class Fraction
 
 

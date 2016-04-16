@@ -91,11 +91,6 @@
                           Click="Tile_Click">
                     <Image Source="../Images/100px/calculator.png"/>
                 </mah:Tile>
-                <mah:Tile Title="Statistics"
-                          Background="{StaticResource W8Orange}"
-                          Click="Tile_Click">
-                    <Image Source="../Images/100px/statistics.png"/>
-                </mah:Tile>
                 <mah:Tile Title="Unit Converter"
                           Background="{StaticResource W8Red}"
                           Click="Tile_Click">

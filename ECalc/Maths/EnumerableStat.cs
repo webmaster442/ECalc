@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ECalc.IronPythonEngine;
+using ECalc.IronPythonEngine.Types;
+using System;
 using System.Linq;
 
 namespace ECalc.Maths
@@ -9,14 +10,16 @@ namespace ECalc.Maths
     /// https://github.com/mariusschulz/NAverage/blob/master/NAverage and
     /// http://www.codeproject.com/Articles/42492/Using-LINQ-to-Calculate-Basic-Statistics
     /// </summary>
-    internal static class EnumerableStat
+    [Loadable]
+    public static class EnumerableStat
     {
         /// <summary>
         /// Variance is the measure of the amount of variation of all the scores for a variable (not just the extremes which give the range).
         /// </summary>
         /// <param name="source">The numbers whose variation is to be calculated.</param>
         /// <returns>The variation of the given numbers.</returns>
-        public static double Variance(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Variance(Set source)
         {
             int n = 0;
             double mean = 0;
@@ -37,7 +40,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose Standard Deviation is to be calculated.</param>
         /// <returns>The  Standard Deviation of the given numbers.</returns>
-        public static double StandardDeviation(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double StandardDeviation(Set source)
         {
             return Math.Sqrt(Variance(source));
         }
@@ -48,7 +52,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose median is to be calculated.</param>
         /// <returns>The median of the given numbers.</returns>
-        public static double Median(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Median(Set source)
         {
             var sortedList = from number in source
                              orderby number
@@ -69,7 +74,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose mode is to be calculated.</param>
         /// <returns>The mode of the given numbers.</returns>
-        public static double Mode(this IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Mode(this Set source)
         {
             var sortedList = from number in source
                              orderby number
@@ -106,7 +112,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose range is to be calculated.</param>
         /// <returns>The range of the given numbers.</returns>
-        public static double Range(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Range(Set source)
         {
             return source.Max() - source.Min();
         }
@@ -116,7 +123,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose count is to be calculated.</param>
         ///  <returns>The count of the given numbers.</returns>
-        public static double Count(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Count(Set source)
         {
             return source.Count();
         }
@@ -126,7 +134,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose minimum is to be calculated.</param>
         /// <returns>The minimum of the given numbers.</returns>
-        public static double Minimum(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Minimum(Set source)
         {
             if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
             return source.Min();
@@ -137,7 +146,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose maximum is to be calculated.</param>
         /// <returns>The maximum of the given numbers.</returns>
-        public static double Maximum(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Maximum(Set source)
         {
             if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
             return source.Max();
@@ -148,7 +158,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose arithmetic mean is to be calculated.</param>
         /// <returns>The arithmetic mean of the given numbers.</returns>
-        public static double ArithmeticMean(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double ArithmeticMean(Set source)
         {
             if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
             return source.Average();
@@ -159,7 +170,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose geometric mean is to be calculated.</param>
         /// <returns>The geometric mean of the given numbers.</returns>
-        public static double GeometricMean(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double GeometricMean(Set source)
         {
             if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
@@ -184,7 +196,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose harmonic mean is to be calculated.</param>
         /// <returns>The harmonic mean of the given numbers.</returns>
-        public static double HarmonicMean(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double HarmonicMean(Set source)
         {
             if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
@@ -203,7 +216,8 @@ namespace ECalc.Maths
         /// </summary>
         /// <param name="source">The numbers whose midrange is to be calculated.</param>
         /// <returns>The midrange of the specified collection of numbers.</returns>
-        public static double Midrange(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double Midrange(Set source)
         {
             if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
@@ -219,11 +233,12 @@ namespace ECalc.Maths
         /// Calculates the quadratic mean (or RMS, respectively) of the specified numbers.
         /// </summary>
         /// <param name="source">The numbers whose quadratic mean is to be calculated.</param>
-        public static double QuadraticMean(IEnumerable<double> source)
+        [Category("Statistics")]
+        public static double QuadraticMean(Set source)
         {
             if (!source.Any()) throw new InvalidOperationException("The collection must not be empty!");
 
-            IEnumerable<double> squaredNumbers = source.Select(n => n * n);
+            Set squaredNumbers = (Set)source.Select(n => n * n).ToList();
 
             double arithmeticMeanOfSquaredNumbers = ArithmeticMean(squaredNumbers);
             double quadraticMean = Math.Sqrt(arithmeticMeanOfSquaredNumbers);
