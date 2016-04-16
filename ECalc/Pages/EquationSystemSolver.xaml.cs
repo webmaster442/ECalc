@@ -14,7 +14,7 @@ namespace ECalc.Pages
     /// </summary>
     public partial class EquationSystemSolver : UserControl
     {
-        private string[] _labels = new string[] { "A", "B", "C", "D", "E", "F" };
+        private string[] _labels =  { "A", "B", "C", "D", "E", "F" };
         private int _equations;
         private bool _loaded;
 

@@ -21,12 +21,9 @@ namespace ECalc.Controls
         private EditNewVariableDialog _editdialog;
         private bool _designtime;
 
-        private int _tempcounter;
-
         public MemoryManagement()
         {
             InitializeComponent();
-            _tempcounter = 1;
             _designtime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
             if (_designtime) return;
             _memory = new ObservableCollection<MemoryItem>();

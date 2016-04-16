@@ -76,7 +76,7 @@ namespace MarkdownDeep
 				switch (blockType)
 				{
 					case BlockType.codeblock:
-						StringBuilder s = new StringBuilder();
+						var s = new StringBuilder();
 						foreach (var line in children)
 						{
 							s.Append(line.Content);

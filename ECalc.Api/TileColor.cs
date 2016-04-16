@@ -3,7 +3,7 @@
     /// <summary>
     /// Tile Color Enumeration
     /// </summary>
-    public enum TileColor : int
+    public enum TileColor
     {
         /// <summary>
         /// Default Gray color

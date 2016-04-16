@@ -28,7 +28,7 @@ namespace ECalc.IronPythonEngine
 
         public Engine()
         {
-            Dictionary<String, Object> options = new Dictionary<string, object>();
+            var options = new Dictionary<string, object>();
             options["DivisionOptions"] = PythonDivisionOptions.New;
             _history = new NullStream();
             _output = new EventRaisingStreamWriter(_history);
@@ -144,7 +144,7 @@ namespace ECalc.IronPythonEngine
         public string PreProcess(string input, bool multiline = false)
         {
             var lines = input.Split('\n');
-            StringBuilder processed = new StringBuilder();
+            var processed = new StringBuilder();
             foreach (var line in lines)
             {
                 if (string.IsNullOrEmpty(line)) continue;
@@ -181,7 +181,7 @@ namespace ECalc.IronPythonEngine
         {
             if (PreferPrefixes)
             {
-                PrefixDictionary pfx = new PrefixDictionary();
+                var pfx = new PrefixDictionary();
                 return pfx.DivideToPrefix(input);
             }
             if (GroupByThousands)
@@ -189,7 +189,7 @@ namespace ECalc.IronPythonEngine
                 string gchar = " ";
                 string fchar = ".";
                 if (double.IsNaN(input) || double.IsInfinity(input)) return input.ToString(CultureInfo.InvariantCulture);
-                StringBuilder sb = new StringBuilder();
+                var sb = new StringBuilder();
                 bool passed = false;
                 int j = 1;
                 int i;
@@ -234,7 +234,7 @@ namespace ECalc.IronPythonEngine
 
         private string FormatComplex(Complex cplx)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append("R: ");
             sb.Append(cplx.Real);
             sb.Append(" i: ");
@@ -262,8 +262,8 @@ namespace ECalc.IronPythonEngine
 
         private string FormatEnumerable(object o)
         {
-            StringBuilder sb = new StringBuilder();
-            IEnumerable coll = (IEnumerable)o;
+            var sb = new StringBuilder();
+            var coll = (IEnumerable)o;
 
             int idx = 0;
             if (o is Array || o is IList)

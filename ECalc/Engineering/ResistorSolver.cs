@@ -49,7 +49,7 @@ namespace ECalc.Engineering
                     sum += q;
                     min_sum += (q - (tolerancemultiplier * q));
                     max_sum += (q + (tolerancemultiplier * q));
-                    sb.AppendLine(q.ToString() + " Ω");
+                    sb.AppendLine(q + " Ω");
                 }
             }
             sb.AppendLine("--------------------------------------------------------------------");
@@ -85,8 +85,8 @@ namespace ECalc.Engineering
             var best = (from result in _results where result.Key <= desiredvalue orderby (desiredvalue - result.Key) ascending select result).FirstOrDefault();
             if (best.Value != null)
             {
-                sb.AppendLine(best.Value[0].ToString() + " Ω");
-                sb.AppendLine(best.Value[1].ToString() + " Ω");
+                sb.AppendLine(best.Value[0] + " Ω");
+                sb.AppendLine(best.Value[1] + " Ω");
             }
             sb.AppendLine("--------------------------------------------------------------------");
             sb.AppendFormat("Paralell value: {0} Ω\r\n", best.Key);

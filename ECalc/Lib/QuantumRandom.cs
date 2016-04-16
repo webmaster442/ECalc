@@ -118,14 +118,14 @@ namespace Sublight.Utilities
         {
             if (maxValue < minValue)
             {
-                throw new ArgumentOutOfRangeException("maxValue", maxValue, "maxValue must be >= minValue");
+                throw new ArgumentOutOfRangeException(nameof(maxValue), maxValue, "maxValue must be >= minValue");
             }
 
             int range = maxValue - minValue;
 
             if (range <= 1)
             {
-                throw new ArgumentOutOfRangeException("maxValue", maxValue, string.Format("maxValue must be > {0}", minValue + 1));
+                throw new ArgumentOutOfRangeException(nameof(maxValue), maxValue, string.Format("maxValue must be > {0}", minValue + 1));
             }
 
             int rnd = Next(range);
@@ -140,7 +140,7 @@ namespace Sublight.Utilities
             //improved method which tries to prevent modulo bias (http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Modulo_bias)
             if (maxValue <= 1)
             {
-                throw new ArgumentOutOfRangeException("maxValue", maxValue, "maxValue must be > 1");
+                throw new ArgumentOutOfRangeException(nameof(maxValue), maxValue, "maxValue must be > 1");
             }
 
             //how many bits do we need to store maxValue?

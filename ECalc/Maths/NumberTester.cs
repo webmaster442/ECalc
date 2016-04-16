@@ -73,12 +73,12 @@ namespace ECalc.Maths
                     var sub = new StringBuilder();
                     foreach (var item in enumerable)
                     {
-                        sub.AppendFormat("{0}; ", item.ToString());
+                        sub.AppendFormat("{0}; ", item);
                     }
                     render.AppendFormat("{0,13} => {1}\n", prop.Name, sub);
                 }
                 else
-                    render.AppendFormat("{0,13} => {1}\n", prop.Name, value.ToString());
+                    render.AppendFormat("{0,13} => {1}\n", prop.Name, value);
             }
             return render.ToString();
         }

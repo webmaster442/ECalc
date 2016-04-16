@@ -104,7 +104,7 @@ namespace ECalc.Classes
                 sb.Append(array[i]);
                 if (i != array.Length -1) sb.Append(_seperator);
             }
-            _sw.WriteLine(sb.ToString());
+            _sw.WriteLine(sb);
         }
 
         public void WriteLine(params object[] array)
@@ -115,7 +115,7 @@ namespace ECalc.Classes
                 sb.Append(array[i].ToString());
                 if (i != array.Length - 1) sb.Append(_seperator);
             }
-            _sw.WriteLine(sb.ToString());
+            _sw.WriteLine(sb);
         }
 
         protected virtual void Dispose(bool native)

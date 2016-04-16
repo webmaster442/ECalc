@@ -29,7 +29,7 @@ namespace ECalc.Modules
 
             var pi = new PrefixInput();
             pi.UnitText = "Ω";
-            pi.LabelText = "R" + _counter.ToString();
+            pi.LabelText = "R" + _counter;
             pi.ValueChanged += PrefixInput_ValueChanged;
             pi.Value = 1;
             pi.Margin = new Thickness(2);
@@ -64,7 +64,7 @@ namespace ECalc.Modules
 
             var pi = new PrefixInput();
             pi.UnitText = "Ω";
-            pi.LabelText = "R" + _ccounter.ToString();
+            pi.LabelText = "R" + _ccounter;
             pi.ValueChanged += PrefixInput_ValueChanged2;
             pi.Value = 1;
             SpCurrentItems.Children.Add(pi);

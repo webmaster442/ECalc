@@ -24,7 +24,7 @@ namespace ECalc
         /// <param name="control">A user control to show</param>
         public static void SwithToControl(UserControl control)
         {
-            var main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             if (main.TransitionControl.Content is Calculator)
             {
                 ConfigFileHelpers.SerializeFunctionUsageStats();
@@ -46,7 +46,7 @@ namespace ECalc
         {
             try
             {
-                var main = (MainWindow)App.Current.MainWindow;
+                var main = (MainWindow)Application.Current.MainWindow;
                 await main.ShowMessageAsync("Error", error, MessageDialogStyle.Affirmative);
             }
             catch (Exception)
@@ -58,10 +58,12 @@ namespace ECalc
         /// <summary>
         /// Display a generic dialog
         /// </summary>
-        /// <param name="error">error text</param>
+        /// <param name="title">Dialog title</param>
+        /// <param name="text">Dialog text</param>
+        /// <param name="style">Dialog style</param>
         public static async void ShowDialog(string title, string text, MessageDialogStyle style)
         {
-            var main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             await main.ShowMessageAsync(title, text, style);
         }
 
@@ -71,13 +73,13 @@ namespace ECalc
         /// <param name="dialog">dialog to display</param>
         public static async void ShowDialog(CustomDialog dialog)
         {
-            var main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             await main.ShowMetroDialogAsync(dialog);
         }
 
         public static void SetTitle(string titletext)
         {
-            var main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             main.Title = titletext;
         }
 

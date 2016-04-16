@@ -52,7 +52,7 @@ namespace ECalc.Lib
         {
             if (maxValue < minValue)
             {
-                throw new ArgumentOutOfRangeException("maxValue must be greater than or equal to minValue");
+                throw new ArgumentOutOfRangeException(nameof(maxValue), "maxValue must be greater than or equal to minValue");
             }
             int range = maxValue - minValue;
             return minValue + Next(range);

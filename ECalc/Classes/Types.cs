@@ -5,8 +5,6 @@ namespace ECalc.Classes
     /// <summary>
     /// Event Handler for string events
     /// </summary>
-    /// <param name="sender">Sender object</param>
-    /// <param name="e">parameters</param>
     public delegate void StringEventHandler(object sender, StringEventArgs e);
 
     /// <summary>

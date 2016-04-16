@@ -4,7 +4,7 @@ using System.Numerics;
 namespace ECalc.IronPythonEngine.Types
 {
     /// <summary>
-    /// Vector Implementation. Supports 2D & 3D
+    /// Vector Implementation. Supports 2D &amp; 3D
     /// </summary>
     public class Vector: IEquatable<Vector>, ICloneable
     {

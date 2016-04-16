@@ -66,17 +66,17 @@ namespace ECalc.Api
 
             var url = (from i in document.Elements()
                        where i.Name == "url"
-                       select i.Value.ToString()).FirstOrDefault();
+                       select i.Value).FirstOrDefault();
 
             var imgurl = "http://www.bing.com" + url;
 
             CoppyRightData = (from i in document.Elements()
                               where i.Name == "copyright"
-                              select i.Value.ToString()).FirstOrDefault();
+                              select i.Value).FirstOrDefault();
 
             CoppyRightLink = (from i in document.Elements()
                               where i.Name == "copyrightlink"
-                              select i.Value.ToString()).FirstOrDefault();
+                              select i.Value).FirstOrDefault();
 
             File.WriteAllText(_tempcoppyright, CoppyRightData + ";" + CoppyRightLink);
 

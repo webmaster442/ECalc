@@ -109,7 +109,7 @@ namespace ECalc.Controls
                 }
                 else
                 {
-                    MultiLineResultDialog mld = new MultiLineResultDialog();
+                    var mld = new MultiLineResultDialog();
                     mld.Text = value;
                     MainWindow.ShowDialog(mld);
                 }

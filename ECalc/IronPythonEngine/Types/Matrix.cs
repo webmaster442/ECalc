@@ -6,12 +6,12 @@ namespace ECalc.IronPythonEngine.Types
     public class Matrix : ICloneable, IFormattable
     {
         private int nRows, nCols;
-        private double[] mData;
+        private readonly double[] mData;
 
         public Matrix(int rows, int columns)
         {
-            if (rows < 1) throw new ArgumentException("must be greater than 0", "rows");
-            if (columns < 1) throw new ArgumentException("must be greater than 0", "columns");
+            if (rows < 1) throw new ArgumentException("must be greater than 0", nameof(rows));
+            if (columns < 1) throw new ArgumentException("must be greater than 0", nameof(columns));
             nRows = rows;
             nCols = columns;
             mData = new double[rows * columns];
@@ -91,13 +91,13 @@ namespace ECalc.IronPythonEngine.Types
 
         private void RangeCheck(int row, int column)
         {
-            if (row < 0 || row >= nRows) throw new ArgumentOutOfRangeException("row");
-            if (column < 0 || column >= nCols) throw new ArgumentOutOfRangeException("column");
+            if (row < 0 || row >= nRows) throw new ArgumentOutOfRangeException(nameof(row));
+            if (column < 0 || column >= nCols) throw new ArgumentOutOfRangeException(nameof(column));
         }
 
         public void CopyTo(Matrix target)
         {
-            if (target == null) throw new ArgumentNullException("target");
+            if (target == null) throw new ArgumentNullException(nameof(target));
             if (Rows != target.Rows || Columns != target.Columns) throw new Exception("Target and Source row/column count mismatch");
 
             Buffer.BlockCopy(mData, 0, target.mData, 0, target.mData.Length * sizeof(double));
@@ -322,16 +322,16 @@ namespace ECalc.IronPythonEngine.Types
 
         public void SetColumn(int index, double[] source)
         {
-            if (index < 0 || index >= Columns) throw new ArgumentOutOfRangeException("index");
-            if (source == null) throw new ArgumentNullException("source");
+            if (index < 0 || index >= Columns) throw new ArgumentOutOfRangeException(nameof(index));
+            if (source == null) throw new ArgumentNullException(nameof(source));
             if (source.Length != Rows) throw new Exception("Array element number is not equal with matrix row count");
             Buffer.BlockCopy(source, 0, mData, index * Rows * sizeof(double), source.Length * sizeof(double));
         }
 
         public void SetRow(int index, double[] source)
         {
-            if (index < 0 || index >= Rows) throw new ArgumentOutOfRangeException("index");
-            if (source == null) throw new ArgumentNullException("source");
+            if (index < 0 || index >= Rows) throw new ArgumentOutOfRangeException(nameof(index));
+            if (source == null) throw new ArgumentNullException(nameof(source));
             if (source.Length != Columns) throw new Exception("Array element number is not equal with matrix Column count");
             for (int j = 0; j < Columns; j++) this[index, j] = source[j];
         }
@@ -412,8 +412,8 @@ namespace ECalc.IronPythonEngine.Types
 
         public static Matrix operator +(Matrix left, Matrix right)
         {
-            if (left == null) throw new ArgumentNullException("left");
-            if (right == null) throw new ArgumentNullException("right");
+            if (left == null) throw new ArgumentNullException(nameof(left));
+            if (right == null) throw new ArgumentNullException(nameof(right));
             if (left.Rows != right.Rows || left.Columns != right.Columns) throw new Exception("Input matrix row/column count mismatch");
             var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < left.Rows; i++)
@@ -451,8 +451,8 @@ namespace ECalc.IronPythonEngine.Types
 
         public static Matrix operator -(Matrix left, Matrix right)
         {
-            if (left == null) throw new ArgumentNullException("left");
-            if (right == null) throw new ArgumentNullException("right");
+            if (left == null) throw new ArgumentNullException(nameof(left));
+            if (right == null) throw new ArgumentNullException(nameof(right));
             if (left.Rows != right.Rows || left.Columns != right.Columns) throw new Exception("Input matrix row/column count mismatch");
             var ret = new Matrix(left.Rows, left.Columns);
             for (int i = 0; i < left.Rows; i++)
@@ -467,8 +467,8 @@ namespace ECalc.IronPythonEngine.Types
 
         public static Matrix operator *(Matrix left, Matrix right)
         {
-            if (left == null) throw new ArgumentNullException("left");
-            if (right == null) throw new ArgumentNullException("right");
+            if (left == null) throw new ArgumentNullException(nameof(left));
+            if (right == null) throw new ArgumentNullException(nameof(right));
             if (left.Columns != right.Rows) throw new Exception("Input matrix row/column count mismatch");
             var ret = new Matrix(left.Rows, right.Columns);
 
@@ -489,8 +489,8 @@ namespace ECalc.IronPythonEngine.Types
 
         public static Matrix operator /(Matrix left, Matrix right)
         {
-            if (left == null) throw new ArgumentNullException("left");
-            if (right == null) throw new ArgumentNullException("right");
+            if (left == null) throw new ArgumentNullException(nameof(left));
+            if (right == null) throw new ArgumentNullException(nameof(right));
             if (left.Rows != right.Rows && left.Columns != right.Columns) throw new Exception("Input matrix row/column count mismatch");
             var ret = new Matrix(left.Rows, left.Columns);
 

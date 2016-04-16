@@ -1,6 +1,7 @@
 ﻿using System.Windows.Documents;
 using MahApps.Metro.Controls.Dialogs;
 using WPFLib.Extensions;
+using System.Windows;
 
 namespace ECalc.Controls
 {
@@ -31,7 +32,7 @@ namespace ECalc.Controls
 
         private async void PART_NegativeButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            var main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
     }

@@ -17,7 +17,7 @@ namespace ECalc.IronPythonEngine.Types
     /// 	FractionException
     /// </summary>
 
-
+    ///<summary>
     /// Class name: Fraction
     /// Developed by: Syed Mehroz Alam
     /// Email: smehrozalam@yahoo.com
@@ -70,7 +70,7 @@ namespace ECalc.IronPythonEngine.Types
     /// Overloaded Operators (overloaded for Fractions, Integers and Doubles)
     /// 	Unary: -
     /// 	Binary: +,-,*,/ 
-    /// 	Relational and Logical Operators: ==,!=,<,>,<=,>=
+    /// 	Relational and Logical Operators
     /// 
     /// Overloaded user-defined conversions
     /// 	Implicit:	From double/long/string to Fraction
@@ -278,7 +278,7 @@ namespace ECalc.IronPythonEngine.Types
         /// <summary>
         /// Operators for the Fraction object
         /// includes -(unary), and binary opertors such as +,-,*,/
-        /// also includes relational and logical operators such as ==,!=,<,>,<=,>=
+        /// also includes relational and logical operators such as ==,!=,&lt;,&gt;,&lt;=,&gt;=
         /// </summary>
         public static Fraction operator -(Fraction frac1)
         {	return ( Negate(frac1) );	}

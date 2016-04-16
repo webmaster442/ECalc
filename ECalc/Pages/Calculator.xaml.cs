@@ -43,7 +43,7 @@ namespace ECalc.Pages
                 var result = await _engine.EvaluateAsync(Display.EquationText);
                 if (_stdout.Length > 0)
                 {
-                    MultiLineResultDialog mld = new MultiLineResultDialog();
+                    var mld = new MultiLineResultDialog();
                     mld.Text = _stdout.ToString();
                     MainWindow.ShowDialog(mld);
                 }

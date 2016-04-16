@@ -46,10 +46,10 @@ namespace ECalc.Maths
 
             foreach (var pair in RomanNumbers)
             {
-                while (textform.IndexOf(pair.Key.ToString()) == 0)
+                while (textform.IndexOf(pair.Key) == 0)
                 {
                     result += pair.Value;
-                    textform = textform.Substring(pair.Key.ToString().Length);
+                    textform = textform.Substring(pair.Key.Length);
                 }
             }
 
@@ -355,7 +355,7 @@ namespace ECalc.Maths
 
         public static string FormatBin(string input)
         {
-            StringBuilder buffer = new StringBuilder();
+            var buffer = new StringBuilder();
             int counter = 0;
             for (int i = input.Length - 1; i >= 0; i--)
             {

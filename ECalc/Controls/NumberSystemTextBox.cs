@@ -43,7 +43,7 @@ namespace ECalc.Controls
             else
             {
                 string bin, oct, hex;
-                BigInteger bi = new BigInteger(d);
+                var bi = new BigInteger(d);
                 bin = NumberSystemConversions.ToSystem(bi, 2);
                 oct = NumberSystemConversions.ToSystem(bi, 8);
                 hex = NumberSystemConversions.ToSystem(bi, 16);

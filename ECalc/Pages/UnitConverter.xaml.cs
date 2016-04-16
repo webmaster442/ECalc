@@ -13,7 +13,7 @@ namespace ECalc.Pages
         private UnitConverter _conv;
         private Unit[] _source, _dest;
         private bool _loaded;
-        private string _currentheader = null;
+        private string _currentheader;
 
         public UnitConverterPage()
         {
@@ -32,7 +32,7 @@ namespace ECalc.Pages
         private void TreeSource_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
             if (TreeSource.SelectedItem == null) TblInput.Text = "Input:";
-            else TblInput.Text = string.Format("Input {0}:", (TreeSource.SelectedItem as TreeViewItem).Header.ToString());
+            else TblInput.Text = string.Format("Input {0}:", (TreeSource.SelectedItem as TreeViewItem).Header);
             _source = _conv.TreeviewItemToCategory((TreeViewItem)TreeSource.SelectedItem);
 
 
@@ -59,7 +59,7 @@ namespace ECalc.Pages
                 TblOutput.Text = "Output:";
                 return;
             }
-            else TblOutput.Text = string.Format("Output {0}:", (TreeDestination.SelectedItem as TreeViewItem).Header.ToString());
+            else TblOutput.Text = string.Format("Output {0}:", (TreeDestination.SelectedItem as TreeViewItem).Header);
             _dest = _conv.TreeviewItemToCategory((TreeViewItem)TreeDestination.SelectedItem);
             Calculate();
         }

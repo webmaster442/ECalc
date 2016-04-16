@@ -158,7 +158,7 @@ namespace ECalc.Controls
 
                     if (copy != null)
                     {
-                        if (i < copy.GetLength(0) && j < copy.GetLength(1)) tx.Text = copy[i, j].ToString();
+                        if (i < copy.GetLength(0) && j < copy.GetLength(1)) tx.Text = copy[i, j];
                         else tx.Text = "0";
                     }
                     else tx.Text = "0";
@@ -219,7 +219,7 @@ namespace ECalc.Controls
         private async void PART_NegativeButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Index = -1;
-            var main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
 
@@ -259,7 +259,7 @@ namespace ECalc.Controls
             {
                 SaveClicked(sender, e);
             }
-            var main = (MainWindow)App.Current.MainWindow;
+            var main = (MainWindow)Application.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }
 

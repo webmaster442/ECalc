@@ -6,7 +6,7 @@ namespace ECalc.IronPythonEngine
 {
     internal class SimpleMemmMan : IMemManager
     {
-        private Dictionary<string, object> _mem;
+        private readonly Dictionary<string, object> _mem;
 
         public SimpleMemmMan()
         {

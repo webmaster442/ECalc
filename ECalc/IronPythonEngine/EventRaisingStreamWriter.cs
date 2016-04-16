@@ -27,7 +27,7 @@ namespace ECalc.IronPythonEngine
 
         public override bool CanSeek
         {
-            get { return true; }
+            get { return false; }
         }
 
         public override bool CanWrite

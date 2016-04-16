@@ -11,9 +11,9 @@ namespace ECalc.Controls.Special
     public partial class ResistorColorSelector : UserControl
     {
 
-        private double[] multipliers = new double[] { 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
-        private double[] tolerance = new double[] { 10, 5, 1, 2, 0.5, 0.25, 0.1 };
-        private double[] temp = new double[] { 100, 50, 15, 25 };
+        private double[] multipliers =  { 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000 };
+        private double[] tolerance =  { 10, 5, 1, 2, 0.5, 0.25, 0.1 };
+        private double[] temp = { 100, 50, 15, 25 };
 
         public class Item
         {

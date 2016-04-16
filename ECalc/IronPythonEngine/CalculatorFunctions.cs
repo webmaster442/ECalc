@@ -7,7 +7,7 @@ using System.Text;
 namespace ECalc.IronPythonEngine
 {
     [Loadable]
-    public class CalculatorFunctions
+    public static class CalculatorFunctions
     {
         public static IMemManager MemoryManager { get; set; }
 
@@ -51,7 +51,7 @@ namespace ECalc.IronPythonEngine
         [Category("Calculator")]
         public static string FncList()
         {
-            StringBuilder buffer = new StringBuilder();
+            var buffer = new StringBuilder();
             var names = (from i in Engine.Functions orderby i.Name select i.Name).Distinct();
             foreach (var name in names)
             {
