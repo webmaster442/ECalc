@@ -11,6 +11,8 @@ namespace ECalc.IronPythonEngine.Types
             AddRange(numbers);
         }
 
+        public Set(int count): base(count) { }
+
         public static Set Distinct(Set arg)
         {
             return (Set)arg.Distinct().ToList();

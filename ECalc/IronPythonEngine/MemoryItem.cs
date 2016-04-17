@@ -17,7 +17,9 @@ namespace ECalc.Classes
         Complex,
         Matrix,
         Fraction,
-        Vector
+        Vector,
+        Set,
+        String
     }
 
     /// <summary>
@@ -116,6 +118,7 @@ namespace ECalc.Classes
         {
             int rows = 0;
             int columns = 0;
+            int items = 0;
             reader.MoveToContent();
             Name = reader.GetAttribute("Name");
             var typestring = reader.GetAttribute("Type");
@@ -128,6 +131,10 @@ namespace ECalc.Classes
             if (type == VarType.Vector)
             {
                 columns = Convert.ToInt32(reader.GetAttribute("Dimensions"));
+            }
+            if (type == VarType.Set)
+            {
+                items = Convert.ToInt32(reader.GetAttribute("Items"));
             }
             bool isempty = reader.IsEmptyElement;
             reader.ReadStartElement();
@@ -168,6 +175,18 @@ namespace ECalc.Classes
                         }
                         Value = matrix;
                         break;
+                    case VarType.Set:
+                        var contents = xml.Split(';');
+                        var set = new Set(items);
+                        for (int itm=0; itm<items; itm++)
+                        {
+                            set.Add(double.Parse(contents[itm]));
+                        }
+                        Value = set;
+                        break;
+                    case VarType.String:
+                        Value = xml;
+                        break;
                     case VarType.Vector:
                         parts = xml.Split(';');
                         var x = double.Parse(parts[0], culture);
@@ -200,14 +219,17 @@ namespace ECalc.Classes
             else if (valtype == typeof(Fraction)) type = VarType.Fraction;
             else if (valtype == typeof(Matrix)) type = VarType.Matrix;
             else if (valtype == typeof(Vector)) type = VarType.Vector;
+            else if (valtype == typeof(Set)) type = VarType.Set;
+            else if (valtype == typeof(string)) type = VarType.String;
 
             writer.WriteAttributeString("Type", type.ToString());
 
             string xml = null;
+            var sb = new StringBuilder();
             switch (type)
             {
                 case VarType.Double:
-                    xml = ((Double)Value).ToString("G17", culture);
+                    xml = (Convert.ToDouble(Value)).ToString("G17", culture);
                     writer.WriteElementString("Content", xml);
                     break;
                 case VarType.Complex:
@@ -223,7 +245,6 @@ namespace ECalc.Classes
                     writer.WriteElementString("Content", xml);
                     break;
                 case VarType.Matrix:
-                    var sb = new StringBuilder();
                     Matrix m = ((Matrix)Value);
                     writer.WriteAttributeString("Rows", m.Rows.ToString());
                     writer.WriteAttributeString("Columns", m.Columns.ToString());
@@ -247,6 +268,19 @@ namespace ECalc.Classes
                                                             v.Y.ToString("G17", culture),
                                                             ((double)v.Z).ToString("G17", culture));
                     writer.WriteElementString("Content", xml);
+                    break;
+                case VarType.Set:
+                    var s = (Set)Value;
+                    writer.WriteAttributeString("Items", s.Count.ToString());
+                    sb.Clear();
+                    foreach (var item in s)
+                    {
+                        sb.AppendFormat("{0};", item.ToString("G17", culture));
+                    }
+                    writer.WriteElementString("Content", sb.ToString());
+                    break;
+                case VarType.String:
+                    writer.WriteElementString("Content", Value.ToString());
                     break;
             }
         }
