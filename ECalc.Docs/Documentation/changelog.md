@@ -1,5 +1,9 @@
 Changelog
 ---
+##V. 2.0
+* Replaced evaluator engine with IronPython
+* Statistics reworked
+
 ##V. 1.2
 * updated MahApps framework
 * Negative number interpretation fixed

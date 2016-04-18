@@ -41,8 +41,12 @@
                               ToolTip="functions-F.md"/>
                 <TreeViewItem Header="G"
                               ToolTip="functions-G.md"/>
+                <TreeViewItem Header="H"
+                              ToolTip="functions-H.md"/>
                 <TreeViewItem Header="L"
                               ToolTip="functions-L.md"/>
+                <TreeViewItem Header="M"
+                              ToolTip="functions-M.md"/>
                 <TreeViewItem Header="N"
                               ToolTip="functions-N.md"/>
                 <TreeViewItem Header="P"

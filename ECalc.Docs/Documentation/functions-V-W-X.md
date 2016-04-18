@@ -2,6 +2,16 @@ V, W, X
 ---
 
 ```
+Variance(set)
+```
+
+In probability theory and statistics, variance measures how far a set of numbers are spread out. A variance of zero indicates that all the values are identical. Variance is always non-negative: a small variance indicates that the data points tend to be very close to the mean (expected value) and hence to each other, while a high variance indicates that the data points are very spread out around the mean and from each other.
+
+An equivalent measure is the square root of the variance, called the standard deviation. The standard deviation has the same dimension as the data, and hence is comparable to deviations from the mean. As standard deviation is often represented with the symbol σ (lowercase sigma), so variance is often represented with the symbol σ² (sigma squared).
+
+This function can only be used on sets.
+
+```
 Vect2D(x, y)
 ```
 

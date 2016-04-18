@@ -31,3 +31,11 @@ ArcTanh(value)
 ```
 
 Inverse trigonometric functions for cosine (ArcCos), cosecant(ArcCosec), hyperbolic cosecant (ArcCosech), hyperbolic cosine (ArcCosh), cotangent (Arcctg), hyperbolic cotangent (ArcCtg), hyperbolic cotangent (ArcCtgh), secant (ArcSec), hypebolic secant (ArcSech), sine (ArcSin), hyperbolic sine (ArcSinh), tangent (ArcTan), hyperbolic tangent (ArcTanh)
+
+```
+ArithmeticMean(Set)
+```
+
+In mathematics and statistics, the arithmetic mean, or simply the mean or average when the context is clear, is the sum of a collection of numbers divided by the number of numbers in the collection. The collection is often a set of results of an experiment, or a set of results from a survey. The term "arithmetic mean" is preferred in some contexts in mathematics and statistics because it helps distinguish it from other means, such as the geometric mean and the harmonic mean.
+
+This function can be used on Sets.

@@ -209,6 +209,8 @@
     <Resource Include="Documentation\welcome.md" />
     <Resource Include="Documentation\changelog.md" />
     <Resource Include="Documentation\pluginiface.md" />
+    <Resource Include="Documentation\functions-H.md" />
+    <Resource Include="Documentation\functions-M.md" />
     <None Include="ECalc.Docs.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
