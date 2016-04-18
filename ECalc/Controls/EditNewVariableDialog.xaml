@@ -94,6 +94,12 @@
                         </Grid>
                     </Grid>
                 </TabItem>
+                <TabItem Header="Set">
+                    <GroupBox Header="Items: (one value / line)">
+                        <TextBox AcceptsReturn="True"
+                                 x:Name="TbSet"/>
+                    </GroupBox>
+                </TabItem>
             </TabControl>
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"

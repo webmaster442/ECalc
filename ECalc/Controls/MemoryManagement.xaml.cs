@@ -1,7 +1,6 @@
 ﻿using ECalc.Classes;
 using ECalc.IronPythonEngine;
 using ECalc.IronPythonEngine.Types;
-using ECalc.Maths;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -198,6 +197,9 @@ namespace ECalc.Controls
                     case 4:
                         _memory[MemList.SelectedIndex].Value = _editdialog.Matrix;
                         break;
+                    case 5:
+                        _memory[MemList.SelectedIndex].Value = _editdialog.Set;
+                        break;
                 }
             }
             else
@@ -219,6 +221,9 @@ namespace ECalc.Controls
                     case 4:
                         _memory.Add(new MemoryItem(_editdialog.Matrix));
                         break;
+                    case 5:
+                        _memory.Add(new MemoryItem(_editdialog.Set));
+                        break;
                 }
             }
         }
@@ -236,6 +241,7 @@ namespace ECalc.Controls
             else if (o is Complex) _editdialog.Complex = (Complex)o;
             else if (o is Fraction) _editdialog.Fraction = (Fraction)o;
             else if (o is Matrix) _editdialog.Matrix = (Matrix)o;
+            else if (o is Set) _editdialog.Set = (Set)o;
             _editdialog.IsEditDialog = true;
             MainWindow.ShowDialog(_editdialog);
         }

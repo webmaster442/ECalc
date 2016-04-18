@@ -2,6 +2,7 @@
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Numerics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -108,6 +109,32 @@ namespace ECalc.Controls
                     TbZValue.Text = value.Z.ToString();
                     Cb3D.IsChecked = true;
                 }
+            }
+        }
+        #endregion
+
+        #region Set
+        public IronPythonEngine.Types.Set Set
+        {
+            get
+            {
+                Set ret = new Set(TbSet.LineCount);
+                foreach (var line in TbSet.Text.Split('\n'))
+                {
+                    if (string.IsNullOrEmpty(line)) continue;
+                    ret.Add(Convert.ToDouble(line));
+                }
+                return ret;
+            }
+            set
+            {
+                StringBuilder buffer = new StringBuilder();
+                foreach (var item in value)
+                {
+                    buffer.Append(item);
+                    buffer.Append("\r\n");
+                }
+                TbSet.Text = buffer.ToString();
             }
         }
         #endregion
@@ -247,6 +274,9 @@ namespace ECalc.Controls
                     case 4:
                         test = this.Matrix;
                         break;
+                    case 5:
+                        test = this.Set;
+                        break;
                 }
             }
             catch (Exception)
@@ -298,6 +328,7 @@ namespace ECalc.Controls
                 Editor.Children.Clear();
                 Rows.Value = 2;
                 Columns.Value = 2;
+                TbSet.Text = "";
             });
         }
     }
