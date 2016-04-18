@@ -11,26 +11,32 @@ namespace ECalc.IronPythonEngine.Types
             AddRange(numbers);
         }
 
+        public Set(List<double> itms) : base(itms) { }
+
         public Set(int count): base(count) { }
 
         public static Set Distinct(Set arg)
         {
-            return (Set)arg.Distinct().ToList();
+            var res = arg.Distinct().ToList();
+            return new Set(res);
         }
         
         public static Set Intersect(Set arg1, Set arg2)
         {
-            return (Set)arg1.Intersect(arg2).ToList();
+            var res = arg1.Intersect(arg2).ToList();
+            return new Set(res);
         }
 
         public static Set Union(Set arg1, Set arg2)
         {
-            return (Set)arg1.Union(arg2).ToList();
+            var res = arg1.Union(arg2).ToList();
+            return new Set(res);
         }
 
         public static Set Except(Set arg1, Set arg2)
         {
-            return (Set)arg1.Except(arg2).ToList();
+            var res = arg1.Except(arg2).ToList();
+            return new Set(res);
         }
 
         public override string ToString()

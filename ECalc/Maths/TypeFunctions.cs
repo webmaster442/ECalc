@@ -68,11 +68,5 @@ namespace ECalc.Maths
         {
             return m.Transpose();
         }
-
-        [Category("Types")]
-        public static Set Set(params double[] d)
-        {
-            return new Set(d);
-        }
     }
 }

@@ -30,7 +30,7 @@
         <TabItem Header="Alphabetical">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="100"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <ListView Grid.Row="0"

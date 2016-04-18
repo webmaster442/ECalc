@@ -270,7 +270,7 @@ namespace ECalc.IronPythonEngine
             {
                 foreach (var i in coll)
                 {
-                    sb.AppendFormat("{0} =>\n", idx);
+                    sb.AppendFormat("{0} => ", idx);
                     if (i is Complex) sb.Append(FormatComplex((Complex)i));
                     else sb.Append(i.ToString());
                     sb.Append("\n");
