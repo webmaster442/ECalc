@@ -11,6 +11,7 @@
     <UserControl.Resources>
         <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="MinWidth" Value="82"/>
+            <Setter Property="MaxWidth" Value="82"/>
             <Setter Property="Margin" Value="2"/>
             <Setter Property="controls:ButtonHelper.PreserveTextCase" Value="True"/>
             <Setter Property="FontSize" Value="12"/>

@@ -39,6 +39,7 @@ namespace ECalc.Controls
         {
             var btn = new Button();
             btn.Content = function;
+            btn.ToolTip = function;
             btn.Click += Btn_Click;
             wp.Children.Add(btn);
         }
