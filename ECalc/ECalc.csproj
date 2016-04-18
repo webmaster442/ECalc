@@ -226,6 +226,9 @@
     <Compile Include="Modules\GreekAlphabet.xaml.cs">
       <DependentUpon>GreekAlphabet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Lm317.xaml.cs">
+      <DependentUpon>Lm317.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
@@ -424,6 +427,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\GreekAlphabet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Lm317.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

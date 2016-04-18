@@ -543,4 +543,32 @@ namespace ECalc.Modules
         }
     }
 
+    public class Lm317reg : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return ModuleCategories.Analog; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "LM317 Calculator"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new Lm317();
+        }
+
+        /*public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/alphabet.png", UriKind.Relative)); }
+        }*/
+
+        public override int Color
+        {
+            get { return (int)TileColor.FlatNephritis; }
+        }
+    }
+
 }

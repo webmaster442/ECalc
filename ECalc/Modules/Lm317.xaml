@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="ECalc.Modules.Lm317"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:scontrols="clr-namespace:ECalc.Controls.Special"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="900"
+             Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="TabMode">
+            <TabItem Header="Constant Voltage">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <scontrols:PrefixInput UnitText="V"
+                                               Value="12"
+                                               LabelText="Vin"
+                                               x:Name="VregVin"
+                                               ValueChanged="ValueChanged"/>
+                        <scontrols:PrefixInput UnitText="Ω"
+                                               Value="1000"
+                                               LabelText="R1"
+                                               x:Name="VregR1"
+                                               ValueChanged="ValueChanged"/>
+                        <scontrols:PrefixInput UnitText="Ω"
+                                               Value="1000"
+                                               LabelText="R2"
+                                               x:Name="VregR2"
+                                               ValueChanged="ValueChanged"/>
+                    </StackPanel>
+                    
+                    <Image Grid.Column="1"
+                           Source="/ECalc;component/Images/large/lm317-vreg.png"
+                           StretchDirection="DownOnly"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Constant Current">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel>
+                        <scontrols:PrefixInput UnitText="Ω"
+                                               Value="1000"
+                                               LabelText="R1"
+                                               x:Name="IregR1"
+                                               ValueChanged="ValueChanged"/>
+                    </StackPanel>
+
+                    <Image Grid.Column="1"
+                           Source="/ECalc;component/Images/large/lm317-ireg.png"
+                           StretchDirection="DownOnly"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <GroupBox Header="Results"
+                  Grid.Row="1">
+            <TextBox x:Name="TbOutput"
+                     FontSize="19"/>
+        </GroupBox>
+    </Grid>
+</UserControl>
