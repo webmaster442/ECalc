@@ -32,6 +32,18 @@ namespace ECalc.Maths
             return Math.Log(value1, basen);
         }
 
+        [Category("General")]
+        public static double Log10(double value)
+        {
+            return Math.Log10(value);
+        }
+
+        [Category("General")]
+        public static double LogE(double value)
+        {
+            return Math.Log(value, Math.E);
+        }
+
         /// <summary>
         /// Returns the Square root of a specified number
         /// </summary>

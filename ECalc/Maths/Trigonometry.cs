@@ -421,5 +421,45 @@ namespace ECalc.Maths
                     return double.NaN;
             }
         }
+
+        /// <summary>
+        /// Returns the hyperbolic cosecant of a number, depending on the mode set. For more info, see the documentation of SetMode 
+        /// </summary>
+        /// <param name="value">input number</param>
+        [Category("Trigonometry")]
+        public static double Cosech(double value)
+        {
+            double rad = value;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    rad = Deg2Rad(value);
+                    break;
+                case TrigMode.GRAD:
+                    rad = Grad2Rad(value);
+                    break;
+            }
+            return 2 / (Math.Exp(rad) - Math.Exp(-rad));
+        }
+
+        /// <summary>
+        /// Returns the hyperbolic cotangent of a number, depending on the mode set. For more info, see the documentation of SetMode
+        /// </summary>
+        /// <param name="value1">input number</param>
+        [Category("Trigonometry")]
+        public static double Ctgh(double value)
+        {
+            double rad = value;
+            switch (Engine.Mode)
+            {
+                case TrigMode.DEG:
+                    rad = Deg2Rad(value);
+                    break;
+                case TrigMode.GRAD:
+                    rad = Grad2Rad(value);
+                    break;
+            }
+            return (Math.Exp(value) + Math.Exp(-value)) / (Math.Exp(value) - Math.Exp(-value));
+        }
     }
 }
