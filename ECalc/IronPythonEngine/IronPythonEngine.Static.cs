@@ -51,7 +51,13 @@ namespace ECalc.IronPythonEngine
                     Category = category.Category,
                     Name = method.Name
                 };
-                _functions.Add(f);
+                var q = (from fnc in _functions
+                         where
+                         fnc.Name == method.Name
+                         select fnc).Count();
+
+                if (q > 0) continue;
+                else _functions.Add(f);
             }
 
         }
