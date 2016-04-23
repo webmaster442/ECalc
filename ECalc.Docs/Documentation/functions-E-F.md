@@ -1,5 +1,12 @@
-F
+E, F
 ---
+
+```
+Except(set1, set2)
+```
+
+Returns the except (complement) of two sets in a new set. In set theory, a complement of a set A refers to things not in (that is, things outside of) A. The relative complement of A with respect to a set B is the set of elements in B but not in A.
+
 ```
 Fact(value)
 ```

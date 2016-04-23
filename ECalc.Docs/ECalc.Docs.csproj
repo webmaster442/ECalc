@@ -195,7 +195,6 @@
     <Resource Include="Documentation\functions-A.md" />
     <Resource Include="Documentation\functions-C.md" />
     <Resource Include="Documentation\functions-D.md" />
-    <Resource Include="Documentation\functions-F.md" />
     <Resource Include="Documentation\functions-G.md" />
     <Resource Include="Documentation\functions-L.md" />
     <Resource Include="Documentation\functions-N.md" />
@@ -203,14 +202,15 @@
     <Resource Include="Documentation\functions-R.md" />
     <Resource Include="Documentation\functions-S.md" />
     <Resource Include="Documentation\functions-T.md" />
-    <Resource Include="Documentation\functions-V-W-X.md" />
     <Resource Include="Documentation\general-usage.md" />
     <Resource Include="Documentation\license.md" />
     <Resource Include="Documentation\welcome.md" />
     <Resource Include="Documentation\changelog.md" />
     <Resource Include="Documentation\pluginiface.md" />
-    <Resource Include="Documentation\functions-H.md" />
     <Resource Include="Documentation\functions-M.md" />
+    <Resource Include="Documentation\functions-E-F.md" />
+    <Resource Include="Documentation\functions-H-I.md" />
+    <Resource Include="Documentation\functions-U-V-W-X.md" />
     <None Include="ECalc.Docs.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

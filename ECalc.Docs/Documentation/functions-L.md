@@ -6,6 +6,11 @@ LCM(number1, number2)
 
 Returns he least common multiple of two numbers. In arithmetic and number theory, the least common multiple (also called the lowest common multiple or smallest common multiple) of two integers a and b, usually denoted by LCM(a, b), is the smallest positive integer that is divisible by both a and b
 
+```
+Load()
+```
+
+Loads a TXT files contents to a new Set. The TXT file must contain numbers in each row. If the format is not supported or some other reading error occures, then an empty set is returned.
 
 ```
 Log(number, base)

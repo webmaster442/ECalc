@@ -37,12 +37,12 @@
                               ToolTip="functions-C.md"/>
                 <TreeViewItem Header="D"
                               ToolTip="functions-D.md"/>
-                <TreeViewItem Header="F"
-                              ToolTip="functions-F.md"/>
+                <TreeViewItem Header="E-F"
+                              ToolTip="functions-E-F.md"/>
                 <TreeViewItem Header="G"
                               ToolTip="functions-G.md"/>
-                <TreeViewItem Header="H"
-                              ToolTip="functions-H.md"/>
+                <TreeViewItem Header="H-I"
+                              ToolTip="functions-H-I.md"/>
                 <TreeViewItem Header="L"
                               ToolTip="functions-L.md"/>
                 <TreeViewItem Header="M"
@@ -55,8 +55,8 @@
                               ToolTip="functions-R.md"/>
                 <TreeViewItem Header="T"
                               ToolTip="functions-T.md"/>
-                <TreeViewItem Header="V, W, X"
-                              ToolTip="functions-V-W-X.md"/>
+                <TreeViewItem Header="U, V, W, X"
+                              ToolTip="functions-U-V-W-X.md"/>
             </TreeViewItem>
             <TreeViewItem Header="License"
                           ToolTip="license.md"/>

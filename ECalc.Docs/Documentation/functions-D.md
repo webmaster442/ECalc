@@ -18,3 +18,9 @@ Det(matrix)
 ```
 
 Calculates the determinant of a matrix. In linear algebra, the determinant is a useful value that can be computed from the elements of a square matrix.
+
+```
+Distinct(set)
+```
+
+Returns the distinct elements from the parameter set in a new set. Two or more things are distinct if no two of them are the same thing. In mathematics, two things are called distinct if they are not equal.

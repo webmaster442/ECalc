@@ -1,5 +1,11 @@
-V, W, X
+U, V, W, X
 ---
+
+```
+Union(set1, set2)
+```
+
+Returns the union of two sets in a new set. In set theory, the union (denoted by ∪) of a collection of sets is the set of all distinct elements in the collection.[1] It is one of the fundamental operations through which sets can be combined and related to each other.
 
 ```
 Variance(set)
