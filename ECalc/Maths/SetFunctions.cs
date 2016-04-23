@@ -1,4 +1,5 @@
 ﻿using ECalc.IronPythonEngine;
+using System;
 
 namespace ECalc.Maths
 {
@@ -9,6 +10,35 @@ namespace ECalc.Maths
         public static IronPythonEngine.Types.Set Set(params double[] d)
         {
             return new IronPythonEngine.Types.Set(d);
+        }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set Load()
+        {
+            try
+            {
+                var openFileDialog = new Microsoft.Win32.OpenFileDialog();
+                var set = new IronPythonEngine.Types.Set(10);
+                openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    using (var stream = System.IO.File.OpenText(openFileDialog.FileName))
+                    {
+                        string line;
+                        while ((line = stream.ReadLine()) != null)
+                        {
+                            var d = Convert.ToDouble(line);
+                            set.Add(d);
+                        }
+                    }
+                    return set;
+                }
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
+            return new IronPythonEngine.Types.Set(0);
         }
 
         [Category("Sets")]
