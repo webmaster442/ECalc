@@ -214,6 +214,7 @@
     <Compile Include="Maths\Trigonometry.cs" />
     <Compile Include="IronPythonEngine\Types\Vector.cs" />
     <Compile Include="Maths\TypeFunctions.cs" />
+    <Compile Include="Maths\Variations.cs" />
     <Compile Include="Modules\ColorConverters.xaml.cs">
       <DependentUpon>ColorConverters.xaml</DependentUpon>
     </Compile>
