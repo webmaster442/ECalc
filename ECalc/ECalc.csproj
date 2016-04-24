@@ -156,7 +156,6 @@
     </ApplicationDefinition>
     <Compile Include="Classes\ConstantDB.cs" />
     <Compile Include="Classes\ConstantList2.cs" />
-    <Compile Include="Classes\CSV.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
     <Compile Include="Controls\MultiLineResultDialog.xaml.cs">
       <DependentUpon>MultiLineResultDialog.xaml</DependentUpon>

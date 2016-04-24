@@ -46,7 +46,7 @@ namespace ECalc.Maths
             #endregion
 
             #region Divisor test
-            if (IsPrime) Divisiors = new long[] { 1, _int };
+            if (IsPrime || !IsInteger) Divisiors = new long[] { 1, _int };
             else
             {
                 var divisors = new List<long>(20);

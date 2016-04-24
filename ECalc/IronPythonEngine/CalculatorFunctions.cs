@@ -93,6 +93,15 @@ namespace ECalc.IronPythonEngine
                 case "not":
                     f = BitFunction.NOT;
                     break;
+                case "xor":
+                    f = BitFunction.XOR;
+                    break;
+                case "shl":
+                    f = BitFunction.SHL;
+                    break;
+                case "shr":
+                    f = BitFunction.SHR;
+                    break;
             }
             return BitOps.DoFunction(d1, d2, f);
         }
