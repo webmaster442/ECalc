@@ -560,10 +560,10 @@ namespace ECalc.Modules
             return new Lm317();
         }
 
-        /*public override ImageSource Icon
+        public override ImageSource Icon
         {
-            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/alphabet.png", UriKind.Relative)); }
-        }*/
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/lm317.png", UriKind.Relative)); }
+        }
 
         public override int Color
         {
