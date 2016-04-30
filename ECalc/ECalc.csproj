@@ -131,6 +131,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Runtime.Serialization" />
@@ -871,6 +872,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\100px\lm317.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\50px\update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ECalc.Pages"
              xmlns:wpflib="http://github.com/webmaster442/WPFLib"
              mc:Ignorable="d" 
-             d:DesignHeight="75" d:DesignWidth="900">
+             d:DesignHeight="80" d:DesignWidth="900">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="50"/>
@@ -100,6 +100,13 @@
                     ImageWidth="32"
                     x:Name="BtnWindManager"
                     Click="BtnWindManager_Click"/>
+                <wpflib:ImageButton
+                    Content="Check updates"
+                    Image="/ECalc;component/Images/50px/update.png"
+                    ImageHeight="32"
+                    ImageWidth="32"
+                    x:Name="BtnUpdate"
+                    Click="BtnUpdate_Click"/>
                 <wpflib:ImageButton
                     Content="Screen Keyboard"
                     Image="/ECalc;component/Images/50px/keyboard.png"
