@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
-             xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
+             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
              mc:Ignorable="d"
              Loaded="UserControl_Loaded"
              d:DesignHeight="540" d:DesignWidth="960">
@@ -32,19 +32,19 @@
                   Header="RGB">
             <StackPanel>
                 <TextBlock Text="Red:"/>
-                <controls:EditableSlider x:Name="RGB_Red"
+                <wpflib:EditableSlider x:Name="RGB_Red"
                                          Minimum="0"
                                          Maximum="255"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Green:"/>
-                <controls:EditableSlider x:Name="RGB_Green"
+                <wpflib:EditableSlider x:Name="RGB_Green"
                                          Minimum="0"
                                          Maximum="255"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Blue:"/>
-                <controls:EditableSlider x:Name="RGB_Blue"
+                <wpflib:EditableSlider x:Name="RGB_Blue"
                                          Minimum="0"
                                          Maximum="255"
                                          Value="0"
@@ -56,25 +56,25 @@
                   Header="CMYK">
             <StackPanel>
                 <TextBlock Text="Cyan:"/>
-                <controls:EditableSlider x:Name="CMYK_C"
+                <wpflib:EditableSlider x:Name="CMYK_C"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Magenta:"/>
-                <controls:EditableSlider x:Name="CMYK_M"
+                <wpflib:EditableSlider x:Name="CMYK_M"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Yellow:"/>
-                <controls:EditableSlider x:Name="CMYK_Y"
+                <wpflib:EditableSlider x:Name="CMYK_Y"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Black:"/>
-                <controls:EditableSlider x:Name="CMYK_K"
+                <wpflib:EditableSlider x:Name="CMYK_K"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
@@ -86,19 +86,19 @@
                   Header="YUV">
             <StackPanel>
                 <TextBlock Text="Y:"/>
-                <controls:EditableSlider x:Name="YUV_Y"
+                <wpflib:EditableSlider x:Name="YUV_Y"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="U:"/>
-                <controls:EditableSlider x:Name="YUV_U"
+                <wpflib:EditableSlider x:Name="YUV_U"
                                          Minimum="-0.436"
                                          Maximum="0.436"
                                          Value="-0.436"
                                          DefaultValue="-0.436"/>
                 <TextBlock Text="V:"/>
-                <controls:EditableSlider x:Name="YUV_V"
+                <wpflib:EditableSlider x:Name="YUV_V"
                                          Minimum="-0.615"
                                          Maximum="0.615"
                                          Value="-0.615"
@@ -110,19 +110,19 @@
                   Header="HSL">
             <StackPanel>
                 <TextBlock Text="Hue:"/>
-                <controls:EditableSlider x:Name="HSL_Hue"
+                <wpflib:EditableSlider x:Name="HSL_Hue"
                                          Minimum="0"
                                          Maximum="360"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Saturation:"/>
-                <controls:EditableSlider x:Name="HSL_Saturation"
+                <wpflib:EditableSlider x:Name="HSL_Saturation"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Luminance:"/>
-                <controls:EditableSlider x:Name="HSL_Lumiance"
+                <wpflib:EditableSlider x:Name="HSL_Lumiance"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
@@ -134,19 +134,19 @@
                   Header="HSB">
             <StackPanel>
                 <TextBlock Text="Hue:"/>
-                <controls:EditableSlider x:Name="HSB_Hue"
+                <wpflib:EditableSlider x:Name="HSB_Hue"
                                          Minimum="0"
                                          Maximum="360"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Saturation:"/>
-                <controls:EditableSlider x:Name="HSB_Saturation"
+                <wpflib:EditableSlider x:Name="HSB_Saturation"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"
                                          DefaultValue="0"/>
                 <TextBlock Text="Brightness:"/>
-                <controls:EditableSlider x:Name="HSB_Brightness"
+                <wpflib:EditableSlider x:Name="HSB_Brightness"
                                          Minimum="0"
                                          Maximum="1"
                                          Value="0"

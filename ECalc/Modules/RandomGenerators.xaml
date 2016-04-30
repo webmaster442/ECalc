@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
-             xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
+             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
              mc:Ignorable="d" 
              d:DesignHeight="520" d:DesignWidth="900">
     <TabControl>
@@ -29,21 +29,21 @@
                          AcceptsReturn="True"/>
                 <StackPanel Grid.Column="1">
                     <GroupBox Header="Number of items">
-                        <controls:EditableSlider x:Name="Count"
+                        <wpflib:EditableSlider x:Name="Count"
                                             Minimum="0"
                                             Maximum="1000"
                                             Value="10"
                                             DefaultValue="10"/>
                     </GroupBox>
                     <GroupBox Header="Minimum">
-                        <controls:EditableSlider x:Name="Minimum"
+                        <wpflib:EditableSlider x:Name="Minimum"
                                             Minimum="-2147483648"
                                             Maximum="2147483647"
                                             Value="0"
                                             DefaultValue="0"/>
                     </GroupBox>
                     <GroupBox Header="Maximum">
-                        <controls:EditableSlider x:Name="Maximum"
+                        <wpflib:EditableSlider x:Name="Maximum"
                                             Minimum="-2147483648"
                                             Maximum="2147483647"
                                             Value="100"
@@ -87,7 +87,7 @@
                          AcceptsReturn="True"/>
                 <StackPanel Grid.Column="1">
                     <GroupBox Header="Minimum Words">
-                        <controls:EditableSlider x:Name="MinWords"
+                        <wpflib:EditableSlider x:Name="MinWords"
                                             Minimum="5"
                                             Maximum="30"
                                             Value="5"
@@ -95,7 +95,7 @@
                                             DefaultValue="5"/>
                     </GroupBox>
                     <GroupBox Header="Maximum Words">
-                        <controls:EditableSlider x:Name="MaxWords"
+                        <wpflib:EditableSlider x:Name="MaxWords"
                                             Minimum="5"
                                             Maximum="30"
                                             Value="30"
@@ -103,7 +103,7 @@
                                             DefaultValue="30"/>
                     </GroupBox>
                     <GroupBox Header="Minimum Sentences">
-                        <controls:EditableSlider x:Name="MinSentences"
+                        <wpflib:EditableSlider x:Name="MinSentences"
                                             Minimum="1"
                                             Maximum="35"
                                             Value="3"
@@ -111,7 +111,7 @@
                                             DefaultValue="3"/>
                     </GroupBox>
                     <GroupBox Header="Max Sentences">
-                        <controls:EditableSlider x:Name="MaxSentences"
+                        <wpflib:EditableSlider x:Name="MaxSentences"
                                             Minimum="1"
                                             Maximum="35"
                                             Value="7"
@@ -119,7 +119,7 @@
                                             DefaultValue="7"/>
                     </GroupBox>
                     <GroupBox Header="Paragraphs">
-                        <controls:EditableSlider x:Name="Paragraphs"
+                        <wpflib:EditableSlider x:Name="Paragraphs"
                                             Minimum="1"
                                             Maximum="100"
                                             Value="2"

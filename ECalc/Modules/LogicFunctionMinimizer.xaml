@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
-             xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
+             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
              xmlns:specialcontrols="clr-namespace:ECalc.Controls.Special"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960"
@@ -85,7 +85,7 @@
                              VerticalAlignment="Stretch"/>
                     <TextBlock Text="Number of Variables:"
                                Grid.Row="2"/>
-                    <controls:EditableSlider Grid.Row="2"
+                    <wpflib:EditableSlider Grid.Row="2"
                                              Grid.Column="2"
                                              Margin="3"
                                              Minimum="2"

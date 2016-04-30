@@ -4,15 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:controls="clr-namespace:WPFLib.Controls;assembly=WPFLib"
-             xmlns:converters="clr-namespace:WPFLib.Converters;assembly=WPFLib"
+             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d"
              d:DesignHeight="120" d:DesignWidth="960"
              Loaded="userControl_Loaded">
     <UserControl.Resources>
-
-        <converters:NegateConverter x:Key="Negate"/>
+        <wpflib:NegateConverter x:Key="Negate"/>
         <BooleanToVisibilityConverter x:Key="VisibilityConv"/>
 
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
@@ -20,7 +18,7 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Margin" Value="3,0"/>
         </Style>
-        <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource {x:Type controls:ImageButton}}">
+        <Style TargetType="{x:Type wpflib:ImageButton}" BasedOn="{StaticResource {x:Type wpflib:ImageButton}}">
             <Setter Property="Margin" Value="1,0"/>
         </Style>
 
@@ -127,35 +125,35 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
 
-            <controls:ImageButton Image="../Images/50px/copy.png"
+            <wpflib:ImageButton Image="../Images/50px/copy.png"
                                   ImageHeight="22"
                                   ImageWidth="22"
                                   x:Name="BtnClipboardCopy"
                                   ToolTip="Copy result to Clipboard"
                                   Click="BtnClipboardCopy_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/Paste.png"
+            <wpflib:ImageButton Image="../Images/50px/Paste.png"
                                   ImageHeight="22"
                                   ImageWidth="22"
                                   x:Name="BtnClipboardPaste"
                                   ToolTip="Paste from Clipboard"
                                   Click="BtnClipboardPaste_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/fractions.png"
+            <wpflib:ImageButton Image="../Images/50px/fractions.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnFractions"
                                   ToolTip="Convert current result to fractions"
                                   Click="BtnFractions_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/plot.png"
+            <wpflib:ImageButton Image="../Images/50px/plot.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   
                                   ToolTip="Plot Current input"
                                   Click="BtnPlot_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/test.png"
+            <wpflib:ImageButton Image="../Images/50px/test.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnNumTest"
@@ -163,42 +161,42 @@
                                   Click="BtnNumTest_Click"/>
 
 
-            <controls:ImageButton Image="../Images/50px/T.png"
+            <wpflib:ImageButton Image="../Images/50px/T.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnNumToText"
                                   ToolTip="Number to text"
                                   Click="BtnNumToText_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/N.png"
+            <wpflib:ImageButton Image="../Images/50px/N.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnNumSys"
                                   ToolTip="Number System"
                                   Click="BtnNumSys_Click"/>
-            
-            <controls:ImageButton Image="../Images/50px/F.png"
+
+            <wpflib:ImageButton Image="../Images/50px/F.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnFileSize"
                                   ToolTip="Display as File size"
                                   Click="BtnFileSize_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/ans.png"
+            <wpflib:ImageButton Image="../Images/50px/ans.png"
                                   ImageHeight="22"
                                   ImageWidth="22"
                                   x:Name="BtnAnss"
                                   ToolTip="Copy result to new calculaton"
                                   Click="BtnAnss_Click"/>
 
-            <controls:ImageButton Image="../Images/50px/Undo.png"
+            <wpflib:ImageButton Image="../Images/50px/Undo.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnUndo"
                                   Click="BtnUndo_Click"
                                   ToolTip="Undo"/>
 
-            <controls:ImageButton Image="../Images/50px/Delete.png"
+            <wpflib:ImageButton Image="../Images/50px/Delete.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnReset"
