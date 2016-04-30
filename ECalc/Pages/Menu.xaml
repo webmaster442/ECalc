@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ECalc.Pages"
              xmlns:wpflib="http://github.com/webmaster442/WPFLib"
              mc:Ignorable="d" 
-             d:DesignHeight="60" d:DesignWidth="900">
+             d:DesignHeight="75" d:DesignWidth="900">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="50"/>
@@ -16,54 +16,98 @@
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
+        <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}"
+                                   FontSize="14"
+                                   Foreground="White"
+                                   TextDecorations="Underline">
+                                </TextBlock>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"
+                                   FontSize="14"
+                                   Foreground="#cfcfcf"
+                                   TextDecorations="{x:Null}">
+                        </TextBlock>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
-    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                  HorizontalScrollBarVisibility="Auto">
-        <StackPanel Orientation="Horizontal"
+    <TabControl TabStripPlacement="Bottom"
+                FlowDirection="RightToLeft">
+        <TabItem Header="Help / Documentation">
+            <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Bottom"
-                    HorizontalAlignment="Right">
-            <wpflib:ImageButton Content="Change Theme"
-                             Image="/ECalc;component/Images/50px/theme.png"
-                             ImageHeight="32"
-                             ImageWidth="32"
-                             x:Name="BtnChangeTheme"
-                             Click="BtnChangeTheme_Click"/>
-            <wpflib:ImageButton Content="Window manager"
-                             Image="/ECalc;component/Images/50px/windowmanager.png"
-                             ImageHeight="32"
-                             ImageWidth="32"
-                             x:Name="BtnWindManager"
-                             Click="BtnWindManager_Click"/>
-            <wpflib:ImageButton Content="Support development"
-                             Image="/ECalc;component/Images/50px/donate.png"
-                             ImageHeight="32"
-                             ImageWidth="32"
-                             x:Name="BtnDonate"
-                             Click="BtnDonate_Click"/>
-            <wpflib:ImageButton Content="About"
-                             Image="/ECalc;component/Images/50px/about.png"
-                             ImageHeight="32"
-                             ImageWidth="32"
-                             x:Name="BtnAbout"
-                             Click="BtnAbout_Click"/>
-            <wpflib:ImageButton Content="Documentation"
-                             Image="/ECalc;component/Images/50px/book.png"
-                             ImageHeight="32"
-                             ImageWidth="32"
-                             x:Name="BtnDocs"
-                             Click="BtnDocs_Click"/>
-            <wpflib:ImageButton Content="Report Bug"
-                             Image="/ECalc;component/Images/50px/issue.png"
-                             ImageHeight="32"
-                             ImageWidth="32"
-                             x:Name="BtnIssue"
-                             Click="BtnIssue_Click"/>
-            <wpflib:ImageButton Content="Screen Keyboard"
-                             Image="/ECalc;component/Images/50px/keyboard.png"
-                             ImageHeight="32"
-                             ImageWidth="32"
-                             x:Name="BtnScreenKeyboard"
-                             Click="BtnScreenKeyboard_Click"/>
-        </StackPanel>
-    </ScrollViewer>
+                    HorizontalAlignment="Left">
+                <wpflib:ImageButton
+                    Content="Support development"
+                    Image="/ECalc;component/Images/50px/donate.png"
+                    ImageHeight="32"
+                    ImageWidth="32"
+                    x:Name="BtnDonate"
+                    Click="BtnDonate_Click"/>
+                <wpflib:ImageButton
+                    Content="About"
+                    Image="/ECalc;component/Images/50px/about.png"
+                    ImageHeight="32"
+                    ImageWidth="32"
+                    x:Name="BtnAbout"
+                    Click="BtnAbout_Click"/>
+                <wpflib:ImageButton 
+                    Content="Documentation"
+                    Image="/ECalc;component/Images/50px/book.png"
+                    ImageHeight="32"
+                    ImageWidth="32"                   
+                    x:Name="BtnDocs"
+                    Click="BtnDocs_Click"/>
+                <wpflib:ImageButton
+                    Content="Report Bug"
+                    Image="/ECalc;component/Images/50px/issue.png"
+                    ImageHeight="32"
+                    ImageWidth="32"
+                    x:Name="BtnIssue"
+                    Click="BtnIssue_Click"/>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Menu" IsSelected="True">
+            <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left">
+                <wpflib:ImageButton 
+                    Content="Change Theme"
+                    Image="/ECalc;component/Images/50px/theme.png"
+                    ImageHeight="32"
+                    ImageWidth="32"
+                    x:Name="BtnChangeTheme"
+                    Click="BtnChangeTheme_Click"/>
+                <wpflib:ImageButton
+                    Content="Window manager"
+                    Image="/ECalc;component/Images/50px/windowmanager.png"
+                    ImageHeight="32"
+                    ImageWidth="32"
+                    x:Name="BtnWindManager"
+                    Click="BtnWindManager_Click"/>
+                <wpflib:ImageButton
+                    Content="Screen Keyboard"
+                    Image="/ECalc;component/Images/50px/keyboard.png"
+                    ImageHeight="32"
+                    ImageWidth="32"
+                    x:Name="BtnScreenKeyboard"
+                    Click="BtnScreenKeyboard_Click"/>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
 </UserControl>

@@ -119,7 +119,7 @@
                         Theme="Accent"
                         Position="Top"
                         Header="Menu"
-                        Height="100">
+                        Height="110">
                 <pages:Menu/>
             </mah:Flyout>
         </mah:FlyoutsControl>
