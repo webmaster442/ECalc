@@ -2,7 +2,22 @@ Changelog
 ---
 ##V. 2.0
 * Replaced evaluator engine with IronPython
-* Statistics reworked
+	* This version of the program is the biggest rework so far.
+	The old evaluator engine was full of bugs, so the project moved to IronPython.
+* calculator can now be extended with user functions
+* Splash screen
+* Improved documentation display speed & rendering
+* Statistics tool removed, integrated into main calculator with sets
+* Added set type
+* Added variaton functions
+* Improved Window management functions:
+	* Windows Shell integration
+	* Optional bigger window size, on displays that support it
+	* Option for always on top behaviour
+	* Window manager tool accesible trough the menu
+* calculator theme color can be switched at runtime
+* Updated documentation
+* New Calculator tools: Program editor, LM317 Calculator, Greek Alphabet
 
 ##V. 1.2
 * updated MahApps framework

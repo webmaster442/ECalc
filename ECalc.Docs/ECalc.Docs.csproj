@@ -211,6 +211,7 @@
     <Resource Include="Documentation\functions-E-F.md" />
     <Resource Include="Documentation\functions-H-I.md" />
     <Resource Include="Documentation\functions-U-V-W-X.md" />
+    <Resource Include="Documentation\dev_functions.md" />
     <None Include="ECalc.Docs.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

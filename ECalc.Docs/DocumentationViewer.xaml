@@ -25,10 +25,12 @@
                           ToolTip="welcome.md"/>
             <TreeViewItem Header="Changelogs"
                           ToolTip="changelog.md"/>
-            <TreeViewItem Header="Plugin Interface"
-                          ToolTip="pluginiface.md"/>
             <TreeViewItem Header="Genearal Usage"
                           ToolTip="general-usage.md"/>
+            <TreeViewItem Header="Plugin Interface"
+                          ToolTip="pluginiface.md"/>
+            <TreeViewItem Header="Programing"
+                          ToolTip="dev_functions.md"/>
             <TreeViewItem Header="Function Documentation"
                           IsExpanded="True">
                 <TreeViewItem Header="A"
