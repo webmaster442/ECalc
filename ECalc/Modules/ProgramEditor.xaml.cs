@@ -1,6 +1,5 @@
 ﻿using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Highlighting.Xshd;
-using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.IO;
 using System.Windows;
@@ -66,19 +65,6 @@ namespace ECalc.Modules
 
             BtnSave.IsEnabled = false;
             _lastcounter = Editor.Text.Length;
-        }
-
-        private void BtnCompile_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                _engine.Compile(Editor.Text);
-                MainWindow.ShowDialog("Compiler", "Code compiled without errors", MessageDialogStyle.Affirmative);
-            }
-            catch (Exception ex)
-            {
-                MainWindow.ErrorDialog(ex.Message);
-            }
         }
 
         protected void Dispose(bool native)

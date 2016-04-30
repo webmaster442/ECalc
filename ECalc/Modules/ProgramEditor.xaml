@@ -4,22 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="500" d:DesignWidth="900"
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
+        <wpflib:FileSizeConverter x:Key="FileSizeConv"/>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <Button Content="Compile"
-                    x:Name="BtnCompile"
-                    Click="BtnCompile_Click"/>
             <Button Content="Save"
                     Margin="10,0"
                     x:Name="BtnSave"
@@ -34,7 +33,7 @@
         <avalonEdit:TextEditor x:Name="Editor"
                                Grid.Row="1"
                                FontFamily="Courier New"
-                               FontSize="16"
+                               FontSize="{Binding ElementName=FontSlider, Path=Value}"
                                HorizontalScrollBarVisibility="Auto"
                                ShowLineNumbers="{Binding ElementName=CbLineNumbers, Path=IsChecked}">
             <avalonEdit:TextEditor.Options>
@@ -49,7 +48,21 @@
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     VerticalAlignment="Center">
-            <TextBlock Text="File size: "/>
+            <TextBlock Text="File size: "
+                       Margin="10,0,0,0"
+                       VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding ElementName=Editor, Path=Document.TextLength, Converter={StaticResource FileSizeConv}}"
+                       VerticalAlignment="Center"
+                       Margin="10,0"/>
+            <TextBlock Text="Font size:"
+                       VerticalAlignment="Center"/>
+            <wpflib:EditableSlider x:Name="FontSlider"
+                                   Minimum="10"
+                                   Maximum="28"
+                                   Width="200"
+                                   Value="14"
+                                   Margin="5,0"
+                                   DefaultValue="14" VerticalAlignment="Center"/>
         </StackPanel>
     </Grid>
 </UserControl>

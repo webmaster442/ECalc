@@ -371,6 +371,11 @@ namespace ECalc.IronPythonEngine
                 ScriptSource source = _engine.CreateScriptSourceFromString(processed, SourceCodeKind.AutoDetect);
                 return source.Compile();
             }
+            catch (Microsoft.Scripting.SyntaxErrorException synex)
+            {
+                MainWindow.ErrorDialog(string.Format("{0}\r\nLine: {1}, Column: {2}",synex.Message, synex.Line, synex.Column));
+                return null;
+            }
             catch (Exception ex)
             {
                 MainWindow.ErrorDialog(ex.Message);
