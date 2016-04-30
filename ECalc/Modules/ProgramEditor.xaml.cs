@@ -1,10 +1,12 @@
-﻿using System;
+﻿using ICSharpCode.AvalonEdit.Highlighting;
+using ICSharpCode.AvalonEdit.Highlighting.Xshd;
+using MahApps.Metro.Controls.Dialogs;
+using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using WPFLib.Controls;
-using System.IO;
 using System.Windows.Threading;
-using MahApps.Metro.Controls.Dialogs;
+using System.Xml;
 
 namespace ECalc.Modules
 {
@@ -20,8 +22,9 @@ namespace ECalc.Modules
         public ProgramEditor()
         {
             InitializeComponent();
-            var syntax = Application.GetResourceStream(new Uri("pack://application:,,,/ECalc;component/EcalcSyntax.xml"));
-            SyntaxBox.CurrentHighlighter = new XmlHighlighter(syntax.Stream);
+            var syntax = Application.GetResourceStream(new Uri("pack://application:,,,/ECalc;component/Ecalc.xshd"));
+            Editor.SyntaxHighlighting = HighlightingLoader.Load(new XmlTextReader(syntax.Stream), HighlightingManager.Instance);
+
             _engine = new IronPythonEngine.Engine();
             _timer = new DispatcherTimer();
             _timer.IsEnabled = false;
@@ -31,7 +34,7 @@ namespace ECalc.Modules
 
         private void _timer_Tick(object sender, EventArgs e)
         {
-            if (_lastcounter != SyntaxBox.Text.Length && BtnSave.IsEnabled == false)
+            if (_lastcounter != Editor.Text.Length && BtnSave.IsEnabled == false)
             {
                 BtnSave.IsEnabled = true;
             }
@@ -45,8 +48,8 @@ namespace ECalc.Modules
             if (File.Exists(file))
             {
                 var content = File.ReadAllText(file);
-                SyntaxBox.Text = content;
-                _lastcounter = SyntaxBox.Text.Length;
+                Editor.Text = content;
+                _lastcounter = Editor.Text.Length;
             }
             _timer.IsEnabled = true;
         }
@@ -58,18 +61,18 @@ namespace ECalc.Modules
 
             using (var tx = File.CreateText(file))
             {
-                tx.Write(SyntaxBox.Text);
+                tx.Write(Editor.Text);
             }
 
             BtnSave.IsEnabled = false;
-            _lastcounter = SyntaxBox.Text.Length;
+            _lastcounter = Editor.Text.Length;
         }
 
         private void BtnCompile_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                _engine.Compile(SyntaxBox.Text);
+                _engine.Compile(Editor.Text);
                 MainWindow.ShowDialog("Compiler", "Code compiled without errors", MessageDialogStyle.Affirmative);
             }
             catch (Exception ex)

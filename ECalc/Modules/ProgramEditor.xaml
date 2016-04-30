@@ -3,13 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:wpflib="clr-namespace:WPFLib.Controls;assembly=WPFLib"
-             xmlns:converters="clr-namespace:WPFLib.Converters;assembly=WPFLib"
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
-        <converters:FileSizeConverter x:Key="FileSizeConv"/>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -27,16 +25,31 @@
                     x:Name="BtnSave"
                     IsEnabled="False"
                     Click="BtnSave_Click"/>
+
+            <CheckBox x:Name="CbLineNumbers"
+                      IsChecked="True"
+                      Content="Line Numbers"/>
         </StackPanel>
-        
-        <wpflib:SyntaxHighlightBox Grid.Row="1"
-                                   x:Name="SyntaxBox"
-                                   />
+
+        <avalonEdit:TextEditor x:Name="Editor"
+                               Grid.Row="1"
+                               FontFamily="Courier New"
+                               FontSize="16"
+                               HorizontalScrollBarVisibility="Auto"
+                               ShowLineNumbers="{Binding ElementName=CbLineNumbers, Path=IsChecked}">
+            <avalonEdit:TextEditor.Options>
+                <avalonEdit:TextEditorOptions
+                    ShowTabs="true"
+                    ShowSpaces="True"
+                    ShowEndOfLine="True"
+                    ConvertTabsToSpaces="True"/>
+            </avalonEdit:TextEditor.Options>
+        </avalonEdit:TextEditor>
+
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal"
                     VerticalAlignment="Center">
             <TextBlock Text="File size: "/>
-            <TextBlock Text="{Binding ElementName=SyntaxBox, Path=Text.Length, Converter={StaticResource FileSizeConv}}"/>
         </StackPanel>
     </Grid>
 </UserControl>

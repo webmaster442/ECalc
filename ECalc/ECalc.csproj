@@ -89,6 +89,10 @@
     <ManifestTimestampUrl>http://timestamp.digicert.com</ManifestTimestampUrl>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.1.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.2\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="IronPython, Version=2.7.5.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>..\packages\IronPython.2.7.5\lib\Net45\IronPython.dll</HintPath>
       <Private>True</Private>
@@ -587,6 +591,7 @@
     </EmbeddedResource>
     <None Include="ApplicationSigning.pfx" />
     <Resource Include="IronPythonEngine\BitOps.py" />
+    <Resource Include="Ecalc.xshd" />
     <None Include="NumberTypes.cd" />
     <None Include="ECalc.pfx" />
     <None Include="packages.config" />
@@ -863,9 +868,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\50px\resize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="EcalcSyntax.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
