@@ -64,5 +64,33 @@ namespace ECalc.Maths
         {
             return IronPythonEngine.Types.Set.Except(s1, s2);
         }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set Series(double start, double d, double items)
+        {
+            var set = new IronPythonEngine.Types.Set();
+            set.Add(start);
+            var current = start;
+            for (int i=0; i<items; i++)
+            {
+                current += d;
+                set.Add(current);
+            }
+            return set;
+        }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set GeometricSeries(double start, double q, double items)
+        {
+            var set = new IronPythonEngine.Types.Set();
+            set.Add(start);
+            var current = start;
+            for (int i = 0; i < items; i++)
+            {
+                current *= q;
+                set.Add(current);
+            }
+            return set;
+        }
     }
 }
