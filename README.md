@@ -1,5 +1,5 @@
-# ECalc
-An Engineering Calculator for Windows. Specificaly designed for Electrial & IT Engineering at the moment.
+# Engineers calculator
+An Engineering Calculator for Windows. Specifically designed for Electrical & IT Engineering at the moment.
 
 In the Future it might be expanded to do other various engineering tasks.
 
@@ -7,7 +7,7 @@ In the Future it might be expanded to do other various engineering tasks.
 
 ## Features:
 
-* Programable & extendable with Python
+* Programmable & expendable with Python
 * Sets & Statistics
 * Fractions
 * Complex numbers
@@ -30,21 +30,21 @@ In the Future it might be expanded to do other various engineering tasks.
 * IP subnet calculator
 * Currency rate converter (with live data)
 * Unit system converter
-* Visual trigonomety tool
+* Visual trigonometry tool
 *  Cutting speed calculator
 
-## Reqirements to run:
+## Requirements to run:
 
 * Windows 7/8/10
 * .NET Framework 4.5
 * 10Mb Disk space
 
-## Reqirements to compile:
+## Requirements to compile:
 
 * Visual Studio 2015 Community or newer
 
 ## Screenshots:
 
 ![alt text](readme-stuff/shot02.jpg "Calculator")
-![alt text](readme-stuff/shot03.jpg "Calculator")
-![alt text](readme-stuff/shot04.jpg "Calculator")
+![alt text](readme-stuff/shot03.png "Calculator")
+![alt text](readme-stuff/shot04.png "Calculator")
