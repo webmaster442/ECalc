@@ -1,7 +1,12 @@
 # Engineers calculator
 An Engineering Calculator for Windows. Specifically designed for Electrical & IT Engineering at the moment.
 
-In the Future it might be expanded to do other various engineering tasks.
+In the Future it might be expanded to do other various engineering tasks. Releases are available in two formats: 
+
+* Portable ZIP file: Unzip it & run from a writeable folder. These installers are hosted here, on [Github](https://github.com/webmaster442/ECalc/releases).
+* [ClickOnce](https://en.wikipedia.org/wiki/ClickOnce) Installer: Easy install method, hosted on [Codeplex](https://ecalc.codeplex.com/releases).
+
+NOTE: The Codeplex repository contains only the stable source as a downloadable zip & the ClickOnce installers.
 
 ![alt text](readme-stuff/shot01.png "Calculator")
 
