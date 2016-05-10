@@ -82,13 +82,61 @@ namespace ECalc.Maths
         [Category("Sets")]
         public static IronPythonEngine.Types.Set GeometricSeries(double start, double q, double items)
         {
-            var set = new IronPythonEngine.Types.Set();
+            var set = new IronPythonEngine.Types.Set(items);
             set.Add(start);
             var current = start;
             for (int i = 0; i < items; i++)
             {
                 current *= q;
                 set.Add(current);
+            }
+            return set;
+        }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set RandomSet(double min, double max, double items)
+        {
+            var set = new IronPythonEngine.Types.Set(items);
+            Random r = new Random();
+            var imin = Convert.ToInt32(min);
+            var imax = Convert.ToInt32(max);
+            for (int i = 0; i < items; i++)
+            {
+
+                var item = r.Next(imin, imax);
+                set.Add(item);
+            }
+            return set;
+        }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set SRandomSet(double min, double max, double items)
+        {
+            var set = new IronPythonEngine.Types.Set(items);
+            var r = new Lib.CryptoRNG();
+            var imin = Convert.ToInt32(min);
+            var imax = Convert.ToInt32(max);
+            for (int i = 0; i < items; i++)
+            {
+
+                var item = r.Next(imin, imax);
+                set.Add(item);
+            }
+            return set;
+        }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set QRandomSet(double min, double max, double items)
+        {
+            var set = new IronPythonEngine.Types.Set(items);
+            var r = new Sublight.Utilities.QuantumRandomNumberGenerator();
+            var imin = Convert.ToInt32(min);
+            var imax = Convert.ToInt32(max);
+            for (int i = 0; i < items; i++)
+            {
+
+                var item = r.Next(imin, imax);
+                set.Add(item);
             }
             return set;
         }
