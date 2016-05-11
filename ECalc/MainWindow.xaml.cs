@@ -133,5 +133,15 @@ namespace ECalc
         {
             App.Splash.Close();
         }
+
+        private void MainWin_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var calc = TransitionControl.Content as Calculator;
+            if (calc == null) return;
+
+            calc.FocusInput();
+
+
+        }
     }
 }

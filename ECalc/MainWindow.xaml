@@ -12,6 +12,7 @@
                  ResizeMode="CanMinimize"
                  Loaded="MainWin_Loaded"
                  Closing="MetroWindow_Closing"
+                 PreviewKeyDown="MainWin_PreviewKeyDown"
                  Icon="Images/100px/math.png">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo Description="Engineers Calculator" ThumbnailClipMargin="5">

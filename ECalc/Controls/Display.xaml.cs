@@ -251,7 +251,16 @@ namespace ECalc.Controls
                 double x = Convert.ToDouble(Engine.Ans);
                 message = Helpers.DivideToFileSize(x);
             }
-            MainWindow.ShowDialog("Resut as File size", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+            MainWindow.ShowDialog("Result as File size", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
+        }
+
+        public void FocusInput()
+        {
+            if (!TbEditor.IsFocused)
+            {
+                TbEditor.Focus();
+                TbEditor.ScrollToEnd();
+            }
         }
     }
 }

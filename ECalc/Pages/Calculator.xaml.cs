@@ -110,5 +110,10 @@ namespace ECalc.Pages
         {
             Dispatcher.Invoke(() => { InputSelector.SelectedIndex = 0; });
         }
+
+        public void FocusInput()
+        {
+            Display.FocusInput();
+        }
     }
 }
