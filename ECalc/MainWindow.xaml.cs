@@ -31,8 +31,14 @@ namespace ECalc
                 ConfigFileHelpers.SerializeConstantUsageStats();
                 Properties.Settings.Default.Save();
             }
+            var dispose = main.TransitionControl.Content as IDisposable;
+            if (dispose!=null)
+            {
+                dispose.Dispose();
+            }
             main.TransitionControl.Content = null;
             foreach (Flyout flyout in main.Flyouts.Items) flyout.IsOpen = false;
+            GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
             main.TransitionControl.Content = control;

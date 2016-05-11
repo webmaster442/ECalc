@@ -11,7 +11,7 @@ namespace ECalc.Pages
     /// <summary>
     /// Interaction logic for Calculator.xaml
     /// </summary>
-    public partial class Calculator : UserControl
+    public partial class Calculator : UserControl, IDisposable
     {
         private Engine _engine;
         private StringBuilder _stdout;
@@ -114,6 +114,20 @@ namespace ECalc.Pages
         public void FocusInput()
         {
             Display.FocusInput();
+        }
+
+        protected virtual void Dispose(bool direct)
+        {
+            if (_engine != null)
+            {
+                _engine.Dispose();
+                _engine = null;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
         }
     }
 }
