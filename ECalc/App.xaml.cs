@@ -1,9 +1,9 @@
 ﻿using ECalc.Api;
+using ECalc.Properties;
 using MahApps.Metro;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -15,7 +15,6 @@ namespace ECalc
     public partial class App : Application
     {
         private static Accent[] _accents;
-        private static Random _random;
         private static int _index;
 
         public static SplashScreen Splash { get; private set; }
@@ -61,8 +60,14 @@ namespace ECalc
                 ThemeManager.GetAccent("Taupe"), ThemeManager.GetAccent("Sienna")
                 };
 
-                _random = new Random();
-                _index = _random.Next(0, _accents.Length);
+
+                if (Settings.Default.WindowColor < 0 || Settings.Default.WindowColor > (_accents.Length - 1))
+                {
+                    var random = new Random();
+                    _index = random.Next(0, _accents.Length);
+                }
+                else _index = Settings.Default.WindowColor;
+
                 ThemeManager.ChangeAppStyle(Application.Current, _accents[_index], ThemeManager.GetAppTheme("BaseLight"));
 
             });
@@ -71,11 +76,26 @@ namespace ECalc
                 Modules = new ModuleLoader();
                 Modules.LoadFromNameSpace("ECalc.Modules");
                 var mw = new MainWindow();
+
+                var left = Settings.Default.WindowLeft;
+                var top = Settings.Default.WindowTop;
+
                 MainWindow = mw;
+
+                if (left > 0) MainWindow.Left = left;
+                if (top > 0) MainWindow.Top = top;
+
                 mw.Show();
 
             }, TaskScheduler.FromCurrentSynchronizationContext());
             loadtask.Start();
+        }
+
+        public static void SaveSettings()
+        {
+            Settings.Default.WindowLeft = Application.Current.MainWindow.Left;
+            Settings.Default.WindowTop = Application.Current.MainWindow.Top;
+            Settings.Default.WindowColor = _index;
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

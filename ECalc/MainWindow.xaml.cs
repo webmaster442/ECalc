@@ -114,8 +114,10 @@ namespace ECalc
             {
                 ConfigFileHelpers.SerializeFunctionUsageStats();
                 ConfigFileHelpers.SerializeConstantUsageStats();
-                Properties.Settings.Default.Save();
+                
             }
+            App.SaveSettings();
+            Properties.Settings.Default.Save();
         }
 
         private void ThumbMenu_Click(object sender, EventArgs e)

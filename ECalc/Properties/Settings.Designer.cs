@@ -49,13 +49,37 @@ namespace ECalc.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string GNUPlotPath {
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public double WindowLeft {
             get {
-                return ((string)(this["GNUPlotPath"]));
+                return ((double)(this["WindowLeft"]));
             }
             set {
-                this["GNUPlotPath"] = value;
+                this["WindowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public double WindowTop {
+            get {
+                return ((double)(this["WindowTop"]));
+            }
+            set {
+                this["WindowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int WindowColor {
+            get {
+                return ((int)(this["WindowColor"]));
+            }
+            set {
+                this["WindowColor"] = value;
             }
         }
     }
