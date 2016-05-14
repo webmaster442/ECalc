@@ -214,6 +214,7 @@
     <Compile Include="Maths\Engineering.cs" />
     <Compile Include="Maths\Functions.cs" />
     <Compile Include="IronPythonEngine\Types\Matrix.cs" />
+    <Compile Include="Maths\Gamma.cs" />
     <Compile Include="Maths\NumberTester.cs" />
     <Compile Include="Maths\SetFunctions.cs" />
     <Compile Include="Maths\Trigonometry.cs" />
