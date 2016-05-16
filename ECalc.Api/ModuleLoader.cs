@@ -142,7 +142,7 @@ namespace ECalc.Api
         /// </summary>
         /// <param name="category">Category to filter. Null returns all</param>
         /// <returns>An array of modules that match the criteria</returns>
-        public EcalcModule[] Select(string category = null)
+        public EcalcModule[] SelectCategory(string category = null)
         {
             if (string.IsNullOrEmpty(category) || category == "All")
             {
@@ -159,6 +159,21 @@ namespace ECalc.Api
                         select i;
                 return q.ToArray();
             }
+        }
+
+        /// <summary>
+        /// Search a module by name
+        /// </summary>
+        /// <param name="name">Name of the module to search for</param>
+        /// <returns>an array of mudles that match the search criteria</returns>
+        public EcalcModule[] Search(string name)
+        {
+            if (string.IsNullOrEmpty(name)) return null;
+            var matches = from i in _modules.AsParallel()
+                          where i.ModuleName.ToLower().Contains(name.ToLower())
+                          orderby i.ModuleName ascending
+                          select i;
+            return matches.ToArray();
         }
 
         /// <summary>

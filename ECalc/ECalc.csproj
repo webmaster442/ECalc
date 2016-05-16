@@ -255,6 +255,9 @@
     <Compile Include="Modules\MediaCalculator.xaml.cs">
       <DependentUpon>MediaCalculator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CalculatorChooser2.xaml.cs">
+      <DependentUpon>CalculatorChooser2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
     </Compile>
@@ -470,6 +473,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CalculatorChooser2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

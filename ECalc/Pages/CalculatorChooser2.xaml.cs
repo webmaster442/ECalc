@@ -1,36 +1,45 @@
-﻿using MahApps.Metro.Controls;
+﻿using ECalc.Api;
+using MahApps.Metro.Controls;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using ECalc.Api;
-using System;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace ECalc.Pages
 {
     /// <summary>
-    /// Interaction logic for Menu.xaml
+    /// Interaction logic for CalculatorChooser2.xaml
     /// </summary>
-    public partial class CalculatorChooser : UserControl
+    public partial class CalculatorChooser2 : UserControl
     {
-        private string _link;
-        private bool _designtime;
-
-        public CalculatorChooser()
+        public CalculatorChooser2()
         {
             InitializeComponent();
-
-            _designtime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
-            if (_designtime) return;
-
-            CategoryView.ItemsSource = App.Modules.Categories;
-            CategoryView.SelectedIndex = 0;
         }
+
+        #region Navigation & Rendering
 
         private void Render()
         {
-            ModuleDisplay.Children.Clear();
-            var filter = CategoryView.SelectedItem.ToString();
-            var matchs = App.Modules.SelectCategory(filter);
+            ModuleView.Children.Clear();
+            var filter = CategorySelector.SelectedItem.ToString();
+
+            EcalcModule[] matchs = null;
+
+            if (string.IsNullOrEmpty(SearchBox.Text))
+                matchs = App.Modules.SelectCategory(filter);
+            else
+                matchs = App.Modules.Search(SearchBox.Text);
 
             foreach (var match in matchs)
             {
@@ -42,7 +51,7 @@ namespace ECalc.Pages
                 icon.Source = match.Icon;
                 t.Content = icon;
                 t.Click += Tile_Click;
-                ModuleDisplay.Children.Add(t);
+                ModuleView.Children.Add(t);
 
             }
         }
@@ -85,37 +94,9 @@ namespace ECalc.Pages
             MainWindow.SetTitle(tile.Title);
         }
 
-        private void CategoryView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Render();
-        }
+        #endregion
 
-        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
-            if (designTime) return;
-            try
-            {
-                var bing = new BingWallPaperClient();
-                await bing.DownloadAsync();
-                var imgbrush = new ImageBrush();
-                imgbrush.ImageSource = bing.WPFPhotoOfTheDay;
-                imgbrush.Stretch = Stretch.UniformToFill;
-                RectImage.Fill = imgbrush;
-                BtnBing.ToolTip = string.Format("Background provided by Bing:\r\n{0}", bing.CoppyRightData);
-                _link = bing.CoppyRightLink;
-            }
-            catch (Exception)
-            {
-                BtnBing.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private void BtnBing_Click(object sender, RoutedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(_link);
-        }
-
+        #region Context Menu
         private void ContextNormal_Click(object sender, RoutedEventArgs e)
         {
             var menu = ((MenuItem)sender).Parent as ContextMenu;
@@ -134,6 +115,41 @@ namespace ECalc.Pages
                 fw.SetWindowContent(ctrl, tile.Title);
                 fw.Show();
             }
+        }
+
+
+
+        #endregion
+
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            bool designTime = System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            if (designTime) return;
+
+            CategorySelector.ItemsSource = App.Modules.Categories;
+            CategorySelector.SelectedIndex = 0;
+
+            try
+            {
+                var bing = new BingWallPaperClient();
+                await bing.DownloadAsync();
+                var imgbrush = new ImageBrush();
+                imgbrush.ImageSource = bing.WPFPhotoOfTheDay;
+                imgbrush.Stretch = Stretch.UniformToFill;
+                MainGrid.Background = imgbrush;
+                BackUri.NavigateUri = new Uri(bing.CoppyRightLink);
+                BackUri.ToolTip = bing.CoppyRightData;
+            }
+            catch (Exception)
+            {
+                BingText.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            Hyperlink s = sender as Hyperlink;
+            System.Diagnostics.Process.Start(s.NavigateUri.ToString());
         }
     }
 }
