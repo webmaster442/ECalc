@@ -147,9 +147,8 @@ namespace ECalc
             var calc = TransitionControl.Content as Calculator;
             if (calc == null) return;
 
-            calc.FocusInput();
-
-
+            if (CalculatorChooserFlyOut.IsOpen) return;
+            else calc.FocusInput();
         }
     }
 }

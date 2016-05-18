@@ -255,8 +255,8 @@
     <Compile Include="Modules\MediaCalculator.xaml.cs">
       <DependentUpon>MediaCalculator.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\CalculatorChooser2.xaml.cs">
-      <DependentUpon>CalculatorChooser2.xaml</DependentUpon>
+    <Compile Include="Pages\CalculatorChooser.xaml.cs">
+      <DependentUpon>CalculatorChooser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\CurrencyConverter.xaml.cs">
       <DependentUpon>CurrencyConverter.xaml</DependentUpon>
@@ -476,7 +476,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\CalculatorChooser2.xaml">
+    <Page Include="Pages\CalculatorChooser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -501,10 +501,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Graphing.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\CalculatorChooser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -569,9 +565,6 @@
     </Compile>
     <Compile Include="Modules\LogicFunctionMinimizer.xaml.cs">
       <DependentUpon>LogicFunctionMinimizer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\CalculatorChooser.xaml.cs">
-      <DependentUpon>CalculatorChooser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\ResistorColorDecoder.xaml.cs">
       <DependentUpon>ResistorColorDecoder.xaml</DependentUpon>
