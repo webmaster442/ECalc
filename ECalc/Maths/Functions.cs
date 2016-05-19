@@ -1,4 +1,5 @@
 ﻿using ECalc.IronPythonEngine;
+using System.Numerics;
 using System;
 
 namespace ECalc.Maths
@@ -21,6 +22,25 @@ namespace ECalc.Maths
             return Math.Abs(param);
         }
 
+        [Category("General")]
+        public static Complex Abs(Complex param)
+        {
+            return Complex.Abs(param);
+        }
+
+        /// <summary>
+        /// Returns the sign of the parameter
+        /// </summary>
+        /// <param name="num">Number to test</param>
+        /// <returns>Sign of number</returns>
+        [Category("General")]
+        public static double Sgn(double num)
+        {
+            if (num == 0) return 0;
+            else if (num > 0) return 1;
+            else return -1;
+        }
+
         /// <summary>
         /// Returns the logarithm of a specified number in a specified base.
         /// </summary>
@@ -33,15 +53,33 @@ namespace ECalc.Maths
         }
 
         [Category("General")]
+        public static Complex Log(Complex value1, double basen)
+        {
+            return Complex.Log(value1, basen);
+        }
+
+        [Category("General")]
         public static double Log10(double value)
         {
             return Math.Log10(value);
         }
 
         [Category("General")]
+        public static Complex Log10(Complex value)
+        {
+            return Complex.Log10(value);
+        }
+
+        [Category("General")]
         public static double LogE(double value)
         {
             return Math.Log(value, Math.E);
+        }
+
+        [Category("General")]
+        public static Complex LogE(Complex value)
+        {
+            return Complex.Log(value);
         }
 
         /// <summary>
@@ -52,6 +90,12 @@ namespace ECalc.Maths
         public static double Sqrt(double num)
         {
             return Math.Sqrt(num);
+        }
+
+        [Category("General")]
+        public static Complex Sqrt(Complex num)
+        {
+            return Complex.Sqrt(num);
         }
 
         /// <summary>
@@ -65,6 +109,12 @@ namespace ECalc.Maths
             return Math.Pow(num, 1 / basen);
         }
 
+        [Category("General")]
+        public static Complex Root(Complex num, double basen)
+        {
+            return Complex.Pow(num, 1 / basen);
+        }
+
         /// <summary>
         /// Returns a specified number raised to the specified power.
         /// </summary>
@@ -74,6 +124,12 @@ namespace ECalc.Maths
         public static double Pow(double num, double exp)
         {
             return Math.Pow(num, exp);
+        }
+
+        [Category("General")]
+        public static Complex Pow(Complex num, double exp)
+        {
+            return Complex.Pow(num, exp);
         }
 
         /// <summary>

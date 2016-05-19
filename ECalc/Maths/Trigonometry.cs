@@ -1,4 +1,5 @@
 ﻿using ECalc.IronPythonEngine;
+using System.Numerics;
 using System;
 
 namespace ECalc.Maths
@@ -96,6 +97,12 @@ namespace ECalc.Maths
             }
         }
 
+        [Category("Trigonometry")]
+        public static Complex Sin(Complex value)
+        {
+            return Complex.Sin(value);
+        }
+
         /// <summary>
         /// Returns the cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
@@ -119,6 +126,12 @@ namespace ECalc.Maths
             }
         }
 
+        [Category("Trigonometry")]
+        public static Complex Cos(Complex value)
+        {
+            return Complex.Cos(value);
+        }
+
         /// <summary>
         /// Returns the tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
@@ -127,6 +140,12 @@ namespace ECalc.Maths
         public static double Tan(double value1)
         {
             return TrigFunctions.Sin(value1) / TrigFunctions.Cos(value1);
+        }
+
+        [Category("Trigonometry")]
+        public static Complex Tan(Complex value)
+        {
+            return Complex.Tan(value);
         }
 
         /// <summary>
@@ -180,6 +199,12 @@ namespace ECalc.Maths
             }
         }
 
+        [Category("Trigonometry")]
+        public static Complex Sinh(Complex value)
+        {
+            return Complex.Sinh(value);
+        }
+
         /// <summary>
         /// Returns the hyperbolic cosine of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
@@ -200,6 +225,12 @@ namespace ECalc.Maths
             }
         }
 
+        [Category("Trigonometry")]
+        public static Complex Cosh(Complex value)
+        {
+            return Complex.Cosh(value);
+        }
+
         /// <summary>
         /// Returns the hyperbolic tangent of a number, depending on the mode set. For more info, see the documentation of SetMode
         /// </summary>
@@ -218,6 +249,12 @@ namespace ECalc.Maths
                 default:
                     return double.NaN;
             }
+        }
+
+        [Category("Trigonometry")]
+        public static Complex Tanh(Complex value)
+        {
+            return Complex.Sinh(value);
         }
 
         /// <summary>
@@ -459,7 +496,7 @@ namespace ECalc.Maths
                     rad = Grad2Rad(value);
                     break;
             }
-            return (Math.Exp(value) + Math.Exp(-value)) / (Math.Exp(value) - Math.Exp(-value));
+            return (Math.Exp(rad) + Math.Exp(-rad)) / (Math.Exp(rad) - Math.Exp(-rad));
         }
     }
 }
