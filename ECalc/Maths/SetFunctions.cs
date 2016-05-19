@@ -1,4 +1,5 @@
 ﻿using ECalc.IronPythonEngine;
+using System.Linq;
 using System;
 
 namespace ECalc.Maths
@@ -107,6 +108,20 @@ namespace ECalc.Maths
                 set.Add(item);
             }
             return set;
+        }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set SortA(IronPythonEngine.Types.Set set)
+        {
+            var q = from i in set orderby i ascending select i;
+            return new IronPythonEngine.Types.Set(q.ToList());
+        }
+
+        [Category("Sets")]
+        public static IronPythonEngine.Types.Set SortD(IronPythonEngine.Types.Set set)
+        {
+            var q = from i in set orderby i descending select i;
+            return new IronPythonEngine.Types.Set(q.ToList());
         }
 
         [Category("Sets")]
