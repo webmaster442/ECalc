@@ -230,6 +230,9 @@
     <Compile Include="Modules\DateTimeCalc.xaml.cs">
       <DependentUpon>DateTimeCalc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\FractalVisualizer.xaml.cs">
+      <DependentUpon>FractalVisualizer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\GreekAlphabet.xaml.cs">
       <DependentUpon>GreekAlphabet.xaml</DependentUpon>
     </Compile>
@@ -433,6 +436,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\DateTimeCalc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\FractalVisualizer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -647,6 +654,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\MNBConverter\MNBArfolyamServiceSoapImpl.wsdl" />
+    <Resource Include="Images\100px\fractal.png" />
     <Content Include="UserFunctions.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

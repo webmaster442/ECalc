@@ -571,4 +571,32 @@ namespace ECalc.Modules
         }
     }
 
+    public class Fractal : EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return ModuleCategories.Calculator; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "Fractal visualizer"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new FractalVisualizer();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/fractal.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.FlatMidnightBlue; }
+        }
+    }
+
 }

@@ -7,7 +7,7 @@ namespace ECalc.Maths
     /// <summary>
     /// Trigonometrical functions
     /// </summary>
-    [LoadableAttribute]
+    [Loadable]
     public static class TrigFunctions
     {
 
