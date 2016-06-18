@@ -84,7 +84,7 @@ namespace ECalc.Classes
         /// <summary>
         /// Offset value to add or subtract
         /// </summary>
-        public double offset { get; set; }
+        public double Offset { get; set; }
 
         /// <summary>
         /// Creates a new instance of unit
@@ -97,13 +97,13 @@ namespace ECalc.Classes
         /// <param name="Name">Unit name</param>
         /// <param name="Ratio">Conversion ratio compared to the base unit</param>
         /// <param name="Action">Action to do</param>
-        /// <param name="offset">Offset value to add or subtract</param>
-        public Unit(string Name, double Ratio = 1, Actions Action = Actions.None, double offset = 0)
+        /// <param name="Offset">Offset value to add or subtract</param>
+        public Unit(string Name, double Ratio = 1, Actions Action = Actions.None, double Offset = 0)
         {
             this.Name = Name;
             this.Ratio = Ratio;
             this.Action = Action;
-            this.offset = offset;
+            this.Offset = Offset;
         }
     }
 }

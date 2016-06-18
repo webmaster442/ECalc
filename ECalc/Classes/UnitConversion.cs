@@ -140,7 +140,7 @@ namespace ECalc.Classes
         public double Convert2Standard(Unit u, double value)
         {
             double res = 0;
-            if (u.offset != 0) value -= u.offset;
+            if (u.Offset != 0) value -= u.Offset;
             switch (u.Action)
             {
                 case Actions.Multiply:
@@ -181,7 +181,7 @@ namespace ECalc.Classes
                 default:
                     return stdval;
             }
-            if (u.offset != 0) res += u.offset;
+            if (u.Offset != 0) res += u.Offset;
             return res;
         }
 
