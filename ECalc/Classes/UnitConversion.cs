@@ -121,7 +121,8 @@ namespace ECalc.Classes
             Temperature = new Unit[]
             {
                 new Unit("Celsius", 1, Actions.None),
-                new Unit("Kelvin", 273.15, Actions.Add)
+                new Unit("Kelvin", 273.15, Actions.Add),
+                new Unit("Farenheit", 1.8, Actions.Multiply, 32)
             };
             FileSize = new Unit[]
             {
@@ -138,6 +139,7 @@ namespace ECalc.Classes
         public double Convert2Standard(Unit u, double value)
         {
             double res = 0;
+            if (u.offset != 0) value -= u.offset;
             switch (u.Action)
             {
                 case Actions.Multiply:
@@ -178,6 +180,7 @@ namespace ECalc.Classes
                 default:
                     return stdval;
             }
+            if (u.offset != 0) res += u.offset;
             return res;
         }
 
