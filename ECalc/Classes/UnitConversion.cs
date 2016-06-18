@@ -16,6 +16,7 @@ namespace ECalc.Classes
             {
                 new Unit("Meter", 1, Actions.None),
                 new Unit("Feet", 3.280839895, Actions.Multiply),
+                new Unit("Mil", 39370.0787401575, Actions.Multiply),
                 new Unit("Inch", 39.37007874, Actions.Multiply),
                 new Unit("Yard", 1.093613298, Actions.Multiply),
                 new Unit("LightYear", 3.241e-17, Actions.Multiply),
