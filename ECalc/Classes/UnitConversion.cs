@@ -116,7 +116,8 @@ namespace ECalc.Classes
                 new Unit("Hour" , 3600, Actions.Divide),
                 new Unit("Day" , 86400, Actions.Divide),
                 new Unit("Week", 604800, Actions.Divide),
-                new Unit("Year", 31556925.9936, Actions.Divide)
+                new Unit("Year", 31556925.9936, Actions.Divide),
+                new Unit("Beats", 86.4, Actions.Divide)
             };
             Temperature = new Unit[]
             {
