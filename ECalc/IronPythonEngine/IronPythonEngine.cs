@@ -91,22 +91,22 @@ namespace ECalc.IronPythonEngine
         {
             if (c.StartsWith("Hx"))
             {
-                parsed = Convert.ToInt64(c.Replace("Hx", ""), 16).ToString();
+                parsed = Convert.ToInt64(c.Replace("Hx", ""), 16).ToString(CultureInfo.InvariantCulture);
                 return true;
             }
             else if (c.StartsWith("Ox"))
             {
-                parsed = Convert.ToInt64(c.Replace("Ox", ""), 8).ToString();
+                parsed = Convert.ToInt64(c.Replace("Ox", ""), 8).ToString(CultureInfo.InvariantCulture);
                 return true;
             }
             else if (c.StartsWith("Bx"))
             {
-                parsed = Convert.ToInt64(c.Replace("Bx", ""), 2).ToString();
+                parsed = Convert.ToInt64(c.Replace("Bx", ""), 2).ToString(CultureInfo.InvariantCulture);
                 return true;
             }
             else if (c.StartsWith("Rx"))
             {
-                parsed = NumberSystemConversions.RomanToInt(c.Replace("Rx", "")).ToString();
+                parsed = NumberSystemConversions.RomanToInt(c.Replace("Rx", "")).ToString(CultureInfo.InvariantCulture);
                 return true;
             }
             else
@@ -120,11 +120,11 @@ namespace ECalc.IronPythonEngine
                             string number = c.Replace(item.Key, "");
                             double n = Convert.ToDouble(number);
                             n *= item.Value;
-                            parsed = n.ToString();
+                            parsed = n.ToString(CultureInfo.InvariantCulture);
                             return true;
                         }
                     }
-                    var num = Convert.ToDouble(c).ToString();
+                    var num = Convert.ToDouble(c).ToString(CultureInfo.InvariantCulture);
                     parsed = num;
                     return true;
                 }
