@@ -25,6 +25,11 @@ Log10(number)
 Returns the base 10 logarithm of a number
 
 ```
+LogGamma(number)
+```
+Because the gamma and factorial functions grow so rapidly for moderately large arguments, many computing environments include a function that returns the natural logarithm of the gamma function. This grows much more slowly, and for combinatorial calculations allows adding and subtracting logs instead of multiplying and dividing very large values.
+
+```
 Loge(number)
 ```
 

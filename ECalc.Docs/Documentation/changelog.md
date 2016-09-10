@@ -1,5 +1,16 @@
 Changelog
 ---
+##V. 2.1
+* Fixed variable subtraction bug
+* Fixed decimal separator number parsing bug
+* Fixed a memory leak during tool switching
+* Keyboard Input is now supported
+* Added more scientific functions.
+* Calculator chooser Reworked
+* New tool: Fractal explorer
+* New units added to conversion engine: beats, mil, farenheit
+* External libs updated to latest versions
+
 ##V. 2.0
 * Replaced evaluator engine with IronPython
 	* This version of the program is the biggest rework so far.

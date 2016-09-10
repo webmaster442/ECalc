@@ -75,16 +75,16 @@
     <AssemblyOriginatorKeyFile>ECalc.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>301ECAAF2AEB44BBC2A91D36AB203D3348448A6A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>EBF3D320B54D5C2D3C0923A3C4F19EBB1CD0EE69</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>ApplicationSigning.pfx</ManifestKeyFile>
+    <ManifestKeyFile>ECalc.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestTimestampUrl>http://timestamp.digicert.com</ManifestTimestampUrl>

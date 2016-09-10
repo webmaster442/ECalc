@@ -1,5 +1,10 @@
 E, F
 ---
+```
+Erf(number)
+```
+
+In mathematics, the error function (also called the Gauss error function) is a special function (non-elementary) of sigmoid shape that occurs in probability, statistics, and partial differential equations describing diffusion.
 
 ```
 Except(set1, set2)
