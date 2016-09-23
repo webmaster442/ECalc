@@ -32,7 +32,9 @@ namespace ECalc.Modules
                 }
                 else
                 {
-                    var response = await RandomGens.QuantumRandom((int)Count.Value, (int)Minimum.Value, (int)Maximum.Value);
+                    var response = await RandomGens.QuantumRandom((int)Count.Value, 
+                                                                  (int)Minimum.Value, 
+                                                                  (int)Maximum.Value);
                     TbResults.Text = response;
                 }
                 WaitText.Visibility = Visibility.Collapsed;
@@ -48,8 +50,30 @@ namespace ECalc.Modules
         {
             try
             {
-                var response = await RandomGens.LoremIpsum((int)MinWords.Value, (int)MaxWords.Value, (int)MinSentences.Value, (int)MaxSentences.Value, (int)Paragraphs.Value);
+                var response = await RandomGens.LoremIpsum((int)MinWords.Value, 
+                                                           (int)MaxWords.Value,
+                                                           (int)MinSentences.Value,
+                                                           (int)MaxSentences.Value,
+                                                           (int)Paragraphs.Value);
                 TbIpsum.Text = response;
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
+        }
+
+        private async void BtnGeneratePasswords_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var result = await RandomGens.Passwords((int)PassLength.Value,
+                                                        (int)NumPassword.Value,
+                                                        (bool)PasswdLowecase.IsChecked,
+                                                        (bool)PasswdUppercase.IsChecked,
+                                                        (bool)PasswdNumbers.IsChecked,
+                                                        (bool)PasswdSpecials.IsChecked);
+                TbPasswords.Text = result;
             }
             catch (Exception ex)
             {

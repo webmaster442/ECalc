@@ -135,6 +135,62 @@
                 </StackPanel>
             </Grid>
         </TabItem>
+        <TabItem Header="Passwords">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="TbPasswords"
+                         FontSize="16"
+                         FontFamily="Consolas"
+                         Style="{StaticResource BorderlessTextBox}"
+                         VerticalScrollBarVisibility="Visible"/>
+                <StackPanel Grid.Column="1">
+                    <GroupBox Header="Password length">
+                        <wpflib:EditableSlider x:Name="PassLength"
+                                               Minimum="4"
+                                               Value="10"
+                                               DisplayFormat="0"
+                                               DefaultValue="8"
+                                               Maximum="60"/>
+                    </GroupBox>
+                    <GroupBox Header="Chars">
+                        <WrapPanel>
+                            <CheckBox Margin="3"
+                                      x:Name="PasswdLowecase"
+                                      IsChecked="True"
+                                      Content="Lowercase letters (a - z)"/>
+                            <CheckBox Margin="3"
+                                      x:Name="PasswdUppercase"
+                                      IsChecked="True"
+                                      Content="Uppercase letters (A - Z)"/>
+                            <CheckBox Margin="3"
+                                      x:Name="PasswdNumbers"
+                                      IsChecked="True"
+                                      Content="Numbers (0 - 9)"/>
+                            <CheckBox Margin="3"
+                                      x:Name="PasswdSpecials"
+                                      Content="Specials ( _ + - / &amp; # ! ? @ [ ] ; : )"/>
+                        </WrapPanel>
+                    </GroupBox>
+                    <GroupBox Header="Number of passwords to generate">
+                        <wpflib:EditableSlider x:Name="NumPassword"
+                                               Minimum="2"
+                                               Value="4"
+                                               DisplayFormat="0"
+                                               DefaultValue="8"
+                                               Maximum="100"/>
+                    </GroupBox>
+                    <Button Content="Generate!"
+                            Width="150"
+                            Height="45"
+                            x:Name="BtnGeneratePasswords"
+                            HorizontalAlignment="Right"
+                            Click="BtnGeneratePasswords_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
     </TabControl>
     
 </UserControl>

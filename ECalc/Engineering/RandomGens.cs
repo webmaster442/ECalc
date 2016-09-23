@@ -1,6 +1,7 @@
 ﻿using ECalc.Lib;
 using Sublight.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -85,6 +86,40 @@ namespace ECalc.Engineering
             });
         }
 
+        public static Task<string> Passwords(int length, int count, bool lowercase, bool uppercase, bool numbers, bool special)
+        {
+            return Task.Run(() =>
+            {
+                var pool = new List<char>(90);
+                if (lowercase) pool.AddRange("abcdefghijklmnopqrstuvwxyz".ToCharArray());
+                if (uppercase) pool.AddRange("ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray());
+                if (numbers) pool.AddRange("0123456789".ToCharArray());
+                if (special) pool.AddRange("_+-/&#!?@[];:".ToCharArray());
 
+                var randomized = new List<char>(pool.Count);
+                var r = new CryptoRNG();
+                while (pool.Count > 0)
+                {
+                    var index = r.Next(pool.Count);
+                    randomized.Add(pool[index]);
+                    pool.RemoveAt(index);
+                }
+
+
+                var buffer = new StringBuilder();
+
+                for (int i = 0; i < count; i++)
+                {
+                    for (int j = 0; j < length; j++)
+                    {
+                        var pick = r.Next(randomized.Count);
+                        buffer.Append(randomized[pick]);
+                    }
+                    buffer.Append('\n');
+                }
+
+                return buffer.ToString();
+            });
+        }
     }
 }

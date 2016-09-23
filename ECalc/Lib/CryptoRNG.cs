@@ -34,7 +34,7 @@ namespace ECalc.Lib
 
         public int Next()
         {
-            if (BufferOffset >= RandomBuffer.Length)
+            if ((BufferOffset + sizeof(int) ) >= RandomBuffer.Length)
             {
                 FillBuffer();
             }
