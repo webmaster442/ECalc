@@ -18,9 +18,19 @@ namespace ECalc.IronPythonEngine
             return _mem[name];
         }
 
+        public void Hybernate()
+        {
+            throw new NotImplementedException();
+        }
+
         public string[] ListRegisters(string query)
         {
             return _mem.Keys.ToArray();
+        }
+
+        public void Restore()
+        {
+            throw new NotImplementedException();
         }
 
         public void SetItem(object value)

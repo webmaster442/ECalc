@@ -20,6 +20,8 @@ namespace ECalc.Controls
         private EditNewVariableDialog _editdialog;
         private bool _designtime;
 
+        private static string _session;
+
         public MemoryManagement()
         {
             InitializeComponent();
@@ -28,6 +30,7 @@ namespace ECalc.Controls
             _memory = new ObservableCollection<MemoryItem>();
             _editdialog = new EditNewVariableDialog();
             _editdialog.SaveClicked += ed_SaveClicked;
+            Restore();
             MemList.ItemsSource = _memory;
         }
 
@@ -96,6 +99,29 @@ namespace ECalc.Controls
                 return q.ToArray();
             }
         }
+
+        public void Hybernate()
+        {
+            using (var Stream = new StringWriter())
+            {
+                var xs = new XmlSerializer(typeof(MemoryItem[]));
+                xs.Serialize(Stream, _memory.ToArray());
+                _session = Stream.ToString();
+            }
+        }
+
+        public void Restore()
+        {
+            if (string.IsNullOrEmpty(_session)) return;
+            using (var Stream = new StringReader(_session))
+            {
+                var xs = new XmlSerializer(typeof(MemoryItem[]));
+                var mem = (MemoryItem[])xs.Deserialize(Stream);
+                foreach (var m in mem) _memory.Add(m);
+            }
+            _session = null;
+        }
+
         #endregion
 
         #region Serialization

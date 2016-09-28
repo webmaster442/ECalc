@@ -94,6 +94,11 @@ namespace ECalc.Pages
             }
         }
 
+        public void SaveMemSession()
+        {
+            Keypad.MemMan.Hybernate();
+        }
+
         private void FunctionList_FunctionButtonCliked(object sender, StringEventArgs e)
         {
             Display.EquationText += string.Format(" {0}( ", e.Text);

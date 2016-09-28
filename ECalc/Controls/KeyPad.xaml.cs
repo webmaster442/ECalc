@@ -173,5 +173,15 @@ namespace ECalc.Controls
         {
             MemMan.SetItem(value);
         }
+
+        public void Hybernate()
+        {
+            MemMan.Hybernate();
+        }
+
+        public void Restore()
+        {
+            MemMan.Restore();
+        }
     }
 }

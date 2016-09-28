@@ -27,6 +27,7 @@ namespace ECalc
             var main = (MainWindow)Application.Current.MainWindow;
             if (main.TransitionControl.Content is Calculator)
             {
+                (main.TransitionControl.Content as Calculator).SaveMemSession();
                 ConfigFileHelpers.SerializeFunctionUsageStats();
                 ConfigFileHelpers.SerializeConstantUsageStats();
                 Properties.Settings.Default.Save();

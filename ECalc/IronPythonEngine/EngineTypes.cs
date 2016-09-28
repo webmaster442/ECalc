@@ -89,5 +89,15 @@ namespace ECalc.IronPythonEngine
         /// </summary>
         /// <param name="value">value of variable</param>
         void SetItem(object value);
+
+        /// <summary>
+        /// Hybernates the memory session to memory
+        /// </summary>
+        void Hybernate();
+
+        /// <summary>
+        /// Restores memory session
+        /// </summary>
+        void Restore();
     }
 }
