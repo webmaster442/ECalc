@@ -315,14 +315,26 @@ namespace ECalc.IronPythonEngine
         }
         #endregion
 
+        private string LastError
+        {
+            get; set;
+        }
+
+        public void DisplayLastError()
+        {
+            if (string.IsNullOrEmpty(LastError)) return;
+            MainWindow.ErrorDialog(LastError);
+            LastError = null;
+        }
+
         public Task<string> EvaluateAsync(string input)
         {
             return Task.Run(() =>
             {
                 try
                 {
+                    LastError = null;
                     if (string.IsNullOrEmpty(input)) return "0";
-
                     var processed = PreProcess(input);
                     ScriptSource source = _engine.CreateScriptSourceFromString(processed, SourceCodeKind.AutoDetect);
                     object result = source.Execute(_scope);
@@ -336,7 +348,7 @@ namespace ECalc.IronPythonEngine
                 }
                 catch (Exception ex)
                 {
-                    MainWindow.ErrorDialog(ex.Message);
+                    LastError = ex.Message;
                     return null;
                 }
             });

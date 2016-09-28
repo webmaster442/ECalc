@@ -41,6 +41,7 @@ namespace ECalc.Pages
                 Display.IsCalculating = true;
                 _stdout.Clear();
                 var result = await _engine.EvaluateAsync(Display.EquationText);
+                _engine.DisplayLastError();
                 if (_stdout.Length > 0)
                 {
                     var mld = new MultiLineResultDialog();
@@ -83,6 +84,7 @@ namespace ECalc.Pages
             try
             {
                 await _engine.EvaluateAsync(Display.EquationText);
+                _engine.DisplayLastError();
                 Keypad.SetItem(Engine.Ans);
                 Display.EquationText = "";
             }
