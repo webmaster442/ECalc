@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,15 +20,12 @@ namespace ECalc.Controls.Special
             get
             {
                 var dt = (DateTime)DatePicker.SelectedDate;
-                return dt.Add(new TimeSpan((int)SelH.Value, (int)SelM.Value, (int)SelS.Value));
+                return dt;
             }
             set
             {
                 DateTime dt = value;
                 DatePicker.SelectedDate = dt;
-                SelH.Value = dt.Hour;
-                SelM.Value = dt.Minute;
-                SelS.Value = dt.Second;
             }
         }
 
@@ -39,6 +37,12 @@ namespace ECalc.Controls.Special
         private void BtnUTC_Click(object sender, RoutedEventArgs e)
         {
             SelectedDateTime = DateTime.UtcNow;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            DatePicker.Culture = CultureInfo.CurrentUICulture;
+            DatePicker.FirstDayOfWeek = CultureInfo.CurrentUICulture.DateTimeFormat.FirstDayOfWeek;
         }
     }
 }

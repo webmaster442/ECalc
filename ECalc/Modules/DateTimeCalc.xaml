@@ -22,6 +22,10 @@
                     <GroupBox Header="Date #2">
                         <special:DateTimeSelector x:Name="DateSelect2"/>
                     </GroupBox>
+                    <CheckBox Margin="15,2"
+                              x:Name="CbAbsolute"
+                              IsChecked="True"
+                              Content="Result is absolute value"/>
                     <Button Width="120"
                             HorizontalAlignment="Right"
                             Height="40"

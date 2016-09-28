@@ -22,7 +22,15 @@ namespace ECalc.Modules
         private void BtnDifCalc_Click(object sender, RoutedEventArgs e)
         {
             var result = DateSelect1.SelectedDateTime - DateSelect2.SelectedDateTime;
-            TbResult.Text = TimeSpan2String(result);
+            if (CbAbsolute.IsChecked == true)
+            {
+                var secs = result.TotalMilliseconds;
+                if (secs < 0) secs *= -1;
+                var ts = TimeSpan.FromMilliseconds(secs);
+                TbResult.Text = TimeSpan2String(ts);
+            }
+            else
+                TbResult.Text = TimeSpan2String(result);
         }
     }
 }

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="70" d:DesignWidth="450">
     <UserControl.Resources>
         <Style TargetType="TextBlock">
@@ -21,54 +22,27 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="45"/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="80"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Date:"
+        <TextBlock Text="Date &amp; time:"
                    Grid.Row="0"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
                    Grid.Column="0"/>
-        <TextBlock Text="Time:"
-                   Grid.Row="1"
-                   Grid.Column="0"/>
-        <DatePicker Grid.Row="0"
-                    x:Name="DatePicker"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="3"/>
-        <mah:NumericUpDown Grid.Row="1"
-                           Grid.Column="1"
-                           Minimum="0"
-                           Maximum="23"
-                           Value="0"
-                           x:Name="SelH"/>
-        <mah:NumericUpDown Grid.Row="1"
-                           Grid.Column="2"
-                           Minimum="0"
-                           Maximum="59"
-                           Value="0"
-                           x:Name="SelM"/>
-        <mah:NumericUpDown Grid.Row="1"
-                           Grid.Column="3"
-                           Minimum="0"
-                           Maximum="59"
-                           Value="0"
-                           x:Name="SelS"/>
+        <mah:DateTimePicker Grid.Row="0"
+                            x:Name="DatePicker"
+                            Grid.Column="1"/>
         <Button Content="Local Time"
-                Grid.Row="0"
-                Grid.Column="4"
-                Grid.RowSpan="2"
+                Grid.Column="2"
                 x:Name="BtnLocal"
                 Click="BtnLocal_Click"/>
         <Button Content="UTC Time"
-                Grid.Row="0"
-                Grid.Column="5"
-                Grid.RowSpan="2"
+                Grid.Column="3"
                 x:Name="BtnUTC"
                 Click="BtnUTC_Click"/>
     </Grid>
