@@ -156,5 +156,11 @@ namespace ECalc.Maths
 
             return 0.5 * (1.0 + sign * y);
         }
+
+        [Category("Engineering")]
+        public static double Efficiency(double output, double input)
+        {
+            return (output / input) * 100;
+        }
     }
 }
