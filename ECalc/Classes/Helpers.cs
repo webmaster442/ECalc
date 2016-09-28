@@ -37,24 +37,34 @@ namespace ECalc.Classes
             double value = val;
             string prefix = "Byte";
 
-            if (value > 1125899906842624)
+            if (value > 1180591620717411303424.0)
             {
-                value /= 1125899906842624;
+                value /= 1180591620717411303424.0;
+                prefix = "ZiB";
+            }
+            if (value > 1152921504606846976.0)
+            {
+                value /= 1152921504606846976.0;
+                prefix = "EiB";
+            }
+            if (value > 1125899906842624.0)
+            {
+                value /= 1125899906842624.0;
                 prefix = "PiB";
             }
-            else if (value > 1099511627776)
+            else if (value > 1099511627776.0)
             {
-                value /= 1099511627776;
+                value /= 1099511627776.0;
                 prefix = "TiB";
             }
-            else if (value > 1073741824)
+            else if (value > 1073741824.0)
             {
-                value /= 1073741824;
+                value /= 1073741824.0;
                 prefix = "GiB";
             }
-            else if (value > 1048576)
+            else if (value > 1048576.0)
             {
-                value /= 1048576;
+                value /= 1048576.0;
                 prefix = "MiB";
             }
             else if (value > 1024)
