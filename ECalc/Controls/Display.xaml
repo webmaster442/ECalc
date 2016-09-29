@@ -139,13 +139,6 @@
                                   ToolTip="Paste from Clipboard"
                                   Click="BtnClipboardPaste_Click"/>
 
-            <wpflib:ImageButton Image="../Images/50px/fractions.png"
-                                  ImageWidth="22"
-                                  ImageHeight="22"
-                                  x:Name="BtnFractions"
-                                  ToolTip="Convert current result to fractions"
-                                  Click="BtnFractions_Click"/>
-
             <wpflib:ImageButton Image="../Images/50px/plot.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
@@ -160,27 +153,59 @@
                                   ToolTip="Number tests &amp; infromations"
                                   Click="BtnNumTest_Click"/>
 
-
-            <wpflib:ImageButton Image="../Images/50px/T.png"
-                                  ImageWidth="22"
-                                  ImageHeight="22"
-                                  x:Name="BtnNumToText"
-                                  ToolTip="Number to text"
-                                  Click="BtnNumToText_Click"/>
-
-            <wpflib:ImageButton Image="../Images/50px/N.png"
-                                  ImageWidth="22"
-                                  ImageHeight="22"
-                                  x:Name="BtnNumSys"
-                                  ToolTip="Number System"
-                                  Click="BtnNumSys_Click"/>
-
-            <wpflib:ImageButton Image="../Images/50px/F.png"
-                                  ImageWidth="22"
-                                  ImageHeight="22"
-                                  x:Name="BtnFileSize"
-                                  ToolTip="Display as File size"
-                                  Click="BtnFileSize_Click"/>
+            <wpflib:ImageButton Image="../Images/50px/D.png"
+                                ImageWidth="22"
+                                ImageHeight="22"
+                                Click="BtnDisplayModes_Click"
+                                x:Name="BtnDisplayModes"
+                                ToolTip="Display result in various formats">
+                <wpflib:ImageButton.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="As File size..."
+                                  x:Name="DispFileSize"
+                                  Click="DisplayChange">
+                            <MenuItem.Icon>
+                                <Image Source="../Images/50px/F.png" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="As Percentage..."
+                                  x:Name="DispPercent"
+                                  Click="DisplayChange">
+                            <MenuItem.Icon>
+                                <Image Source="../Images/50px/percent.png" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="As Text..."
+                                  x:Name="DispText"
+                                  Click="DisplayChange">
+                            <MenuItem.Icon>
+                                <Image Source="../Images/50px/T.png" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="As Fractions..."
+                                  x:Name="DispFractions"
+                                  Click="DisplayChange">
+                            <MenuItem.Icon>
+                                <Image Source="../Images/50px/fractions.png" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="With prefixes..."
+                                  x:Name="DispPrefixes"
+                                  Click="DisplayChange">
+                            <MenuItem.Icon>
+                                <Image Source="../Images/50px/mu.png" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Number Systems..."
+                                  x:Name="DispNumSys"
+                                  Click="DisplayChange">
+                            <MenuItem.Icon>
+                                <Image Source="../Images/50px/N.png" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </wpflib:ImageButton.ContextMenu>
+            </wpflib:ImageButton>
 
             <wpflib:ImageButton Image="../Images/50px/ans.png"
                                   ImageHeight="22"

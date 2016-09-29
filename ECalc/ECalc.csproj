@@ -655,6 +655,9 @@
     </None>
     <None Include="Service References\MNBConverter\MNBArfolyamServiceSoapImpl.wsdl" />
     <Resource Include="Images\100px\fractal.png" />
+    <Resource Include="Images\50px\D.png" />
+    <Resource Include="Images\50px\mu.png" />
+    <Resource Include="Images\50px\percent.png" />
     <Content Include="UserFunctions.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

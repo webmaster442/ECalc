@@ -152,38 +152,6 @@ namespace ECalc.Controls
             }
         }
 
-        private void BtnNumSys_Click(object sender, RoutedEventArgs e)
-        {
-            var nd = new NumberSystemDisplayDialog();
-            nd.SetDisplay(Engine.Ans);
-            MainWindow.ShowDialog(nd);
-        }
-
-        private void BtnNumToText_Click(object sender, RoutedEventArgs e)
-        {
-            var ntd = new NumberToTextDialog();
-            ntd.SetNumber(Engine.Ans);
-            MainWindow.ShowDialog(ntd);
-        }
-
-        private void BtnFractions_Click(object sender, RoutedEventArgs e)
-        {
-            string message = "Complex, Vector, Fraction and Matrix values not supported";
-            try
-            {
-                if (!Helpers.IsSpecialType(Engine.Ans))
-                {
-                    var f = new Fraction((double)Engine.Ans);
-                    message = f.ToString();
-                }
-            }
-            catch (Exception)
-            {
-                message = "Conversion is not possible";
-            }
-            MainWindow.ShowDialog("Result as Fraction", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
-        }
-
         private void BtnNumTest_Click(object sender, RoutedEventArgs e)
         {
             string message = "Complex, Vector, Fraction and Matrix values not supported";
@@ -243,17 +211,6 @@ namespace ECalc.Controls
             MainWindow.SwithToControl(plot);
         }
 
-        private void BtnFileSize_Click(object sender, RoutedEventArgs e)
-        {
-            string message = "Complex, Vector, Fraction and Matrix values not supported";
-            if (!Helpers.IsSpecialType(Engine.Ans))
-            {
-                double x = Convert.ToDouble(Engine.Ans);
-                message = Helpers.DivideToFileSize(x);
-            }
-            MainWindow.ShowDialog("Result as File size", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
-        }
-
         public void FocusInput()
         {
             if (!TbEditor.IsFocused)
@@ -261,6 +218,71 @@ namespace ECalc.Controls
                 TbEditor.Focus();
                 TbEditor.ScrollToEnd();
             }
+        }
+
+        private void BtnDisplayModes_Click(object sender, RoutedEventArgs e)
+        {
+            BtnDisplayModes.ContextMenu.IsOpen = true;
+        }
+
+        private void DisplayChange(object sender, RoutedEventArgs e)
+        {
+            string message = "Complex, Vector, Fraction and Matrix values not supported";
+            var s = (sender as MenuItem)?.Name;
+            try
+            {
+                switch (s)
+                {
+                    case "DispNumSys":
+                        var nd = new NumberSystemDisplayDialog();
+                        nd.SetDisplay(Engine.Ans);
+                        MainWindow.ShowDialog(nd);
+                        return;
+                    case "DispText":
+                        var ntd = new NumberToTextDialog();
+                        ntd.SetNumber(Engine.Ans);
+                        MainWindow.ShowDialog(ntd);
+                        return;
+                    case "DispFractions":
+                        if (!Helpers.IsSpecialType(Engine.Ans))
+                        {
+                            var f = new Fraction((double)Engine.Ans);
+                            message = f.ToString();
+                        }
+                        break;
+                    case "DispFileSize":
+                        if (!Helpers.IsSpecialType(Engine.Ans))
+                        {
+                            double x = Convert.ToDouble(Engine.Ans);
+                            message = Helpers.DivideToFileSize(x);
+                        }
+                        break;
+                    case "DispPercent":
+                        if (!Helpers.IsSpecialType(Engine.Ans))
+                        {
+                            double x = Convert.ToDouble(Engine.Ans);
+                            x *= 100;
+                            message = string.Format("{0}%", x);
+                        }
+                        break;
+                    case "DispPrefixes":
+                        if (!Helpers.IsSpecialType(Engine.Ans))
+                        {
+                            var prefixes = new PrefixDictionary();
+                            double x = Convert.ToDouble(Engine.Ans);
+                            message = prefixes.DivideToPrefix(x);
+                        }
+                        break;
+                    default:
+                        message = "Operation is not yet implemented in code. Sorry";
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                message = "Operation is not possible";
+            }
+            MainWindow.ShowDialog("Result as Fraction", message, MahApps.Metro.Controls.Dialogs.MessageDialogStyle.Affirmative);
         }
     }
 }
