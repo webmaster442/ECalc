@@ -80,7 +80,7 @@ namespace ECalc.Controls
 
         private int Lines(string s)
         {
-            int lines = 0;
+            int lines = 1;
             foreach (var c in s)
             {
                 if (c == '\n') ++lines;
