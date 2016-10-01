@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ECalc.IronPythonEngine.Types
 {
@@ -37,6 +38,111 @@ namespace ECalc.IronPythonEngine.Types
         {
             var res = arg1.Except(arg2).ToList();
             return new Set(res);
+        }
+
+        public static Set operator + (Set input, double number)
+        {
+            var copy = new Set(input.Count);
+            Parallel.For(0, input.Count, i =>
+            {
+                copy[i] = input[i] + number;
+            });
+            return copy;
+        }
+
+        public static Set operator + (Set a, Set b)
+        {
+            var min = System.Math.Min(a.Count, b.Count);
+            var result = new Set(min);
+            Parallel.For(0, min, i =>
+            {
+                result[i] = a[i] + b[i];
+            });
+            return result;
+        }
+
+        public static Set operator -(Set input, double number)
+        {
+            var copy = new Set(input.Count);
+            Parallel.For(0, input.Count, i =>
+            {
+                copy[i] = input[i] + number;
+            });
+            return copy;
+        }
+
+        public static Set operator -(Set a, Set b)
+        {
+            var min = System.Math.Min(a.Count, b.Count);
+            var result = new Set(min);
+            Parallel.For(0, min, i =>
+            {
+                result[i] = a[i] - b[i];
+            });
+            return result;
+        }
+
+        public static Set operator *(Set input, double number)
+        {
+            var copy = new Set(input.Count);
+            Parallel.For(0, input.Count, i =>
+            {
+                copy[i] = input[i] * number;
+            });
+            return copy;
+        }
+
+        public static Set operator *(Set a, Set b)
+        {
+            var min = System.Math.Min(a.Count, b.Count);
+            var result = new Set(min);
+            Parallel.For(0, min, i =>
+            {
+                result[i] = a[i] * b[i];
+            });
+            return result;
+        }
+
+        public static Set operator /(Set input, double number)
+        {
+            var copy = new Set(input.Count);
+            Parallel.For(0, input.Count, i =>
+            {
+                copy[i] = input[i] + number;
+            });
+            return copy;
+        }
+
+        public static Set operator /(Set a, Set b)
+        {
+            var min = System.Math.Min(a.Count, b.Count);
+            var result = new Set(min);
+            Parallel.For(0, min, i =>
+            {
+                result[i] = a[i] / b[i];
+            });
+            return result;
+        }
+
+        public static Set operator %(Set input, double number)
+        {
+            var copy = new Set(input.Count);
+            Parallel.For(0, input.Count, i =>
+            {
+                copy[i] = input[i] % number;
+            });
+            return copy;
+        }
+
+        public static Set operator %(Set a, Set b)
+        {
+            var min = System.Math.Min(a.Count, b.Count);
+            var result = new Set(min);
+            Parallel.For(0, min, i =>
+            {
+                result[i] = a[i] % b[i];
+            });
+            return result;
         }
 
         public override string ToString()
