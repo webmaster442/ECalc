@@ -124,5 +124,13 @@ namespace ECalc
             p.StartInfo.FileName = filename;
             p.Start();
         }
+
+        public App()
+        {
+            if (Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "StartupFolder") == false)
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "StartupFolder");
+            System.Runtime.ProfileOptimization.SetProfileRoot(AppDomain.CurrentDomain.BaseDirectory + "StartupFolder");
+            System.Runtime.ProfileOptimization.StartProfile("ECalc.profile");
+        }
     }
 }

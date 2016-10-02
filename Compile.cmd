@@ -41,6 +41,12 @@ del *.pdb
 del *.vshost.exe.config
 del *.vshost.exe
 del MahApps.Metro.xml
+del IronPython.*.xml
+del IronPython.xml
+del Microsoft.Scripting.*.xml
+del Microsoft.Scripting.xml
+del Microsoft.Dynamic.xml
+del ICSharpCode.AvalonEdit.xml
 cd ..
 
 pause
