@@ -1,6 +1,6 @@
 ﻿using System.Windows.Documents;
 using MahApps.Metro.Controls.Dialogs;
-using WPFLib.Extensions;
+using AppLib.WPF.Extensions;
 using System.Windows;
 
 namespace ECalc.Controls

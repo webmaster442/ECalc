@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="900"
              Loaded="UserControl_Loaded">
     <UserControl.Resources>
-        <wpflib:FileSizeConverter x:Key="FileSizeConv"/>
+        <applib:FileSizeConverter x:Key="FileSizeConv"/>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -56,7 +56,7 @@
                        Margin="10,0"/>
             <TextBlock Text="Font size:"
                        VerticalAlignment="Center"/>
-            <wpflib:EditableSlider x:Name="FontSlider"
+            <applib:EditableSlider x:Name="FontSlider"
                                    Minimum="10"
                                    Maximum="28"
                                    Width="200"

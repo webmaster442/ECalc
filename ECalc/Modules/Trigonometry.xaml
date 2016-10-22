@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="900">
     <Grid>
@@ -21,7 +21,7 @@
                     <TextBlock Text="a"
                                Foreground="White"/>
                 </GroupBox.Header>
-                <wpflib:EditableSlider x:Name="A"
+                <applib:EditableSlider x:Name="A"
                                     Minimum="0"
                                     Maximum="1000"
                                     Value="100"
@@ -34,7 +34,7 @@
                     <TextBlock Text="b"
                                Foreground="White"/>
                 </GroupBox.Header>
-                <wpflib:EditableSlider x:Name="B"
+                <applib:EditableSlider x:Name="B"
                                     Minimum="0"
                                     Maximum="1000"
                                     Value="100"
@@ -47,7 +47,7 @@
                     <TextBlock Text="c"
                                Foreground="White"/>
                 </GroupBox.Header>
-                <wpflib:EditableSlider x:Name="C"
+                <applib:EditableSlider x:Name="C"
                                     Minimum="0"
                                     Maximum="1000"
                                     Value="141.4213"
@@ -60,7 +60,7 @@
                     <TextBlock Text="α"
                                Foreground="White"/>
                 </GroupBox.Header>
-                <wpflib:EditableSlider x:Name="Alpha"
+                <applib:EditableSlider x:Name="Alpha"
                                     Minimum="0"
                                     Maximum="90"
                                     Value="45"
@@ -73,7 +73,7 @@
                     <TextBlock Text="β"
                                Foreground="White"/>
                 </GroupBox.Header>
-                <wpflib:EditableSlider x:Name="Beta"
+                <applib:EditableSlider x:Name="Beta"
                                     Minimum="0"
                                     Maximum="90"
                                     Value="45"

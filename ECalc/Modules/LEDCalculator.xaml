@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:scontrols="clr-namespace:ECalc.Controls.Special"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="940"
              Loaded="UserControl_Loaded">
@@ -55,7 +55,7 @@
                                    ValueChanged="PrefixInput_ValueChanged"/>
             <GroupBox Header="Forward voltage"
                       Margin="3">
-                <wpflib:EditableSlider x:Name="EsForwardVoltage"
+                <applib:EditableSlider x:Name="EsForwardVoltage"
                                          Minimum="0.3"
                                          Maximum="5"
                                          Value="2"
@@ -71,7 +71,7 @@
                                    Value="0.025"
                                    ValueChanged="PrefixInput_ValueChanged"/>
             <GroupBox Header="Number of LEDS">
-                <wpflib:EditableSlider x:Name="EsLEDNumber"
+                <applib:EditableSlider x:Name="EsLEDNumber"
                                          Minimum="1"
                                          Maximum="100"
                                          Value="1"

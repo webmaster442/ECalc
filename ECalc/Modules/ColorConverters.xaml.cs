@@ -3,8 +3,8 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using WPFLib.Controls;
-using WPFLib.Extensions;
+using AppLib.WPF.Controls;
+using AppLib.WPF.Extensions;
 
 namespace ECalc.Modules
 {

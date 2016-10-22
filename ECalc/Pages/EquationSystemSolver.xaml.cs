@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using WPFLib.Extensions;
+using AppLib.WPF.Extensions;
 
 namespace ECalc.Pages
 {

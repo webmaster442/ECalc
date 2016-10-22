@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              xmlns:local="clr-namespace:ECalc.Pages"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
@@ -117,7 +117,7 @@
 
         <ScrollViewer Grid.Row="1"
                       Grid.ColumnSpan="2"
-                      wpflib:Kinetic.HandleKineticScrolling="True">
+                      applib:Kinetic.HandleKineticScrolling="True">
             <WrapPanel x:Name="ModuleView"/>
         </ScrollViewer>
         

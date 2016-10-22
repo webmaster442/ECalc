@@ -718,6 +718,14 @@
     <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppLib\AppLib.Common\AppLib.Common.csproj">
+      <Project>{516087b5-6ac5-44a5-8df1-fe42d7a7a0e6}</Project>
+      <Name>AppLib.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppLib\AppLib.WPF\AppLib.WPF.csproj">
+      <Project>{faf19388-a6c0-46f9-a588-a46db392ace4}</Project>
+      <Name>AppLib.WPF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ECalc.Api\ECalc.Api.csproj">
       <Project>{4bdbc073-620d-4f63-8e86-c15ae3adb6dd}</Project>
       <Name>ECalc.Api</Name>
@@ -725,10 +733,6 @@
     <ProjectReference Include="..\ECalc.Docs\ECalc.Docs.csproj">
       <Project>{f88b5dbe-b27e-4c34-8ccb-baae76b832fa}</Project>
       <Name>ECalc.Docs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WPFLib\WPFLib\WPFLib.csproj">
-      <Project>{faf19388-a6c0-46f9-a588-a46db392ace4}</Project>
-      <Name>WPFLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

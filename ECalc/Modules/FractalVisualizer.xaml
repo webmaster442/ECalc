@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d"
              d:DesignHeight="500" d:DesignWidth="900">
     <Grid>
@@ -49,7 +49,7 @@
                         <TextBlock Text="X:"
                                    Foreground="White" 
                                    Margin="0,5,0,2"/>
-                        <wpflib:EditableSlider
+                        <applib:EditableSlider
                             Minimum="0"
                             x:Name="PanX"
                             ValueChanged="Slider_ValueChanged"
@@ -60,7 +60,7 @@
                         <TextBlock Text="Y:" 
                                    Foreground="White" 
                                    Margin="0,5,0,2"/>
-                        <wpflib:EditableSlider
+                        <applib:EditableSlider
                             Minimum="0"
                             Name="PanY"
                             ValueChanged="Slider_ValueChanged"
@@ -71,7 +71,7 @@
                 </GroupBox>
                 <GroupBox Header="Zoom"
                           Margin="0,5,0,0">
-                    <wpflib:EditableSlider
+                    <applib:EditableSlider
                         Minimum="0"
                         Maximum="5"
                         x:Name="Zoom"
@@ -81,7 +81,7 @@
                 <GroupBox Header="Color"
                           Margin="0,5,0,0">
                     <StackPanel>
-                        <wpflib:EditableSlider
+                        <applib:EditableSlider
                             Minimum="0"
                             Maximum="9"
                             Value="4"
@@ -89,7 +89,7 @@
                             ValueChanged="Slider_ValueChanged"
                             DefaultValue="4" 
                             Margin="0,5,0,0"/>
-                        <wpflib:EditableSlider
+                        <applib:EditableSlider
                             Minimum="0"
                             Maximum="9"
                             Value="5"
@@ -97,7 +97,7 @@
                             ValueChanged="Slider_ValueChanged"
                             DefaultValue="5" 
                             Margin="0,5"/>
-                        <wpflib:EditableSlider
+                        <applib:EditableSlider
                             Minimum="0"
                             Maximum="9"
                             Value="6"
@@ -111,7 +111,7 @@
         <Rectangle Fill="Black"
                    Panel.ZIndex="0">
             <Rectangle.Effect>
-                <wpflib:FractalExplorerEffect x:Name="Fractal"
+                <applib:FractalExplorerEffect x:Name="Fractal"
                                               Zoom="{Binding ElementName=Zoom, Path=Value}"/>
             </Rectangle.Effect>
         </Rectangle>

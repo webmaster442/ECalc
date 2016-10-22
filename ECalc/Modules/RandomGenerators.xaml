@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="520" d:DesignWidth="900">
     <TabControl>
@@ -29,21 +29,21 @@
                          AcceptsReturn="True"/>
                 <StackPanel Grid.Column="1">
                     <GroupBox Header="Number of items">
-                        <wpflib:EditableSlider x:Name="Count"
+                        <applib:EditableSlider x:Name="Count"
                                             Minimum="0"
                                             Maximum="1000"
                                             Value="10"
                                             DefaultValue="10"/>
                     </GroupBox>
                     <GroupBox Header="Minimum">
-                        <wpflib:EditableSlider x:Name="Minimum"
+                        <applib:EditableSlider x:Name="Minimum"
                                             Minimum="-2147483648"
                                             Maximum="2147483647"
                                             Value="0"
                                             DefaultValue="0"/>
                     </GroupBox>
                     <GroupBox Header="Maximum">
-                        <wpflib:EditableSlider x:Name="Maximum"
+                        <applib:EditableSlider x:Name="Maximum"
                                             Minimum="-2147483648"
                                             Maximum="2147483647"
                                             Value="100"
@@ -87,7 +87,7 @@
                          AcceptsReturn="True"/>
                 <StackPanel Grid.Column="1">
                     <GroupBox Header="Minimum Words">
-                        <wpflib:EditableSlider x:Name="MinWords"
+                        <applib:EditableSlider x:Name="MinWords"
                                             Minimum="5"
                                             Maximum="30"
                                             Value="5"
@@ -95,7 +95,7 @@
                                             DefaultValue="5"/>
                     </GroupBox>
                     <GroupBox Header="Maximum Words">
-                        <wpflib:EditableSlider x:Name="MaxWords"
+                        <applib:EditableSlider x:Name="MaxWords"
                                             Minimum="5"
                                             Maximum="30"
                                             Value="30"
@@ -103,7 +103,7 @@
                                             DefaultValue="30"/>
                     </GroupBox>
                     <GroupBox Header="Minimum Sentences">
-                        <wpflib:EditableSlider x:Name="MinSentences"
+                        <applib:EditableSlider x:Name="MinSentences"
                                             Minimum="1"
                                             Maximum="35"
                                             Value="3"
@@ -111,7 +111,7 @@
                                             DefaultValue="3"/>
                     </GroupBox>
                     <GroupBox Header="Max Sentences">
-                        <wpflib:EditableSlider x:Name="MaxSentences"
+                        <applib:EditableSlider x:Name="MaxSentences"
                                             Minimum="1"
                                             Maximum="35"
                                             Value="7"
@@ -119,7 +119,7 @@
                                             DefaultValue="7"/>
                     </GroupBox>
                     <GroupBox Header="Paragraphs">
-                        <wpflib:EditableSlider x:Name="Paragraphs"
+                        <applib:EditableSlider x:Name="Paragraphs"
                                             Minimum="1"
                                             Maximum="100"
                                             Value="2"
@@ -148,7 +148,7 @@
                          VerticalScrollBarVisibility="Visible"/>
                 <StackPanel Grid.Column="1">
                     <GroupBox Header="Password length">
-                        <wpflib:EditableSlider x:Name="PassLength"
+                        <applib:EditableSlider x:Name="PassLength"
                                                Minimum="4"
                                                Value="10"
                                                DisplayFormat="0"
@@ -175,7 +175,7 @@
                         </WrapPanel>
                     </GroupBox>
                     <GroupBox Header="Number of passwords to generate">
-                        <wpflib:EditableSlider x:Name="NumPassword"
+                        <applib:EditableSlider x:Name="NumPassword"
                                                Minimum="2"
                                                Value="4"
                                                DisplayFormat="0"

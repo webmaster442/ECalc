@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:ECalc.Pages"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="80" d:DesignWidth="900">
     <UserControl.Resources>
@@ -52,28 +52,28 @@
             <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Left">
-                <wpflib:ImageButton
+                <applib:ImageButton
                     Content="Support development"
                     Image="/ECalc;component/Images/50px/donate.png"
                     ImageHeight="32"
                     ImageWidth="32"
                     x:Name="BtnDonate"
                     Click="BtnDonate_Click"/>
-                <wpflib:ImageButton
+                <applib:ImageButton
                     Content="About"
                     Image="/ECalc;component/Images/50px/about.png"
                     ImageHeight="32"
                     ImageWidth="32"
                     x:Name="BtnAbout"
                     Click="BtnAbout_Click"/>
-                <wpflib:ImageButton 
+                <applib:ImageButton 
                     Content="Documentation"
                     Image="/ECalc;component/Images/50px/book.png"
                     ImageHeight="32"
                     ImageWidth="32"                   
                     x:Name="BtnDocs"
                     Click="BtnDocs_Click"/>
-                <wpflib:ImageButton
+                <applib:ImageButton
                     Content="Report Bug"
                     Image="/ECalc;component/Images/50px/issue.png"
                     ImageHeight="32"
@@ -86,28 +86,28 @@
             <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Left">
-                <wpflib:ImageButton 
+                <applib:ImageButton 
                     Content="Change Theme"
                     Image="/ECalc;component/Images/50px/theme.png"
                     ImageHeight="32"
                     ImageWidth="32"
                     x:Name="BtnChangeTheme"
                     Click="BtnChangeTheme_Click"/>
-                <wpflib:ImageButton
+                <applib:ImageButton
                     Content="Window manager"
                     Image="/ECalc;component/Images/50px/windowmanager.png"
                     ImageHeight="32"
                     ImageWidth="32"
                     x:Name="BtnWindManager"
                     Click="BtnWindManager_Click"/>
-                <wpflib:ImageButton
+                <applib:ImageButton
                     Content="Check updates"
                     Image="/ECalc;component/Images/50px/update.png"
                     ImageHeight="32"
                     ImageWidth="32"
                     x:Name="BtnUpdate"
                     Click="BtnUpdate_Click"/>
-                <wpflib:ImageButton
+                <applib:ImageButton
                     Content="Screen Keyboard"
                     Image="/ECalc;component/Images/50px/keyboard.png"
                     ImageHeight="32"

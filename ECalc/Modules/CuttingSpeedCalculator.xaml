@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
     <Grid VerticalAlignment="Center">
@@ -15,7 +15,7 @@
                Source="/ECalc;component/Images/large/cuttingspeed.png"/>
         <StackPanel Grid.Column="1" VerticalAlignment="Center">
             <GroupBox Header="Diameter: (d)">
-                <wpflib:EditableSlider x:Name="D"
+                <applib:EditableSlider x:Name="D"
                                          Minimum="0"
                                          Maximum="1000"
                                          DefaultValue="100"
@@ -23,7 +23,7 @@
                                          ValueChanged="N_ValueChanged"/>
             </GroupBox>
             <GroupBox Header="RPM: (n)">
-                <wpflib:EditableSlider x:Name="N"
+                <applib:EditableSlider x:Name="N"
                                          Minimum="0"
                                          Maximum="10000"
                                          DefaultValue="100"
@@ -31,7 +31,7 @@
                                          ValueChanged="N_ValueChanged"/>
             </GroupBox>
             <GroupBox Header="Cutting Speed: (v)">
-                <wpflib:EditableSlider x:Name="V"
+                <applib:EditableSlider x:Name="V"
                                          Minimum="0"
                                          Maximum="10000"
                                          DefaultValue="100"

@@ -77,9 +77,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WPFLib\WPFLib\WPFLib.csproj">
+    <ProjectReference Include="..\AppLib\AppLib.WPF\AppLib.WPF.csproj">
       <Project>{faf19388-a6c0-46f9-a588-a46db392ace4}</Project>
-      <Name>WPFLib</Name>
+      <Name>AppLib.WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

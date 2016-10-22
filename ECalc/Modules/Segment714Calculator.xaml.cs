@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using WPFLib.Extensions;
+using AppLib.WPF.Extensions;
 
 namespace ECalc.Modules
 {

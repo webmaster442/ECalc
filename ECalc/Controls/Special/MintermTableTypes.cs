@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Controls;
-using WPFLib.Extensions;
+using AppLib.WPF.Extensions;
 
 namespace ECalc.Controls.Special
 {

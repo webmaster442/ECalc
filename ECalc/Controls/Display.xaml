@@ -4,13 +4,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:wpflib="http://github.com/webmaster442/WPFLib"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d"
              d:DesignHeight="120" d:DesignWidth="960"
              Loaded="userControl_Loaded">
     <UserControl.Resources>
-        <wpflib:NegateConverter x:Key="Negate"/>
+        <applib:NegateConverter x:Key="Negate"/>
         <BooleanToVisibilityConverter x:Key="VisibilityConv"/>
 
         <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
@@ -18,7 +18,7 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Margin" Value="3,0"/>
         </Style>
-        <Style TargetType="{x:Type wpflib:ImageButton}" BasedOn="{StaticResource {x:Type wpflib:ImageButton}}">
+        <Style TargetType="{x:Type applib:ImageButton}" BasedOn="{StaticResource {x:Type applib:ImageButton}}">
             <Setter Property="Margin" Value="1,0"/>
         </Style>
 
@@ -125,41 +125,41 @@
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
 
-            <wpflib:ImageButton Image="../Images/50px/copy.png"
+            <applib:ImageButton Image="../Images/50px/copy.png"
                                   ImageHeight="22"
                                   ImageWidth="22"
                                   x:Name="BtnClipboardCopy"
                                   ToolTip="Copy result to Clipboard"
                                   Click="BtnClipboardCopy_Click"/>
 
-            <wpflib:ImageButton Image="../Images/50px/Paste.png"
+            <applib:ImageButton Image="../Images/50px/Paste.png"
                                   ImageHeight="22"
                                   ImageWidth="22"
                                   x:Name="BtnClipboardPaste"
                                   ToolTip="Paste from Clipboard"
                                   Click="BtnClipboardPaste_Click"/>
 
-            <wpflib:ImageButton Image="../Images/50px/plot.png"
+            <applib:ImageButton Image="../Images/50px/plot.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   
                                   ToolTip="Plot Current input"
                                   Click="BtnPlot_Click"/>
 
-            <wpflib:ImageButton Image="../Images/50px/test.png"
+            <applib:ImageButton Image="../Images/50px/test.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnNumTest"
                                   ToolTip="Number tests &amp; infromations"
                                   Click="BtnNumTest_Click"/>
 
-            <wpflib:ImageButton Image="../Images/50px/D.png"
+            <applib:ImageButton Image="../Images/50px/D.png"
                                 ImageWidth="22"
                                 ImageHeight="22"
                                 Click="BtnDisplayModes_Click"
                                 x:Name="BtnDisplayModes"
                                 ToolTip="Display result in various formats">
-                <wpflib:ImageButton.ContextMenu>
+                <applib:ImageButton.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="As File size..."
                                   x:Name="DispFileSize"
@@ -204,24 +204,24 @@
                             </MenuItem.Icon>
                         </MenuItem>
                     </ContextMenu>
-                </wpflib:ImageButton.ContextMenu>
-            </wpflib:ImageButton>
+                </applib:ImageButton.ContextMenu>
+            </applib:ImageButton>
 
-            <wpflib:ImageButton Image="../Images/50px/ans.png"
+            <applib:ImageButton Image="../Images/50px/ans.png"
                                   ImageHeight="22"
                                   ImageWidth="22"
                                   x:Name="BtnAnss"
                                   ToolTip="Copy result to new calculaton"
                                   Click="BtnAnss_Click"/>
 
-            <wpflib:ImageButton Image="../Images/50px/Undo.png"
+            <applib:ImageButton Image="../Images/50px/Undo.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnUndo"
                                   Click="BtnUndo_Click"
                                   ToolTip="Undo"/>
 
-            <wpflib:ImageButton Image="../Images/50px/Delete.png"
+            <applib:ImageButton Image="../Images/50px/Delete.png"
                                   ImageWidth="22"
                                   ImageHeight="22"
                                   x:Name="BtnReset"
