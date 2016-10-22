@@ -1,0 +1,3 @@
+[submodule "AppLib"]
+	path = AppLib
+	url = https://github.com/webmaster442/AppLib
