@@ -5,6 +5,10 @@ using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using AppLib.Common;
+using WPFLib;
+using System.Diagnostics;
+using System.Linq;
 
 namespace ECalc
 {
@@ -141,6 +145,8 @@ namespace ECalc
         private void MainWin_Loaded(object sender, RoutedEventArgs e)
         {
             App.Splash.Close();
+            HandleArguments();
+
         }
 
         private void MainWin_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -150,6 +156,23 @@ namespace ECalc
 
             if (CalculatorChooserFlyOut.IsOpen) return;
             else calc.FocusInput();
+        }
+
+        private void HandleArguments()
+        {
+            var pp = new ParametersParser(false);
+            if (pp.HasKey("/update")) Updater.DoUpdate();
+            else if (pp.HasKey("/firstmonitor"))
+            {
+                ScreenHelper.MoveToDefaultScreen(this);
+                var pid = Process.GetCurrentProcess().Id;
+                var others = from i in Process.GetProcesses()
+                             where i.Id != pid && i.ProcessName.Contains("ECalc")
+                             select i;
+
+                foreach (var process in others)
+                    process.CloseMainWindow();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ECalc.Api;
+using ECalc.Classes;
 using ECalc.Properties;
 using MahApps.Metro;
 using System;
@@ -40,6 +41,7 @@ namespace ECalc
         {
             Splash = new SplashScreen();
             Splash.Show();
+            AppJumpList.CreateJumpList();
 
             var loadtask = new Task(() =>
             {
