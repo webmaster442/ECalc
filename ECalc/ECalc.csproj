@@ -244,6 +244,9 @@
     <Compile Include="Modules\GreekAlphabet.xaml.cs">
       <DependentUpon>GreekAlphabet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\LCDCharEditor.xaml.cs">
+      <DependentUpon>LCDCharEditor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Lm317.xaml.cs">
       <DependentUpon>Lm317.xaml</DependentUpon>
     </Compile>
@@ -452,6 +455,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\GreekAlphabet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\LCDCharEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -667,6 +674,7 @@
     <Resource Include="Images\50px\D.png" />
     <Resource Include="Images\50px\mu.png" />
     <Resource Include="Images\50px\percent.png" />
+    <Resource Include="Images\100px\LCD.png" />
     <Content Include="UserFunctions.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

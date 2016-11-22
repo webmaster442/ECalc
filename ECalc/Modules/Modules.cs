@@ -599,4 +599,32 @@ namespace ECalc.Modules
         }
     }
 
+    public class LCDCharEdit: EcalcModule
+    {
+        public override string ModuleCategory
+        {
+            get { return ModuleCategories.Digital; }
+        }
+
+        public override string ModuleName
+        {
+            get { return "LCD char editor"; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new LCDCharEditor();
+        }
+
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/LCD.png", UriKind.Relative)); }
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.FlatAlizarin; }
+        }
+    }
+
 }
