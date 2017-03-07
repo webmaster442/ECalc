@@ -6,7 +6,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using AppLib.Common;
-using WPFLib;
+using AppLib.WPF;
 using System.Diagnostics;
 using System.Linq;
 

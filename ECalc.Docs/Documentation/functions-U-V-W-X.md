@@ -30,6 +30,14 @@ Vect3D(x, y, z)
 Creates a three dimensional vector that point from 0,0,0 to the specified coordinates.
 
 ```
+VectorToPolar(v)
+```
+
+Converts a vector given in Cartesian coordinates to vector values in Polar or Spherical coordinate system based on the vectors dimensions. For more information see:
+https://en.wikipedia.org/wiki/Spherical_coordinate_system
+https://en.wikipedia.org/wiki/Polar_coordinate_system
+
+```
 Wavelength(frequency)
 ```
 

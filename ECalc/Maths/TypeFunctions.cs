@@ -1,6 +1,7 @@
 ﻿using ECalc.IronPythonEngine;
 using ECalc.IronPythonEngine.Types;
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace ECalc.Maths
@@ -54,6 +55,34 @@ namespace ECalc.Maths
         [Category("Types")]
         public static Vector Vect3D(double x, double y, double z)
         {
+            return new Vector(x, y, z);
+        }
+
+        [Category("Types")]
+        public static Dictionary<string, double> VectorToPolar(Vector v)
+        {
+            var ret = new Dictionary<string, double>();
+            ret.Add("r", v.Magnitude);
+            ret.Add("φ", TrigFunctions.ArcTan(v.Y / v.X));
+            if (v.Dimensions == 3)
+                ret.Add("θ", TrigFunctions.ArcCos((double)v.Z / v.Magnitude));
+            return ret;
+        }
+
+        [Category("Types")]
+        public static Vector PolarToVector(double r, double a1)
+        {
+            var x = r * TrigFunctions.Cos(a1);
+            var y = r * TrigFunctions.Sin(a1);
+            return new Vector(x, y);
+        }
+
+        [Category("Types")]
+        public static Vector PolarToVector(double r, double a1, double a2)
+        {
+            var x = r * TrigFunctions.Sin(a2) * TrigFunctions.Cos(a1);
+            var y = r * TrigFunctions.Sin(a2) * TrigFunctions.Sin(a1);
+            var z = r * TrigFunctions.Cos(a2);
             return new Vector(x, y, z);
         }
 

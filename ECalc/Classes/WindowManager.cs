@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
-using WPFLib;
+using AppLib.WPF;
 using AppLib.WPF.Extensions;
 
 namespace ECalc.Classes

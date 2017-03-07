@@ -16,3 +16,15 @@ Pow(number; power)
 ```
 
 Raises a given number to the specified power. The number is specified by the first parameter, and the power is specified by the second.
+
+```
+PolarToVector(r; φ)
+```
+
+Converts a 2d vector given in polar coordinates to a vector in Cartesian coordinates. For more info see: https://en.wikipedia.org/wiki/Polar_coordinate_system
+
+```
+PolarToVector(r; φ, θ)
+```
+
+Converts a 3d vector given in spherical coordinates to a vector in Cartesian coordinates. For more info see: https://en.wikipedia.org/wiki/Spherical_coordinate_system
