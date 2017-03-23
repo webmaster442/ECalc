@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
              xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:specialcontrols="clr-namespace:ECalc.Controls.Special"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960"
@@ -70,6 +71,7 @@
                                Grid.Row="0"
                                Grid.Column="1"/>
                     <TextBox AcceptsReturn="True"
+                             mah:TextBoxHelper.Watermark="Like...&#x0a;1&#x0a;2&#x0a;3&#x0a;4"
                              x:Name="TbListSet"
                              Grid.Row="1"
                              Margin="5"
@@ -77,6 +79,7 @@
                              FontSize="22"
                              VerticalAlignment="Stretch"/>
                     <TextBox AcceptsReturn="True"
+                             mah:TextBoxHelper.Watermark="Like...&#x0a;5&#x0a;7"
                              x:Name="TbListDontCare"
                              Grid.Row="1"
                              Margin="5"

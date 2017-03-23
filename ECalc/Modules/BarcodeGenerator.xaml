@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
@@ -15,7 +16,9 @@
         <GroupBox
             Grid.Row="0"
             Header="Text to encode">
-            <TextBox x:Name="TextToEncode"/>
+            <TextBox
+                mah:TextBoxHelper.Watermark="Type here the text to encoded"
+                x:Name="TextToEncode"/>
         </GroupBox>
         <applib:ImageBarcodeCode128
             Grid.Row="1"

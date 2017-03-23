@@ -44,6 +44,7 @@
                     Margin="5"/>
         </StackPanel>
         <TextBox x:Name="TbResult"
+                 Style="{StaticResource BorderlessTextBox}"
                  Grid.Row="1"
                  FontSize="14"
                  IsReadOnly="True"/>
