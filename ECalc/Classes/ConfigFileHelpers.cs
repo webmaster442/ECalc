@@ -11,9 +11,9 @@ namespace ECalc.Classes
     {
         public static void SerializeFunctionUsageStats()
         {
-            if (FunctionList2.UsageStats == null) return;
+            if (UltimateFunctionList.UsageStats == null) return;
             var sb = new StringBuilder();
-            foreach (var entry in FunctionList2.UsageStats)
+            foreach (var entry in UltimateFunctionList.UsageStats)
             {
                 sb.AppendFormat("{0};{1}\n", entry.Key, entry.Value);
             }

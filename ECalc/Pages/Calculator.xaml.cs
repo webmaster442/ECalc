@@ -29,7 +29,7 @@ namespace ECalc.Pages
             _engine.StdOutWriten += _engine_StdOutWriten;
             _engine.MemoryManager = Keypad;
             _engine.LoadUserFunctions();
-            FncList.Funtions = Engine.Functions.ToArray();
+            FncList.FillFunctionList(Engine.Functions);
             _stdout = new StringBuilder();
             Display.Focus();
         }
@@ -99,11 +99,6 @@ namespace ECalc.Pages
             Keypad.MemMan.Hybernate();
         }
 
-        private void FunctionList_FunctionButtonCliked(object sender, StringEventArgs e)
-        {
-            Display.EquationText += string.Format(" {0}( ", e.Text);
-        }
-
         private void Display_ModeChanged(object sender, StringEventArgs e)
         {
             TrigMode output;
@@ -130,6 +125,11 @@ namespace ECalc.Pages
                 _engine.Dispose();
                 _engine = null;
             }
+        }
+
+        private void FncList_FunctionButtonCliked(object sender, string e)
+        {
+            Display.EquationText += string.Format(" {0}( ", e);
         }
 
         public void Dispose()

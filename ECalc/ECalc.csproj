@@ -174,6 +174,9 @@
     <Compile Include="Controls\MultiLineResultDialog.xaml.cs">
       <DependentUpon>MultiLineResultDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UltimateFunctionList.xaml.cs">
+      <DependentUpon>UltimateFunctionList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Engineering\AsyncHasher.cs" />
     <Compile Include="IronPythonEngine\BitFunctions.cs" />
     <Compile Include="IronPythonEngine\SimpleMemMan.cs" />
@@ -184,9 +187,6 @@
     <Compile Include="Classes\WindowManager.cs" />
     <Compile Include="Controls\EditNewVariableDialog.xaml.cs">
       <DependentUpon>EditNewVariableDialog.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\FunctionList2.xaml.cs">
-      <DependentUpon>FunctionList2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MemoryManagement.xaml.cs">
       <DependentUpon>MemoryManagement.xaml</DependentUpon>
@@ -323,10 +323,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\FunctionList2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\KeyPad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -380,6 +376,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Special\TimeSpanSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UltimateFunctionList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

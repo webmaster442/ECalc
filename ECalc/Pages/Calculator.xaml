@@ -41,9 +41,10 @@
             </TabItem>
         </TabControl>
 
-        <controls:FunctionList2 Grid.Row="1"
-                               x:Name="FncList"
-                               Grid.RowSpan="2"
-                               FunctionButtonCliked="FunctionList_FunctionButtonCliked"/>
+        <controls:UltimateFunctionList
+            Grid.Row="1"
+            x:Name="FncList"
+            Grid.RowSpan="2"
+            FunctionButtonCliked="FncList_FunctionButtonCliked"/>
     </Grid>
 </UserControl>
