@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960"
              Loaded="UserControl_Loaded">
@@ -71,22 +72,41 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <GroupBox Header="Input File">
-                        <Button Content="Select.."
-                                x:Name="BtnSelectFile"
-                                Click="BtnSelectFile_Click"
-                                Margin="5"/>
+                        <applib:FileSelector
+                            x:Name="InputFile"
+                            Filter="All files|*.*"/>
                     </GroupBox>
                     <GroupBox Grid.Row="1"
                               Header="Options">
-                        <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             <Button Content="Start"
                                     x:Name="BtnStart"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
                                     Click="BtnStart_Click"
                                     Margin="5"/>
+                            <Button Content="Cancel"
+                                    x:Name="BtnCancel"
+                                    Grid.Row="1"
+                                    Click="BtnCancel_Click"
+                                    Grid.Column="1"
+                                    Margin="5"/>
                             <ProgressBar Height="30"
+                                         Grid.Row="0"
+                                         Minimum="0"
+                                         Maximum="1"
+                                         Grid.ColumnSpan="2"
                                          x:Name="Progress"
                                          Margin="5"/>
-                        </StackPanel>
+                        </Grid>
                     </GroupBox>
                 </Grid>
             </TabItem>

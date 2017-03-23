@@ -1,5 +1,6 @@
 ﻿using ECalc.Engineering;
 using System;
+using System.Threading;
 using System.Windows.Controls;
 
 namespace ECalc.Modules
@@ -10,22 +11,31 @@ namespace ECalc.Modules
     public partial class HashCalculators : UserControl
     {
         private bool _loaded;
+        private AsyncHasher hasher;
+        private CancellationTokenSource cts;
 
         public HashCalculators()
         {
             InitializeComponent();
+            cts = new CancellationTokenSource();
         }
 
         private async void ComputeHash()
         {
             if (!_loaded) return;
-            var selected = (CbHash.Items[CbHash.SelectedIndex] as ComboBoxItem).Content.ToString();
-            HashFunctions.Algorithms algo = HashFunctions.Algorithms.MD5;
-            bool convresult = Enum.TryParse<HashFunctions.Algorithms>(selected, out algo);
-            if (!convresult) algo = HashFunctions.Algorithms.MD5;
-           
-            string result = await HashFunctions.HashString(algo, TbInput.Text);
-            TbOutput.Text = result;
+            try
+            {
+                var selected = (CbHash.Items[CbHash.SelectedIndex] as ComboBoxItem).Content.ToString();
+                var algo = HashAlgorithms.MD5;
+                bool convresult = Enum.TryParse<HashAlgorithms>(selected, out algo);
+                hasher = new AsyncHasher(algo);
+                var result = await hasher.ComputeHash(TbInput.Text);
+                TbOutput.Text = AsyncHasher.HashString(result);
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
         }
 
         private void TbInput_TextChanged(object sender, TextChangedEventArgs e)
@@ -44,15 +54,12 @@ namespace ECalc.Modules
             _loaded = true;
         }
 
-        private void BtnSelectFile_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ReportProgress(double d)
         {
-            var ofd = new System.Windows.Forms.OpenFileDialog();
-            ofd.Filter = "All files | *.*";
-            ofd.Multiselect = false;
-            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            Dispatcher.Invoke(() =>
             {
-                BtnSelectFile.Content = ofd.FileName;
-            }
+                Progress.Value = d;
+            });
         }
 
         private async void BtnStart_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -60,19 +67,28 @@ namespace ECalc.Modules
             try
             {
                 var selected = (CbHash.Items[CbHash.SelectedIndex] as ComboBoxItem).Content.ToString();
-                HashFunctions.Algorithms algo = HashFunctions.Algorithms.MD5;
-                bool convresult = Enum.TryParse<HashFunctions.Algorithms>(selected, out algo);
-                if (!convresult) algo = HashFunctions.Algorithms.MD5;
+                var algo = HashAlgorithms.MD5;
+                bool convresult = Enum.TryParse<HashAlgorithms>(selected, out algo);
+                hasher = new AsyncHasher(algo);
 
-                Progress.IsIndeterminate = true;
-                string result = await HashFunctions.HashFile(algo, BtnSelectFile.Content.ToString());
-                Progress.IsIndeterminate = false;
-                TbOutput.Text = result;
+                using (var fs = System.IO.File.OpenRead(InputFile.SelectedFile))
+                {
+                    var progressIndicator = new Progress<double>(ReportProgress);
+                    var hash = await hasher.ComputeHash(fs, cts.Token, progressIndicator);
+                    TbOutput.Text = AsyncHasher.HashString(hash);
+
+                }
             }
             catch (Exception ex)
             {
                 MainWindow.ErrorDialog(ex.Message);
             }
+        }
+
+        private void BtnCancel_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            cts.Cancel();
+            Progress.Value = 0;
         }
     }
 }
