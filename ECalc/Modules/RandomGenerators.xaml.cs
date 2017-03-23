@@ -80,5 +80,18 @@ namespace ECalc.Modules
                 MainWindow.ErrorDialog(ex.Message);
             }
         }
+
+        private async void BtnGenerateGuids_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var result = await RandomGens.Guids((int)NumGuid.Value);
+                TbGuids.Text = result;
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
+        }
     }
 }

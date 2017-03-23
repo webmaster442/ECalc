@@ -191,6 +191,36 @@
                 </StackPanel>
             </Grid>
         </TabItem>
+        <TabItem Header="GUID">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="TbGuids"
+                         FontSize="16"
+                         FontFamily="Consolas"
+                         Style="{StaticResource BorderlessTextBox}"
+                         VerticalScrollBarVisibility="Visible"/>
+                <StackPanel Grid.Column="1">
+                    <GroupBox Header="Number of GUIDs to generate">
+                        <applib:EditableSlider x:Name="NumGuid"
+                                               Minimum="2"
+                                               Value="4"
+                                               DisplayFormat="0"
+                                               DefaultValue="8"
+                                               Maximum="100"/>
+                    </GroupBox>
+                    <Button Content="Generate!"
+                            Width="150"
+                            Height="45"
+                            x:Name="BtnGenerateGuids"
+                            HorizontalAlignment="Right"
+                            Click="BtnGenerateGuids_Click"/>
+                </StackPanel>
+                
+            </Grid>
+        </TabItem>
     </TabControl>
     
 </UserControl>

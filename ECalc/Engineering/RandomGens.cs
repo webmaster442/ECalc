@@ -121,5 +121,20 @@ namespace ECalc.Engineering
                 return buffer.ToString();
             });
         }
+
+        public static Task<string> Guids(int count)
+        {
+            return Task.Run(() =>
+            {
+                var buffer = new StringBuilder();
+                for (int i=0; i<count; i++)
+                {
+                    var g = Guid.NewGuid();
+                    buffer.AppendLine(g.ToString());
+                }
+
+                return buffer.ToString();
+            });
+        } 
     }
 }
