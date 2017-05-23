@@ -1,21 +1,12 @@
-﻿using System;
+﻿using AppLib.Common.Extensions;
+using AppLib.WPF.Extensions;
+using ECalc.Classes;
+using ECalc.IronPythonEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AppLib.WPF.Extensions;
-using AppLib.Common.Extensions;
-using ECalc.IronPythonEngine;
-using ECalc.Classes;
 
 namespace ECalc.Controls
 {
@@ -35,13 +26,17 @@ namespace ECalc.Controls
 
         public event EventHandler<string> FunctionButtonCliked;
 
-        private void RenderButton(string function, WrapPanel wp, RoutedEventHandler click)
+        private void RenderButton(string function, Panel sp, RoutedEventHandler click, bool big)
         {
             var btn = new Button();
             btn.Content = function;
             btn.ToolTip = function;
             btn.Click += click;
-            wp.Children.Add(btn);
+
+            if (big)
+                btn.Style = FindResource("BigBtn") as Style;
+
+            sp.Children.Add(btn);
         }
 
         internal void FillFunctionList(List<FunctionInfo> functions)
@@ -71,9 +66,9 @@ namespace ECalc.Controls
             var categories = (from i in _functions
                               orderby i.Category ascending
                               select i.Category).Distinct();
-            RenderButton("Most used", CategoryView, CategorySwitch);
+            RenderButton("Most used", CategoryView, CategorySwitch, false);
             foreach (var category in categories)
-                RenderButton(category, CategoryView, CategorySwitch);
+                RenderButton(category, CategoryView, CategorySwitch, false);
         }
 
         private void CategorySwitch(object sender, RoutedEventArgs e)
@@ -89,7 +84,7 @@ namespace ECalc.Controls
             ClearFunctionPanel();
 
             foreach (var item in items)
-                RenderButton(item, Functions, ActivateFunction);
+                RenderButton(item, Functions, ActivateFunction, true);
 
             UpdateStat();
         }
@@ -113,13 +108,13 @@ namespace ECalc.Controls
             }
 
             foreach (var item in mostused)
-                RenderButton(item, Functions, ActivateFunction);
+                RenderButton(item, Functions, ActivateFunction, true);
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var matches = (from i in _functions
-                           where i.Name.Contains(SearchBox.Text, StringComparison.OrdinalIgnoreCase)
+                           where i.Name.Contains(SearchBox.Text, StringComparison.InvariantCultureIgnoreCase)
                            orderby i.Name ascending
                            select i.Name).Distinct();
 
@@ -129,11 +124,12 @@ namespace ECalc.Controls
             {
                 ErrorText.Text = "No function found for the search criteria";
                 ErrorText.Visibility = Visibility.Visible;
+                UpdateStat();
                 return;
             }
 
             foreach (var match in matches)
-                RenderButton(match, Functions, ActivateFunction);
+                RenderButton(match, Functions, ActivateFunction, true);
 
             UpdateStat();
         }

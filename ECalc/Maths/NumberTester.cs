@@ -11,53 +11,65 @@ namespace ECalc.Maths
 
         public void Test(object param)
         {
-            double number = Convert.ToDouble(param);
-            double num = Math.Truncate(number);
-            IsInteger = (number - num) == 0;
-            if (IsInteger) _int = Convert.ToInt64(num);
-
-            if (!IsInteger) return;
-
-            #region Odd/Even test
-            IsEven = (_int % 2) == 0;
-            IsOdd = !IsEven;
-            #endregion
-
-            #region Prime Test
-            if (_int == 2 || _int == 3) IsPrime = true;
-            else if (IsEven) IsPrime = false;
-            else
+            try
             {
-                IsPrime = true;
-                for (long i = 3; i < Math.Sqrt(_int); i++)
+                double number = Convert.ToDouble(param);
+                double num = Math.Truncate(number);
+                IsInteger = (number - num) == 0;
+                if (IsInteger) _int = Convert.ToInt64(num);
+
+                if (!IsInteger) return;
+
+                #region Odd/Even test
+                IsEven = (_int % 2) == 0;
+                IsOdd = !IsEven;
+                #endregion
+
+                #region Prime Test
+                if (_int == 2 || _int == 3) IsPrime = true;
+                else if (IsEven) IsPrime = false;
+                else
                 {
-                    if (_int % i == 0)
+                    IsPrime = true;
+                    for (long i = 3; i < Math.Sqrt(_int); i++)
                     {
-                        IsPrime = false;
-                        break;
+                        if (_int % i == 0)
+                        {
+                            IsPrime = false;
+                            break;
+                        }
                     }
                 }
-            }
-            #endregion
+                #endregion
 
-            #region BitLength Test
-            string s = Convert.ToString(_int, 2);
-            BitLength = s.Length;
-            #endregion
+                #region BitLength Test
 
-            #region Divisor test
-            if (IsPrime || !IsInteger) Divisiors = new long[] { 1, _int };
-            else
-            {
-                var divisors = new List<long>(20);
-                for (long i = 2; i < 200; i++)
+                if (IsInteger)
                 {
-                    if (_int < i) break;
-                    if (_int % i == 0) divisors.Add(i);
+                    string s = Convert.ToString(_int, 2);
+                    BitLength = s.Length;
                 }
-                Divisiors = divisors.ToArray();
+                else BitLength = 64;
+                #endregion
+
+                #region Divisor test
+                if (IsPrime || !IsInteger) Divisiors = new long[] { 1, _int };
+                else
+                {
+                    var divisors = new List<long>(20);
+                    for (long i = 2; i < Math.Sqrt(num); i++)
+                    {
+                        if (_int < i) break;
+                        if (_int % i == 0) divisors.Add(i);
+                    }
+                    Divisiors = divisors.ToArray();
+                }
+                #endregion
             }
-            #endregion
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
         }
 
         private string RenderText()

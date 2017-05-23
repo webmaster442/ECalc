@@ -1,14 +1,14 @@
-﻿using ECalc.Classes;
+﻿using AppLib.Common.Console;
+using AppLib.WPF;
+using ECalc.Classes;
 using ECalc.Pages;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
-using System.Windows;
-using System.Windows.Controls;
-using AppLib.Common;
-using AppLib.WPF;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace ECalc
 {

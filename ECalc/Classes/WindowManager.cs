@@ -117,7 +117,7 @@ namespace ECalc.Classes
             double w, h;
             if (ws == WindowSizes.Normal)
             {
-                w = 960;
+                w = 1000;
                 h = 540;
             }
             else

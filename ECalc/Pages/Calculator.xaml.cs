@@ -5,6 +5,7 @@ using System;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ECalc.Pages
 {
@@ -115,7 +116,9 @@ namespace ECalc.Pages
 
         public void FocusInput()
         {
-            Display.FocusInput();
+            var ctrl = Keyboard.FocusedElement;
+            if (ctrl is TextBox) return;
+            else Display.FocusInput();
         }
 
         protected virtual void Dispose(bool direct)
@@ -130,6 +133,7 @@ namespace ECalc.Pages
         private void FncList_FunctionButtonCliked(object sender, string e)
         {
             Display.EquationText += string.Format(" {0}( ", e);
+            Dispatcher.Invoke(() => { InputSelector.SelectedIndex = 0; });
         }
 
         public void Dispose()
