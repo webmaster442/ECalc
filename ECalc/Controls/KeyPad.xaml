@@ -209,11 +209,14 @@
                     Grid.Column="2"
                     Click="Button_Click"/>
 
-            <Button Content="10n"
-                    Grid.Row="3"
+            <Button Grid.Row="3"
                     x:Name="Exponent"
                     Click="Exponent_Click"
-                    Grid.Column="1"/>
+                    Grid.Column="1">
+                <Image Source="/ECalc;component/Images/100px/10n.png"
+                       StretchDirection="DownOnly"
+                       Width="80"/>
+            </Button>
 
             <Button Content="."
                     x:Name="DecimalSeperator"
@@ -247,11 +250,14 @@
                     Grid.Column="4"
                     x:Name="BtnMem"
                     Click="BtnMem_Click"/>
-            <Button Content="CNST"
-                    x:Name="BtnCnst"
+            <Button x:Name="BtnCnst"
                     Grid.Row="0"
                     Grid.Column="5"
-                    Click="BtnCnst_Click"/>
+                    Click="BtnCnst_Click">
+                <Image Source="/ECalc;component/Images/100px/const.png"
+                       StretchDirection="DownOnly"
+                       Width="80"/>
+            </Button>
             <Button Content="÷"
                     Grid.Row="1"
                     Grid.Column="4"
@@ -282,6 +288,7 @@
                                    CancelClicked="MemMan_CancelClicked"
                                    InsertClicked="MemMan_InsertClicked"
                                    FromExpressionClick="MemMan_FromExpressionClick"/>
+        
         <Grid x:Name="Constants" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -304,7 +311,9 @@
                       SelectionChanged="ComboBox_SelectionChanged"/>
             <ListBox Grid.ColumnSpan="5"
                      Grid.RowSpan="3"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      x:Name="ConstList"
+                     HorizontalContentAlignment="Stretch"
                      ItemTemplate="{StaticResource ConstTemplate}"/>
             <Button Content="Insert"
                     Grid.Row="1"
