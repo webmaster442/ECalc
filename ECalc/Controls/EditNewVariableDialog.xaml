@@ -1,8 +1,9 @@
-﻿<mahdialogs:CustomDialog x:Class="ECalc.Controls.EditNewVariableDialog"
-                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-                         xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
+﻿<mahdialogs:CustomDialog 
+    x:Class="ECalc.Controls.EditNewVariableDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
     <mahdialogs:CustomDialog.Title>Variable Editor</mahdialogs:CustomDialog.Title>
     <mahdialogs:CustomDialog.Content>
         <Grid>
@@ -108,6 +109,14 @@
                 <TextBlock x:Name="TbError"
                            Visibility="Collapsed"
                            Text="Input Not formatted correctly. Please fix it before save"/>
+                <Button x:Name="BtnSave2"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="Save &amp; Insert"
+                        Click="BtnSave2_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
                 <Button x:Name="BtnSave"
                         Height="35"
                         MinWidth="80"

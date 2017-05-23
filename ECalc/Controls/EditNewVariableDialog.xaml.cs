@@ -20,6 +20,7 @@ namespace ECalc.Controls
         }
 
         public RoutedEventHandler SaveClicked;
+        public RoutedEventHandler SaveInsertClicked;
 
         public int Index
         {
@@ -250,7 +251,7 @@ namespace ECalc.Controls
             await main.HideMetroDialogAsync(this);
         }
 
-        private async void BtnSave_Click(object sender, RoutedEventArgs e)
+        private void SaveCheck()
         {
             Index = TabTypeSelector.SelectedIndex;
 
@@ -284,11 +285,20 @@ namespace ECalc.Controls
                 TbError.Visibility = Visibility.Visible;
                 return;
             }
+        }
 
-            if (SaveClicked != null)
-            {
-                SaveClicked(sender, e);
-            }
+        private async void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveCheck();
+            SaveClicked?.Invoke(sender, e);
+            var main = (MainWindow)Application.Current.MainWindow;
+            await main.HideMetroDialogAsync(this);
+        }
+
+        private async void BtnSave2_Click(object sender, RoutedEventArgs e)
+        {
+            SaveCheck();
+            SaveInsertClicked?.Invoke(sender, e);
             var main = (MainWindow)Application.Current.MainWindow;
             await main.HideMetroDialogAsync(this);
         }

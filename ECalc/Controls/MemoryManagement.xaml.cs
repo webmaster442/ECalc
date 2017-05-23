@@ -8,6 +8,7 @@ using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Serialization;
+using System;
 
 namespace ECalc.Controls
 {
@@ -30,6 +31,7 @@ namespace ECalc.Controls
             _memory = new ObservableCollection<MemoryItem>();
             _editdialog = new EditNewVariableDialog();
             _editdialog.SaveClicked += ed_SaveClicked;
+            _editdialog.SaveInsertClicked += ed_SaveInsertClicked;
             Restore();
             MemList.ItemsSource = _memory;
         }
@@ -172,10 +174,7 @@ namespace ECalc.Controls
         {
             if (MemList.SelectedIndex < 0) return;
             var content = _memory[MemList.SelectedIndex].Name;
-            if (InsertClicked != null)
-            {
-                InsertClicked(sender, new StringEventArgs(content));
-            }
+            InsertClicked?.Invoke(sender, new StringEventArgs(content));
             MemList.SelectedIndex = -1;
         }
 
@@ -251,7 +250,15 @@ namespace ECalc.Controls
                         _memory.Add(new MemoryItem(_editdialog.Set));
                         break;
                 }
+                MemList.SelectedIndex = _memory.Count - 1;
             }
+        }
+
+        private void ed_SaveInsertClicked(object sender, RoutedEventArgs e)
+        {
+            ed_SaveClicked(sender, e);
+            BtnInsert_Click(sender, e);
+
         }
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)

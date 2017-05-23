@@ -14,13 +14,13 @@ if %processor_architecture%==AMD64 goto x64
 goto x86
 
 :x86
-call "%PROGRAMFILES%\Microsoft Visual Studio 14.0\VC\bin\vcvars32.bat"
+call "%PROGRAMFILES%\Microsoft Visual Studio 15.0\VC\bin\vcvars32.bat"
 echo "32 bit system"
 goto compile
 
 :x64
 echo "64 bit system"
-call "%PROGRAMFILES(x86)%\Microsoft Visual Studio 14.0\VC\bin\vcvars32.bat"
+call "%PROGRAMFILES(x86)%\Microsoft Visual Studio 15.0\VC\bin\vcvars32.bat"
 goto compile
 
 rem ---------------------------------------------------------------------------
