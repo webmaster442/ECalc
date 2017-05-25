@@ -1,58 +1,86 @@
 ﻿using AppLib.WPF.MVVM;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Threading;
+using System.Windows;
 
 namespace ECalc.ExcelInterop
 {
     public class ExcelInteropModel: ViewModel
     {
-        private DispatcherTimer _timer;
-        private bool _excelRunning;
 
-        public DelegateCommand StartCommand { get; private set; }
-        public DelegateCommand StopCommand { get; private set; }
+        public DelegateCommand ConnectCommand { get; private set; }
+        public DelegateCommand DisconnectCommand { get; private set; }
+        public DelegateCommand TerminateCommand { get; private set; }
         public DelegateCommand GetSetCommand { get; private set; }
         public DelegateCommand GetMatrixCommand;
 
-        public bool ExcelRunning
+        private StringBuilder _statuses;
+
+        public string StatusText
         {
-            get { return _excelRunning; }
-            private set { SetValue(ref _excelRunning, value); }
+            get { return _statuses.ToString(); }
+            set
+            {
+                _statuses.Append(value);
+                NotifyPropertyChanged();
+            }
         }
 
         public ExcelInteropModel()
         {
-            _timer = new DispatcherTimer();
-            _timer.Tick += _timer_Tick;
-            _timer.Interval = TimeSpan.FromMilliseconds(1500);
-            _timer.IsEnabled = true;
-            StartCommand = DelegateCommand.ToCommand(ExecuteStart, () => ExcelRunning == false);
-            StopCommand = DelegateCommand.ToCommand(ExecuteStop, () => ExcelRunning == true);
-            GetSetCommand = DelegateCommand.ToCommand(ExecuteGetSet, () => ExcelRunning == true);
+            _statuses = new StringBuilder();
+            ConnectCommand = DelegateCommand.ToCommand(ExecuteConnect);
+            DisconnectCommand = DelegateCommand.ToCommand(ExecuteDisconnect);
+            TerminateCommand = DelegateCommand.ToCommand(ExecuteTerminate);
+            GetSetCommand = DelegateCommand.ToCommand(ExecuteGetSet);
         }
 
         private void ExecuteGetSet()
         {
-            var list = ExcelInterop.Instance.ReadSelectionToList();
+            try
+            {
+                var list = ExcelInterop.Instance.ReadSelectionToList();
+            }
+            catch (Exception ex)
+            {
+                ExcelInterop.Error(ex.Message);
+            }
         }
 
-        private void ExecuteStop()
+        private async void ExecuteConnect()
+        {
+            StatusText = "Connecting to excel";
+            bool succes = false;
+            for (int i = 0; i < 5; i++)
+            {
+                StatusText = ".";
+                succes = ExcelInterop.Instance.GetInstance();
+                if (succes)
+                {
+                    StatusText = " Connected\r\n";
+                    break;
+                }
+                await Task.Delay(10);
+            }
+            if (!succes)
+                StatusText = "Failed to connect. Please retry.";
+        }
+
+        private void ExecuteDisconnect()
         {
             ExcelInterop.Instance.Close();
+            StatusText = "Disconnected from excel";
         }
 
-        private void ExecuteStart()
+        private void ExecuteTerminate()
         {
-            ExcelInterop.Instance.GetInstance();
-        }
-
-        private void _timer_Tick(object sender, EventArgs e)
-        {
-            ExcelRunning = ExcelInterop.Instance.IsExcelRunning;
+            var msg = MessageBox.Show("Close all excel instances?", "Close Excel", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                ExcelInterop.Instance.Close(true);
+                StatusText = "Closed all Excel instances";
+            }
         }
     }
 }

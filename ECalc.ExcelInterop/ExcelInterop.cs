@@ -12,9 +12,7 @@ namespace ECalc.ExcelInterop
         private Application _excelapp;
 
 
-        private ExcelInterop()
-        {
-        }
+        private ExcelInterop() { }
 
         private static ExcelInterop _instance;
 
@@ -28,56 +26,79 @@ namespace ECalc.ExcelInterop
             }
         }
 
-        public bool IsExcelRunning
+        public static void Error(string msg)
         {
-            get
-            {
-                return Process.GetProcessesByName("excel").Length > 0;
-            }
+            System.Windows.MessageBox.Show(msg, "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
         }
 
-        public void GetInstance()
+
+        public bool GetInstance()
         {
             try
             {
-                if (IsExcelRunning)
-                    _excelapp = (Application)Marshal.GetActiveObject("Excel.Application");
-                else
-                    _excelapp = new Application();
+                _excelapp = (Application)Marshal.GetActiveObject("Excel.Application");
+                if (_excelapp != null) _excelapp.Visible = true;
+                return true;
             }
-            catch (COMException ex)
+            catch (COMException)
             {
-                ErrorDialog.Show(ex);
-                ComCleanUp();
+                try
+                {
+                    _excelapp = new Application();
+                    if (_excelapp != null) _excelapp.Visible = true;
+                    return true;
+                }
+                catch (COMException ex)
+                {
+                    ErrorDialog.Show(ex);
+                    ComCleanUp();
+                    return false;
+                }
             }
         }
 
-        public void Close()
+        public void Close(bool kill = false)
         {
             ComCleanUp();
-            var procs = Process.GetProcessesByName("excel");
-            foreach (var proc in procs)
-                proc.Kill();
+            if (kill)
+            {
+                var excels = Process.GetProcessesByName("excel");
+                foreach (var x in excels) x.Kill();
+            }
         }
 
         public List<double> ReadSelectionToList()
         {
+            if (_excelapp == null)
+            {
+                Error("Excel Not running. Try to connect to Excel again");
+                return null;
+            }
+
             Range selected = _excelapp.Selection as Range;
+
+            if (selected == null)
+            {
+                Error("No cells selected. Please select cells before continuing");
+                return null;
+            }
+
             var value = selected.Cells.Value as Array;
             var ret = new List<double>(value.GetLength(0) * value.GetLength(1));
-            for (int i=1; i<value.GetLength(0); i++)
+
+            foreach (var v in value)
             {
-                for (int j=1; j<value.GetLength(1); j++)
+                try
                 {
-                    try
-                    {
-                        var val = value.GetValue(i, j);
-                        ret.Add(Convert.ToDouble(val));
-                    }
-                    catch (Exception) { }
+                    var dbl = Convert.ToDouble(v);
+                    ret.Add(dbl);
                 }
+                catch (Exception) { }
             }
+
             ReleaseComObject(selected);
+
+
             return ret;
         }
 
