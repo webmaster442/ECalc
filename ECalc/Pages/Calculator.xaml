@@ -1,12 +1,14 @@
-﻿<UserControl x:Class="ECalc.Pages.Calculator"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d"
-      xmlns:controls="clr-namespace:ECalc.Controls"
-      d:DesignHeight="540" d:DesignWidth="960"
-      Loaded="MetroWindow_Loaded">
+﻿<UserControl
+    x:Class="ECalc.Pages.Calculator"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
+    mc:Ignorable="d"
+    xmlns:controls="clr-namespace:ECalc.Controls"
+    d:DesignHeight="540" d:DesignWidth="960"
+    Loaded="MetroWindow_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
@@ -46,5 +48,14 @@
                     FunctionButtonCliked="FncList_FunctionButtonCliked"/>
             </TabItem>
         </TabControl>
+        <applib:ImageButton
+            x:Name="ExcelInterop"
+            Click="ExcelInterop_Click"
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Content="Excel Interop" 
+            Image="/ECalc;component/Images/50px/excel.png"
+            ImageWidth="40" Margin="0,123,5,0"/>
     </Grid>
 </UserControl>

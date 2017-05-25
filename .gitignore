@@ -8,6 +8,8 @@
 /ECalc.Api/obj/
 /ECalc.Docs/obj/
 /ECalc.Docs/bin/
+/ECalc.ExcelInterop/bin/
+/ECalc.ExcelInterop/obj/
 /compile.log
 /.vs/
 /bin/

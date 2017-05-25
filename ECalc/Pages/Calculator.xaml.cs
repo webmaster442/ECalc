@@ -140,5 +140,11 @@ namespace ECalc.Pages
         {
             Dispose(true);
         }
+
+        private void ExcelInterop_Click(object sender, RoutedEventArgs e)
+        {
+            var eiw = new ECalc.ExcelInterop.ExcelInteropControl();
+            eiw.Show();
+        }
     }
 }

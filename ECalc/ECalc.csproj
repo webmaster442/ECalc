@@ -172,6 +172,9 @@
     <Compile Include="Controls\MultiLineResultDialog.xaml.cs">
       <DependentUpon>MultiLineResultDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Special\PortEdit8Bit.xaml.cs">
+      <DependentUpon>PortEdit8Bit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\UltimateFunctionList.xaml.cs">
       <DependentUpon>UltimateFunctionList.xaml</DependentUpon>
     </Compile>
@@ -255,6 +258,9 @@
     <Compile Include="Modules\Modules.cs" />
     <Compile Include="Modules\ne555Calc.xaml.cs">
       <DependentUpon>ne555Calc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\PortEditor.xaml.cs">
+      <DependentUpon>PortEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\ProgramEditor.xaml.cs">
       <DependentUpon>ProgramEditor.xaml</DependentUpon>
@@ -365,6 +371,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\Special\PortEdit8Bit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Special\PrefixInput.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -474,6 +484,10 @@
     <Page Include="Modules\ne555Calc.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Modules\PortEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\ProgramEditor.xaml">
       <SubType>Designer</SubType>
@@ -682,6 +696,7 @@
     <Resource Include="Images\100px\barcode.png" />
     <Resource Include="Images\100px\10n.png" />
     <Resource Include="Images\100px\const.png" />
+    <Resource Include="Images\50px\excel.png" />
     <Content Include="UserFunctions.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -757,6 +772,10 @@
     <ProjectReference Include="..\ECalc.Docs\ECalc.Docs.csproj">
       <Project>{f88b5dbe-b27e-4c34-8ccb-baae76b832fa}</Project>
       <Name>ECalc.Docs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ECalc.ExcelInterop\ECalc.ExcelInterop.csproj">
+      <Project>{0064cea0-5ce3-493d-a9f5-23d2eb66fd28}</Project>
+      <Name>ECalc.ExcelInterop</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

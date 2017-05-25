@@ -1,0 +1,50 @@
+﻿<Window 
+    x:Class="ECalc.ExcelInterop.ExcelInteropControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:ECalc.ExcelInterop"
+    mc:Ignorable="d"
+    ShowInTaskbar="False"
+    WindowStyle="ToolWindow"
+    Title="Excel Interop" 
+    Height="400"
+    Width="200">
+    <Window.DataContext>
+        <local:ExcelInteropModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button
+            Grid.Row="0"
+            Grid.Column="0"
+            Content="Start Excel"
+            Command="{Binding StartCommand}"/>
+        <Button
+            Grid.Row="0"
+            Grid.Column="1"
+            Content="Stop Excel"
+            Command="{Binding StopCommand}"/>
+        <StackPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="2">
+            <Button
+                Command="{Binding GetSetCommand}"
+                Content="Import selected range to set"/>
+            <Button Content="Import selected range to Matrix"/>
+        </StackPanel>
+    </Grid>
+</Window>

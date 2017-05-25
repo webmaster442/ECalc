@@ -655,4 +655,27 @@ namespace ECalc.Modules
         }
     }
 
+    public class PortEd : EcalcModule
+    {
+        public override string ModuleName
+        {
+            get { return "Port editor"; }
+        }
+
+        public override string ModuleCategory
+        {
+            get { return ModuleCategories.Digital; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new PortEditor();
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.W8Red; }
+        }
+    }
+
 }
