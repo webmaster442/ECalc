@@ -11,9 +11,12 @@
     WindowStyle="None"
     Title="Excel Interop"
     Closing="Window_Closing"
+    ResizeMode="NoResize"
     Loaded="DockedWindow_Loaded"
-    Height="400"
-    Width="200">
+    MinHeight="400"
+    Width="200"
+    MinWidth="200"
+    Height="400">
     <applib:DockedWindow.DataContext>
         <local:ExcelInteropModel x:Name="ViewModel"/>
     </applib:DockedWindow.DataContext>
@@ -31,19 +34,24 @@
             Grid.Row="0">
             <Button
                 Command="{Binding ConnectCommand}"
-                Content="Connect/Open Excel"/>
+                Content="Connect/Open Excel"
+                FontSize="15"/>
             <Button
                 Command="{Binding DisconnectCommand}"
-                Content="Disconnect from Excel"/>
+                Content="Disconnect from Excel"
+                FontSize="15"/>
             <Button
                 Command="{Binding TerminateCommand}"
-                Content="Close Excel instances"/>
+                Content="Close Excel instances"
+                FontSize="15"/>
 
             <Button
                 Command="{Binding GetSetCommand}"
-                Content="Import selected range to set"/>
+                Content="Import selected range to set"
+                FontSize="15"/>
             <Button 
-                Content="Import selected range to Matrix"/>
+                Content="Import selected range to Matrix"
+                FontSize="15"/>
         </StackPanel>
         <TextBox
             Grid.Row="1"

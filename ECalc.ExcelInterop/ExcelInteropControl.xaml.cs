@@ -20,7 +20,7 @@ namespace ECalc.ExcelInterop
 
         private void DockedWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Parent = Application.Current.MainWindow;
+            this.DockTarget = Application.Current.MainWindow;
             this.DockDirection = DockDirections.Right;
         }
     }

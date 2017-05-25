@@ -1,5 +1,6 @@
 ﻿using ECalc.Classes;
 using ECalc.Controls;
+using ECalc.ExcelInterop;
 using ECalc.IronPythonEngine;
 using System;
 using System.Text;
@@ -16,6 +17,7 @@ namespace ECalc.Pages
     {
         private Engine _engine;
         private StringBuilder _stdout;
+        private ExcelInteropControl _eip;
 
         public Calculator()
         {
@@ -32,6 +34,7 @@ namespace ECalc.Pages
             _engine.LoadUserFunctions();
             FncList.FillFunctionList(Engine.Functions);
             _stdout = new StringBuilder();
+            _eip = new ExcelInteropControl();
             Display.Focus();
         }
 
@@ -143,8 +146,7 @@ namespace ECalc.Pages
 
         private void ExcelInterop_Click(object sender, RoutedEventArgs e)
         {
-            var eiw = new ECalc.ExcelInterop.ExcelInteropControl();
-            eiw.Show();
+            _eip.Visibility = ExcelInterop.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }

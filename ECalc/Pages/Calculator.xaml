@@ -48,14 +48,24 @@
                     FunctionButtonCliked="FncList_FunctionButtonCliked"/>
             </TabItem>
         </TabControl>
-        <applib:ImageButton
-            x:Name="ExcelInterop"
-            Click="ExcelInterop_Click"
+        <ToggleButton
             Grid.Row="1"
             VerticalAlignment="Top"
             HorizontalAlignment="Right"
-            Content="Excel Interop" 
-            Image="/ECalc;component/Images/50px/excel.png"
-            ImageWidth="40" Margin="0,123,5,0"/>
+            Margin="0,123,2,0"
+            x:Name="ExcelInterop"
+            Click="ExcelInterop_Click">
+            <StackPanel
+                Orientation="Horizontal">
+                <Image 
+                    Width="32"
+                    Source="/ECalc;component/Images/50px/excel.png"/>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Margin="3,0"
+                    Text="Excel Interop"
+                    FontSize="12"/>
+            </StackPanel>
+        </ToggleButton>
     </Grid>
 </UserControl>
