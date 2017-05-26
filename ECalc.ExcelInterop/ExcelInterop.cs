@@ -106,8 +106,49 @@ namespace ECalc.ExcelInterop
 
             ReleaseComObject(selected);
 
+            return ret;
+        }
+
+        public double[,] ReadSelectionToMatrix()
+        {
+            if (_excelapp == null)
+            {
+                Error("Excel Not running. Try to connect to Excel again");
+                return null;
+            }
+
+            Range selected = _excelapp.Selection as Range;
+
+            if (selected == null)
+            {
+                Error("No cells selected. Please select cells before continuing");
+                return null;
+            }
+
+            var value = selected.Cells.Value as Array;
+
+            var ret = new double[value.GetLength(0), value.GetLength(1)];
+
+            for (int i = 1; i <= value.GetLength(0); i++)
+            {
+                for (int j = 1; j <= value.GetLength(1); j++)
+                {
+                    try
+                    {
+                        var val = value.GetValue(i, j);
+                        ret[i - 1, j - 1] = Convert.ToDouble(val);
+                    }
+                    catch (Exception)
+                    {
+                        ret[i - 1, j - 1] = 0;
+                    }
+                }
+            }
+
+            ReleaseComObject(selected);
 
             return ret;
+
         }
 
         private void ReleaseComObject(object o, bool collect = false)

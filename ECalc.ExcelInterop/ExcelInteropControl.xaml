@@ -59,6 +59,7 @@
                 FontSize="15"/>
             <applib:FaImageButton
                 Icon="fa_table"
+                Command="{Binding GetMatrixCommand}"
                 Content="Import selected&#x0a;range to Matrix"
                 FontSize="15"/>
         </StackPanel>
@@ -66,6 +67,7 @@
             IsReadOnly="True"
             Grid.Row="1"
             Text="{Binding StatusText}"
+            TextAlignment="Center"
             VerticalScrollBarVisibility="Visible"
             BorderBrush="{x:Null}"/>
     </Grid>

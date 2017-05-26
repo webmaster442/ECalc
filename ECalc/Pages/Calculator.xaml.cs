@@ -17,7 +17,7 @@ namespace ECalc.Pages
     /// <summary>
     /// Interaction logic for Calculator.xaml
     /// </summary>
-    public partial class Calculator : UserControl, IDisposable, IMessageTarget<List<double>>
+    public partial class Calculator : UserControl, IDisposable, IMessageTarget<List<double>>, IMessageTarget<double[,]>
     {
         private Engine _engine;
         private StringBuilder _stdout;
@@ -170,6 +170,14 @@ namespace ECalc.Pages
         {
             Set set = new Set(message);
             Keypad.MemMan.SetItem(set);
+            Keypad.SwitchTo(KeyPad.Views.MemMan);
+        }
+
+        public void HandleMessage(double[,] message)
+        {
+            Matrix m = new Matrix(message);
+            Keypad.MemMan.SetItem(m);
+            Keypad.SwitchTo(KeyPad.Views.MemMan);
         }
     }
 }

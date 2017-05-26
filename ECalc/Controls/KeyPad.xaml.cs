@@ -27,40 +27,37 @@ namespace ECalc.Controls
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Prefixes.Visibility = System.Windows.Visibility.Collapsed;
-            Keys.Visibility = System.Windows.Visibility.Visible;
+            Prefixes.Visibility = Visibility.Collapsed;
+            Keys.Visibility = Visibility.Visible;
         }
 
         private void Exponent_Click(object sender, RoutedEventArgs e)
         {
-            Prefixes.Visibility = System.Windows.Visibility.Visible;
-            Keys.Visibility = System.Windows.Visibility.Collapsed;
+            Prefixes.Visibility = Visibility.Visible;
+            Keys.Visibility = Visibility.Collapsed;
         }
 
         private void BtnConstCancel_Click(object sender, RoutedEventArgs e)
         {
-            Constants.Visibility = System.Windows.Visibility.Collapsed;
-            Keys.Visibility = System.Windows.Visibility.Visible;
+            Constants.Visibility = Visibility.Collapsed;
+            Keys.Visibility = Visibility.Visible;
         }
 
         private void BtnMem_Click(object sender, RoutedEventArgs e)
         {
-            MemMan.Visibility = System.Windows.Visibility.Visible;
-            Keys.Visibility = System.Windows.Visibility.Collapsed;
+            MemMan.Visibility = Visibility.Visible;
+            Keys.Visibility = Visibility.Collapsed;
         }
 
         private void BtnCnst_Click(object sender, RoutedEventArgs e)
         {
-            Constants.Visibility = System.Windows.Visibility.Visible;
-            Keys.Visibility = System.Windows.Visibility.Collapsed;
+            Constants.Visibility = Visibility.Visible;
+            Keys.Visibility = Visibility.Collapsed;
         }
 
         private void Execute_Click(object sender, RoutedEventArgs e)
         {
-            if (ExecuteClicked != null)
-            {
-                ExecuteClicked(sender, e);
-            }
+            ExecuteClicked?.Invoke(sender, e);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -69,10 +66,10 @@ namespace ECalc.Controls
             {
                 var content = ((Button)sender).Content.ToString();
 
-                if (Prefixes.Visibility == System.Windows.Visibility.Visible)
+                if (Prefixes.Visibility == Visibility.Visible)
                 {
-                    Prefixes.Visibility = System.Windows.Visibility.Collapsed;
-                    Keys.Visibility = System.Windows.Visibility.Visible;
+                    Prefixes.Visibility = Visibility.Collapsed;
+                    Keys.Visibility = Visibility.Visible;
                 }
 
                 switch (content)
@@ -90,20 +87,50 @@ namespace ECalc.Controls
             }
         }
 
+        public enum Views
+        {
+            Keys,
+            MemMan,
+            Prefixes,
+            Constants
+        }
+
+        public void SwitchTo(Views view)
+        {
+            Keys.Visibility = Visibility.Visible;
+            MemMan.Visibility = Visibility.Collapsed;
+            Constants.Visibility = Visibility.Collapsed;
+            Prefixes.Visibility = Visibility.Collapsed;
+            switch (view)
+            {
+                case Views.Constants:
+                    Constants.Visibility = Visibility.Visible;
+                    break;
+                case Views.MemMan:
+                    MemMan.Visibility = Visibility.Visible;
+                    break;
+                case Views.Prefixes:
+                    Prefixes.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    return;
+            }
+        }
+
         private void MemMan_CancelClicked(object sender, RoutedEventArgs e)
         {
-            MemMan.Visibility = System.Windows.Visibility.Collapsed;
-            Keys.Visibility = System.Windows.Visibility.Visible;
+            MemMan.Visibility = Visibility.Collapsed;
+            Keys.Visibility = Visibility.Visible;
         }
 
         private void MemMan_InsertClicked(object sender, StringEventArgs e)
         {
             if (ButtonClicked != null)
             {
-                if (MemMan.Visibility == System.Windows.Visibility.Visible)
+                if (MemMan.Visibility == Visibility.Visible)
                 {
-                    MemMan.Visibility = System.Windows.Visibility.Collapsed;
-                    Keys.Visibility = System.Windows.Visibility.Visible;
+                    MemMan.Visibility = Visibility.Collapsed;
+                    Keys.Visibility = Visibility.Visible;
                 }
                 ButtonClicked(sender, new StringEventArgs(string.Format("Var(\'{0}\')", e.Text)));
                 //ButtonClicked(sender, e);
@@ -114,10 +141,10 @@ namespace ECalc.Controls
         {
             if (FromExpressionClicked != null)
             {
-                if (MemMan.Visibility == System.Windows.Visibility.Visible)
+                if (MemMan.Visibility == Visibility.Visible)
                 {
-                    MemMan.Visibility = System.Windows.Visibility.Collapsed;
-                    Keys.Visibility = System.Windows.Visibility.Visible;
+                    MemMan.Visibility = Visibility.Collapsed;
+                    Keys.Visibility = Visibility.Visible;
                 }
                 FromExpressionClicked(sender, e);
             }
@@ -130,10 +157,10 @@ namespace ECalc.Controls
                 if (ConstList.SelectedIndex > -1)
                 {
                     var content = _constants[ConstList.SelectedIndex].Name;
-                    if (Constants.Visibility == System.Windows.Visibility.Visible)
+                    if (Constants.Visibility == Visibility.Visible)
                     {
-                        Constants.Visibility = System.Windows.Visibility.Collapsed;
-                        Keys.Visibility = System.Windows.Visibility.Visible;
+                        Constants.Visibility = Visibility.Collapsed;
+                        Keys.Visibility = Visibility.Visible;
                     }
                     ButtonClicked(sender, new StringEventArgs(content));
                 }
