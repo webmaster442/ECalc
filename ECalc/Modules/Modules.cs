@@ -672,6 +672,11 @@ namespace ECalc.Modules
             return new PortEditor();
         }
 
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/portedit.png", UriKind.Relative)); }
+        }
+
         public override int Color
         {
             get { return (int)TileColor.W8Red; }
