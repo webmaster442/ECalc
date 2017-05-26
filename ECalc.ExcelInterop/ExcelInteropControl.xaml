@@ -21,40 +21,52 @@
         <local:ExcelInteropModel x:Name="ViewModel"/>
     </applib:DockedWindow.DataContext>
     <Window.Resources>
-        <Style TargetType="Button">
+        <Style TargetType="applib:FaImageButton">
             <Setter Property="Margin" Value="3"/>
+            <Setter Property="IconSize" Value="32"/>
         </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="3*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel
             Grid.Row="0">
-            <Button
+            <Image
+                Width="48"
+                Margin="5"
+                Source="excel.png"/>
+            <applib:FaImageButton
+                Icon="fa_sign_in"
                 Command="{Binding ConnectCommand}"
                 Content="Connect/Open Excel"
                 FontSize="15"/>
-            <Button
+            <applib:FaImageButton
+                Icon="fa_sign_out"
                 Command="{Binding DisconnectCommand}"
                 Content="Disconnect from Excel"
                 FontSize="15"/>
-            <Button
+            <applib:FaImageButton
+                Icon="fa_close"
                 Command="{Binding TerminateCommand}"
                 Content="Close Excel instances"
                 FontSize="15"/>
-
-            <Button
+            <applib:FaImageButton
+                Icon="fa_list_ol"
                 Command="{Binding GetSetCommand}"
-                Content="Import selected range to set"
+                Content="Import selected&#x0a;range to set"
                 FontSize="15"/>
-            <Button 
-                Content="Import selected range to Matrix"
+            <applib:FaImageButton
+                Icon="fa_table"
+                Content="Import selected&#x0a;range to Matrix"
                 FontSize="15"/>
         </StackPanel>
         <TextBox
+            IsReadOnly="True"
             Grid.Row="1"
-            Text="{Binding StatusText}"/>
+            Text="{Binding StatusText}"
+            VerticalScrollBarVisibility="Visible"
+            BorderBrush="{x:Null}"/>
     </Grid>
 </applib:DockedWindow>

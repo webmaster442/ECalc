@@ -7,21 +7,33 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AppLib.Common.MessageHandler;
+using System.Collections.Generic;
+using AppLib.Common;
+using ECalc.IronPythonEngine.Types;
 
 namespace ECalc.Pages
 {
     /// <summary>
     /// Interaction logic for Calculator.xaml
     /// </summary>
-    public partial class Calculator : UserControl, IDisposable
+    public partial class Calculator : UserControl, IDisposable, IMessageTarget<List<double>>
     {
         private Engine _engine;
         private StringBuilder _stdout;
         private ExcelInteropControl _eip;
 
+        public UId MessageReciverID
+        {
+            get;
+            private set;
+        }
+
         public Calculator()
         {
             InitializeComponent();
+            MessageReciverID = UId.Create();
+            MessageSender.Instance.SubScribe(this);
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -131,6 +143,11 @@ namespace ECalc.Pages
                 _engine.Dispose();
                 _engine = null;
             }
+            if (_eip != null)
+            {
+                ExcelInterop.ExcelInterop.Instance.ComCleanUp();
+                _eip = null;
+            }
         }
 
         private void FncList_FunctionButtonCliked(object sender, string e)
@@ -146,7 +163,13 @@ namespace ECalc.Pages
 
         private void ExcelInterop_Click(object sender, RoutedEventArgs e)
         {
-            _eip.Visibility = ExcelInterop.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+            _eip.Visibility = ExcelInteropBtn.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public void HandleMessage(List<double> message)
+        {
+            Set set = new Set(message);
+            Keypad.MemMan.SetItem(set);
         }
     }
 }

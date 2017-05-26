@@ -3,6 +3,7 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using AppLib.Common.MessageHandler;
 
 namespace ECalc.ExcelInterop
 {
@@ -41,6 +42,8 @@ namespace ECalc.ExcelInterop
             try
             {
                 var list = ExcelInterop.Instance.ReadSelectionToList();
+                MessageSender.Instance.SendMessage(list);
+                
             }
             catch (Exception ex)
             {

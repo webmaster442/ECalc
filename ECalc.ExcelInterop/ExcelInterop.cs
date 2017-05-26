@@ -3,6 +3,7 @@ using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace ECalc.ExcelInterop
@@ -10,7 +11,7 @@ namespace ECalc.ExcelInterop
     public sealed class ExcelInterop
     {
         private Application _excelapp;
-
+        private Workbooks _workbooks;
 
         private ExcelInterop() { }
 
@@ -31,13 +32,20 @@ namespace ECalc.ExcelInterop
             System.Windows.MessageBox.Show(msg, "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
         }
 
+        private void InitExcel()
+        {
+            if (_excelapp != null) _excelapp.Visible = true;
+            _workbooks = _excelapp.Workbooks;
+            if (_workbooks.Count == 0)
+                _workbooks.Add(Missing.Value);
+        }
 
         public bool GetInstance()
         {
             try
             {
                 _excelapp = (Application)Marshal.GetActiveObject("Excel.Application");
-                if (_excelapp != null) _excelapp.Visible = true;
+                InitExcel();
                 return true;
             }
             catch (COMException)
@@ -45,7 +53,7 @@ namespace ECalc.ExcelInterop
                 try
                 {
                     _excelapp = new Application();
-                    if (_excelapp != null) _excelapp.Visible = true;
+                    InitExcel();
                     return true;
                 }
                 catch (COMException ex)
@@ -102,19 +110,20 @@ namespace ECalc.ExcelInterop
             return ret;
         }
 
-        private void ReleaseComObject(object o)
+        private void ReleaseComObject(object o, bool collect = false)
         {
             if (o != null)
             {
                 Marshal.ReleaseComObject(o);
                 o = null;
-                GC.Collect();
             }
+            if (collect) GC.Collect();
         }
 
-        private void ComCleanUp()
+        public void ComCleanUp()
         {
-            ReleaseComObject(_excelapp);
+            ReleaseComObject(_excelapp, false);
+            ReleaseComObject(_workbooks, false);
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
