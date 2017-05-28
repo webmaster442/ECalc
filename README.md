@@ -46,7 +46,7 @@ NOTE: The Codeplex repository contains only the stable source as a downloadable 
 
 ## Requirements to compile:
 
-* Visual Studio 2015 Community or newer
+* Visual Studio 2017 Community or newer
 
 ## Screenshots:
 

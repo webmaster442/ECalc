@@ -6,12 +6,16 @@
 #define MyAppPublisher "webmaster442"
 #define MyAppURL "https://github.com/webmaster442/ECalc"
 #define MyAppExeName "ECalc.exe"
+#define AdminPath "{pf}"
+#define NonAdminPath "{localappdata}"
+#include <idp.iss>
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{75746EDF-9C9E-40D6-9F1B-F6496895D0E5}
+DisableWelcomePage=no
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -19,7 +23,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
-DefaultDirName={pf}\{#MyAppName}
+DefaultDirName={code:GetDirName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 OutputDir=bin\setup
@@ -28,8 +32,11 @@ Compression=lzma
 SolidCompression=yes
 ArchitecturesInstallIn64BitMode=x64
 MinVersion=0,6.1
-LicenseFile=installer\license.rtf
+LicenseFile=LICENSE
 InfoBeforeFile=installer\readme.rtf
+PrivilegesRequired=lowest
+WizardImageFile=installer\Side.bmp
+WizardSmallImageFile=installer\SmallImage.bmp
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -64,7 +71,27 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "bin\Release\ECalc.exe"; DestDir: "{app}"; Flags: ignoreversion
-; NOTE: Don't use "Flags: ignoreversion" on any shared system files
+Source: "bin\Release\AppLib.Common.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\AppLib.Common.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\AppLib.WPF.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\AppLib.WPF.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\ECalc.Api.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\ECalc.Api.XML"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\ECalc.Docs.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\ECalc.ExcelInterop.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\ECalc.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\ICSharpCode.AvalonEdit.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\IronPython.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\IronPython.Modules.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\IronPython.SQLite.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\IronPython.Wpf.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\MahApps.Metro.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\Microsoft.Dynamic.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\Microsoft.Scripting.AspNet.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\Microsoft.Scripting.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\Microsoft.Scripting.Metadata.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\System.Windows.Interactivity.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "bin\Release\UserFunctions.py"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
@@ -75,6 +102,48 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 [Code]
+function Framework45IsNotInstalled(): Boolean;
+var
+  bSuccess: Boolean;
+  regVersion: Cardinal;
+begin
+  Result := True;
+
+  bSuccess := RegQueryDWordValue(HKLM, 'Software\Microsoft\NET Framework Setup\NDP\v4\Full', 'Release', regVersion);
+  if (True = bSuccess) and (regVersion >= 378389) then begin
+    Result := False;
+  end;
+end;
+
+procedure InstallFramework;
+var
+  StatusText: string;
+  ResultCode: Integer;
+begin
+  StatusText := WizardForm.StatusLabel.Caption;
+  WizardForm.StatusLabel.Caption := 'Installing .NET Framework 4.5.2. This might take a few minutes…';
+  WizardForm.ProgressGauge.Style := npbstMarquee;
+  try
+    if not Exec(ExpandConstant('{tmp}\NetFrameworkInstaller.exe'), '/passive /norestart', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
+    begin
+      MsgBox('.NET installation failed with code: ' + IntToStr(ResultCode) + '.', mbError, MB_OK);
+    end;
+  finally
+    WizardForm.StatusLabel.Caption := StatusText;
+    WizardForm.ProgressGauge.Style := npbstNormal;
+
+    DeleteFile(ExpandConstant('{tmp}\NetFrameworkInstaller.exe'));
+  end;
+end; 
+
+function GetDirName(Param: string): string;
+begin
+  if IsAdminLoggedOn or IsPowerUserLoggedOn then
+    Result := ExpandConstant('{#AdminPath}\{#MyAppName}')
+  else
+    Result := ExpandConstant('{#NonAdminPath}\{#MyAppName}');
+end;
+
 function GetUninstallString(): String;
 var
   sUnInstPath: String;
@@ -124,11 +193,23 @@ end;
 /////////////////////////////////////////////////////////////////////
 procedure CurStepChanged(CurStep: TSetupStep);
 begin
-  if (CurStep=ssInstall) then
-  begin
-    if (IsUpgrade()) then
+  case CurStep of 
+    ssInstall:
     begin
-      UnInstallOldVersion();
+      if IsUpgrade() then UnInstallOldVersion(); 
     end;
+    ssPostInstall:
+    begin
+      if Framework45IsNotInstalled() then InstallFramework();
+    end;
+  end;
+end;
+
+procedure InitializeWizard;
+begin
+  if Framework45IsNotInstalled() then
+  begin
+    idpAddFile('http://go.microsoft.com/fwlink/?LinkId=397707', ExpandConstant('{tmp}\NetFrameworkInstaller.exe'));
+    idpDownloadAfter(wpReady);
   end;
 end;

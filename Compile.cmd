@@ -6,40 +6,24 @@ rem Prepare
 rem ---------------------------------------------------------------------------
 if exist bin\release echo Y | rmdir /s bin\release
 if exist bin\release echo I | rmdir /s bin\release
-
-rem ---------------------------------------------------------------------------
-rem setup
-rem ---------------------------------------------------------------------------
-if %processor_architecture%==AMD64 goto x64
-goto x86
-
-:x86
-call "%PROGRAMFILES%\Microsoft Visual Studio 15.0\VC\bin\vcvars32.bat"
-echo "32 bit system"
-goto compile
-
-:x64
-echo "64 bit system"
-call "%PROGRAMFILES(x86)%\Microsoft Visual Studio 15.0\VC\bin\vcvars32.bat"
 goto compile
 
 rem ---------------------------------------------------------------------------
 rem compile
 rem ---------------------------------------------------------------------------
 :compile
-echo Running MSBuild...
-msbuild /m ECalc.sln /p:Configuration=Release /l:FileLogger,Microsoft.Build.Engine;logfile=compile.log;append=false
-if %errorlevel%==1 echo Build Failed. Check compile.log
-if %errorlevel%==0 echo Build Succesfull.
+echo Compiling ...
+set compiler="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe"
+%compiler% ECalc.sln /Build Release 
+goto clean
 
 rem ---------------------------------------------------------------------------
 rem cleanup
 rem ---------------------------------------------------------------------------
+:clean
 echo Cleaning ...
 cd bin\Release
 del *.pdb
-del *.vshost.exe.config
-del *.vshost.exe
 del MahApps.Metro.xml
 del IronPython.*.xml
 del IronPython.xml
