@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:scontrols="clr-namespace:ECalc.Controls.Special"
+             xmlns:controls="clr-namespace:ECalc.Controls"
              xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="940"
@@ -86,11 +87,13 @@
         <TextBlock Text="Resistor power rating:"
                    Grid.Row="2"
                    Grid.Column="2"/>
-        <TextBox Grid.Row="2"
-                 x:Name="TbResitorValue"
-                 Grid.Column="1"/>
-        <TextBox Grid.Row="2"
-                 Grid.Column="3"
-                 x:Name="TbResistorPower"/>
+        <controls:CopyableTextBox
+            Grid.Row="2"
+            x:Name="TbResitorValue"
+            Grid.Column="1"/>
+        <controls:CopyableTextBox
+            Grid.Row="2"
+            Grid.Column="3"
+            x:Name="TbResistorPower"/>
     </Grid>
 </UserControl>

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:local="clr-namespace:ECalc.Pages"
+             xmlns:controls="clr-namespace:ECalc.Controls"
              Loaded="UserControl_Loaded"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
@@ -23,7 +23,7 @@
         <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="5,0"/>
-            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontSize" Value="18"/>
         </Style>
         <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -69,10 +69,11 @@
             <TextBlock Text="Result:"
                        Grid.Row="3"
                        Grid.Column="0"/>
-            <TextBox Grid.Row="3"
-                     Grid.Column="1"
-                     IsReadOnly="True"
-                     x:Name="TbResult"/>
+            <controls:CopyableTextBox Grid.Row="3"
+                                      Grid.Column="1"
+                                      FontSize="18"
+                                      IsReadOnly="True"
+                                      x:Name="TbResult"/>
             <Button Content="Convert"
                     Grid.Row="4"
                     Grid.ColumnSpan="2"

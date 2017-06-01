@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Linq;
+using AppLib.Common.Extensions;
 
 namespace ECalc.Pages
 {
@@ -23,11 +24,18 @@ namespace ECalc.Pages
 
         private void BtnConvert_Click(object sender, RoutedEventArgs e)
         {
-            var q1 = (from i in _rates where i.Key == CbSource.SelectedItem.ToString() select i.Value);
-            var q2 = (from i in _rates where i.Key == CbDestination.SelectedItem.ToString() select i.Value);
-            var huf = Convert.ToDouble(TbInput.Text) * q1.FirstOrDefault();
-            var curr = huf / q2.FirstOrDefault();
-            TbResult.Text = curr.ToString();
+            try
+            {
+                var q1 = (from i in _rates where i.Key == CbSource.SelectedItem.ToString() select i.Value);
+                var q2 = (from i in _rates where i.Key == CbDestination.SelectedItem.ToString() select i.Value);
+                var huf = Convert.ToDouble(TbInput.Text) * q1.FirstOrDefault();
+                var curr = huf / q2.FirstOrDefault();
+                TbResult.Text = curr.ToString();
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ErrorDialog(ex.Message);
+            }
 
         }
 
@@ -58,8 +66,10 @@ namespace ECalc.Pages
             {
                 dloadpanel.Visibility = Visibility.Collapsed;
                 _rates.Add("HUF", 1);
-                CbSource.ItemsSource = _rates.Keys.OrderBy(i => i);
-                CbDestination.ItemsSource = _rates.Keys.OrderBy(i => i);
+                var odered = _rates.Keys.OrderBy(i => i);
+                CbSource.ItemsSource = odered;
+                CbDestination.ItemsSource = odered;
+                CbDestination.SelectedIndex = odered.FirstIndexOf(i => i == "HUF");
 
             }
         }

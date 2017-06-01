@@ -1,4 +1,5 @@
-﻿using ECalc.Classes;
+﻿using AppLib.Common.MessageHandler;
+using ECalc.Classes;
 using ECalc.IronPythonEngine;
 using ECalc.IronPythonEngine.Types;
 using ECalc.Maths;
@@ -181,22 +182,22 @@ namespace ECalc.Controls
 
         private void TbEditor_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (e.Key == System.Windows.Input.Key.Enter)
+            if (e.Key == Key.Enter)
             {
-                if (ExecuteRequested != null) ExecuteRequested(this, new RoutedEventArgs());
+                ExecuteRequested?.Invoke(this, new RoutedEventArgs());
                 e.Handled = true;
             }
         }
 
         private void BtnClipboardCopy_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(ResultText);
+            MessageSender.Instance.SendMessage(new CopyPasteData(ResultText));
         }
 
         private void BtnClipboardPaste_Click(object sender, RoutedEventArgs e)
         {
-            if (Clipboard.ContainsText()) EquationText += Clipboard.GetText();
-            else MainWindow.ErrorDialog("Clipboard doesn't contain valid text to be inserted");
+            var dialog = new CopyPasteDialog();
+            MainWindow.ShowDialog(dialog);
         }
 
         private void BtnAnss_Click(object sender, RoutedEventArgs e)

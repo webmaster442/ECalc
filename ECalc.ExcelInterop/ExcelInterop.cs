@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using MessageBox = System.Windows.MessageBox;
+using MessageBoxButton = System.Windows.MessageBoxButton;
+using MessageBoxImage = System.Windows.MessageBoxImage;
+
 
 namespace ECalc.ExcelInterop
 {
@@ -94,6 +98,8 @@ namespace ECalc.ExcelInterop
             var value = selected.Cells.Value as Array;
             var ret = new List<double>(value.GetLength(0) * value.GetLength(1));
 
+            int errors = 0;
+
             foreach (var v in value)
             {
                 try
@@ -101,10 +107,18 @@ namespace ECalc.ExcelInterop
                     var dbl = Convert.ToDouble(v);
                     ret.Add(dbl);
                 }
-                catch (Exception) { }
+                catch (Exception)
+                {
+                    errors++;
+                }
             }
 
             ReleaseComObject(selected);
+            if (errors > 0)
+            {
+                var msg = string.Format("Failed to parse {0} cell values", errors);
+                MessageBox.Show(msg, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
             return ret;
         }
@@ -129,6 +143,8 @@ namespace ECalc.ExcelInterop
 
             var ret = new double[value.GetLength(0), value.GetLength(1)];
 
+            int errors = 0;
+
             for (int i = 1; i <= value.GetLength(0); i++)
             {
                 for (int j = 1; j <= value.GetLength(1); j++)
@@ -141,11 +157,18 @@ namespace ECalc.ExcelInterop
                     catch (Exception)
                     {
                         ret[i - 1, j - 1] = 0;
+                        errors++;
                     }
                 }
             }
 
             ReleaseComObject(selected);
+
+            if (errors > 0)
+            {
+                var msg = string.Format("Failed to parse {0} cell values", errors);
+                MessageBox.Show(msg, "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
             return ret;
 

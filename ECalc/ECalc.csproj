@@ -166,9 +166,15 @@
     </ApplicationDefinition>
     <Compile Include="Classes\ConstantDB.cs" />
     <Compile Include="Classes\ConstantList2.cs" />
+    <Compile Include="Classes\CopyPasteData.cs" />
+    <Compile Include="Classes\CopyPasteHandler.cs" />
     <Compile Include="Classes\FunctionPlotSource.cs" />
     <Compile Include="Classes\JumpList.cs" />
     <Compile Include="Classes\Updater.cs" />
+    <Compile Include="Controls\CopyableTextBox.cs" />
+    <Compile Include="Controls\CopyPasteDialog.xaml.cs">
+      <DependentUpon>CopyPasteDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MultiLineResultDialog.xaml.cs">
       <DependentUpon>MultiLineResultDialog.xaml</DependentUpon>
     </Compile>
@@ -315,6 +321,10 @@
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\CopyPasteDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Display.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

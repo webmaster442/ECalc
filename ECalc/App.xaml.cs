@@ -29,6 +29,12 @@ namespace ECalc
             private set;
         }
 
+        public static CopyPasteHandler AppClipboard
+        {
+            get;
+            private set;
+        }
+
         public static void NextTheme()
         {
             int next = _index + 1;
@@ -79,9 +85,12 @@ namespace ECalc
                 Modules.LoadFromNameSpace("ECalc.Modules");
                 var mw = new MainWindow();
 
+
+
                 var left = Settings.Default.WindowLeft;
                 var top = Settings.Default.WindowTop;
 
+                AppClipboard = new CopyPasteHandler();
                 MainWindow = mw;
 
                 if (left > 0) MainWindow.Left = left;

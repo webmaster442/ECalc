@@ -47,6 +47,7 @@
             x:Name="SearchBox"
             TextChanged="SearchBox_TextChanged"
             mah:TextBoxHelper.Watermark="Type here to search..."
+            mah:TextBoxHelper.ClearTextButton="True"
             Grid.Row="0"
             Margin="4"/>
         <TextBlock

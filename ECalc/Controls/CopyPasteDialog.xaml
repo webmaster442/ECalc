@@ -1,0 +1,49 @@
+﻿<mahdialogs:CustomDialog 
+    x:Class="ECalc.Controls.CopyPasteDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mahdialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro">
+    <mahdialogs:CustomDialog.Title>Paste data</mahdialogs:CustomDialog.Title>
+    <mahdialogs:CustomDialog.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <ListBox
+                x:Name="ListPastes"
+                Grid.Row="0"
+                MinHeight="150"
+                ItemTemplate="{StaticResource CopyPasteTemplate}"/>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Height="85">
+                <Button x:Name="PART_Paste"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="Paste"
+                        Click="PART_Paste_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
+                <Button x:Name="PART_Delete"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="Delete data"
+                        Click="PART_Delete_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
+                <Button x:Name="PART_Cancel"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="Cancel"
+                        Click="PART_Cancel_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
+            </StackPanel>
+        </Grid>
+    </mahdialogs:CustomDialog.Content>
+</mahdialogs:CustomDialog>

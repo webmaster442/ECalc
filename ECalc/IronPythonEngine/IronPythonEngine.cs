@@ -124,9 +124,18 @@ namespace ECalc.IronPythonEngine
                             return true;
                         }
                     }
-                    var num = Convert.ToDouble(c).ToString(CultureInfo.InvariantCulture);
-                    parsed = num;
-                    return true;
+                    var num = 0.0d;
+                    if (double.TryParse(c, out num))
+                    {
+
+                        parsed = num.ToString(CultureInfo.InvariantCulture);
+                        return true;
+                    }
+                    else
+                    {
+                        parsed = c;
+                        return false;
+                    }
                 }
                 catch (Exception)
                 {
@@ -134,6 +143,11 @@ namespace ECalc.IronPythonEngine
                     return false;
                 }
             }
+        }
+
+        private bool ShouldSkip(string line)
+        {
+            return string.IsNullOrEmpty(line) || line.Trim().StartsWith("#");
         }
 
         /// <summary>
@@ -147,7 +161,7 @@ namespace ECalc.IronPythonEngine
             var processed = new StringBuilder();
             foreach (var line in lines)
             {
-                if (string.IsNullOrEmpty(line)) continue;
+                if (ShouldSkip(line)) continue;
                 var parts = Regex.Split(line, @"(\+)|(\-)|(\*)|(\()|(\))|(\×)|(\×)|(\÷)|(\%)|(\,)|(\|AND\|)|(\|OR\|)|(\|NOT\|)|(\|XOR\|)|(\|SHL\|)|(\|SHR\|)");
                 string temp;
                 for (int i = 0; i < parts.Length; i++)

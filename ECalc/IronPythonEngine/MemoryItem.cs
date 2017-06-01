@@ -106,6 +106,8 @@ namespace ECalc.Classes
 
         public override int GetHashCode()
         {
+            if (Value == null)
+                return Name.GetHashCode();
             return Name.GetHashCode() ^ Value.GetHashCode();
         }
 
