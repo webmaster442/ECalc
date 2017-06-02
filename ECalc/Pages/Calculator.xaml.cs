@@ -17,7 +17,7 @@ namespace ECalc.Pages
     /// <summary>
     /// Interaction logic for Calculator.xaml
     /// </summary>
-    public partial class Calculator : UserControl, IDisposable, IMessageTarget<List<double>>, IMessageTarget<double[,]>
+    public partial class Calculator : UserControl, IDisposable, IMessageClient<List<double>>, IMessageClient<double[,]>
     {
         private Engine _engine;
         private StringBuilder _stdout;
@@ -33,7 +33,7 @@ namespace ECalc.Pages
         {
             InitializeComponent();
             MessageReciverID = UId.Create();
-            MessageSender.Instance.SubScribe(this);
+            Messager.Instance.SubScribe(this);
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -89,10 +89,9 @@ namespace ECalc.Pages
         private void KeyPad_ButtonClicked(object sender, StringEventArgs e)
         {
             if (Engine.IsOperator(e.Text))
-            {
-                Display.EquationText += string.Format(" {0} ", e.Text);
-            }
-            else Display.EquationText += e.Text;
+                Display.InsertText(string.Format(" {0} ", e.Text));
+            else
+                Display.InsertText(e.Text);
         }
 
         private async void Keypad_FromExpressionClicked(object sender, RoutedEventArgs e)
@@ -152,7 +151,7 @@ namespace ECalc.Pages
 
         private void FncList_FunctionButtonCliked(object sender, string e)
         {
-            Display.EquationText += string.Format(" {0}( ", e);
+            Display.InsertText(string.Format(" {0}( ", e));
             Dispatcher.Invoke(() => { InputSelector.SelectedIndex = 0; });
         }
 

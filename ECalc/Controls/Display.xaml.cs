@@ -8,19 +8,21 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using AppLib.Common;
 
 namespace ECalc.Controls
 {
     /// <summary>
     /// Interaction logic for Display.xaml
     /// </summary>
-    internal partial class Display : UserControl
+    internal partial class Display : UserControl, IMessageClient<CopyPasteData>
     {
         private ObservableCollection<string> _history;
 
         public Display()
         {
             InitializeComponent();
+            Messager.Instance.SubScribe(this);
             _history = new ObservableCollection<string>();
             HistoryContext.ItemsSource = _history;
         }
@@ -35,20 +37,14 @@ namespace ECalc.Controls
         /// </summary>
         public event StringEventHandler ModeChanged;
 
-        public static readonly DependencyProperty EquationTextProperty = DependencyProperty.Register("EquationText",
-                                                                                                      typeof(string),
-                                                                                                      typeof(Display),
-                                                                                                      new PropertyMetadata(""));
+        public static readonly DependencyProperty EquationTextProperty = 
+            DependencyProperty.Register("EquationText", typeof(string), typeof(Display), new PropertyMetadata(""));
 
-        public static readonly DependencyProperty ResultTextProperty = DependencyProperty.Register("ResultText",
-                                                                                                   typeof(string),
-                                                                                                   typeof(Display),
-                                                                                                   new PropertyMetadata("0"));
+        public static readonly DependencyProperty ResultTextProperty = 
+            DependencyProperty.Register("ResultText", typeof(string), typeof(Display), new PropertyMetadata("0"));
 
-        public static readonly DependencyProperty IsCalcualtingProperty = DependencyProperty.Register("IsCalculating",
-                                                                                                      typeof(bool),
-                                                                                                      typeof(Display),
-                                                                                                      new PropertyMetadata(false));
+        public static readonly DependencyProperty IsCalcualtingProperty =
+            DependencyProperty.Register("IsCalculating", typeof(bool), typeof(Display), new PropertyMetadata(false));
 
         public bool IsCalculating
         {
@@ -117,6 +113,11 @@ namespace ECalc.Controls
             }
         }
 
+        public UId MessageReciverID
+        {
+            get { return UId.Create(); }
+        }
+
         /// <summary>
         /// Add current Equation text to the history
         /// </summary>
@@ -140,8 +141,8 @@ namespace ECalc.Controls
 
         private void BtnReset_Click(object sender, RoutedEventArgs e)
         {
-            this.EquationText = "";
-            this.ResultText = "0";
+            EquationText = "";
+            ResultText = "0";
         }
 
         private void RadioButton_Click(object sender, RoutedEventArgs e)
@@ -191,7 +192,21 @@ namespace ECalc.Controls
 
         private void BtnClipboardCopy_Click(object sender, RoutedEventArgs e)
         {
-            MessageSender.Instance.SendMessage(new CopyPasteData(ResultText));
+            Messager.Instance.SendMessage(typeof(CopyPasteHandler), new CopyPasteData(ResultText));
+        }
+
+        public void InsertText(string s)
+        {
+            var index = TbEditor.CaretIndex;
+            if (index == 0)
+                EquationText += s;
+            else
+                EquationText = EquationText.Insert(index, s);
+        }
+
+        public void HandleMessage(CopyPasteData message)
+        {
+            InsertText(message.Data);
         }
 
         private void BtnClipboardPaste_Click(object sender, RoutedEventArgs e)
@@ -202,7 +217,7 @@ namespace ECalc.Controls
 
         private void BtnAnss_Click(object sender, RoutedEventArgs e)
         {
-            EquationText += "Var('ans')";
+            InsertText("Var('ans')");
         }
 
         private void BtnPlot_Click(object sender, RoutedEventArgs e)

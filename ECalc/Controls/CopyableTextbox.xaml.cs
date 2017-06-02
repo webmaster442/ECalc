@@ -1,5 +1,6 @@
 ﻿using AppLib.Common.MessageHandler;
 using ECalc.Classes;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -59,7 +60,8 @@ namespace ECalc.Controls
 
         private void BtnCopy_Click(object sender, RoutedEventArgs e)
         {
-            MessageSender.Instance.SendMessage(Value);
+            var us = new CultureInfo("en-US");
+            Messager.Instance.SendMessage(new CopyPasteData(Value.ToString(us)));
         }
     }
 }

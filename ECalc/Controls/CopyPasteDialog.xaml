@@ -35,6 +35,14 @@
                         Click="PART_Delete_Click"
                         Margin="5 0 0 0"
                         Cursor="Arrow"/>
+                <Button x:Name="PART_DeleteALL"
+                        Height="35"
+                        MinWidth="80"
+                        Style="{DynamicResource AccentedDialogSquareButton}"
+                        Content="Delete all"
+                        Click="PART_DeleteALL_Click"
+                        Margin="5 0 0 0"
+                        Cursor="Arrow"/>
                 <Button x:Name="PART_Cancel"
                         Height="35"
                         MinWidth="80"

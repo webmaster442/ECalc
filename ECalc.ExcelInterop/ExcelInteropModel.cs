@@ -45,7 +45,7 @@ namespace ECalc.ExcelInterop
             {
                 StatusText = "Starting matrix import...\r\n";
                 var m = ExcelInterop.Instance.ReadSelectionToMatrix();
-                MessageSender.Instance.SendMessage(m);
+                Messager.Instance.SendMessage(m);
                 StatusText = string.Format("Imported {0}x{1} matrix\r\n", m.GetLength(0), m.GetLength(1));
 
             }
@@ -61,7 +61,7 @@ namespace ECalc.ExcelInterop
             {
                 StatusText = "Starting set import...\r\n";
                 var list = ExcelInterop.Instance.ReadSelectionToList();
-                MessageSender.Instance.SendMessage(list);
+                Messager.Instance.SendMessage(list);
                 StatusText = string.Format("Imported {0} items\r\n", list.Count);
                 
             }

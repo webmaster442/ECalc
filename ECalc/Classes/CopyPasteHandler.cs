@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 
 namespace ECalc.Classes
 {
-    public class CopyPasteHandler: ObservableCollection<CopyPasteData>, IMessageTarget<CopyPasteData>
+    public class CopyPasteHandler: ObservableCollection<CopyPasteData>, IMessageClient<CopyPasteData>
     {
         public CopyPasteHandler(): base()
         {
-            MessageSender.Instance.SubScribe(this);
+            Messager.Instance.SubScribe(this);
             MessageReciverID = UId.Create();
         }
 
