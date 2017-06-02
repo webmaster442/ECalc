@@ -56,8 +56,6 @@
             <TextBlock x:Name="TblOutput" Text="Output:" FontWeight="Bold" FontSize="14" Margin="10,20,0,5"/>
             <controls:CopyableTextBox
                 x:Name="TbOutput" 
-                IsReadOnly="True" 
-                FontSize="18" 
                 Margin="20,0"/>
         </StackPanel>
     </Grid>

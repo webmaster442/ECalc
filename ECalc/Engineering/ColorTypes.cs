@@ -21,11 +21,4 @@
         public double Yellow { get; set; }
         public double Black { get; set; }
     }
-
-    internal class YUV
-    {
-        public double Y { get; set; }
-        public double U { get; set; }
-        public double V { get; set; }
-    }
 }

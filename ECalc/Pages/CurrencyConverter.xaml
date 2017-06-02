@@ -71,8 +71,6 @@
                        Grid.Column="0"/>
             <controls:CopyableTextBox Grid.Row="3"
                                       Grid.Column="1"
-                                      FontSize="18"
-                                      IsReadOnly="True"
                                       x:Name="TbResult"/>
             <Button Content="Convert"
                     Grid.Row="4"

@@ -257,37 +257,5 @@ namespace ECalc.Engineering
                 Luminance = l
             };
         }
-
-        public static Color FromYUV(double y, double u, double v)
-        {
-
-            byte Red = Convert.ToByte((y + 1.139837398373983740 * v) * 255);
-            byte Green = Convert.ToByte((y - 0.3946517043589703515 * u - 0.5805986066674976801 * v) * 255);
-            byte Blue = Convert.ToByte((y + 2.032110091743119266 * u) * 255);
-
-            return Color.FromRgb(Red, Green, Blue);
-        }
-
-        public static Color FromYUV(YUV yuv)
-        {
-            return FromYUV(yuv.Y, yuv.U, yuv.V);
-        }
-
-        public static YUV ToYUV(Color c)
-        {
-            var yuv = new YUV();
-
-            // normalizes red/green/blue values
-            double nRed = (double)c.R / 255.0;
-            double nGreen = (double)c.G / 255.0;
-            double nBlue = (double)c.B / 255.0;
-
-            // converts
-            yuv.Y = 0.299 * nRed + 0.587 * nGreen + 0.114 * nBlue;
-            yuv.U = -0.1471376975169300226 * nRed - 0.2888623024830699774 * nGreen + 0.436 * nBlue;
-            yuv.V = 0.615 * nRed - 0.5149857346647646220 * nGreen - 0.1000142653352353780 * nBlue;
-
-            return yuv;
-        }
     }
 }

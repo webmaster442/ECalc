@@ -28,37 +28,42 @@ namespace ECalc.Modules
                     case 0:
                         if (EsLEDNumber.Value * EsForwardVoltage.Value > PiInputVolt.Value)
                         {
-                            TbResistorPower.Text = "0";
-                            TbResitorValue.Text = "Input voltage is not enough to drive the LEDs";
+                            TbResistorPower.Value = 0;
+                            TbResitorValue.Value = double.NaN;
+                            TbResitorValue.ApendText = "Input voltage is not enough to drive the LEDs";
                         }
                         else
                         {
                             resistor = (PiInputVolt.Value - (EsLEDNumber.Value * EsForwardVoltage.Value)) / PiForwardCurrent.Value;
                             power = PiForwardCurrent.Value * PiForwardCurrent.Value * resistor;
-                            TbResistorPower.Text = power.ToString();
-                            TbResitorValue.Text = resistor.ToString();
+                            TbResistorPower.Value = power;
+                            TbResitorValue.Value = resistor;
+                            TbResitorValue.ApendText = "Ω";
+                            TbResistorPower.ApendText = "W";
                         }
                         break;
                     case 1:
                         if (EsForwardVoltage.Value > PiInputVolt.Value)
                         {
-                            TbResistorPower.Text = "0";
-                            TbResitorValue.Text = "Input voltage is not enough to drive the LEDs";
+                            TbResistorPower.Value = 0;
+                            TbResitorValue.ApendText = "Input voltage is not enough to drive the LEDs";
                         }
                         else
                         {
                             resistor = PiInputVolt.Value / (EsLEDNumber.Value * PiForwardCurrent.Value);
                             power = PiForwardCurrent.Value * PiForwardCurrent.Value * resistor;
-                            TbResistorPower.Text = power.ToString();
-                            TbResitorValue.Text = resistor.ToString();
+                            TbResistorPower.Value = power;
+                            TbResitorValue.Value = resistor;
+                            TbResitorValue.ApendText = "Ω";
+                            TbResistorPower.ApendText = "W";
                         }
                         break;
                 }
             }
             catch (Exception)
             {
-                TbResistorPower.Text = "0";
-                TbResitorValue.Text = "Error";
+                TbResistorPower.Value = double.NaN;
+                TbResitorValue.Value = double.NaN;
             }
         }
 

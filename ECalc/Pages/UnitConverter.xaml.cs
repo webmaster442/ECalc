@@ -125,19 +125,17 @@ namespace ECalc.Pages
             if (!res) outval = 0;
             inval *= ParsePrefix();
             if (_source != _dest)
-            {
-                outval = double.NaN;
-                TbOutput.Text = outval.ToString();
+            { 
+                TbOutput.Value = double.NaN;
                 return;
             }
             if (_source == null || _dest == null)
             {
-                outval = double.NaN;
-                TbOutput.Text = outval.ToString();
+                TbOutput.Value = double.NaN;
                 return;
             }
             outval =  _conv.Convert((TreeSource.SelectedItem as TreeViewItem).Header.ToString(), (TreeDestination.SelectedItem as TreeViewItem).Header.ToString(), _dest, inval);
-            TbOutput.Text = outval.ToString();
+            TbOutput.Value = outval;
         }
 
         private void TbInput_TextChanged(object sender, TextChangedEventArgs e)

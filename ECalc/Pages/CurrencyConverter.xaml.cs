@@ -30,7 +30,7 @@ namespace ECalc.Pages
                 var q2 = (from i in _rates where i.Key == CbDestination.SelectedItem.ToString() select i.Value);
                 var huf = Convert.ToDouble(TbInput.Text) * q1.FirstOrDefault();
                 var curr = huf / q2.FirstOrDefault();
-                TbResult.Text = curr.ToString();
+                TbResult.Value = curr;
             }
             catch (Exception ex)
             {

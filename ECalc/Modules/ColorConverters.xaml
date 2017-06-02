@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ECalc.Modules"
              xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d"
              Loaded="UserControl_Loaded"
@@ -52,7 +51,7 @@
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="0"
-                  Grid.Column="1"
+                  Grid.Column="2"
                   Header="CMYK">
             <StackPanel>
                 <TextBlock Text="Cyan:"/>
@@ -79,30 +78,6 @@
                                          Maximum="1"
                                          Value="0"
                                          DefaultValue="0"/>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Grid.Row="0"
-                  Grid.Column="2"
-                  Header="YUV">
-            <StackPanel>
-                <TextBlock Text="Y:"/>
-                <applib:EditableSlider x:Name="YUV_Y"
-                                         Minimum="0"
-                                         Maximum="1"
-                                         Value="0"
-                                         DefaultValue="0"/>
-                <TextBlock Text="U:"/>
-                <applib:EditableSlider x:Name="YUV_U"
-                                         Minimum="-0.436"
-                                         Maximum="0.436"
-                                         Value="-0.436"
-                                         DefaultValue="-0.436"/>
-                <TextBlock Text="V:"/>
-                <applib:EditableSlider x:Name="YUV_V"
-                                         Minimum="-0.615"
-                                         Maximum="0.615"
-                                         Value="-0.615"
-                                         DefaultValue="-0.615"/>
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Row="1"
@@ -153,21 +128,17 @@
                                          DefaultValue="0"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox Grid.Row="1"
+        <GroupBox Grid.Row="0"
                   Grid.Column="1"
+                  Grid.RowSpan="2"
                   Header="Preview">
             <Grid>
-                <Rectangle Width="200"
-                           Height="200"
-                           x:Name="RectPreview"
-                           Fill="Black"/>
-                <TextBox Style="{StaticResource BorderlessTextBox}"
-                         Foreground="White"
-                         Text="#000000"
-                         x:Name="HexPreview"
-                         VerticalAlignment="Center"
-                         HorizontalAlignment="Center"
-                         FontSize="28"/>
+                <applib:ColorPicker
+                    x:Name="Picker"
+                    Color="Black"
+                    Width="280"
+                    Height="280"
+                    ColorSelected="ConvertColors"/>
             </Grid>
         </GroupBox>
     </Grid>

@@ -24,19 +24,24 @@ namespace ECalc.Modules
                 var vout = 1.25 * (1 + (VregR2.Value / VregR1.Value)) + (50e-6 * VregR2.Value);
                 if (vout > VregVin.Value) vout = VregVin.Value;
                 var power = VregVin.Value - vout;
-                TbOutput.Text = string.Format("Vout = {0:0.0000} V, Dissipated power: {1:0.0000} W/A", vout, power);
+                TbOutput1.Value = vout;
+                TbOutput1.ApendText = "V";
+                TbOutput2.Value = power;
             }
             else
             {
                 var iout = 1.25 / IregR1.Value;
                 var p = (iout * iout) * IregR1.Value;
-                TbOutput.Text = string.Format("Iout = {0:0.0000} A, Power of R1 = {1:0.0000} W", iout, p);
+                TbOutput1.Value = iout;
+                TbOutput1.ApendText = "A";
+                TbOutput2.Value = p;
             }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             _loaded = true;
+            ValueChanged(null, null);
         }
     }
 }

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:scontrols="clr-namespace:ECalc.Controls.Special"
-             xmlns:local="clr-namespace:ECalc.Modules"
+             xmlns:controls="clr-namespace:ECalc.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="540" d:DesignWidth="960">
     <UserControl.Resources>
@@ -141,8 +141,34 @@
         </TabControl>
         <GroupBox Header="Results"
                   Grid.Row="1">
-            <TextBox x:Name="TbOutput"
-                     FontSize="19"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    TextWrapping="Wrap"
+                    Width="60"
+                    Margin="5,0"
+                    VerticalAlignment="Center"
+                    Text="Output voltage"/>
+                <controls:CopyableTextBox
+                    Grid.Column="1"
+                    ApendText="V"
+                    x:Name="Voltage"/>
+                <TextBlock
+                    Grid.Column="2"
+                    Margin="5,0"
+                    VerticalAlignment="Center"
+                    Text="Gain"/>
+                <controls:CopyableTextBox
+                    Grid.Column="3"
+                    x:Name="Gain"/>
+            </Grid>
+
         </GroupBox>
     </Grid>
 </UserControl>

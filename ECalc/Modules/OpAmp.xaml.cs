@@ -39,16 +39,19 @@ namespace ECalc.Modules
                 case 0:
                     a = 1 + (NonInvertR2.Value / NonInvertR1.Value);
                     vout = a * NonInvertVin.Value;
-                    TbOutput.Text = string.Format("Vout = {0} V, Gain = {1}", vout, a);
+                    Voltage.Value = vout;
+                    Gain.Value = a;
                     break;
                 case 1:
                     a = -1 * (InvertRf.Value / InvertRin.Value);
                     vout = a * InvertVin.Value;
-                    TbOutput.Text = string.Format("Vout = {0} V, Gain = {1}", vout, a);
+                    Voltage.Value = vout;
+                    Gain.Value = a;
                     break;
                 case 2:
                     vout = UgainVin.Value;
-                    TbOutput.Text = string.Format("Vout = {0} V, Gain = {1}", vout, 1);
+                    Voltage.Value = vout;
+                    Gain.Value = 1;
                     break;
                 case 3:
                     double v2 = (DifRf.Value + DifR1.Value) * DifRg.Value;
@@ -56,7 +59,8 @@ namespace ECalc.Modules
                     v2 *= DifV2.Value;
                     double v1 = (DifRf.Value / DifR1.Value) * DifV1.Value;
                     vout = v2 - v1;
-                    TbOutput.Text = string.Format("Vout = {0} V", vout);
+                    Voltage.Value = vout;
+                    Gain.Value = a;
                     break;
             }
         }

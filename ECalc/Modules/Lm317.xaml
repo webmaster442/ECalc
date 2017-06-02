@@ -5,28 +5,33 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="clr-namespace:ECalc.Controls"
              xmlns:scontrols="clr-namespace:ECalc.Controls.Special"
+             xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="900"
              Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TabControl x:Name="TabMode">
             <TabItem Header="Constant Voltage">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
                     <StackPanel>
-                        <scontrols:PrefixInput UnitText="V"
-                                               Value="12"
-                                               LabelText="Vin"
-                                               x:Name="VregVin"
-                                               ValueChanged="ValueChanged"/>
+                        <GroupBox Header="Vin">
+                            <applib:EditableSlider
+                                Minimum="1.25"
+                                Maximum="37"
+                                Value="12"
+                                x:Name="VregVin"
+                                ValueChanged="ValueChanged"/>
+                        </GroupBox>
+                        
                         <scontrols:PrefixInput UnitText="Ω"
                                                Value="1000"
                                                LabelText="R1"
@@ -67,9 +72,33 @@
         </TabControl>
         <GroupBox Header="Results"
                   Grid.Row="1">
-            <controls:CopyableTextBox
-                x:Name="TbOutput"
-                FontSize="18"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="5,0"
+                    VerticalAlignment="Center"
+                    Text="Vout"/>
+                <controls:CopyableTextBox
+                    Grid.Column="1" 
+                    x:Name="TbOutput1"/>
+                <TextBlock
+                    Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Text="Dissipated power"
+                    TextWrapping="Wrap"
+                    Width="60"
+                    Margin="5,0"/>
+                <controls:CopyableTextBox
+                    Grid.Column="3"
+                    ApendText="W"
+                    x:Name="TbOutput2"/>
+            </Grid>
         </GroupBox>
     </Grid>
 </UserControl>

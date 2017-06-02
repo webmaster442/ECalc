@@ -1,10 +1,10 @@
-﻿using ECalc.Engineering;
+﻿using AppLib.WPF.Controls;
+using AppLib.WPF.Extensions;
+using ECalc.Engineering;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using AppLib.WPF.Controls;
-using AppLib.WPF.Extensions;
 
 namespace ECalc.Modules
 {
@@ -20,18 +20,22 @@ namespace ECalc.Modules
 
         private enum ColorType
         {
-            RGB, CMYK, HSL, HSB, YUV
+            RGB, CMYK, HSL, HSB, Picker
         }
 
         private ColorType IdentifySender(object o)
         {
-            var slider = (EditableSlider)o;
-            if (slider.Name.StartsWith("RGB")) return ColorType.RGB;
-            else if (slider.Name.StartsWith("HSL")) return ColorType.HSL;
-            else if (slider.Name.StartsWith("HSB")) return ColorType.HSB;
-            else if (slider.Name.StartsWith("YUV")) return ColorType.YUV;
-            else if (slider.Name.StartsWith("CMYK")) return ColorType.CMYK;
-            else throw new ArgumentException("Invalid name");
+            var slider = o as EditableSlider;
+            if (slider != null)
+            {
+                if (slider.Name.StartsWith("RGB")) return ColorType.RGB;
+                else if (slider.Name.StartsWith("HSL")) return ColorType.HSL;
+                else if (slider.Name.StartsWith("HSB")) return ColorType.HSB;
+                else if (slider.Name.StartsWith("CMYK")) return ColorType.CMYK;
+                else throw new ArgumentException("Invalid name");
+            }
+            return
+                ColorType.Picker;
         }
 
         private void ConvertColors(object sender, RoutedEventArgs e)
@@ -54,12 +58,11 @@ namespace ECalc.Modules
                 case ColorType.HSB:
                     csource = ColorSpaceConversions.FromHSB(HSB_Hue.Value, HSB_Saturation.Value, HSB_Brightness.Value);
                     break;
-                case ColorType.YUV:
-                    csource = ColorSpaceConversions.FromYUV(YUV_Y.Value, YUV_U.Value, YUV_V.Value);
+                case ColorType.Picker:
+                    csource = Picker.Color;
                     break;
             }
 
-            var yuv = ColorSpaceConversions.ToYUV(csource);
             var hsl = ColorSpaceConversions.ToHSL(csource);
             var hsb = ColorSpaceConversions.ToHSB(csource);
             var cmyk = ColorSpaceConversions.ToCMYK(csource);
@@ -93,17 +96,10 @@ namespace ECalc.Modules
                 HSL_Lumiance.SetValue(hsl.Luminance);
             }
 
-            if (source != ColorType.YUV)
+            if (source != ColorType.Picker)
             {
-                YUV_Y.SetValue(yuv.Y);
-                YUV_U.SetValue(yuv.U);
-                YUV_V.SetValue(yuv.V);
+                Picker.Color = csource;
             }
-
-            RectPreview.Fill = new SolidColorBrush(csource);
-            var inv = Color.FromRgb((byte)(255 - csource.R), (byte)(255 - csource.G), (byte)(255 - csource.B));
-            HexPreview.Foreground = new SolidColorBrush(inv);
-            HexPreview.Text = string.Format("#{0:X2}{1:X2}{2:X2}", csource.R, csource.G, csource.B);
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
