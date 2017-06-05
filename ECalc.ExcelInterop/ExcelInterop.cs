@@ -33,7 +33,7 @@ namespace ECalc.ExcelInterop
 
         public static void Error(string msg)
         {
-            System.Windows.MessageBox.Show(msg, "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+            MessageBox.Show(msg, "Error", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
         }
 
         private void InitExcel()

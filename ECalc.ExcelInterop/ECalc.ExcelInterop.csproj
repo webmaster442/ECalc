@@ -47,7 +47,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSVReader.cs" />
     <Compile Include="ExcelInterop.cs" />
     <Compile Include="ExcelInteropControl.xaml.cs">
       <DependentUpon>ExcelInteropControl.xaml</DependentUpon>

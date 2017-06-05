@@ -60,11 +60,20 @@
             Grid.Row="3"
             Grid.ColumnSpan="2">
             <TextBlock
-                Text="Status text"/>
+                x:Name="StatusText"
+                Text=""/>
             <ProgressBar
+                x:Name="Progress"
                 Width="100"
                 Margin="5,0"
                 Height="15"/>
+            <Rectangle
+                x:Name="StatusLed"
+                Fill="Transparent"
+                Width="15"
+                RadiusX="5"
+                RadiusY="5"
+                Margin="2,3"/>
         </StackPanel>
     </Grid>
 </UserControl>
