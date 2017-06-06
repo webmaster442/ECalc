@@ -23,14 +23,22 @@ namespace ECalc.Modules
             StatusLed.Fill = new SolidColorBrush(c);
         }
 
-        private void InitEngine()
+        private void RunCommand(string Command, string param = null)
         {
+            TbOutput.Text = "";
             _shell = new PowerShellHelper();
             _shell.PipelineErrorRaised += _shell_PipelineErrorRaised;
             _shell.PipelineStateChangedReceived += _shell_PipelineStateChangedReceived;
             _shell.PowerShellErrorRaised += _shell_PowerShellErrorRaised;
             _shell.RunspaceStateChangedReceived += _shell_RunspaceStateChangedReceived;
             _shell.ScriptStarted += _shell_ScriptStarted;
+            _shell.PipelineOutputReceived += _shell_PipelineOutputReceived;
+            if (string.IsNullOrEmpty(param)) _shell.ExecuteScript(Command);
+            else
+            {
+                var cmd = string.Format("{0} {1}", Command, param);
+                _shell.ExecuteScript(cmd);
+            }
         }
 
         private void _shell_ScriptStarted(object sender, EventArgs e)
@@ -54,6 +62,7 @@ namespace ECalc.Modules
                         StatusLedColor(Colors.Transparent);
                         Progress.IsIndeterminate = false;
                         StatusText.Text = "Completed";
+                        _shell = null;
                         break;
                     case PipelineState.Stopping:
                         StatusText.Text = "Stopping";
@@ -83,12 +92,12 @@ namespace ECalc.Modules
                         break;
                     case RunspaceState.Closed:
                         StatusLedColor(Colors.Transparent);
+                        _shell = null;
                         break;
                     case RunspaceState.Broken:
                         Progress.IsIndeterminate = false;
                         StatusLedColor(Colors.Red);
                         break;
-
                 }
             });
         }
@@ -99,14 +108,50 @@ namespace ECalc.Modules
             {
                 StatusText.Text = "Error";
                 MainWindow.ErrorDialog(arg.PowerShellException.Message);
+                _shell = null;
             });
         }
 
         private void _shell_PipelineErrorRaised(object sender, PipelineErrorEventArg arg)
         {
-            StatusText.Text = "Error";
-            Progress.IsIndeterminate = false;
-            StatusLedColor(Colors.Red);
+            Dispatcher.Invoke(() =>
+            {
+                StatusText.Text = "Error";
+                Progress.IsIndeterminate = false;
+                StatusLedColor(Colors.Red);
+                _shell = null;
+            });
+        }
+
+        private void _shell_PipelineOutputReceived(object sender, PipelineOutputEventArg arg)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                string result = arg.PSObjectOutput.BaseObject.ToString();
+                TbOutput.Text += "\r\n" + result;
+            });
+        }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            var s = sender as Button;
+
+            switch (s.Content.ToString())
+            {
+                case "Ping":
+                    RunCommand("ping -n 10", TbParam.Text);
+                    break;
+                case "Taceroute IPv4":
+                    RunCommand("tracert -4", TbParam.Text);
+                    break;
+                case "Taceroute IPv6":
+                    RunCommand("tracert -6", TbParam.Text);
+                    break;
+                case "nslookup":
+                    RunCommand("nslookup", TbParam.Text);
+                    break;
+            }
+
         }
     }
 }

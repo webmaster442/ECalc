@@ -683,4 +683,22 @@ namespace ECalc.Modules
         }
     }
 
+    public class Nettools : EcalcModule
+    {
+        public override string ModuleName
+        {
+            get { return "Network tools"; }
+        }
+
+        public override string ModuleCategory
+        {
+            get { return ModuleCategories.IT; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new NetWorkTools();
+        }
+    }
+
 }

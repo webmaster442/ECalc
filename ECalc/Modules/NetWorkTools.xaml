@@ -34,24 +34,35 @@
             Grid.Column="0"
             Text="IP or domain:"/>
         <TextBox
+            x:Name="TbParam"
             Grid.Row="0"
             Grid.Column="1"/>
         <StackPanel
             Grid.Row="1"
             Grid.ColumnSpan="2"
             Orientation="Horizontal">
-            <Button Content="Ping"/>
-            <Button Content="Taceroute IPv4"/>
-            <Button Content="Taceroute IPv6"/>
-            <Button Content="nslookup"/>
+            <Button
+                Content="Ping"
+                Click="Button_Click"/>
+            <Button
+                Content="Taceroute IPv4"
+                Click="Button_Click"/>
+            <Button
+                Content="Taceroute IPv6"
+                Click="Button_Click"/>
+            <Button
+                Content="nslookup"
+                Click="Button_Click"/>
         </StackPanel>
         <TextBox
+            x:Name="TbOutput"
             Grid.Row="2"
             Background="Black"
             Foreground="Green"
             Grid.ColumnSpan="2"
             FontFamily="Consolas"
-            FontSize="14"
+            IsReadOnly="True"
+            FontSize="16"
             VerticalScrollBarVisibility="Visible"
             HorizontalScrollBarVisibility="Disabled"/>
         <StackPanel
