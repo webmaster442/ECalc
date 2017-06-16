@@ -9,7 +9,7 @@ namespace ECalc.Classes
         public CopyPasteHandler(): base()
         {
             Messager.Instance.SubScribe(this);
-            MessageReciverID = UId.Create();
+            MessageReciverID = new UId();
         }
 
         public UId MessageReciverID

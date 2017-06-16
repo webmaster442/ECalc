@@ -246,6 +246,9 @@
     <Compile Include="IronPythonEngine\Types\Vector.cs" />
     <Compile Include="Maths\TypeFunctions.cs" />
     <Compile Include="Maths\Variations.cs" />
+    <Compile Include="Modules\ArduinoSampler.xaml.cs">
+      <DependentUpon>ArduinoSampler.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\BarcodeGenerator.xaml.cs">
       <DependentUpon>BarcodeGenerator.xaml</DependentUpon>
     </Compile>
@@ -475,6 +478,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Modules\ArduinoSampler.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\BarcodeGenerator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

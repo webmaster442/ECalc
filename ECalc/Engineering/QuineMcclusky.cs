@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECalc.Engineering
 {
@@ -172,8 +170,8 @@ namespace ECalc.Engineering
             {
                 if (i == (groups.Keys.Count - 1)) break;
 
-                ImplicantCollection thisGroup = groups[groups.Keys.ElementAt(i)];
-                ImplicantCollection nextGroup = groups[groups.Keys.ElementAt(i + 1)];
+                var thisGroup = groups[groups.Keys.ElementAt(i)];
+                var nextGroup = groups[groups.Keys.ElementAt(i + 1)];
 
                 var q = from a in thisGroup from b in nextGroup where GetDifferences(a.Mask, b.Mask) == 1 select new ImplicantRelationship(a, b);
                 relationships.AddRange(q);
@@ -318,7 +316,7 @@ namespace ECalc.Engineering
             while (lstToRemove.Count != 0)
             {
                 //Implicant[] weightedTerms = WeightImplicants(implicants, final, lstToRemove);
-                foreach (Implicant m in implicants)
+                foreach (var m in implicants)
                 {
                     bool add = false;
 

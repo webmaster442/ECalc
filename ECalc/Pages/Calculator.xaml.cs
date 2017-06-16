@@ -32,7 +32,7 @@ namespace ECalc.Pages
         public Calculator()
         {
             InitializeComponent();
-            MessageReciverID = UId.Create();
+            MessageReciverID = new UId();
             Messager.Instance.SubScribe(this);
         }
 

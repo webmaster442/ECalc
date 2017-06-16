@@ -25,6 +25,7 @@ namespace ECalc.Controls
             Messager.Instance.SubScribe(this);
             _history = new ObservableCollection<string>();
             HistoryContext.ItemsSource = _history;
+            MessageReciverID = new UId();
         }
 
         /// <summary>
@@ -115,7 +116,8 @@ namespace ECalc.Controls
 
         public UId MessageReciverID
         {
-            get { return UId.Create(); }
+            get;
+            private set;
         }
 
         /// <summary>
