@@ -25,6 +25,7 @@ namespace ECalc.IronPythonEngine
             else if (o is Matrix) return (Matrix)o;
             else if (o is Fraction) return (Fraction)o;
             else if (o is Set) return (Set)o;
+            else if (o is Time) return (Time)o;
             else
             {
                 try

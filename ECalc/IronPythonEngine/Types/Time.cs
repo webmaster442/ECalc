@@ -29,6 +29,11 @@ namespace ECalc.IronPythonEngine.Types
 
         { }
 
+        public double TotalSeconds
+        {
+            get { return _time.TotalSeconds; }
+        }
+
         public override int GetHashCode()
         {
             return _time.GetHashCode();

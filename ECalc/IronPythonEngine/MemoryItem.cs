@@ -19,7 +19,8 @@ namespace ECalc.Classes
         Fraction,
         Vector,
         Set,
-        String
+        String,
+        Time
     }
 
     /// <summary>
@@ -41,10 +42,7 @@ namespace ECalc.Classes
 
         private void OnPropertyChanged(string name)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
 
         public static void ResetCounter()
@@ -200,6 +198,9 @@ namespace ECalc.Classes
                         }
                         else Value = new Vector(x, y);
                         break;
+                    case VarType.Time:
+                        Value = new Time(double.Parse(xml, culture));
+                        break;
                 }
 
                 reader.ReadEndElement();
@@ -223,6 +224,7 @@ namespace ECalc.Classes
             else if (valtype == typeof(Vector)) type = VarType.Vector;
             else if (valtype == typeof(Set)) type = VarType.Set;
             else if (valtype == typeof(string)) type = VarType.String;
+            else if (valtype == typeof(Time)) type = VarType.Time;
 
             writer.WriteAttributeString("Type", type.ToString());
 
@@ -283,6 +285,11 @@ namespace ECalc.Classes
                     break;
                 case VarType.String:
                     writer.WriteElementString("Content", Value.ToString());
+                    break;
+                case VarType.Time:
+                    Time t = (Time)Value;
+                    xml = (Convert.ToDouble(t.TotalSeconds).ToString("G17", culture));
+                    writer.WriteElementString("Content", xml);
                     break;
             }
         }
