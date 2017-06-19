@@ -97,5 +97,29 @@ namespace ECalc.Maths
         {
             return m.Transpose();
         }
+
+        [Category("Types")]
+        public static Time Seconds(double s)
+        {
+            return new Time(s);
+        }
+
+        [Category("Types")]
+        public static Time Minutes(double m)
+        {
+            return new Time(m, 0);
+        }
+
+        [Category("Types")]
+        public static Time Hours(double h)
+        {
+            return new Time(h, 0, 0);
+        }
+
+        [Category("Types")]
+        public static Time Days(double d)
+        {
+            return new Time(d, 0, 0, 0);
+        }
     }
 }

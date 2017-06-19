@@ -231,6 +231,7 @@
     <Compile Include="IronPythonEngine\IronPythonEngine.cs" />
     <Compile Include="IronPythonEngine\IronPythonEngine.Static.cs" />
     <Compile Include="IronPythonEngine\Types\Set.cs" />
+    <Compile Include="IronPythonEngine\Types\Time.cs" />
     <Compile Include="Lib\CryptoRNG.cs" />
     <Compile Include="Lib\PowerShellEngine\EventsArgs.cs" />
     <Compile Include="Lib\PowerShellEngine\PowerShellHelper.cs" />
