@@ -71,9 +71,23 @@
             TextAlignment="Center"
             x:Name="ErrorText"
             Text="ErrorText"/>
+        <Border
+            Grid.Row="0"
+            VerticalAlignment="Center"
+            Grid.Column="2" 
+            BorderBrush="Black" 
+            BorderThickness="0,0,0,2">
+            <TextBlock
+                x:Name="CategoryHeader"
+                VerticalAlignment="Center"
+                FontSize="14"
+                Margin="10,3"
+                Text="category"/>
+        </Border>
         <ScrollViewer
+            Grid.Row="1"
             Grid.Column="2"
-            Grid.RowSpan="3"
+            Grid.RowSpan="2"
             HorizontalScrollBarVisibility="Disabled">
             <WrapPanel
                 x:Name="Functions"/>

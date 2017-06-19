@@ -76,6 +76,13 @@ namespace ECalc.Controls
             var btn = sender as Button;
             if (btn == null) return;
             var cat = btn.Content.ToString();
+
+            if (cat == "Most used")
+            {
+                RenderMostUsed();
+                return;
+            }
+
             var items = (from i in _functions
                          where i.Category == cat
                          orderby i.Name ascending
@@ -86,11 +93,13 @@ namespace ECalc.Controls
             foreach (var item in items)
                 RenderButton(item, Functions, ActivateFunction, true);
 
+            CategoryHeader.Text = cat;
             UpdateStat();
         }
 
         private void RenderMostUsed()
         {
+            CategoryHeader.Text = "Most used";
             var names = _functions.Select(f => f.Name);
             var mostused = (from i in names
                             from j in UsageStats
@@ -109,6 +118,8 @@ namespace ECalc.Controls
 
             foreach (var item in mostused)
                 RenderButton(item, Functions, ActivateFunction, true);
+
+            UpdateStat();
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -156,6 +167,7 @@ namespace ECalc.Controls
             {
                 UsageStats = new Dictionary<string, uint>();
             }
+            RenderMostUsed();
         }
     }
 }
