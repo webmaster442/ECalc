@@ -101,6 +101,11 @@
                                  x:Name="TbSet"/>
                     </GroupBox>
                 </TabItem>
+                <TabItem Header="Time">
+                    <mah:TimePicker
+                        VerticalAlignment="Top"
+                        x:Name="Timepicker"/>
+                </TabItem>
             </TabControl>
             <StackPanel Grid.Row="1"
                         Orientation="Horizontal"

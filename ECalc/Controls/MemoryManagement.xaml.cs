@@ -8,7 +8,6 @@ using System.Numerics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Serialization;
-using System;
 
 namespace ECalc.Controls
 {
@@ -164,10 +163,7 @@ namespace ECalc.Controls
 
         private void BtnFromExpression_Click(object sender, RoutedEventArgs e)
         {
-            if (FromExpressionClick != null)
-            {
-                FromExpressionClick(sender, e);
-            }
+            FromExpressionClick?.Invoke(sender, e);
         }
 
         private void BtnInsert_Click(object sender, RoutedEventArgs e)
@@ -225,6 +221,9 @@ namespace ECalc.Controls
                     case 5:
                         _memory[MemList.SelectedIndex].Value = _editdialog.Set;
                         break;
+                    case 6:
+                        _memory[MemList.SelectedIndex].Value = _editdialog.Time;
+                        break;
                 }
             }
             else
@@ -248,6 +247,9 @@ namespace ECalc.Controls
                         break;
                     case 5:
                         _memory.Add(new MemoryItem(_editdialog.Set));
+                        break;
+                    case 6:
+                        _memory.Add(new MemoryItem(_editdialog.Time));
                         break;
                 }
                 MemList.SelectedIndex = _memory.Count - 1;
@@ -275,6 +277,7 @@ namespace ECalc.Controls
             else if (o is Fraction) _editdialog.Fraction = (Fraction)o;
             else if (o is Matrix) _editdialog.Matrix = (Matrix)o;
             else if (o is Set) _editdialog.Set = (Set)o;
+            else if (o is Time) _editdialog.Time = (Time)o;
             _editdialog.IsEditDialog = true;
             MainWindow.ShowDialog(_editdialog);
         }

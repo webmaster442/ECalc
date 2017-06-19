@@ -244,6 +244,18 @@ namespace ECalc.Controls
 
         #endregion
 
+        #region Time Editor
+        public Time Time
+        {
+            get { return new Time(Timepicker.SelectedTime.Value.TotalSeconds); }
+            set
+            {
+                var Ts = TimeSpan.FromSeconds(value.TotalSeconds);
+                Timepicker.SelectedTime = Ts;
+            }
+        }
+        #endregion
+
         private async void PART_NegativeButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Index = -1;
@@ -277,6 +289,9 @@ namespace ECalc.Controls
                         break;
                     case 5:
                         test = this.Set;
+                        break;
+                    case 6:
+                        test = this.Time;
                         break;
                 }
             }
