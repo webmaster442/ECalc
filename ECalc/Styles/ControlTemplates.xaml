@@ -55,17 +55,28 @@
         </Style.Triggers>
     </Style>
 
-    <DataTemplate x:Key="MemConstTemplate">
+    <DataTemplate x:Key="MemTemplate">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="0"
                        Text="{Binding Name}"
                        FontSize="16"
                        FontWeight="Bold"/>
+            
+            <TextBlock Grid.Row="0"
+                       Grid.Column="1"
+                       Margin="5,0"
+                       Text="{Binding Type}"/>
+
             <TextBlock Grid.Row="1"
+                       Grid.ColumnSpan="2"
                        Text="{Binding Value}"
                        FontStyle="Italic"/>
         </Grid>

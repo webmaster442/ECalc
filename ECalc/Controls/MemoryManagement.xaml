@@ -44,7 +44,7 @@
                  Grid.RowSpan="5"
                  Grid.ColumnSpan="5"
                  x:Name="MemList"
-                 ItemTemplate="{StaticResource MemConstTemplate}">
+                 ItemTemplate="{StaticResource MemTemplate}">
         </ListBox>
         
         <Button Content="Load Memory..."

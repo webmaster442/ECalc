@@ -82,6 +82,11 @@ namespace ECalc.Classes
             }
         }
 
+        public string Type
+        {
+            get { return _object.GetType().Name; }
+        }
+
         public MemoryItem()
         {
             Name = String.Format("Reg_{0}", Counter);
