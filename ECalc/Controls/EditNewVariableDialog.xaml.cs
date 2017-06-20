@@ -1,4 +1,5 @@
 ﻿using ECalc.IronPythonEngine.Types;
+using ECalc.Maths;
 using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Numerics;
@@ -17,10 +18,13 @@ namespace ECalc.Controls
         {
             InitializeComponent();
             Index = -1;
+            _cantrigger = true;
         }
 
         public RoutedEventHandler SaveClicked;
         public RoutedEventHandler SaveInsertClicked;
+
+        private bool _cantrigger { get; set; }
 
         public int Index
         {
@@ -61,6 +65,35 @@ namespace ECalc.Controls
                 TbImaginaryValue.Text = value.Imaginary.ToString();
                 Dispatcher.Invoke(() => { TabTypeSelector.SelectedIndex = 1; });
             }
+        }
+
+        private void ComplexEdit(object sender, TextChangedEventArgs e)
+        {
+            if (!_cantrigger) return;
+            try
+            {
+                var tb = sender as TextBox;
+                switch (tb.Name)
+                {
+                    case "TbRealValue":
+                    case "TbImaginaryValue":
+                        var cmp = Complex;
+                        _cantrigger = false;
+                        TbAbs.Text = cmp.Magnitude.ToString();
+                        TbAngle.Text = TrigFunctions.ArcTan(cmp.Imaginary / cmp.Real).ToString();
+                        _cantrigger = true;
+                        break;
+                    case "TbAbs":
+                    case "TbAngle":
+                        var cmplx = TypeFunctions.CplxPolar(Convert.ToDouble(TbAbs.Text), Convert.ToDouble(TbAngle.Text));
+                        _cantrigger = false;
+                        TbRealValue.Text = cmplx.Real.ToString();
+                        TbImaginaryValue.Text = cmplx.Imaginary.ToString();
+                        _cantrigger = true;
+                        break;
+                }
+            }
+            catch (Exception) { _cantrigger = true; }
         }
         #endregion
 

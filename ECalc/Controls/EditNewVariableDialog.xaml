@@ -25,11 +25,27 @@
                     <StackPanel>
                         <GroupBox Header="Real:"
                                   VerticalAlignment="Top">
-                            <TextBox x:Name="TbRealValue"/>
+                            <TextBox 
+                                x:Name="TbRealValue"
+                                TextChanged="ComplexEdit"/>
                         </GroupBox>
                         <GroupBox Header="Imaginary:"
                                   VerticalAlignment="Top">
-                            <TextBox x:Name="TbImaginaryValue"/>
+                            <TextBox
+                                x:Name="TbImaginaryValue"
+                                TextChanged="ComplexEdit"/>
+                        </GroupBox>
+                        <GroupBox Header="Abs:"
+                                  VerticalAlignment="Top">
+                            <TextBox
+                                x:Name="TbAbs"
+                                TextChanged="ComplexEdit"/>
+                        </GroupBox>
+                        <GroupBox Header="Angle:"
+                                  VerticalAlignment="Top">
+                            <TextBox 
+                                x:Name="TbAngle"
+                                TextChanged="ComplexEdit"/>
                         </GroupBox>
                     </StackPanel>
                 </TabItem>
