@@ -130,6 +130,7 @@ namespace ECalc.Controls
                            select i.Name).Distinct();
 
             ClearFunctionPanel();
+            CategoryHeader.Text = "Search results";
 
             if (!matches.Any())
             {
