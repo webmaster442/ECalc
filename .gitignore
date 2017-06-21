@@ -10,6 +10,8 @@
 /ECalc.Docs/bin/
 /ECalc.ExcelInterop/bin/
 /ECalc.ExcelInterop/obj/
+/Ecalc.FFmpegGui/bin/
+/Ecalc.FFmpegGui/obj/
 /compile.log
 /.vs/
 /bin/
