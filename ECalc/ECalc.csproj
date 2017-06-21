@@ -809,6 +809,10 @@
       <Project>{0064cea0-5ce3-493d-a9f5-23d2eb66fd28}</Project>
       <Name>ECalc.ExcelInterop</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ecalc.FFmpegGui\Ecalc.FFmpegGui.csproj">
+      <Project>{b45194e8-2a6d-410e-a9de-ed264eb05103}</Project>
+      <Name>Ecalc.FFmpegGui</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

@@ -1,0 +1,103 @@
+﻿<UserControl
+    x:Class="Ecalc.FFmpegGui.CommandLineEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Ecalc.FFmpegGui"
+    xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
+    mc:Ignorable="d" 
+    d:DesignHeight="100"
+    MinHeight="100"
+    d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Text="FFMpeg Path: "
+            VerticalAlignment="Center"
+            Grid.Row="2"
+            Grid.Column="0"/>
+        <applib:FileSelector
+            Grid.Row="2"
+            Grid.Column="1"/>
+        <Menu 
+            Grid.Row="0"
+            Grid.ColumnSpan="2">
+            <MenuItem Header="Misc.">
+                <MenuItem
+                    Header="Clear command line"
+                    Click="ClearParams"/>
+                <MenuItem
+                    Header="Remove not needed spaces"
+                    Click="Trim"/>
+                <Separator/>
+                <MenuItem
+                    Header="Insert output file"
+                    Click="InsertNewParam"
+                    ToolTip="%output%"/>
+            </MenuItem>
+            <MenuItem Header="Audio Codec">
+                <MenuItem
+                    Header="No audio"
+                    Click="InsertNewParam"
+                    ToolTip="-an"/>
+                <MenuItem
+                    Header="Copy"
+                    Click="InsertNewParam"
+                    ToolTip="-ac copy"/>
+                <Separator/>
+                <MenuItem
+                    Header="Mp3"
+                    Click="InsertNewParam"/>
+                <MenuItem
+                    Header="WavPack"
+                    Click="InsertNewParam"/>
+                <MenuItem
+                    Header="FLAC"
+                    Click="InsertNewParam"/>
+                <MenuItem
+                    Header="Wav"
+                    Click="InsertNewParam"/>
+            </MenuItem>
+            <MenuItem Header="Audio Resampling">
+                <MenuItem 
+                    Header="22.5 kHz"
+                    Click="InsertNewParam"
+                    ToolTip="-ar 22500"/>
+                <MenuItem 
+                    Header="44.1 kHz"
+                    Click="InsertNewParam"
+                    ToolTip="-ar 44100"/>
+                <MenuItem 
+                    Header="48 kHz"
+                    Click="InsertNewParam"
+                    ToolTip="-ar 48000"/>
+                <MenuItem 
+                    Header="96 kHz"
+                    Click="InsertNewParam"
+                    ToolTip="-ar 96000"/>
+                <MenuItem 
+                    Header="192 kHz"
+                    Click="InsertNewParam"
+                    ToolTip="-ar 192000"/>
+            </MenuItem>
+        </Menu>
+        <TextBox
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            FontSize="15"
+            Background="DarkBlue"
+            Foreground="LightGray"
+            x:Name="Parameters"
+            VerticalScrollBarVisibility="Auto"
+            TextWrapping="Wrap" FontFamily="Courier New"/>
+    </Grid>
+</UserControl>

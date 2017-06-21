@@ -701,4 +701,27 @@ namespace ECalc.Modules
         }
     }
 
+    public class FFmpeg : EcalcModule
+    {
+        public override string ModuleName
+        {
+            get { return "FFMpeg GUI"; }
+        }
+
+        public override string ModuleCategory
+        {
+            get { return ModuleCategories.IT; }
+        }
+
+        public override UserControl GetControl()
+        {
+            return new Ecalc.FFmpegGui.FFMpegGui();
+        }
+
+        public override int Color
+        {
+            get { return (int)TileColor.W8Green; }
+        }
+    }
+
 }

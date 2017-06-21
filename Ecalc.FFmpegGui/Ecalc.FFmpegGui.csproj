@@ -47,6 +47,16 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandLineEditor.xaml.cs">
+      <DependentUpon>CommandLineEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FFMpegGui.xaml.cs">
+      <DependentUpon>FFMpegGui.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InputFiles.xaml.cs">
+      <DependentUpon>InputFiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InputFilesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -82,6 +92,20 @@
       <Project>{4bdbc073-620d-4f63-8e86-c15ae3adb6dd}</Project>
       <Name>ECalc.Api</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CommandLineEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FFMpegGui.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InputFiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
