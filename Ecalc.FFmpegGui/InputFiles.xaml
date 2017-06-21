@@ -5,9 +5,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:Ecalc.FFmpegGui"
+    xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
     mc:Ignorable="d" 
     d:DesignHeight="300"
     d:DesignWidth="500">
+    <UserControl.DataContext>
+        <local:InputFilesViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -15,16 +19,45 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem 
+                Command="{Binding AddFiles}"
                 Header="Add Files..."/>
             <MenuItem
+                Command="{Binding AddFolder}"
                 Header="Add Folder..."/>
             <Separator/>
             <MenuItem
+                Command="{Binding RemoveSelected}"
                 Header="Remove Selected"/>
             <MenuItem 
+                Command="{Binding RemoveAll}"
                 Header="Remove All"/>
         </Menu>
         <ListBox
-            Grid.Row="1"></ListBox>
+            Grid.Row="1"
+            SelectionChanged="ListBox_SelectionChanged"
+            ItemsSource="{Binding Files}"
+            HorizontalAlignment="Stretch"
+            x:Name="FilesList">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            Text="{Binding Converter={applib:FileInfoConverter}, ConverterParameter=name}"
+                            Grid.Column="0"/>
+                        <TextBlock
+                            Text="{Binding Converter={applib:FileInfoConverter}, ConverterParameter=extension}"
+                            Grid.Column="1"/>
+                        <TextBlock
+                            Text="{Binding Converter={applib:FileInfoConverter}, ConverterParameter=size}"
+                            Grid.Column="2"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </UserControl>

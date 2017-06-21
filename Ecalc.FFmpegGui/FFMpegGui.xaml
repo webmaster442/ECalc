@@ -17,9 +17,14 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Input files">
-            
-        </GroupBox>
+        <TabControl>
+            <TabItem Header="Files">
+                <local:InputFiles/>
+            </TabItem>
+            <TabItem Header="Output file naming">
+                <local:InputFiles/>
+            </TabItem>
+        </TabControl>
         <GroupBox
             Grid.Column="1"
             Header="Presets">
