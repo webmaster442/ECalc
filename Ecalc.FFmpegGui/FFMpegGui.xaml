@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:Ecalc.FFmpegGui"
     mc:Ignorable="d" 
-    d:DesignHeight="300"
+    d:DesignHeight="500"
     d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -22,19 +22,28 @@
                 <local:InputFiles/>
             </TabItem>
             <TabItem Header="Output file naming">
-                <local:InputFiles/>
+                <local:OutputNamer/>
             </TabItem>
         </TabControl>
         <GroupBox
             Grid.Column="1"
             Header="Presets">
-            <ListBox/>
+            <ListBox
+                x:Name="PresetsList"
+                MouseDoubleClick="PresetsList_MouseDoubleClick">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Key}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </GroupBox>
         <GroupBox
             Grid.Row="1"
             Grid.Column="0"
             Header="Command Line parameters">
-            <local:CommandLineEditor/>
+            <local:CommandLineEditor
+                x:Name="CmdLineEditor"/>
         </GroupBox>
         <StackPanel
             Grid.Row="1"

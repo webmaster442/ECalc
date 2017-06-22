@@ -20,9 +20,22 @@ namespace Ecalc.FFmpegGui
     /// </summary>
     public partial class FFMpegGui : UserControl
     {
+        private Presets _presets;
+
         public FFMpegGui()
         {
             InitializeComponent();
+            _presets = new Presets();
+            PresetsList.ItemsSource = _presets;
+        }
+
+        private void PresetsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (PresetsList.SelectedIndex >= 0)
+            {
+                var key = (KeyValuePair<string, string>)PresetsList.SelectedItem;
+                CmdLineEditor.CommandLine = key.Value;
+            }
         }
     }
 }

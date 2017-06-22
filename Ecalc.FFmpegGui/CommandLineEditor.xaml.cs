@@ -44,5 +44,11 @@ namespace Ecalc.FFmpegGui
             Parameters.Text = Parameters.Text.Insert(Parameters.CaretIndex, " " + text);
         }
 
+        public string CommandLine
+        {
+            get { return Parameters.Text; }
+            set { Parameters.Text = value; }
+        }
+
     }
 }
