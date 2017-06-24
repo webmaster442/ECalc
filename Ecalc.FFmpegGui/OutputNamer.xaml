@@ -6,9 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:local="clr-namespace:Ecalc.FFmpegGui"
     xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    xmlns:applib="http://github.com/webmaster442/AppLib/WPF"
     mc:Ignorable="d" 
     d:DesignHeight="500" 
     d:DesignWidth="800">
+    <UserControl.DataContext>
+        <local:OutputNamerController/>
+    </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="TextBox">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -38,6 +42,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -59,6 +64,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBox
+                    Text="{Binding RenamePattern}"
                     Grid.Row="0"
                     Grid.ColumnSpan="2"/>
                 <Button 
@@ -74,7 +80,7 @@
                     Grid.Row="2"
                     Grid.Column="0"/>
                 <Button 
-                    Content="[HMS] Time"
+                    Content="[hms] Time"
                     Grid.Row="2"
                     Grid.Column="1"/>
             </Grid>
@@ -108,14 +114,14 @@
                 <mah:NumericUpDown
                     Grid.Row="0"
                     Grid.Column="1"
-                    Value="1"/>
+                    Value="{Binding CounterStart}"/>
                 <mah:NumericUpDown
                     Grid.Row="1"
                     Grid.Column="1"
-                    Value="1"/>
+                    Value="{Binding CounterIncrement}"/>
                 <mah:NumericUpDown
                     Minimum="1"
-                    Value="1"
+                    Value="{Binding CounterPadding}"
                     Maximum="10"
                     Grid.Row="2"
                     Grid.Column="1"/>
@@ -144,15 +150,18 @@
                     Grid.Column="0"
                     Text="Replace with:"/>
                 <TextBox
+                    Text="{Binding Search}"
                     Grid.Row="0"
                     Grid.Column="1"/>
                 <TextBox
+                    Text="{Binding Replace}"
                     Grid.Row="1"
                     Grid.Column="1"/>
                 <CheckBox
                     Grid.Row="2"
                     Grid.Column="0"
-                    Content="Regex"/>
+                    Content="Regex"
+                    IsChecked="{Binding Regex}"/>
                 <ComboBox
                     Grid.Row="2"
                     SelectedIndex="0"
@@ -175,6 +184,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBox
+                    Text="{Binding Extension}"
                     Grid.Row="0"/>
                 <Button
                     Grid.Row="1"
@@ -184,9 +194,27 @@
                     Content="[C] Counter"/>
             </Grid>
         </GroupBox>
-        <ListBox
+        <GroupBox
             Grid.Row="1"
+            Grid.ColumnSpan="5"
+            Header="Output Directory">
+            <applib:FileSelector/>
+        </GroupBox>
+        <GroupBox
+            Grid.Row="2"
             Grid.ColumnSpan="5">
-        </ListBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox
+                    ItemsSource="{Binding Inputs}"
+                    Grid.Column="0"/>
+                <ListBox
+                     ItemsSource="{Binding Outputs}"
+                    Grid.Column="1"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </UserControl>
