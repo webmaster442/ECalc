@@ -70,19 +70,59 @@
                 <Button 
                     Content="[N] Name"
                     Grid.Row="1"
-                    Grid.Column="0"/>
+                    Grid.Column="0"
+                    CommandParameter="[N]"
+                    Command="{Binding InsertIntoName}"/>
                 <Button 
                     Content="[YMD] Date"
                     Grid.Row="1"
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    Click="OpenContextMenu">
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem 
+                                Header="[Y] Year"
+                                CommandParameter="[Y]"
+                                Command="{Binding InsertIntoName}"/>
+                            <MenuItem 
+                                Header="[M] Month"
+                                CommandParameter="[M]"
+                                Command="{Binding InsertIntoName}"/>
+                            <MenuItem 
+                                Header="[D] Date"
+                                CommandParameter="[D]"
+                                Command="{Binding InsertIntoName}"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
                 <Button 
                     Content="[C] Counter"
                     Grid.Row="2"
-                    Grid.Column="0"/>
+                    Grid.Column="0"
+                    CommandParameter="[C]"
+                    Command="{Binding InsertIntoName}" Margin="2,2,2,0" VerticalAlignment="Top"/>
                 <Button 
                     Content="[hms] Time"
                     Grid.Row="2"
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    Click="OpenContextMenu">
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem 
+                                Header="[h] hour"
+                                CommandParameter="[h]"
+                                Command="{Binding InsertIntoName}"/>
+                            <MenuItem 
+                                Header="[m] minute"
+                                CommandParameter="[m]"
+                                Command="{Binding InsertIntoName}"/>
+                            <MenuItem 
+                                Header="[s] second"
+                                CommandParameter="[s]"
+                                Command="{Binding InsertIntoName}"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
             </Grid>
         </GroupBox>
         <GroupBox 
@@ -188,10 +228,14 @@
                     Grid.Row="0"/>
                 <Button
                     Grid.Row="1"
-                    Content="[E] Extension"/>
+                    Content="[E] Extension"
+                    CommandParameter="[E]"
+                    Command="{Binding InsertIntoExtension}"/>
                 <Button
                     Grid.Row="2"
-                    Content="[C] Counter"/>
+                    Content="[C] Counter"
+                    CommandParameter="[C]"
+                    Command="{Binding InsertIntoExtension}"/>
             </Grid>
         </GroupBox>
         <GroupBox

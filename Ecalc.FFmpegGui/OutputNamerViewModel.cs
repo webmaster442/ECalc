@@ -30,7 +30,22 @@ namespace Ecalc.FFmpegGui
             Regex = false;
             Search = "";
             Replace = "";
+            InsertIntoName = DelegateCommand.ToCommand(InsertName);
+            InsertIntoExtension = DelegateCommand.ToCommand(InsertExt);
         }
+
+        private void InsertExt(object param)
+        {
+            Extension += param.ToString();
+        }
+
+        private void InsertName(object param)
+        {
+            RenamePattern += param.ToString();
+        }
+
+        public DelegateCommand InsertIntoName { get; private set; }
+        public DelegateCommand InsertIntoExtension { get; private set; }
 
         private void ReplaceIfNeeded(ref string s, string pattern, object value, bool regex = false)
         {

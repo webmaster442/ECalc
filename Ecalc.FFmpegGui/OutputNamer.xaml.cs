@@ -41,5 +41,12 @@ namespace Ecalc.FFmpegGui
         {
             ViewModel.Extension = s;
         }
+
+        public void OpenContextMenu(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            if (btn == null ||btn.ContextMenu == null) return;
+            btn.ContextMenu.IsOpen = true;
+        }
     }
 }
