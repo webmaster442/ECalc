@@ -9,6 +9,7 @@
     d:DesignHeight="500"
     d:DesignWidth="800">
     <TabControl
+        x:Name="Tabs"
         SelectionChanged="TabControl_SelectionChanged">
         <TabItem Header="Input files">
             <local:InputFiles

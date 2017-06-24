@@ -20,17 +20,20 @@ namespace Ecalc.FFmpegGui
     /// </summary>
     public partial class FFMpegGui : UserControl
     {
-        Presets Presets;
+        private Presets Presets;
+        private int _previousindex;
 
         public FFMpegGui()
         {
             InitializeComponent();
             Presets = new Presets();
             PresetList.ItemsSource = Presets;
+            _previousindex = 0;
         }
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_previousindex == Tabs.SelectedIndex) return;
             OutputNamer.SetFiles(InputFiles.Files);
             if (PresetList.SelectedIndex >=0)
             {
@@ -38,6 +41,7 @@ namespace Ecalc.FFmpegGui
                 OutputNamer.SetPreferedExtension(preset.Extension);
                 CmdEditor.CommandLine = preset.CommandLine;
             }
+            _previousindex = Tabs.SelectedIndex;
         }
     }
 }
