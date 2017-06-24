@@ -20,21 +20,23 @@ namespace Ecalc.FFmpegGui
     /// </summary>
     public partial class FFMpegGui : UserControl
     {
-        private Presets _presets;
+        Presets Presets;
 
         public FFMpegGui()
         {
             InitializeComponent();
-            _presets = new Presets();
-            PresetsList.ItemsSource = _presets;
+            Presets = new Presets();
+            PresetList.ItemsSource = Presets;
         }
 
-        private void PresetsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (PresetsList.SelectedIndex >= 0)
+            OutputNamer.SetFiles(InputFiles.Files);
+            if (PresetList.SelectedIndex >=0)
             {
-                var key = (KeyValuePair<string, string>)PresetsList.SelectedItem;
-                CmdLineEditor.CommandLine = key.Value;
+                var preset = Presets[PresetList.SelectedIndex];
+                OutputNamer.SetPreferedExtension(preset.Extension);
+                CmdEditor.CommandLine = preset.CommandLine;
             }
         }
     }

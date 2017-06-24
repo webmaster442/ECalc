@@ -13,21 +13,13 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock
-            Text="FFMpeg Path: "
-            VerticalAlignment="Center"
-            Grid.Row="2"
-            Grid.Column="0"/>
-        <applib:FileSelector
-            Grid.Row="2"
-            Grid.Column="1"/>
         <Menu 
             Grid.Row="0"
             Grid.ColumnSpan="2">
@@ -90,8 +82,16 @@
                     ToolTip="-ar 192000"/>
             </MenuItem>
         </Menu>
-        <TextBox
+        <TextBlock
+            Text="FFMpeg Path: "
+            VerticalAlignment="Center"
             Grid.Row="1"
+            Grid.Column="0"/>
+        <applib:FileSelector
+            Grid.Row="1"
+            Grid.Column="1"/>
+        <TextBox
+            Grid.Row="2"
             Grid.ColumnSpan="2"
             FontSize="15"
             Background="DarkBlue"

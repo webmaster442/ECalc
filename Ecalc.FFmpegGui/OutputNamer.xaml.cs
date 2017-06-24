@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AppLib.Common.Extensions;
 
 namespace Ecalc.FFmpegGui
 {
@@ -25,9 +26,20 @@ namespace Ecalc.FFmpegGui
             InitializeComponent();
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private OutputNamerViewModel ViewModel
         {
+            get { return (OutputNamerViewModel)DataContext; }
+        }
 
+        public void SetFiles(IEnumerable<string> s)
+        {
+            ViewModel.Inputs.Clear();
+            ViewModel.Inputs.AddRange(s);
+        }
+
+        public void SetPreferedExtension(string s)
+        {
+            ViewModel.Extension = s;
         }
     }
 }

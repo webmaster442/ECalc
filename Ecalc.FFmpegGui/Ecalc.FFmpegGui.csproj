@@ -68,7 +68,7 @@
     <Compile Include="OutputNamer.xaml.cs">
       <DependentUpon>OutputNamer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OutputNamerController.cs" />
+    <Compile Include="OutputNamerViewModel.cs" />
     <Compile Include="Presets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

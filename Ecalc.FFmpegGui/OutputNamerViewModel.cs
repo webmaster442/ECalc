@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Ecalc.FFmpegGui
 {
-    public class OutputNamerController : ViewModel
+    public class OutputNamerViewModel : ViewModel
     {
         private string _renamepattern;
         private string _extension;
@@ -17,20 +17,24 @@ namespace Ecalc.FFmpegGui
         private bool _regex;
         private string _OutputDir;
 
-        public OutputNamerController()
+        public OutputNamerViewModel()
         {
+            Inputs = new ObservableCollection<string>();
+            Outputs = new ObservableCollection<string>();
+            OutputDirectory = "";
             RenamePattern = "[N]";
             Extension = "[E]";
             CounterStart = 1;
             CounterIncrement = 1;
             CounterPadding = 1;
             Regex = false;
-            Inputs = new ObservableCollection<string>();
-            Outputs = new ObservableCollection<string>();
+            Search = "";
+            Replace = "";
         }
 
         private void ReplaceIfNeeded(ref string s, string pattern, object value, bool regex = false)
         {
+            if (string.IsNullOrEmpty(pattern) || value == null) return;
             if (s.Contains(pattern) && !regex)
             {
                 s = s.Replace(pattern, value.ToString());
@@ -43,6 +47,7 @@ namespace Ecalc.FFmpegGui
 
         private void Transform()
         {
+            if (Inputs.Count < 1) return;
             Outputs.Clear();
             var now = DateTime.Now;
             var counter = CounterStart;
@@ -63,6 +68,7 @@ namespace Ecalc.FFmpegGui
                 ReplaceIfNeeded(ref output, "[C]", counter.ToString().PadLeft(CounterPadding, '0'));
                 ReplaceIfNeeded(ref output, Search, Replace, Regex);
                 counter += CounterIncrement;
+                Outputs.Add(output);
             }
         }
 

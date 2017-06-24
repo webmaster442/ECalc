@@ -11,7 +11,7 @@
     d:DesignHeight="500" 
     d:DesignWidth="800">
     <UserControl.DataContext>
-        <local:OutputNamerController/>
+        <local:OutputNamerViewModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="TextBox">
@@ -198,7 +198,9 @@
             Grid.Row="1"
             Grid.ColumnSpan="5"
             Header="Output Directory">
-            <applib:FileSelector/>
+            <applib:FileSelector
+                Filter="folder"
+                SelectedFile="{Binding OutputDirectory}"/>
         </GroupBox>
         <GroupBox
             Grid.Row="2"

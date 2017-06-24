@@ -43,8 +43,12 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition 
+                                Width="Auto"
+                                MinWidth="80"/>
+                            <ColumnDefinition
+                                MinWidth="80"
+                                Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock
                             Text="{Binding Converter={applib:FileInfoConverter}, ConverterParameter=name}"

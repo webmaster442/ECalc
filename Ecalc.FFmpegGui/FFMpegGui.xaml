@@ -8,59 +8,34 @@
     mc:Ignorable="d" 
     d:DesignHeight="500"
     d:DesignWidth="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <TabControl>
-            <TabItem Header="Files">
-                <local:InputFiles/>
-            </TabItem>
-            <TabItem Header="Output file naming">
-                <local:OutputNamer/>
-            </TabItem>
-        </TabControl>
-        <GroupBox
-            Grid.Column="1"
-            Header="Presets">
+    <TabControl
+        SelectionChanged="TabControl_SelectionChanged">
+        <TabItem Header="Input files">
+            <local:InputFiles
+                x:Name="InputFiles"/>
+        </TabItem>
+        <TabItem Header="Presets">
             <ListBox
-                x:Name="PresetsList"
-                MouseDoubleClick="PresetsList_MouseDoubleClick">
+                x:Name="PresetList">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Key}"/>
+                        <TextBlock
+                            FontSize="18"
+                            Text="{Binding Description}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </GroupBox>
-        <GroupBox
-            Grid.Row="1"
-            Grid.Column="0"
-            Header="Command Line parameters">
+        </TabItem>
+        <TabItem Header="Command line">
             <local:CommandLineEditor
-                x:Name="CmdLineEditor"/>
-        </GroupBox>
-        <StackPanel
-            Grid.Row="1"
-            Grid.Column="1"
-            Orientation="Horizontal">
-            <Button
-                VerticalAlignment="Center"
-                MinWidth="80"
-                Padding="8"
-                Margin="8"
-                Content="Start"/>
-            <Button
-                VerticalAlignment="Center"
-                MinWidth="80"
-                Margin="8"
-                Padding="8"
-                Content="Save .cmd"/>
-        </StackPanel>
-    </Grid>
+                x:Name="CmdEditor"/>
+        </TabItem>
+        <TabItem Header="Output">
+            <local:OutputNamer
+                x:Name="OutputNamer"/>
+        </TabItem>
+        <TabItem Header="Command generation">
+
+        </TabItem>
+    </TabControl>
 </UserControl>
