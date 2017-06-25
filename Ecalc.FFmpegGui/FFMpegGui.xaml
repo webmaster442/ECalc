@@ -17,12 +17,26 @@
         </TabItem>
         <TabItem Header="Presets">
             <ListBox
+                HorizontalContentAlignment="Stretch"
                 x:Name="PresetList">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock
-                            FontSize="18"
-                            Text="{Binding Description}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Column="0"
+                                Source="icons/setting.png"
+                                Margin="5"
+                                Width="32"/>
+                            <TextBlock
+                                Grid.Column="1"
+                                FontSize="22"
+                                FontStyle="Italic"
+                                Text="{Binding Description}"/>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

@@ -729,6 +729,7 @@
     <Resource Include="Images\100px\const.png" />
     <Resource Include="Images\50px\excel.png" />
     <Resource Include="Images\100px\portedit.png" />
+    <Resource Include="Images\100px\ffmpeg.png" />
     <Content Include="UserFunctions.py">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

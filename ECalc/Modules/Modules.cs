@@ -718,6 +718,11 @@ namespace ECalc.Modules
             return new Ecalc.FFmpegGui.FFMpegGui();
         }
 
+        public override ImageSource Icon
+        {
+            get { return new BitmapImage(new Uri("/ECalc;component/Images/100px/ffmpeg.png", UriKind.Relative)); }
+        }
+
         public override int Color
         {
             get { return (int)TileColor.W8Green; }

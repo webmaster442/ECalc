@@ -88,6 +88,8 @@
             Grid.Row="1"
             Grid.Column="0"/>
         <applib:FileSelector
+            Filter="ffmpeg.exe"
+            x:Name="FFMpegPathBox"
             Grid.Row="1"
             Grid.Column="1"/>
         <TextBox
