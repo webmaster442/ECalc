@@ -44,42 +44,92 @@
                 <MenuItem
                     Header="Copy"
                     Click="InsertNewParam"
-                    ToolTip="-ac copy"/>
+                    ToolTip="-acodec copy"/>
                 <Separator/>
                 <MenuItem
                     Header="Mp3"
-                    Click="InsertNewParam"/>
+                    Click="InsertNewParam"
+                    ToolTip="-acodec mp3"/>
                 <MenuItem
                     Header="WavPack"
-                    Click="InsertNewParam"/>
+                    Click="InsertNewParam"
+                    ToolTip="-acodec wavpack"/>
                 <MenuItem
                     Header="FLAC"
-                    Click="InsertNewParam"/>
+                    Click="InsertNewParam"
+                    ToolTip="-acodec flac"/>
                 <MenuItem
                     Header="Wav"
-                    Click="InsertNewParam"/>
+                    Click="InsertNewParam"
+                    ToolTip="-f wav"/>
             </MenuItem>
-            <MenuItem Header="Audio Resampling">
-                <MenuItem 
-                    Header="22.5 kHz"
-                    Click="InsertNewParam"
-                    ToolTip="-ar 22500"/>
-                <MenuItem 
-                    Header="44.1 kHz"
-                    Click="InsertNewParam"
-                    ToolTip="-ar 44100"/>
-                <MenuItem 
-                    Header="48 kHz"
-                    Click="InsertNewParam"
-                    ToolTip="-ar 48000"/>
-                <MenuItem 
-                    Header="96 kHz"
-                    Click="InsertNewParam"
-                    ToolTip="-ar 96000"/>
-                <MenuItem 
-                    Header="192 kHz"
-                    Click="InsertNewParam"
-                    ToolTip="-ar 192000"/>
+            <MenuItem Header="Audio">
+                <MenuItem Header="Compression level (FLAC/WavPack)">
+                    <MenuItem
+                        Header="1"
+                        Click="InsertNewParam"
+                        ToolTip="-compression_level 1"/>
+                    <MenuItem 
+                        Header="3 (WavPack Max)"
+                        Click="InsertNewParam"
+                        ToolTip="-compression_level 3"/>
+                    <MenuItem 
+                        Header="12 (FLAC max)"
+                        Click="InsertNewParam"
+                        ToolTip="-compression_level 12"/>
+                </MenuItem>
+                <MenuItem Header="Audio Bitrate">
+                    <MenuItem 
+                        Header="128 Kbit"
+                        Click="InsertNewParam"
+                        ToolTip="-b:a 128k"/>
+                    <MenuItem 
+                        Header="192 Kbit"
+                        Click="InsertNewParam"
+                        ToolTip="-b:a 192k"/>
+                    <MenuItem 
+                        Header="320 Kbit"
+                        Click="InsertNewParam"
+                        ToolTip="-b:a 320k"/>
+                    <MenuItem 
+                        Header="384 Kbit (AC3)"
+                        Click="InsertNewParam"
+                        ToolTip="-b:a 384k"/>
+                    <MenuItem 
+                        Header="448 Kbit (AC3)"
+                        Click="InsertNewParam"
+                        ToolTip="-b:a 448k"/>
+                    <MenuItem 
+                        Header="504 Kbit (AC3)"
+                        Click="InsertNewParam"
+                        ToolTip="-b:a 448k"/>
+                    <MenuItem 
+                        Header="640 Kbit (AC3)"
+                        Click="InsertNewParam"
+                        ToolTip="-b:a 448k"/>
+                </MenuItem>
+                <MenuItem Header="Resampling">
+                    <MenuItem 
+                        Header="22.5 kHz"
+                        Click="InsertNewParam"
+                        ToolTip="-ar 22500"/>
+                    <MenuItem 
+                        Header="44.1 kHz"
+                        Click="InsertNewParam"
+                        ToolTip="-ar 44100"/>
+                    <MenuItem 
+                        Header="48 kHz"
+                        Click="InsertNewParam"
+                        ToolTip="-ar 48000"/>
+                    <MenuItem 
+                        Header="96 kHz"
+                        Click="InsertNewParam"
+                        ToolTip="-ar 96000"/>
+                    <MenuItem 
+                        Header="192 kHz"
+                        Click="InsertNewParam"
+                        ToolTip="-ar 192000"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
         <TextBlock
