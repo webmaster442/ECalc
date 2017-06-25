@@ -205,11 +205,17 @@
                 <ComboBox
                     Grid.Row="2"
                     SelectedIndex="0"
+                    x:Name="Casing"
+                    SelectionChanged="ComboBox_SelectionChanged"
                     Grid.Column="1">
-                    <ComboBoxItem Content="Casing unchanged"/>
-                    <ComboBoxItem Content="UPPER CASE"/>
-                    <ComboBoxItem Content="lower case"/>
-                    <ComboBoxItem Content="Title Case"/>
+                    <ComboBoxItem
+                        Content="Casing unchanged"/>
+                    <ComboBoxItem
+                        Content="UPPER CASE"/>
+                    <ComboBoxItem 
+                        Content="lower case"/>
+                    <ComboBoxItem 
+                        Content="Title Case"/>
                 </ComboBox>
             </Grid>
         </GroupBox>
@@ -255,10 +261,18 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <ListBox
+                    x:Name="Inputs"
                     ItemsSource="{Binding Inputs}"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.ScrollChanged="Inputs_ScrollChanged"
                     Grid.Column="0"/>
                 <ListBox
-                     ItemsSource="{Binding Outputs}"
+                    x:Name="Outputs"
+                    ItemsSource="{Binding Outputs}"
+                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    ScrollViewer.ScrollChanged="Outputs_ScrollChanged"
                     Grid.Column="1"/>
             </Grid>
         </GroupBox>

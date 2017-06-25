@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using AppLib.Common.Extensions;
 
 namespace Ecalc.FFmpegGui
 {
@@ -16,12 +17,14 @@ namespace Ecalc.FFmpegGui
         private int _couterpadding;
         private bool _regex;
         private string _OutputDir;
+        private int _casetransformmode;
 
         public OutputNamerViewModel()
         {
             Inputs = new ObservableCollection<string>();
             Outputs = new ObservableCollection<string>();
-            OutputDirectory = "";
+            CaseTransformMode = 0;
+            OutputDirectory = "D:\\";
             RenamePattern = "[N]";
             Extension = "[E]";
             CounterStart = 1;
@@ -83,6 +86,22 @@ namespace Ecalc.FFmpegGui
                 ReplaceIfNeeded(ref output, "[C]", counter.ToString().PadLeft(CounterPadding, '0'));
                 ReplaceIfNeeded(ref output, Search, Replace, Regex);
                 counter += CounterIncrement;
+
+                switch (CaseTransformMode)
+                {
+                    case 0:
+                        break;
+                    case 1:
+                        output = output.ToUpper();
+                        break;
+                    case 2:
+                        output = output.ToLower();
+                        break;
+                    case 3:
+                        output = output.ToTitleCase();
+                        break;
+                }
+
                 Outputs.Add(output);
             }
         }
@@ -173,6 +192,16 @@ namespace Ecalc.FFmpegGui
             set
             {
                 if (SetValue(ref _OutputDir, value))
+                    Transform();
+            }
+        }
+
+        public int CaseTransformMode
+        {
+            get { return _casetransformmode; }
+            set
+            {
+                if (SetValue(ref _casetransformmode, value))
                     Transform();
             }
         }
